@@ -15,6 +15,17 @@
 		86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */; };
 		86BBBF4121BB08FD00CB17F2 /* sStoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF4021BB08FD00CB17F2 /* sStoriesTests.swift */; };
 		86BBBF4C21BB08FE00CB17F2 /* sStoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF4B21BB08FE00CB17F2 /* sStoriesUITests.swift */; };
+		86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF5921BB0A1000CB17F2 /* PageView.swift */; };
+		86BBBF5E21BB0A3A00CB17F2 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF5D21BB0A3A00CB17F2 /* Global.swift */; };
+		86BBBF6821BB0AA700CB17F2 /* Scene4.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF5F21BB0AA600CB17F2 /* Scene4.png */; };
+		86BBBF6921BB0AA700CB17F2 /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6021BB0AA600CB17F2 /* Pond.png */; };
+		86BBBF6A21BB0AA700CB17F2 /* House.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6121BB0AA600CB17F2 /* House.png */; };
+		86BBBF6B21BB0AA700CB17F2 /* sliderThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6221BB0AA600CB17F2 /* sliderThumb.png */; };
+		86BBBF6C21BB0AA700CB17F2 /* SackOfMelodies.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6321BB0AA600CB17F2 /* SackOfMelodies.png */; };
+		86BBBF6D21BB0AA700CB17F2 /* BlankScene.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6421BB0AA600CB17F2 /* BlankScene.png */; };
+		86BBBF6E21BB0AA700CB17F2 /* Scene2.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6521BB0AA600CB17F2 /* Scene2.png */; };
+		86BBBF6F21BB0AA700CB17F2 /* Scene1.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6621BB0AA700CB17F2 /* Scene1.png */; };
+		86BBBF7021BB0AA700CB17F2 /* Scene3.png in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF6721BB0AA700CB17F2 /* Scene3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +60,17 @@
 		86BBBF4721BB08FE00CB17F2 /* sStoriesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sStoriesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BBBF4B21BB08FE00CB17F2 /* sStoriesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sStoriesUITests.swift; sourceTree = "<group>"; };
 		86BBBF4D21BB08FE00CB17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86BBBF5921BB0A1000CB17F2 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		86BBBF5D21BB0A3A00CB17F2 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		86BBBF5F21BB0AA600CB17F2 /* Scene4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scene4.png; sourceTree = "<group>"; };
+		86BBBF6021BB0AA600CB17F2 /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pond.png; sourceTree = "<group>"; };
+		86BBBF6121BB0AA600CB17F2 /* House.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = House.png; sourceTree = "<group>"; };
+		86BBBF6221BB0AA600CB17F2 /* sliderThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sliderThumb.png; sourceTree = "<group>"; };
+		86BBBF6321BB0AA600CB17F2 /* SackOfMelodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SackOfMelodies.png; sourceTree = "<group>"; };
+		86BBBF6421BB0AA600CB17F2 /* BlankScene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BlankScene.png; sourceTree = "<group>"; };
+		86BBBF6521BB0AA600CB17F2 /* Scene2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scene2.png; sourceTree = "<group>"; };
+		86BBBF6621BB0AA700CB17F2 /* Scene1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scene1.png; sourceTree = "<group>"; };
+		86BBBF6721BB0AA700CB17F2 /* Scene3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Scene3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,7 +123,10 @@
 			children = (
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
+				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
+				86BBBF5D21BB0A3A00CB17F2 /* Global.swift */,
 				86BBBF2C21BB08FD00CB17F2 /* Main.storyboard */,
+				86BBBF7121BB141D00CB17F2 /* Images */,
 				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
 				86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */,
 				86BBBF3721BB08FD00CB17F2 /* Info.plist */,
@@ -126,6 +151,22 @@
 				86BBBF4D21BB08FE00CB17F2 /* Info.plist */,
 			);
 			path = sStoriesUITests;
+			sourceTree = "<group>";
+		};
+		86BBBF7121BB141D00CB17F2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				86BBBF6421BB0AA600CB17F2 /* BlankScene.png */,
+				86BBBF6121BB0AA600CB17F2 /* House.png */,
+				86BBBF6021BB0AA600CB17F2 /* Pond.png */,
+				86BBBF6321BB0AA600CB17F2 /* SackOfMelodies.png */,
+				86BBBF6621BB0AA700CB17F2 /* Scene1.png */,
+				86BBBF6521BB0AA600CB17F2 /* Scene2.png */,
+				86BBBF6721BB0AA700CB17F2 /* Scene3.png */,
+				86BBBF5F21BB0AA600CB17F2 /* Scene4.png */,
+				86BBBF6221BB0AA600CB17F2 /* sliderThumb.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +274,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */,
+				86BBBF6E21BB0AA700CB17F2 /* Scene2.png in Resources */,
+				86BBBF7021BB0AA700CB17F2 /* Scene3.png in Resources */,
+				86BBBF6D21BB0AA700CB17F2 /* BlankScene.png in Resources */,
+				86BBBF6F21BB0AA700CB17F2 /* Scene1.png in Resources */,
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
+				86BBBF6A21BB0AA700CB17F2 /* House.png in Resources */,
+				86BBBF6921BB0AA700CB17F2 /* Pond.png in Resources */,
+				86BBBF6B21BB0AA700CB17F2 /* sliderThumb.png in Resources */,
 				86BBBF2E21BB08FD00CB17F2 /* Main.storyboard in Resources */,
+				86BBBF6C21BB0AA700CB17F2 /* SackOfMelodies.png in Resources */,
+				86BBBF6821BB0AA700CB17F2 /* Scene4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +311,8 @@
 			files = (
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86BBBF3121BB08FD00CB17F2 /* sStories.xcdatamodeld in Sources */,
+				86BBBF5E21BB0A3A00CB17F2 /* Global.swift in Sources */,
+				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
