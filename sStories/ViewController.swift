@@ -43,29 +43,28 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .black
         addPage()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if tempStoryLine < pages[currentPage].storyText.count-1{
+        if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! {
         page?.nextStoryLine()
         tempStoryLine+=1
             
-        } else if currentPage < pages.count-1 {
-            page?.removeFromSuperview()
-            currentPage+=1
-            tempStoryLine = 0
-            addPage()
-            
+        } else if currentPage < pages.count-1 && (page?.canActivate)! {
+            page?.fadeOutAndRemove(completion: {
+                self.currentPage+=1
+                self.tempStoryLine = 0
+                self.addPage()
+            })
         }
     }
     
     func addPage(){
-        
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)
-        
     }
     
     override var prefersStatusBarHidden: Bool{

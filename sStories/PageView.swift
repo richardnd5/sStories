@@ -34,6 +34,7 @@ class PageView: UIView {
     var imageName = String()
     var storyText = [String]()
     var sceneStoryPosition = 0
+    var canActivate = false
     
     init(frame: CGRect, page: Page) {
         super.init(frame: frame)
@@ -51,15 +52,43 @@ class PageView: UIView {
         
         setupLayout()
         backgroundColor = .black
+        alpha = 0
+        fadeTo(view:self, time: 1.5,opacity: 1.0, {})
         
+
+
+        
+    }
+    
+    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
+        canActivate = false
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                view.alpha = opacity
+        },
+            completion: {
+                _ in
+                self.canActivate = true
+                completion()
+        })
     }
     
     func nextStoryLine(){
         
-        //            storyTextView.fadeTransition(1.0)
-        storyTextView.pushTransition(1.0)
-        sceneStoryPosition += 1
-        storyTextView.text = storyText[sceneStoryPosition]
+        if canActivate{
+            fadeTo(view: storyTextView, time: 1.0, opacity: 0.0, {
+                //            storyTextView.fadeTransition(1.0)
+                if self.canActivate {
+                    //            storyTextView.pushTransition(1.0)
+                    self.sceneStoryPosition += 1
+                    self.storyTextView.text = self.storyText[self.sceneStoryPosition]
+                    self.fadeTo(view: self.storyTextView, time: 1.0, opacity: 1.0, {})
+                }
+            })
+        }
     }
     
     func setupLayout(){
@@ -76,6 +105,27 @@ class PageView: UIView {
         storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         storyTextView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         
+    }
+    
+
+    
+    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ) {
+        if canActivate {
+            UIView.animate(
+                withDuration: 1.5,
+                delay: 0,
+                options: .curveEaseInOut,
+                animations: {
+                    self.alpha = 0.0
+                    self.canActivate = false
+            },
+                completion: {
+                    _ in
+                    self.removeFromSuperview()
+                    completion()
+                    self.canActivate = true
+            })
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
