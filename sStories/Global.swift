@@ -23,39 +23,3 @@ func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat)-> U
     return UIImage(cgImage: downsampledImage)
 }
 
-// Usage: insert view.pushTransition right before changing content
-extension UIView {
-    func pushTransition(_ duration:CFTimeInterval) {
-        let animation:CATransition = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name:
-            CAMediaTimingFunctionName.easeInEaseOut)
-        animation.type = CATransitionType.push
-        animation.subtype = CATransitionSubtype.fromTop
-        animation.duration = duration
-        layer.add(animation, forKey: CATransitionType.push.rawValue)
-    }
-}
-
-extension UIView {
-    func textAnimation(_ duration:CFTimeInterval) {
-        let animation:CATransition = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name:
-            CAMediaTimingFunctionName.easeInEaseOut)
-        animation.type = CATransitionType.push
-        animation.subtype = CATransitionSubtype.fromTop
-        animation.duration = duration
-        layer.add(animation, forKey: CATransitionType.push.rawValue)
-    }
-}
-
-// Usage: insert view.fadeTransition right before changing content
-extension UIView {
-    func fadeTransition(_ duration:CFTimeInterval) {
-        let animation = CATransition()
-        animation.timingFunction = CAMediaTimingFunction(name:
-            CAMediaTimingFunctionName.easeInEaseOut)
-        animation.type = CATransitionType.fade
-        animation.duration = duration
-        layer.add(animation, forKey: CATransitionType.fade.rawValue)
-    }
-}

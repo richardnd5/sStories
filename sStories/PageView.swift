@@ -26,6 +26,7 @@ class PageView: UIView {
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
+        
         textView.backgroundColor = .clear
         textView.font = UIFont(name: "Papyrus", size: 28)
         return textView
@@ -54,10 +55,6 @@ class PageView: UIView {
         backgroundColor = .black
         alpha = 0
         fadeTo(view:self, time: 1.5,opacity: 1.0, {})
-        
-
-
-        
     }
     
     func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
@@ -80,9 +77,7 @@ class PageView: UIView {
         
         if canActivate{
             fadeTo(view: storyTextView, time: 1.0, opacity: 0.0, {
-                //            storyTextView.fadeTransition(1.0)
                 if self.canActivate {
-                    //            storyTextView.pushTransition(1.0)
                     self.sceneStoryPosition += 1
                     self.storyTextView.text = self.storyText[self.sceneStoryPosition]
                     self.fadeTo(view: self.storyTextView, time: 1.0, opacity: 1.0, {})
@@ -104,30 +99,22 @@ class PageView: UIView {
         
         storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         storyTextView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        
         
     }
     
-
-    
-    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ) {
-        if canActivate {
-            UIView.animate(
-                withDuration: 1.5,
-                delay: 0,
-                options: .curveEaseInOut,
-                animations: {
-                    self.alpha = 0.0
-                    self.canActivate = false
-            },
-                completion: {
-                    _ in
-                    self.removeFromSuperview()
-                    completion()
-                    self.canActivate = true
+    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
+        if canActivate{
+            fadeTo(view: self, time: 1.0, opacity: 0.0, {
+                self.removeFromSuperview()
+                completion()
+                self.canActivate = true
             })
         }
     }
-    
+  
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

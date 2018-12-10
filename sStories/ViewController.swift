@@ -2,7 +2,8 @@
  
  AppDelegate - check
  ViewController - check
- StoryView
+ PageView - check
+ StoryLine - check
  CatchMelodies
  ArrangeMelody
  Sound
@@ -15,28 +16,14 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    
     var page : PageView?
     let pages = [
-        Page(imageName: "BlankScene", storyText: [      "line1",
-                                                        "line2",
-                                                        "line3",
-                                                        "line3.1",
-                                                        "line3.2",
-                                                        "line3.3",
-                                                        "line3.4",
-                                                        "line3.5",
-                                                        "line3.6",]),
-        Page(imageName: "Scene1", storyText: [          "line4",
-                                                        "line5"]),
-        Page(imageName: "Pond", storyText: [            "line6",
-                                                        "line7"]),
-        Page(imageName: "Scene2", storyText: [          "line8",
-                                                        "line9"]),
-        Page(imageName: "Scene3", storyText: [          "line10",
-                                                        "line11"]),
-        Page(imageName: "Scene4", storyText: [          "line12",
-                                                        "line13"]),
+        Page(imageName: "BlankScene", storyText: Array(storyline[0..<2])),
+        Page(imageName: "Scene1", storyText: Array(storyline[2..<4])),
+        Page(imageName: "Scene2", storyText: Array(storyline[4..<6])),
+        Page(imageName: "Scene3", storyText: Array(storyline[6..<8])),
+        Page(imageName: "Scene4", storyText: Array(storyline[8..<10])),
+        Page(imageName: "BlankScene", storyText: Array(storyline[10..<12])),
         ]
     var currentPage = 0
     var tempStoryLine = 0
