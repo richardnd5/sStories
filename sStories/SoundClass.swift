@@ -103,14 +103,6 @@ class SoundClass {
         sequencer.play()
     }
     
-    func addAMeasureToSequence(_ whichMeasure: Int ){
-        
-        sequencer.tracks[1].add(noteNumber: MIDINoteNumber(60),
-                                velocity: 127,
-                                position: AKDuration(beats: 1),
-                                duration: AKDuration(beats: 32))
-    }
-    
     func playTouchDownSound(){
         do { try! touchDown.play(noteNumber: 60, velocity: 60, channel: 1)}
     }
