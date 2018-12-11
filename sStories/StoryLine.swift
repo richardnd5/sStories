@@ -31,7 +31,7 @@ let storyline = [
     """,
     
     """
-    "Yes, I'm going to take the bits of music I caught and put them together into a beautiful piece to share with you,' said Templeton, "Come over after dinner and you can hear it."
+    "Yes, I'm going to take the bits of music I caught and put them together into a beautiful piece to share with you," said Templeton, "Come over after dinner and you can hear it."
     """,
     
     "Away he went to his cabin to prepare the music for the evening.",

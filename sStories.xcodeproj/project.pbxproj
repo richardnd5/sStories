@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		8698D85621BF149700ADED35 /* StoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85521BF149700ADED35 /* StoryLine.swift */; };
+		8698D85921BF400000ADED35 /* SoundClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85721BF400000ADED35 /* SoundClass.swift */; };
+		8698D85A21BF400000ADED35 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85821BF400000ADED35 /* Haptics.swift */; };
+		8698D87621BF404C00ADED35 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8698D87521BF404C00ADED35 /* libc++.tbd */; };
+		8698D88C21BF416100ADED35 /* noodlePiano in Resources */ = {isa = PBXBuildFile; fileRef = 8698D88B21BF416100ADED35 /* noodlePiano */; };
+		8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */; };
+		8698D89421BF417600ADED35 /* marimbaC.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D88E21BF416600ADED35 /* marimbaC.wav */; };
+		8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */; };
+		8698D89621BF417600ADED35 /* pageTurnTouchUp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */; };
+		8698D89721BF417600ADED35 /* touchDown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D89121BF416700ADED35 /* touchDown.wav */; };
+		8698D89821BF417600ADED35 /* touchUp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D89221BF416700ADED35 /* touchUp.wav */; };
 		86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */; };
 		86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */; };
 		86BBBF2E21BB08FD00CB17F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF2C21BB08FD00CB17F2 /* Main.storyboard */; };
@@ -48,6 +58,16 @@
 
 /* Begin PBXFileReference section */
 		8698D85521BF149700ADED35 /* StoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLine.swift; sourceTree = "<group>"; };
+		8698D85721BF400000ADED35 /* SoundClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundClass.swift; sourceTree = "<group>"; };
+		8698D85821BF400000ADED35 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
+		8698D87521BF404C00ADED35 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		8698D88B21BF416100ADED35 /* noodlePiano */ = {isa = PBXFileReference; lastKnownFileType = folder; path = noodlePiano; sourceTree = "<group>"; };
+		8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = backgroundPlaceholder.wav; sourceTree = "<group>"; };
+		8698D88E21BF416600ADED35 /* marimbaC.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = marimbaC.wav; sourceTree = "<group>"; };
+		8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pageTurnTouchUp.wav; sourceTree = "<group>"; };
+		8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pageTurnTouchDown.wav; sourceTree = "<group>"; };
+		8698D89121BF416700ADED35 /* touchDown.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = touchDown.wav; sourceTree = "<group>"; };
+		8698D89221BF416700ADED35 /* touchUp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = touchUp.wav; sourceTree = "<group>"; };
 		86BBBF2521BB08FD00CB17F2 /* sStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8698D87621BF404C00ADED35 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +121,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8698D87421BF404C00ADED35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8698D87521BF404C00ADED35 /* libc++.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		86BBBF1C21BB08FD00CB17F2 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +136,7 @@
 				86BBBF3F21BB08FD00CB17F2 /* sStoriesTests */,
 				86BBBF4A21BB08FE00CB17F2 /* sStoriesUITests */,
 				86BBBF2621BB08FD00CB17F2 /* Products */,
+				8698D87421BF404C00ADED35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,12 +153,21 @@
 		86BBBF2721BB08FD00CB17F2 /* sStories */ = {
 			isa = PBXGroup;
 			children = (
+				86BBBF2C21BB08FD00CB17F2 /* Main.storyboard */,
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
+				8698D85721BF400000ADED35 /* SoundClass.swift */,
+				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* Global.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
-				86BBBF2C21BB08FD00CB17F2 /* Main.storyboard */,
+				8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */,
+				8698D88E21BF416600ADED35 /* marimbaC.wav */,
+				8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */,
+				8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */,
+				8698D89121BF416700ADED35 /* touchDown.wav */,
+				8698D89221BF416700ADED35 /* touchUp.wav */,
+				8698D88B21BF416100ADED35 /* noodlePiano */,
 				86BBBF7121BB141D00CB17F2 /* Images */,
 				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
 				86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */,
@@ -240,6 +279,11 @@
 				TargetAttributes = {
 					86BBBF2421BB08FD00CB17F2 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					86BBBF3B21BB08FD00CB17F2 = {
 						CreatedOnToolsVersion = 10.1;
@@ -276,6 +320,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */,
+				8698D89421BF417600ADED35 /* marimbaC.wav in Resources */,
+				8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */,
+				8698D89621BF417600ADED35 /* pageTurnTouchUp.wav in Resources */,
+				8698D89721BF417600ADED35 /* touchDown.wav in Resources */,
+				8698D89821BF417600ADED35 /* touchUp.wav in Resources */,
 				86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */,
 				86BBBF6E21BB0AA700CB17F2 /* Scene2.png in Resources */,
 				86BBBF7021BB0AA700CB17F2 /* Scene3.png in Resources */,
@@ -284,6 +334,7 @@
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
 				86BBBF6A21BB0AA700CB17F2 /* House.png in Resources */,
 				86BBBF6921BB0AA700CB17F2 /* Pond.png in Resources */,
+				8698D88C21BF416100ADED35 /* noodlePiano in Resources */,
 				86BBBF6B21BB0AA700CB17F2 /* sliderThumb.png in Resources */,
 				86BBBF2E21BB08FD00CB17F2 /* Main.storyboard in Resources */,
 				86BBBF6C21BB0AA700CB17F2 /* SackOfMelodies.png in Resources */,
@@ -312,9 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8698D85921BF400000ADED35 /* SoundClass.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86BBBF3121BB08FD00CB17F2 /* sStories.xcdatamodeld in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* Global.swift in Sources */,
+				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,
 				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,
@@ -494,6 +547,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3NSLQNHB3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = sStories/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -512,6 +569,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3NSLQNHB3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = sStories/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

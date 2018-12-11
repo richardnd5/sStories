@@ -1,0 +1,36 @@
+
+    
+    <group> lokey=1 hikey=1 pitch_keycenter=1 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/1.wav
+    
+    
+    
+    <group> lokey=2 hikey=2 pitch_keycenter=2 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/2.wav
+    
+    
+    
+    <group> lokey=3 hikey=3 pitch_keycenter=3 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/3.wav
+    
+    
+    
+    <group> lokey=4 hikey=4 pitch_keycenter=4 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/4.wav
+    
+    
+    
+    <group> lokey=5 hikey=5 pitch_keycenter=5 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/5.wav
+    
+    
+    
+    <group> lokey=6 hikey=6 pitch_keycenter=6 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/6.wav
+    

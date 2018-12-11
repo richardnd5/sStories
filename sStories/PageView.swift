@@ -20,12 +20,13 @@ class PageView: UIView {
     
     private let storyTextView: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont(name: "Papyrus", size: 28)
         textView.textColor = .white
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
         textView.isEditable = false
         textView.isScrollEnabled = false
+        textView.isSelectable = false
+        textView.isUserInteractionEnabled = false
         
         textView.backgroundColor = .clear
         textView.font = UIFont(name: "Papyrus", size: 28)
@@ -50,6 +51,7 @@ class PageView: UIView {
         
         imageView.image = ourImage
         storyTextView.text = page.storyText[sceneStoryPosition]
+        storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
         
         setupLayout()
         backgroundColor = .black
@@ -95,8 +97,8 @@ class PageView: UIView {
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        addSubview(storyTextView)
         
+        addSubview(storyTextView)
         storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         storyTextView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
