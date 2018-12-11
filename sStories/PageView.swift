@@ -27,7 +27,6 @@ class PageView: UIView {
         textView.isScrollEnabled = false
         textView.isSelectable = false
         textView.isUserInteractionEnabled = false
-        
         textView.backgroundColor = .clear
         textView.font = UIFont(name: "Papyrus", size: 28)
         return textView
@@ -93,16 +92,17 @@ class PageView: UIView {
         addSubview(imageView)
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/2.5).isActive = true
         
         addSubview(storyTextView)
+        storyTextView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10).isActive = true
+        storyTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30).isActive = true
         storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        storyTextView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/5).isActive = true
+        storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/5).isActive = true
         
         
     }

@@ -34,7 +34,7 @@ class SoundClass {
             try pageTurnTouchDown.loadWav("pageTurnTouchDown")
             try pageTurnTouchUp.loadWav("pageTurnTouchUp")
             
-            print("It did load the sample.")
+            print("It did load the samples.")
         } catch {
             print("Error: Loading.")
             return
@@ -43,9 +43,7 @@ class SoundClass {
         filter = AKMoogLadder(backgroundPiano)
         filter.cutoffFrequency = 8000
         loadPianoSamples()
-        
-        
-//        mixer = AKMixer(touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, pianoSampler)
+
         mixer = AKMixer(backgroundPiano,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, pianoSampler)
         
         mixer.volume = 6.0
@@ -54,25 +52,19 @@ class SoundClass {
         reverb.dryWetMix = 0.6
         AudioKit.output = reverb
         do { try AudioKit.start() }catch{}
-        
-        //setup sequencers
-        print("setup sequencers running")
+
         
         let track1 = sequencer.newTrack("New Track")
 
-        
         track1?.setMIDIOutput(backgroundPiano.midiIn)
         sequencer.setTempo(currentTempo)
         startSequencer()
-        print("passed the clear sequencer and start drums function")
-        
     }
     
     func loadPianoSamples() {
         let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("noodlePiano")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "pianoNoodles.sfz")
         pianoSampler.releaseDuration = 0.1
-        
     }
     
     func playPattern(){
@@ -91,8 +83,7 @@ class SoundClass {
         for track in sequencer.tracks {
             track.clear()
         }
-            
-        // Set up playhead sequencer track
+        
         sequencer.tracks[0].add(noteNumber: MIDINoteNumber(60),
                                       velocity: 127,
                                       position: AKDuration(beats: 1),
