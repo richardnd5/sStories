@@ -34,3 +34,184 @@
 
     <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/6.wav
     
+    
+    
+    <group> lokey=7 hikey=7 pitch_keycenter=7 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/7.wav
+    
+    
+    
+    <group> lokey=8 hikey=8 pitch_keycenter=8 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/8.wav
+    
+    
+    
+    <group> lokey=9 hikey=9 pitch_keycenter=9 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/9.wav
+    
+    
+    
+    <group> lokey=10 hikey=10 pitch_keycenter=10 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/10.wav
+    
+    
+    
+    <group> lokey=11 hikey=11 pitch_keycenter=11 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/11.wav
+    
+    
+    
+    <group> lokey=12 hikey=12 pitch_keycenter=12 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/12.wav
+    
+    
+    
+    <group> lokey=13 hikey=13 pitch_keycenter=13 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/13.wav
+    
+    
+    
+    <group> lokey=14 hikey=14 pitch_keycenter=14 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/14.wav
+    
+    
+    
+    <group> lokey=15 hikey=15 pitch_keycenter=15 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/15.wav
+    
+    
+    
+    <group> lokey=16 hikey=16 pitch_keycenter=16 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/16.wav
+    
+    
+    
+    <group> lokey=17 hikey=17 pitch_keycenter=17 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/17.wav
+    
+    
+    
+    <group> lokey=18 hikey=18 pitch_keycenter=18 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/18.wav
+    
+    
+    
+    <group> lokey=19 hikey=19 pitch_keycenter=19 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/19.wav
+    
+    
+    
+    <group> lokey=20 hikey=20 pitch_keycenter=20 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/20.wav
+    
+    
+    
+    <group> lokey=21 hikey=21 pitch_keycenter=21 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/21.wav
+    
+    
+    
+    <group> lokey=22 hikey=22 pitch_keycenter=22 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/22.wav
+    
+    
+    
+    <group> lokey=23 hikey=23 pitch_keycenter=23 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/23.wav
+    
+    
+    
+    <group> lokey=24 hikey=24 pitch_keycenter=24 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/24.wav
+    
+    
+    
+    <group> lokey=25 hikey=25 pitch_keycenter=25 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/25.wav
+    
+    
+    
+    <group> lokey=26 hikey=26 pitch_keycenter=26 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/26.wav
+    
+    
+    
+    <group> lokey=27 hikey=27 pitch_keycenter=27 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/27.wav
+    
+    
+    
+    <group> lokey=28 hikey=28 pitch_keycenter=28 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/28.wav
+    
+    
+    
+    <group> lokey=29 hikey=29 pitch_keycenter=29 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/29.wav
+    
+    
+    
+    <group> lokey=30 hikey=30 pitch_keycenter=30 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/30.wav
+    
+    
+    
+    <group> lokey=31 hikey=31 pitch_keycenter=31 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/31.wav
+    
+    
+    
+    <group> lokey=32 hikey=32 pitch_keycenter=32 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/32.wav
+    
+    
+    
+    <group> lokey=33 hikey=33 pitch_keycenter=33 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/33.wav
+    
+    
+    
+    <group> lokey=34 hikey=34 pitch_keycenter=34 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/34.wav
+    
+    
+    
+    <group> lokey=35 hikey=35 pitch_keycenter=35 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/35.wav
+    
+    
+    
+    <group> lokey=36 hikey=36 pitch_keycenter=36 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/36.wav
+    
+    

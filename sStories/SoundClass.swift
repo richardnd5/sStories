@@ -25,10 +25,12 @@ class SoundClass {
     var reverb = AKReverb()
     var sequencer = AKSequencer()
     
+    var length : TimeInterval = 6.0
+    
     func setupSound(){
 
         do {
-            try backgroundPiano.loadWav("backgroundPlaceholder")
+            try backgroundPiano.loadWav("steadyBrownNoise")
             try touchDown.loadWav("touchDown")
             try touchUp.loadWav("touchUp")
             try pageTurnTouchDown.loadWav("pageTurnTouchDown")
@@ -53,6 +55,7 @@ class SoundClass {
         AudioKit.output = reverb
         do { try AudioKit.start() }catch{}
 
+//        length = 32 * ((60*60) / Int(currentTempo))
         
         let track1 = sequencer.newTrack("New Track")
 
@@ -64,20 +67,27 @@ class SoundClass {
     func loadPianoSamples() {
         let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("noodlePiano")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "pianoNoodles.sfz")
-        pianoSampler.releaseDuration = 0.1
+        pianoSampler.releaseDuration = 2
     }
     
+    var currentPlaying = MIDINoteNumber()
     func playPattern(){
         
-        let number = MIDINoteNumber.random(in: 0...6)
+        self.pianoSampler.stop(noteNumber: currentPlaying)
+        let number = MIDINoteNumber.random(in: 0...36)
+        currentPlaying = number
         pianoSampler.play(noteNumber: number, velocity: 127)
-        Timer.scheduledTimer(withTimeInterval: 8.0, repeats: false, block:{_ in self.pianoSampler.stop(noteNumber: number)})
+        
+//        Timer.scheduledTimer(withTimeInterval: length, repeats: false, block:{_ in self.pianoSampler.stop(noteNumber: number)
+//        })
+        
+        
     }
 
     
     func startSequencer() {
         
-        let seqLength = AKDuration(beats: Double(32))
+        let seqLength = AKDuration(beats: Double(120))
         sequencer.setLength(seqLength)
         
         for track in sequencer.tracks {

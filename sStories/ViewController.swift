@@ -27,7 +27,7 @@ class ViewController: UIViewController {
         Page(imageName: "ShowingCrowdSackOfMelodies", storyText: Array(storyline[10...11])),
         Page(imageName: "Town", storyText: Array(storyline[12...13])),
         Page(imageName: "Performance", storyText: Array(storyline[14...19])),
-        Page(imageName: "Town", storyText: Array(storyline[20...22])),
+        Page(imageName: "Pond", storyText: Array(storyline[20...22])),
         
         ]
     var currentPage = 0
@@ -42,10 +42,13 @@ class ViewController: UIViewController {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        SoundClass.Sound.playTouchDownSound()
+//        SoundClass.Sound.playTouchDownSound()
+        SoundClass.Sound.playPattern()
+
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         
         if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! {
         page?.nextStoryLine()

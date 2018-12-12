@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
+		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
 		8698D85621BF149700ADED35 /* StoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85521BF149700ADED35 /* StoryLine.swift */; };
 		8698D85921BF400000ADED35 /* SoundClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85721BF400000ADED35 /* SoundClass.swift */; };
 		8698D85A21BF400000ADED35 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85821BF400000ADED35 /* Haptics.swift */; };
@@ -56,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
+		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
 		8698D85521BF149700ADED35 /* StoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLine.swift; sourceTree = "<group>"; };
 		8698D85721BF400000ADED35 /* SoundClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundClass.swift; sourceTree = "<group>"; };
 		8698D85821BF400000ADED35 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */,
 				8698D89121BF416700ADED35 /* touchDown.wav */,
 				8698D89221BF416700ADED35 /* touchUp.wav */,
+				86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */,
+				86697DE221C1AF97009EC3BF /* windSound.wav */,
 				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
 				86E9F49621BF82F400EE12DF /* Mountain.png */,
 				86E9F49321BF82F400EE12DF /* Performance.png */,
@@ -309,6 +315,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86697DE321C1AF97009EC3BF /* windSound.wav in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
 				8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */,
 				8698D89421BF417600ADED35 /* marimbaC.wav in Resources */,
@@ -324,6 +331,7 @@
 				86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */,
 				86E9F49B21BF82F500EE12DF /* Performance.png in Resources */,
 				86E9F49C21BF82F500EE12DF /* Pond.png in Resources */,
+				86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */,
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
 				8698D88C21BF416100ADED35 /* noodlePiano in Resources */,
 				86BBBF2E21BB08FD00CB17F2 /* Main.storyboard in Resources */,
