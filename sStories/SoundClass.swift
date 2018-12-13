@@ -4,13 +4,14 @@ class SoundClass {
 
     let midi = AKMIDI()
     
-    let backgroundPiano = AKMIDISampler()
+    let windSound = AKMIDISampler()
     let touchDown = AKMIDISampler()
     let touchUp = AKMIDISampler()
     let pageTurnTouchDown = AKMIDISampler()
     let pageTurnTouchUp = AKMIDISampler()
     
     var pianoSampler = AKSampler()
+    var currentPlaying = MIDINoteNumber()
 
     static var Sound = SoundClass()
 
@@ -30,7 +31,7 @@ class SoundClass {
     func setupSound(){
 
         do {
-            try backgroundPiano.loadWav("steadyBrownNoise")
+            try windSound.loadWav("steadyBrownNoise")
             try touchDown.loadWav("touchDown")
             try touchUp.loadWav("touchUp")
             try pageTurnTouchDown.loadWav("pageTurnTouchDown")
@@ -42,11 +43,11 @@ class SoundClass {
             return
         }
 
-        filter = AKMoogLadder(backgroundPiano)
-        filter.cutoffFrequency = 8000
+        filter = AKMoogLadder(windSound)
+        filter.cutoffFrequency = 6000
         loadPianoSamples()
 
-        mixer = AKMixer(backgroundPiano,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, pianoSampler)
+        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, pianoSampler)
         
         mixer.volume = 6.0
 
@@ -59,7 +60,7 @@ class SoundClass {
         
         let track1 = sequencer.newTrack("New Track")
 
-        track1?.setMIDIOutput(backgroundPiano.midiIn)
+        track1?.setMIDIOutput(windSound.midiIn)
         sequencer.setTempo(currentTempo)
         startSequencer()
     }
@@ -70,7 +71,6 @@ class SoundClass {
         pianoSampler.releaseDuration = 2
     }
     
-    var currentPlaying = MIDINoteNumber()
     func playPattern(){
         
         self.pianoSampler.stop(noteNumber: currentPlaying)
