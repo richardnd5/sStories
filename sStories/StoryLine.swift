@@ -56,7 +56,7 @@ let storyline = [
     
     "Everyone thanked Templeton for sharing the music that opened their eyes and ears. When everyone had finished thanking Templeton, they walked home.",
     
-    "That night, the whole town was peaceful and calm. Many people had dreams full of Templeton's melodies.",
+    "That night, the whole town was peaceful and calm. Many people had dreams full of the melodies.",
     
     "Everyone went to bed feeling happy to know that they too could visit the magic pond of melodies on top of the big mountain and bring back a beautiful piece to share with the community.",
     
