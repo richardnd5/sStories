@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
+		860AD9EB21C30EA30052577B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9EA21C30EA30052577B /* GameScene.swift */; };
+		860AD9ED21C30F540052577B /* Templeton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9EC21C30F540052577B /* Templeton.swift */; };
+		860AD9EF21C30F660052577B /* corkman.png in Resources */ = {isa = PBXBuildFile; fileRef = 860AD9EE21C30F660052577B /* corkman.png */; };
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
 		8698D85621BF149700ADED35 /* StoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85521BF149700ADED35 /* StoryLine.swift */; };
@@ -22,7 +26,6 @@
 		8698D89821BF417600ADED35 /* touchUp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D89221BF416700ADED35 /* touchUp.wav */; };
 		86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */; };
 		86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */; };
-		86BBBF2E21BB08FD00CB17F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF2C21BB08FD00CB17F2 /* Main.storyboard */; };
 		86BBBF3121BB08FD00CB17F2 /* sStories.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF2F21BB08FD00CB17F2 /* sStories.xcdatamodeld */; };
 		86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */; };
 		86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */; };
@@ -57,7 +60,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		860AD9F221C315700052577B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
+		860AD9EA21C30EA30052577B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		860AD9EC21C30F540052577B /* Templeton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templeton.swift; sourceTree = "<group>"; };
+		860AD9EE21C30F660052577B /* corkman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = corkman.png; sourceTree = "<group>"; };
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
 		8698D85521BF149700ADED35 /* StoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLine.swift; sourceTree = "<group>"; };
@@ -74,7 +94,6 @@
 		86BBBF2521BB08FD00CB17F2 /* sStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		86BBBF2D21BB08FD00CB17F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		86BBBF3021BB08FD00CB17F2 /* sStories.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = sStories.xcdatamodel; sourceTree = "<group>"; };
 		86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		86BBBF3521BB08FD00CB17F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -123,6 +142,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		860DE93121C2072F00A7370D /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */,
+				8698D88E21BF416600ADED35 /* marimbaC.wav */,
+				8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */,
+				8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */,
+				8698D89121BF416700ADED35 /* touchDown.wav */,
+				8698D89221BF416700ADED35 /* touchUp.wav */,
+				86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */,
+				86697DE221C1AF97009EC3BF /* windSound.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		860DE93221C2073E00A7370D /* Image Assets */ = {
+			isa = PBXGroup;
+			children = (
+				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
+				86E9F49621BF82F400EE12DF /* Mountain.png */,
+				86E9F49321BF82F400EE12DF /* Performance.png */,
+				86E9F49421BF82F400EE12DF /* Pond.png */,
+				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
+				86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */,
+				86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */,
+				86E9F49921BF82F500EE12DF /* Town.png */,
+			);
+			path = "Image Assets";
+			sourceTree = "<group>";
+		};
 		8698D87421BF404C00ADED35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,30 +204,19 @@
 		86BBBF2721BB08FD00CB17F2 /* sStories */ = {
 			isa = PBXGroup;
 			children = (
-				86BBBF2C21BB08FD00CB17F2 /* Main.storyboard */,
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
 				8698D85721BF400000ADED35 /* SoundClass.swift */,
+				860AD9E621C309FD0052577B /* CatchingMelodies.swift */,
+				860AD9EA21C30EA30052577B /* GameScene.swift */,
+				860AD9EC21C30F540052577B /* Templeton.swift */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* Global.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
-				8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */,
-				8698D88E21BF416600ADED35 /* marimbaC.wav */,
-				8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */,
-				8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */,
-				8698D89121BF416700ADED35 /* touchDown.wav */,
-				8698D89221BF416700ADED35 /* touchUp.wav */,
-				86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */,
-				86697DE221C1AF97009EC3BF /* windSound.wav */,
-				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
-				86E9F49621BF82F400EE12DF /* Mountain.png */,
-				86E9F49321BF82F400EE12DF /* Performance.png */,
-				86E9F49421BF82F400EE12DF /* Pond.png */,
-				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
-				86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */,
-				86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */,
-				86E9F49921BF82F500EE12DF /* Town.png */,
+				860AD9EE21C30F660052577B /* corkman.png */,
+				860DE93121C2072F00A7370D /* Sounds */,
+				860DE93221C2073E00A7370D /* Image Assets */,
 				8698D88B21BF416100ADED35 /* noodlePiano */,
 				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
 				86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */,
@@ -216,6 +254,7 @@
 				86BBBF2121BB08FD00CB17F2 /* Sources */,
 				86BBBF2221BB08FD00CB17F2 /* Frameworks */,
 				86BBBF2321BB08FD00CB17F2 /* Resources */,
+				860AD9F221C315700052577B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -323,6 +362,7 @@
 				8698D89621BF417600ADED35 /* pageTurnTouchUp.wav in Resources */,
 				8698D89721BF417600ADED35 /* touchDown.wav in Resources */,
 				86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */,
+				860AD9EF21C30F660052577B /* corkman.png in Resources */,
 				86E9F49A21BF82F500EE12DF /* ShowingCrowdSackOfMelodies.png in Resources */,
 				86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */,
 				86E9F4A121BF82F500EE12DF /* Town.png in Resources */,
@@ -334,7 +374,6 @@
 				86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */,
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
 				8698D88C21BF416100ADED35 /* noodlePiano in Resources */,
-				86BBBF2E21BB08FD00CB17F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,13 +398,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				860AD9EB21C30EA30052577B /* GameScene.swift in Sources */,
 				8698D85921BF400000ADED35 /* SoundClass.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86BBBF3121BB08FD00CB17F2 /* sStories.xcdatamodeld in Sources */,
+				860AD9ED21C30F540052577B /* Templeton.swift in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* Global.swift in Sources */,
 				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,
 				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
+				860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */,
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,14 +444,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		86BBBF2C21BB08FD00CB17F2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				86BBBF2D21BB08FD00CB17F2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
