@@ -49,7 +49,7 @@ class SoundClass {
 
         mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, pianoSampler)
         
-        mixer.volume = 6.0
+        mixer.volume = 1.0
 
         reverb = AKReverb(mixer)
         reverb.dryWetMix = 0.6
