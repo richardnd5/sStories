@@ -23,12 +23,8 @@ func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat)-> U
     return UIImage(cgImage: downsampledImage)
 }
 
-struct ScreenSize {
-    static let width = 1136
-    static let heigth = 640
-}
 
-var centerScreen = CGPoint(x: ScreenSize.width/2, y: ScreenSize.heigth/2)
+
 
 
 extension UIImage {
@@ -54,3 +50,30 @@ extension UIImage {
         return newImage
     }
 }
+
+
+enum UIUserInterfaceIdiom: Int {
+    case undefined
+    case phone
+    case pad
+}
+
+struct ScreenSize {
+    static let width = UIScreen.main.bounds.size.width
+    static let height = UIScreen.main.bounds.size.height
+    static let maxLength = max(ScreenSize.width, ScreenSize.height)
+    static let minLength = min(ScreenSize.width, ScreenSize.height)
+}
+
+struct DeviceType {
+    static let isiPhone4OrLess = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength < 568.0
+    static let isiPhone5 = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength == 568.0
+    static let isiPhone6 = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength == 667.0
+    static let isiPhone6Plus = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength == 736.0
+    static let isiPhoneX = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength == 812.0
+    static let isiPad = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.maxLength == 1024.0
+    static let isiPadPro = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.maxLength == 1366.0
+    
+}
+
+var centerScreen = CGPoint(x: ScreenSize.width/2, y: ScreenSize.height/2)

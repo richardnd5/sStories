@@ -13,9 +13,16 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var switchToGameScene = 1
+    
+    enum AppScene {
+        case story
+        case fishing
+        case arranging
+    }
+    var currentState = AppScene.story
+    var switchToGameScene = 0
     var page : PageView?
-    var catchingMelody = CatchingMelodies()
+    var catchingMelody : CatchingMelodies?
     let pages = [
         Page(imageName: "Town", storyText: [storyline[0]]),
         Page(imageName: "TalkingToCrowdAboutFishing", storyText: Array(storyline[1...3])),
@@ -30,36 +37,36 @@ class ViewController: UIViewController {
         ]
     var currentPage = 0
     var tempStoryLine = 0
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
         addPage()
-        catchingMelody = CatchingMelodies(frame: view.frame)
-
+        
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        SoundClass.Sound.playTouchDownSound()
+        //        SoundClass.Sound.playTouchDownSound()
         
-            SoundClass.Sound.playPattern()
-
+        SoundClass.Sound.playPattern()
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if currentPage == switchToGameScene {
-//            print("We're in page \(switchToGameScene)")
-//
-//        } else
+        //        if currentPage == switchToGameScene {
+        //            print("We're in page \(switchToGameScene)")
+        //
+        //        } else
         
-            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! {
-        page?.nextStoryLine()
-        tempStoryLine+=1
+        if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+            page?.nextStoryLine()
+            tempStoryLine+=1
             SoundClass.Sound.playTouchUpSound()
-
-        } else if currentPage < pages.count-1 && (page?.canActivate)! {
+            
+        } else if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
             SoundClass.Sound.playTurnUpSound()
-
+            
             page?.fadeOutAndRemove(completion: {
                 self.currentPage+=1
                 self.tempStoryLine = 0
@@ -71,7 +78,9 @@ class ViewController: UIViewController {
     func addPage(){
         
 //        if currentPage == switchToGameScene {
-//            view.addSubview(catchingMelody)
+//            catchingMelody = CatchingMelodies(frame: view.frame)
+//            view.addSubview(catchingMelody!)
+//            currentState = .fishing
 //        } else {
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)

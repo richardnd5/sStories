@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
-		860AD9EB21C30EA30052577B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9EA21C30EA30052577B /* GameScene.swift */; };
 		860AD9ED21C30F540052577B /* Templeton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9EC21C30F540052577B /* Templeton.swift */; };
 		860AD9EF21C30F660052577B /* corkman.png in Resources */ = {isa = PBXBuildFile; fileRef = 860AD9EE21C30F660052577B /* corkman.png */; };
+		8627CB5121CC14E70090486F /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 8627CB5021CC14E60090486F /* Pond.png */; };
+		8627CB5521CC1DE50090486F /* FishingPole.png in Resources */ = {isa = PBXBuildFile; fileRef = 8627CB5421CC1DE50090486F /* FishingPole.png */; };
+		86621B2521CD776A0069157B /* waterDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 86621B2421CD776A0069157B /* waterDrop.png */; };
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
 		8698D85621BF149700ADED35 /* StoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85521BF149700ADED35 /* StoryLine.swift */; };
@@ -74,9 +76,11 @@
 
 /* Begin PBXFileReference section */
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
-		860AD9EA21C30EA30052577B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		860AD9EC21C30F540052577B /* Templeton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templeton.swift; sourceTree = "<group>"; };
 		860AD9EE21C30F660052577B /* corkman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = corkman.png; sourceTree = "<group>"; };
+		8627CB5021CC14E60090486F /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Pond.png; sourceTree = "<group>"; };
+		8627CB5421CC1DE50090486F /* FishingPole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPole.png; sourceTree = "<group>"; };
+		86621B2421CD776A0069157B /* waterDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterDrop.png; sourceTree = "<group>"; };
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
 		8698D85521BF149700ADED35 /* StoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLine.swift; sourceTree = "<group>"; };
@@ -158,9 +162,12 @@
 		860DE93221C2073E00A7370D /* Image Assets */ = {
 			isa = PBXGroup;
 			children = (
-				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
 				86E9F49621BF82F400EE12DF /* Mountain.png */,
+				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
 				86E9F49321BF82F400EE12DF /* Performance.png */,
+				8627CB5421CC1DE50090486F /* FishingPole.png */,
+				86621B2421CD776A0069157B /* waterDrop.png */,
+				8627CB5021CC14E60090486F /* Pond.png */,
 				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
 				86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */,
 				86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */,
@@ -206,7 +213,6 @@
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
 				8698D85721BF400000ADED35 /* SoundClass.swift */,
 				860AD9E621C309FD0052577B /* CatchingMelodies.swift */,
-				860AD9EA21C30EA30052577B /* GameScene.swift */,
 				860AD9EC21C30F540052577B /* Templeton.swift */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* Global.swift */,
@@ -353,6 +359,7 @@
 			files = (
 				86697DE321C1AF97009EC3BF /* windSound.wav in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
+				86621B2521CD776A0069157B /* waterDrop.png in Resources */,
 				8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */,
 				8698D89421BF417600ADED35 /* marimbaC.wav in Resources */,
 				8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */,
@@ -363,6 +370,8 @@
 				86E9F49A21BF82F500EE12DF /* ShowingCrowdSackOfMelodies.png in Resources */,
 				86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */,
 				86E9F4A121BF82F500EE12DF /* Town.png in Resources */,
+				8627CB5521CC1DE50090486F /* FishingPole.png in Resources */,
+				8627CB5121CC14E70090486F /* Pond.png in Resources */,
 				86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */,
 				8698D89821BF417600ADED35 /* touchUp.wav in Resources */,
 				86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */,
@@ -394,7 +403,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				860AD9EB21C30EA30052577B /* GameScene.swift in Sources */,
 				8698D85921BF400000ADED35 /* SoundClass.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86BBBF3121BB08FD00CB17F2 /* sStories.xcdatamodeld in Sources */,
