@@ -1,11 +1,3 @@
-//
-//  GameViewController.swift
-//  Stroud Stories
-//
-//  Created by Nathan Richard on 11/21/18.
-//  Copyright © 2018 Nathan Richard. All rights reserved.
-//
-
 import UIKit
 
 class CatchingMelodies: UIView {
@@ -20,8 +12,10 @@ class CatchingMelodies: UIView {
     var fishingPole = UIImageView()
     var poleImage = UIImage()
     var canActivate = false
-    var shouldRotate = true
-    
+    var readyToCastSlashReelIn = true
+    var fishingPoleIn = true
+    var fishOnLine = false
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -46,8 +40,11 @@ class CatchingMelodies: UIView {
         alpha = 0
         fadeTo(view:self, time: 1.5,opacity: 1.0, {})
         
+        Timer.scheduledTimer(withTimeInterval: 6.0, repeats: false, block:{_ in
+            self.theresAFishOnTheLine()
+        })
+        
     }
-    
     
     func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
         canActivate = false
@@ -76,223 +73,191 @@ class CatchingMelodies: UIView {
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
         addSubview(fishingPole)
-        rotateImage(fishingPole)
+        wobblePole()
         
     }
     
-    
-    private func rotateImage(_ view: UIImageView) {
+    private func wobblePole() {
         
-        shouldRotate.toggle()
-        
-        let angle: CGFloat = shouldRotate ? .pi / 70 : .pi / -70
+        let rotationAnimation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = NSNumber(value: Double.pi / -90)
+        rotationAnimation.duration = 3.0;
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        rotationAnimation.repeatCount = .infinity;
+        rotationAnimation.autoreverses = true
+        fishingPole.layer.add(rotationAnimation, forKey: "rotationAnimation")
 
-        UIView.animate(
-            withDuration: 4.0,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.transform = CGAffineTransform(rotationAngle: angle)
-        },
-            completion: {
-                _ in
-                self.rotateImage(view)
-        })
     }
     
-    var readyToCastSlashReelIn = true
-    private func catchFish(_ view: UIImageView) {
+    func backToFishingMode(){
         
+        imageView.layer.removeAllAnimations()
         
-            readyToCastSlashReelIn = false
+        CATransaction.begin()
         
-            UIView.animate(
-                withDuration: 2.0,
-                delay: 0,
-                options: .curveEaseInOut,
-                animations: {
-                    print("Pulling pole out")
-                    view.transform = CGAffineTransform(scaleX: 4.0, y: 4.0)
-                    view.alpha = 0.0
-            },
-                completion: {
-                    _ in
-                    self.fishingPoleIn = false
-                    self.readyToCastSlashReelIn = true
+        let backgroundOpacity : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        backgroundOpacity.duration = 2.0
+        backgroundOpacity.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        backgroundOpacity.isRemovedOnCompletion = false
+        backgroundOpacity.fromValue = 0.2
+        backgroundOpacity.toValue = 1.0
+        backgroundOpacity.fillMode = .forwards
+        
+        imageView.layer.add(backgroundOpacity, forKey: "backgroundOpacitiy")
+        
+        CATransaction.setCompletionBlock{ [weak self] in
+            
+            self!.putLineBackIn()
+            
+            
+        }
+        CATransaction.commit()
+    }
+    
+    func putLineBackIn(){
+        fishingPole.layer.removeAllAnimations()
+        readyToCastSlashReelIn = false
 
+
+
+        CATransaction.begin()
+        
+        let scaleAnim : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnim.fromValue = 4
+        scaleAnim.toValue = 1
+        
+        let opacity : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        opacity.fromValue = 0.0
+        opacity.toValue = 1.0
+        
+        let rotate : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotate.fromValue = 1.0
+        rotate.toValue = 0.0
+        
+        
+        let animGroup = CAAnimationGroup()
+        animGroup.animations = [scaleAnim,opacity, rotate]
+        animGroup.duration = 0.45
+        animGroup.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        animGroup.isRemovedOnCompletion = false
+        animGroup.fillMode = .forwards
+        
+        CATransaction.setCompletionBlock{ [weak self] in
+            self!.readyToCastSlashReelIn = true
+            self!.fishingPoleIn = true
+            self!.wobblePole()
+            
+            Timer.scheduledTimer(withTimeInterval: 6.0, repeats: false, block:{_ in
+                self!.theresAFishOnTheLine()
             })
+        }
+        
+        fishingPole.layer.add(animGroup, forKey: "animGroup")
+        CATransaction.commit()
+
         
     }
-    
-    private func putFishingPoleBackIn(_ view: UIImageView){
+
+    func catchFishAnimation(){
+        
+        if fishOnLine {
+        fishingPole.layer.removeAllAnimations()
 
         
         readyToCastSlashReelIn = false
-        UIView.animate(
-            withDuration: 2.0,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                print("putting pole in")
-                view.alpha = 1.0
-                
-        },
-            completion: {
-                _ in
-                self.fishingPoleIn = true
-                self.readyToCastSlashReelIn = true
+        fishingPoleIn = false
+        CATransaction.begin()
 
-                
-        })
+        let scaleAnim : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnim.fromValue = 0.75
+        scaleAnim.toValue = 4
+
+        let opacity : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        opacity.fromValue = 1.0
+        opacity.toValue = 0.0
+        
+        let rotate : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotate.fromValue = 0.0
+        rotate.toValue = 1.0
+        
+        
+        let animGroup = CAAnimationGroup()
+        animGroup.animations = [scaleAnim,opacity, rotate]
+        animGroup.duration = 0.45
+        animGroup.timingFunction = CAMediaTimingFunction(name: .easeIn)
+        animGroup.isRemovedOnCompletion = false
+        animGroup.fillMode = .forwards
+        
+        CATransaction.setCompletionBlock{ [weak self] in
+            self!.readyToCastSlashReelIn = true
+            self!.fishOnLine = false
+            
+            self!.fadeBackgroundOut()
+        }
+        
+        fishingPole.layer.add(animGroup, forKey: "animGroup")
+
+        CATransaction.commit()
+        }
+        
+    }
+    
+    func fadeBackgroundOut(){
+        let backgroundOpacity : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        backgroundOpacity.duration = 1.5
+        backgroundOpacity.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        backgroundOpacity.isRemovedOnCompletion = false
+        backgroundOpacity.fromValue = 1.0
+        backgroundOpacity.toValue = 0.2
+        backgroundOpacity.fillMode = .forwards
+        
+        imageView.layer.add(backgroundOpacity, forKey: "backgroundOpacitiy")
+    }
+    
+    func theresAFishOnTheLine(){
+
+        
+        CATransaction.begin()
+        
+        let scaleAnim : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnim.fromValue = 1
+        scaleAnim.toValue = 0.75
+        
+        // Wiggle pole fast like.
+        let rotationAnimation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = NSNumber(value: Double.pi / -400)
+        rotationAnimation.duration = 0.1;
+        rotationAnimation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        rotationAnimation.repeatCount = .infinity;
+        rotationAnimation.autoreverses = true
+        fishingPole.layer.add(rotationAnimation, forKey: "rotationAnimation")
+        
+        
+        let animGroup = CAAnimationGroup()
+        animGroup.animations = [scaleAnim]
+        animGroup.duration = 0.3
+        animGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animGroup.isRemovedOnCompletion = false
+        
+        animGroup.fillMode = .forwards
+        
+        CATransaction.setCompletionBlock{ [weak self] in
+            self!.readyToCastSlashReelIn = true
+            self!.fishOnLine = true
+
+        }
+        
+        fishingPole.layer.add(animGroup, forKey: "animGroup")
+        CATransaction.commit()
         
     }
 
-    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if readyToCastSlashReelIn {
+            fishingPoleIn ? catchFishAnimation() : backToFishingMode()
+        }
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    var fishingPoleIn = true
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        if readyToCastSlashReelIn {
-        if fishingPoleIn {
-            catchFish(fishingPole)
-
-        } else if !fishingPoleIn {
-            putFishingPoleBackIn(fishingPole)
-
-        }
-        }
-
-    }
-    
-    func createParticles() {
-        let particleEmitter = CAEmitterLayer()
-        
-        particleEmitter.emitterPosition = CGPoint(x: frame.width/2, y: frame.height/2)
-        particleEmitter.emitterShape = .line
-        particleEmitter.emitterSize = CGSize(width: 20, height: 20)
-        
-        let red = makeEmitterCell(color: UIColor.red)
-        let green = makeEmitterCell(color: UIColor.green)
-        let blue = makeEmitterCell(color: UIColor.blue)
-        
-        particleEmitter.emitterCells = [red, green, blue]
-        
-        layer.addSublayer(particleEmitter)
-    }
-    
-    func makeEmitterCell(color: UIColor) -> CAEmitterCell {
-//        let cell = CAEmitterCell()
-//        cell.birthRate = 100
-//        cell.duration = 0.2
-//
-//        cell.lifetime = 7.0
-//        cell.lifetimeRange = 0
-//        cell.color = color.cgColor
-//        cell.velocity = 200
-//        cell.velocityRange = 50
-//        cell.emissionLongitude = CGFloat.pi
-//        cell.emissionRange = CGFloat.pi / 4
-//        cell.spin = 2
-//        cell.spinRange = 3
-//        cell.scaleRange = 0.5
-//        cell.scaleSpeed = -0.05
-//
-//        cell.contents = UIImage(named: "waterDrop")?.cgImage
-        let emitterCell = CAEmitterCell()
-//        emitterCell.emissionLongitude = CGFloat(M_PI / 2)
-//        emitterCell.emissionLatitude = 0
-//        emitterCell.lifetime = 0.6
-//        emitterCell.alphaSpeed = -0.7;
-//        emitterCell.birthRate = 6
-//        emitterCell.velocity = 300
-//        emitterCell.velocityRange = 100
-//        emitterCell.yAcceleration = 150
-//        emitterCell.emissionRange = CGFloat(M_PI / 4)
-//        let newColor = UIColor(displayP3Red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
-//        emitterCell.color = newColor;
-//
-//        emitterCell.redRange = 0.0;
-//        emitterCell.greenRange = 0.0;
-//        emitterCell.blueRange = 0.2;
-//        emitterCell.name = "base"
-        
-        
-        
-        emitterCell.birthRate = 19999;
-        emitterCell.scale = 0.6;
-        emitterCell.velocity = 130;
-        emitterCell.lifetime = 100;
-        emitterCell.alphaSpeed = -0.2;
-        emitterCell.yAcceleration = -80;
-        emitterCell.beginTime = 1.5;
-        emitterCell.duration = 0.1;
-        emitterCell.emissionRange = 2 * CGFloat(M_PI);
-        emitterCell.scaleSpeed = -0.1;
-        emitterCell.spin = 2;
-        
-        
-        
-        emitterCell.contents = UIImage(named: "waterDrop")?.cgImage
-        return emitterCell
-    }
-    
-    func createFireWorks(){
-
-        let img = UIImage(named: "waterDrop")?.cgImage
-        
-        let emitterCell = CAEmitterCell()
-        emitterCell.emissionLongitude = CGFloat(M_PI / 2)
-        emitterCell.emissionLatitude = 0
-        emitterCell.lifetime = 2.6
-        emitterCell.birthRate = 6
-        emitterCell.velocity = 300
-        emitterCell.velocityRange = 100
-        emitterCell.yAcceleration = 150
-        emitterCell.emissionRange = CGFloat(M_PI / 4)
-        let newColor = UIColor(displayP3Red: 0.3, green: 0.3, blue: 0.3, alpha: 1.0).cgColor
-        emitterCell.color = newColor;
-        
-        emitterCell.redRange = 0.9;
-        emitterCell.greenRange = 0.9;
-        emitterCell.blueRange = 0.9;
-        emitterCell.name = "base"
-        
-        let flareCell =  CAEmitterCell()
-        flareCell.contents = img;
-        flareCell.emissionLongitude = CGFloat(4 * M_PI) / 2;
-        flareCell.scale = 0.4;
-        flareCell.velocity = 80;
-        flareCell.birthRate = 45;
-        flareCell.lifetime = 0.5;
-        flareCell.yAcceleration = -350;
-        flareCell.emissionRange = CGFloat(M_PI / 7);
-        flareCell.alphaSpeed = -0.7;
-        flareCell.scaleSpeed = -0.1;
-        flareCell.scaleRange = 0.1;
-        flareCell.beginTime = 0.01;
-        flareCell.duration = 1.7;
-        
-        let fireworkCell = CAEmitterCell()
-        
-        fireworkCell.contents = img;
-        fireworkCell.birthRate = 19999;
-        fireworkCell.scale = 0.6;
-        fireworkCell.velocity = 130;
-        fireworkCell.lifetime = 100;
-        fireworkCell.alphaSpeed = -0.2;
-        fireworkCell.yAcceleration = -80;
-        fireworkCell.beginTime = 1.5;
-        fireworkCell.duration = 0.1;
-        fireworkCell.emissionRange = 2 * CGFloat(M_PI);
-        fireworkCell.scaleSpeed = -0.1;
-        fireworkCell.spin = 2;
-        
-        emitterCell.emitterCells = [flareCell,fireworkCell]
-
-        
-    }
-
 }

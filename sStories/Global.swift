@@ -77,3 +77,14 @@ struct DeviceType {
 }
 
 var centerScreen = CGPoint(x: ScreenSize.width/2, y: ScreenSize.height/2)
+
+
+class CallbackContainer {
+    
+    var callback: (() -> Void)
+    
+    init(callback: @escaping (() -> Void)) {
+        self.callback = callback
+    }
+    
+}

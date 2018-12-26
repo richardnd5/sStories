@@ -77,14 +77,14 @@ class ViewController: UIViewController {
     
     func addPage(){
         
-//        if currentPage == switchToGameScene {
-//            catchingMelody = CatchingMelodies(frame: view.frame)
-//            view.addSubview(catchingMelody!)
-//            currentState = .fishing
-//        } else {
+        if currentPage == switchToGameScene {
+            catchingMelody = CatchingMelodies(frame: view.frame)
+            view.addSubview(catchingMelody!)
+            currentState = .fishing
+        } else {
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)
-//        }
+        }
     }
     
     override var prefersStatusBarHidden: Bool{

@@ -10,11 +10,13 @@
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
 		860AD9ED21C30F540052577B /* Templeton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9EC21C30F540052577B /* Templeton.swift */; };
 		860AD9EF21C30F660052577B /* corkman.png in Resources */ = {isa = PBXBuildFile; fileRef = 860AD9EE21C30F660052577B /* corkman.png */; };
-		8627CB5121CC14E70090486F /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 8627CB5021CC14E60090486F /* Pond.png */; };
-		8627CB5521CC1DE50090486F /* FishingPole.png in Resources */ = {isa = PBXBuildFile; fileRef = 8627CB5421CC1DE50090486F /* FishingPole.png */; };
+		863DADF421D408A000AFDD94 /* FishingPole.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF321D408A000AFDD94 /* FishingPole.png */; };
+		863DADF721D40D5400AFDD94 /* Note.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF521D40D5400AFDD94 /* Note.png */; };
+		863DADF821D40D5400AFDD94 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF621D40D5400AFDD94 /* PlayButton.png */; };
 		86621B2521CD776A0069157B /* waterDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 86621B2421CD776A0069157B /* waterDrop.png */; };
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
+		866C623821D2E1C1001FE47D /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 866C623721D2E1C1001FE47D /* Pond.png */; };
 		8698D85621BF149700ADED35 /* StoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85521BF149700ADED35 /* StoryLine.swift */; };
 		8698D85921BF400000ADED35 /* SoundClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85721BF400000ADED35 /* SoundClass.swift */; };
 		8698D85A21BF400000ADED35 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85821BF400000ADED35 /* Haptics.swift */; };
@@ -78,11 +80,13 @@
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
 		860AD9EC21C30F540052577B /* Templeton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Templeton.swift; sourceTree = "<group>"; };
 		860AD9EE21C30F660052577B /* corkman.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = corkman.png; sourceTree = "<group>"; };
-		8627CB5021CC14E60090486F /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Pond.png; sourceTree = "<group>"; };
-		8627CB5421CC1DE50090486F /* FishingPole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPole.png; sourceTree = "<group>"; };
+		863DADF321D408A000AFDD94 /* FishingPole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPole.png; sourceTree = "<group>"; };
+		863DADF521D40D5400AFDD94 /* Note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Note.png; sourceTree = "<group>"; };
+		863DADF621D40D5400AFDD94 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
 		86621B2421CD776A0069157B /* waterDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterDrop.png; sourceTree = "<group>"; };
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
+		866C623721D2E1C1001FE47D /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Desktop/Pond.png; sourceTree = "<group>"; };
 		8698D85521BF149700ADED35 /* StoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLine.swift; sourceTree = "<group>"; };
 		8698D85721BF400000ADED35 /* SoundClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundClass.swift; sourceTree = "<group>"; };
 		8698D85821BF400000ADED35 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -165,9 +169,11 @@
 				86E9F49621BF82F400EE12DF /* Mountain.png */,
 				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
 				86E9F49321BF82F400EE12DF /* Performance.png */,
-				8627CB5421CC1DE50090486F /* FishingPole.png */,
+				863DADF521D40D5400AFDD94 /* Note.png */,
+				863DADF621D40D5400AFDD94 /* PlayButton.png */,
 				86621B2421CD776A0069157B /* waterDrop.png */,
-				8627CB5021CC14E60090486F /* Pond.png */,
+				866C623721D2E1C1001FE47D /* Pond.png */,
+				863DADF321D408A000AFDD94 /* FishingPole.png */,
 				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
 				86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */,
 				86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */,
@@ -360,6 +366,7 @@
 				86697DE321C1AF97009EC3BF /* windSound.wav in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
 				86621B2521CD776A0069157B /* waterDrop.png in Resources */,
+				863DADF821D40D5400AFDD94 /* PlayButton.png in Resources */,
 				8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */,
 				8698D89421BF417600ADED35 /* marimbaC.wav in Resources */,
 				8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */,
@@ -369,12 +376,13 @@
 				860AD9EF21C30F660052577B /* corkman.png in Resources */,
 				86E9F49A21BF82F500EE12DF /* ShowingCrowdSackOfMelodies.png in Resources */,
 				86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */,
+				863DADF421D408A000AFDD94 /* FishingPole.png in Resources */,
 				86E9F4A121BF82F500EE12DF /* Town.png in Resources */,
-				8627CB5521CC1DE50090486F /* FishingPole.png in Resources */,
-				8627CB5121CC14E70090486F /* Pond.png in Resources */,
+				866C623821D2E1C1001FE47D /* Pond.png in Resources */,
 				86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */,
 				8698D89821BF417600ADED35 /* touchUp.wav in Resources */,
 				86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */,
+				863DADF721D40D5400AFDD94 /* Note.png in Resources */,
 				86E9F49B21BF82F500EE12DF /* Performance.png in Resources */,
 				86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */,
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
