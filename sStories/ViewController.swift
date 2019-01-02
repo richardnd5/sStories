@@ -49,7 +49,7 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //        SoundClass.Sound.playTouchDownSound()
         
-        SoundClass.Sound.playPattern()
+        
         
     }
     
@@ -89,5 +89,13 @@ class ViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool{
         return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if UIDevice.current.userInterfaceIdiom == .phone || UIDevice.current.userInterfaceIdiom == .pad {
+            return .landscape
+        } else {
+            return .landscape
+        }
     }
 }

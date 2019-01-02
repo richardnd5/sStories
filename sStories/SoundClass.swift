@@ -71,10 +71,10 @@ class SoundClass {
         pianoSampler.releaseDuration = 2
     }
     
-    func playPattern(){
+    func playPattern(_ number: Int){
         
         self.pianoSampler.stop(noteNumber: currentPlaying)
-        let number = MIDINoteNumber.random(in: 0...36)
+        let number = MIDINoteNumber(number)
         currentPlaying = number
         pianoSampler.play(noteNumber: number, velocity: 127)
         
