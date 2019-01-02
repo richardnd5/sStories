@@ -6,7 +6,7 @@ struct Page {
     let storyText: [String]
 }
 
-// Function to downsample an image
+// Function to downsample an image to save memory!!
 func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat)-> UIImage{
     let imageSourceOptions = [kCGImageSourceShouldCache: false] as CFDictionary
     let imageSource = CGImageSourceCreateWithURL(imageURL as CFURL, imageSourceOptions)!
@@ -22,35 +22,6 @@ func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat)-> U
         CGImageSourceCreateThumbnailAtIndex(imageSource, 0, downsampleOptions)!
     return UIImage(cgImage: downsampledImage)
 }
-
-
-
-
-
-extension UIImage {
-    func rotate(radians: Float) -> UIImage? {
-        var newSize = CGRect(origin: CGPoint.zero, size: self.size).applying(CGAffineTransform(rotationAngle: CGFloat(radians))).size
-        // Trim off the extremely small float value to prevent core graphics from rounding it up
-        newSize.width = floor(newSize.width)
-        newSize.height = floor(newSize.height)
-        
-        UIGraphicsBeginImageContextWithOptions(newSize, true, self.scale)
-        let context = UIGraphicsGetCurrentContext()!
-        
-        // Move origin to middle
-        context.translateBy(x: newSize.width/2, y: newSize.height/2)
-        // Rotate around middle
-        context.rotate(by: CGFloat(radians))
-        // Draw the image at its center
-        self.draw(in: CGRect(x: -self.size.width/2, y: -self.size.height/2, width: self.size.width, height: self.size.height))
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-    }
-}
-
 
 enum UIUserInterfaceIdiom: Int {
     case undefined
@@ -78,13 +49,17 @@ struct DeviceType {
 
 var centerScreen = CGPoint(x: ScreenSize.width/2, y: ScreenSize.height/2)
 
-
-class CallbackContainer {
+func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
     
-    var callback: (() -> Void)
-    
-    init(callback: @escaping (() -> Void)) {
-        self.callback = callback
-    }
-    
+    UIView.animate(
+        withDuration: time,
+        delay: 0,
+        options: .curveEaseInOut,
+        animations: {
+            view.alpha = opacity
+    },
+        completion: {
+            _ in
+            completion()
+    })
 }

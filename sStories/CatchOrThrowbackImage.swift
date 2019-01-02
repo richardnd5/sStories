@@ -1,30 +1,21 @@
-//
-//  PageCell.swift
-//  Stroud Story UIView
-//
-//  Created by Nate on 12/5/18.
-//  Copyright © 2018 Nathan Richard. All rights reserved.
-//
-
 import UIKit
 
-class ThrowbackWater: UIImageView {
-    
+class CatchOrThrowbackImage: UIImageView {
     
     var noteImage = UIImage()
     var scaleSize : CGFloat = 1.0
+    var imageName = String()
 
-    override init(frame: CGRect) {
+    init(frame: CGRect, imageName: String) {
         super.init(frame: frame)
-        
+        self.imageName = imageName
         setupNote()
-        
     }
     
     func setupNote(){
         
         // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("throwbackWater.png")
+        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("\(imageName).png")
         noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
         image = noteImage
 
@@ -32,13 +23,13 @@ class ThrowbackWater: UIImageView {
         layer.zPosition = 10
         layer.opacity = 0.0
         isUserInteractionEnabled = false
-        
+
         fadeTo(view: self, time: 2.0, opacity: 1.0) {
             print("faded in")
         }
         
     }
-    
+        
     func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
         
         UIView.animate(

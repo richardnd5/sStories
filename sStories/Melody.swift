@@ -90,6 +90,17 @@ class Melody: UIImageView {
         })
     }
     
+    func throbImage(_ view: UIView){
+        let scale : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scale.fromValue = 1.0
+        scale.toValue = 1.02
+        scale.duration = 0.4;
+        scale.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        scale.repeatCount = .infinity;
+        scale.autoreverses = true
+        view.layer.add(scale, forKey: "throb")
+    }
+    
     func fadeOutAndRemove(time: Double, _ completion: @escaping () ->()){
         
         UIView.animate(
@@ -106,6 +117,7 @@ class Melody: UIImageView {
                 completion()
         })
     }
+    
     
     func playMelody(){
         SoundClass.Sound.playPattern(patternNumber)

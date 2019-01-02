@@ -77,11 +77,7 @@ class SoundClass {
         let number = MIDINoteNumber(number)
         currentPlaying = number
         pianoSampler.play(noteNumber: number, velocity: 127)
-        
-//        Timer.scheduledTimer(withTimeInterval: length, repeats: false, block:{_ in self.pianoSampler.stop(noteNumber: number)
-//        })
-        
-        
+
     }
 
     
