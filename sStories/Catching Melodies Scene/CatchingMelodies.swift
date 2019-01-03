@@ -18,6 +18,7 @@ class CatchingMelodies: UIView {
     // Labels
     var keepLabel : Label?
     var throwbackLabel : Label?
+    var instructionLabel: Label?
 
     var appState = State.fishing
     
@@ -26,6 +27,7 @@ class CatchingMelodies: UIView {
         
         createPond()
         createFishingPole()
+        createInstructionLabel()
         setAMelodyToBiteInTheFuture()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
@@ -56,6 +58,17 @@ class CatchingMelodies: UIView {
         
     }
     
+    func createInstructionLabel(){
+        // add keep label
+        instructionLabel = Label(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height/4), words: "Patiently, Templeton waiting for the first bite...", fontSize: frame.height/40)
+        
+//        instructionLabel!.frame.origin = CGPoint(x: (fishingPole?.frame.midX)!-instructionLabel!.frame.width/2, y: frame.height/30)
+        addSubview(instructionLabel!)
+        instructionLabel?.translatesAutoresizingMaskIntoConstraints = false
+        instructionLabel?.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        instructionLabel?.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+    }
+    
     func createLabels(){
         
         // add keep label
@@ -71,6 +84,7 @@ class CatchingMelodies: UIView {
         // Same as the keepLabel
         throwbackLabel!.frame.origin = CGPoint(x: (throwbackWater?.frame.midX)!-throwbackLabel!.frame.width/2, y: (throwbackWater?.frame.minY)!-throwbackLabel!.frame.height*2)
         addSubview(throwbackLabel!)
+        
     }
     
 
@@ -153,6 +167,7 @@ class CatchingMelodies: UIView {
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
             self.appState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
+            self.instructionLabel?.text = "Ooh! A Bite! Tap to reel it in!"
         })
     }
 
