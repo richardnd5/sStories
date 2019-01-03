@@ -24,26 +24,10 @@ class CatchOrThrowbackImage: UIImageView {
         layer.opacity = 0.0
         isUserInteractionEnabled = false
 
-        fadeTo(view: self, time: 2.0, opacity: 1.0) {
+        changeOpacity(view: self, time: 2.0, opacity: 1.0) {
             print("faded in")
         }
         
-    }
-        
-    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.alpha = opacity
-        },
-            completion: {
-                _ in
-                
-                completion()
-        })
     }
     
     func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){

@@ -8,13 +8,14 @@ class CatchingMelodies: UIView {
         case catchOrThrowBack
     }
     
+    // Images for the scene
     var pondImage =  UIImageView()
-
     var fishingPole : FishingPole?
     var melody : Melody?
     var sack : CatchOrThrowbackImage?
     var throwbackWater : CatchOrThrowbackImage?
     
+    // Labels
     var keepLabel : Label?
     var throwbackLabel : Label?
 
@@ -25,14 +26,13 @@ class CatchingMelodies: UIView {
         
         createPond()
         createFishingPole()
-        
-        Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block:{_ in
-            self.theresAFishOnTheLine()
-        })
+        setAMelodyToBiteInTheFuture()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
         addGestureRecognizer(tapGesture)
         
+        alpha = 0.0
+        changeOpacity(view: self, time: 1.5, opacity: 1.0, {})
     }
     
     func createPond(){
@@ -52,7 +52,7 @@ class CatchingMelodies: UIView {
         pondImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pondImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        fadeTo(view:self, time: 1.5,opacity: 1.0, {})
+        changeOpacity(view:self, time: 1.5,opacity: 1.0, {})
         
     }
     
@@ -60,12 +60,15 @@ class CatchingMelodies: UIView {
         
         // add keep label
         keepLabel = Label(frame: CGRect(x: (sack?.frame.midX)!, y: (sack?.frame.minY)!, width: frame.width/3, height: frame.height/4), words: "Keep", fontSize: frame.height/26)
-        // How do I do this in the line before instead of resetting the origin after it is instantiated.
+        
+        // How do I do this in the line before instead of resetting the origin after it is instantiated. I am using sizeToFit() in it's class so I don't know what to do.
         keepLabel!.frame.origin = CGPoint(x: (sack?.frame.midX)!-keepLabel!.frame.width/2, y: (sack?.frame.minY)!-keepLabel!.frame.height*2)
         addSubview(keepLabel!)
 
         // add throwback label
         throwbackLabel = Label(frame: CGRect(x: (throwbackWater?.frame.midX)!, y: (throwbackWater?.frame.minY)!, width: frame.width/3, height: frame.height/4), words: "Throw Back", fontSize: frame.height/26)
+        
+        // Same as the keepLabel
         throwbackLabel!.frame.origin = CGPoint(x: (throwbackWater?.frame.midX)!-throwbackLabel!.frame.width/2, y: (throwbackWater?.frame.minY)!-throwbackLabel!.frame.height*2)
         addSubview(throwbackLabel!)
     }
@@ -75,20 +78,22 @@ class CatchingMelodies: UIView {
         
         fishingPole = FishingPole(frame: CGRect(x: frame.width/2-frame.width/8, y: frame.height+40, width: frame.width/4, height: frame.height/2))
         addSubview(fishingPole!)
-        
-        fishingPole?.wobblePole()
-
     }
     
     func createRandomMelody(){
         
+        // pick a random melody
         let randomNumber = Int.random(in: 1...36)
+        
+        // instantiate it
         melody = Melody(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.width/2, height: frame.height/2), number: randomNumber)
         addSubview(melody!)
+        
+        // set the origin. (there has to be a better way to do this. How do you know the width and height before it is instantiated?)
         melody!.frame.origin = CGPoint(x: frame.width/2-melody!.frame.width/2, y: frame.height/3-melody!.frame.height/2)
         
         // Give it gesture recognizers
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
         melody?.addGestureRecognizer(panGesture)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
@@ -108,8 +113,67 @@ class CatchingMelodies: UIView {
         addSubview(throwbackWater!)
         throwbackWater!.frame.origin = CGPoint(x: frame.width-throwbackWater!.frame.width, y: frame.height-throwbackWater!.frame.height-bottomPadding)
     }
+
+    func goBackToFishing(){
+
+        melody?.fadeOutAndRemove(time: 0.6, {
+            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
+            self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
+                self.removeImagesFromCaughtMelodyScene()
+                self.appState = .fishing
+            })
+        })
+    }
     
-    @objc func handlePan(_ sender: UIPanGestureRecognizer){
+    func removeImagesFromCaughtMelodyScene(){
+        
+        changeOpacity(view: pondImage, time: 2.0, opacity: 1.0, {
+            self.putLineBackIn()
+        })
+        self.sack?.fadeOutAndRemove()
+        self.throwbackWater?.fadeOutAndRemove()
+        self.keepLabel?.remove(fadeTime: 1.0, {})
+        self.throwbackLabel?.remove(fadeTime: 1.0, {})
+    }
+
+    func putLineBackIn(){
+        
+            fishingPole?.putPoleIn({
+                // completion handler. after the pole is put in, set a timer for the next melody to "bite"
+                self.setAMelodyToBiteInTheFuture()
+            })
+    }
+    
+    func setAMelodyToBiteInTheFuture(){
+        
+        // choose a random time
+        let randomTime = TimeInterval.random(in: 4...7)
+        
+        // schedule a timer to trigger a melody bite in the future
+        Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
+            self.appState = .fishOnTheLine
+            self.fishingPole?.fishOnTheLine({})
+        })
+    }
+
+    func catchMelody(){
+        
+        appState = .catchOrThrowBack
+        
+        fishingPole?.pullPoleOut({
+            
+            // dim the background pond image
+            changeOpacity(view: self.pondImage, time: 1.5, opacity: 0.2, {})
+            
+            // create catching scene images
+            self.createRandomMelody()
+            self.createCatchOrThrowBackImages()
+            self.createLabels()
+        })
+    }
+    
+    // Touch Handlers
+    @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
         
         let translation = sender.translation(in: self)
         
@@ -129,9 +193,13 @@ class CatchingMelodies: UIView {
         
         // When touches ended after panning.
         if sender.state == .ended {
+            
+            // if the melody was dragged to be kept
             if (sack?.bounds.contains(sender.location(in: sack)))! {
                 self.goBackToFishing()
             }
+                
+                // if the melody was dragged to be put back
             else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))!{
                 self.goBackToFishing()
             }
@@ -139,87 +207,15 @@ class CatchingMelodies: UIView {
     }
     
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
-        
-        print("it is tapping")
         if appState == .fishOnTheLine {
-            appState = .catchOrThrowBack
-            fishingPole!.isReadyToCastOrReelIn = false
-            
-            fishingPole?.pullPoleOut({
-                fadeTo(view: self.pondImage, time: 1.5, opacity: 0.2, {})
-                self.melodyAppears()
-            })
-
+            catchMelody()
         }
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
         melody?.playMelody()
     }
-    
-    func goBackToFishing(){
 
-        melody?.fadeOutAndRemove(time: 0.6, {
-            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
-            self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
-                self.backToFishingMode()
-                self.sack?.fadeOutAndRemove()
-                self.throwbackWater?.fadeOutAndRemove()
-                self.keepLabel?.remove(fadeTime: 1.0, {})
-                self.throwbackLabel?.remove(fadeTime: 1.0, {})
-                self.appState = .fishing
-            })
-        })
-    }
-
-    func backToFishingMode(){
-        
-        pondImage.layer.removeAllAnimations()
-        fadeTo(view: pondImage, time: 2.0, opacity: 1.0, {
-            self.putLineBackIn()
-        })
-    }
-    
-    func putLineBackIn(){
-        
-        if appState == .fishing && fishingPole!.isReadyToCastOrReelIn {
-            fishingPole?.putPoleIn({
-                // completion handler
-                self.fishingPole!.isReadyToCastOrReelIn = true
-                self.fishingPole!.wobblePole()
-                
-                Timer.scheduledTimer(withTimeInterval: 4.0, repeats: false, block:{_ in
-                    self.theresAFishOnTheLine()
-                })
-            })
-        }
-    }
-
-    func melodyAppears(){
-        createRandomMelody()
-        createCatchOrThrowBackImages()
-        createLabels()
-    }
-    
-    func fadeBackgroundOut(){
-        
-        let backgroundOpacity : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
-        backgroundOpacity.duration = 1.5
-        backgroundOpacity.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        backgroundOpacity.isRemovedOnCompletion = false
-        backgroundOpacity.fromValue = 1.0
-        backgroundOpacity.toValue = 0.2
-        backgroundOpacity.fillMode = .forwards
-        
-        pondImage.layer.add(backgroundOpacity, forKey: "backgroundOpacitiy")
-    }
-    
-    func theresAFishOnTheLine(){
-        appState = .fishOnTheLine
-        
-        fishingPole?.fishOnTheLine({})
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

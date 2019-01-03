@@ -17,21 +17,8 @@ class FishingPole: UIImageView {
         contentMode = .bottom
         isUserInteractionEnabled = false
         layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
-    }
-
-    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
         
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.alpha = opacity
-        },
-            completion: {
-                _ in
-                completion()
-        })
+        wobblePole()
     }
     
     func wobblePole() {
@@ -47,6 +34,8 @@ class FishingPole: UIImageView {
     }
     
     func pullPoleOut(_ completion: @escaping ()->()){
+        
+        isReadyToCastOrReelIn = false
         layer.removeAllAnimations()
         
         CATransaction.begin()
@@ -109,6 +98,7 @@ class FishingPole: UIImageView {
         
         CATransaction.setCompletionBlock{ [weak self] in
             completion()
+            self!.wobblePole()
         }
         layer.add(animGroup, forKey: "animGroup")
 
@@ -138,7 +128,6 @@ class FishingPole: UIImageView {
         
         layer.add(rotationAnimation, forKey: "rotationAnimation")
         
-        
         let animGroup = CAAnimationGroup()
         animGroup.animations = [scaleAnim]
         animGroup.duration = 0.3
@@ -161,17 +150,16 @@ class FishingPole: UIImageView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
-                
                 self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
         },
             completion: {
                 _ in
-                
                 completion()
         })
     }
     
     func fadeOutAndRemove(){
+        // Note sure why, but putting just 0.0 does not change opacity over time. It just instantaneously sets the scale to 0
         scaleTo(scaleTo: 0.0000001, time: 1.0) {
             self.removeFromSuperview()
         }
