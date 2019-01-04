@@ -62,13 +62,14 @@ class CatchingMelodies: UIView {
         sackContents = SackContents(frame: CGRect(x: 0, y: 0, width: frame.width/4, height: frame.height/17))
         addSubview(sackContents!)
         
+        
         // set up constraints
         sackContents?.translatesAutoresizingMaskIntoConstraints = false
-        sackContents?.topAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/17).isActive = true
-        sackContents?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        sackContents?.heightAnchor.constraint(equalToConstant: frame.height/17).isActive = true
+        sackContents?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         sackContents?.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/17).isActive = true
         sackContents?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/1.4).isActive = true
-//        sackContents?.sizeToFit()
+        sizeToFit()
         
     }
     
@@ -163,7 +164,7 @@ class CatchingMelodies: UIView {
 
     func goBackToFishing(){
 
-        melody?.fadeOutAndRemove(time: 0.6, {
+        melody?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 self.removeImagesFromCaughtMelodyScene()

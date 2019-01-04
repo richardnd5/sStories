@@ -85,7 +85,7 @@ class Melody: UIImageView {
         view.layer.add(scale, forKey: "throb")
     }
     
-    func fadeOutAndRemove(time: Double, _ completion: @escaping () ->()){
+    func shrinkAndRemove(time: Double, _ completion: @escaping () ->()){
         
         UIView.animate(
             withDuration: time,
