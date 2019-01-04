@@ -49,6 +49,7 @@ class CatchingMelodies: UIView {
         createFishingPole()
         createInstructionLabel()
         createSackContainer()
+//        createCustomView()
         setAMelodyToBiteInTheFuture()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
@@ -58,19 +59,23 @@ class CatchingMelodies: UIView {
         changeOpacity(view: self, time: 1.5, opacity: 1.0, {})
     }
     
+    func createCustomView(){
+        let view = CustomView(frame: CGRect.zero)
+        addSubview(view)
+    }
+    
     func createSackContainer(){
         sackContents = SackContents(frame: CGRect(x: 0, y: 0, width: frame.width/4, height: frame.height/17))
         addSubview(sackContents!)
-        
-        
+
+
         // set up constraints
         sackContents?.translatesAutoresizingMaskIntoConstraints = false
         sackContents?.heightAnchor.constraint(equalToConstant: frame.height/17).isActive = true
         sackContents?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         sackContents?.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/17).isActive = true
         sackContents?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/1.4).isActive = true
-        sizeToFit()
-        
+
     }
     
     func createPond(){
@@ -248,6 +253,9 @@ class CatchingMelodies: UIView {
             
             // if the melody was dragged to be kept
             if (sack?.bounds.contains(sender.location(in: sack)))! {
+                let melody = sender.view as! Melody
+                collectedMelodies.append(melody)
+                sackContents?.addMelodyToSlot(collectedMelodies.count-1, melodyNumber: melody.patternNumber)
                 self.goBackToFishing()
             }
                 

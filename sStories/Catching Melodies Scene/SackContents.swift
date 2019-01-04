@@ -7,10 +7,10 @@ class SackContents: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .green
         makeUIGrid()
         
-        addMelodyToSlot(1)
+        
+        
         
     }
     
@@ -29,18 +29,17 @@ class SackContents: UIView {
             addDashedBorder(view)
             melodySlots.append(view)
             addSubview(view)
+            print("\(i):     \(view.frame.origin)")
         }
     }
     
-    func addMelodyToSlot(_ number: Int){
+    func addMelodyToSlot(_ number: Int, melodyNumber: Int){
         
-        let x = melodySlots[number].frame.minX
-        let y = melodySlots[number].frame.minY
         let width = melodySlots[number].frame.width
         let height = melodySlots[number].frame.height
         
         
-        let melody = MelodyThumbnail(frame: CGRect(x: x, y: y, width: width, height: height), melodyNumber: 3, originalPos: CGPoint(x: x, y: y))
+        let melody = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyNumber, slotPos: number)
         melody.isUserInteractionEnabled = true
         melodySlots[number].addSubview(melody)
         
@@ -50,6 +49,30 @@ class SackContents: UIView {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
         melody.addGestureRecognizer(tap)
+    }
+    
+    func addMelodyToOpenSlot(_ number: Int, melodyNumber: Int){
+        for i in 0...collectedMelodies.count-1 {
+            if collectedMelodies[i] == nil {
+                let width = melodySlots[number].frame.width
+                let height = melodySlots[number].frame.height
+                
+                
+                let melody = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyNumber, slotPos: i)
+                melody.isUserInteractionEnabled = true
+                melodySlots[number].addSubview(melody)
+                
+                // Give it gesture recognizers
+                let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
+                melody.addGestureRecognizer(panGesture)
+                
+                let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
+                melody.addGestureRecognizer(tap)
+                
+            }
+        }
+
+        
     }
     
     func removeMelodyFromSlot(_ number: Int){
@@ -100,6 +123,7 @@ class SackContents: UIView {
     }
     
     @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
+        
         let view = sender.view as! MelodyThumbnail
 
         let translation = sender.translation(in: self)
@@ -110,18 +134,21 @@ class SackContents: UIView {
         
         if sender.state == .ended {
             
-            if sender.location(in: self).y <= -90 {
+            if sender.location(in: self).y <= -view.frame.height*3 {
                 view.shrinkAndRemove(time: 0.4)
+                collectedMelodies.remove(at: view.slotPos)
                 
             } else {
-                view.moveViewTo(view.originalPos, time: 0.4)
+                view.moveViewTo(CGPoint.zero, time: 0.4)
             }
         }
         
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
-        print("yup! We tapped it")
+        let view = sender.view as! MelodyThumbnail
+        
+        Sound.sharedInstance.playPattern(view.melodyNumber)
     }
     
     required init?(coder aDecoder: NSCoder) {

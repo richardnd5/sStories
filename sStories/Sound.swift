@@ -1,6 +1,6 @@
 import AudioKit
 
-class SoundClass {
+class Sound {
 
     let midi = AKMIDI()
     
@@ -13,7 +13,7 @@ class SoundClass {
     var pianoSampler = AKSampler()
     var currentPlaying = MIDINoteNumber()
 
-    static var Sound = SoundClass()
+    static var sharedInstance = Sound()
 
     var currentTempo = 60.0 {
         didSet {

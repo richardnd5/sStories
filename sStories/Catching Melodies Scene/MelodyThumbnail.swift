@@ -5,12 +5,12 @@ class MelodyThumbnail: UIImageView {
     var noteImage = UIImage()
     var maskLayer = CAGradientLayer()
     var melodyNumber = Int()
-    var originalPos = CGPoint()
+    var slotPos = Int()
     
-    init(frame: CGRect, melodyNumber: Int, originalPos: CGPoint) {
+    init(frame: CGRect, melodyNumber: Int, slotPos: Int) {
         super.init(frame: frame)
         self.melodyNumber = melodyNumber
-        self.originalPos = originalPos
+        self.slotPos = slotPos
         setupNote()
     }
     

@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         case arranging
     }
     var currentState = AppScene.story
-    var switchToGameScene = 0
+    var switchToGameScene = 5
     var page : PageView?
     var catchingMelody : CatchingMelodies?
 
@@ -38,10 +38,10 @@ class ViewController: UIViewController {
         if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
             page?.nextStoryLine()
             tempStoryLine+=1
-            SoundClass.Sound.playTouchUpSound()
+            Sound.sharedInstance.playTouchUpSound()
             
         } else if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
-            SoundClass.Sound.playTurnUpSound()
+            Sound.sharedInstance.playTurnUpSound()
             
             page?.fadeOutAndRemove(completion: {
                 self.currentPage+=1

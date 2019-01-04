@@ -103,7 +103,7 @@ class Melody: UIImageView {
     }
     
     func playMelody(){
-        SoundClass.Sound.playPattern(patternNumber)
+        Sound.sharedInstance.playPattern(patternNumber)
     }
 
     required init?(coder aDecoder: NSCoder) {
