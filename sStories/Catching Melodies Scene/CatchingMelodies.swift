@@ -1,3 +1,22 @@
+/*
+ To do:
+ 
+ 4 melodies.
+ Separate melody class. Tonic, Sub dominant, dominant types. Phrase structure should be, tonic, sub dom., dom, tonic.
+ 
+ Allowed to catch only 4 melodies.
+ 
+ first round. Only random from the tonic set.
+ second round. only sub dominant
+ third, dominant
+ fourth, tonic again.
+ 
+ 
+ in the top left. Four dotted lined circles
+ every time you catch a melody, an 8th note with a white background fades in and fills a spot.
+ (Maybe once you catch the melody, you can tap on it to hear it, then drag it back if you don't want it)
+ */
+
 import UIKit
 
 class CatchingMelodies: UIView {
@@ -14,6 +33,7 @@ class CatchingMelodies: UIView {
     var melody : Melody?
     var sack : CatchOrThrowbackImage?
     var throwbackWater : CatchOrThrowbackImage?
+    var sackContents: SackContents?
     
     // Labels
     var keepLabel : Label?
@@ -28,6 +48,7 @@ class CatchingMelodies: UIView {
         createPond()
         createFishingPole()
         createInstructionLabel()
+        createSackContainer()
         setAMelodyToBiteInTheFuture()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
@@ -35,6 +56,20 @@ class CatchingMelodies: UIView {
         
         alpha = 0.0
         changeOpacity(view: self, time: 1.5, opacity: 1.0, {})
+    }
+    
+    func createSackContainer(){
+        sackContents = SackContents(frame: CGRect(x: 0, y: 0, width: frame.width/4, height: frame.height/17))
+        addSubview(sackContents!)
+        
+        // set up constraints
+        sackContents?.translatesAutoresizingMaskIntoConstraints = false
+        sackContents?.topAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/17).isActive = true
+        sackContents?.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        sackContents?.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/17).isActive = true
+        sackContents?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/1.4).isActive = true
+//        sackContents?.sizeToFit()
+        
     }
     
     func createPond(){
@@ -60,13 +95,12 @@ class CatchingMelodies: UIView {
     
     func createInstructionLabel(){
         // add keep label
-        instructionLabel = Label(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height/4), words: "Patiently, Templeton waiting for the first bite...", fontSize: frame.height/40)
-        
-//        instructionLabel!.frame.origin = CGPoint(x: (fishingPole?.frame.midX)!-instructionLabel!.frame.width/2, y: frame.height/30)
+        instructionLabel = Label(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height/4), words: "Patiently, Templeton waiting for the first bite...", fontSize: frame.width/40)
+
         addSubview(instructionLabel!)
         instructionLabel?.translatesAutoresizingMaskIntoConstraints = false
         instructionLabel?.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        instructionLabel?.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
+        instructionLabel?.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/80).isActive = true
     }
     
     func createLabels(){
@@ -87,7 +121,6 @@ class CatchingMelodies: UIView {
         
     }
     
-
     func createFishingPole(){
         
         fishingPole = FishingPole(frame: CGRect(x: frame.width/2-frame.width/8, y: frame.height+40, width: frame.width/4, height: frame.height/2))
@@ -135,6 +168,7 @@ class CatchingMelodies: UIView {
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 self.removeImagesFromCaughtMelodyScene()
                 self.appState = .fishing
+                self.instructionLabel?.text = "Let's keep fishing!"
             })
         })
     }
@@ -171,7 +205,7 @@ class CatchingMelodies: UIView {
         })
     }
 
-    func catchMelody(){
+    func decideWhatToDoWithTheMelody(){
         
         appState = .catchOrThrowBack
         
@@ -184,6 +218,8 @@ class CatchingMelodies: UIView {
             self.createRandomMelody()
             self.createCatchOrThrowBackImages()
             self.createLabels()
+            
+            self.instructionLabel?.text = "Tap on the melody to hear it, then drag it to keep or throw it back."
         })
     }
     
@@ -223,7 +259,7 @@ class CatchingMelodies: UIView {
     
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
         if appState == .fishOnTheLine {
-            catchMelody()
+            decideWhatToDoWithTheMelody()
         }
     }
     

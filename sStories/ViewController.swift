@@ -19,12 +19,14 @@ class ViewController: UIViewController {
         case arranging
     }
     var currentState = AppScene.story
-    var switchToGameScene = 1
+    var switchToGameScene = 0
     var page : PageView?
     var catchingMelody : CatchingMelodies?
 
     var currentPage = 0
     var tempStoryLine = 0
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
