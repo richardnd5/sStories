@@ -50,8 +50,8 @@ class Melody: UIImageView {
         maskLayer.shadowColor = UIColor.black.cgColor
         layer.mask = maskLayer;
         
-        changeOpacity(view: self, time: 2.0, opacity: 1.0) {
-            print("faded in")
+        changeOpacity(view: self, time: 1.0, opacity: 1.0) {
+            
 
         }
         

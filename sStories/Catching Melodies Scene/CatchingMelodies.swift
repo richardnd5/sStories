@@ -172,13 +172,27 @@ class CatchingMelodies: UIView {
         melody?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
-                self.removeImagesFromCaughtMelodyScene()
                 self.appState = .fishing
+                self.removeImagesFromCaughtMelodyScene()
                 self.instructionLabel?.text = "Let's keep fishing!"
             })
         })
     }
     
+    func fishingDone(){
+        
+        melody?.shrinkAndRemove(time: 0.6, {
+            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
+            self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
+                self.appState = .fishing
+                self.removeImagesFromCaughtMelodyScene()
+                self.instructionLabel?.text = "What a great collection of melodies! Time to head back down the mountain."
+            })
+        })
+    }
+    
+    
+    // NEED TO SEPARATE THE PUT LINE BACK IN OUTTA HERE!!!!
     func removeImagesFromCaughtMelodyScene(){
         
         changeOpacity(view: pondImage, time: 2.0, opacity: 1.0, {
@@ -254,9 +268,15 @@ class CatchingMelodies: UIView {
             // if the melody was dragged to be kept
             if (sack?.bounds.contains(sender.location(in: sack)))! {
                 let melody = sender.view as! Melody
-                collectedMelodies.append(melody)
-                sackContents?.addMelodyToSlot(collectedMelodies.count-1, melodyNumber: melody.patternNumber)
-                self.goBackToFishing()
+                sackContents?.addMelodyToOpenSlot(melodyToAdd: melody)
+                if (sackContents?.sackFull())! {
+                    sackContents?.addMelodiesToCollectedMelodyArray()
+                    print("Your sack is full. way ho. These are the melodies you caught:  \(collectedMelodies)")
+                    self.fishingDone()
+                } else {
+                    print("still gotta keep fishing")
+                    self.goBackToFishing()
+                }
             }
                 
                 // if the melody was dragged to be put back

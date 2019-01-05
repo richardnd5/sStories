@@ -25,7 +25,7 @@ class CatchOrThrowbackImage: UIImageView {
         isUserInteractionEnabled = false
 
         changeOpacity(view: self, time: 2.0, opacity: 1.0) {
-            print("faded in")
+            
         }
         
     }

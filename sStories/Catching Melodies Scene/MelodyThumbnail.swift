@@ -36,7 +36,7 @@ class MelodyThumbnail: UIImageView {
 //        layer.mask = maskLayer;
         
         changeOpacity(view: self, time: 1.0, opacity: 1.0) {
-            print("faded in")
+            
         }
         
     }

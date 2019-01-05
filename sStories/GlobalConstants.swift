@@ -16,4 +16,4 @@ let pages = [
     Page(imageName: "Pond", storyText: Array(storyline[20...22])),
 ]
 
-var collectedMelodies = [Melody]()
+var collectedMelodies = [Int]()

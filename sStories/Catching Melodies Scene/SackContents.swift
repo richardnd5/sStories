@@ -29,7 +29,6 @@ class SackContents: UIView {
             addDashedBorder(view)
             melodySlots.append(view)
             addSubview(view)
-            print("\(i):     \(view.frame.origin)")
         }
     }
     
@@ -51,32 +50,56 @@ class SackContents: UIView {
         melody.addGestureRecognizer(tap)
     }
     
-    func addMelodyToOpenSlot(_ number: Int, melodyNumber: Int){
-        for i in 0...collectedMelodies.count-1 {
-            if collectedMelodies[i] == nil {
-                let width = melodySlots[number].frame.width
-                let height = melodySlots[number].frame.height
-                
-                
-                let melody = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyNumber, slotPos: i)
-                melody.isUserInteractionEnabled = true
-                melodySlots[number].addSubview(melody)
-                
-                // Give it gesture recognizers
-                let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
-                melody.addGestureRecognizer(panGesture)
-                
-                let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
-                melody.addGestureRecognizer(tap)
-                
-            }
-        }
-
+    func addMelodyToOpenSlot(melodyToAdd: Melody){
         
+            for i in 0...melodySlots.count-1{
+                if melodySlots[i].subviews.count == 0 {
+                        let width = melodySlots[0].frame.width
+                        let height = melodySlots[0].frame.height
+                        
+                        let view = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyToAdd.patternNumber, slotPos: i)
+                        view.isUserInteractionEnabled = true
+                        view.tag = 0
+                        melodySlots[i].addSubview(view)
+                        
+                        // Give it gesture recognizers
+                        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
+                        view.addGestureRecognizer(panGesture)
+                        
+                        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
+                        view.addGestureRecognizer(tap)
+                    
+                        return // return and not finish the for-loop
+                    }
+            }
     }
     
-    func removeMelodyFromSlot(_ number: Int){
+
+    func sackFull() -> Bool{
         
+        var bool = false
+        for i in 0...melodySlots.count-1 {
+            if melodySlots[i].subviews.count == 0 {
+                bool = false
+                break
+            }
+            bool = true
+        }
+        return bool
+    }
+    
+    func addMelodiesToCollectedMelodyArray(){
+        // Add all the melody numbers to the collectedMelodiesArray
+        for i in 0...melodySlots.count-1{
+            
+//            if melodySlots[i].subviews.count == 1 {
+//
+//            }
+            for view in melodySlots[i].subviews {
+                let melody = view as! MelodyThumbnail
+                collectedMelodies.append(melody.melodyNumber)
+            }
+        }
     }
 
     

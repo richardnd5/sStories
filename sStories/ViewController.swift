@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         case arranging
     }
     var currentState = AppScene.story
-    var switchToGameScene = 5
+    var switchToCatchingMelodiesScene = 0
     var page : PageView?
     var catchingMelody : CatchingMelodies?
 
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     
     func addPage(){
         
-        if currentPage == switchToGameScene {
+        if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
             currentState = .fishing
