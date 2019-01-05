@@ -45,7 +45,6 @@
 		8601B3EB21DC7CFD00862808 /* melody 18.png in Resources */ = {isa = PBXBuildFile; fileRef = 8601B3C721DC7CFC00862808 /* melody 18.png */; };
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
 		861C788F21DC257E009D9612 /* sack.png in Resources */ = {isa = PBXBuildFile; fileRef = 861C788E21DC257E009D9612 /* sack.png */; };
-		862EE56621DFE94900378EEE /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862EE56521DFE94900378EEE /* CustomView.swift */; };
 		863DADF421D408A000AFDD94 /* FishingPole.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF321D408A000AFDD94 /* FishingPole.png */; };
 		863DADF721D40D5400AFDD94 /* Note.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF521D40D5400AFDD94 /* Note.png */; };
 		863DADF821D40D5400AFDD94 /* PlayButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF621D40D5400AFDD94 /* PlayButton.png */; };
@@ -160,7 +159,6 @@
 		8601B3C721DC7CFC00862808 /* melody 18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "melody 18.png"; sourceTree = "<group>"; };
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
 		861C788E21DC257E009D9612 /* sack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sack.png; sourceTree = "<group>"; };
-		862EE56521DFE94900378EEE /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		863DADF321D408A000AFDD94 /* FishingPole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPole.png; sourceTree = "<group>"; };
 		863DADF521D40D5400AFDD94 /* Note.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Note.png; sourceTree = "<group>"; };
 		863DADF621D40D5400AFDD94 /* PlayButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayButton.png; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 				860AD9E621C309FD0052577B /* CatchingMelodies.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
 				867C542721DF2F9D002E4255 /* MelodyThumbnail.swift */,
-				862EE56521DFE94900378EEE /* CustomView.swift */,
 				86F8AB8121DD636300BED768 /* FishingPole.swift */,
 				86F8AB7D21DD5AD400BED768 /* Label.swift */,
 				86EC5B0121DACBCF00E115E0 /* Melody.swift */,
@@ -609,7 +606,6 @@
 				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,
 				869EF00021DBE1E600A4BC06 /* CatchOrThrowbackImage.swift in Sources */,
-				862EE56621DFE94900378EEE /* CustomView.swift in Sources */,
 				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
 				860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */,
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,

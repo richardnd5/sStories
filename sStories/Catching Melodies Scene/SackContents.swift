@@ -8,10 +8,6 @@ class SackContents: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         makeUIGrid()
-        
-        
-        
-        
     }
     
     func makeUIGrid() {
@@ -89,12 +85,7 @@ class SackContents: UIView {
     }
     
     func addMelodiesToCollectedMelodyArray(){
-        // Add all the melody numbers to the collectedMelodiesArray
         for i in 0...melodySlots.count-1{
-            
-//            if melodySlots[i].subviews.count == 1 {
-//
-//            }
             for view in melodySlots[i].subviews {
                 let melody = view as! MelodyThumbnail
                 collectedMelodies.append(melody.melodyNumber)
@@ -159,8 +150,6 @@ class SackContents: UIView {
             
             if sender.location(in: self).y <= -view.frame.height*3 {
                 view.shrinkAndRemove(time: 0.4)
-                collectedMelodies.remove(at: view.slotPos)
-                
             } else {
                 view.moveViewTo(CGPoint.zero, time: 0.4)
             }

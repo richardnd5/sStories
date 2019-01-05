@@ -49,7 +49,6 @@ class CatchingMelodies: UIView {
         createFishingPole()
         createInstructionLabel()
         createSackContainer()
-//        createCustomView()
         setAMelodyToBiteInTheFuture()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
@@ -58,12 +57,7 @@ class CatchingMelodies: UIView {
         alpha = 0.0
         changeOpacity(view: self, time: 1.5, opacity: 1.0, {})
     }
-    
-    func createCustomView(){
-        let view = CustomView(frame: CGRect.zero)
-        addSubview(view)
-    }
-    
+
     func createSackContainer(){
         sackContents = SackContents(frame: CGRect(x: 0, y: 0, width: frame.width/4, height: frame.height/17))
         addSubview(sackContents!)
