@@ -1,3 +1,5 @@
+// Instead of loading all the sampels at once. What if you just loaded them when they were needed? You only need 6 at a time. You could save SO MUCH memory that way. Smart. On the to do list.
+
 import AudioKit
 
 class Sound {
