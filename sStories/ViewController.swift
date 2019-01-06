@@ -32,6 +32,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         addPage()
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        Sound.sharedInstance.playPattern(Int.random(in: 0...54))
+    }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 

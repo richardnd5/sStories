@@ -22,9 +22,11 @@ class Sound {
     }
     
     var mixer = AKMixer()
-    var filter = AKMoogLadder()
+    var filterForPiano = AKMoogLadder()
     var reverb = AKReverb()
     var sequencer = AKSequencer()
+    var newFilter = AKLowPassFilter()
+    var highCut = AKHighShelfFilter()
     
     var length : TimeInterval = 6.0
     
@@ -43,13 +45,13 @@ class Sound {
             return
         }
 
-        filter = AKMoogLadder(windSound)
-        filter.cutoffFrequency = 6000
+        highCut = AKHighShelfFilter(pianoSampler, cutOffFrequency: 10000, gain: -20.0)
+        
         loadPianoSamples()
 
-        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, pianoSampler)
+        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, highCut)
         
-        mixer.volume = 1.0
+        mixer.volume = 0.5
 
         reverb = AKReverb(mixer)
         reverb.dryWetMix = 0.6
@@ -66,7 +68,7 @@ class Sound {
     }
     
     func loadPianoSamples() {
-        let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("noodlePiano")
+        let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("noodlePiano2")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "pianoNoodles.sfz")
         pianoSampler.releaseDuration = 2
     }
@@ -76,7 +78,7 @@ class Sound {
         self.pianoSampler.stop(noteNumber: currentPlaying)
         let number = MIDINoteNumber(number)
         currentPlaying = number
-        pianoSampler.play(noteNumber: number, velocity: 127)
+        pianoSampler.play(noteNumber: number, velocity: 100)
 
     }
 

@@ -7,10 +7,10 @@ class SackContents: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        makeUIGrid()
+        makeSackSlots()
     }
     
-    func makeUIGrid() {
+    func makeSackSlots() {
         
         let rows = 4
         let spacing : CGFloat = 10

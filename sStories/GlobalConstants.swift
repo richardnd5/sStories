@@ -3,6 +3,8 @@ struct Page {
     let storyText: [String]
 }
 
+
+
 let pages = [
     Page(imageName: "Town", storyText: [storyline[0]]),
     Page(imageName: "TalkingToCrowdAboutFishing", storyText: Array(storyline[1...3])),
@@ -17,3 +19,44 @@ let pages = [
 ]
 
 var collectedMelodies = [Int]()
+
+class Melodyy {
+    
+    let type : MelodyType
+    var number = Int()
+    
+    init(type: MelodyType){
+        self.type = type
+        number = setNumber()
+    }
+    
+    func setNumber() -> Int{
+        
+        // depending on the type, choose which pattern number.
+        switch type {
+        case .begin:
+            return Int.random(in: 0...9)
+        case .middle:
+            return Int.random(in: 10...19)
+        case .tonic:
+            return Int.random(in: 20...29)
+        case .penultimate:
+            return Int.random(in: 30...39)
+        case .ending:
+            return Int.random(in: 40...49)
+        case .final:
+            return Int.random(in: 50...54)
+        }
+    }
+}
+
+enum MelodyType {
+    case begin
+    case middle
+    case tonic
+    case penultimate
+    case ending
+    case final
+}
+
+

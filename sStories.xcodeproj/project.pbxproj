@@ -52,6 +52,7 @@
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
 		866C623821D2E1C1001FE47D /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 866C623721D2E1C1001FE47D /* Pond.png */; };
+		8679A37821E1B25500E12539 /* noodlePiano2 in Resources */ = {isa = PBXBuildFile; fileRef = 8679A37721E1B25500E12539 /* noodlePiano2 */; };
 		867C542621DF1E7B002E4255 /* SackContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C542521DF1E7B002E4255 /* SackContents.swift */; };
 		867C542821DF2F9D002E4255 /* MelodyThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C542721DF2F9D002E4255 /* MelodyThumbnail.swift */; };
 		867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 867C542921DF2FE7002E4255 /* melodyThumbnail.png */; };
@@ -59,7 +60,6 @@
 		8698D85921BF400000ADED35 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85721BF400000ADED35 /* Sound.swift */; };
 		8698D85A21BF400000ADED35 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85821BF400000ADED35 /* Haptics.swift */; };
 		8698D87621BF404C00ADED35 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8698D87521BF404C00ADED35 /* libc++.tbd */; };
-		8698D88C21BF416100ADED35 /* noodlePiano in Resources */ = {isa = PBXBuildFile; fileRef = 8698D88B21BF416100ADED35 /* noodlePiano */; };
 		8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */; };
 		8698D89421BF417600ADED35 /* marimbaC.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D88E21BF416600ADED35 /* marimbaC.wav */; };
 		8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */; };
@@ -166,6 +166,7 @@
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
 		866C623721D2E1C1001FE47D /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Desktop/Pond.png; sourceTree = "<group>"; };
+		8679A37721E1B25500E12539 /* noodlePiano2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = noodlePiano2; sourceTree = "<group>"; };
 		867C542521DF1E7B002E4255 /* SackContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SackContents.swift; sourceTree = "<group>"; };
 		867C542721DF2F9D002E4255 /* MelodyThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyThumbnail.swift; sourceTree = "<group>"; };
 		867C542921DF2FE7002E4255 /* melodyThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melodyThumbnail.png; sourceTree = "<group>"; };
@@ -173,7 +174,6 @@
 		8698D85721BF400000ADED35 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		8698D85821BF400000ADED35 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		8698D87521BF404C00ADED35 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		8698D88B21BF416100ADED35 /* noodlePiano */ = {isa = PBXFileReference; lastKnownFileType = folder; path = noodlePiano; sourceTree = "<group>"; };
 		8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = backgroundPlaceholder.wav; sourceTree = "<group>"; };
 		8698D88E21BF416600ADED35 /* marimbaC.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = marimbaC.wav; sourceTree = "<group>"; };
 		8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pageTurnTouchUp.wav; sourceTree = "<group>"; };
@@ -356,11 +356,11 @@
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
+				8679A37721E1B25500E12539 /* noodlePiano2 */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8601B3EC21DC7D0700862808 /* Melodies */,
 				860DE93121C2072F00A7370D /* Sounds */,
 				860DE93221C2073E00A7370D /* Image Assets */,
-				8698D88B21BF416100ADED35 /* noodlePiano */,
 				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
 				86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */,
 				86BBBF3721BB08FD00CB17F2 /* Info.plist */,
@@ -513,6 +513,7 @@
 			files = (
 				8601B3D921DC7CFD00862808 /* melody 32.png in Resources */,
 				86697DE321C1AF97009EC3BF /* windSound.wav in Resources */,
+				8679A37821E1B25500E12539 /* noodlePiano2 in Resources */,
 				8601B3D221DC7CFD00862808 /* melody 4.png in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
 				8601B3E621DC7CFD00862808 /* melody 15.png in Resources */,
@@ -567,7 +568,6 @@
 				86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */,
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
 				8601B3E221DC7CFD00862808 /* melody 33.png in Resources */,
-				8698D88C21BF416100ADED35 /* noodlePiano in Resources */,
 				8601B3CD21DC7CFD00862808 /* melody 3.png in Resources */,
 				8601B3CB21DC7CFD00862808 /* melody 21.png in Resources */,
 				8601B3DA21DC7CFD00862808 /* melody 17.png in Resources */,

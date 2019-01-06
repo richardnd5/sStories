@@ -17,6 +17,38 @@
  (Maybe once you catch the melody, you can tap on it to hear it, then drag it back if you don't want it)
  */
 
+/*
+ Struct?
+ What does a melody need?
+ it needs:
+ type
+ melodyNumber
+ 
+ 
+ the melody needs to be a random number. Which random number depends on what type of chordal function it is.
+ 
+ So. the random number needs to be generated when the melody is created.
+ 
+ When you fish for a melody, it needs to check the sack for what the user has.
+ 
+ if sackContents doesn't contain: tonic, pull up tonic
+ else if sackContents doesn't contain: middle, pull up middle
+ else if sackContents doesn't contain: penultimate, pull up penultimate
+ else if sackContents doesn't contain: ending, pull up ending
+ else if sackContents == 4, switch back to game scene.
+ 
+ 
+ each melody is tagged with a MelodyType, depending on that melody type, it generates a random number depending on it's melody type.
+ 
+ 0-9 start
+ 10-19 middle
+ 20-29 penultimate
+ 30-39 ending
+ 
+ When the melody is "performed", it is played twice (maybe, depending on if it feels long)
+ 
+ */
+
 import UIKit
 
 class CatchingMelodies: UIView {
@@ -44,6 +76,8 @@ class CatchingMelodies: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+
         
         createPond()
         createFishingPole()
@@ -281,6 +315,7 @@ class CatchingMelodies: UIView {
     }
     
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
+                
         if appState == .fishOnTheLine {
             decideWhatToDoWithTheMelody()
         }
