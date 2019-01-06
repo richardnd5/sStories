@@ -164,7 +164,7 @@ class CatchingMelodies: UIView {
     func createRandomMelody(){
         
         // pick a random melody
-        let randomNumber = Int.random(in: 1...36)
+        let randomNumber = Int.random(in: 1...54)
         
         // instantiate it
         melody = Melody(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.width/2, height: frame.height/2), number: randomNumber)

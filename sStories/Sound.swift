@@ -1,5 +1,7 @@
 // Instead of loading all the sampels at once. What if you just loaded them when they were needed? You only need 6 at a time. You could save SO MUCH memory that way. Smart. On the to do list.
 
+// AKSampler?
+
 import AudioKit
 
 class Sound {
@@ -41,6 +43,7 @@ class Sound {
             try pageTurnTouchDown.loadWav("pageTurnTouchDown")
             try pageTurnTouchUp.loadWav("pageTurnTouchUp")
             
+            
             print("It did load the samples.")
         } catch {
             print("Error: Loading.")
@@ -51,7 +54,7 @@ class Sound {
         
         loadPianoSamples()
 
-        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown, highCut)
+        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown,highCut)
         
         mixer.volume = 0.5
 

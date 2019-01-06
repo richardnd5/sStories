@@ -27,7 +27,7 @@ class Melody: UIImageView {
     func setupNote(){
         
         // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("melody \(patternNumber).png")
+        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("melody\(patternNumber).png")
         noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
         image = noteImage
         
