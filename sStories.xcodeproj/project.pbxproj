@@ -105,7 +105,7 @@
 		86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49821BF82F500EE12DF /* SackOfMelodies.png */; };
 		86E9F4A121BF82F500EE12DF /* Town.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49921BF82F500EE12DF /* Town.png */; };
 		86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F4A621BF85AE00EE12DF /* Fishing.png */; };
-		86EC5B0221DACBCF00E115E0 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC5B0121DACBCF00E115E0 /* Melody.swift */; };
+		86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */; };
 		86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB7D21DD5AD400BED768 /* Label.swift */; };
 		86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8121DD636300BED768 /* FishingPole.swift */; };
 		86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8621DDECA200BED768 /* GlobalConstants.swift */; };
@@ -246,7 +246,7 @@
 		86E9F49821BF82F500EE12DF /* SackOfMelodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SackOfMelodies.png; sourceTree = "<group>"; };
 		86E9F49921BF82F500EE12DF /* Town.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Town.png; sourceTree = "<group>"; };
 		86E9F4A621BF85AE00EE12DF /* Fishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishing.png; sourceTree = "<group>"; };
-		86EC5B0121DACBCF00E115E0 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
+		86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyImage.swift; sourceTree = "<group>"; };
 		86F8AB7D21DD5AD400BED768 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		86F8AB8121DD636300BED768 /* FishingPole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingPole.swift; sourceTree = "<group>"; };
 		86F8AB8621DDECA200BED768 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
@@ -415,16 +415,16 @@
 				8698D85721BF400000ADED35 /* Sound.swift */,
 				86F8AB8521DDE70100BED768 /* Catching Melodies Scene */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
-				8679A3EF21E1CE7600E12539 /* Melody Images */,
-				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
-				8679A37D21E1C74800E12539 /* noodlePiano */,
-				8679A37B21E1BDEE00E12539 /* testWV.wv */,
 				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
-				8679A37721E1B25500E12539 /* noodlePiano2 */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
+				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
+				8679A37B21E1BDEE00E12539 /* testWV.wv */,
+				8679A37D21E1C74800E12539 /* noodlePiano */,
+				8679A3EF21E1CE7600E12539 /* Melody Images */,
 				860DE93121C2072F00A7370D /* Sounds */,
-				860DE93221C2073E00A7370D /* Image Assets */,
 				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
+				8679A37721E1B25500E12539 /* noodlePiano2 */,
+				860DE93221C2073E00A7370D /* Image Assets */,
 				86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */,
 				86BBBF3721BB08FD00CB17F2 /* Info.plist */,
 				86BBBF2F21BB08FD00CB17F2 /* sStories.xcdatamodeld */,
@@ -458,7 +458,7 @@
 				867C542721DF2F9D002E4255 /* MelodyThumbnail.swift */,
 				86F8AB8121DD636300BED768 /* FishingPole.swift */,
 				86F8AB7D21DD5AD400BED768 /* Label.swift */,
-				86EC5B0121DACBCF00E115E0 /* Melody.swift */,
+				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				869EEFFF21DBE1E600A4BC06 /* CatchOrThrowbackImage.swift */,
 			);
 			path = "Catching Melodies Scene";
@@ -696,7 +696,7 @@
 				867C542621DF1E7B002E4255 /* SackContents.swift in Sources */,
 				86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */,
 				867C542821DF2F9D002E4255 /* MelodyThumbnail.swift in Sources */,
-				86EC5B0221DACBCF00E115E0 /* Melody.swift in Sources */,
+				86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

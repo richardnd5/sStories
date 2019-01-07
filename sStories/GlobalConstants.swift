@@ -3,7 +3,14 @@ struct Page {
     let storyText: [String]
 }
 
-
+enum MelodyType : CaseIterable {
+    case begin
+    case middle
+    case tonic
+    case dominant
+    case ending
+    case final
+}
 
 let pages = [
     Page(imageName: "Town", storyText: [storyline[0]]),
@@ -30,7 +37,7 @@ class Melodyy {
         number = setNumber()
     }
     
-    func setNumber() -> Int{
+    private func setNumber() -> Int{
         
         // depending on the type, choose which pattern number.
         switch type {
@@ -40,7 +47,7 @@ class Melodyy {
             return Int.random(in: 10...19)
         case .tonic:
             return Int.random(in: 20...29)
-        case .penultimate:
+        case .dominant:
             return Int.random(in: 30...39)
         case .ending:
             return Int.random(in: 40...49)
@@ -50,13 +57,6 @@ class Melodyy {
     }
 }
 
-enum MelodyType {
-    case begin
-    case middle
-    case tonic
-    case penultimate
-    case ending
-    case final
-}
+
 
 

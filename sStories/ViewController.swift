@@ -26,8 +26,6 @@ class ViewController: UIViewController {
     var currentPage = 0
     var tempStoryLine = 0
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addPage()

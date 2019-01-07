@@ -8,18 +8,21 @@
 
 import UIKit
 
-class Melody: UIImageView {
+class MelodyImage: UIImageView {
     
     
     var noteImage = UIImage()
     var maskLayer = CAGradientLayer()
-    var patternNumber = Int()
+    var number = Int()
+    var type : MelodyType!
+    
 
     
-    init(frame: CGRect, number: Int) {
+    init(frame: CGRect, melody: Melodyy) {
         super.init(frame: frame)
 
-        patternNumber = number
+        self.number = melody.number
+        self.type = melody.type
         setupNote()
 
     }
@@ -27,7 +30,7 @@ class Melody: UIImageView {
     func setupNote(){
         
         // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("melody\(patternNumber).png")
+        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("melody\(number).png")
         noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
         image = noteImage
         
@@ -103,7 +106,7 @@ class Melody: UIImageView {
     }
     
     func playMelody(){
-        Sound.sharedInstance.playPattern(patternNumber)
+        Sound.sharedInstance.playPattern(number)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -12,7 +12,7 @@ class SackContents: UIView {
     
     func makeSackSlots() {
         
-        let rows = 4
+        let rows = 6
         let spacing : CGFloat = 10
         let width = frame.width/CGFloat(rows)
     
@@ -46,14 +46,14 @@ class SackContents: UIView {
         melody.addGestureRecognizer(tap)
     }
     
-    func addMelodyToOpenSlot(melodyToAdd: Melody){
+    func addMelodyToOpenSlot(melodyToAdd: MelodyImage){
         
             for i in 0...melodySlots.count-1{
                 if melodySlots[i].subviews.count == 0 {
                         let width = melodySlots[0].frame.width
                         let height = melodySlots[0].frame.height
                         
-                        let view = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyToAdd.patternNumber, slotPos: i)
+                        let view = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyToAdd.number, slotPos: i)
                         view.isUserInteractionEnabled = true
                         view.tag = 0
                         melodySlots[i].addSubview(view)

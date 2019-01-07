@@ -62,7 +62,7 @@ class CatchingMelodies: UIView {
     // Images for the scene
     var pondImage =  UIImageView()
     var fishingPole : FishingPole?
-    var melody : Melody?
+    var melody : MelodyImage?
     var sack : CatchOrThrowbackImage?
     var throwbackWater : CatchOrThrowbackImage?
     var sackContents: SackContents?
@@ -163,12 +163,12 @@ class CatchingMelodies: UIView {
     
     func createRandomMelody(){
         
-        // pick a random melody
-        let randomNumber = Int.random(in: 1...54)
+        let randomMelody = Melodyy(type: generateMissingType())
         
         // instantiate it
-        melody = Melody(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.width/2, height: frame.height/2), number: randomNumber)
+        melody = MelodyImage(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.width/2, height: frame.height/2), melody: randomMelody)
         addSubview(melody!)
+        print("melody type:  \(melody!.type!)   melody number: \(melody!.number)")
         
         // set the origin. (there has to be a better way to do this. How do you know the width and height before it is instantiated?)
         melody!.frame.origin = CGPoint(x: frame.width/2-melody!.frame.width/2, y: frame.height/3-melody!.frame.height/2)
@@ -179,6 +179,13 @@ class CatchingMelodies: UIView {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
         melody?.addGestureRecognizer(tapGesture)
+    }
+    
+    func generateMissingType() -> MelodyType{
+        
+        let randomType = MelodyType.allCases.randomElement()
+
+        return randomType!
     }
     
     func createCatchOrThrowBackImages(){
@@ -295,7 +302,7 @@ class CatchingMelodies: UIView {
             
             // if the melody was dragged to be kept
             if (sack?.bounds.contains(sender.location(in: sack)))! {
-                let melody = sender.view as! Melody
+                let melody = sender.view as! MelodyImage
                 sackContents?.addMelodyToOpenSlot(melodyToAdd: melody)
                 if (sackContents?.sackFull())! {
                     sackContents?.addMelodiesToCollectedMelodyArray()
