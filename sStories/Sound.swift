@@ -30,7 +30,6 @@ class Sound {
     var reverb = AKReverb()
     var sequencer = AKSequencer()
     var newFilter = AKLowPassFilter()
-    var highCut = AKHighShelfFilter()
     
     var length : TimeInterval = 6.0
     
@@ -49,12 +48,10 @@ class Sound {
             print("Error: Loading.")
             return
         }
-
-        highCut = AKHighShelfFilter(pianoSampler, cutOffFrequency: 10000, gain: -20.0)
         
         loadPianoSamples()
 
-        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown,highCut)
+        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown,pianoSampler)
         
         mixer.volume = 0.5
 

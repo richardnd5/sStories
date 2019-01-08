@@ -416,8 +416,8 @@
 				86F8AB8521DDE70100BED768 /* Catching Melodies Scene */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
-				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
+				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8679A37B21E1BDEE00E12539 /* testWV.wv */,
 				8679A37D21E1C74800E12539 /* noodlePiano */,
 				8679A3EF21E1CE7600E12539 /* Melody Images */,
@@ -455,10 +455,10 @@
 			children = (
 				860AD9E621C309FD0052577B /* CatchingMelodies.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
+				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				867C542721DF2F9D002E4255 /* MelodyThumbnail.swift */,
 				86F8AB8121DD636300BED768 /* FishingPole.swift */,
 				86F8AB7D21DD5AD400BED768 /* Label.swift */,
-				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				869EEFFF21DBE1E600A4BC06 /* CatchOrThrowbackImage.swift */,
 			);
 			path = "Catching Melodies Scene";

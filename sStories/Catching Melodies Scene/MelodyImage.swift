@@ -15,16 +15,15 @@ class MelodyImage: UIImageView {
     var maskLayer = CAGradientLayer()
     var number = Int()
     var type : MelodyType!
+    var data : Melody?
     
-
-    
-    init(frame: CGRect, melody: Melodyy) {
+    init(frame: CGRect, melody: Melody) {
         super.init(frame: frame)
 
         self.number = melody.number
         self.type = melody.type
+        self.data = melody
         setupNote()
-
     }
     
     func setupNote(){

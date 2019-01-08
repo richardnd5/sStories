@@ -62,7 +62,7 @@ class CatchingMelodies: UIView {
     // Images for the scene
     var pondImage =  UIImageView()
     var fishingPole : FishingPole?
-    var melody : MelodyImage?
+    var melodyImage : MelodyImage?
     var sack : CatchOrThrowbackImage?
     var throwbackWater : CatchOrThrowbackImage?
     var sackContents: SackContents?
@@ -76,9 +76,7 @@ class CatchingMelodies: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
 
-        
         createPond()
         createFishingPole()
         createInstructionLabel()
@@ -163,31 +161,24 @@ class CatchingMelodies: UIView {
     
     func createRandomMelody(){
         
-        let randomMelody = Melodyy(type: generateMissingType())
+        let missingType = sackContents?.missingMelodyType()
+        let randomNeededMelody = Melody(type: missingType!)
         
         // instantiate it
-        melody = MelodyImage(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.width/2, height: frame.height/2), melody: randomMelody)
-        addSubview(melody!)
-        print("melody type:  \(melody!.type!)   melody number: \(melody!.number)")
+        melodyImage = MelodyImage(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.width/2, height: frame.height/2), melody: randomNeededMelody)
+        addSubview(melodyImage!)
         
         // set the origin. (there has to be a better way to do this. How do you know the width and height before it is instantiated?)
-        melody!.frame.origin = CGPoint(x: frame.width/2-melody!.frame.width/2, y: frame.height/3-melody!.frame.height/2)
+        melodyImage!.frame.origin = CGPoint(x: frame.width/2-melodyImage!.frame.width/2, y: frame.height/3-melodyImage!.frame.height/2)
         
         // Give it gesture recognizers
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
-        melody?.addGestureRecognizer(panGesture)
+        melodyImage?.addGestureRecognizer(panGesture)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
-        melody?.addGestureRecognizer(tapGesture)
+        melodyImage?.addGestureRecognizer(tapGesture)
     }
-    
-    func generateMissingType() -> MelodyType{
-        
-        let randomType = MelodyType.allCases.randomElement()
 
-        return randomType!
-    }
-    
     func createCatchOrThrowBackImages(){
         
         let bottomPadding = frame.height/7
@@ -204,7 +195,7 @@ class CatchingMelodies: UIView {
 
     func goBackToFishing(){
 
-        melody?.shrinkAndRemove(time: 0.6, {
+        melodyImage?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 self.appState = .fishing
@@ -216,7 +207,7 @@ class CatchingMelodies: UIView {
     
     func fishingDone(){
         
-        melody?.shrinkAndRemove(time: 0.6, {
+        melodyImage?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 self.appState = .fishing
@@ -302,14 +293,15 @@ class CatchingMelodies: UIView {
             
             // if the melody was dragged to be kept
             if (sack?.bounds.contains(sender.location(in: sack)))! {
-                let melody = sender.view as! MelodyImage
-                sackContents?.addMelodyToOpenSlot(melodyToAdd: melody)
+                let melodyImage = sender.view as! MelodyImage
+                let melody = melodyImage.data
+                sackContents?.addMelodyToOpenSlot(melody: melody!)
                 if (sackContents?.sackFull())! {
-                    sackContents?.addMelodiesToCollectedMelodyArray()
-                    print("Your sack is full. way ho. These are the melodies you caught:  \(collectedMelodies)")
+//                    sackContents?.addMelodiesToCollectedMelodyArray()
+//                    print("Your sack is full. way ho. These are the melodies you caught:  \(collectedMelodies)")
                     self.fishingDone()
                 } else {
-                    print("still gotta keep fishing")
+//                    print("Your sack ain't full. Still gotta keep fishing")
                     self.goBackToFishing()
                 }
             }
@@ -329,7 +321,7 @@ class CatchingMelodies: UIView {
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
-        melody?.playMelody()
+        melodyImage?.playMelody()
     }
 
     required init?(coder aDecoder: NSCoder) {

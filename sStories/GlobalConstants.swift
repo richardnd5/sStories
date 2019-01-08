@@ -27,10 +27,11 @@ let pages = [
 
 var collectedMelodies = [Int]()
 
-class Melodyy {
+class Melody {
     
     let type : MelodyType
     var number = Int()
+    var slotPosition = Int()
     
     init(type: MelodyType){
         self.type = type

@@ -3,7 +3,8 @@ import UIKit
 class SackContents: UIView {
     
     var melodyImage: UIImageView?
-    var melodySlots = [UIView]()
+    var melodySlotViews = [UIView]()
+    var melodiesInSack = [Melody]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,40 +24,24 @@ class SackContents: UIView {
             view.backgroundColor = UIColor.init(white: 0.9, alpha: 0.3)
             view.isUserInteractionEnabled = true
             addDashedBorder(view)
-            melodySlots.append(view)
+            melodySlotViews.append(view)
             addSubview(view)
         }
     }
     
-    func addMelodyToSlot(_ number: Int, melodyNumber: Int){
+    func addMelodyToOpenSlot(melody: Melody){
         
-        let width = melodySlots[number].frame.width
-        let height = melodySlots[number].frame.height
-        
-        
-        let melody = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyNumber, slotPos: number)
-        melody.isUserInteractionEnabled = true
-        melodySlots[number].addSubview(melody)
-        
-        // Give it gesture recognizers
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
-        melody.addGestureRecognizer(panGesture)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
-        melody.addGestureRecognizer(tap)
-    }
-    
-    func addMelodyToOpenSlot(melodyToAdd: MelodyImage){
-        
-            for i in 0...melodySlots.count-1{
-                if melodySlots[i].subviews.count == 0 {
-                        let width = melodySlots[0].frame.width
-                        let height = melodySlots[0].frame.height
-                        
-                        let view = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melodyToAdd.number, slotPos: i)
+            for i in 0...melodySlotViews.count-1{
+                if melodySlotViews[i].subviews.count == 0 {
+                        let width = melodySlotViews[0].frame.width
+                        let height = melodySlotViews[0].frame.height
+                    
+                        let view = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melody.number, slotPos: i)
                         view.isUserInteractionEnabled = true
                         view.tag = 0
-                        melodySlots[i].addSubview(view)
+                        melodySlotViews[i].addSubview(view)
+                        melody.slotPosition = i
+                        melodiesInSack.append(melody)
                         
                         // Give it gesture recognizers
                         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
@@ -65,17 +50,71 @@ class SackContents: UIView {
                         let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
                         view.addGestureRecognizer(tap)
                     
+                    for melody in melodiesInSack {
+                        print("mel num: \(melody.number) slot pos: \(melody.slotPosition) type: \(melody.type)")
+                    }
                         return // return and not finish the for-loop
                     }
             }
+    }
+    
+    func removeMelodyFromSack(_ view: MelodyThumbnail){
+        view.shrinkAndRemove(time: 0.4)
+        for i in 0...melodiesInSack.count-1 {
+            if view.slotPos == melodiesInSack[i].slotPosition {
+                melodiesInSack.remove(at: i)
+                
+                for melody in melodiesInSack {
+                    print("mel num: \(melody.number) slot pos: \(melody.slotPosition) type: \(melody.type)")
+                }
+                
+                return // return so it doesn't continue the for loop
+            }
+        }
+
+    }
+    
+    func missingMelodyType() -> MelodyType {
+        /*
+         case begin
+         case middle
+         case tonic
+         case dominant
+         case ending
+         case final
+         */
+        var typeItNeeds = MelodyType.begin
+        
+        let containsBegin = melodiesInSack.contains(where: { $0.type == .begin })
+        let containsMiddle = melodiesInSack.contains(where: { $0.type == .middle })
+        let containsTonic = melodiesInSack.contains(where: { $0.type == .tonic })
+        let containsDominant = melodiesInSack.contains(where: { $0.type == .dominant })
+        let containsEnding = melodiesInSack.contains(where: { $0.type == .ending })
+        let containsFinal = melodiesInSack.contains(where: { $0.type == .final })
+        
+        if !containsBegin {
+            typeItNeeds = .begin
+        } else if !containsMiddle {
+            typeItNeeds = .middle
+        } else if !containsTonic {
+            typeItNeeds = .tonic
+        } else if !containsDominant {
+            typeItNeeds = .dominant
+        } else if !containsEnding {
+            typeItNeeds = .ending
+        } else if !containsFinal {
+            typeItNeeds = .final
+        }
+
+        return typeItNeeds
     }
     
 
     func sackFull() -> Bool{
         
         var bool = false
-        for i in 0...melodySlots.count-1 {
-            if melodySlots[i].subviews.count == 0 {
+        for i in 0...melodySlotViews.count-1 {
+            if melodySlotViews[i].subviews.count == 0 {
                 bool = false
                 break
             }
@@ -84,14 +123,15 @@ class SackContents: UIView {
         return bool
     }
     
-    func addMelodiesToCollectedMelodyArray(){
-        for i in 0...melodySlots.count-1{
-            for view in melodySlots[i].subviews {
-                let melody = view as! MelodyThumbnail
-                collectedMelodies.append(melody.melodyNumber)
-            }
-        }
-    }
+//    // after it all has been added
+//    func addMelodiesToCollectedMelodyArray(){
+//        for i in 0...melodySlotViews.count-1{
+//            for view in melodySlotViews[i].subviews {
+//                let melody = view as! MelodyThumbnail
+//                collectedMelodies.append(melody.melodyNumber)
+//            }
+//        }
+//    }
 
     
     func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){
@@ -116,6 +156,8 @@ class SackContents: UIView {
             self.removeFromSuperview()
         }
     }
+    
+
     
     func addDashedBorder(_ view: UIView) {
         let color = UIColor.white.cgColor
@@ -149,7 +191,7 @@ class SackContents: UIView {
         if sender.state == .ended {
             
             if sender.location(in: self).y <= -view.frame.height*3 {
-                view.shrinkAndRemove(time: 0.4)
+                removeMelodyFromSack(view)
             } else {
                 view.moveViewTo(CGPoint.zero, time: 0.4)
             }

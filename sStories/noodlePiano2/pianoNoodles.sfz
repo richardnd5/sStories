@@ -1,4 +1,7 @@
 
+    <group> lokey=0 hikey=0 pitch_keycenter=0 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/music0.wv
     
     <group> lokey=1 hikey=1 pitch_keycenter=1 pitch_keytrack=1
 
