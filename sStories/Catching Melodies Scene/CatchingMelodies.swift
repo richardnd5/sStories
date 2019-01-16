@@ -87,7 +87,7 @@ class CatchingMelodies: UIView {
         addGestureRecognizer(tapGesture)
         
         alpha = 0.0
-        changeOpacity(view: self, time: 1.5, opacity: 1.0, {})
+        changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {})
     }
 
     func createSackContainer(){
@@ -121,7 +121,7 @@ class CatchingMelodies: UIView {
         pondImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pondImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        changeOpacity(view:self, time: 1.5,opacity: 1.0, {})
+        changeOpacityOverTime(view:self, time: 1.5,opacity: 1.0, {})
         
     }
     
@@ -165,7 +165,8 @@ class CatchingMelodies: UIView {
         let randomNeededMelody = Melody(type: missingType!)
         
         // instantiate it
-        melodyImage = MelodyImage(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.width/2, height: frame.height/2), melody: randomNeededMelody)
+        melodyImage = MelodyImage(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.height/4, height: frame.height/4), melody: randomNeededMelody)
+        melodyImage?.addBlurredBorder()
         addSubview(melodyImage!)
         
         // set the origin. (there has to be a better way to do this. How do you know the width and height before it is instantiated?)
@@ -217,11 +218,10 @@ class CatchingMelodies: UIView {
         })
     }
     
-    
     // NEED TO SEPARATE THE PUT LINE BACK IN OUTTA HERE!!!!
     func removeImagesFromCaughtMelodyScene(){
         
-        changeOpacity(view: pondImage, time: 2.0, opacity: 1.0, {
+        changeOpacityOverTime(view: pondImage, time: 2.0, opacity: 1.0, {
             self.putLineBackIn()
         })
         self.sack?.fadeOutAndRemove()
@@ -241,7 +241,8 @@ class CatchingMelodies: UIView {
     func setAMelodyToBiteInTheFuture(){
         
         // choose a random time
-        let randomTime = TimeInterval.random(in: 4...7)
+//        let randomTime = TimeInterval.random(in: 4...7)
+        let randomTime = TimeInterval.random(in: 1...2)
         
         // schedule a timer to trigger a melody bite in the future
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
@@ -258,7 +259,7 @@ class CatchingMelodies: UIView {
         fishingPole?.pullPoleOut({
             
             // dim the background pond image
-            changeOpacity(view: self.pondImage, time: 1.5, opacity: 0.2, {})
+            changeOpacityOverTime(view: self.pondImage, time: 1.5, opacity: 0.2, {})
             
             // create catching scene images
             self.createRandomMelody()
@@ -297,11 +298,13 @@ class CatchingMelodies: UIView {
                 let melody = melodyImage.data
                 sackContents?.addMelodyToOpenSlot(melody: melody!)
                 if (sackContents?.sackFull())! {
-//                    sackContents?.addMelodiesToCollectedMelodyArray()
-//                    print("Your sack is full. way ho. These are the melodies you caught:  \(collectedMelodies)")
                     self.fishingDone()
+                    // If the sack is full, store the melodies globally
+                    sackContents!.addMelodiesToCollectedMelodyArray()
+                    collectedMelodies.forEach { (mel) in
+                        print(mel.type)
+                    }
                 } else {
-//                    print("Your sack ain't full. Still gotta keep fishing")
                     self.goBackToFishing()
                 }
             }

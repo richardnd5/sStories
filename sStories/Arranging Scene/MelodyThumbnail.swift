@@ -8,57 +8,78 @@
 
 import UIKit
 
-class MelodyImage: UIImageView {
-    
+class MelodyThumbnail: UIImageView {
     
     var noteImage = UIImage()
     var maskLayer = CAGradientLayer()
-    var number = Int()
-    var type : MelodyType!
-    var data : Melody?
+    var typeNumber = Int()
     
-    init(frame: CGRect, melody: Melody) {
+    
+    init(frame: CGRect, typeNumber: Int) {
         super.init(frame: frame)
-
-        self.number = melody.number
-        self.type = melody.type
-        self.data = melody
+        
+        
+        self.typeNumber = typeNumber
+        
         setupNote()
     }
     
     func setupNote(){
         
         // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("melody\(number).png")
+        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("\(getTypeNameBasedOnNumber(number: typeNumber)).png")
         noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        image = noteImage
         
-        // Set up imageview
-        frame.size = CGSize(width: noteImage.size.width/2.5, height: noteImage.size.height/2.5)
+        image = noteImage
         contentMode = .scaleAspectFit
         layer.zPosition = 100
-        layer.opacity = 0.0
-        layer.cornerRadius = 10
+        layer.cornerRadius = frame.height/10
         clipsToBounds = true
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         isUserInteractionEnabled = true
-
-        // add blurred edges
+        
+        setOpacity(0.1)
+        
+        
+    }
+    
+    func getTypeNameBasedOnNumber(number: Int) -> String {
+        var string = String()
+        print("ran the get type")
+        
+        switch number {
+        case 0:
+            string = "begin"
+        case 1:
+            string = "middle"
+        case 2:
+            string = "tonic"
+        case 3:
+            string = "dominant"
+        case 4:
+            string = "ending"
+        case 5:
+            string = "final"
+        default:
+            string = "begin"
+        }
+        return string
+    }
+    
+    func setOpacity(_ to: CGFloat){
+        noteImage = noteImage.setOpacity(alpha: to)!
+        image = noteImage
+    }
+    
+    func addBlurredBorder(){
         maskLayer.frame = bounds
-        maskLayer.shadowRadius = frame.height/20
-        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/8, dy: frame.height/8), cornerWidth: frame.height/3, cornerHeight: frame.height/2.28, transform: nil)
+        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/10, cornerHeight: frame.height/10, transform: nil)
         maskLayer.shadowOpacity = 1;
         maskLayer.shadowOffset = CGSize.zero;
         maskLayer.shadowColor = UIColor.black.cgColor
         layer.mask = maskLayer;
-        
-        changeOpacity(view: self, time: 1.0, opacity: 1.0) {
-            
-
-        }
-        
     }
-
+    
     func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){
         
         UIView.animate(
@@ -66,7 +87,7 @@ class MelodyImage: UIImageView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
-
+                
                 self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
         },
             completion: {
@@ -104,10 +125,20 @@ class MelodyImage: UIImageView {
         })
     }
     
-    func playMelody(){
-        Sound.sharedInstance.playPattern(number)
+    func moveViewTo(_ point: CGPoint, time: Double){
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                
+                self.frame.origin = point
+        },
+            completion: {
+                _ in
+        })
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

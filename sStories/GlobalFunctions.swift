@@ -19,7 +19,7 @@ func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat)-> U
 }
 
 // Function to change the opacity of a view over a set time.
-func changeOpacity(view: UIView, time: Double, opacity: CGFloat, _ completion: @escaping () ->()){
+func changeOpacityOverTime(view: UIView, time: Double, opacity: CGFloat, _ completion: @escaping () ->()){
     
     UIView.animate(
         withDuration: time,
@@ -34,24 +34,35 @@ func changeOpacity(view: UIView, time: Double, opacity: CGFloat, _ completion: @
     })
 }
 
-//// From stackoverflow!  rmooney   odemolliens    sunshineDev     Thank you!
-//extension UIView {
-//    func addDashedBorder() {
-//        let color = UIColor.white.cgColor
-//        
-//        let shapeLayer:CAShapeLayer = CAShapeLayer()
-//        let frameSize = self.frame.size
-//        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
-//        
-//        shapeLayer.bounds = shapeRect
-//        shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
-//        shapeLayer.fillColor = UIColor.clear.cgColor
-//        shapeLayer.strokeColor = color
-//        shapeLayer.lineWidth = 1
-//        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
-//        shapeLayer.lineDashPattern = [6,3]
-//        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: 10).cgPath
-//        
-//        self.layer.addSublayer(shapeLayer)
-//    }
-//}
+
+
+func determineWhatImageToShowForMelody(type: MelodyType) -> String{
+    
+    var string = String()
+    
+    switch type {
+    case .begin:
+        string = "begin"
+    case .middle:
+        string = "middle"
+    case .tonic:
+        string = "tonic"
+    case .dominant:
+        string = "dominant"
+    case .ending:
+        string = "ending"
+    case .final:
+        string = "final"
+    }
+    return string
+}
+
+extension UIImage {
+    func setOpacity(alpha: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: .zero, blendMode: .normal, alpha: alpha)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}

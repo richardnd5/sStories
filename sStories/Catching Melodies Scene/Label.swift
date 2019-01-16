@@ -11,7 +11,7 @@ class Label: UILabel {
         sizeToFit()
         
         alpha = 0.0
-        changeOpacity(view: self, time: 2.0, opacity: 1.0, {})
+        changeOpacityOverTime(view: self, time: 2.0, opacity: 1.0, {})
     }
 
     func remove(fadeTime: Double,_ completion: @escaping () ->()){

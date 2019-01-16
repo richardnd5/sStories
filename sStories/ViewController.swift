@@ -19,10 +19,12 @@ class ViewController: UIViewController {
         case arranging
     }
     var currentState = AppScene.story
-    var switchToCatchingMelodiesScene = 0
+    var switchToCatchingMelodiesScene = 5
+    var switchToArrangingScene = 0
     var page : PageView?
     var catchingMelody : CatchingMelodies?
-
+    var arrangingScene : ArrangingScene?
+    
     var currentPage = 0
     var tempStoryLine = 0
     
@@ -30,9 +32,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         addPage()
     }
-
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        
         if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
             page?.nextStoryLine()
             tempStoryLine+=1
@@ -55,6 +57,12 @@ class ViewController: UIViewController {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
             currentState = .fishing
+        } else if currentPage == switchToArrangingScene {
+            arrangingScene = ArrangingScene(frame: view.frame)
+            view.addSubview(arrangingScene!)
+            let safe = view.safeAreaLayoutGuide
+            arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+            currentState = .arranging
         } else {
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)
@@ -63,5 +71,5 @@ class ViewController: UIViewController {
     
     override var prefersStatusBarHidden: Bool{
         return true
-    }    
+    }
 }
