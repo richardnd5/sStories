@@ -27,9 +27,9 @@ class ViewController: UIViewController, SceneDelegate {
     var currentState = AppScene.story
     
     var switchToCatchingMelodiesScene = 5
-//    var switchToArrangingScene = 0
+    var switchToArrangingScene = 0
     
-    var switchToArrangingScene = 9
+//    var switchToArrangingScene = 9
 //    var switchToCatchingMelodiesScene = 0
     
     var page : PageView?
@@ -39,10 +39,11 @@ class ViewController: UIViewController, SceneDelegate {
     var currentPage = 0
     var tempStoryLine = 0
     
+//    var ourMelody : MelodyAudio?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
         fillSackWithMelodies()
         addPage()
     }
@@ -81,10 +82,10 @@ class ViewController: UIViewController, SceneDelegate {
         if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
             page?.nextStoryLine()
             tempStoryLine+=1
-            Sound.sharedInstance.playTouchUpSound()
+//            Sound.sharedInstance.playTouchUpSound()
             
         } else if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
-            Sound.sharedInstance.playTurnUpSound()
+//            Sound.sharedInstance.playTurnUpSound()
             
             page?.fadeOutAndRemove(completion: {
                 self.currentPage+=1
@@ -96,7 +97,7 @@ class ViewController: UIViewController, SceneDelegate {
     
     func returnToStory(){
         print("it's been tapped. Going back to story.")
-        Sound.sharedInstance.playTurnUpSound()
+//        Sound.sharedInstance.playTurnUpSound()
         
         catchingMelody!.fadeOutAndRemove(completion: {
             self.currentState = .story

@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
-        Sound.sharedInstance.setupSound()
+        Sound.sharedInstance.setup()
         window = UIWindow()
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()

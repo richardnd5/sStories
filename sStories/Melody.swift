@@ -3,10 +3,12 @@ class Melody {
     let type : MelodyType
     var number = Int()
     var slotPosition = Int()
+    var audio : MelodyAudio?
     
     init(type: MelodyType){
         self.type = type
         number = setNumber()
+        audio = MelodyAudio(number: number)
     }
     
     private func setNumber() -> Int{

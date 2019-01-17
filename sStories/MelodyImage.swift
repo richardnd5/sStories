@@ -135,7 +135,8 @@ class MelodyImage: UIImageView {
     }
     
     func playMelody(){
-        Sound.sharedInstance.playPattern(number)
+//        Sound.sharedInstance.playPattern(number)
+        data?.audio?.playMelody()
     }
 
     required init?(coder aDecoder: NSCoder) {

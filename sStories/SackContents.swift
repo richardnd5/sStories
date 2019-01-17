@@ -196,7 +196,7 @@ class SackContents: UIView {
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
         let view = sender.view as! MelodyImage
         
-        Sound.sharedInstance.playPattern(view.number)
+//        Sound.sharedInstance.playPattern(view.number)
     }
     
     required init?(coder aDecoder: NSCoder) {

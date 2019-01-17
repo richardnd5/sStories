@@ -1,123 +1,77 @@
-// Instead of loading all the sampels at once. What if you just loaded them when they were needed? You only need 6 at a time. You could save SO MUCH memory that way. Smart. On the to do list.
-
-// AKSampler?
-
 import AudioKit
 
 class Sound {
-
-    let midi = AKMIDI()
     
-    let windSound = AKMIDISampler()
-    let touchDown = AKMIDISampler()
-    let touchUp = AKMIDISampler()
-    let pageTurnTouchDown = AKMIDISampler()
-    let pageTurnTouchUp = AKMIDISampler()
-    
-    var pianoSampler = AKSampler()
-    var currentPlaying = MIDINoteNumber()
-
     static var sharedInstance = Sound()
-
-    var currentTempo = 60.0 {
-        didSet {
-            sequencer.setTempo(currentTempo)
-        }
-    }
     
     var mixer = AKMixer()
-    var filterForPiano = AKMoogLadder()
-    var reverb = AKReverb()
-    var sequencer = AKSequencer()
-    var newFilter = AKLowPassFilter()
+    private var reverb = AKReverb()
+    private var sequencer = AKSequencer()
+    private var patternArray = [MelodyAudio]()
+    private var currentTempo = 80.0
     
-    var length : TimeInterval = 6.0
-    
-    func setupSound(){
-
-        do {
-            try windSound.loadWav("steadyBrownNoise")
-            try touchDown.loadWav("touchDown")
-            try touchUp.loadWav("touchUp")
-            try pageTurnTouchDown.loadWav("pageTurnTouchDown")
-            try pageTurnTouchUp.loadWav("pageTurnTouchUp")
-            
-            
-            print("It did load the samples.")
-        } catch {
-            print("Error: Loading.")
-            return
-        }
-        
-        loadPianoSamples()
-
-        mixer = AKMixer(windSound,touchDown,touchUp,pageTurnTouchUp,pageTurnTouchDown,pianoSampler)
-        
-        mixer.volume = 0.5
-
-        reverb = AKReverb(mixer)
-        reverb.dryWetMix = 0.6
+    func setup(){
+        mixer = AKMixer()
+        mixer.volume = 2.0
+        reverb = AKReverb(mixer, dryWetMix: 0.5)
         AudioKit.output = reverb
-        do { try AudioKit.start() }catch{}
-
-//        length = 32 * ((60*60) / Int(currentTempo))
+        do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
+    }
+    
+//    func loadMelodyAudioIntoAudioArray(_ melodyArray: [Melody]){
+//        for mel in melodyArray {
+//            let melodyAudio = MelodyAudio(number: mel.number)
+//            patternArray.append(melodyAudio)
+//        }
+//    }
+    
+    func loadCollectedMelodies(_ melodyArray: [Melody]){
+        for i in 0...collectedMelodies.count-1{
+          let melAudio = collectedMelodies[i].audio
+            patternArray.append(melAudio!)
+        }
+    }
+    
+    func putMelodiesIntoSequencerInOrder(){
+        setupSequencerTracks()
+        createSequencerPattern()
+    }
+    
+    private func setupSequencerTracks(){
         
-        let track1 = sequencer.newTrack("New Track")
-
-        track1?.setMIDIOutput(windSound.midiIn)
         sequencer.setTempo(currentTempo)
-        startSequencer()
-    }
-    
-    func loadPianoSamples() {
-        let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("noodlePiano2")
-        pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "pianoNoodles.sfz")
-        pianoSampler.releaseDuration = 2
-    }
-    
-    func playPattern(_ number: Int){
         
-        self.pianoSampler.stop(noteNumber: currentPlaying)
-        let number = MIDINoteNumber(number)
-        currentPlaying = number
-        pianoSampler.play(noteNumber: number, velocity: 100)
-
+        for i in 0...patternArray.count-1 {
+            let melody = patternArray[i]
+            let track = sequencer.newTrack("\(melody.number)")
+            track?.setMIDIOutput(melody.sampler.midiIn)
+            melody.trackNumber = i
+        }
     }
-
     
-    func startSequencer() {
-        
-        let seqLength = AKDuration(beats: Double(120))
+    private func createSequencerPattern(){
+        let seqLength = AKDuration(beats: 8*patternArray.count-1)
         sequencer.setLength(seqLength)
         
         for track in sequencer.tracks {
             track.clear()
         }
-        
-        sequencer.tracks[0].add(noteNumber: MIDINoteNumber(60),
-                                      velocity: 127,
-                                      position: AKDuration(beats: 1),
-                                      duration: AKDuration(beats: 32))
-        
-        sequencer.setLength(seqLength)
-        sequencer.enableLooping()
+        for i in 0...patternArray.count-1 {
+            sequencer.tracks[i].add(noteNumber: MIDINoteNumber(60),
+                                    velocity: 127,
+                                    position: AKDuration(beats: i*8),
+                                    duration: AKDuration(beats: 18))
+        }
+    }
+    
+    func playSequencer(){
+        sequencer.rewind()
         sequencer.play()
     }
     
-    func playTouchDownSound(){
-        do { try! touchDown.play(noteNumber: 60, velocity: 60, channel: 1)}
+    func disconnectEverythingFromMixer(){
+        do { try! AudioKit.stop() }
     }
     
-    func playTouchUpSound(){
-        do { try! touchUp.play(noteNumber: 60, velocity: 60, channel: 1)}
-    }
-    
-    func playPageTurnDownSound(){
-        do { try! pageTurnTouchDown.play(noteNumber: 60, velocity: 90, channel: 1)}
-    }
-    
-    func playTurnUpSound(){
-        do { try! pageTurnTouchUp.play(noteNumber: 60, velocity: 90, channel: 1)}
-    }
-
 }
+

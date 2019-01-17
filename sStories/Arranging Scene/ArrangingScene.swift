@@ -148,7 +148,11 @@ class ArrangingScene: UIView {
                     
                     if songFullyArranged() {
                         print("We're ready for the play button!")
+                        Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
+                        Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
                         createPlayButton()
+                        
+                        // Make the page turn indicator appear!!!
                     }
                 }
             }
@@ -158,11 +162,13 @@ class ArrangingScene: UIView {
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
         let view = sender.view as! MelodyImage
-        Sound.sharedInstance.playPattern(view.number)
+//        Sound.sharedInstance.playPattern(view.number)
+        view.data?.audio?.playMelody()
     }
     
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
         print("time to play the sound.")
+        Sound.sharedInstance.playSequencer()
     }
     
     required init?(coder aDecoder: NSCoder) {
