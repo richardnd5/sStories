@@ -10,13 +10,16 @@ class ArrangingScene: UIView {
     var sackContents = SackContents()
     var playButton : PlayButton?
     var instructionLabel: Label?
+    var background: ArrangingBackground?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        setupBackgroundImage()
+        createInstructionLabel()
         createArrangementSlots()
         createSack()
-        createInstructionLabel()
+        
         
         //fade the view in
         alpha = 0.0
@@ -25,14 +28,26 @@ class ArrangingScene: UIView {
         })
     }
     
+    func setupBackgroundImage(){
+        let ourFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        background = ArrangingBackground(frame: ourFrame)
+        addSubview(background!)
+    }
+    
     func createInstructionLabel(){
         // add keep label
-        instructionLabel = Label(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height/4), words: "Drag the melodies to their correct spots!", fontSize: frame.width/40)
-        
+//        let width = frame.width
+        let height = frame.height/20
+//        let x = CGFloat(0)
+        let y = frame.height/60
+        instructionLabel = Label(frame: CGRect.zero, words: "Drag the melodies to their correct spots!", fontSize: height)
         addSubview(instructionLabel!)
-        instructionLabel?.translatesAutoresizingMaskIntoConstraints = false
-        instructionLabel?.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        instructionLabel?.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/80).isActive = true
+        
+        let safe = safeAreaLayoutGuide
+        instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: 0, bottom: 0, right: 0), size: .zero)
+        instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18)
+        
+        
     }
     
     func createPlayButton(){
@@ -56,7 +71,7 @@ class ArrangingScene: UIView {
         let width = frame.width/1.3
         let height = frame.height/6
         
-        songSlots = MelodySlots(frame: CGRect(x: frame.width/2-width/2, y: frame.height/10, width: width, height: height))
+        songSlots = MelodySlots(frame: CGRect(x: frame.width/2-width/2, y: frame.height/8, width: width, height: height))
         addSubview(songSlots)
     }
     
@@ -65,7 +80,7 @@ class ArrangingScene: UIView {
         let width = frame.width/2
         let height = frame.height/8
         
-        sackContents = SackContents(frame: CGRect(x: width-width/2, y: frame.height-frame.height/10-height*1.5, width: width, height: height))
+        sackContents = SackContents(frame: CGRect(x: width-width/2, y: frame.height-frame.height/10-height*2, width: width, height: height))
         addSubview(sackContents)
     }
     

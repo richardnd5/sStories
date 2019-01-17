@@ -8,10 +8,14 @@ class Label: UILabel {
         font = UIFont(name: "Papyrus", size: fontSize)
         textColor = .white
         textAlignment = .center
-        sizeToFit()
         
+        layer.zPosition = 10
+
         alpha = 0.0
         changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {})
+        adjustsFontSizeToFitWidth = true
+        
+        
     }
 
     func remove(fadeTime: Double,_ completion: @escaping () ->()){
@@ -28,6 +32,11 @@ class Label: UILabel {
                 completion()
                 self.removeFromSuperview()
         })
+    }
+    
+    func changeText(to: String){
+        text = to
+        
     }
     
     

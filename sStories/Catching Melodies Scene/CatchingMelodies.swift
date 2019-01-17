@@ -64,8 +64,9 @@ class CatchingMelodies: UIView {
         // Downsample it to fit the set dimensions
         let ourImage = downsample(imageAt: bundleURL!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
         pondImage.image = ourImage
-        
         addSubview(pondImage)
+        pondImage.layer.zPosition = -100
+        
         
         pondImage.contentMode = .scaleAspectFit
         pondImage.translatesAutoresizingMaskIntoConstraints = false
@@ -74,18 +75,26 @@ class CatchingMelodies: UIView {
         pondImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pondImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        changeOpacityOverTime(view:self, time: 1.5,opacity: 1.0, {})
+        changeOpacityOverTime(view: self, time: 1.5,opacity: 1.0, {})
         
     }
     
     func createInstructionLabel(){
         // add keep label
-        instructionLabel = Label(frame: CGRect(x: 0, y: 0, width: frame.width, height: frame.height/4), words: "Patiently, Templeton waiting for the first bite...", fontSize: frame.width/40)
+        
+        let width = frame.width
+        let height = frame.height/18
+        let x = CGFloat(0)
+        let y = frame.height/60
+        
+        
+        instructionLabel = Label(frame: CGRect.zero, words: "Patiently, Templeton waiting for the first bite...", fontSize: height-height/10)
 
         addSubview(instructionLabel!)
-        instructionLabel?.translatesAutoresizingMaskIntoConstraints = false
-        instructionLabel?.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        instructionLabel?.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/80).isActive = true
+        let safe = safeAreaLayoutGuide
+        instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: 0, bottom: 0, right: 0), size: .zero)
+        instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18)
+
     }
     
     func createLabels(){
@@ -94,14 +103,14 @@ class CatchingMelodies: UIView {
         keepLabel = Label(frame: CGRect(x: (sack?.frame.midX)!, y: (sack?.frame.minY)!, width: frame.width/3, height: frame.height/4), words: "Keep", fontSize: frame.height/26)
         
         // How do I do this in the line before instead of resetting the origin after it is instantiated. I am using sizeToFit() in it's class so I don't know what to do.
-        keepLabel!.frame.origin = CGPoint(x: (sack?.frame.midX)!-keepLabel!.frame.width/2, y: (sack?.frame.minY)!-keepLabel!.frame.height*2)
+        keepLabel!.frame.origin = CGPoint(x: (sack?.frame.midX)!-keepLabel!.frame.width/2, y: (sack?.frame.minY)!-keepLabel!.frame.height)
         addSubview(keepLabel!)
 
         // add throwback label
         throwbackLabel = Label(frame: CGRect(x: (throwbackWater?.frame.midX)!, y: (throwbackWater?.frame.minY)!, width: frame.width/3, height: frame.height/4), words: "Throw Back", fontSize: frame.height/26)
         
         // Same as the keepLabel
-        throwbackLabel!.frame.origin = CGPoint(x: (throwbackWater?.frame.midX)!-throwbackLabel!.frame.width/2, y: (throwbackWater?.frame.minY)!-throwbackLabel!.frame.height*2)
+        throwbackLabel!.frame.origin = CGPoint(x: (throwbackWater?.frame.midX)!-throwbackLabel!.frame.width/2, y: (throwbackWater?.frame.minY)!-throwbackLabel!.frame.height)
         addSubview(throwbackLabel!)
         
     }
@@ -154,7 +163,7 @@ class CatchingMelodies: UIView {
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 self.appState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
-                self.instructionLabel?.text = "Let's keep fishing!"
+                self.instructionLabel?.changeText(to: "Let's keep fishing!")
             })
         })
     }
@@ -171,7 +180,8 @@ class CatchingMelodies: UIView {
                 self.keepLabel?.remove(fadeTime: 1.0, {})
                 self.throwbackLabel?.remove(fadeTime: 1.0, {})
                 
-                self.instructionLabel?.text = "What a great collection of melodies! Time to head back down the mountain."                
+//                self.instructionLabel?.text = "What a great collection of melodies! Time to head back down the mountain."
+                self.instructionLabel?.changeText(to: "What a great collection of melodies! Time to head back down the mountain.")
             })
         })
     }
@@ -206,7 +216,8 @@ class CatchingMelodies: UIView {
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
             self.appState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
-            self.instructionLabel?.text = "Ooh! A Bite! Tap to reel it in!"
+//            self.instructionLabel?.text = "Ooh! A Bite! Tap to reel it in!"
+            self.instructionLabel?.changeText(to: "Ooh! A Bite! Tap to reel it in!")
         })
     }
 
@@ -224,7 +235,8 @@ class CatchingMelodies: UIView {
             self.createCatchOrThrowBackImages()
             self.createLabels()
             
-            self.instructionLabel?.text = "Tap on the melody to hear it, then drag it to keep or throw it back."
+//            self.instructionLabel?.text = "Tap on the melody to hear it, then drag it to keep or throw it back."
+            self.instructionLabel?.changeText(to: "Tap on the melody to hear it, then drag it to keep or throw it back.")
         })
     }
     

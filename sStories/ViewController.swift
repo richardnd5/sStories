@@ -25,9 +25,13 @@ class ViewController: UIViewController, SceneDelegate {
         case arranging
     }
     var currentState = AppScene.story
+    
     var switchToCatchingMelodiesScene = 5
-    var switchToArrangingScene = 9
-//    var switchToArrangingScene = 0
+    var switchToArrangingScene = 0
+    
+//    var switchToArrangingScene = 9
+//    var switchToCatchingMelodiesScene = 0
+    
     var page : PageView?
     var catchingMelody : CatchingMelodies?
     var arrangingScene : ArrangingScene?
@@ -39,7 +43,7 @@ class ViewController: UIViewController, SceneDelegate {
         super.viewDidLoad()
         
 
-//        fillSackWithMelodies()
+        fillSackWithMelodies()
         addPage()
     }
     
@@ -115,7 +119,7 @@ class ViewController: UIViewController, SceneDelegate {
             arrangingScene = ArrangingScene(frame: view.frame)
             view.addSubview(arrangingScene!)
             let safe = view.safeAreaLayoutGuide
-            arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+            arrangingScene?.anchor(top: safe.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: safe.bottomAnchor)
             currentState = .arranging
         } else {
             page = PageView(frame: view.frame, page: pages[currentPage])
