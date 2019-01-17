@@ -30,9 +30,6 @@
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
 		866C623821D2E1C1001FE47D /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 866C623721D2E1C1001FE47D /* Pond.png */; };
-		8679A37821E1B25500E12539 /* noodlePiano2 in Resources */ = {isa = PBXBuildFile; fileRef = 8679A37721E1B25500E12539 /* noodlePiano2 */; };
-		8679A37C21E1C12200E12539 /* testWV.wv in Resources */ = {isa = PBXBuildFile; fileRef = 8679A37B21E1BDEE00E12539 /* testWV.wv */; };
-		8679A37E21E1C74800E12539 /* noodlePiano in Resources */ = {isa = PBXBuildFile; fileRef = 8679A37D21E1C74800E12539 /* noodlePiano */; };
 		8679A3B821E1CE6F00E12539 /* melody18.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38121E1CE6500E12539 /* melody18.png */; };
 		8679A3B921E1CE6F00E12539 /* melody48.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38221E1CE6500E12539 /* melody48.png */; };
 		8679A3BA21E1CE6F00E12539 /* melody40.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38321E1CE6500E12539 /* melody40.png */; };
@@ -236,9 +233,6 @@
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
 		866C623721D2E1C1001FE47D /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Desktop/Pond.png; sourceTree = "<group>"; };
-		8679A37721E1B25500E12539 /* noodlePiano2 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = noodlePiano2; sourceTree = "<group>"; };
-		8679A37B21E1BDEE00E12539 /* testWV.wv */ = {isa = PBXFileReference; lastKnownFileType = file; path = testWV.wv; sourceTree = "<group>"; };
-		8679A37D21E1C74800E12539 /* noodlePiano */ = {isa = PBXFileReference; lastKnownFileType = folder; path = noodlePiano; sourceTree = "<group>"; };
 		8679A38121E1CE6500E12539 /* melody18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody18.png; sourceTree = "<group>"; };
 		8679A38221E1CE6500E12539 /* melody48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody48.png; sourceTree = "<group>"; };
 		8679A38321E1CE6500E12539 /* melody40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody40.png; sourceTree = "<group>"; };
@@ -581,21 +575,18 @@
 				86ED757721F1263C0066E2D8 /* MelodyAudio.swift */,
 				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				86F8AB7D21DD5AD400BED768 /* Label.swift */,
-				86F8AB8521DDE70100BED768 /* Catching Melodies Scene */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
+				86F8AB8521DDE70100BED768 /* Catching Melodies Scene */,
 				8654702F21ED2D8000D1F068 /* Arranging Scene */,
 				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
-				86ED757B21F126770066E2D8 /* pianoMelodies */,
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,
 				8654706A21EE847000D1F068 /* MusicSymbol.swift */,
-				8679A37B21E1BDEE00E12539 /* testWV.wv */,
-				8679A37D21E1C74800E12539 /* noodlePiano */,
+				86ED757B21F126770066E2D8 /* pianoMelodies */,
 				8679A3EF21E1CE7600E12539 /* Melody Images */,
 				860DE93121C2072F00A7370D /* Sounds */,
 				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
-				8679A37721E1B25500E12539 /* noodlePiano2 */,
 				860DE93221C2073E00A7370D /* Image Assets */,
 				86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */,
 				86BBBF3721BB08FD00CB17F2 /* Info.plist */,
@@ -860,7 +851,6 @@
 				86ED75E921F126980066E2D8 /* melody9.mp3 in Resources */,
 				8679A3D521E1CE6F00E12539 /* melody14.png in Resources */,
 				8679A3DA21E1CE6F00E12539 /* melody53.png in Resources */,
-				8679A37C21E1C12200E12539 /* testWV.wv in Resources */,
 				8679A3D421E1CE6F00E12539 /* melody26.png in Resources */,
 				8654706121EE70D400D1F068 /* final.png in Resources */,
 				8679A3C121E1CE6F00E12539 /* melody31.png in Resources */,
@@ -874,10 +864,8 @@
 				8654705F21EE70D400D1F068 /* begin.png in Resources */,
 				8679A3E421E1CE6F00E12539 /* melody28.png in Resources */,
 				8679A3D021E1CE6F00E12539 /* melody5.png in Resources */,
-				8679A37E21E1C74800E12539 /* noodlePiano in Resources */,
 				8654706521EE824300D1F068 /* trebleClef.png in Resources */,
 				8679A3E721E1CE6F00E12539 /* melody6.png in Resources */,
-				8679A37821E1B25500E12539 /* noodlePiano2 in Resources */,
 				8679A3DF21E1CE6F00E12539 /* melody10.png in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
 				8679A3EC21E1CE6F00E12539 /* melody20.png in Resources */,
