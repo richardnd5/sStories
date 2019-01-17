@@ -2,10 +2,10 @@ import UIKit
 
 class MelodySlots: UIView {
     
-    let rows = 6
-    let spacing : CGFloat = 20
-    var slotWidth : CGFloat!
-    var melodySlotViews = [UIView]()
+    private let rows = 6
+    private let spacing : CGFloat = 20
+    private var slotWidth : CGFloat!
+    var slotPosition = [UIView]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -13,7 +13,7 @@ class MelodySlots: UIView {
         createArrangementSlots()
     }
     
-    func createArrangementSlots() {
+    private func createArrangementSlots() {
         
         for i in 0..<rows {
             
@@ -21,18 +21,16 @@ class MelodySlots: UIView {
             theView.layer.cornerRadius = theView.frame.height/10
             theView.backgroundColor = UIColor.init(white: 0.9, alpha: 0.3)
             theView.isUserInteractionEnabled = true
-            melodySlotViews.append(theView)
+            slotPosition.append(theView)
             addSubview(theView)
             addDashedBorder(theView)
 
             let thumbnail = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: theView.frame.width, height: theView.frame.height), typeNumber: i)
             theView.addSubview(thumbnail)
-            
-            
         }
     }
     
-    func addDashedBorder(_ view: UIView) {
+    private func addDashedBorder(_ view: UIView) {
         let color = UIColor.white.cgColor
         
         let shapeLayer:CAShapeLayer = CAShapeLayer()

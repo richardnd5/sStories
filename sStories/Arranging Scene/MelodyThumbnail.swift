@@ -36,7 +36,7 @@ class MelodyThumbnail: UIImageView {
         layer.cornerRadius = frame.height/10
         clipsToBounds = true
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        isUserInteractionEnabled = true
+        isUserInteractionEnabled = false
         
         setOpacity(0.1)
         

@@ -37,7 +37,6 @@ class SackContents: UIView {
                         let width = melodySlotViews[0].frame.width
                         let height = melodySlotViews[0].frame.height
                     
-//                    let view = MelodyThumbnail(frame: CGRect(x: 0, y: 0, width: width, height: height), melodyNumber: melody.number, slotPos: i, type: melody.type)
                         let view = MelodyImage(frame: CGRect(x: 0, y: 0, width: width, height: height), melody: melody)
                         view.isUserInteractionEnabled = true
                         view.tag = 0

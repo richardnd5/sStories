@@ -1,54 +1,3 @@
-/*
- To do:
- 
- 4 melodies.
- Separate melody class. Tonic, Sub dominant, dominant types. Phrase structure should be, tonic, sub dom., dom, tonic.
- 
- Allowed to catch only 4 melodies.
- 
- first round. Only random from the tonic set.
- second round. only sub dominant
- third, dominant
- fourth, tonic again.
- 
- 
- in the top left. Four dotted lined circles
- every time you catch a melody, an 8th note with a white background fades in and fills a spot.
- (Maybe once you catch the melody, you can tap on it to hear it, then drag it back if you don't want it)
- */
-
-/*
- Struct?
- What does a melody need?
- it needs:
- type
- melodyNumber
- 
- 
- the melody needs to be a random number. Which random number depends on what type of chordal function it is.
- 
- So. the random number needs to be generated when the melody is created.
- 
- When you fish for a melody, it needs to check the sack for what the user has.
- 
- if sackContents doesn't contain: tonic, pull up tonic
- else if sackContents doesn't contain: middle, pull up middle
- else if sackContents doesn't contain: penultimate, pull up penultimate
- else if sackContents doesn't contain: ending, pull up ending
- else if sackContents == 4, switch back to game scene.
- 
- 
- each melody is tagged with a MelodyType, depending on that melody type, it generates a random number depending on it's melody type.
- 
- 0-9 start
- 10-19 middle
- 20-29 penultimate
- 30-39 ending
- 
- When the melody is "performed", it is played twice (maybe, depending on if it feels long)
- 
- */
-
 import UIKit
 
 class CatchingMelodies: UIView {
@@ -57,6 +6,7 @@ class CatchingMelodies: UIView {
         case fishing
         case fishOnTheLine
         case catchOrThrowBack
+        case fishingDone
     }
     
     // Images for the scene
@@ -74,6 +24,8 @@ class CatchingMelodies: UIView {
 
     var appState = State.fishing
     
+    weak var delegate : SceneDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -86,6 +38,7 @@ class CatchingMelodies: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
         addGestureRecognizer(tapGesture)
         
+        //fade the view in
         alpha = 0.0
         changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {})
     }
@@ -207,13 +160,18 @@ class CatchingMelodies: UIView {
     }
     
     func fishingDone(){
-        
+        appState = .fishingDone
         melodyImage?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
-                self.appState = .fishing
-                self.removeImagesFromCaughtMelodyScene()
-                self.instructionLabel?.text = "What a great collection of melodies! Time to head back down the mountain."
+                
+                changeOpacityOverTime(view: self.pondImage, time: 2.0, opacity: 1.0, {})
+                self.sack?.fadeOutAndRemove()
+                self.throwbackWater?.fadeOutAndRemove()
+                self.keepLabel?.remove(fadeTime: 1.0, {})
+                self.throwbackLabel?.remove(fadeTime: 1.0, {})
+                
+                self.instructionLabel?.text = "What a great collection of melodies! Time to head back down the mountain."                
             })
         })
     }
@@ -317,14 +275,43 @@ class CatchingMelodies: UIView {
     }
     
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
-                
+        
+
         if appState == .fishOnTheLine {
             decideWhatToDoWithTheMelody()
+        } else if appState == .fishingDone {
+            delegate?.returnToStory()
         }
+        
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
         melodyImage?.playMelody()
+    }
+    
+    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
+        
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                view.alpha = opacity
+        },
+            completion: {
+                _ in
+                
+                completion()
+        })
+    }
+    
+    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
+        
+            fadeTo(view: self, time: 1.0, opacity: 0.0, {
+                self.removeFromSuperview()
+                completion()
+                
+            })
     }
 
     required init?(coder aDecoder: NSCoder) {

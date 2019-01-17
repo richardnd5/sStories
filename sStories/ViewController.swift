@@ -11,8 +11,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+protocol SceneDelegate : class {
+    func returnToStory()
+}
+
+var collectedMelodies = [Melody]()
+
+class ViewController: UIViewController, SceneDelegate {
+
     enum AppScene {
         case story
         case fishing
@@ -30,11 +36,39 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        for i in 0...5 {
+            
+            var whichMelodyType = MelodyType.begin
+            
+            switch i {
+            case 0:
+                whichMelodyType = MelodyType.begin
+            case 1:
+                whichMelodyType = MelodyType.middle
+            case 2:
+                whichMelodyType = MelodyType.tonic
+            case 3:
+                whichMelodyType = MelodyType.dominant
+            case 4:
+                whichMelodyType = MelodyType.ending
+            case 5:
+                whichMelodyType = MelodyType.final
+            default:
+                whichMelodyType = MelodyType.begin
+            }
+            
+            let mel = Melody(type: whichMelodyType)
+            collectedMelodies.append(mel)
+        }
+        
         addPage()
     }
     
+
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        print("main view touched")
         if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
             page?.nextStoryLine()
             tempStoryLine+=1
@@ -51,11 +85,26 @@ class ViewController: UIViewController {
         }
     }
     
+    func returnToStory(){
+        print("it's been tapped. Going back to story.")
+        Sound.sharedInstance.playTurnUpSound()
+        
+        catchingMelody!.fadeOutAndRemove(completion: {
+            self.currentState = .story
+            self.currentPage+=1
+            self.tempStoryLine = 0
+            self.addPage()
+        })
+    }
+    
     func addPage(){
         
         if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
+            
+            catchingMelody?.delegate = self
+            
             currentState = .fishing
         } else if currentPage == switchToArrangingScene {
             arrangingScene = ArrangingScene(frame: view.frame)

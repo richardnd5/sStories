@@ -58,21 +58,7 @@ class PageView: UIView {
         fadeTo(view:self, time: 1.5,opacity: 1.0, {})
     }
     
-    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
-        canActivate = false
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.alpha = opacity
-        },
-            completion: {
-                _ in
-                self.canActivate = true
-                completion()
-        })
-    }
+
     
     func nextStoryLine(){
         
@@ -105,6 +91,22 @@ class PageView: UIView {
         storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/5).isActive = true
         
         
+    }
+    
+    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
+        canActivate = false
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                view.alpha = opacity
+        },
+            completion: {
+                _ in
+                self.canActivate = true
+                completion()
+        })
     }
     
     func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
