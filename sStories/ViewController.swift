@@ -15,7 +15,7 @@ protocol SceneDelegate : class {
     func returnToStory()
 }
 
-var collectedMelodies = [Melody]()
+var collectedMelodies = [Melody]() // This is global.
 
 class ViewController: UIViewController, SceneDelegate {
 
@@ -26,7 +26,8 @@ class ViewController: UIViewController, SceneDelegate {
     }
     var currentState = AppScene.story
     var switchToCatchingMelodiesScene = 5
-    var switchToArrangingScene = 0
+    var switchToArrangingScene = 9
+//    var switchToArrangingScene = 0
     var page : PageView?
     var catchingMelody : CatchingMelodies?
     var arrangingScene : ArrangingScene?
@@ -37,6 +38,13 @@ class ViewController: UIViewController, SceneDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
+//        fillSackWithMelodies()
+        addPage()
+    }
+    
+
+    func fillSackWithMelodies(){
         for i in 0...5 {
             
             var whichMelodyType = MelodyType.begin
@@ -59,13 +67,10 @@ class ViewController: UIViewController, SceneDelegate {
             }
             
             let mel = Melody(type: whichMelodyType)
+            mel.slotPosition = i
             collectedMelodies.append(mel)
         }
-        
-        addPage()
     }
-    
-
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("main view touched")

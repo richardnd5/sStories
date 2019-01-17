@@ -199,8 +199,8 @@ class CatchingMelodies: UIView {
     func setAMelodyToBiteInTheFuture(){
         
         // choose a random time
-//        let randomTime = TimeInterval.random(in: 4...7)
-        let randomTime = TimeInterval.random(in: 1...2)
+        let randomTime = TimeInterval.random(in: 4...7)
+//        let randomTime = TimeInterval.random(in: 1...2)
         
         // schedule a timer to trigger a melody bite in the future
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in

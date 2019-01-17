@@ -15,6 +15,7 @@ class MelodyImage: UIImageView {
     var number = Int()
     var type : MelodyType!
     var data : Melody?
+    var inCorrectSlot = false
     
     init(frame: CGRect, melody: Melody) {
         super.init(frame: frame)
@@ -56,6 +57,22 @@ class MelodyImage: UIImageView {
         maskLayer.shadowOffset = CGSize.zero;
         maskLayer.shadowColor = UIColor.black.cgColor
         layer.mask = maskLayer;
+    }
+    
+    func changeSize(to: CGSize, time: Double){
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                
+                self.frame.size = to
+        },
+            completion: {
+                _ in
+                
+                
+        })
     }
     
     func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){

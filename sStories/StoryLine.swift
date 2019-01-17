@@ -18,7 +18,7 @@ let storyline = [
     
     "He stood silently listening to the murmuring waters. It was a calm day at the pond.",
     
-    "He found a nice, comfortable fishing spot, clipped on his best lure, took a slow, deep breath and put his line in. Patiently, Templeton waited for the first bite.",
+    "He found a nice, comfortable fishing spot, clipped on his best lure, took a slow, deep breath and put his line in.",
     
     """
     "Wow! What a beautiful collection of melodies today!  Time to head home," said Templeton. He gathered up the music and started down the mountain.
