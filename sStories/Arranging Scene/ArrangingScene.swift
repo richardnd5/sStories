@@ -4,7 +4,7 @@ class ArrangingScene: UIView {
     
     var songSlots = MelodySlots()
     var melodyImageArray = [MelodyImage]()
-    var sackToArrange = SackToArrange()
+    
     var trebleClef : MusicSymbol?
     var doubleBar : MusicSymbol?
     var sackContents = SackContents()

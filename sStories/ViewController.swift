@@ -27,9 +27,9 @@ class ViewController: UIViewController, SceneDelegate {
     var currentState = AppScene.story
     
     var switchToCatchingMelodiesScene = 5
-    var switchToArrangingScene = 0
+//    var switchToArrangingScene = 0
     
-//    var switchToArrangingScene = 9
+    var switchToArrangingScene = 9
 //    var switchToCatchingMelodiesScene = 0
     
     var page : PageView?

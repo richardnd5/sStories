@@ -22,7 +22,6 @@
 		8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654706221EE7F1300D1F068 /* MelodySlots.swift */; };
 		8654706521EE824300D1F068 /* trebleClef.png in Resources */ = {isa = PBXBuildFile; fileRef = 8654706421EE824200D1F068 /* trebleClef.png */; };
 		8654706721EE82CA00D1F068 /* doubleBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8654706621EE82CA00D1F068 /* doubleBar.png */; };
-		8654706921EE830700D1F068 /* SackToArrange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654706821EE830700D1F068 /* SackToArrange.swift */; };
 		8654706B21EE847000D1F068 /* MusicSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654706A21EE847000D1F068 /* MusicSymbol.swift */; };
 		86621B2521CD776A0069157B /* waterDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 86621B2421CD776A0069157B /* waterDrop.png */; };
 		8665697121EFD0860086D432 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697021EFD0860086D432 /* Melody.swift */; };
@@ -121,6 +120,7 @@
 		86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */; };
 		86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */; };
 		86ED756E21F0FF550066E2D8 /* arrangingBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 86ED756D21F0FF550066E2D8 /* arrangingBackground.png */; };
+		86ED757421F120010066E2D8 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 86ED757321F120010066E2D8 /* playButton.png */; };
 		86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB7D21DD5AD400BED768 /* Label.swift */; };
 		86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8121DD636300BED768 /* FishingPole.swift */; };
 		86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8621DDECA200BED768 /* GlobalConstants.swift */; };
@@ -172,7 +172,6 @@
 		8654706221EE7F1300D1F068 /* MelodySlots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodySlots.swift; sourceTree = "<group>"; };
 		8654706421EE824200D1F068 /* trebleClef.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trebleClef.png; sourceTree = "<group>"; };
 		8654706621EE82CA00D1F068 /* doubleBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doubleBar.png; sourceTree = "<group>"; };
-		8654706821EE830700D1F068 /* SackToArrange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SackToArrange.swift; sourceTree = "<group>"; };
 		8654706A21EE847000D1F068 /* MusicSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSymbol.swift; sourceTree = "<group>"; };
 		86621B2421CD776A0069157B /* waterDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterDrop.png; sourceTree = "<group>"; };
 		8665697021EFD0860086D432 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
@@ -277,6 +276,7 @@
 		86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyImage.swift; sourceTree = "<group>"; };
 		86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangingBackground.swift; sourceTree = "<group>"; };
 		86ED756D21F0FF550066E2D8 /* arrangingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrangingBackground.png; sourceTree = "<group>"; };
+		86ED757321F120010066E2D8 /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
 		86F8AB7D21DD5AD400BED768 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		86F8AB8121DD636300BED768 /* FishingPole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingPole.swift; sourceTree = "<group>"; };
 		86F8AB8621DDECA200BED768 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
@@ -333,6 +333,7 @@
 				8654705921EE70D400D1F068 /* begin.png */,
 				8654705621EE70D300D1F068 /* dominant.png */,
 				86ED756D21F0FF550066E2D8 /* arrangingBackground.png */,
+				86ED757321F120010066E2D8 /* playButton.png */,
 				8654705821EE70D400D1F068 /* ending.png */,
 				8654705B21EE70D400D1F068 /* final.png */,
 				8654705721EE70D300D1F068 /* middle.png */,
@@ -361,7 +362,6 @@
 				8654706221EE7F1300D1F068 /* MelodySlots.swift */,
 				8665697221EFDBDF0086D432 /* MelodyThumbnail.swift */,
 				8665697A21F060900086D432 /* PlayButton.swift */,
-				8654706821EE830700D1F068 /* SackToArrange.swift */,
 			);
 			path = "Arranging Scene";
 			sourceTree = "<group>";
@@ -698,6 +698,7 @@
 				8679A3D721E1CE6F00E12539 /* melody54.png in Resources */,
 				8679A3C921E1CE6F00E12539 /* melody35.png in Resources */,
 				8679A3B821E1CE6F00E12539 /* melody18.png in Resources */,
+				86ED757421F120010066E2D8 /* playButton.png in Resources */,
 				8679A3C421E1CE6F00E12539 /* melody8.png in Resources */,
 				8679A3DE21E1CE6F00E12539 /* melody15.png in Resources */,
 				8679A3C221E1CE6F00E12539 /* melody4.png in Resources */,
@@ -760,7 +761,6 @@
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,
 				867C542621DF1E7B002E4255 /* SackContents.swift in Sources */,
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
-				8654706921EE830700D1F068 /* SackToArrange.swift in Sources */,
 				8654706B21EE847000D1F068 /* MusicSymbol.swift in Sources */,
 				86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */,
 				86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */,
