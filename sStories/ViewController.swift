@@ -36,6 +36,8 @@ class ViewController: UIViewController, SceneDelegate {
     var catchingMelody : CatchingMelodies?
     var arrangingScene : ArrangingScene?
     
+    var pageTurner : PageTurner?
+    
     var currentPage = 0
     var tempStoryLine = 0
     
@@ -44,8 +46,19 @@ class ViewController: UIViewController, SceneDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fillSackWithMelodies()
+//        fillSackWithMelodies()
         addPage()
+//        addPageTurner()
+    }
+    
+    func addPageTurner(){
+        let width = view.frame.width/18
+        let height = view.frame.height
+        let x = view.frame.width-width
+        let y = CGFloat(0)
+        pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height))
+        
+        view.addSubview(pageTurner!)
     }
     
 

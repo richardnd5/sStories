@@ -105,21 +105,6 @@ class MelodyImage: UIImageView {
         })
     }
     
-//    func pauseAnimation(){
-//        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
-//        layer.speed = 0.0
-//        layer.timeOffset = pausedTime
-//    }
-//
-//    func resumeAnimation(){
-//        var pausedTime = layer.timeOffset
-//        layer.speed = 1.0
-//        layer.timeOffset = 0.0
-//        layer.beginTime = 0.0
-//        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
-//        layer.beginTime = timeSincePause
-//    }
-    
     func startGlowingPulse(){
         print("start pulse")
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
