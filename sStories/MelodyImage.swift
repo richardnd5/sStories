@@ -17,6 +17,8 @@ class MelodyImage: UIImageView {
     var data : Melody?
     var inCorrectSlot = false
     
+    var glowingOverlay = UIView()
+    
     init(frame: CGRect, melody: Melody) {
         super.init(frame: frame)
 
@@ -34,7 +36,7 @@ class MelodyImage: UIImageView {
         
         image = noteImage
         contentMode = .scaleAspectFit
-        layer.zPosition = 100
+        layer.zPosition = 2
         layer.opacity = 0.0
         layer.cornerRadius = frame.height/10
         clipsToBounds = true
@@ -43,6 +45,17 @@ class MelodyImage: UIImageView {
         
         changeOpacityOverTime(view: self, time: 1.0, opacity: 1.0) {}
         
+        setupGlowingOverlay()
+        
+    }
+    
+    func setupGlowingOverlay(){
+        glowingOverlay = UIView(frame: CGRect.zero)
+        glowingOverlay.backgroundColor = .green
+        glowingOverlay.layer.zPosition = 2
+        glowingOverlay.layer.opacity = 0.0
+        addSubview(glowingOverlay)
+        glowingOverlay.fillSuperview()
     }
     
     func setOpacity(_ to: CGFloat){
@@ -92,6 +105,54 @@ class MelodyImage: UIImageView {
         })
     }
     
+//    func pauseAnimation(){
+//        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+//        layer.speed = 0.0
+//        layer.timeOffset = pausedTime
+//    }
+//
+//    func resumeAnimation(){
+//        var pausedTime = layer.timeOffset
+//        layer.speed = 1.0
+//        layer.timeOffset = 0.0
+//        layer.beginTime = 0.0
+//        let timeSincePause = layer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+//        layer.beginTime = timeSincePause
+//    }
+    
+    func startGlowingPulse(){
+        print("start pulse")
+        let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        glow.fromValue = 0.0
+        glow.toValue = 0.4
+        glow.duration = 0.7;
+        glow.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        glow.repeatCount = .infinity;
+        glow.autoreverses = true
+        glowingOverlay.layer.add(glow, forKey: "throb")
+    }
+    
+    func stopGlowingPulse(){
+        
+        print("stop pulse")
+        CATransaction.begin()
+        let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
+        glow.toValue = 0.0
+        glow.duration = 0.7
+        glow.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        glow.fillMode = .forwards
+
+        CATransaction.setCompletionBlock {
+            self.glowingOverlay.layer.removeAnimation(forKey: "throb")
+            self.isPlaying = false
+        }
+        glowingOverlay.layer.add(glow, forKey: "stopGlow")
+        
+        CATransaction.commit()
+        
+        
+    }
+    
     func throbImage(_ view: UIView){
         let scale : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
         scale.fromValue = 1.0
@@ -134,9 +195,29 @@ class MelodyImage: UIImageView {
         })
     }
     
+    var glowTimer = Timer()
+    var isPlaying = false
     func playMelody(){
-//        Sound.sharedInstance.playPattern(number)
-        data?.audio?.playMelody()
+
+        if !isPlaying {
+            
+            isPlaying = true
+            glowTimer.invalidate()
+
+            print("playing audio")
+            data?.audio?.playMelody()
+            startGlowingPulse()
+
+            // Hardcoded timer value based on 80 bpm, 8 beats or 16 beats for final
+            var length = TimeInterval()
+            let bpmToSec = 60/tempo
+            type == .final ? (length = TimeInterval((bpmToSec)*16)-3) : (length = TimeInterval((bpmToSec)*8)-1)
+
+            print(length)
+
+            glowTimer = Timer.scheduledTimer(withTimeInterval: length, repeats: false, block:{_ in self.stopGlowingPulse()})
+            
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {

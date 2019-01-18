@@ -25,7 +25,7 @@
 		8654706B21EE847000D1F068 /* MusicSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654706A21EE847000D1F068 /* MusicSymbol.swift */; };
 		86621B2521CD776A0069157B /* waterDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 86621B2421CD776A0069157B /* waterDrop.png */; };
 		8665697121EFD0860086D432 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697021EFD0860086D432 /* Melody.swift */; };
-		8665697321EFDBDF0086D432 /* MelodyThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697221EFDBDF0086D432 /* MelodyThumbnail.swift */; };
+		8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697221EFDBDF0086D432 /* transparentMelody.swift */; };
 		8665697B21F060900086D432 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697A21F060900086D432 /* PlayButton.swift */; };
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
@@ -228,7 +228,7 @@
 		8654706A21EE847000D1F068 /* MusicSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSymbol.swift; sourceTree = "<group>"; };
 		86621B2421CD776A0069157B /* waterDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterDrop.png; sourceTree = "<group>"; };
 		8665697021EFD0860086D432 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
-		8665697221EFDBDF0086D432 /* MelodyThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyThumbnail.swift; sourceTree = "<group>"; };
+		8665697221EFDBDF0086D432 /* transparentMelody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transparentMelody.swift; sourceTree = "<group>"; };
 		8665697A21F060900086D432 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
@@ -466,7 +466,7 @@
 				8654702921ED209E00D1F068 /* ArrangingScene.swift */,
 				86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */,
 				8654706221EE7F1300D1F068 /* MelodySlots.swift */,
-				8665697221EFDBDF0086D432 /* MelodyThumbnail.swift */,
+				8665697221EFDBDF0086D432 /* transparentMelody.swift */,
 				8665697A21F060900086D432 /* PlayButton.swift */,
 			);
 			path = "Arranging Scene";
@@ -572,8 +572,8 @@
 				8698D85721BF400000ADED35 /* Sound.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
 				8665697021EFD0860086D432 /* Melody.swift */,
-				86ED757721F1263C0066E2D8 /* MelodyAudio.swift */,
 				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
+				86ED757721F1263C0066E2D8 /* MelodyAudio.swift */,
 				86F8AB7D21DD5AD400BED768 /* Label.swift */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86F8AB8521DDE70100BED768 /* Catching Melodies Scene */,
@@ -967,7 +967,7 @@
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86ED757821F1263C0066E2D8 /* MelodyAudio.swift in Sources */,
-				8665697321EFDBDF0086D432 /* MelodyThumbnail.swift in Sources */,
+				8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */,
 				8665697B21F060900086D432 /* PlayButton.swift in Sources */,
 				86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */,

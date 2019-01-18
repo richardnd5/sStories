@@ -2,6 +2,13 @@ import UIKit
 
 class ArrangingScene: UIView {
     
+    enum State {
+        case arranging
+        case arrangementCompleted
+    }
+    
+    var sceneState = State.arranging
+    
     var songSlots = MelodySlots()
     var melodyImageArray = [MelodyImage]()
     
@@ -11,6 +18,9 @@ class ArrangingScene: UIView {
     var playButton : PlayButton?
     var instructionLabel: Label?
     var background: ArrangingBackground?
+    
+    weak var delegate : SceneDelegate?
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +36,9 @@ class ArrangingScene: UIView {
         changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {
             self.generateCollectedMelodies()
         })
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
+        addGestureRecognizer(tap)
     }
     
     func setupBackgroundImage(){
@@ -40,7 +53,7 @@ class ArrangingScene: UIView {
         let height = frame.height/20
 //        let x = CGFloat(0)
         let y = frame.height/60
-        instructionLabel = Label(frame: CGRect.zero, words: "Drag the melodies to their correct spots!", fontSize: height)
+        instructionLabel = Label(frame: CGRect.zero, words: "Time to arrange the melodies! Drag the melodies to their correct spots.", fontSize: height)
         addSubview(instructionLabel!)
         
         let safe = safeAreaLayoutGuide
@@ -151,7 +164,8 @@ class ArrangingScene: UIView {
                         Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
                         Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
                         createPlayButton()
-                        
+                        instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
+                        sceneState = .arrangementCompleted
                         // Make the page turn indicator appear!!!
                     }
                 }
@@ -162,13 +176,44 @@ class ArrangingScene: UIView {
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
         let view = sender.view as! MelodyImage
-//        Sound.sharedInstance.playPattern(view.number)
-        view.data?.audio?.playMelody()
+        view.playMelody()
     }
     
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
         print("time to play the sound.")
         Sound.sharedInstance.playSequencer()
+    }
+    
+    @objc func handleMainTap(_ sender: UITapGestureRecognizer){
+        print("")
+        if sceneState == .arrangementCompleted {
+        delegate?.returnToStory()
+        }
+    }
+    
+    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
+        
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                view.alpha = opacity
+        },
+            completion: {
+                _ in
+                
+                completion()
+        })
+    }
+    
+    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
+        
+        fadeTo(view: self, time: 1.0, opacity: 0.0, {
+            self.removeFromSuperview()
+            completion()
+            
+        })
     }
     
     required init?(coder aDecoder: NSCoder) {

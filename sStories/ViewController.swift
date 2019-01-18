@@ -27,9 +27,9 @@ class ViewController: UIViewController, SceneDelegate {
     var currentState = AppScene.story
     
     var switchToCatchingMelodiesScene = 5
-    var switchToArrangingScene = 0
+//    var switchToArrangingScene = 0
     
-//    var switchToArrangingScene = 9
+    var switchToArrangingScene = 9
 //    var switchToCatchingMelodiesScene = 0
     
     var page : PageView?
@@ -98,13 +98,22 @@ class ViewController: UIViewController, SceneDelegate {
     func returnToStory(){
         print("it's been tapped. Going back to story.")
 //        Sound.sharedInstance.playTurnUpSound()
-        
+        if currentState == .fishing {
         catchingMelody!.fadeOutAndRemove(completion: {
             self.currentState = .story
             self.currentPage+=1
             self.tempStoryLine = 0
             self.addPage()
         })
+        } else if currentState == .arranging {
+            arrangingScene!.fadeOutAndRemove(completion: {
+//                self.currentPage = 9 // COMMENT OUT AFTER TESTING
+                self.currentState = .story
+                self.currentPage+=1
+                self.tempStoryLine = 0
+                self.addPage()
+            })
+        }
     }
     
     func addPage(){
@@ -112,19 +121,25 @@ class ViewController: UIViewController, SceneDelegate {
         if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
-            
+            let safe = view.safeAreaLayoutGuide
+            catchingMelody?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             catchingMelody?.delegate = self
-            
             currentState = .fishing
+            
         } else if currentPage == switchToArrangingScene {
             arrangingScene = ArrangingScene(frame: view.frame)
             view.addSubview(arrangingScene!)
             let safe = view.safeAreaLayoutGuide
-            arrangingScene?.anchor(top: safe.topAnchor, leading: view.leadingAnchor, trailing: view.trailingAnchor, bottom: safe.bottomAnchor)
+            arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+            arrangingScene?.delegate = self
             currentState = .arranging
+
         } else {
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)
+            let safe = view.safeAreaLayoutGuide
+            page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+            
         }
     }
     

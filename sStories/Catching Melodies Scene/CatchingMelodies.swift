@@ -22,7 +22,7 @@ class CatchingMelodies: UIView {
     var throwbackLabel : Label?
     var instructionLabel: Label?
 
-    var appState = State.fishing
+    var sceneState = State.fishing
     
     weak var delegate : SceneDelegate?
     
@@ -161,7 +161,7 @@ class CatchingMelodies: UIView {
         melodyImage?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
-                self.appState = .fishing
+                self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
                 self.instructionLabel?.changeText(to: "Let's keep fishing!")
             })
@@ -169,7 +169,7 @@ class CatchingMelodies: UIView {
     }
     
     func fishingDone(){
-        appState = .fishingDone
+        sceneState = .fishingDone
         melodyImage?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
@@ -214,7 +214,7 @@ class CatchingMelodies: UIView {
         
         // schedule a timer to trigger a melody bite in the future
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
-            self.appState = .fishOnTheLine
+            self.sceneState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
 //            self.instructionLabel?.text = "Ooh! A Bite! Tap to reel it in!"
             self.instructionLabel?.changeText(to: "Ooh! A Bite! Tap to reel it in!")
@@ -223,7 +223,7 @@ class CatchingMelodies: UIView {
 
     func decideWhatToDoWithTheMelody(){
         
-        appState = .catchOrThrowBack
+        sceneState = .catchOrThrowBack
         
         fishingPole?.pullPoleOut({
             
@@ -289,9 +289,9 @@ class CatchingMelodies: UIView {
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
         
 
-        if appState == .fishOnTheLine {
+        if sceneState == .fishOnTheLine {
             decideWhatToDoWithTheMelody()
-        } else if appState == .fishingDone {
+        } else if sceneState == .fishingDone {
             delegate?.returnToStory()
         }
         

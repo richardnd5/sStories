@@ -27,4 +27,6 @@ let pages = [
     Page(imageName: "Pond", storyText: Array(storyline[20...22])),
 ]
 
+let tempo = 80.0
+
 

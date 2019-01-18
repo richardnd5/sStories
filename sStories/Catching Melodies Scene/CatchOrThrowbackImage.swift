@@ -9,10 +9,10 @@ class CatchOrThrowbackImage: UIImageView {
     init(frame: CGRect, imageName: String) {
         super.init(frame: frame)
         self.imageName = imageName
-        setupNote()
+        setupImage()
     }
     
-    func setupNote(){
+    func setupImage(){
         
         // Set up image
         let imageURL = Bundle.main.resourceURL?.appendingPathComponent("\(imageName).png")
@@ -20,7 +20,7 @@ class CatchOrThrowbackImage: UIImageView {
         image = noteImage
 
         contentMode = .scaleAspectFit
-        layer.zPosition = 10
+        layer.zPosition = 1
         layer.opacity = 0.0
         isUserInteractionEnabled = false
 

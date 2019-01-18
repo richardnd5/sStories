@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MelodyThumbnail: UIImageView {
+class transparentMelody: UIImageView {
     
     var noteImage = UIImage()
     var maskLayer = CAGradientLayer()

@@ -8,7 +8,7 @@ class Sound {
     private var reverb = AKReverb()
     private var sequencer = AKSequencer()
     private var patternArray = [MelodyAudio]()
-    private var currentTempo = 80.0
+    
     
     func setup(){
         mixer = AKMixer()
@@ -17,14 +17,7 @@ class Sound {
         AudioKit.output = reverb
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
     }
-    
-//    func loadMelodyAudioIntoAudioArray(_ melodyArray: [Melody]){
-//        for mel in melodyArray {
-//            let melodyAudio = MelodyAudio(number: mel.number)
-//            patternArray.append(melodyAudio)
-//        }
-//    }
-    
+
     func loadCollectedMelodies(_ melodyArray: [Melody]){
         for i in 0...collectedMelodies.count-1{
           let melAudio = collectedMelodies[i].audio
@@ -39,7 +32,7 @@ class Sound {
     
     private func setupSequencerTracks(){
         
-        sequencer.setTempo(currentTempo)
+        sequencer.setTempo(tempo)
         
         for i in 0...patternArray.count-1 {
             let melody = patternArray[i]
