@@ -76,12 +76,20 @@ class ViewController: UIViewController, SceneDelegate {
 
     
     func addPageTurner(){
+        
+
+        
         let width = view.frame.width/18
         let height = view.frame.height
-        let x = view.frame.width-width
+        var x = view.frame.width-width
         let y = CGFloat(0)
-        pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height))
         
+        if DeviceType.hasNotch {
+            print("This executes on all phones with a notch")
+           x -= 44
+        }
+        
+        pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height))
         view.addSubview(pageTurner!)
     }
     

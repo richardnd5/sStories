@@ -41,14 +41,18 @@ class PageTurner: UIView {
         let backwardsArray = lineContainer.reversed()
         backwardsArray.forEach { (view) in
             print(view.frame.midY)
-//            let range = ClosedRange<view.frame.midY>
+            let range = (view.frame.midY-4)...(view.frame.midY+4)
+            noteLocationArray.append(range)
+        }
+        noteLocationArray.forEach { (range) in
+            print(range)
         }
         
     }
     
     func makeWholeNote(){
-        let width = frame.width/1.5
-        let height = frame.width/1.5
+        let width = frame.width/1.25
+        let height = frame.width/1.25
         let x = frame.width/2-width/2
         let y = frame.height-height*2
         note = WholeNote(frame: CGRect(x: x, y: y, width: width, height: height))
@@ -60,8 +64,8 @@ class PageTurner: UIView {
     }
     
     func makeNoteDestinationSlot(){
-        let width = frame.width/1.5
-        let height = frame.width/1.5
+        let width = frame.width/1.25
+        let height = frame.width/1.25
         let x = frame.width/2-width/2
         let y = lineContainer[8].frame.origin.y-height/2 // lineContainer index 8 is line "D" in the top staff
         noteDestinationSlot = WholeNote(frame: CGRect(x: x, y: y, width: width, height: height))
@@ -73,12 +77,81 @@ class PageTurner: UIView {
     
     var previousPlayedNote : Int!
     func playNoteAsItPasses(_ point: CGFloat){
+        
+        if noteLocationArray.count-1 == 32 {
+        
         switch point{
+        case noteLocationArray[0]:
+            print("A1")
+        case noteLocationArray[1]:
+            print("B1")
+        case noteLocationArray[2]:
+            print("C2")
+        case noteLocationArray[3]:
+            print("D2")
+        case noteLocationArray[4]:
+            print("E2")
+        case noteLocationArray[5]:
+            print("F2")
+        case noteLocationArray[6]:
+            print("G2")
+        case noteLocationArray[7]:
+            print("A2")
+        case noteLocationArray[8]:
+            print("B2")
+        case noteLocationArray[9]:
+            print("C3")
+        case noteLocationArray[10]:
+            print("D3")
+        case noteLocationArray[11]:
+            print("E3")
+        case noteLocationArray[12]:
+            print("F3")
+        case noteLocationArray[13]:
+            print("G3")
+        case noteLocationArray[14]:
+            print("A3")
+        case noteLocationArray[15]:
+            print("B3")
+        case noteLocationArray[16]:
+            print("C4")
+        case noteLocationArray[17]:
+            print("D4")
+        case noteLocationArray[18]:
+            print("E4")
+        case noteLocationArray[19]:
+            print("F4")
+        case noteLocationArray[20]:
+            print("G4")
+        case noteLocationArray[21]:
+            print("A4")
+        case noteLocationArray[22]:
+            print("B4")
+        case noteLocationArray[23]:
+            print("C5")
+        case noteLocationArray[24]:
+            print("D5")
+        case noteLocationArray[25]:
+            print("E5")
+        case noteLocationArray[26]:
+            print("F5")
+        case noteLocationArray[27]:
+            print("G5")
+        case noteLocationArray[28]:
+            print("A5")
+        case noteLocationArray[29]:
+            print("B5")
+        case noteLocationArray[30]:
+            print("C6")
+        case noteLocationArray[31]:
+            print("D6")
+        case noteLocationArray[32]:
+            print("E6")
             
         default:
             return
         }
-        
+        }
         
     }
     
