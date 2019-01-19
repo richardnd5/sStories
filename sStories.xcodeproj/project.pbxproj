@@ -479,6 +479,15 @@
 			path = "Arranging Scene";
 			sourceTree = "<group>";
 		};
+		866EA65821F2E8CB00B28BA6 /* PageTurner */ = {
+			isa = PBXGroup;
+			children = (
+				866EA64E21F282B900B28BA6 /* PageTurner.swift */,
+				866EA65421F288CC00B28BA6 /* WholeNote.swift */,
+			);
+			path = PageTurner;
+			sourceTree = "<group>";
+		};
 		8679A3EF21E1CE7600E12539 /* Melody Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,8 +591,7 @@
 				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				86ED757721F1263C0066E2D8 /* MelodyAudio.swift */,
 				86F8AB7D21DD5AD400BED768 /* Label.swift */,
-				866EA64E21F282B900B28BA6 /* PageTurner.swift */,
-				866EA65421F288CC00B28BA6 /* WholeNote.swift */,
+				866EA65821F2E8CB00B28BA6 /* PageTurner */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86F8AB8521DDE70100BED768 /* Catching Melodies Scene */,
 				8654702F21ED2D8000D1F068 /* Arranging Scene */,

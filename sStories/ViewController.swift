@@ -47,9 +47,33 @@ class ViewController: UIViewController, SceneDelegate {
         super.viewDidLoad()
         
 //        fillSackWithMelodies()
+        addPageTurner()
         addPage()
-//        addPageTurner()
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tap)
+
     }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer){
+        print("main view touched")
+        if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+            page?.nextStoryLine()
+            tempStoryLine+=1
+            //            Sound.sharedInstance.playTouchUpSound()
+            
+        } else if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
+            //            Sound.sharedInstance.playTurnUpSound()
+            
+            page?.fadeOutAndRemove(completion: {
+                self.currentPage+=1
+                self.tempStoryLine = 0
+                self.addPage()
+            })
+        }
+    }
+    
+
     
     func addPageTurner(){
         let width = view.frame.width/18
@@ -66,7 +90,6 @@ class ViewController: UIViewController, SceneDelegate {
         for i in 0...5 {
             
             var whichMelodyType = MelodyType.begin
-            
             switch i {
             case 0:
                 whichMelodyType = MelodyType.begin
@@ -87,24 +110,6 @@ class ViewController: UIViewController, SceneDelegate {
             let mel = Melody(type: whichMelodyType)
             mel.slotPosition = i
             collectedMelodies.append(mel)
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("main view touched")
-        if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-            page?.nextStoryLine()
-            tempStoryLine+=1
-//            Sound.sharedInstance.playTouchUpSound()
-            
-        } else if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
-//            Sound.sharedInstance.playTurnUpSound()
-            
-            page?.fadeOutAndRemove(completion: {
-                self.currentPage+=1
-                self.tempStoryLine = 0
-                self.addPage()
-            })
         }
     }
     
@@ -152,6 +157,8 @@ class ViewController: UIViewController, SceneDelegate {
             view.addSubview(page!)
             let safe = view.safeAreaLayoutGuide
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+            
+            view.bringSubviewToFront(pageTurner!)
             
         }
     }

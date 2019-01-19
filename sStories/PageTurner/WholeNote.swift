@@ -47,7 +47,7 @@ class WholeNote: UIImageView {
         })
     }
     
-    func moveViewTo(_ point: CGPoint, time: Double){
+    func moveViewTo(_ point: CGPoint, time: Double, _ completion: @escaping () ->()){
         UIView.animate(
             withDuration: time,
             delay: 0,
@@ -58,6 +58,7 @@ class WholeNote: UIImageView {
         },
             completion: {
                 _ in
+                completion()
         })
     }
     
