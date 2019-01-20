@@ -33,7 +33,6 @@ class MiniNote: UIImageView {
         let randX = CGFloat.random(in: range)
         let randY = CGFloat.random(in: range)
         let time = 1.0
-        print(randX,randY)
         
         let fromPoint = CGPoint(x: frame.midX, y: frame.midY)
         let toPoint = CGPoint(x: frame.midX-randX, y: frame.midY-randY)

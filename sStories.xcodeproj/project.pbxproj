@@ -22,7 +22,6 @@
 		8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654706221EE7F1300D1F068 /* MelodySlots.swift */; };
 		8654706521EE824300D1F068 /* trebleClef.png in Resources */ = {isa = PBXBuildFile; fileRef = 8654706421EE824200D1F068 /* trebleClef.png */; };
 		8654706721EE82CA00D1F068 /* doubleBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8654706621EE82CA00D1F068 /* doubleBar.png */; };
-		8654706B21EE847000D1F068 /* MusicSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654706A21EE847000D1F068 /* MusicSymbol.swift */; };
 		86621B2521CD776A0069157B /* waterDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 86621B2421CD776A0069157B /* waterDrop.png */; };
 		8665697121EFD0860086D432 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697021EFD0860086D432 /* Melody.swift */; };
 		8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697221EFDBDF0086D432 /* transparentMelody.swift */; };
@@ -242,7 +241,6 @@
 		8654706221EE7F1300D1F068 /* MelodySlots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodySlots.swift; sourceTree = "<group>"; };
 		8654706421EE824200D1F068 /* trebleClef.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trebleClef.png; sourceTree = "<group>"; };
 		8654706621EE82CA00D1F068 /* doubleBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doubleBar.png; sourceTree = "<group>"; };
-		8654706A21EE847000D1F068 /* MusicSymbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicSymbol.swift; sourceTree = "<group>"; };
 		86621B2421CD776A0069157B /* waterDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterDrop.png; sourceTree = "<group>"; };
 		8665697021EFD0860086D432 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
 		8665697221EFDBDF0086D432 /* transparentMelody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transparentMelody.swift; sourceTree = "<group>"; };
@@ -641,7 +639,6 @@
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,
 				866EA6F221F4384D00B28BA6 /* 8thThumb.png */,
 				866EA6F021F42C7E00B28BA6 /* arrow.png */,
-				8654706A21EE847000D1F068 /* MusicSymbol.swift */,
 				86ED757B21F126770066E2D8 /* pianoMelodies */,
 				8679A3EF21E1CE7600E12539 /* Melody Images */,
 				860DE93121C2072F00A7370D /* Sounds */,
@@ -1056,7 +1053,6 @@
 				866EA6F521F438DC00B28BA6 /* MiniNote.swift in Sources */,
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
 				866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */,
-				8654706B21EE847000D1F068 /* MusicSymbol.swift in Sources */,
 				866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */,
 				86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */,
 				86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */,

@@ -271,9 +271,6 @@ class CatchingMelodies: UIView {
                     self.fishingDone()
                     // If the sack is full, store the melodies globally
                     sackContents!.addMelodiesToCollectedMelodyArray()
-                    collectedMelodies.forEach { (mel) in
-                        print(mel.type)
-                    }
                 } else {
                     self.goBackToFishing()
                 }

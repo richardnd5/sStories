@@ -20,12 +20,8 @@ class WholeNote: UIImageView {
         image = noteImage
         
         contentMode = .scaleAspectFit
-        layer.opacity = 0.0
         isUserInteractionEnabled = true
-        
-        changeOpacityOverTime(view: self, time: 2.0, opacity: 1.0) {
-            
-        }
+
         
     }
     

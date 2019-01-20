@@ -12,8 +12,8 @@ class ArrangingScene: UIView {
     var songSlots = MelodySlots()
     var melodyImageArray = [MelodyImage]()
     
-    var trebleClef : MusicSymbol?
-    var doubleBar : MusicSymbol?
+    
+    
     var sackContents = SackContents()
     var playButton : PlayButton?
     var instructionLabel: Label?
@@ -29,16 +29,15 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
-        
-        
+
         //fade the view in
         alpha = 0.0
         changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {
             self.generateCollectedMelodies()
         })
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
-        addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
+//        addGestureRecognizer(tap)
     }
     
     func setupBackgroundImage(){
@@ -160,13 +159,12 @@ class ArrangingScene: UIView {
                     view.inCorrectSlot = true
                     
                     if songFullyArranged() {
-                        print("We're ready for the play button!")
                         Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
                         Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
                         createPlayButton()
                         instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
                         sceneState = .arrangementCompleted
-                        // Make the page turn indicator appear!!!
+                        delegate?.returnToStory()
                     }
                 }
             }
@@ -180,16 +178,15 @@ class ArrangingScene: UIView {
     }
     
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
-        print("time to play the sound.")
         Sound.sharedInstance.playSequencer()
     }
     
-    @objc func handleMainTap(_ sender: UITapGestureRecognizer){
-        print("")
-        if sceneState == .arrangementCompleted {
-        delegate?.returnToStory()
-        }
-    }
+//    @objc func handleMainTap(_ sender: UITapGestureRecognizer){
+//        print("")
+//        if sceneState == .arrangementCompleted {
+//        delegate?.returnToStory()
+//        }
+//    }
     
     func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
         

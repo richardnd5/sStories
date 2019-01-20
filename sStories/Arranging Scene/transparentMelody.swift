@@ -45,7 +45,6 @@ class transparentMelody: UIImageView {
     
     func getTypeNameBasedOnNumber(number: Int) -> String {
         var string = String()
-        print("ran the get type")
         
         switch number {
         case 0:

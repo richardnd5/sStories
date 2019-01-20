@@ -14,7 +14,6 @@ class Sound {
     
     func setup(){
         
-        print("running sound setup")
         mixer = AKMixer()
         mixer.volume = 2.0
         reverb = AKReverb(mixer, dryWetMix: 0.5)

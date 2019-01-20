@@ -106,7 +106,6 @@ class MelodyImage: UIImageView {
     }
     
     func startGlowingPulse(){
-        print("start pulse")
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         glow.fromValue = 0.0
         glow.toValue = 0.4
@@ -119,7 +118,6 @@ class MelodyImage: UIImageView {
     
     func stopGlowingPulse(){
         
-        print("stop pulse")
         CATransaction.begin()
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         glow.toValue = 0.0
@@ -189,7 +187,6 @@ class MelodyImage: UIImageView {
             isPlaying = true
             glowTimer.invalidate()
 
-            print("playing audio")
             data?.audio?.playMelody()
             startGlowingPulse()
 
@@ -197,8 +194,6 @@ class MelodyImage: UIImageView {
             var length = TimeInterval()
             let bpmToSec = 60/tempo
             type == .final ? (length = TimeInterval((bpmToSec)*16)-3) : (length = TimeInterval((bpmToSec)*8)-1)
-
-            print(length)
 
             glowTimer = Timer.scheduledTimer(withTimeInterval: length, repeats: false, block:{_ in self.stopGlowingPulse()})
             

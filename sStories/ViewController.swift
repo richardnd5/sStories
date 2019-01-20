@@ -13,6 +13,7 @@ import UIKit
 
 protocol SceneDelegate : class {
     func returnToStory()
+    func nextPage()
 }
 
 var collectedMelodies = [Melody]() // This is global.
@@ -41,13 +42,13 @@ class ViewController: UIViewController, SceneDelegate {
     var currentPage = 0
     var tempStoryLine = 0
     
-//    var ourMelody : MelodyAudio?
+    var pageTurnerVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        fillSackWithMelodies()
-        addPageTurner()
+        fillSackWithMelodies()
+        
         addPage()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -56,21 +57,16 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
-        print("main view touched")
         if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
             page?.nextStoryLine()
             tempStoryLine+=1
-            //            Sound.sharedInstance.playTouchUpSound()
-            
-        } else if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
-            //            Sound.sharedInstance.playTurnUpSound()
-            
-            page?.fadeOutAndRemove(completion: {
-                self.currentPage+=1
-                self.tempStoryLine = 0
-                self.addPage()
-            })
+        } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+            if !pageTurnerVisible {
+                pageTurnerVisible = true
+                addPageTurner()
+            }
         }
+
     }
     
     func addPageTurner(){
@@ -86,55 +82,41 @@ class ViewController: UIViewController, SceneDelegate {
         
         pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height))
         view.addSubview(pageTurner!)
+        pageTurner?.delegate = self
+        view.bringSubviewToFront(pageTurner!)
     }
     
-
-    func fillSackWithMelodies(){
-        for i in 0...5 {
-            
-            var whichMelodyType = MelodyType.begin
-            switch i {
-            case 0:
-                whichMelodyType = MelodyType.begin
-            case 1:
-                whichMelodyType = MelodyType.middle
-            case 2:
-                whichMelodyType = MelodyType.tonic
-            case 3:
-                whichMelodyType = MelodyType.dominant
-            case 4:
-                whichMelodyType = MelodyType.ending
-            case 5:
-                whichMelodyType = MelodyType.final
-            default:
-                whichMelodyType = MelodyType.begin
-            }
-            
-            let mel = Melody(type: whichMelodyType)
-            mel.slotPosition = i
-            collectedMelodies.append(mel)
-        }
-    }
-    
-    func returnToStory(){
-        print("it's been tapped. Going back to story.")
-//        Sound.sharedInstance.playTurnUpSound()
-        if currentState == .fishing {
-        catchingMelody!.fadeOutAndRemove(completion: {
-            self.currentState = .story
-            self.currentPage+=1
-            self.tempStoryLine = 0
-            self.addPage()
-        })
-        } else if currentState == .arranging {
-            arrangingScene!.fadeOutAndRemove(completion: {
-//                self.currentPage = 9 // COMMENT OUT AFTER TESTING
+    func nextPage() {
+        if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
+            page?.fadeOutAndRemove(completion: {
+                self.currentPage+=1
+                self.tempStoryLine = 0
+                self.addPage()
+                self.pageTurnerVisible = false
+            })
+        } else if currentState == .fishing {
+            catchingMelody!.fadeOutAndRemove(completion: {
                 self.currentState = .story
                 self.currentPage+=1
                 self.tempStoryLine = 0
                 self.addPage()
+                self.pageTurnerVisible = false
+            })
+        } else if currentState == .arranging {
+            arrangingScene!.fadeOutAndRemove(completion: {
+                self.currentPage = 9 // COMMENT OUT AFTER TESTING
+                self.currentState = .story
+                self.currentPage+=1
+                self.tempStoryLine = 0
+                self.addPage()
+                self.pageTurnerVisible = false
             })
         }
+    }
+    
+    func returnToStory(){
+        addPageTurner()
+        view.bringSubviewToFront(pageTurner!)
     }
     
     func addPage(){
@@ -160,14 +142,9 @@ class ViewController: UIViewController, SceneDelegate {
             let safe = view.safeAreaLayoutGuide
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
         }
-        view.bringSubviewToFront(pageTurner!)
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touch began")
         
     }
-    
+
     override var prefersStatusBarHidden: Bool{
         return true
     }

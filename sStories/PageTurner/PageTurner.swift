@@ -9,6 +9,8 @@ class PageTurner: UIView {
     var ourFrame : CGRect!
     var noteLocationArray = [ClosedRange<CGFloat>]()
     
+    weak var delegate : SceneDelegate?
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -22,6 +24,10 @@ class PageTurner: UIView {
         makeArrow()
         makeNoteDestinationSlot()
         fillNoteLocationArray()
+        
+        //fade the view in
+        alpha = 0.0
+        changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {})
 
     }
     
@@ -165,6 +171,7 @@ class PageTurner: UIView {
             sender.state = .ended
             triggerFinishAnimation(view: view)
             fadeOutAndRemove()
+            delegate!.nextPage()
         }
     }
     

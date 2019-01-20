@@ -16,7 +16,7 @@ class MelodyAudio {
         do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
         sampler.enableMIDI()
         sampler.name = "\(number)"
-        
+        sampler.volume = 1.3
         Sound.sharedInstance.mixer.connect(input: sampler)
     }
     
@@ -33,13 +33,5 @@ class MelodyAudio {
     
     func playMelody(){
         do { try sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the melody. Why? Here:  \(error)") }
-    }
-    
-    deinit {
-        // disconnect melody audio from mixer.
-        print("deinit \(number)")
-        
-        //        sampler.disconnectOutput(from: Sound.sharedInstance.mixer)
-        
     }
 }

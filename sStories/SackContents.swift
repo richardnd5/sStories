@@ -63,10 +63,6 @@ class SackContents: UIView {
             if view.data?.slotPosition == melodiesInSack[i].slotPosition {
                 melodiesInSack.remove(at: i)
                 
-                for melody in melodiesInSack {
-//                    print("mel num: \(melody.number) slot pos: \(melody.slotPosition) type: \(melody.type)")
-                }
-                
                 return // return so it doesn't continue the for loop
             }
         }

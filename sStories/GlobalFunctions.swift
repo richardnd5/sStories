@@ -57,6 +57,33 @@ func determineWhatImageToShowForMelody(type: MelodyType) -> String{
     return string
 }
 
+func fillSackWithMelodies(){
+    for i in 0...5 {
+        
+        var whichMelodyType = MelodyType.begin
+        switch i {
+        case 0:
+            whichMelodyType = MelodyType.begin
+        case 1:
+            whichMelodyType = MelodyType.middle
+        case 2:
+            whichMelodyType = MelodyType.tonic
+        case 3:
+            whichMelodyType = MelodyType.dominant
+        case 4:
+            whichMelodyType = MelodyType.ending
+        case 5:
+            whichMelodyType = MelodyType.final
+        default:
+            whichMelodyType = MelodyType.begin
+        }
+        
+        let mel = Melody(type: whichMelodyType)
+        mel.slotPosition = i
+        collectedMelodies.append(mel)
+    }
+}
+
 extension UIImage {
     func setOpacity(alpha: CGFloat) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
