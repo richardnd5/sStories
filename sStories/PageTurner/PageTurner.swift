@@ -5,6 +5,7 @@ class PageTurner: UIView {
     var lineContainer = [UIView]()
     var note : WholeNote!
     var noteDestinationSlot : WholeNote!
+    var arrow : Arrow!
     var ourFrame : CGRect!
     var noteLocationArray = [ClosedRange<CGFloat>]()
     
@@ -18,6 +19,7 @@ class PageTurner: UIView {
         isUserInteractionEnabled = true
         makeLines()
         makeWholeNote()
+        makeArrow()
         makeNoteDestinationSlot()
         fillNoteLocationArray()
 
@@ -40,14 +42,19 @@ class PageTurner: UIView {
     func fillNoteLocationArray(){
         let backwardsArray = lineContainer.reversed()
         backwardsArray.forEach { (view) in
-            print(view.frame.midY)
-            let range = (view.frame.midY-4)...(view.frame.midY+4)
+            let range = (view.frame.midY-20)...(view.frame.midY+20)
             noteLocationArray.append(range)
         }
-        noteLocationArray.forEach { (range) in
-            print(range)
-        }
-        
+    }
+    
+    func makeArrow(){
+        let width = frame.width/2
+        let height = frame.width/2
+        let x = frame.width/2-width/2
+        let y = note.frame.minY-width
+        arrow = Arrow(frame: CGRect(x: x, y: y, width: width, height: height))
+        addSubview(arrow!)
+        arrow?.layer.zPosition = 1
     }
     
     func makeWholeNote(){
@@ -76,77 +83,35 @@ class PageTurner: UIView {
     }
     
     var previousPlayedNote : Int!
-    func playNoteAsItPasses(_ point: CGFloat){
+    func checkWhichNoteToPlay(_ point: CGFloat){
         
         if noteLocationArray.count-1 == 32 {
         
         switch point{
-        case noteLocationArray[0]:
-            print("A1")
-        case noteLocationArray[1]:
-            print("B1")
-        case noteLocationArray[2]:
-            print("C2")
-        case noteLocationArray[3]:
-            print("D2")
-        case noteLocationArray[4]:
-            print("E2")
-        case noteLocationArray[5]:
-            print("F2")
+
         case noteLocationArray[6]:
-            print("G2")
-        case noteLocationArray[7]:
-            print("A2")
-        case noteLocationArray[8]:
-            print("B2")
-        case noteLocationArray[9]:
-            print("C3")
+            playNoteIfNotLastNotePlayed(0)
+
         case noteLocationArray[10]:
-            print("D3")
-        case noteLocationArray[11]:
-            print("E3")
-        case noteLocationArray[12]:
-            print("F3")
-        case noteLocationArray[13]:
-            print("G3")
+            playNoteIfNotLastNotePlayed(1)
+
         case noteLocationArray[14]:
-            print("A3")
+            playNoteIfNotLastNotePlayed(2)
+            
         case noteLocationArray[15]:
-            print("B3")
-        case noteLocationArray[16]:
-            print("C4")
+            playNoteIfNotLastNotePlayed(3)
+
         case noteLocationArray[17]:
-            print("D4")
-        case noteLocationArray[18]:
-            print("E4")
-        case noteLocationArray[19]:
-            print("F4")
+            playNoteIfNotLastNotePlayed(4)
+
         case noteLocationArray[20]:
-            print("G4")
+            playNoteIfNotLastNotePlayed(5)
+            
         case noteLocationArray[21]:
-            print("A4")
-        case noteLocationArray[22]:
-            print("B4")
-        case noteLocationArray[23]:
-            print("C5")
+            playNoteIfNotLastNotePlayed(6)
+
         case noteLocationArray[24]:
-            print("D5")
-        case noteLocationArray[25]:
-            print("E5")
-        case noteLocationArray[26]:
-            print("F5")
-        case noteLocationArray[27]:
-            print("G5")
-        case noteLocationArray[28]:
-            print("A5")
-        case noteLocationArray[29]:
-            print("B5")
-        case noteLocationArray[30]:
-            print("C6")
-        case noteLocationArray[31]:
-            print("D6")
-        case noteLocationArray[32]:
-            print("E6")
+            playNoteIfNotLastNotePlayed(7)
             
         default:
             return
@@ -155,40 +120,58 @@ class PageTurner: UIView {
         
     }
     
+    func playNoteIfNotLastNotePlayed(_ noteNumber: Int){
+        let noteSlot = noteNumber
+        if previousPlayedNote != noteSlot {
+            Sound.sharedInstance.pageTurnSoundArray[noteSlot].playNote()
+            previousPlayedNote = noteSlot
+            note.makeNoteAppearFlyAwayAndFade()
+        }
+    }
+    
+    func triggerFinishAnimation(view: WholeNote){
+        let time = 0.3
+        let penultimatePlace = lineContainer[3].frame
+        let finalPlace = noteDestinationSlot?.frame.origin
+
+        
+        view.moveViewTo(CGPoint(x: (finalPlace?.x)!, y: penultimatePlace.minY), time: time, {
+
+            self.playNoteIfNotLastNotePlayed(7)
+                view.moveViewTo(finalPlace!, time: 0.2, {
+                    self.playNoteIfNotLastNotePlayed(8)
+                })
+        })
+    }
+    
     @objc func handleNotePan(_ sender: UIPanGestureRecognizer){
         
         let view = sender.view as! WholeNote
         
+        if view.frame.origin.y > noteDestinationSlot.frame.maxY {
+            
+            if sender.state == .began && arrow.isVisible {
+                arrow.fadeOutAndRemove()
+            }
+            
             let translation = sender.translation(in: self)
             sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
             sender.setTranslation(CGPoint.zero, in: self)
-        
-            if sender.state == .changed {
-                let yPos = sender.location(in: self).y
-                playNoteAsItPasses(yPos)
-            }
-            
-            if sender.state == .ended {
-
-                // check if the melody is in the correct spot.
-                let dragSpot = CGRect(x: 0, y: (noteDestinationSlot?.frame.origin.y)!, width: frame.width, height: (noteDestinationSlot?.frame.height)!)
-                
-                if dragSpot.contains(sender.location(in: self)){
-                    // This is the movement and lock to spot animation
-                    let time = 0.4
-                    let finalPlace = noteDestinationSlot?.frame.origin
-                    view.moveViewTo(CGPoint(x: (finalPlace?.x)!, y: lineContainer[1].frame.origin.y-((note?.frame.height)!/2)), time: time, {})
-                    view.scaleTo(scaleTo: 1.5, time: 0.5) {
-                        view.scaleTo(scaleTo: 1.0, time: 0.2, {})
-                        view.moveViewTo(finalPlace!, time: 0.2, {})
-//                        // fade out page turner
-//                        changeOpacityOverTime(view: self, time: 1.0, opacity: 0.0, {
-//                            self.isUserInteractionEnabled = false
-//                        })
-                    }
-                }
+            let yPos = view.frame.midY
+            checkWhichNoteToPlay(yPos)
+        } else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
+            sender.state = .ended
+            triggerFinishAnimation(view: view)
+            isUserInteractionEnabled = false
         }
     }
+    
+    func fadeOutAndRemove(){
+        changeOpacityOverTime(view: self, time: 1.0, opacity: 0.0) {
+            self.removeFromSuperview()
+        }
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

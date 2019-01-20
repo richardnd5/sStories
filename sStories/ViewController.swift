@@ -73,19 +73,14 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
-
-    
     func addPageTurner(){
-        
 
-        
-        let width = view.frame.width/18
+        let width = view.frame.width/12
         let height = view.frame.height
         var x = view.frame.width-width
         let y = CGFloat(0)
         
         if DeviceType.hasNotch {
-            print("This executes on all phones with a notch")
            x -= 44
         }
         
@@ -159,16 +154,18 @@ class ViewController: UIViewController, SceneDelegate {
             arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             arrangingScene?.delegate = self
             currentState = .arranging
-
         } else {
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)
             let safe = view.safeAreaLayoutGuide
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
-            
-            view.bringSubviewToFront(pageTurner!)
-            
         }
+        view.bringSubviewToFront(pageTurner!)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touch began")
+        
     }
     
     override var prefersStatusBarHidden: Bool{

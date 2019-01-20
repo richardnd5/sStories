@@ -1,29 +1,32 @@
 import UIKit
 
-class WholeNote: UIImageView {
+class Arrow: UIImageView {
     
     var noteImage = UIImage()
     var scaleSize : CGFloat = 1.0
-    
+    var isVisible = true
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupImage()
+        point()
     }
     
     func setupImage(){
         
         // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("wholeNote.png")
+        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("arrow.png")
         noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
+        
+        noteImage = noteImage.setOpacity(alpha: 0.3)!
         image = noteImage
         
-        contentMode = .scaleAspectFit
+        contentMode = .scaleToFill
         layer.opacity = 0.0
         isUserInteractionEnabled = true
         
-        changeOpacityOverTime(view: self, time: 2.0, opacity: 1.0) {
+        changeOpacityOverTime(view: self, time: 3.0, opacity: 1.0) {
             
         }
         
@@ -63,14 +66,7 @@ class WholeNote: UIImageView {
         })
     }
     
-    func fadeOutAndRemove(){
-        scaleTo(scaleTo: 0.0000001, time: 1.0) {
-            self.removeFromSuperview()
-        }
-    }
-    
     func point(){
-        
         let fromPoint = CGPoint(x: frame.midX, y: frame.midY)
         let toPoint = CGPoint(x: frame.midX, y: frame.midY-frame.height/4)
         
@@ -84,16 +80,11 @@ class WholeNote: UIImageView {
     }
     
     
-    
-    func makeNoteAppearFlyAwayAndFade(){
-        
-        let width = frame.width/1.25
-        let height = frame.width/1.25
-        let x = frame.width/2-width/2
-        let y = frame.height-height*2
-        let note = MiniNote(frame: CGRect(x: x, y: y, width: width, height: height))
-        addSubview(note)
-
+    func fadeOutAndRemove(){
+        isVisible = false
+        changeOpacityOverTime(view: self, time: 1.0, opacity: 0.0) {
+            self.removeFromSuperview()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -45,7 +45,7 @@ let storyline = [
     "The crowd sat silently in awe of how peaceful they felt after hearing the music.",
     
     """
-    The same curious child from earlier whispered, ”This music came from the pond at the top of the mountain?"
+    The same curious child from earlier whispered, "This music came from the pond at the top of the mountain?"
     """,
     
     "Templeton humbly nodded his head and smiled.",
