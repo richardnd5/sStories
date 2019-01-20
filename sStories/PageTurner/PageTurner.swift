@@ -52,16 +52,18 @@ class PageTurner: UIView {
         let height = frame.width/2
         let x = frame.width/2-width/2
         let y = note.frame.minY-width
+        
         arrow = Arrow(frame: CGRect(x: x, y: y, width: width, height: height))
         addSubview(arrow!)
         arrow?.layer.zPosition = 1
     }
     
     func makeWholeNote(){
-        let width = frame.width/1.25
-        let height = frame.width/1.25
+        let width = frame.width/1.5
+        let height = frame.width/1.5
         let x = frame.width/2-width/2
-        let y = frame.height-height*2
+        let y = lineContainer[28].frame.midY
+        
         note = WholeNote(frame: CGRect(x: x, y: y, width: width, height: height))
         addSubview(note!)
         note?.layer.zPosition = 2
@@ -71,8 +73,8 @@ class PageTurner: UIView {
     }
     
     func makeNoteDestinationSlot(){
-        let width = frame.width/1.25
-        let height = frame.width/1.25
+        let width = frame.width/1.5
+        let height = frame.width/1.5
         let x = frame.width/2-width/2
         let y = lineContainer[8].frame.origin.y-height/2 // lineContainer index 8 is line "D" in the top staff
         noteDestinationSlot = WholeNote(frame: CGRect(x: x, y: y, width: width, height: height))
@@ -162,7 +164,7 @@ class PageTurner: UIView {
         } else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
             sender.state = .ended
             triggerFinishAnimation(view: view)
-            isUserInteractionEnabled = false
+            fadeOutAndRemove()
         }
     }
     
