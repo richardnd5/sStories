@@ -11,6 +11,9 @@ class Sound {
     
     var pageTurnSoundArray = [PageTurnPianoPling]()
     
+    var callbacker: AKCallbackInstrument!
+
+    
     
     func setup(){
         
@@ -21,7 +24,19 @@ class Sound {
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()
+        createCallbacker()
         
+    }
+    
+    func createCallbacker(){
+        
+        callbacker = AKCallbackInstrument() { status, note, velocity in
+            if status == .noteOn {
+                print("worked")
+            }
+        }
+
+
     }
     
     func loadPageTurnSounds(){
@@ -55,6 +70,8 @@ class Sound {
             track?.setMIDIOutput(melody.sampler.midiIn)
             melody.trackNumber = i
         }
+        let seqTrack = sequencer.newTrack("callbacker")
+        seqTrack?.setMIDIOutput(callbacker.midiIn)
     }
     
     private func createSequencerPattern(){
@@ -70,12 +87,21 @@ class Sound {
                                     position: AKDuration(beats: i*8),
                                     duration: AKDuration(beats: 18))
         }
+        
+//        let midiURL = Bundle.main.resourceURL?.appendingPathComponent("midi0.mid")
+//        sequencer.addMIDIFileTracks(midiURL!, useExistingSequencerLength: true)
+        
+//        sequencer.tracks[sequencer.tracks.count-1].setMIDIOutput(callbacker.midiIn)
+        
+        
     }
     
     func playSequencer(){
         sequencer.rewind()
         sequencer.play()
     }
+    
+    
 
     func playPianoNote(_ note: Int){
         

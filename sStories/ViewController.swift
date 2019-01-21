@@ -1,14 +1,3 @@
-/*
- AppDelegate - check
- ViewController - check
- PageView - check
- StoryLine - check
- CatchMelodies - check
- ArrangeMelody
- Sound - check
- Haptics - check
- */
-
 import UIKit
 
 protocol SceneDelegate : class {
@@ -24,8 +13,12 @@ class ViewController: UIViewController, SceneDelegate {
         case story
         case fishing
         case arranging
+        case performing
     }
     var currentState = AppScene.story
+    
+    var currentPage = 0
+    private var tempStoryLine = 0
     
     var switchToCatchingMelodiesScene = 5
 //    var switchToArrangingScene = 0
@@ -33,21 +26,23 @@ class ViewController: UIViewController, SceneDelegate {
     var switchToArrangingScene = 9
 //    var switchToCatchingMelodiesScene = 0
     
+    var switchToPerformingScene = 11
+    
     var page : PageView?
     var catchingMelody : CatchingMelodies?
     var arrangingScene : ArrangingScene?
+    var performingScene: PerformingScene?
     
     var pageTurner : PageTurner?
     
-    var currentPage = 0
-    var tempStoryLine = 0
+
     
     var pageTurnerVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fillSackWithMelodies()
+//        fillSackWithMelodies()
         
         addPage()
         
@@ -104,7 +99,7 @@ class ViewController: UIViewController, SceneDelegate {
             })
         } else if currentState == .arranging {
             arrangingScene!.fadeOutAndRemove(completion: {
-                self.currentPage = 9 // COMMENT OUT AFTER TESTING
+//                self.currentPage = 9 // COMMENT OUT AFTER TESTING
                 self.currentState = .story
                 self.currentPage+=1
                 self.tempStoryLine = 0
@@ -125,7 +120,7 @@ class ViewController: UIViewController, SceneDelegate {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
             let safe = view.safeAreaLayoutGuide
-            catchingMelody?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+//            catchingMelody?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             catchingMelody?.delegate = self
             currentState = .fishing
             
@@ -133,9 +128,16 @@ class ViewController: UIViewController, SceneDelegate {
             arrangingScene = ArrangingScene(frame: view.frame)
             view.addSubview(arrangingScene!)
             let safe = view.safeAreaLayoutGuide
-            arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+//            arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             arrangingScene?.delegate = self
             currentState = .arranging
+        } else if currentPage == switchToPerformingScene {
+            performingScene = PerformingScene(frame: view.frame)
+            view.addSubview(performingScene!)
+            let safe = view.safeAreaLayoutGuide
+//            performingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+            performingScene?.delegate = self
+            currentState = .performing
         } else {
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)

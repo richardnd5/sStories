@@ -25,7 +25,9 @@ let pages = [
     Page(imageName: "ShowingCrowdSackOfMelodies", storyText: Array(storyline[10...11])),
     Page(imageName: "Town", storyText: Array(storyline[12...12])),
     Page(imageName: "Town", storyText: Array(storyline[12...12])), // this is a dummy slot to make space for the arrangement scene
-    Page(imageName: "Performance", storyText: Array(storyline[13...19])),
+    Page(imageName: "Performance", storyText: Array(storyline[13...14])),
+    Page(imageName: "Performance", storyText: Array(storyline[15...15])), // this is another dummy slot
+    Page(imageName: "Performance", storyText: Array(storyline[15...19])),
     Page(imageName: "Pond", storyText: Array(storyline[20...22])),
 ]
 

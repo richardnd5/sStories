@@ -103,6 +103,12 @@
 		8679A3EE21E1CE6F00E12539 /* melody21.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B721E1CE6E00E12539 /* melody21.png */; };
 		867C542621DF1E7B002E4255 /* SackContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C542521DF1E7B002E4255 /* SackContents.swift */; };
 		867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 867C542921DF2FE7002E4255 /* melodyThumbnail.png */; };
+		869027E121F58C8A00C3EF0C /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 869027E021F58C8900C3EF0C /* Performance.png */; };
+		869027E321F5939E00C3EF0C /* performanceScene.png in Resources */ = {isa = PBXBuildFile; fileRef = 869027E221F5939E00C3EF0C /* performanceScene.png */; };
+		869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E421F593B300C3EF0C /* PerformingScene.swift */; };
+		869027E721F593DD00C3EF0C /* PerformingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E621F593DD00C3EF0C /* PerformingBackground.swift */; };
+		869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */; };
+		869027EE21F59EEA00C3EF0C /* midi0.mid in Resources */ = {isa = PBXBuildFile; fileRef = 869027ED21F59EEA00C3EF0C /* midi0.mid */; };
 		8698D85621BF149700ADED35 /* StoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85521BF149700ADED35 /* StoryLine.swift */; };
 		8698D85921BF400000ADED35 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85721BF400000ADED35 /* Sound.swift */; };
 		8698D85A21BF400000ADED35 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85821BF400000ADED35 /* Haptics.swift */; };
@@ -124,7 +130,6 @@
 		86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF5921BB0A1000CB17F2 /* PageView.swift */; };
 		86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */; };
 		86E9F49A21BF82F500EE12DF /* ShowingCrowdSackOfMelodies.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */; };
-		86E9F49B21BF82F500EE12DF /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49321BF82F400EE12DF /* Performance.png */; };
 		86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49621BF82F400EE12DF /* Mountain.png */; };
 		86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */; };
 		86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49821BF82F500EE12DF /* SackOfMelodies.png */; };
@@ -322,6 +327,12 @@
 		8679A3B721E1CE6E00E12539 /* melody21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody21.png; sourceTree = "<group>"; };
 		867C542521DF1E7B002E4255 /* SackContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SackContents.swift; sourceTree = "<group>"; };
 		867C542921DF2FE7002E4255 /* melodyThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melodyThumbnail.png; sourceTree = "<group>"; };
+		869027E021F58C8900C3EF0C /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Performance.png; path = ../../../../../Desktop/Performance.png; sourceTree = "<group>"; };
+		869027E221F5939E00C3EF0C /* performanceScene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performanceScene.png; sourceTree = "<group>"; };
+		869027E421F593B300C3EF0C /* PerformingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformingScene.swift; sourceTree = "<group>"; };
+		869027E621F593DD00C3EF0C /* PerformingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformingBackground.swift; sourceTree = "<group>"; };
+		869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPerformingNote.swift; sourceTree = "<group>"; };
+		869027ED21F59EEA00C3EF0C /* midi0.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = midi0.mid; sourceTree = "<group>"; };
 		8698D85521BF149700ADED35 /* StoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLine.swift; sourceTree = "<group>"; };
 		8698D85721BF400000ADED35 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		8698D85821BF400000ADED35 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -349,7 +360,6 @@
 		86BBBF5921BB0A1000CB17F2 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
 		86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowingCrowdSackOfMelodies.png; sourceTree = "<group>"; };
-		86E9F49321BF82F400EE12DF /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Performance.png; sourceTree = "<group>"; };
 		86E9F49621BF82F400EE12DF /* Mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mountain.png; sourceTree = "<group>"; };
 		86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TalkingToCrowdAboutFishing.png; sourceTree = "<group>"; };
 		86E9F49821BF82F500EE12DF /* SackOfMelodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SackOfMelodies.png; sourceTree = "<group>"; };
@@ -466,11 +476,12 @@
 			children = (
 				86E9F49621BF82F400EE12DF /* Mountain.png */,
 				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
-				86E9F49321BF82F400EE12DF /* Performance.png */,
 				863DADF521D40D5400AFDD94 /* Note.png */,
 				8654705921EE70D400D1F068 /* begin.png */,
+				869027E221F5939E00C3EF0C /* performanceScene.png */,
 				8654705621EE70D300D1F068 /* dominant.png */,
 				86ED756D21F0FF550066E2D8 /* arrangingBackground.png */,
+				869027E021F58C8900C3EF0C /* Performance.png */,
 				866EA65221F2888F00B28BA6 /* wholeNote.png */,
 				86ED757321F120010066E2D8 /* playButton.png */,
 				8654705821EE70D400D1F068 /* ending.png */,
@@ -579,6 +590,16 @@
 			path = "Melody Images";
 			sourceTree = "<group>";
 		};
+		869027E821F5956C00C3EF0C /* Performing Scene */ = {
+			isa = PBXGroup;
+			children = (
+				869027E421F593B300C3EF0C /* PerformingScene.swift */,
+				869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */,
+				869027E621F593DD00C3EF0C /* PerformingBackground.swift */,
+			);
+			path = "Performing Scene";
+			sourceTree = "<group>";
+		};
 		8698D87421BF404C00ADED35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -626,7 +647,9 @@
 				8654702F21ED2D8000D1F068 /* Arranging Scene */,
 				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
+				869027E821F5956C00C3EF0C /* Performing Scene */,
 				866EA6D821F413CF00B28BA6 /* turnPiano0.mp3 */,
+				869027ED21F59EEA00C3EF0C /* midi0.mid */,
 				866EA6DA21F413CF00B28BA6 /* turnPiano1.mp3 */,
 				866EA6DE21F413CF00B28BA6 /* turnPiano2.mp3 */,
 				866EA6D921F413CF00B28BA6 /* turnPiano3.mp3 */,
@@ -850,7 +873,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				869027E121F58C8A00C3EF0C /* Performance.png in Resources */,
 				86ED75B321F126980066E2D8 /* melody0.mp3 in Resources */,
+				869027EE21F59EEA00C3EF0C /* midi0.mid in Resources */,
 				86ED75B421F126980066E2D8 /* melody1.mp3 in Resources */,
 				86ED75B521F126980066E2D8 /* melody10.mp3 in Resources */,
 				86ED75B621F126980066E2D8 /* melody11.mp3 in Resources */,
@@ -950,6 +975,7 @@
 				866EA6E321F413CF00B28BA6 /* turnPiano1.mp3 in Resources */,
 				8679A3BB21E1CE6F00E12539 /* melody50.png in Resources */,
 				8679A3C621E1CE6F00E12539 /* melody43.png in Resources */,
+				869027E321F5939E00C3EF0C /* performanceScene.png in Resources */,
 				8679A3BE21E1CE6F00E12539 /* melody22.png in Resources */,
 				8679A3CD21E1CE6F00E12539 /* melody52.png in Resources */,
 				8679A3BC21E1CE6F00E12539 /* melody7.png in Resources */,
@@ -997,7 +1023,6 @@
 				8679A3CC21E1CE6F00E12539 /* melody44.png in Resources */,
 				8679A3EA21E1CE6F00E12539 /* melody0.png in Resources */,
 				8679A3DB21E1CE6F00E12539 /* melody3.png in Resources */,
-				86E9F49B21BF82F500EE12DF /* Performance.png in Resources */,
 				8679A3DC21E1CE6F00E12539 /* melody11.png in Resources */,
 				866EA6F121F42C7E00B28BA6 /* arrow.png in Resources */,
 				8679A3EB21E1CE6F00E12539 /* melody12.png in Resources */,
@@ -1032,6 +1057,7 @@
 			files = (
 				86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */,
 				8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */,
+				869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */,
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
@@ -1039,12 +1065,14 @@
 				8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */,
 				8665697B21F060900086D432 /* PlayButton.swift in Sources */,
 				86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */,
+				869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */,
 				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,
 				869EF00021DBE1E600A4BC06 /* CatchOrThrowbackImage.swift in Sources */,
 				8654702821ED208A00D1F068 /* AutoLayoutExtension.swift in Sources */,
 				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
+				869027E721F593DD00C3EF0C /* PerformingBackground.swift in Sources */,
 				860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */,
 				86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */,
 				866EA6ED21F42AAB00B28BA6 /* Arrow.swift in Sources */,
