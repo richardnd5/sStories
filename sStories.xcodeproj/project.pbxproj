@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2298202C21F6F9D20070F49B /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 2298202A21F6F9D20070F49B /* Pond.png */; };
+		2298202D21F6F9D20070F49B /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 2298202B21F6F9D20070F49B /* Performance.png */; };
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
 		861C788F21DC257E009D9612 /* sack.png in Resources */ = {isa = PBXBuildFile; fileRef = 861C788E21DC257E009D9612 /* sack.png */; };
 		863DADF421D408A000AFDD94 /* FishingPole.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF321D408A000AFDD94 /* FishingPole.png */; };
@@ -28,7 +30,6 @@
 		8665697B21F060900086D432 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697A21F060900086D432 /* PlayButton.swift */; };
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
-		866C623821D2E1C1001FE47D /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 866C623721D2E1C1001FE47D /* Pond.png */; };
 		866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA64E21F282B900B28BA6 /* PageTurner.swift */; };
 		866EA65321F2889000B28BA6 /* wholeNote.png in Resources */ = {isa = PBXBuildFile; fileRef = 866EA65221F2888F00B28BA6 /* wholeNote.png */; };
 		866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA65421F288CC00B28BA6 /* WholeNote.swift */; };
@@ -103,7 +104,6 @@
 		8679A3EE21E1CE6F00E12539 /* melody21.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B721E1CE6E00E12539 /* melody21.png */; };
 		867C542621DF1E7B002E4255 /* SackContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C542521DF1E7B002E4255 /* SackContents.swift */; };
 		867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 867C542921DF2FE7002E4255 /* melodyThumbnail.png */; };
-		869027E121F58C8A00C3EF0C /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 869027E021F58C8900C3EF0C /* Performance.png */; };
 		869027E321F5939E00C3EF0C /* performanceScene.png in Resources */ = {isa = PBXBuildFile; fileRef = 869027E221F5939E00C3EF0C /* performanceScene.png */; };
 		869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E421F593B300C3EF0C /* PerformingScene.swift */; };
 		869027E721F593DD00C3EF0C /* PerformingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E621F593DD00C3EF0C /* PerformingBackground.swift */; };
@@ -231,6 +231,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2298202A21F6F9D20070F49B /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Downloads/Pond.png; sourceTree = "<group>"; };
+		2298202B21F6F9D20070F49B /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Performance.png; sourceTree = "<group>"; };
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
 		861C788E21DC257E009D9612 /* sack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sack.png; sourceTree = "<group>"; };
 		863DADF321D408A000AFDD94 /* FishingPole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPole.png; sourceTree = "<group>"; };
@@ -252,7 +254,6 @@
 		8665697A21F060900086D432 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
-		866C623721D2E1C1001FE47D /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Desktop/Pond.png; sourceTree = "<group>"; };
 		866EA64E21F282B900B28BA6 /* PageTurner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurner.swift; sourceTree = "<group>"; };
 		866EA65221F2888F00B28BA6 /* wholeNote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wholeNote.png; sourceTree = "<group>"; };
 		866EA65421F288CC00B28BA6 /* WholeNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeNote.swift; sourceTree = "<group>"; };
@@ -327,7 +328,6 @@
 		8679A3B721E1CE6E00E12539 /* melody21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody21.png; sourceTree = "<group>"; };
 		867C542521DF1E7B002E4255 /* SackContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SackContents.swift; sourceTree = "<group>"; };
 		867C542921DF2FE7002E4255 /* melodyThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melodyThumbnail.png; sourceTree = "<group>"; };
-		869027E021F58C8900C3EF0C /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Performance.png; path = ../../../../../Desktop/Performance.png; sourceTree = "<group>"; };
 		869027E221F5939E00C3EF0C /* performanceScene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performanceScene.png; sourceTree = "<group>"; };
 		869027E421F593B300C3EF0C /* PerformingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformingScene.swift; sourceTree = "<group>"; };
 		869027E621F593DD00C3EF0C /* PerformingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformingBackground.swift; sourceTree = "<group>"; };
@@ -481,11 +481,12 @@
 				869027E221F5939E00C3EF0C /* performanceScene.png */,
 				8654705621EE70D300D1F068 /* dominant.png */,
 				86ED756D21F0FF550066E2D8 /* arrangingBackground.png */,
-				869027E021F58C8900C3EF0C /* Performance.png */,
 				866EA65221F2888F00B28BA6 /* wholeNote.png */,
 				86ED757321F120010066E2D8 /* playButton.png */,
 				8654705821EE70D400D1F068 /* ending.png */,
 				8654705B21EE70D400D1F068 /* final.png */,
+				2298202B21F6F9D20070F49B /* Performance.png */,
+				2298202A21F6F9D20070F49B /* Pond.png */,
 				8654705721EE70D300D1F068 /* middle.png */,
 				8654706421EE824200D1F068 /* trebleClef.png */,
 				8654705A21EE70D400D1F068 /* tonic.png */,
@@ -494,7 +495,6 @@
 				869EEFFD21DBE06B00A4BC06 /* throwbackWater.png */,
 				861C788E21DC257E009D9612 /* sack.png */,
 				86621B2421CD776A0069157B /* waterDrop.png */,
-				866C623721D2E1C1001FE47D /* Pond.png */,
 				863DADF321D408A000AFDD94 /* FishingPole.png */,
 				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
 				86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */,
@@ -873,7 +873,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				869027E121F58C8A00C3EF0C /* Performance.png in Resources */,
 				86ED75B321F126980066E2D8 /* melody0.mp3 in Resources */,
 				869027EE21F59EEA00C3EF0C /* midi0.mid in Resources */,
 				86ED75B421F126980066E2D8 /* melody1.mp3 in Resources */,
@@ -950,6 +949,7 @@
 				8679A3D021E1CE6F00E12539 /* melody5.png in Resources */,
 				8654706521EE824300D1F068 /* trebleClef.png in Resources */,
 				8679A3E721E1CE6F00E12539 /* melody6.png in Resources */,
+				2298202D21F6F9D20070F49B /* Performance.png in Resources */,
 				866EA6E421F413CF00B28BA6 /* turnPiano5.mp3 in Resources */,
 				8679A3DF21E1CE6F00E12539 /* melody10.png in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
@@ -981,6 +981,7 @@
 				8679A3BC21E1CE6F00E12539 /* melody7.png in Resources */,
 				8698D89721BF417600ADED35 /* touchDown.wav in Resources */,
 				86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */,
+				2298202C21F6F9D20070F49B /* Pond.png in Resources */,
 				8679A3D921E1CE6F00E12539 /* melody25.png in Resources */,
 				867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */,
 				866EA6E521F413CF00B28BA6 /* turnPiano6.mp3 in Resources */,
@@ -996,7 +997,6 @@
 				8679A3E621E1CE6F00E12539 /* melody17.png in Resources */,
 				8679A3DD21E1CE6F00E12539 /* melody42.png in Resources */,
 				86E9F4A121BF82F500EE12DF /* Town.png in Resources */,
-				866C623821D2E1C1001FE47D /* Pond.png in Resources */,
 				8679A3BA21E1CE6F00E12539 /* melody40.png in Resources */,
 				86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */,
 				866EA6E221F413CF00B28BA6 /* turnPiano3.mp3 in Resources */,

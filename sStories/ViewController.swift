@@ -1,4 +1,5 @@
 // gonna try merging.
+// Merge two!!
 
 import UIKit
 
@@ -121,7 +122,7 @@ class ViewController: UIViewController, SceneDelegate {
         if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
-            let safe = view.safeAreaLayoutGuide
+//            let safe = view.safeAreaLayoutGuide
 //            catchingMelody?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             catchingMelody?.delegate = self
             currentState = .fishing
@@ -129,14 +130,14 @@ class ViewController: UIViewController, SceneDelegate {
         } else if currentPage == switchToArrangingScene {
             arrangingScene = ArrangingScene(frame: view.frame)
             view.addSubview(arrangingScene!)
-            let safe = view.safeAreaLayoutGuide
+//            let safe = view.safeAreaLayoutGuide
 //            arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             arrangingScene?.delegate = self
             currentState = .arranging
         } else if currentPage == switchToPerformingScene {
             performingScene = PerformingScene(frame: view.frame)
             view.addSubview(performingScene!)
-            let safe = view.safeAreaLayoutGuide
+//            let safe = view.safeAreaLayoutGuide
 //            performingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             performingScene?.delegate = self
             currentState = .performing

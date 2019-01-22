@@ -24,20 +24,19 @@ class Sound {
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()
-        createCallbacker()
+//        createCallbacker()
         
     }
-    
-    func createCallbacker(){
-        
-        callbacker = AKCallbackInstrument() { status, note, velocity in
-            if status == .noteOn {
-                print("worked")
-            }
-        }
-
-
-    }
+//    func createCallbacker(){
+//
+//        callbacker = AKCallbackInstrument() { status, note, velocity in
+//            if status == .noteOn {
+//                print("worked")
+//            }
+//        }
+//
+//
+//    }
     
     func loadPageTurnSounds(){
         
@@ -70,8 +69,8 @@ class Sound {
             track?.setMIDIOutput(melody.sampler.midiIn)
             melody.trackNumber = i
         }
-        let seqTrack = sequencer.newTrack("callbacker")
-        seqTrack?.setMIDIOutput(callbacker.midiIn)
+//        let seqTrack = sequencer.newTrack("callbacker")
+//        seqTrack?.setMIDIOutput(callbacker.midiIn)
     }
     
     private func createSequencerPattern(){
