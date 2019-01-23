@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		2298202C21F6F9D20070F49B /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 2298202A21F6F9D20070F49B /* Pond.png */; };
 		2298202D21F6F9D20070F49B /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 2298202B21F6F9D20070F49B /* Performance.png */; };
+		22C12BF821F7B70D006D288F /* musicSymbol11.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BEC21F7B70C006D288F /* musicSymbol11.png */; };
+		22C12BF921F7B70D006D288F /* musicSymbol5.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BED21F7B70C006D288F /* musicSymbol5.png */; };
+		22C12BFA21F7B70D006D288F /* musicSymbol3.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BEE21F7B70C006D288F /* musicSymbol3.png */; };
+		22C12BFB21F7B70D006D288F /* musicSymbol2.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BEF21F7B70C006D288F /* musicSymbol2.png */; };
+		22C12BFC21F7B70D006D288F /* musicSymbol7.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF021F7B70C006D288F /* musicSymbol7.png */; };
+		22C12BFD21F7B70D006D288F /* musicSymbol6.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF121F7B70C006D288F /* musicSymbol6.png */; };
+		22C12BFE21F7B70D006D288F /* musicSymbol4.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF221F7B70C006D288F /* musicSymbol4.png */; };
+		22C12BFF21F7B70D006D288F /* musicSymbol8.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF321F7B70D006D288F /* musicSymbol8.png */; };
+		22C12C0021F7B70D006D288F /* musicSymbol0.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF421F7B70D006D288F /* musicSymbol0.png */; };
+		22C12C0121F7B70D006D288F /* musicSymbol9.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF521F7B70D006D288F /* musicSymbol9.png */; };
+		22C12C0221F7B70D006D288F /* musicSymbol1.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF621F7B70D006D288F /* musicSymbol1.png */; };
+		22C12C0321F7B70D006D288F /* musicSymbol10.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BF721F7B70D006D288F /* musicSymbol10.png */; };
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
 		861C788F21DC257E009D9612 /* sack.png in Resources */ = {isa = PBXBuildFile; fileRef = 861C788E21DC257E009D9612 /* sack.png */; };
 		863DADF421D408A000AFDD94 /* FishingPole.png in Resources */ = {isa = PBXBuildFile; fileRef = 863DADF321D408A000AFDD94 /* FishingPole.png */; };
@@ -108,7 +120,6 @@
 		869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E421F593B300C3EF0C /* PerformingScene.swift */; };
 		869027E721F593DD00C3EF0C /* PerformingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E621F593DD00C3EF0C /* PerformingBackground.swift */; };
 		869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */; };
-		869027EE21F59EEA00C3EF0C /* midi0.mid in Resources */ = {isa = PBXBuildFile; fileRef = 869027ED21F59EEA00C3EF0C /* midi0.mid */; };
 		8698D85621BF149700ADED35 /* StoryLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85521BF149700ADED35 /* StoryLine.swift */; };
 		8698D85921BF400000ADED35 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85721BF400000ADED35 /* Sound.swift */; };
 		8698D85A21BF400000ADED35 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8698D85821BF400000ADED35 /* Haptics.swift */; };
@@ -233,6 +244,18 @@
 /* Begin PBXFileReference section */
 		2298202A21F6F9D20070F49B /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Downloads/Pond.png; sourceTree = "<group>"; };
 		2298202B21F6F9D20070F49B /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Performance.png; sourceTree = "<group>"; };
+		22C12BEC21F7B70C006D288F /* musicSymbol11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol11.png; sourceTree = "<group>"; };
+		22C12BED21F7B70C006D288F /* musicSymbol5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol5.png; sourceTree = "<group>"; };
+		22C12BEE21F7B70C006D288F /* musicSymbol3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol3.png; sourceTree = "<group>"; };
+		22C12BEF21F7B70C006D288F /* musicSymbol2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol2.png; sourceTree = "<group>"; };
+		22C12BF021F7B70C006D288F /* musicSymbol7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol7.png; sourceTree = "<group>"; };
+		22C12BF121F7B70C006D288F /* musicSymbol6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol6.png; sourceTree = "<group>"; };
+		22C12BF221F7B70C006D288F /* musicSymbol4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol4.png; sourceTree = "<group>"; };
+		22C12BF321F7B70D006D288F /* musicSymbol8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol8.png; sourceTree = "<group>"; };
+		22C12BF421F7B70D006D288F /* musicSymbol0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol0.png; sourceTree = "<group>"; };
+		22C12BF521F7B70D006D288F /* musicSymbol9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol9.png; sourceTree = "<group>"; };
+		22C12BF621F7B70D006D288F /* musicSymbol1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol1.png; sourceTree = "<group>"; };
+		22C12BF721F7B70D006D288F /* musicSymbol10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol10.png; sourceTree = "<group>"; };
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
 		861C788E21DC257E009D9612 /* sack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sack.png; sourceTree = "<group>"; };
 		863DADF321D408A000AFDD94 /* FishingPole.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPole.png; sourceTree = "<group>"; };
@@ -332,7 +355,6 @@
 		869027E421F593B300C3EF0C /* PerformingScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformingScene.swift; sourceTree = "<group>"; };
 		869027E621F593DD00C3EF0C /* PerformingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformingBackground.swift; sourceTree = "<group>"; };
 		869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPerformingNote.swift; sourceTree = "<group>"; };
-		869027ED21F59EEA00C3EF0C /* midi0.mid */ = {isa = PBXFileReference; lastKnownFileType = audio.midi; path = midi0.mid; sourceTree = "<group>"; };
 		8698D85521BF149700ADED35 /* StoryLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLine.swift; sourceTree = "<group>"; };
 		8698D85721BF400000ADED35 /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		8698D85821BF400000ADED35 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -456,6 +478,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */ = {
+			isa = PBXGroup;
+			children = (
+				866EA6D821F413CF00B28BA6 /* turnPiano0.mp3 */,
+				866EA6DA21F413CF00B28BA6 /* turnPiano1.mp3 */,
+				866EA6DE21F413CF00B28BA6 /* turnPiano2.mp3 */,
+				866EA6D921F413CF00B28BA6 /* turnPiano3.mp3 */,
+				866EA6D621F413CE00B28BA6 /* turnPiano4.mp3 */,
+				866EA6E821F427EB00B28BA6 /* turnPiano7.mp3 */,
+				866EA6DB21F413CF00B28BA6 /* turnPiano5.mp3 */,
+				866EA6DC21F413CF00B28BA6 /* turnPiano6.mp3 */,
+				866EA6D721F413CE00B28BA6 /* turnPiano8.mp3 */,
+			);
+			path = "Page Turn Audio Files";
+			sourceTree = "<group>";
+		};
+		22C12C0421F7B716006D288F /* Performance Images */ = {
+			isa = PBXGroup;
+			children = (
+				22C12BF421F7B70D006D288F /* musicSymbol0.png */,
+				22C12BF621F7B70D006D288F /* musicSymbol1.png */,
+				22C12BEF21F7B70C006D288F /* musicSymbol2.png */,
+				22C12BEE21F7B70C006D288F /* musicSymbol3.png */,
+				22C12BF221F7B70C006D288F /* musicSymbol4.png */,
+				22C12BED21F7B70C006D288F /* musicSymbol5.png */,
+				22C12BF121F7B70C006D288F /* musicSymbol6.png */,
+				22C12BF021F7B70C006D288F /* musicSymbol7.png */,
+				22C12BF321F7B70D006D288F /* musicSymbol8.png */,
+				22C12BF521F7B70D006D288F /* musicSymbol9.png */,
+				22C12BF721F7B70D006D288F /* musicSymbol10.png */,
+				22C12BEC21F7B70C006D288F /* musicSymbol11.png */,
+			);
+			path = "Performance Images";
+			sourceTree = "<group>";
+		};
 		860DE93121C2072F00A7370D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,19 +705,11 @@
 				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				869027E821F5956C00C3EF0C /* Performing Scene */,
-				866EA6D821F413CF00B28BA6 /* turnPiano0.mp3 */,
-				869027ED21F59EEA00C3EF0C /* midi0.mid */,
-				866EA6DA21F413CF00B28BA6 /* turnPiano1.mp3 */,
-				866EA6DE21F413CF00B28BA6 /* turnPiano2.mp3 */,
-				866EA6D921F413CF00B28BA6 /* turnPiano3.mp3 */,
-				866EA6D621F413CE00B28BA6 /* turnPiano4.mp3 */,
-				866EA6E821F427EB00B28BA6 /* turnPiano7.mp3 */,
-				866EA6DB21F413CF00B28BA6 /* turnPiano5.mp3 */,
-				866EA6DC21F413CF00B28BA6 /* turnPiano6.mp3 */,
-				866EA6D721F413CE00B28BA6 /* turnPiano8.mp3 */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,
+				22C12C0421F7B716006D288F /* Performance Images */,
 				866EA6F221F4384D00B28BA6 /* 8thThumb.png */,
+				22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */,
 				866EA6F021F42C7E00B28BA6 /* arrow.png */,
 				86ED757B21F126770066E2D8 /* pianoMelodies */,
 				8679A3EF21E1CE7600E12539 /* Melody Images */,
@@ -874,7 +923,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				86ED75B321F126980066E2D8 /* melody0.mp3 in Resources */,
-				869027EE21F59EEA00C3EF0C /* midi0.mid in Resources */,
 				86ED75B421F126980066E2D8 /* melody1.mp3 in Resources */,
 				86ED75B521F126980066E2D8 /* melody10.mp3 in Resources */,
 				86ED75B621F126980066E2D8 /* melody11.mp3 in Resources */,
@@ -895,9 +943,11 @@
 				86ED75C321F126980066E2D8 /* melody23.mp3 in Resources */,
 				86ED75C421F126980066E2D8 /* melody24.mp3 in Resources */,
 				86ED75C521F126980066E2D8 /* melody25.mp3 in Resources */,
+				22C12C0321F7B70D006D288F /* musicSymbol10.png in Resources */,
 				86ED75C621F126980066E2D8 /* melody26.mp3 in Resources */,
 				86ED75C721F126980066E2D8 /* melody27.mp3 in Resources */,
 				86ED75C821F126980066E2D8 /* melody28.mp3 in Resources */,
+				22C12BFF21F7B70D006D288F /* musicSymbol8.png in Resources */,
 				86ED75C921F126980066E2D8 /* melody29.mp3 in Resources */,
 				86ED75CA21F126980066E2D8 /* melody3.mp3 in Resources */,
 				86ED75CB21F126980066E2D8 /* melody30.mp3 in Resources */,
@@ -905,6 +955,7 @@
 				86ED75CD21F126980066E2D8 /* melody32.mp3 in Resources */,
 				86ED75CE21F126980066E2D8 /* melody33.mp3 in Resources */,
 				86ED75CF21F126980066E2D8 /* melody34.mp3 in Resources */,
+				22C12C0121F7B70D006D288F /* musicSymbol9.png in Resources */,
 				86ED75D021F126980066E2D8 /* melody35.mp3 in Resources */,
 				86ED75D121F126980066E2D8 /* melody36.mp3 in Resources */,
 				86ED75D221F126980066E2D8 /* melody37.mp3 in Resources */,
@@ -928,9 +979,11 @@
 				86ED75E421F126980066E2D8 /* melody53.mp3 in Resources */,
 				86ED75E521F126980066E2D8 /* melody54.mp3 in Resources */,
 				86ED75E621F126980066E2D8 /* melody6.mp3 in Resources */,
+				22C12BFE21F7B70D006D288F /* musicSymbol4.png in Resources */,
 				86ED75E721F126980066E2D8 /* melody7.mp3 in Resources */,
 				866EA6E921F427EB00B28BA6 /* turnPiano7.mp3 in Resources */,
 				86ED75E821F126980066E2D8 /* melody8.mp3 in Resources */,
+				22C12BFC21F7B70D006D288F /* musicSymbol7.png in Resources */,
 				86ED75E921F126980066E2D8 /* melody9.mp3 in Resources */,
 				8679A3D521E1CE6F00E12539 /* melody14.png in Resources */,
 				8679A3DA21E1CE6F00E12539 /* melody53.png in Resources */,
@@ -983,6 +1036,7 @@
 				86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */,
 				2298202C21F6F9D20070F49B /* Pond.png in Resources */,
 				8679A3D921E1CE6F00E12539 /* melody25.png in Resources */,
+				22C12BFA21F7B70D006D288F /* musicSymbol3.png in Resources */,
 				867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */,
 				866EA6E521F413CF00B28BA6 /* turnPiano6.mp3 in Resources */,
 				8654706021EE70D400D1F068 /* tonic.png in Resources */,
@@ -997,6 +1051,7 @@
 				8679A3E621E1CE6F00E12539 /* melody17.png in Resources */,
 				8679A3DD21E1CE6F00E12539 /* melody42.png in Resources */,
 				86E9F4A121BF82F500EE12DF /* Town.png in Resources */,
+				22C12BFD21F7B70D006D288F /* musicSymbol6.png in Resources */,
 				8679A3BA21E1CE6F00E12539 /* melody40.png in Resources */,
 				86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */,
 				866EA6E221F413CF00B28BA6 /* turnPiano3.mp3 in Resources */,
@@ -1005,20 +1060,24 @@
 				8679A3E121E1CE6F00E12539 /* melody51.png in Resources */,
 				8679A3EE21E1CE6F00E12539 /* melody21.png in Resources */,
 				866EA6E021F413CF00B28BA6 /* turnPiano8.mp3 in Resources */,
+				22C12BF821F7B70D006D288F /* musicSymbol11.png in Resources */,
 				8679A3D721E1CE6F00E12539 /* melody54.png in Resources */,
 				8679A3C921E1CE6F00E12539 /* melody35.png in Resources */,
 				8679A3B821E1CE6F00E12539 /* melody18.png in Resources */,
 				86ED757421F120010066E2D8 /* playButton.png in Resources */,
 				8679A3C421E1CE6F00E12539 /* melody8.png in Resources */,
 				8679A3DE21E1CE6F00E12539 /* melody15.png in Resources */,
+				22C12BF921F7B70D006D288F /* musicSymbol5.png in Resources */,
 				8679A3C221E1CE6F00E12539 /* melody4.png in Resources */,
 				866EA6DF21F413CF00B28BA6 /* turnPiano4.mp3 in Resources */,
+				22C12C0221F7B70D006D288F /* musicSymbol1.png in Resources */,
 				8679A3D121E1CE6F00E12539 /* melody41.png in Resources */,
 				863DADF721D40D5400AFDD94 /* Note.png in Resources */,
 				8679A3D621E1CE6F00E12539 /* melody37.png in Resources */,
 				8679A3E221E1CE6F00E12539 /* melody34.png in Resources */,
 				8679A3C021E1CE6F00E12539 /* melody24.png in Resources */,
 				8679A3E521E1CE6F00E12539 /* melody46.png in Resources */,
+				22C12C0021F7B70D006D288F /* musicSymbol0.png in Resources */,
 				8679A3E021E1CE6F00E12539 /* melody23.png in Resources */,
 				8679A3CC21E1CE6F00E12539 /* melody44.png in Resources */,
 				8679A3EA21E1CE6F00E12539 /* melody0.png in Resources */,
@@ -1026,6 +1085,7 @@
 				8679A3DC21E1CE6F00E12539 /* melody11.png in Resources */,
 				866EA6F121F42C7E00B28BA6 /* arrow.png in Resources */,
 				8679A3EB21E1CE6F00E12539 /* melody12.png in Resources */,
+				22C12BFB21F7B70D006D288F /* musicSymbol2.png in Resources */,
 				8679A3CF21E1CE6F00E12539 /* melody9.png in Resources */,
 				86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */,
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,

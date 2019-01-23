@@ -3,6 +3,7 @@ import UIKit
 class MiniPerformingNote: UIImageView {
     
     var noteImage = UIImage()
+    var number = Int()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -12,8 +13,10 @@ class MiniPerformingNote: UIImageView {
     
     func setupImage(){
         
+        number = Int.random(in: 0...11)
+        
         // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("8thThumb.png")
+        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("musicSymbol\(number).png")
         noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
         image = noteImage
         
@@ -24,7 +27,6 @@ class MiniPerformingNote: UIImageView {
         changeOpacityOverTime(view: self, time: 2.0, opacity: 1.0) {
             
         }
-        
     }
     
     func makeNoteAppearFlyAwayAndFade(){

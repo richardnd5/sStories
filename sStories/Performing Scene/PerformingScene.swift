@@ -49,6 +49,22 @@ class PerformingScene: UIView {
 
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
         Sound.sharedInstance.playSequencer()
+        generateRandomMusicSymbols()
+
+        
+    }
+    
+    func generateRandomMusicSymbols(){
+        
+        let randNum = Int.random(in: 1...3)
+        for _ in 0...randNum {
+            let width = frame.width/20
+            let height = frame.width/20
+            let x = CGFloat.random(in: frame.width/4...frame.width-frame.width/4)
+            let y = CGFloat.random(in: frame.height/40...frame.height/2-frame.height/40)
+            let note = MiniPerformingNote(frame: CGRect(x: x, y: y, width: width, height: height))
+            addSubview(note)
+        }
     }
 
     func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
