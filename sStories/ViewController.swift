@@ -29,11 +29,7 @@ class ViewController: UIViewController, SceneDelegate {
     private var tempStoryLine = 0
     
     var switchToCatchingMelodiesScene = 5
-//    var switchToArrangingScene = 0
-    
     var switchToArrangingScene = 9
-//    var switchToCatchingMelodiesScene = 0
-    
     var switchToPerformingScene = 11
     
     var page : PageView?
@@ -44,6 +40,7 @@ class ViewController: UIViewController, SceneDelegate {
     var pageTurner : PageTurner?
     
     var homePage : HomePage!
+    var aboutPage : AboutPage!
     
 
     
@@ -68,6 +65,15 @@ class ViewController: UIViewController, SceneDelegate {
         homePage.fillSuperview()
         homePage.isUserInteractionEnabled = true
         homePage.delegate = self
+        
+    }
+    
+    func createAboutPage(){
+        aboutPage = AboutPage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(aboutPage)
+        aboutPage.fillSuperview()
+        aboutPage.isUserInteractionEnabled = true
+        aboutPage.delegate = self
         
     }
     
@@ -139,6 +145,9 @@ class ViewController: UIViewController, SceneDelegate {
     
     func goToAboutPage() {
         print("going to about page")
+        homePage.fadeOutAndRemove {
+            self.createAboutPage()
+        }
     }
     
     func returnToStory(){
