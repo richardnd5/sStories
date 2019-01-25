@@ -163,7 +163,7 @@ class CatchingMelodies: UIView {
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
-                self.instructionLabel?.changeText(to: "Let's keep fishing!")
+                self.instructionLabel?.changeText(to: "Let's put the line back in and wait for another bite!")
             })
         })
     }
@@ -285,6 +285,9 @@ class CatchingMelodies: UIView {
     
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
         
+        if sceneState == .fishing {
+            instructionLabel?.changeText(to: "Wait for a melody to bite!")
+        }
 
         if sceneState == .fishOnTheLine {
             decideWhatToDoWithTheMelody()

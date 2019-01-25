@@ -6,21 +6,26 @@ import UIKit
 protocol SceneDelegate : class {
     func returnToStory()
     func nextPage()
+    func goToAboutPage()
+    func startStory()
 }
 
 var collectedMelodies = [Melody]() // This is global.
 
 class ViewController: UIViewController, SceneDelegate {
 
+    
+
     enum AppScene {
+        case home
         case story
         case fishing
         case arranging
         case performing
     }
-    var currentState = AppScene.story
+    var currentState = AppScene.home
     
-    var currentPage = 10
+    var currentPage = 5
     private var tempStoryLine = 0
     
     var switchToCatchingMelodiesScene = 5
@@ -38,6 +43,8 @@ class ViewController: UIViewController, SceneDelegate {
     
     var pageTurner : PageTurner?
     
+    var homePage : HomePage!
+    
 
     
     var pageTurnerVisible = false
@@ -47,14 +54,25 @@ class ViewController: UIViewController, SceneDelegate {
         
 //        fillSackWithMelodies()
         
-        addPage()
+//        addPage()
+        createHomePage()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
 
     }
     
+    func createHomePage(){
+        homePage = HomePage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(homePage)
+        homePage.fillSuperview()
+        homePage.isUserInteractionEnabled = true
+        homePage.delegate = self
+        
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer){
+        if page?.superview != nil {
         if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
             page?.nextStoryLine()
             tempStoryLine+=1
@@ -64,7 +82,7 @@ class ViewController: UIViewController, SceneDelegate {
                 addPageTurner()
             }
         }
-
+        }
     }
     
     func addPageTurner(){
@@ -112,6 +130,17 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
+    func startStory() {
+        homePage.fadeOutAndRemove {
+            self.addPage()
+        }
+        
+    }
+    
+    func goToAboutPage() {
+        print("going to about page")
+    }
+    
     func returnToStory(){
         addPageTurner()
         view.bringSubviewToFront(pageTurner!)
@@ -142,6 +171,7 @@ class ViewController: UIViewController, SceneDelegate {
             performingScene?.delegate = self
             currentState = .performing
         } else {
+            currentState = .story
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)
             let safe = view.safeAreaLayoutGuide

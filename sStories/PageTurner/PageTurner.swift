@@ -27,7 +27,7 @@ class PageTurner: UIView {
         
         //fade the view in
         alpha = 0.0
-        changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {})
+        changeOpacityOverTime(view: self, time: 1.0, opacity: 1.0, {})
 
     }
     

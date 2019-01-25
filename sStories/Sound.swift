@@ -11,7 +11,7 @@ class Sound {
     
     var pageTurnSoundArray = [PageTurnPianoPling]()
     
-    var callbacker: AKMIDICallbackInstrument!
+    var callbacker: AKMIDICallback!
     
     var callback : AKCallbackInstrument!
     
@@ -32,8 +32,8 @@ class Sound {
     }
     func createCallbacker(){
         
-        callbacker = AKMIDICallbackInstrument()
-
+  
+    
         
 //        callbacker = AKMIDICallbackInstrument() { status, note, velocity in
 //            if status == 0x90 {
@@ -42,7 +42,7 @@ class Sound {
 //            }
 //        }
         
-        callbacker.callback = myCallBack(a:b:c:)
+//        callbacker = myCallBack(a:b:c:)
         
         
         callback = AKCallbackInstrument()
@@ -56,7 +56,7 @@ class Sound {
 
     }
     
-    func myCallBack(a:UInt8, b:MIDINoteNumber, c:MIDIVelocity){
+    func myCallBack(_ a:UInt8, _ b:MIDINoteNumber, _ c:MIDIVelocity){
         print(b)
         
     }
@@ -93,7 +93,7 @@ class Sound {
             melody.trackNumber = i
         }
         let seqTrack = sequencer.newTrack("callbacker")
-        seqTrack?.setMIDIOutput(callbacker.midiIn)
+//        seqTrack?.setMIDIOutput(callbacker.midiIn)
     }
     
     private func createSequencerPattern(){
@@ -118,7 +118,7 @@ class Sound {
         
 //        let midiURL = Bundle.main.resourceURL?.appendingPathComponent("midi0.mid")
 //        sequencer.addMIDIFileTracks(midiURL!, useExistingSequencerLength: true)
-        sequencer.tracks[sequencer.tracks.count-1].setMIDIOutput(callbacker.midiIn)
+//        sequencer.tracks[sequencer.tracks.count-1].setMIDIOutput(callbacker.midiIn)
 
         
         

@@ -8,6 +8,10 @@ class PerformingScene: UIView {
     var background: PerformingBackground?
     weak var delegate : SceneDelegate?
     
+    var timer = Timer()
+    var timeoutCounter : Int = 0
+    let timerRepetitions = 32
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,11 +51,31 @@ class PerformingScene: UIView {
 
     }
 
+
+    
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
         Sound.sharedInstance.playSequencer()
         generateRandomMusicSymbols()
-
         
+        timeout()
+        
+        
+
+    }
+    
+    func timeout(){
+        timer = Timer.scheduledTimer(withTimeInterval: 60/tempo, repeats: false, block:{_ in
+            
+            self.timeoutCounter += 1
+            if self.timeoutCounter < self.timerRepetitions {
+                self.generateRandomMusicSymbols()
+                self.timeout()
+            } else {
+                self.timeoutCounter = 0
+                print("timer done")
+            }
+            
+        })
     }
     
     func generateRandomMusicSymbols(){
