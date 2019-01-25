@@ -63,12 +63,12 @@ class HomePage: UIView {
         storyTextView.text = "Templeton's Fishing Journey"
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/25)
         
-        let url = Bundle.main.resourceURL?.appendingPathComponent("sack.png")
+        let url = Bundle.main.resourceURL?.appendingPathComponent("questionMark.png")
         // Downsample it to fit the set dimensions
         let aboutImage = downsample(imageAt: url!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
         aboutButton.image = aboutImage
         
-        let readURL = Bundle.main.resourceURL?.appendingPathComponent("throwbackWater.png")
+        let readURL = Bundle.main.resourceURL?.appendingPathComponent("playButton.png")
         // Downsample it to fit the set dimensions
         let readImage = downsample(imageAt: readURL!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
         readButton.image = readImage
@@ -86,6 +86,7 @@ class HomePage: UIView {
     func setupLayout(){
         
         let safe = safeAreaLayoutGuide
+        let bottomPadding = -frame.height/40
         
         addSubview(storyTextView)
         storyTextView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
@@ -103,18 +104,19 @@ class HomePage: UIView {
         
         addSubview(aboutButton)
         aboutButton.translatesAutoresizingMaskIntoConstraints = false
-        aboutButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        aboutButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        aboutButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor).isActive = true
-        aboutButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor).isActive = true
+        aboutButton.heightAnchor.constraint(equalToConstant: frame.height/11).isActive = true
+        aboutButton.widthAnchor.constraint(equalToConstant: frame.height/11).isActive = true
+        aboutButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
+        aboutButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
         
         
         addSubview(readButton)
         readButton.translatesAutoresizingMaskIntoConstraints = false
-        readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+//        readButton.heightAnchor.constraint(equalToConstant: frame.height/10).isActive = true
+        readButton.widthAnchor.constraint(equalToConstant: frame.height/8).isActive = true
         readButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor).isActive = true
+        readButton.bottomAnchor.constraint(equalTo: aboutButton.bottomAnchor).isActive = true
+        readButton.topAnchor.constraint(equalTo: aboutButton.topAnchor).isActive = true
     }
     
     func setupGestures(){

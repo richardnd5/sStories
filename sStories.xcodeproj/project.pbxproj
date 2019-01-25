@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		220B35F121FA69B600AA146D /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 220B35F021FA69B600AA146D /* Pond.png */; };
 		220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B35F221FA6F4D00AA146D /* HomePage.swift */; };
-		220B35F521FA726D00AA146D /* Templeton.png in Resources */ = {isa = PBXBuildFile; fileRef = 220B35F421FA726D00AA146D /* Templeton.png */; };
 		2298202D21F6F9D20070F49B /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 2298202B21F6F9D20070F49B /* Performance.png */; };
 		22C12BF821F7B70D006D288F /* musicSymbol11.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BEC21F7B70C006D288F /* musicSymbol11.png */; };
 		22C12BF921F7B70D006D288F /* musicSymbol5.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C12BED21F7B70C006D288F /* musicSymbol5.png */; };
@@ -142,6 +141,10 @@
 		86BBBF4C21BB08FE00CB17F2 /* sStoriesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF4B21BB08FE00CB17F2 /* sStoriesUITests.swift */; };
 		86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF5921BB0A1000CB17F2 /* PageView.swift */; };
 		86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */; };
+		86CC12DF21FB7FD600B9164B /* AboutPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC12DE21FB7FD600B9164B /* AboutPage.swift */; };
+		86CC12E121FB818C00B9164B /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CC12E021FB818C00B9164B /* questionMark.png */; };
+		86CC12E721FB8DCB00B9164B /* Templeton.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CC12E621FB8DCB00B9164B /* Templeton.png */; };
+		86CC12E921FB8E7500B9164B /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 86CC12E821FB8E7400B9164B /* playButton.png */; };
 		86E9F49A21BF82F500EE12DF /* ShowingCrowdSackOfMelodies.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */; };
 		86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49621BF82F400EE12DF /* Mountain.png */; };
 		86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */; };
@@ -151,7 +154,6 @@
 		86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */; };
 		86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */; };
 		86ED756E21F0FF550066E2D8 /* arrangingBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 86ED756D21F0FF550066E2D8 /* arrangingBackground.png */; };
-		86ED757421F120010066E2D8 /* playButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 86ED757321F120010066E2D8 /* playButton.png */; };
 		86ED757821F1263C0066E2D8 /* MelodyAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED757721F1263C0066E2D8 /* MelodyAudio.swift */; };
 		86ED75B321F126980066E2D8 /* melody0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86ED757C21F126770066E2D8 /* melody0.mp3 */; };
 		86ED75B421F126980066E2D8 /* melody1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86ED757D21F126770066E2D8 /* melody1.mp3 */; };
@@ -246,7 +248,6 @@
 /* Begin PBXFileReference section */
 		220B35F021FA69B600AA146D /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Pond.png; sourceTree = "<group>"; };
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
-		220B35F421FA726D00AA146D /* Templeton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Templeton.png; sourceTree = "<group>"; };
 		2298202B21F6F9D20070F49B /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Performance.png; sourceTree = "<group>"; };
 		22C12BEC21F7B70C006D288F /* musicSymbol11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol11.png; sourceTree = "<group>"; };
 		22C12BED21F7B70C006D288F /* musicSymbol5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = musicSymbol5.png; sourceTree = "<group>"; };
@@ -385,6 +386,10 @@
 		86BBBF4D21BB08FE00CB17F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86BBBF5921BB0A1000CB17F2 /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalFunctions.swift; sourceTree = "<group>"; };
+		86CC12DE21FB7FD600B9164B /* AboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPage.swift; sourceTree = "<group>"; };
+		86CC12E021FB818C00B9164B /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
+		86CC12E621FB8DCB00B9164B /* Templeton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Templeton.png; sourceTree = "<group>"; };
+		86CC12E821FB8E7400B9164B /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
 		86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowingCrowdSackOfMelodies.png; sourceTree = "<group>"; };
 		86E9F49621BF82F400EE12DF /* Mountain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mountain.png; sourceTree = "<group>"; };
 		86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TalkingToCrowdAboutFishing.png; sourceTree = "<group>"; };
@@ -394,7 +399,6 @@
 		86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyImage.swift; sourceTree = "<group>"; };
 		86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangingBackground.swift; sourceTree = "<group>"; };
 		86ED756D21F0FF550066E2D8 /* arrangingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrangingBackground.png; sourceTree = "<group>"; };
-		86ED757321F120010066E2D8 /* playButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButton.png; sourceTree = "<group>"; };
 		86ED757721F1263C0066E2D8 /* MelodyAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyAudio.swift; sourceTree = "<group>"; };
 		86ED757C21F126770066E2D8 /* melody0.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = melody0.mp3; sourceTree = "<group>"; };
 		86ED757D21F126770066E2D8 /* melody1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = melody1.mp3; sourceTree = "<group>"; };
@@ -539,16 +543,17 @@
 				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
 				863DADF521D40D5400AFDD94 /* Note.png */,
 				8654705921EE70D400D1F068 /* begin.png */,
-				220B35F421FA726D00AA146D /* Templeton.png */,
 				869027E221F5939E00C3EF0C /* performanceScene.png */,
+				86CC12E621FB8DCB00B9164B /* Templeton.png */,
 				8654705621EE70D300D1F068 /* dominant.png */,
 				86ED756D21F0FF550066E2D8 /* arrangingBackground.png */,
 				866EA65221F2888F00B28BA6 /* wholeNote.png */,
-				86ED757321F120010066E2D8 /* playButton.png */,
+				86CC12E021FB818C00B9164B /* questionMark.png */,
 				220B35F021FA69B600AA146D /* Pond.png */,
 				8654705821EE70D400D1F068 /* ending.png */,
 				8654705B21EE70D400D1F068 /* final.png */,
 				2298202B21F6F9D20070F49B /* Performance.png */,
+				86CC12E821FB8E7400B9164B /* playButton.png */,
 				8654705721EE70D300D1F068 /* middle.png */,
 				8654706421EE824200D1F068 /* trebleClef.png */,
 				8654705A21EE70D400D1F068 /* tonic.png */,
@@ -697,6 +702,7 @@
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
+				86CC12DE21FB7FD600B9164B /* AboutPage.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
 				8698D85721BF400000ADED35 /* Sound.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
@@ -960,7 +966,6 @@
 				86ED75CC21F126980066E2D8 /* melody31.mp3 in Resources */,
 				86ED75CD21F126980066E2D8 /* melody32.mp3 in Resources */,
 				86ED75CE21F126980066E2D8 /* melody33.mp3 in Resources */,
-				220B35F521FA726D00AA146D /* Templeton.png in Resources */,
 				86ED75CF21F126980066E2D8 /* melody34.mp3 in Resources */,
 				22C12C0121F7B70D006D288F /* musicSymbol9.png in Resources */,
 				86ED75D021F126980066E2D8 /* melody35.mp3 in Resources */,
@@ -1008,6 +1013,7 @@
 				8679A3E421E1CE6F00E12539 /* melody28.png in Resources */,
 				8679A3D021E1CE6F00E12539 /* melody5.png in Resources */,
 				8654706521EE824300D1F068 /* trebleClef.png in Resources */,
+				86CC12E921FB8E7500B9164B /* playButton.png in Resources */,
 				8679A3E721E1CE6F00E12539 /* melody6.png in Resources */,
 				2298202D21F6F9D20070F49B /* Performance.png in Resources */,
 				866EA6E421F413CF00B28BA6 /* turnPiano5.mp3 in Resources */,
@@ -1029,6 +1035,7 @@
 				869EEFFE21DBE06B00A4BC06 /* throwbackWater.png in Resources */,
 				8679A3D221E1CE6F00E12539 /* melody13.png in Resources */,
 				8679A3E321E1CE6F00E12539 /* melody29.png in Resources */,
+				86CC12E721FB8DCB00B9164B /* Templeton.png in Resources */,
 				220B35F121FA69B600AA146D /* Pond.png in Resources */,
 				8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */,
 				8698D89621BF417600ADED35 /* pageTurnTouchUp.wav in Resources */,
@@ -1042,6 +1049,7 @@
 				8679A3BC21E1CE6F00E12539 /* melody7.png in Resources */,
 				8698D89721BF417600ADED35 /* touchDown.wav in Resources */,
 				86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */,
+				86CC12E121FB818C00B9164B /* questionMark.png in Resources */,
 				8679A3D921E1CE6F00E12539 /* melody25.png in Resources */,
 				22C12BFA21F7B70D006D288F /* musicSymbol3.png in Resources */,
 				867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */,
@@ -1071,7 +1079,6 @@
 				8679A3D721E1CE6F00E12539 /* melody54.png in Resources */,
 				8679A3C921E1CE6F00E12539 /* melody35.png in Resources */,
 				8679A3B821E1CE6F00E12539 /* melody18.png in Resources */,
-				86ED757421F120010066E2D8 /* playButton.png in Resources */,
 				8679A3C421E1CE6F00E12539 /* melody8.png in Resources */,
 				8679A3DE21E1CE6F00E12539 /* melody15.png in Resources */,
 				22C12BF921F7B70D006D288F /* musicSymbol5.png in Resources */,
@@ -1124,6 +1131,7 @@
 			files = (
 				86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */,
 				8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */,
+				86CC12DF21FB7FD600B9164B /* AboutPage.swift in Sources */,
 				869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */,
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,

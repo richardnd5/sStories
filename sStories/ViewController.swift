@@ -25,7 +25,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     var currentState = AppScene.home
     
-    var currentPage = 5
+    var currentPage = 0
     private var tempStoryLine = 0
     
     var switchToCatchingMelodiesScene = 5
