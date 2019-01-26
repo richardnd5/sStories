@@ -37,6 +37,8 @@
 		8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8654706221EE7F1300D1F068 /* MelodySlots.swift */; };
 		8654706521EE824300D1F068 /* trebleClef.png in Resources */ = {isa = PBXBuildFile; fileRef = 8654706421EE824200D1F068 /* trebleClef.png */; };
 		8654706721EE82CA00D1F068 /* doubleBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8654706621EE82CA00D1F068 /* doubleBar.png */; };
+		86603C5421FC477C00A7921E /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86603C5221FC477B00A7921E /* GlobalConstants.swift */; };
+		86603C5521FC477C00A7921E /* StructsAndEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86603C5321FC477B00A7921E /* StructsAndEnums.swift */; };
 		86621B2521CD776A0069157B /* waterDrop.png in Resources */ = {isa = PBXBuildFile; fileRef = 86621B2421CD776A0069157B /* waterDrop.png */; };
 		8665697121EFD0860086D432 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697021EFD0860086D432 /* Melody.swift */; };
 		8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697221EFDBDF0086D432 /* transparentMelody.swift */; };
@@ -158,10 +160,8 @@
 		86F1F6C121FC1150001AD82D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 86F1F6C021FC1150001AD82D /* backArrow.png */; };
 		86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */; };
 		86F1F6CB21FC3A5D001AD82D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1F6CA21FC3A5D001AD82D /* UIViewExtension.swift */; };
-		86F1F6D121FC43BE001AD82D /* StructsAndEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1F6D021FC43BE001AD82D /* StructsAndEnums.swift */; };
 		86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB7D21DD5AD400BED768 /* Label.swift */; };
 		86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8121DD636300BED768 /* FishingPole.swift */; };
-		86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8621DDECA200BED768 /* GlobalConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +225,8 @@
 		8654706221EE7F1300D1F068 /* MelodySlots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodySlots.swift; sourceTree = "<group>"; };
 		8654706421EE824200D1F068 /* trebleClef.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trebleClef.png; sourceTree = "<group>"; };
 		8654706621EE82CA00D1F068 /* doubleBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doubleBar.png; sourceTree = "<group>"; };
+		86603C5221FC477B00A7921E /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		86603C5321FC477B00A7921E /* StructsAndEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructsAndEnums.swift; sourceTree = "<group>"; };
 		86621B2421CD776A0069157B /* waterDrop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = waterDrop.png; sourceTree = "<group>"; };
 		8665697021EFD0860086D432 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
 		8665697221EFDBDF0086D432 /* transparentMelody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transparentMelody.swift; sourceTree = "<group>"; };
@@ -352,10 +354,8 @@
 		86F1F6C021FC1150001AD82D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
 		86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		86F1F6CA21FC3A5D001AD82D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		86F1F6D021FC43BE001AD82D /* StructsAndEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructsAndEnums.swift; sourceTree = "<group>"; };
 		86F8AB7D21DD5AD400BED768 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		86F8AB8121DD636300BED768 /* FishingPole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingPole.swift; sourceTree = "<group>"; };
-		86F8AB8621DDECA200BED768 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,10 +557,10 @@
 				8654702F21ED2D8000D1F068 /* Arranging Scene */,
 				869027E821F5956C00C3EF0C /* Performing Scene */,
 				866EA65821F2E8CB00B28BA6 /* PageTurner */,
-				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
-				86F1F6D021FC43BE001AD82D /* StructsAndEnums.swift */,
 				86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
+				86603C5221FC477B00A7921E /* GlobalConstants.swift */,
+				86603C5321FC477B00A7921E /* StructsAndEnums.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,
 				86F1F6CA21FC3A5D001AD82D /* UIViewExtension.swift */,
@@ -918,6 +918,7 @@
 				8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */,
 				86CC12DF21FB7FD600B9164B /* AboutPage.swift in Sources */,
 				869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */,
+				86603C5421FC477C00A7921E /* GlobalConstants.swift in Sources */,
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */,
@@ -927,11 +928,10 @@
 				86ED757821F1263C0066E2D8 /* MelodyAudio.swift in Sources */,
 				8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */,
 				8665697B21F060900086D432 /* PlayButton.swift in Sources */,
-				86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */,
+				86603C5521FC477C00A7921E /* StructsAndEnums.swift in Sources */,
 				869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */,
 				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
-				86F1F6D121FC43BE001AD82D /* StructsAndEnums.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,
 				869EF00021DBE1E600A4BC06 /* CatchOrThrowbackImage.swift in Sources */,
 				8654702821ED208A00D1F068 /* AutoLayoutExtension.swift in Sources */,
