@@ -38,7 +38,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
         setupContraints()
 
         alpha = 0.0
-        self.fadeTo(time: 1.5,opacity: 1.0, {})
+        self.fadeTo(time: 1.5,opacity: 1.0)
 
     }
     

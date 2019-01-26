@@ -56,7 +56,7 @@ class HomePage: UIView {
         backgroundColor = .black
         alpha = 0
         layer.zPosition = 100
-        fadeTo(time: 1.5,opacity: 1.0, {})
+        fadeTo(time: 1.5,opacity: 1.0)
     }
     
     func setupLayout(){

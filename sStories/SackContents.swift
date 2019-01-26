@@ -56,7 +56,7 @@ class SackContents: UIView {
     }
     
     func removeMelodyFromSack(_ view: MelodyImage){
-        view.shrinkAndRemove(time: 0.4, {})
+        view.shrinkAndRemove(time: 0.4)
         
         for i in 0...melodiesInSack.count-1 {
             if view.data?.slotPosition == melodiesInSack[i].slotPosition {

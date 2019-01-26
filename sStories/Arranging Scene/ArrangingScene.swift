@@ -104,7 +104,7 @@ class ArrangingScene: UIView {
             melodyImageArray.append(view)
             
             view.alpha = 0.0
-            view.fadeTo(time: 1.5, opacity: 1.0, {})
+            view.fadeTo(time: 1.5, opacity: 1.0)
             
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
             view.addGestureRecognizer(panGesture)

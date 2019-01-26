@@ -32,7 +32,7 @@ class MelodyImage: UIImageView {
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         isUserInteractionEnabled = true
         
-        fadeTo(time: 1.0, opacity: 1.0, {})
+        fadeTo(time: 1.0, opacity: 1.0)
         setupGlowingOverlay()
         
     }

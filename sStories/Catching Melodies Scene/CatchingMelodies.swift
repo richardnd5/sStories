@@ -41,7 +41,7 @@ class CatchingMelodies: UIView {
         //fade the view in
         alpha = 0.0
         
-        fadeTo(time: 1.5, opacity: 1.0, {})
+        fadeTo(time: 1.5, opacity: 1.0)
     }
 
     func createSackContainer(){
@@ -70,7 +70,7 @@ class CatchingMelodies: UIView {
         pondImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pondImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        fadeTo(time: 1.5, opacity: 1.0, {})
+        fadeTo(time: 1.5, opacity: 1.0)
         
     }
     
@@ -178,11 +178,11 @@ class CatchingMelodies: UIView {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {self.throwbackWater!.scaleSize = 1.0})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 self.sack!.scaleSize = 1.0
-                self.pondImage.fadeTo(time: 2.0, opacity: 1.0, {})
-                self.sack?.fadeAndRemove(time: 1.0, completion: {})
-                self.throwbackWater?.fadeAndRemove(time: 1.0, completion: {})
-                self.keepLabel?.fadeAndRemove(time: 1.0, completion: {})
-                self.throwbackLabel?.fadeAndRemove(time: 1.0, completion: {})
+                self.pondImage.fadeTo(time: 2.0, opacity: 1.0)
+                self.sack?.fadeAndRemove(time: 1.0)
+                self.throwbackWater?.fadeAndRemove(time: 1.0)
+                self.keepLabel?.fadeAndRemove(time: 1.0)
+                self.throwbackLabel?.fadeAndRemove(time: 1.0)
                 self.instructionLabel?.changeText(to: "What a great collection of melodies! Time to head back down the mountain.")
             })
         })
@@ -194,10 +194,10 @@ class CatchingMelodies: UIView {
         pondImage.fadeTo(time: 2.0, opacity: 1.0) {
             self.putLineBackIn()
         }
-        self.sack?.fadeAndRemove(time: 1.0, completion: {})
-        self.throwbackWater?.fadeAndRemove(time: 1.0, completion: {})
-        self.keepLabel?.fadeAndRemove(time: 1.0, completion: {})
-        self.throwbackLabel?.fadeAndRemove(time: 1.0, completion: {})
+        self.sack?.fadeAndRemove(time: 1.0)
+        self.throwbackWater?.fadeAndRemove(time: 1.0)
+        self.keepLabel?.fadeAndRemove(time: 1.0)
+        self.throwbackLabel?.fadeAndRemove(time: 1.0)
     }
 
     func putLineBackIn(){
@@ -228,7 +228,7 @@ class CatchingMelodies: UIView {
         fishingPole?.pullPoleOut({
             
             // dim the background pond image
-            self.pondImage.fadeTo(time: 1.5, opacity: 0.2, {})
+            self.pondImage.fadeTo(time: 1.5, opacity: 0.2)
             
             // create catching scene images
             self.createRandomMelody()

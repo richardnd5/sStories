@@ -26,7 +26,7 @@ class PageTurner: UIView {
         fillNoteLocationArray()
         
         alpha = 0.0
-        fadeTo(time: 1.0, opacity: 1.0, {})
+        fadeTo(time: 1.0, opacity: 1.0)
 
     }
     
@@ -157,7 +157,7 @@ class PageTurner: UIView {
         if view.frame.origin.y > noteDestinationSlot.frame.maxY {
             
             if sender.state == .began && arrow.isVisible {
-                arrow.fadeAndRemove(time: 1.5, completion: {})
+                arrow.fadeAndRemove(time: 1.5)
             }
             
             let translation = sender.translation(in: self)
@@ -168,7 +168,7 @@ class PageTurner: UIView {
         } else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
             sender.state = .ended
             triggerFinishAnimation(view: view)
-            fadeAndRemove(time: 1.5, completion: {})
+            fadeAndRemove(time: 1.5)
             delegate!.nextPage()
         }
     }

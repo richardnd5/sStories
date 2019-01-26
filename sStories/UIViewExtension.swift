@@ -2,7 +2,7 @@ import UIKit
 
 extension UIView {
     
-    func fadeTo(time: Double, opacity: CGFloat, _ completion: @escaping () ->()){
+    func fadeTo(time: Double, opacity: CGFloat, _ completion: @escaping () ->() = {} ){
         UIView.animate(
             withDuration: time,
             delay: 0,
@@ -16,7 +16,7 @@ extension UIView {
         })
     }
     
-    func fadeAndRemove(time: Double, completion: @escaping ( ) -> ( ) ){
+    func fadeAndRemove(time: Double, completion: @escaping ( ) -> ( ) = {} ){
         UIView.animate(
             withDuration: time,
             delay: 0,
@@ -50,7 +50,7 @@ extension UIView {
         self.layer.addSublayer(shapeLayer)
     }
     
-    func shrinkAndRemove(time: Double, _ completion: @escaping () ->()){
+    func shrinkAndRemove(time: Double, _ completion: @escaping () ->() = {} ){
         
         UIView.animate(
             withDuration: time,
@@ -66,7 +66,7 @@ extension UIView {
         })
     }
     
-    func moveViewTo(_ point: CGPoint, time: Double, _ completion: @escaping () ->()){
+    func moveViewTo(_ point: CGPoint, time: Double, _ completion: @escaping () ->() = {} ){
         UIView.animate(
             withDuration: time,
             delay: 0,
@@ -95,7 +95,7 @@ extension UIView {
         })
     }
     
-    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){
+    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->() = {} ){
         
         UIView.animate(
             withDuration: time,
@@ -107,7 +107,6 @@ extension UIView {
         },
             completion: {
                 _ in
-                
                 completion()
         })
     }

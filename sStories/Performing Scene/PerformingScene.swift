@@ -18,7 +18,7 @@ class PerformingScene: UIView {
         setupBackgroundImage()
         
         alpha = 0.0
-        fadeTo(time: 1.5, opacity: 1.0, {})
+        fadeTo(time: 1.5, opacity: 1.0)
         createPlayButton()
     }
     

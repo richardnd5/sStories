@@ -16,7 +16,7 @@ class MiniNote: UIImageView {
         contentMode = .scaleAspectFit
         isUserInteractionEnabled = true
         alpha = 0.0
-        fadeTo(time: 2.0, opacity: 1.0, {})
+        fadeTo(time: 2.0, opacity: 1.0)
         
     }
     
@@ -46,7 +46,7 @@ class MiniNote: UIImageView {
         rotation.fillMode = .forwards
         layer.add(rotation, forKey: "rotation")
         
-        fadeAndRemove(time: time, completion: {})
+        fadeAndRemove(time: time)
     }
     
     required init?(coder aDecoder: NSCoder) {

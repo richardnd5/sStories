@@ -21,7 +21,7 @@ class CatchOrThrowbackImage: UIImageView {
         layer.opacity = 0.0
         isUserInteractionEnabled = false
 
-        fadeTo(time: 2.0, opacity: 1.0, {})
+        fadeTo(time: 2.0, opacity: 1.0)
     }
 
     required init?(coder aDecoder: NSCoder) {
