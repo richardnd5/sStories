@@ -5,7 +5,15 @@ class AboutPage: UIView, UIScrollViewDelegate {
     weak var delegate : SceneDelegate?
     var scrollView: UIScrollView!
     
-    var aboutTitle = UILabel()
+    var aboutTitle : UILabel!
+    
+    private let backArrow: UIImageView = {
+        var imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
     
     
     override init(frame: CGRect) {
@@ -14,23 +22,39 @@ class AboutPage: UIView, UIScrollViewDelegate {
         scrollView = UIScrollView()
         addSubview(scrollView)
         
+        aboutTitle = UILabel()
         aboutTitle.text = "About"
         aboutTitle.font = UIFont(name: "Papyrus", size: frame.width/15)
         aboutTitle.textColor = .white
         aboutTitle.textAlignment = .center
         scrollView.addSubview(aboutTitle)
         
+        
+        let url = Bundle.main.resourceURL?.appendingPathComponent("backArrow.png")
+        // Downsample it to fit the set dimensions
+        let aboutImage = downsample(imageAt: url!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
+        backArrow.image = aboutImage
+        addSubview(backArrow)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        backArrow.addGestureRecognizer(tap)
+        
+
+        
+
+        
         setupContraints()
-        
-//        makeManySquares()
-        
-//        resizeScrollViewToFitContent()
+
+        alpha = 0.0
         fadeTo(view:self, time: 1.5,opacity: 1.0, {})
 
     }
     
     func setupContraints(){
+        
         let safe = safeAreaLayoutGuide
+        let bottomPadding = frame.height/40
+        
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.leftAnchor.constraint(equalTo: safe.leftAnchor).isActive = true
         scrollView.topAnchor.constraint(equalTo: safe.topAnchor).isActive = true
@@ -42,6 +66,13 @@ class AboutPage: UIView, UIScrollViewDelegate {
         aboutTitle.centerXAnchor.constraint(equalTo: safe.centerXAnchor).isActive = true
         aboutTitle.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         aboutTitle.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+        
+        
+        backArrow.translatesAutoresizingMaskIntoConstraints = false
+        backArrow.heightAnchor.constraint(equalToConstant: frame.height/7).isActive = true
+        backArrow.widthAnchor.constraint(equalToConstant: frame.height/7).isActive = true
+        backArrow.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: bottomPadding).isActive = true
+        backArrow.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -bottomPadding).isActive = true
 
     }
     
@@ -67,6 +98,10 @@ class AboutPage: UIView, UIScrollViewDelegate {
                 scrollView.addSubview(view)
             }
         }
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer){
+        delegate?.backHome()
     }
     
     func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){

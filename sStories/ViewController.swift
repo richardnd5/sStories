@@ -8,6 +8,7 @@ protocol SceneDelegate : class {
     func nextPage()
     func goToAboutPage()
     func startStory()
+    func backHome()
 }
 
 var collectedMelodies = [Melody]() // This is global.
@@ -126,7 +127,6 @@ class ViewController: UIViewController, SceneDelegate {
             })
         } else if currentState == .arranging {
             arrangingScene!.fadeOutAndRemove(completion: {
-//                self.currentPage = 9 // COMMENT OUT AFTER TESTING
                 self.currentState = .story
                 self.currentPage+=1
                 self.tempStoryLine = 0
@@ -144,8 +144,8 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func goToAboutPage() {
-        print("going to about page")
         homePage.fadeOutAndRemove {
+            print("finished removing home page")
             self.createAboutPage()
         }
     }
@@ -153,6 +153,12 @@ class ViewController: UIViewController, SceneDelegate {
     func returnToStory(){
         addPageTurner()
         view.bringSubviewToFront(pageTurner!)
+    }
+    
+    func backHome(){
+        aboutPage.fadeOutAndRemove {
+            self.createHomePage()
+        }
     }
     
     func addPage(){

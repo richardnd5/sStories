@@ -34,7 +34,7 @@ class HomePage: UIView {
         return imageView
     }()
     
-    private let storyTextView: UITextView = {
+    private let title: UITextView = {
         let textView = UITextView()
         textView.textColor = .white
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -60,8 +60,10 @@ class HomePage: UIView {
         
         imageView.image = ourImage
         
-        storyTextView.text = "Templeton's Fishing Journey"
-        storyTextView.font = UIFont(name: "Papyrus", size: frame.width/25)
+        title.text = "Templeton's Fishing Journey"
+        title.font = UIFont(name: "Papyrus", size: frame.width/20)
+        
+        
         
         let url = Bundle.main.resourceURL?.appendingPathComponent("questionMark.png")
         // Downsample it to fit the set dimensions
@@ -88,35 +90,35 @@ class HomePage: UIView {
         let safe = safeAreaLayoutGuide
         let bottomPadding = -frame.height/40
         
-        addSubview(storyTextView)
-        storyTextView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
-        storyTextView.heightAnchor.constraint(equalToConstant: frame.height/1.4)
-        storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/10).isActive = true
-        storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/10).isActive = true
+        addSubview(title)
+        title.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
+        title.heightAnchor.constraint(equalToConstant: frame.height/1.4)
+        title.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        title.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/10).isActive = true
+        title.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/10).isActive = true
         
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: storyTextView.bottomAnchor, constant: frame.height/230).isActive = true
+        imageView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: frame.height/230).isActive = true
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/4).isActive = true
         
-        addSubview(aboutButton)
-        aboutButton.translatesAutoresizingMaskIntoConstraints = false
-        aboutButton.heightAnchor.constraint(equalToConstant: frame.height/11).isActive = true
-        aboutButton.widthAnchor.constraint(equalToConstant: frame.height/11).isActive = true
-        aboutButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
-        aboutButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
-        
-        
         addSubview(readButton)
         readButton.translatesAutoresizingMaskIntoConstraints = false
-//        readButton.heightAnchor.constraint(equalToConstant: frame.height/10).isActive = true
-        readButton.widthAnchor.constraint(equalToConstant: frame.height/8).isActive = true
+        readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+        readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         readButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        readButton.bottomAnchor.constraint(equalTo: aboutButton.bottomAnchor).isActive = true
-        readButton.topAnchor.constraint(equalTo: aboutButton.topAnchor).isActive = true
+        readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
+//        readButton.topAnchor.constraint(equalTo: aboutButton.topAnchor).isActive = true
+        
+        addSubview(aboutButton)
+        aboutButton.translatesAutoresizingMaskIntoConstraints = false
+        aboutButton.topAnchor.constraint(equalTo: readButton.topAnchor).isActive = true
+//        aboutButton.heightAnchor.constraint(equalToConstant: frame.height/11).isActive = true
+        aboutButton.widthAnchor.constraint(equalToConstant: frame.height/9).isActive = true
+        aboutButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
+        aboutButton.bottomAnchor.constraint(equalTo: readButton.bottomAnchor).isActive = true
     }
     
     func setupGestures(){
