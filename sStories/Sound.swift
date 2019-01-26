@@ -10,14 +10,7 @@ class Sound {
     private var patternArray = [MelodyAudio]()
     
     var pageTurnSoundArray = [PageTurnPianoPling]()
-    
-    var callbacker: AKMIDICallback!
-    
-    var callback : AKCallbackInstrument!
-    
 
-    
-    
     func setup(){
         
         mixer = AKMixer()
@@ -27,40 +20,9 @@ class Sound {
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()
-        createCallbacker()
         
     }
-    func createCallbacker(){
-        
-  
-    
-        
-//        callbacker = AKMIDICallbackInstrument() { status, note, velocity in
-//            if status == 0x90 {
-//                // do something
-//                print("callback working")
-//            }
-//        }
-        
-//        callbacker = myCallBack(a:b:c:)
-        
-        
-        callback = AKCallbackInstrument()
-        
-//        callbacker = AKMIDICallbackInstrument() { status, note, velocity in
-//            if status == .noteOn {
-//                print("worked")
-//            }
-//        }
 
-
-    }
-    
-    func myCallBack(_ a:UInt8, _ b:MIDINoteNumber, _ c:MIDIVelocity){
-        print(b)
-        
-    }
-    
     func loadPageTurnSounds(){
         
         for i in 0...8{
@@ -92,8 +54,6 @@ class Sound {
             track?.setMIDIOutput(melody.sampler.midiIn)
             melody.trackNumber = i
         }
-        let seqTrack = sequencer.newTrack("callbacker")
-//        seqTrack?.setMIDIOutput(callbacker.midiIn)
     }
     
     private func createSequencerPattern(){
@@ -103,44 +63,18 @@ class Sound {
         for track in sequencer.tracks {
             track.clear()
         }
+        
         for i in 0...patternArray.count-1 {
             sequencer.tracks[i].add(noteNumber: MIDINoteNumber(60),
                                     velocity: 127,
                                     position: AKDuration(beats: i*8),
                                     duration: AKDuration(beats: 18))
-            
-            
-            sequencer.tracks[sequencer.tracks.count-1].add(noteNumber: MIDINoteNumber(60),
-                                                           velocity: 127,
-                                                           position: AKDuration(beats: i*8),
-                                                           duration: AKDuration(beats: 18))
         }
-        
-//        let midiURL = Bundle.main.resourceURL?.appendingPathComponent("midi0.mid")
-//        sequencer.addMIDIFileTracks(midiURL!, useExistingSequencerLength: true)
-//        sequencer.tracks[sequencer.tracks.count-1].setMIDIOutput(callbacker.midiIn)
-
-        
-        
     }
     
     func playSequencer(){
-        print("playing seq")
         sequencer.rewind()
         sequencer.play()
     }
-    
-    
-
-    func playPianoNote(_ note: Int){
-        
-        
-        
-    }
-
-    func disconnectEverythingFromMixer(){
-        do { try! AudioKit.stop() }
-    }
-    
 }
 

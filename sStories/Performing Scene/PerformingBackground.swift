@@ -21,11 +21,7 @@ class PerformingBackground: UIImageView {
     
     func setupImage(){
         
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("performanceScene.png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        
-        image = noteImage
+        image = resizedImage(name: "performanceScene", frame: frame, scale: 3)
         contentMode = .scaleAspectFit
         layer.zPosition = -10
         layer.cornerRadius = frame.height/10

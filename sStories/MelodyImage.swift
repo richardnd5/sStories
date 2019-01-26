@@ -1,11 +1,3 @@
-//
-//  PageCell.swift
-//  Stroud Story UIView
-//
-//  Created by Nate on 12/5/18.
-//  Copyright © 2018 Nathan Richard. All rights reserved.
-//
-
 import UIKit
 
 class MelodyImage: UIImageView {
@@ -16,8 +8,9 @@ class MelodyImage: UIImageView {
     var type : MelodyType!
     var data : Melody?
     var inCorrectSlot = false
-    
-    var glowingOverlay = UIView()
+    var glowTimer = Timer()
+    var isPlaying = false
+    var glowingOverlay : UIView!
     
     init(frame: CGRect, melody: Melody) {
         super.init(frame: frame)
@@ -30,11 +23,7 @@ class MelodyImage: UIImageView {
     
     func setupNote(){
         
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("\(determineWhatImageToShowForMelody(type: type)).png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        
-        image = noteImage
+        image = resizedImage(name: "\(determineWhatImageToShowForMelody(type: type))", frame: frame, scale: 3)
         contentMode = .scaleAspectFit
         layer.zPosition = 2
         layer.opacity = 0.0
@@ -83,25 +72,6 @@ class MelodyImage: UIImageView {
         },
             completion: {
                 _ in
-                
-                
-        })
-    }
-    
-    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-
-                self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
-        },
-            completion: {
-                _ in
-                
-                completion()
         })
     }
     
@@ -132,19 +102,6 @@ class MelodyImage: UIImageView {
         glowingOverlay.layer.add(glow, forKey: "stopGlow")
         
         CATransaction.commit()
-        
-        
-    }
-    
-    func throbImage(_ view: UIView){
-        let scale : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scale.fromValue = 1.0
-        scale.toValue = 1.02
-        scale.duration = 0.4;
-        scale.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        scale.repeatCount = .infinity;
-        scale.autoreverses = true
-        view.layer.add(scale, forKey: "throb")
     }
     
     func shrinkAndRemove(time: Double, _ completion: @escaping () ->()){
@@ -154,7 +111,6 @@ class MelodyImage: UIImageView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
-                
                 self.transform = CGAffineTransform(scaleX: 0.00000001, y: 0.00000001)
         },
             completion: {
@@ -178,25 +134,22 @@ class MelodyImage: UIImageView {
         })
     }
     
-    var glowTimer = Timer()
-    var isPlaying = false
+
     func playMelody(){
 
         if !isPlaying {
-            
             isPlaying = true
             glowTimer.invalidate()
-
             data?.audio?.playMelody()
             startGlowingPulse()
 
             // Hardcoded timer value based on 80 bpm, 8 beats or 16 beats for final
-            var length = TimeInterval()
+            var length : TimeInterval!
             let bpmToSec = 60/tempo
+            
             type == .final ? (length = TimeInterval((bpmToSec)*16)-3) : (length = TimeInterval((bpmToSec)*8)-1)
 
             glowTimer = Timer.scheduledTimer(withTimeInterval: length, repeats: false, block:{_ in self.stopGlowingPulse()})
-            
         }
     }
 

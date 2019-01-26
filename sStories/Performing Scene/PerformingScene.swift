@@ -90,31 +90,31 @@ class PerformingScene: UIView {
             addSubview(note)
         }
     }
-
-    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.alpha = opacity
-        },
-            completion: {
-                _ in
-                
-                completion()
-        })
-    }
-    
-    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
-        
-        fadeTo(view: self, time: 1.0, opacity: 0.0, {
-            self.removeFromSuperview()
-            completion()
-            
-        })
-    }
+//
+//    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
+//        
+//        UIView.animate(
+//            withDuration: time,
+//            delay: 0,
+//            options: .curveEaseInOut,
+//            animations: {
+//                view.alpha = opacity
+//        },
+//            completion: {
+//                _ in
+//                
+//                completion()
+//        })
+//    }
+//    
+//    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
+//        
+//        fadeTo(view: self, time: 1.0, opacity: 0.0, {
+//            self.removeFromSuperview()
+//            completion()
+//            
+//        })
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

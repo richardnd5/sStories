@@ -15,12 +15,8 @@ class Arrow: UIImageView {
     
     func setupImage(){
         
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("arrow.png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        
-        noteImage = noteImage.setOpacity(alpha: 0.3)!
-        image = noteImage
+        image = resizedImage(name: "arrow", frame: frame, scale: 3)
+        image = image?.setOpacity(alpha: 0.3)
         
         contentMode = .scaleToFill
         layer.opacity = 0.0

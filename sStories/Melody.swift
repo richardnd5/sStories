@@ -11,9 +11,8 @@ class Melody {
         audio = MelodyAudio(number: number)
     }
     
-    private func setNumber() -> Int{
-        
-        // depending on the type, choose which pattern number.
+    private func setNumber() -> Int {
+        // depending on the type, choose a random pattern number.
         switch type {
         case .begin:
             return Int.random(in: 0...9)

@@ -9,12 +9,10 @@ class FishingPole: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("FishingPole.png")
-        poleImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*2, height: frame.height*2), scale: 1)
-        image = poleImage
+        image = resizedImage(name: "FishingPole", frame: frame, scale: 0.5)
         
-        contentMode = .bottom
+//        contentMode = .bottom
+        contentMode = .scaleAspectFit
         isUserInteractionEnabled = false
         layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         

@@ -14,10 +14,7 @@ class CatchOrThrowbackImage: UIImageView {
     
     func setupImage(){
         
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("\(imageName).png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        image = noteImage
+        image = resizedImage(name: "\(imageName)", frame: frame, scale: 3)
 
         contentMode = .scaleAspectFit
         layer.zPosition = 1
@@ -49,11 +46,11 @@ class CatchOrThrowbackImage: UIImageView {
         })
     }
     
-    func fadeOutAndRemove(){
-        scaleTo(scaleTo: 0.0000001, time: 1.0) {
-            self.removeFromSuperview()
-        }
-    }
+//    func fadeOutAndRemove(){
+//        scaleTo(scaleTo: 0.0000001, time: 1.0) {
+//            self.removeFromSuperview()
+//        }
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

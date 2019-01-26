@@ -11,11 +11,8 @@ class MiniNote: UIImageView {
     }
     
     func setupImage(){
-        
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("8thThumb.png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        image = noteImage
+
+        image = resizedImage(name: "8thThumb", frame: frame, scale: 3)
         
         contentMode = .scaleAspectFit
         layer.opacity = 0.0

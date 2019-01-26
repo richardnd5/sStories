@@ -14,6 +14,11 @@ enum MelodyType : CaseIterable {
     case final
 }
 
+let tempo = 80.0
+let switchToCatchingMelodiesScene = 5
+let switchToArrangingScene = 9
+let switchToPerformingScene = 11
+
 let pages = [
     Page(imageName: "Town", storyText: [storyline[0]]),
     Page(imageName: "TalkingToCrowdAboutFishing", storyText: Array(storyline[1...3])),
@@ -30,8 +35,6 @@ let pages = [
     Page(imageName: "Performance", storyText: Array(storyline[15...19])),
     Page(imageName: "Pond", storyText: Array(storyline[20...22])),
 ]
-
-let tempo = 80.0
 
 struct ScreenSize {
     static let width = UIScreen.main.bounds.size.width

@@ -26,21 +26,13 @@ class transparentMelody: UIImageView {
     
     func setupNote(){
         
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("\(getTypeNameBasedOnNumber(number: typeNumber)).png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        
-        image = noteImage
+        image = resizedImage(name: "\(getTypeNameBasedOnNumber(number: typeNumber))", frame: frame, scale: 3).setOpacity(alpha: 0.1)
         contentMode = .scaleAspectFit
         layer.zPosition = 100
         layer.cornerRadius = frame.height/10
         clipsToBounds = true
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         isUserInteractionEnabled = false
-        
-        setOpacity(0.1)
-        
-        
     }
     
     func getTypeNameBasedOnNumber(number: Int) -> String {
@@ -63,11 +55,6 @@ class transparentMelody: UIImageView {
             string = "begin"
         }
         return string
-    }
-    
-    func setOpacity(_ to: CGFloat){
-        noteImage = noteImage.setOpacity(alpha: to)!
-        image = noteImage
     }
     
     func addBlurredBorder(){

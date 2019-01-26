@@ -29,24 +29,16 @@ class AboutPage: UIView, UIScrollViewDelegate {
         aboutTitle.textAlignment = .center
         scrollView.addSubview(aboutTitle)
         
-        
-        let url = Bundle.main.resourceURL?.appendingPathComponent("backArrow.png")
-        // Downsample it to fit the set dimensions
-        let aboutImage = downsample(imageAt: url!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
-        backArrow.image = aboutImage
+        backArrow.image = resizedImage(name: "backArrow", frame: frame)
         addSubview(backArrow)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         backArrow.addGestureRecognizer(tap)
-        
 
-        
-
-        
         setupContraints()
 
         alpha = 0.0
-        fadeTo(view:self, time: 1.5,opacity: 1.0, {})
+        self.fadeTo(view:self, time: 1.5,opacity: 1.0, {})
 
     }
     
@@ -104,26 +96,26 @@ class AboutPage: UIView, UIScrollViewDelegate {
         delegate?.backHome()
     }
     
-    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.alpha = opacity
-        },
-            completion: {
-                _ in
-                completion()
-        })
-    }
-    
-    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
-        fadeTo(view: self, time: 1.0, opacity: 0.0, {
-            self.removeFromSuperview()
-            completion()
-        })
-    }
+//    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
+//        UIView.animate(
+//            withDuration: time,
+//            delay: 0,
+//            options: .curveEaseInOut,
+//            animations: {
+//                view.alpha = opacity
+//        },
+//            completion: {
+//                _ in
+//                completion()
+//        })
+//    }
+//    
+//    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
+//        fadeTo(view: self, time: 1.0, opacity: 0.0, {
+//            self.removeFromSuperview()
+//            completion()
+//        })
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -9,6 +9,9 @@ class CatchingMelodies: UIView {
         case fishingDone
     }
     
+    var sceneState = State.fishing
+    weak var delegate : SceneDelegate?
+    
     // Images for the scene
     var pondImage =  UIImageView()
     var fishingPole : FishingPole?
@@ -22,10 +25,6 @@ class CatchingMelodies: UIView {
     var throwbackLabel : Label?
     var instructionLabel: Label?
 
-    var sceneState = State.fishing
-    
-    weak var delegate : SceneDelegate?
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -35,6 +34,7 @@ class CatchingMelodies: UIView {
         createSackContainer()
         setAMelodyToBiteInTheFuture()
         
+        // Add a tap gesture to the view.
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
         addGestureRecognizer(tapGesture)
         
@@ -47,7 +47,6 @@ class CatchingMelodies: UIView {
         sackContents = SackContents(frame: CGRect(x: 0, y: 0, width: frame.width/4, height: frame.height/17))
         addSubview(sackContents!)
 
-
         // set up constraints
         sackContents?.translatesAutoresizingMaskIntoConstraints = false
         sackContents?.heightAnchor.constraint(equalToConstant: frame.height/17).isActive = true
@@ -59,11 +58,7 @@ class CatchingMelodies: UIView {
     
     func createPond(){
 
-        //  get URL of image
-        let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("Pond.png")
-        // Downsample it to fit the set dimensions
-        let ourImage = downsample(imageAt: bundleURL!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
-        pondImage.image = ourImage
+        pondImage.image = resizedImage(name: "Pond", frame: frame)
         addSubview(pondImage)
         pondImage.layer.zPosition = -100
         
@@ -117,8 +112,15 @@ class CatchingMelodies: UIView {
     
     func createFishingPole(){
         
-        fishingPole = FishingPole(frame: CGRect(x: frame.width/2-frame.width/8, y: frame.height+40, width: frame.width/4, height: frame.height/2))
+        let width = frame.width/1.5
+        let height = frame.height/1.3
+        let x = frame.width/2-width/2
+        let y = frame.height-height/2.4
+
+        
+        fishingPole = FishingPole(frame: CGRect(x: x, y: y, width: width, height: height))
         addSubview(fishingPole!)
+        
     }
     
     func createRandomMelody(){
@@ -164,6 +166,7 @@ class CatchingMelodies: UIView {
                 self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
                 self.instructionLabel?.changeText(to: "Let's put the line back in and wait for another bite!")
+                // shake screen.
             })
         })
     }
@@ -175,8 +178,8 @@ class CatchingMelodies: UIView {
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
                 
                 changeOpacityOverTime(view: self.pondImage, time: 2.0, opacity: 1.0, {})
-                self.sack?.fadeOutAndRemove()
-                self.throwbackWater?.fadeOutAndRemove()
+                self.sack?.fadeAndRemove(time: 1.0, completion: {})
+                self.throwbackWater?.fadeAndRemove(time: 1.0, completion: {})
                 self.keepLabel?.remove(fadeTime: 1.0, {})
                 self.throwbackLabel?.remove(fadeTime: 1.0, {})
                 
@@ -192,8 +195,8 @@ class CatchingMelodies: UIView {
         changeOpacityOverTime(view: pondImage, time: 2.0, opacity: 1.0, {
             self.putLineBackIn()
         })
-        self.sack?.fadeOutAndRemove()
-        self.throwbackWater?.fadeOutAndRemove()
+        self.sack?.fadeAndRemove(time: 1.0, completion: {})
+        self.throwbackWater?.fadeAndRemove(time: 1.0, completion: {})
         self.keepLabel?.remove(fadeTime: 1.0, {})
         self.throwbackLabel?.remove(fadeTime: 1.0, {})
     }
@@ -299,31 +302,6 @@ class CatchingMelodies: UIView {
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
         melodyImage?.playMelody()
-    }
-    
-    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.alpha = opacity
-        },
-            completion: {
-                _ in
-                
-                completion()
-        })
-    }
-    
-    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
-        
-            fadeTo(view: self, time: 1.0, opacity: 0.0, {
-                self.removeFromSuperview()
-                completion()
-                
-            })
     }
 
     required init?(coder aDecoder: NSCoder) {

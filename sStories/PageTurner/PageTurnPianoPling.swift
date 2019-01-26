@@ -10,11 +10,7 @@ class PageTurnPianoPling {
         
         self.number = number
         audioFile = loadAudioFile("turnPiano\(number)")
-        do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
-        sampler.enableMIDI()
-        sampler.name = "\(number)"
-        
-        Sound.sharedInstance.mixer.connect(input: sampler)
+        setupSampler()
     }
     
     private func loadAudioFile(_ name: String)-> AKAudioFile{
@@ -26,6 +22,12 @@ class PageTurnPianoPling {
             print("didn't load the audio file. Why? \(error)")
         }
         return file
+    }
+    
+    func setupSampler(){
+        do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
+        sampler.enableMIDI()
+        Sound.sharedInstance.mixer.connect(input: sampler)
     }
     
     func playNote(){

@@ -13,11 +13,8 @@ class WholeNote: UIImageView {
     }
     
     func setupImage(){
-        
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("wholeNote.png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        image = noteImage
+
+        image = resizedImage(name: "wholeNote", frame: frame, scale: 3)
         
         contentMode = .scaleAspectFit
         isUserInteractionEnabled = true

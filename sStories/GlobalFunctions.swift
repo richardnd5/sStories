@@ -18,6 +18,13 @@ func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat)-> U
     return UIImage(cgImage: downsampledImage)
 }
 
+func resizedImage(name: String, frame: CGRect, scale: CGFloat = 1) -> UIImage{
+    var image : UIImage!
+    let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("\(name).png")
+    image = downsample(imageAt: bundleURL!, to: CGSize(width: frame.width*3, height: frame.height*3), scale: 1)
+    return image
+}
+
 // Function to change the opacity of a view over a set time.
 func changeOpacityOverTime(view: UIView, time: Double, opacity: CGFloat, _ completion: @escaping () ->()){
     
@@ -93,3 +100,73 @@ extension UIImage {
         return newImage
     }
 }
+
+extension UIView {
+    
+    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                view.alpha = opacity
+        },
+            completion: {
+                _ in
+                completion()
+        })
+    }
+    
+    func fadeAndRemove(time: Double, completion: @escaping ( ) -> ( ) ){
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            options: .curveEaseInOut,
+            animations: {
+                self.alpha = 0.0
+        },
+            completion: {
+                _ in
+                completion()
+                self.removeFromSuperview()
+        })
+    }
+    
+    func addDashedBorder() {
+        let color = UIColor.white.cgColor
+        
+        let shapeLayer:CAShapeLayer = CAShapeLayer()
+        let frameSize = self.frame.size
+        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
+        
+        shapeLayer.bounds = shapeRect
+        shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeColor = color
+        shapeLayer.lineWidth = 1
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+        shapeLayer.lineDashPattern = [4,2]
+        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: self.frame.height/10).cgPath
+        
+        self.layer.addSublayer(shapeLayer)
+    }
+}
+
+//func addDashedBorder(_ view: UIView) {
+//    let color = UIColor.white.cgColor
+//
+//    let shapeLayer:CAShapeLayer = CAShapeLayer()
+//    let frameSize = view.frame.size
+//    let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
+//
+//    shapeLayer.bounds = shapeRect
+//    shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
+//    shapeLayer.fillColor = UIColor.clear.cgColor
+//    shapeLayer.strokeColor = color
+//    shapeLayer.lineWidth = 1
+//    shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+//    shapeLayer.lineDashPattern = [4,2]
+//    shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: view.frame.height/10).cgPath
+//
+//    view.layer.addSublayer(shapeLayer)
+//}

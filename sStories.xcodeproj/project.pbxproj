@@ -211,6 +211,7 @@
 		86ED75E821F126980066E2D8 /* melody8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86ED75B121F126770066E2D8 /* melody8.mp3 */; };
 		86ED75E921F126980066E2D8 /* melody9.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86ED75B221F126770066E2D8 /* melody9.mp3 */; };
 		86F1F6C121FC1150001AD82D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 86F1F6C021FC1150001AD82D /* backArrow.png */; };
+		86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */; };
 		86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB7D21DD5AD400BED768 /* Label.swift */; };
 		86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8121DD636300BED768 /* FishingPole.swift */; };
 		86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8621DDECA200BED768 /* GlobalConstants.swift */; };
@@ -457,6 +458,7 @@
 		86ED75B121F126770066E2D8 /* melody8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = melody8.mp3; sourceTree = "<group>"; };
 		86ED75B221F126770066E2D8 /* melody9.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = melody9.mp3; sourceTree = "<group>"; };
 		86F1F6C021FC1150001AD82D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
+		86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		86F8AB7D21DD5AD400BED768 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		86F8AB8121DD636300BED768 /* FishingPole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingPole.swift; sourceTree = "<group>"; };
 		86F8AB8621DDECA200BED768 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
@@ -547,6 +549,8 @@
 				8654705921EE70D400D1F068 /* begin.png */,
 				869027E221F5939E00C3EF0C /* performanceScene.png */,
 				86CC12E621FB8DCB00B9164B /* Templeton.png */,
+				866EA6F221F4384D00B28BA6 /* 8thThumb.png */,
+				866EA6F021F42C7E00B28BA6 /* arrow.png */,
 				8654705621EE70D300D1F068 /* dominant.png */,
 				86ED756D21F0FF550066E2D8 /* arrangingBackground.png */,
 				866EA65221F2888F00B28BA6 /* wholeNote.png */,
@@ -708,24 +712,23 @@
 				86CC12DE21FB7FD600B9164B /* AboutPage.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
 				8698D85721BF400000ADED35 /* Sound.swift */,
+				8698D85821BF400000ADED35 /* Haptics.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
 				8665697021EFD0860086D432 /* Melody.swift */,
 				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				86ED757721F1263C0066E2D8 /* MelodyAudio.swift */,
 				86F8AB7D21DD5AD400BED768 /* Label.swift */,
-				866EA65821F2E8CB00B28BA6 /* PageTurner */,
-				8698D85821BF400000ADED35 /* Haptics.swift */,
 				86F8AB8521DDE70100BED768 /* Catching Melodies Scene */,
 				8654702F21ED2D8000D1F068 /* Arranging Scene */,
-				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
-				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				869027E821F5956C00C3EF0C /* Performing Scene */,
+				866EA65821F2E8CB00B28BA6 /* PageTurner */,
+				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
+				86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */,
+				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,
 				22C12C0421F7B716006D288F /* Performance Images */,
-				866EA6F221F4384D00B28BA6 /* 8thThumb.png */,
 				22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */,
-				866EA6F021F42C7E00B28BA6 /* arrow.png */,
 				86ED757B21F126770066E2D8 /* pianoMelodies */,
 				8679A3EF21E1CE7600E12539 /* Melody Images */,
 				860DE93121C2072F00A7370D /* Sounds */,
@@ -1139,6 +1142,7 @@
 				869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */,
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
+				86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */,
 				220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86ED757821F1263C0066E2D8 /* MelodyAudio.swift in Sources */,

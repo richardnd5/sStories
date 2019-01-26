@@ -17,36 +17,17 @@ class MelodySlots: UIView {
         
         for i in 0..<rows {
             
-            let theView = UIView(frame: CGRect(x: CGFloat(i)*slotWidth, y: 0, width: slotWidth-spacing, height: slotWidth-spacing))
-            theView.layer.cornerRadius = theView.frame.height/10
-            theView.backgroundColor = UIColor.init(white: 0.9, alpha: 0.3)
-            theView.isUserInteractionEnabled = true
-            slotPosition.append(theView)
-            addSubview(theView)
-            addDashedBorder(theView)
+            let view = UIView(frame: CGRect(x: CGFloat(i)*slotWidth, y: 0, width: slotWidth-spacing, height: slotWidth-spacing))
+            view.layer.cornerRadius = view.frame.height/10
+            view.backgroundColor = UIColor.init(white: 0.9, alpha: 0.3)
+            view.isUserInteractionEnabled = true
+            slotPosition.append(view)
+            addSubview(view)
+            view.addDashedBorder()
 
-            let thumbnail = transparentMelody(frame: CGRect(x: 0, y: 0, width: theView.frame.width, height: theView.frame.height), typeNumber: i)
-            theView.addSubview(thumbnail)
+            let thumbnail = transparentMelody(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), typeNumber: i)
+            view.addSubview(thumbnail)
         }
-    }
-    
-    private func addDashedBorder(_ view: UIView) {
-        let color = UIColor.white.cgColor
-        
-        let shapeLayer:CAShapeLayer = CAShapeLayer()
-        let frameSize = CGSize(width: slotWidth-spacing, height: slotWidth-spacing)
-        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
-        
-        shapeLayer.bounds = shapeRect
-        shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = color
-        shapeLayer.lineWidth = 1
-        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
-        shapeLayer.lineDashPattern = [6,3]
-        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: frameSize.height/10).cgPath
-        
-        view.layer.addSublayer(shapeLayer)
     }
     
     required init?(coder aDecoder: NSCoder) {

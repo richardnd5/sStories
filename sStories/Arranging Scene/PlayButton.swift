@@ -25,11 +25,7 @@ class PlayButton: UIImageView {
     
     func setupNote(){
         
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("playButton.png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        
-        image = noteImage
+        image = resizedImage(name: "playButton", frame: frame, scale: 3)
         contentMode = .scaleAspectFit
         layer.zPosition = 100
         clipsToBounds = true

@@ -14,11 +14,7 @@ class MiniPerformingNote: UIImageView {
     func setupImage(){
         
         number = Int.random(in: 0...11)
-        
-        // Set up image
-        let imageURL = Bundle.main.resourceURL?.appendingPathComponent("musicSymbol\(number).png")
-        noteImage = downsample(imageAt: imageURL!, to: CGSize(width: frame.height*3, height: frame.height*3), scale: 1)
-        image = noteImage
+        image = resizedImage(name: "musicSymbol\(number)", frame: frame, scale: 3)
         
         contentMode = .scaleAspectFit
         layer.opacity = 0.0

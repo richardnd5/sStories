@@ -53,27 +53,15 @@ class HomePage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        //  get URL of image
-        let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("Templeton.png")
-        // Downsample it to fit the set dimensions
-        let ourImage = downsample(imageAt: bundleURL!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
-        
-        imageView.image = ourImage
+
+        imageView.image = resizedImage(name: "Templeton", frame: frame)
+        aboutButton.image = resizedImage(name: "questionMark", frame: frame)
+        readButton.image = resizedImage(name: "playButton", frame: frame)
         
         title.text = "Templeton's Fishing Journey"
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
-        
-        
-        
-        let url = Bundle.main.resourceURL?.appendingPathComponent("questionMark.png")
-        // Downsample it to fit the set dimensions
-        let aboutImage = downsample(imageAt: url!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
-        aboutButton.image = aboutImage
-        
-        let readURL = Bundle.main.resourceURL?.appendingPathComponent("playButton.png")
-        // Downsample it to fit the set dimensions
-        let readImage = downsample(imageAt: readURL!, to: CGSize(width: frame.width, height: frame.height), scale: 1)
-        readButton.image = readImage
+
+
         
         setupLayout()
         setupGestures()
@@ -137,27 +125,16 @@ class HomePage: UIView {
         delegate?.goToAboutPage()
     }
     
-    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                view.alpha = opacity
-        },
-            completion: {
-                _ in
-                completion()
-        })
-    }
+
+
     
-    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
-            fadeTo(view: self, time: 1.0, opacity: 0.0, {
-                self.removeFromSuperview()
-                completion()
-            })
-        
-    }
+//    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
+//            fadeTo(view: self, time: 1.0, opacity: 0.0, {
+//                self.removeFromSuperview()
+//                completion()
+//            })
+//
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -5,26 +5,25 @@ class SackContents: UIView {
     var melodyImage: UIImageView?
     var melodySlotViews = [UIView]()
     var melodiesInSack = [Melody]()
-    let spacing : CGFloat = 10
-
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        makeSackSlots()
+        makeEmptySackSlots()
     }
     
-    func makeSackSlots() {
+    func makeEmptySackSlots() {
         
         let rows = 6
         let width = frame.width/CGFloat(rows)
-    
+        let spacing : CGFloat = 10
+        
         for i in 0..<rows {
-            
             let view = UIView(frame: CGRect(x: CGFloat(i)*width, y: 0, width: width-spacing, height: width-spacing))
             view.layer.cornerRadius = view.frame.height/10
             view.backgroundColor = UIColor.init(white: 0.9, alpha: 0.3)
             view.isUserInteractionEnabled = true
-            addDashedBorder(view)
+            view.addDashedBorder()
             melodySlotViews.append(view)
             addSubview(view)
         }
@@ -32,28 +31,28 @@ class SackContents: UIView {
     
     func addMelodyToOpenSlot(melody: Melody){
         
-            for i in 0...melodySlotViews.count-1{
-                if melodySlotViews[i].subviews.count == 0 {
-                        let width = melodySlotViews[0].frame.width
-                        let height = melodySlotViews[0].frame.height
-                    
-                        let view = MelodyImage(frame: CGRect(x: 0, y: 0, width: width, height: height), melody: melody)
-                        view.isUserInteractionEnabled = true
-                        view.tag = 0
-                        melodySlotViews[i].addSubview(view)
-                        melody.slotPosition = i
-                        melodiesInSack.append(melody)
-                        
-                        // Give it gesture recognizers
-                        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
-                        view.addGestureRecognizer(panGesture)
-                        
-                        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
-                        view.addGestureRecognizer(tap)
-                    
-                        return // return and not finish the for-loop
-                    }
+        for i in 0...melodySlotViews.count-1{
+            if melodySlotViews[i].subviews.count == 0 {
+                let width = melodySlotViews[0].frame.width
+                let height = melodySlotViews[0].frame.height
+                
+                let view = MelodyImage(frame: CGRect(x: 0, y: 0, width: width, height: height), melody: melody)
+                view.isUserInteractionEnabled = true
+                view.tag = 0
+                melodySlotViews[i].addSubview(view)
+                melody.slotPosition = i
+                melodiesInSack.append(melody)
+                
+                // Give it gesture recognizers
+                let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
+                view.addGestureRecognizer(panGesture)
+                
+                let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
+                view.addGestureRecognizer(tap)
+                
+                return // return and not finish the for-loop
             }
+        }
     }
     
     func removeMelodyFromSack(_ view: MelodyImage){
@@ -66,11 +65,10 @@ class SackContents: UIView {
                 return // return so it doesn't continue the for loop
             }
         }
-
     }
     
     func missingMelodyType() -> MelodyType {
-
+        
         var typeItNeeds = MelodyType.begin
         
         let containsBegin = melodiesInSack.contains(where: { $0.type == .begin })
@@ -93,12 +91,11 @@ class SackContents: UIView {
         } else if !containsFinal {
             typeItNeeds = .final
         }
-
         return typeItNeeds
     }
     
-
-    func sackFull() -> Bool{
+    
+    func sackFull() -> Bool {
         
         var bool = false
         for i in 0...melodySlotViews.count-1 {
@@ -109,84 +106,36 @@ class SackContents: UIView {
                 bool = true
             }
         }
-
+        
         return bool
     }
     
     // after it all has been added
     func addMelodiesToCollectedMelodyArray(){
         for i in 0...melodySlotViews.count-1{
-            for view in melodySlotViews[i].subviews {
-//                let melody = view as! MelodyThumbnail
+            for _ in melodySlotViews[i].subviews {
                 collectedMelodies.append(melodiesInSack[i])
             }
         }
-    }
-
-    
-    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                
-                self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
-        },
-            completion: {
-                _ in
-                
-                completion()
-        })
-    }
-    
-    func fadeOutAndRemove(){
-        scaleTo(scaleTo: 0.0000001, time: 1.0) {
-            self.removeFromSuperview()
-        }
-    }
-    
-
-    
-    func addDashedBorder(_ view: UIView) {
-        let color = UIColor.white.cgColor
-        
-        let shapeLayer:CAShapeLayer = CAShapeLayer()
-        let frameSize = view.frame.size
-        let shapeRect = CGRect(x: 0, y: 0, width: frameSize.width, height: frameSize.height)
-        
-        shapeLayer.bounds = shapeRect
-        shapeLayer.position = CGPoint(x: frameSize.width/2, y: frameSize.height/2)
-        shapeLayer.fillColor = UIColor.clear.cgColor
-        shapeLayer.strokeColor = color
-        shapeLayer.lineWidth = 1
-        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
-        shapeLayer.lineDashPattern = [6,3]
-        shapeLayer.path = UIBezierPath(roundedRect: shapeRect, cornerRadius: frame.height/10).cgPath
-        
-        view.layer.addSublayer(shapeLayer)
     }
     
     @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
         
         let view = sender.view as! MelodyImage
-
+        
+        // Move melody based on how much your finger moves from it's initial touch
         let translation = sender.translation(in: self)
-        
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
-        
         sender.setTranslation(CGPoint.zero, in: self)
         
         if sender.state == .ended {
-            
+            // Throw back melody
             if sender.location(in: self).y <= -view.frame.height*3 {
                 removeMelodyFromSack(view)
             } else {
                 view.moveViewTo(CGPoint.zero, time: 0.4)
             }
         }
-        
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){

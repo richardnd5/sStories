@@ -1,6 +1,3 @@
-// gonna try merging.
-// Merge two!!
-
 import UIKit
 
 protocol SceneDelegate : class {
@@ -11,96 +8,81 @@ protocol SceneDelegate : class {
     func backHome()
 }
 
-var collectedMelodies = [Melody]() // This is global.
-
 class ViewController: UIViewController, SceneDelegate {
-
     
-
-    enum AppScene {
+    enum AppState {
         case home
         case story
         case fishing
         case arranging
         case performing
     }
-    var currentState = AppScene.home
     
+    var currentState = AppState.home
     var currentPage = 0
     private var tempStoryLine = 0
-    
-    var switchToCatchingMelodiesScene = 5
-    var switchToArrangingScene = 9
-    var switchToPerformingScene = 11
-    
-    var page : PageView?
-    var catchingMelody : CatchingMelodies?
-    var arrangingScene : ArrangingScene?
-    var performingScene: PerformingScene?
-    
-    var pageTurner : PageTurner?
-    
+
     var homePage : HomePage!
     var aboutPage : AboutPage!
-    
-
+    var page : PageView!
+    var catchingMelody : CatchingMelodies!
+    var arrangingScene : ArrangingScene!
+    var performingScene: PerformingScene!
+    var pageTurner : PageTurner!
     
     var pageTurnerVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        fillSackWithMelodies()
-        
-//        addPage()
         createHomePage()
+        fillSackWithMelodies()
         
+        // create main view tap gesture.
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
-
+        
     }
     
     func createHomePage(){
         homePage = HomePage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         view.addSubview(homePage)
         homePage.fillSuperview()
-        homePage.isUserInteractionEnabled = true
         homePage.delegate = self
-        
     }
     
     func createAboutPage(){
         aboutPage = AboutPage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         view.addSubview(aboutPage)
         aboutPage.fillSuperview()
-        aboutPage.isUserInteractionEnabled = true
         aboutPage.delegate = self
-        
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
         if page?.superview != nil {
-        if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-            page?.nextStoryLine()
-            tempStoryLine+=1
-        } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-            if !pageTurnerVisible {
-                pageTurnerVisible = true
-                addPageTurner()
+            
+            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                page?.nextStoryLine()
+                tempStoryLine += 1
+            } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                if !pageTurnerVisible {
+                    print("it's being tapped")
+                    pageTurnerVisible = true
+                    addPageTurner()
+                }
             }
-        }
         }
     }
     
     func addPageTurner(){
-
+        
         let width = view.frame.width/12
         let height = view.frame.height
         var x = view.frame.width-width
         let y = CGFloat(0)
         
         if DeviceType.hasNotch {
-           x -= 44
+            x -= 44
         }
         
         pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height))
@@ -110,53 +92,57 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func nextPage() {
+        
+        // If the next page is a regular page
         if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
-            page?.fadeOutAndRemove(completion: {
+            page.fadeAndRemove(time: 1.0) {
                 self.currentPage+=1
                 self.tempStoryLine = 0
                 self.addPage()
                 self.pageTurnerVisible = false
-            })
+            }
+        // If the current page is the fishing page.
         } else if currentState == .fishing {
-            catchingMelody!.fadeOutAndRemove(completion: {
+            catchingMelody.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
                 self.currentPage+=1
                 self.tempStoryLine = 0
                 self.addPage()
                 self.pageTurnerVisible = false
-            })
+            }
+            // If the current page is the arranging page.
         } else if currentState == .arranging {
-            arrangingScene!.fadeOutAndRemove(completion: {
+            arrangingScene.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
                 self.currentPage+=1
                 self.tempStoryLine = 0
                 self.addPage()
                 self.pageTurnerVisible = false
-            })
+            }
         }
     }
     
     func startStory() {
-        homePage.fadeOutAndRemove {
+        
+        homePage.fadeAndRemove(time: 1.0) {
             self.addPage()
         }
         
     }
     
     func goToAboutPage() {
-        homePage.fadeOutAndRemove {
-            print("finished removing home page")
+        print("going to about page")
+        homePage.fadeAndRemove(time: 1.0) {
             self.createAboutPage()
         }
     }
     
     func returnToStory(){
         addPageTurner()
-        view.bringSubviewToFront(pageTurner!)
     }
     
     func backHome(){
-        aboutPage.fadeOutAndRemove {
+        aboutPage.fadeAndRemove(time: 1.0) {
             self.createHomePage()
         }
     }
@@ -166,25 +152,21 @@ class ViewController: UIViewController, SceneDelegate {
         if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
-//            let safe = view.safeAreaLayoutGuide
-//            catchingMelody?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             catchingMelody?.delegate = self
             currentState = .fishing
             
         } else if currentPage == switchToArrangingScene {
             arrangingScene = ArrangingScene(frame: view.frame)
             view.addSubview(arrangingScene!)
-//            let safe = view.safeAreaLayoutGuide
-//            arrangingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             arrangingScene?.delegate = self
             currentState = .arranging
+            
         } else if currentPage == switchToPerformingScene {
             performingScene = PerformingScene(frame: view.frame)
             view.addSubview(performingScene!)
-//            let safe = view.safeAreaLayoutGuide
-//            performingScene?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             performingScene?.delegate = self
             currentState = .performing
+            
         } else {
             currentState = .story
             page = PageView(frame: view.frame, page: pages[currentPage])
@@ -194,7 +176,7 @@ class ViewController: UIViewController, SceneDelegate {
         }
         
     }
-
+    
     override var prefersStatusBarHidden: Bool{
         return true
     }
