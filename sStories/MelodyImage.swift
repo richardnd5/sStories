@@ -34,6 +34,7 @@ class MelodyImage: UIImageView {
         
         changeOpacityOverTime(view: self, time: 1.0, opacity: 1.0) {}
         
+        
         setupGlowingOverlay()
         
     }
@@ -103,37 +104,6 @@ class MelodyImage: UIImageView {
         
         CATransaction.commit()
     }
-    
-    func shrinkAndRemove(time: Double, _ completion: @escaping () ->()){
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                self.transform = CGAffineTransform(scaleX: 0.00000001, y: 0.00000001)
-        },
-            completion: {
-                _ in
-                self.removeFromSuperview()
-                completion()
-        })
-    }
-    
-    func moveViewTo(_ point: CGPoint, time: Double){
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                
-                self.frame.origin = point
-        },
-            completion: {
-                _ in
-        })
-    }
-    
 
     func playMelody(){
 

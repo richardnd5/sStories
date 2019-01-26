@@ -39,7 +39,7 @@ class PageView: UIView {
         
         setupLayout()
         alpha = 0
-        fadeTo(view:self, time: 1.5,opacity: 1.0, {
+        fadeTo(time: 1.5, opacity: 1.0, {
             self.canActivate = true
         })
     }
@@ -52,15 +52,13 @@ class PageView: UIView {
         
         if canActivate{
             canActivate = false
-            fadeTo(view: storyTextView, time: 1.0, opacity: 0.0, {
-//                if self.canActivate {
-                    self.sceneStoryPosition += 1
-                    self.storyTextView.text = self.storyText[self.sceneStoryPosition]
-                    self.fadeTo(view: self.storyTextView, time: 1.0, opacity: 1.0, {
-                        self.canActivate = true
-                    })
-//                }
-            })
+            storyTextView.fadeTo(time: 1.0, opacity: 0.0) {
+                self.sceneStoryPosition += 1
+                self.storyTextView.text = self.storyText[self.sceneStoryPosition]
+                self.storyTextView.fadeTo(time: 1.0, opacity: 1.0, {
+                    self.canActivate = true
+                })
+            }
         }
     }
     

@@ -53,7 +53,6 @@ class HomePage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-
         imageView.image = resizedImage(name: "Templeton", frame: frame)
         aboutButton.image = resizedImage(name: "questionMark", frame: frame)
         readButton.image = resizedImage(name: "playButton", frame: frame)
@@ -61,16 +60,12 @@ class HomePage: UIView {
         title.text = "Templeton's Fishing Journey"
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
 
-
-        
         setupLayout()
         setupGestures()
         backgroundColor = .black
         alpha = 0
         layer.zPosition = 100
-        fadeTo(view:self, time: 1.5,opacity: 1.0, {})
-        
-        
+        fadeTo(time: 1.5,opacity: 1.0, {})
     }
     
     func setupLayout(){
@@ -98,12 +93,10 @@ class HomePage: UIView {
         readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         readButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
-//        readButton.topAnchor.constraint(equalTo: aboutButton.topAnchor).isActive = true
         
         addSubview(aboutButton)
         aboutButton.translatesAutoresizingMaskIntoConstraints = false
         aboutButton.topAnchor.constraint(equalTo: readButton.topAnchor).isActive = true
-//        aboutButton.heightAnchor.constraint(equalToConstant: frame.height/11).isActive = true
         aboutButton.widthAnchor.constraint(equalToConstant: frame.height/9).isActive = true
         aboutButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
         aboutButton.bottomAnchor.constraint(equalTo: readButton.bottomAnchor).isActive = true
@@ -124,18 +117,7 @@ class HomePage: UIView {
     @objc func handleAboutTap(_ sender: UITapGestureRecognizer){
         delegate?.goToAboutPage()
     }
-    
 
-
-    
-//    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
-//            fadeTo(view: self, time: 1.0, opacity: 0.0, {
-//                self.removeFromSuperview()
-//                completion()
-//            })
-//
-//    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
