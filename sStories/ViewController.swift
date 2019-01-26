@@ -64,7 +64,6 @@ class ViewController: UIViewController, SceneDelegate {
                 tempStoryLine += 1
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 if !pageTurnerVisible {
-                    print("it's being tapped")
                     pageTurnerVisible = true
                     addPageTurner()
                 }
@@ -128,7 +127,6 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func goToAboutPage() {
-        print("going to about page")
         homePage.fadeAndRemove(time: 1.0) {
             self.createAboutPage()
         }

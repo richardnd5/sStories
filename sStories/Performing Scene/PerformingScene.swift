@@ -62,7 +62,6 @@ class PerformingScene: UIView {
                 self.timeout()
             } else {
                 self.timeoutCounter = 0
-                print("timer done")
             }
             
         })
