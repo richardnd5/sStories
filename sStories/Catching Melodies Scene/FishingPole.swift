@@ -11,7 +11,6 @@ class FishingPole: UIImageView {
         
         image = resizedImage(name: "FishingPole", frame: frame, scale: 0.5)
         
-//        contentMode = .bottom
         contentMode = .scaleAspectFit
         isUserInteractionEnabled = false
         layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
@@ -138,31 +137,7 @@ class FishingPole: UIImageView {
         
         CATransaction.commit()
     }
-    
-    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){
-        
-        scaleSize = scaleTo
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
-        },
-            completion: {
-                _ in
-                completion()
-        })
-    }
-    
-    func fadeOutAndRemove(){
-        // Note sure why, but putting just 0.0 does not change opacity over time. It just instantaneously sets the scale to 0
-        scaleTo(scaleTo: 0.0000001, time: 1.0) {
-            self.removeFromSuperview()
-        }
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

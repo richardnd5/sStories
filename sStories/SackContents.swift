@@ -133,7 +133,7 @@ class SackContents: UIView {
             if sender.location(in: self).y <= -view.frame.height*3 {
                 removeMelodyFromSack(view)
             } else {
-                view.moveViewTo(CGPoint.zero, time: 0.4)
+                view.moveViewTo(CGPoint.zero, time: 0.4, {})
             }
         }
     }

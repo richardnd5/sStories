@@ -18,9 +18,7 @@ class MiniNote: UIImageView {
         layer.opacity = 0.0
         isUserInteractionEnabled = true
         
-        changeOpacityOverTime(view: self, time: 2.0, opacity: 1.0) {
-            
-        }
+        fadeTo(time: 2.0, opacity: 1.0, {})
         
     }
     
@@ -50,9 +48,7 @@ class MiniNote: UIImageView {
         rotation.fillMode = .forwards
         layer.add(rotation, forKey: "rotation")
         
-        changeOpacityOverTime(view: self, time: time, opacity: 0.0) {
-            self.removeFromSuperview()
-        }
+        fadeAndRemove(time: time, completion: {})
     }
     
     required init?(coder aDecoder: NSCoder) {

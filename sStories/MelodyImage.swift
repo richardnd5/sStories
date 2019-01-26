@@ -32,9 +32,7 @@ class MelodyImage: UIImageView {
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         isUserInteractionEnabled = true
         
-        changeOpacityOverTime(view: self, time: 1.0, opacity: 1.0) {}
-        
-        
+        fadeTo(time: 1.0, opacity: 1.0, {})
         setupGlowingOverlay()
         
     }
@@ -47,12 +45,7 @@ class MelodyImage: UIImageView {
         addSubview(glowingOverlay)
         glowingOverlay.fillSuperview()
     }
-    
-    func setOpacity(_ to: CGFloat){
-        noteImage = noteImage.setOpacity(alpha: to)!
-        image = noteImage
-    }
-    
+
     func addBlurredBorder(){
         maskLayer.frame = bounds
         maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/10, cornerHeight: frame.height/10, transform: nil)
@@ -61,21 +54,7 @@ class MelodyImage: UIImageView {
         maskLayer.shadowColor = UIColor.black.cgColor
         layer.mask = maskLayer;
     }
-    
-    func changeSize(to: CGSize, time: Double){
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                
-                self.frame.size = to
-        },
-            completion: {
-                _ in
-        })
-    }
-    
+        
     func startGlowingPulse(){
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         glow.fromValue = 0.0

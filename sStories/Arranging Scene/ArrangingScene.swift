@@ -12,8 +12,6 @@ class ArrangingScene: UIView {
     var songSlots = MelodySlots()
     var melodyImageArray = [MelodyImage]()
     
-    
-    
     var sackContents = SackContents()
     var playButton : PlayButton?
     var instructionLabel: Label?
@@ -32,12 +30,11 @@ class ArrangingScene: UIView {
 
         //fade the view in
         alpha = 0.0
-        changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {
+        
+        fadeTo(time: 1.5, opacity: 1.0, {
             self.generateCollectedMelodies()
         })
-        
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
-//        addGestureRecognizer(tap)
+
     }
     
     func setupBackgroundImage(){
@@ -47,10 +44,8 @@ class ArrangingScene: UIView {
     }
     
     func createInstructionLabel(){
-        // add keep label
-//        let width = frame.width
+
         let height = frame.height/20
-//        let x = CGFloat(0)
         let y = frame.height/60
         instructionLabel = Label(frame: CGRect.zero, words: "Time to arrange the melodies! Drag the melodies to their correct spots.", fontSize: height)
         addSubview(instructionLabel!)
@@ -109,7 +104,7 @@ class ArrangingScene: UIView {
             melodyImageArray.append(view)
             
             view.alpha = 0.0
-            changeOpacityOverTime(view: view, time: 1.5, opacity: 1.0, {})
+            view.fadeTo(time: 1.5, opacity: 1.0, {})
             
             let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
             view.addGestureRecognizer(panGesture)
@@ -154,7 +149,7 @@ class ArrangingScene: UIView {
                 if frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
                     // if it is, move it to the position and resize it.
                     let time = 0.4
-                    view.moveViewTo(frame.origin, time: time)
+                    view.moveViewTo(frame.origin, time: time, {})
                     view.changeSize(to: songSlots.slotPosition[i].frame.size, time: time)
                     view.inCorrectSlot = true
                     

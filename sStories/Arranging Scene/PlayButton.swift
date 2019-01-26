@@ -1,11 +1,3 @@
-//
-//  PageCell.swift
-//  Stroud Story UIView
-//
-//  Created by Nate on 12/5/18.
-//  Copyright © 2018 Nathan Richard. All rights reserved.
-//
-
 import UIKit
 
 class PlayButton: UIImageView {
@@ -20,7 +12,8 @@ class PlayButton: UIImageView {
         
         setupNote()
         alpha = 0.0
-        changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {})
+        
+        fadeTo(time: 1.5, opacity: 1.0, {})
     }
     
     func setupNote(){
@@ -34,16 +27,16 @@ class PlayButton: UIImageView {
 
     }
     
-    func throbImage(_ view: UIView){
-        let scale : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scale.fromValue = 1.0
-        scale.toValue = 1.02
-        scale.duration = 0.4;
-        scale.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        scale.repeatCount = .infinity;
-        scale.autoreverses = true
-        view.layer.add(scale, forKey: "throb")
-    }
+//    func throbImage(_ view: UIView){
+//        let scale : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+//        scale.fromValue = 1.0
+//        scale.toValue = 1.02
+//        scale.duration = 0.4;
+//        scale.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+//        scale.repeatCount = .infinity;
+//        scale.autoreverses = true
+//        view.layer.add(scale, forKey: "throb")
+//    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

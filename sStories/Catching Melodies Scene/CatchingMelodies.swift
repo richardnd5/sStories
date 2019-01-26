@@ -40,7 +40,8 @@ class CatchingMelodies: UIView {
         
         //fade the view in
         alpha = 0.0
-        changeOpacityOverTime(view: self, time: 1.5, opacity: 1.0, {})
+        
+        fadeTo(time: 1.5, opacity: 1.0, {})
     }
 
     func createSackContainer(){
@@ -70,7 +71,8 @@ class CatchingMelodies: UIView {
         pondImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pondImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        changeOpacityOverTime(view: self, time: 1.5,opacity: 1.0, {})
+        
+        fadeTo(time: 1.5, opacity: 1.0, {})
         
     }
     
@@ -161,8 +163,9 @@ class CatchingMelodies: UIView {
     func goBackToFishing(){
 
         melodyImage?.shrinkAndRemove(time: 0.6, {
-            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
+            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {self.throwbackWater!.scaleSize = 1.0})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
+                self.sack!.scaleSize = 1.0
                 self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
                 self.instructionLabel?.changeText(to: "Let's put the line back in and wait for another bite!")
@@ -174,31 +177,29 @@ class CatchingMelodies: UIView {
     func fishingDone(){
         sceneState = .fishingDone
         melodyImage?.shrinkAndRemove(time: 0.6, {
-            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {})
+            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {self.throwbackWater!.scaleSize = 1.0})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
-                
-                changeOpacityOverTime(view: self.pondImage, time: 2.0, opacity: 1.0, {})
+                self.sack!.scaleSize = 1.0
+                self.pondImage.fadeTo(time: 2.0, opacity: 1.0, {})
                 self.sack?.fadeAndRemove(time: 1.0, completion: {})
                 self.throwbackWater?.fadeAndRemove(time: 1.0, completion: {})
-                self.keepLabel?.remove(fadeTime: 1.0, {})
-                self.throwbackLabel?.remove(fadeTime: 1.0, {})
-                
-//                self.instructionLabel?.text = "What a great collection of melodies! Time to head back down the mountain."
+                self.keepLabel?.fadeAndRemove(time: 1.0, completion: {})
+                self.throwbackLabel?.fadeAndRemove(time: 1.0, completion: {})
                 self.instructionLabel?.changeText(to: "What a great collection of melodies! Time to head back down the mountain.")
             })
         })
     }
     
-    // NEED TO SEPARATE THE PUT LINE BACK IN OUTTA HERE!!!!
+
     func removeImagesFromCaughtMelodyScene(){
         
-        changeOpacityOverTime(view: pondImage, time: 2.0, opacity: 1.0, {
+        pondImage.fadeTo(time: 2.0, opacity: 1.0) {
             self.putLineBackIn()
-        })
+        }
         self.sack?.fadeAndRemove(time: 1.0, completion: {})
         self.throwbackWater?.fadeAndRemove(time: 1.0, completion: {})
-        self.keepLabel?.remove(fadeTime: 1.0, {})
-        self.throwbackLabel?.remove(fadeTime: 1.0, {})
+        self.keepLabel?.fadeAndRemove(time: 1.0, completion: {})
+        self.throwbackLabel?.fadeAndRemove(time: 1.0, completion: {})
     }
 
     func putLineBackIn(){
@@ -213,13 +214,11 @@ class CatchingMelodies: UIView {
         
         // choose a random time
         let randomTime = TimeInterval.random(in: 4...7)
-//        let randomTime = TimeInterval.random(in: 1...2)
         
         // schedule a timer to trigger a melody bite in the future
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
             self.sceneState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
-//            self.instructionLabel?.text = "Ooh! A Bite! Tap to reel it in!"
             self.instructionLabel?.changeText(to: "Ooh! A Bite! Tap to reel it in!")
         })
     }
@@ -231,14 +230,12 @@ class CatchingMelodies: UIView {
         fishingPole?.pullPoleOut({
             
             // dim the background pond image
-            changeOpacityOverTime(view: self.pondImage, time: 1.5, opacity: 0.2, {})
+            self.pondImage.fadeTo(time: 1.5, opacity: 0.2, {})
             
             // create catching scene images
             self.createRandomMelody()
             self.createCatchOrThrowBackImages()
             self.createLabels()
-            
-//            self.instructionLabel?.text = "Tap on the melody to hear it, then drag it to keep or throw it back."
             self.instructionLabel?.changeText(to: "Tap on the melody to hear it, then drag it to keep or throw it back.")
         })
     }
@@ -253,13 +250,13 @@ class CatchingMelodies: UIView {
         sender.setTranslation(CGPoint.zero, in: self)
         
         if (sack?.bounds.contains(sender.location(in: sack)))! {
-            sack?.scaleTo(scaleTo: 1.4, time: 0.3, {})
+            sack?.scaleTo(scaleTo: 1.4, time: 0.3, {self.sack!.scaleSize = 1.4})
         } else if sack?.scaleSize != 1.0 {
-            sack?.scaleTo(scaleTo: 1.0, time: 0.3, {})
+            sack?.scaleTo(scaleTo: 1.0, time: 0.3, {self.sack!.scaleSize = 1.0})
         } else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))!{
-            throwbackWater?.scaleTo(scaleTo: 1.4, time: 0.3, {})
+            throwbackWater?.scaleTo(scaleTo: 1.4, time: 0.3, {self.throwbackWater!.scaleSize = 1.4})
         } else if throwbackWater?.scaleSize != 1.0 {
-            throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.3, {})
+            throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.3, {self.throwbackWater!.scaleSize = 1.0})
         }
         
         // When touches ended after panning.

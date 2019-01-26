@@ -27,7 +27,8 @@ class PageTurner: UIView {
         
         //fade the view in
         alpha = 0.0
-        changeOpacityOverTime(view: self, time: 1.0, opacity: 1.0, {})
+        
+        fadeTo(time: 1.0, opacity: 1.0, {})
 
     }
     
@@ -159,7 +160,7 @@ class PageTurner: UIView {
         if view.frame.origin.y > noteDestinationSlot.frame.maxY {
             
             if sender.state == .began && arrow.isVisible {
-                arrow.fadeOutAndRemove()
+                arrow.fadeAndRemove(time: 1.5, completion: {})
             }
             
             let translation = sender.translation(in: self)
@@ -170,18 +171,11 @@ class PageTurner: UIView {
         } else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
             sender.state = .ended
             triggerFinishAnimation(view: view)
-            fadeOutAndRemove()
+            fadeAndRemove(time: 1.5, completion: {})
             delegate!.nextPage()
         }
     }
-    
-    func fadeOutAndRemove(){
-        changeOpacityOverTime(view: self, time: 1.0, opacity: 0.0) {
-            self.removeFromSuperview()
-        }
-    }
-    
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

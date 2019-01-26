@@ -1,11 +1,3 @@
-//
-//  PageCell.swift
-//  Stroud Story UIView
-//
-//  Created by Nate on 12/5/18.
-//  Copyright © 2018 Nathan Richard. All rights reserved.
-//
-
 import UIKit
 
 class transparentMelody: UIImageView {
@@ -65,35 +57,7 @@ class transparentMelody: UIImageView {
         maskLayer.shadowColor = UIColor.black.cgColor
         layer.mask = maskLayer;
     }
-    
-    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->()){
-        
-        UIView.animate(
-            withDuration: time,
-            delay: 0,
-            options: .curveEaseInOut,
-            animations: {
-                
-                self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
-        },
-            completion: {
-                _ in
-                
-                completion()
-        })
-    }
-    
-    func throbImage(_ view: UIView){
-        let scale : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scale.fromValue = 1.0
-        scale.toValue = 1.02
-        scale.duration = 0.4;
-        scale.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        scale.repeatCount = .infinity;
-        scale.autoreverses = true
-        view.layer.add(scale, forKey: "throb")
-    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

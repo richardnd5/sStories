@@ -19,7 +19,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     var currentState = AppState.home
-    var currentPage = 0
+    var currentPage = 9
     private var tempStoryLine = 0
 
     var homePage : HomePage!

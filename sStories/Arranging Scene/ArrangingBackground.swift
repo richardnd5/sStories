@@ -33,11 +33,6 @@ class ArrangingBackground: UIImageView {
         
     }
     
-    func setOpacity(_ to: CGFloat){
-        noteImage = noteImage.setOpacity(alpha: to)!
-        image = noteImage
-    }
-    
     func addBlurredBorder(){
         maskLayer.frame = bounds
         maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/10, cornerHeight: frame.height/10, transform: nil)

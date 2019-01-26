@@ -20,9 +20,7 @@ class MiniPerformingNote: UIImageView {
         layer.opacity = 0.0
         isUserInteractionEnabled = true
         
-        changeOpacityOverTime(view: self, time: 2.0, opacity: 1.0) {
-            
-        }
+        fadeTo(time: 2.0, opacity: 1.0, {})
     }
     
     func makeNoteAppearFlyAwayAndFade(){
@@ -50,10 +48,8 @@ class MiniPerformingNote: UIImageView {
         rotation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         rotation.fillMode = .forwards
         layer.add(rotation, forKey: "rotation")
-        
-        changeOpacityOverTime(view: self, time: time, opacity: 0.0) {
-            self.removeFromSuperview()
-        }
+
+        fadeAndRemove(time: time, completion: {})
     }
     
     required init?(coder aDecoder: NSCoder) {
