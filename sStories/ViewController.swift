@@ -19,7 +19,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     var currentState = AppState.home
-    var currentPage = 9
+    var currentPage = 0
     private var tempStoryLine = 0
 
     var homePage : HomePage!
@@ -29,14 +29,12 @@ class ViewController: UIViewController, SceneDelegate {
     var arrangingScene : ArrangingScene!
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
-    
     var pageTurnerVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createHomePage()
-        fillSackWithMelodies()
         
         // create main view tap gesture.
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -127,7 +125,6 @@ class ViewController: UIViewController, SceneDelegate {
         homePage.fadeAndRemove(time: 1.0) {
             self.addPage()
         }
-        
     }
     
     func goToAboutPage() {

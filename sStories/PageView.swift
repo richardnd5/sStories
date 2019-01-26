@@ -32,8 +32,9 @@ class PageView: UIView {
         imageName = page.imageName
         storyText = page.storyText
         
-        setupStoryImage()
         
+        pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
+
         storyTextView.text = page.storyText[sceneStoryPosition]
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
         
@@ -43,11 +44,7 @@ class PageView: UIView {
             self.canActivate = true
         })
     }
-    
-    func setupStoryImage(){
-        pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
-    }
-    
+
     func nextStoryLine(){
         
         if canActivate{

@@ -60,61 +60,6 @@
 		866EA6F121F42C7E00B28BA6 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 866EA6F021F42C7E00B28BA6 /* arrow.png */; };
 		866EA6F321F4384D00B28BA6 /* 8thThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = 866EA6F221F4384D00B28BA6 /* 8thThumb.png */; };
 		866EA6F521F438DC00B28BA6 /* MiniNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA6F421F438DC00B28BA6 /* MiniNote.swift */; };
-		8679A3B821E1CE6F00E12539 /* melody18.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38121E1CE6500E12539 /* melody18.png */; };
-		8679A3B921E1CE6F00E12539 /* melody48.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38221E1CE6500E12539 /* melody48.png */; };
-		8679A3BA21E1CE6F00E12539 /* melody40.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38321E1CE6500E12539 /* melody40.png */; };
-		8679A3BB21E1CE6F00E12539 /* melody50.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38421E1CE6500E12539 /* melody50.png */; };
-		8679A3BC21E1CE6F00E12539 /* melody7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38521E1CE6500E12539 /* melody7.png */; };
-		8679A3BD21E1CE6F00E12539 /* melody47.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38621E1CE6600E12539 /* melody47.png */; };
-		8679A3BE21E1CE6F00E12539 /* melody22.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38721E1CE6600E12539 /* melody22.png */; };
-		8679A3BF21E1CE6F00E12539 /* melody32.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38821E1CE6600E12539 /* melody32.png */; };
-		8679A3C021E1CE6F00E12539 /* melody24.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38921E1CE6600E12539 /* melody24.png */; };
-		8679A3C121E1CE6F00E12539 /* melody31.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38A21E1CE6600E12539 /* melody31.png */; };
-		8679A3C221E1CE6F00E12539 /* melody4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38B21E1CE6600E12539 /* melody4.png */; };
-		8679A3C321E1CE6F00E12539 /* melody19.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38C21E1CE6600E12539 /* melody19.png */; };
-		8679A3C421E1CE6F00E12539 /* melody8.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38D21E1CE6600E12539 /* melody8.png */; };
-		8679A3C521E1CE6F00E12539 /* melody49.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38E21E1CE6600E12539 /* melody49.png */; };
-		8679A3C621E1CE6F00E12539 /* melody43.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A38F21E1CE6700E12539 /* melody43.png */; };
-		8679A3C721E1CE6F00E12539 /* melody27.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39021E1CE6700E12539 /* melody27.png */; };
-		8679A3C821E1CE6F00E12539 /* melody1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39121E1CE6700E12539 /* melody1.png */; };
-		8679A3C921E1CE6F00E12539 /* melody35.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39221E1CE6700E12539 /* melody35.png */; };
-		8679A3CA21E1CE6F00E12539 /* melody2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39321E1CE6700E12539 /* melody2.png */; };
-		8679A3CB21E1CE6F00E12539 /* melody16.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39421E1CE6700E12539 /* melody16.png */; };
-		8679A3CC21E1CE6F00E12539 /* melody44.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39521E1CE6700E12539 /* melody44.png */; };
-		8679A3CD21E1CE6F00E12539 /* melody52.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39621E1CE6800E12539 /* melody52.png */; };
-		8679A3CE21E1CE6F00E12539 /* melody39.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39721E1CE6800E12539 /* melody39.png */; };
-		8679A3CF21E1CE6F00E12539 /* melody9.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39821E1CE6800E12539 /* melody9.png */; };
-		8679A3D021E1CE6F00E12539 /* melody5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39921E1CE6800E12539 /* melody5.png */; };
-		8679A3D121E1CE6F00E12539 /* melody41.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39A21E1CE6800E12539 /* melody41.png */; };
-		8679A3D221E1CE6F00E12539 /* melody13.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39B21E1CE6800E12539 /* melody13.png */; };
-		8679A3D321E1CE6F00E12539 /* melody30.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39C21E1CE6900E12539 /* melody30.png */; };
-		8679A3D421E1CE6F00E12539 /* melody26.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39D21E1CE6900E12539 /* melody26.png */; };
-		8679A3D521E1CE6F00E12539 /* melody14.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39E21E1CE6900E12539 /* melody14.png */; };
-		8679A3D621E1CE6F00E12539 /* melody37.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A39F21E1CE6900E12539 /* melody37.png */; };
-		8679A3D721E1CE6F00E12539 /* melody54.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A021E1CE6A00E12539 /* melody54.png */; };
-		8679A3D821E1CE6F00E12539 /* melody33.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A121E1CE6A00E12539 /* melody33.png */; };
-		8679A3D921E1CE6F00E12539 /* melody25.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A221E1CE6A00E12539 /* melody25.png */; };
-		8679A3DA21E1CE6F00E12539 /* melody53.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A321E1CE6A00E12539 /* melody53.png */; };
-		8679A3DB21E1CE6F00E12539 /* melody3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A421E1CE6A00E12539 /* melody3.png */; };
-		8679A3DC21E1CE6F00E12539 /* melody11.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A521E1CE6A00E12539 /* melody11.png */; };
-		8679A3DD21E1CE6F00E12539 /* melody42.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A621E1CE6B00E12539 /* melody42.png */; };
-		8679A3DE21E1CE6F00E12539 /* melody15.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A721E1CE6B00E12539 /* melody15.png */; };
-		8679A3DF21E1CE6F00E12539 /* melody10.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A821E1CE6B00E12539 /* melody10.png */; };
-		8679A3E021E1CE6F00E12539 /* melody23.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3A921E1CE6C00E12539 /* melody23.png */; };
-		8679A3E121E1CE6F00E12539 /* melody51.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3AA21E1CE6C00E12539 /* melody51.png */; };
-		8679A3E221E1CE6F00E12539 /* melody34.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3AB21E1CE6C00E12539 /* melody34.png */; };
-		8679A3E321E1CE6F00E12539 /* melody29.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3AC21E1CE6D00E12539 /* melody29.png */; };
-		8679A3E421E1CE6F00E12539 /* melody28.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3AD21E1CE6D00E12539 /* melody28.png */; };
-		8679A3E521E1CE6F00E12539 /* melody46.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3AE21E1CE6D00E12539 /* melody46.png */; };
-		8679A3E621E1CE6F00E12539 /* melody17.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3AF21E1CE6D00E12539 /* melody17.png */; };
-		8679A3E721E1CE6F00E12539 /* melody6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B021E1CE6D00E12539 /* melody6.png */; };
-		8679A3E821E1CE6F00E12539 /* melody36.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B121E1CE6D00E12539 /* melody36.png */; };
-		8679A3E921E1CE6F00E12539 /* melody38.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B221E1CE6E00E12539 /* melody38.png */; };
-		8679A3EA21E1CE6F00E12539 /* melody0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B321E1CE6E00E12539 /* melody0.png */; };
-		8679A3EB21E1CE6F00E12539 /* melody12.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B421E1CE6E00E12539 /* melody12.png */; };
-		8679A3EC21E1CE6F00E12539 /* melody20.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B521E1CE6E00E12539 /* melody20.png */; };
-		8679A3ED21E1CE6F00E12539 /* melody45.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B621E1CE6E00E12539 /* melody45.png */; };
-		8679A3EE21E1CE6F00E12539 /* melody21.png in Resources */ = {isa = PBXBuildFile; fileRef = 8679A3B721E1CE6E00E12539 /* melody21.png */; };
 		867C542621DF1E7B002E4255 /* SackContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867C542521DF1E7B002E4255 /* SackContents.swift */; };
 		867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 867C542921DF2FE7002E4255 /* melodyThumbnail.png */; };
 		869027E321F5939E00C3EF0C /* performanceScene.png in Resources */ = {isa = PBXBuildFile; fileRef = 869027E221F5939E00C3EF0C /* performanceScene.png */; };
@@ -213,6 +158,7 @@
 		86F1F6C121FC1150001AD82D /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 86F1F6C021FC1150001AD82D /* backArrow.png */; };
 		86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */; };
 		86F1F6CB21FC3A5D001AD82D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1F6CA21FC3A5D001AD82D /* UIViewExtension.swift */; };
+		86F1F6D121FC43BE001AD82D /* StructsAndEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F1F6D021FC43BE001AD82D /* StructsAndEnums.swift */; };
 		86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB7D21DD5AD400BED768 /* Label.swift */; };
 		86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8121DD636300BED768 /* FishingPole.swift */; };
 		86F8AB8721DDECA200BED768 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F8AB8621DDECA200BED768 /* GlobalConstants.swift */; };
@@ -302,61 +248,6 @@
 		866EA6F021F42C7E00B28BA6 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		866EA6F221F4384D00B28BA6 /* 8thThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8thThumb.png; sourceTree = "<group>"; };
 		866EA6F421F438DC00B28BA6 /* MiniNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniNote.swift; sourceTree = "<group>"; };
-		8679A38121E1CE6500E12539 /* melody18.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody18.png; sourceTree = "<group>"; };
-		8679A38221E1CE6500E12539 /* melody48.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody48.png; sourceTree = "<group>"; };
-		8679A38321E1CE6500E12539 /* melody40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody40.png; sourceTree = "<group>"; };
-		8679A38421E1CE6500E12539 /* melody50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody50.png; sourceTree = "<group>"; };
-		8679A38521E1CE6500E12539 /* melody7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody7.png; sourceTree = "<group>"; };
-		8679A38621E1CE6600E12539 /* melody47.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody47.png; sourceTree = "<group>"; };
-		8679A38721E1CE6600E12539 /* melody22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody22.png; sourceTree = "<group>"; };
-		8679A38821E1CE6600E12539 /* melody32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody32.png; sourceTree = "<group>"; };
-		8679A38921E1CE6600E12539 /* melody24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody24.png; sourceTree = "<group>"; };
-		8679A38A21E1CE6600E12539 /* melody31.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody31.png; sourceTree = "<group>"; };
-		8679A38B21E1CE6600E12539 /* melody4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody4.png; sourceTree = "<group>"; };
-		8679A38C21E1CE6600E12539 /* melody19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody19.png; sourceTree = "<group>"; };
-		8679A38D21E1CE6600E12539 /* melody8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody8.png; sourceTree = "<group>"; };
-		8679A38E21E1CE6600E12539 /* melody49.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody49.png; sourceTree = "<group>"; };
-		8679A38F21E1CE6700E12539 /* melody43.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody43.png; sourceTree = "<group>"; };
-		8679A39021E1CE6700E12539 /* melody27.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody27.png; sourceTree = "<group>"; };
-		8679A39121E1CE6700E12539 /* melody1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody1.png; sourceTree = "<group>"; };
-		8679A39221E1CE6700E12539 /* melody35.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody35.png; sourceTree = "<group>"; };
-		8679A39321E1CE6700E12539 /* melody2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody2.png; sourceTree = "<group>"; };
-		8679A39421E1CE6700E12539 /* melody16.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody16.png; sourceTree = "<group>"; };
-		8679A39521E1CE6700E12539 /* melody44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody44.png; sourceTree = "<group>"; };
-		8679A39621E1CE6800E12539 /* melody52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody52.png; sourceTree = "<group>"; };
-		8679A39721E1CE6800E12539 /* melody39.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody39.png; sourceTree = "<group>"; };
-		8679A39821E1CE6800E12539 /* melody9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody9.png; sourceTree = "<group>"; };
-		8679A39921E1CE6800E12539 /* melody5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody5.png; sourceTree = "<group>"; };
-		8679A39A21E1CE6800E12539 /* melody41.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody41.png; sourceTree = "<group>"; };
-		8679A39B21E1CE6800E12539 /* melody13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody13.png; sourceTree = "<group>"; };
-		8679A39C21E1CE6900E12539 /* melody30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody30.png; sourceTree = "<group>"; };
-		8679A39D21E1CE6900E12539 /* melody26.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody26.png; sourceTree = "<group>"; };
-		8679A39E21E1CE6900E12539 /* melody14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody14.png; sourceTree = "<group>"; };
-		8679A39F21E1CE6900E12539 /* melody37.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody37.png; sourceTree = "<group>"; };
-		8679A3A021E1CE6A00E12539 /* melody54.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody54.png; sourceTree = "<group>"; };
-		8679A3A121E1CE6A00E12539 /* melody33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody33.png; sourceTree = "<group>"; };
-		8679A3A221E1CE6A00E12539 /* melody25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody25.png; sourceTree = "<group>"; };
-		8679A3A321E1CE6A00E12539 /* melody53.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody53.png; sourceTree = "<group>"; };
-		8679A3A421E1CE6A00E12539 /* melody3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody3.png; sourceTree = "<group>"; };
-		8679A3A521E1CE6A00E12539 /* melody11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody11.png; sourceTree = "<group>"; };
-		8679A3A621E1CE6B00E12539 /* melody42.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody42.png; sourceTree = "<group>"; };
-		8679A3A721E1CE6B00E12539 /* melody15.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody15.png; sourceTree = "<group>"; };
-		8679A3A821E1CE6B00E12539 /* melody10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody10.png; sourceTree = "<group>"; };
-		8679A3A921E1CE6C00E12539 /* melody23.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody23.png; sourceTree = "<group>"; };
-		8679A3AA21E1CE6C00E12539 /* melody51.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody51.png; sourceTree = "<group>"; };
-		8679A3AB21E1CE6C00E12539 /* melody34.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody34.png; sourceTree = "<group>"; };
-		8679A3AC21E1CE6D00E12539 /* melody29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody29.png; sourceTree = "<group>"; };
-		8679A3AD21E1CE6D00E12539 /* melody28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody28.png; sourceTree = "<group>"; };
-		8679A3AE21E1CE6D00E12539 /* melody46.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody46.png; sourceTree = "<group>"; };
-		8679A3AF21E1CE6D00E12539 /* melody17.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody17.png; sourceTree = "<group>"; };
-		8679A3B021E1CE6D00E12539 /* melody6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody6.png; sourceTree = "<group>"; };
-		8679A3B121E1CE6D00E12539 /* melody36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody36.png; sourceTree = "<group>"; };
-		8679A3B221E1CE6E00E12539 /* melody38.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody38.png; sourceTree = "<group>"; };
-		8679A3B321E1CE6E00E12539 /* melody0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody0.png; sourceTree = "<group>"; };
-		8679A3B421E1CE6E00E12539 /* melody12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody12.png; sourceTree = "<group>"; };
-		8679A3B521E1CE6E00E12539 /* melody20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody20.png; sourceTree = "<group>"; };
-		8679A3B621E1CE6E00E12539 /* melody45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody45.png; sourceTree = "<group>"; };
-		8679A3B721E1CE6E00E12539 /* melody21.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melody21.png; sourceTree = "<group>"; };
 		867C542521DF1E7B002E4255 /* SackContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SackContents.swift; sourceTree = "<group>"; };
 		867C542921DF2FE7002E4255 /* melodyThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melodyThumbnail.png; sourceTree = "<group>"; };
 		869027E221F5939E00C3EF0C /* performanceScene.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performanceScene.png; sourceTree = "<group>"; };
@@ -461,6 +352,7 @@
 		86F1F6C021FC1150001AD82D /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
 		86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		86F1F6CA21FC3A5D001AD82D /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		86F1F6D021FC43BE001AD82D /* StructsAndEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructsAndEnums.swift; sourceTree = "<group>"; };
 		86F8AB7D21DD5AD400BED768 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
 		86F8AB8121DD636300BED768 /* FishingPole.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FishingPole.swift; sourceTree = "<group>"; };
 		86F8AB8621DDECA200BED768 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
@@ -530,6 +422,8 @@
 		860DE93121C2072F00A7370D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */,
+				86ED757B21F126770066E2D8 /* pianoMelodies */,
 				8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */,
 				8698D88E21BF416600ADED35 /* marimbaC.wav */,
 				8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */,
@@ -545,6 +439,7 @@
 		860DE93221C2073E00A7370D /* Image Assets */ = {
 			isa = PBXGroup;
 			children = (
+				22C12C0421F7B716006D288F /* Performance Images */,
 				86E9F49621BF82F400EE12DF /* Mountain.png */,
 				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
 				863DADF521D40D5400AFDD94 /* Note.png */,
@@ -604,74 +499,12 @@
 			path = PageTurner;
 			sourceTree = "<group>";
 		};
-		8679A3EF21E1CE7600E12539 /* Melody Images */ = {
-			isa = PBXGroup;
-			children = (
-				8679A3B321E1CE6E00E12539 /* melody0.png */,
-				8679A39121E1CE6700E12539 /* melody1.png */,
-				8679A39321E1CE6700E12539 /* melody2.png */,
-				8679A3A421E1CE6A00E12539 /* melody3.png */,
-				8679A38B21E1CE6600E12539 /* melody4.png */,
-				8679A39921E1CE6800E12539 /* melody5.png */,
-				8679A3B021E1CE6D00E12539 /* melody6.png */,
-				8679A38521E1CE6500E12539 /* melody7.png */,
-				8679A38D21E1CE6600E12539 /* melody8.png */,
-				8679A39821E1CE6800E12539 /* melody9.png */,
-				8679A3A821E1CE6B00E12539 /* melody10.png */,
-				8679A3A521E1CE6A00E12539 /* melody11.png */,
-				8679A3B421E1CE6E00E12539 /* melody12.png */,
-				8679A39B21E1CE6800E12539 /* melody13.png */,
-				8679A39E21E1CE6900E12539 /* melody14.png */,
-				8679A3A721E1CE6B00E12539 /* melody15.png */,
-				8679A39421E1CE6700E12539 /* melody16.png */,
-				8679A3AF21E1CE6D00E12539 /* melody17.png */,
-				8679A38121E1CE6500E12539 /* melody18.png */,
-				8679A38C21E1CE6600E12539 /* melody19.png */,
-				8679A3B521E1CE6E00E12539 /* melody20.png */,
-				8679A3B721E1CE6E00E12539 /* melody21.png */,
-				8679A38721E1CE6600E12539 /* melody22.png */,
-				8679A3A921E1CE6C00E12539 /* melody23.png */,
-				8679A38921E1CE6600E12539 /* melody24.png */,
-				8679A3A221E1CE6A00E12539 /* melody25.png */,
-				8679A39D21E1CE6900E12539 /* melody26.png */,
-				8679A39021E1CE6700E12539 /* melody27.png */,
-				8679A3AD21E1CE6D00E12539 /* melody28.png */,
-				8679A3AC21E1CE6D00E12539 /* melody29.png */,
-				8679A39C21E1CE6900E12539 /* melody30.png */,
-				8679A38A21E1CE6600E12539 /* melody31.png */,
-				8679A38821E1CE6600E12539 /* melody32.png */,
-				8679A3A121E1CE6A00E12539 /* melody33.png */,
-				8679A3AB21E1CE6C00E12539 /* melody34.png */,
-				8679A39221E1CE6700E12539 /* melody35.png */,
-				8679A3B121E1CE6D00E12539 /* melody36.png */,
-				8679A39F21E1CE6900E12539 /* melody37.png */,
-				8679A3B221E1CE6E00E12539 /* melody38.png */,
-				8679A39721E1CE6800E12539 /* melody39.png */,
-				8679A38321E1CE6500E12539 /* melody40.png */,
-				8679A39A21E1CE6800E12539 /* melody41.png */,
-				8679A3A621E1CE6B00E12539 /* melody42.png */,
-				8679A38F21E1CE6700E12539 /* melody43.png */,
-				8679A39521E1CE6700E12539 /* melody44.png */,
-				8679A3B621E1CE6E00E12539 /* melody45.png */,
-				8679A3AE21E1CE6D00E12539 /* melody46.png */,
-				8679A38621E1CE6600E12539 /* melody47.png */,
-				8679A38221E1CE6500E12539 /* melody48.png */,
-				8679A38E21E1CE6600E12539 /* melody49.png */,
-				8679A38421E1CE6500E12539 /* melody50.png */,
-				8679A3AA21E1CE6C00E12539 /* melody51.png */,
-				8679A39621E1CE6800E12539 /* melody52.png */,
-				8679A3A321E1CE6A00E12539 /* melody53.png */,
-				8679A3A021E1CE6A00E12539 /* melody54.png */,
-			);
-			path = "Melody Images";
-			sourceTree = "<group>";
-		};
 		869027E821F5956C00C3EF0C /* Performing Scene */ = {
 			isa = PBXGroup;
 			children = (
 				869027E421F593B300C3EF0C /* PerformingScene.swift */,
-				869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */,
 				869027E621F593DD00C3EF0C /* PerformingBackground.swift */,
+				869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */,
 			);
 			path = "Performing Scene";
 			sourceTree = "<group>";
@@ -725,20 +558,17 @@
 				869027E821F5956C00C3EF0C /* Performing Scene */,
 				866EA65821F2E8CB00B28BA6 /* PageTurner */,
 				86F8AB8621DDECA200BED768 /* GlobalConstants.swift */,
+				86F1F6D021FC43BE001AD82D /* StructsAndEnums.swift */,
 				86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,
 				86F1F6CA21FC3A5D001AD82D /* UIViewExtension.swift */,
-				22C12C0421F7B716006D288F /* Performance Images */,
-				22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */,
-				86ED757B21F126770066E2D8 /* pianoMelodies */,
-				8679A3EF21E1CE7600E12539 /* Melody Images */,
 				860DE93121C2072F00A7370D /* Sounds */,
-				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
 				860DE93221C2073E00A7370D /* Image Assets */,
 				86BBBF3421BB08FD00CB17F2 /* LaunchScreen.storyboard */,
 				86BBBF3721BB08FD00CB17F2 /* Info.plist */,
+				86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */,
 			);
 			path = sStories;
 			sourceTree = "<group>";
@@ -1007,110 +837,55 @@
 				86ED75E821F126980066E2D8 /* melody8.mp3 in Resources */,
 				22C12BFC21F7B70D006D288F /* musicSymbol7.png in Resources */,
 				86ED75E921F126980066E2D8 /* melody9.mp3 in Resources */,
-				8679A3D521E1CE6F00E12539 /* melody14.png in Resources */,
-				8679A3DA21E1CE6F00E12539 /* melody53.png in Resources */,
-				8679A3D421E1CE6F00E12539 /* melody26.png in Resources */,
 				8654706121EE70D400D1F068 /* final.png in Resources */,
-				8679A3C121E1CE6F00E12539 /* melody31.png in Resources */,
-				8679A3B921E1CE6F00E12539 /* melody48.png in Resources */,
-				8679A3D821E1CE6F00E12539 /* melody33.png in Resources */,
 				86697DE321C1AF97009EC3BF /* windSound.wav in Resources */,
-				8679A3D321E1CE6F00E12539 /* melody30.png in Resources */,
-				8679A3CA21E1CE6F00E12539 /* melody2.png in Resources */,
-				8679A3E921E1CE6F00E12539 /* melody38.png in Resources */,
-				8679A3C521E1CE6F00E12539 /* melody49.png in Resources */,
 				8654705F21EE70D400D1F068 /* begin.png in Resources */,
-				8679A3E421E1CE6F00E12539 /* melody28.png in Resources */,
-				8679A3D021E1CE6F00E12539 /* melody5.png in Resources */,
 				8654706521EE824300D1F068 /* trebleClef.png in Resources */,
 				86CC12E921FB8E7500B9164B /* playButton.png in Resources */,
-				8679A3E721E1CE6F00E12539 /* melody6.png in Resources */,
 				2298202D21F6F9D20070F49B /* Performance.png in Resources */,
 				866EA6E421F413CF00B28BA6 /* turnPiano5.mp3 in Resources */,
-				8679A3DF21E1CE6F00E12539 /* melody10.png in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
-				8679A3EC21E1CE6F00E12539 /* melody20.png in Resources */,
 				861C788F21DC257E009D9612 /* sack.png in Resources */,
 				8654705D21EE70D400D1F068 /* middle.png in Resources */,
 				8654705C21EE70D400D1F068 /* dominant.png in Resources */,
 				86621B2521CD776A0069157B /* waterDrop.png in Resources */,
 				8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */,
 				8654705E21EE70D400D1F068 /* ending.png in Resources */,
-				8679A3C821E1CE6F00E12539 /* melody1.png in Resources */,
-				8679A3C321E1CE6F00E12539 /* melody19.png in Resources */,
-				8679A3BF21E1CE6F00E12539 /* melody32.png in Resources */,
-				8679A3CB21E1CE6F00E12539 /* melody16.png in Resources */,
-				8679A3C721E1CE6F00E12539 /* melody27.png in Resources */,
 				8698D89421BF417600ADED35 /* marimbaC.wav in Resources */,
 				869EEFFE21DBE06B00A4BC06 /* throwbackWater.png in Resources */,
-				8679A3D221E1CE6F00E12539 /* melody13.png in Resources */,
-				8679A3E321E1CE6F00E12539 /* melody29.png in Resources */,
 				86CC12E721FB8DCB00B9164B /* Templeton.png in Resources */,
 				220B35F121FA69B600AA146D /* Pond.png in Resources */,
 				8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */,
 				8698D89621BF417600ADED35 /* pageTurnTouchUp.wav in Resources */,
-				8679A3BD21E1CE6F00E12539 /* melody47.png in Resources */,
 				866EA6E321F413CF00B28BA6 /* turnPiano1.mp3 in Resources */,
-				8679A3BB21E1CE6F00E12539 /* melody50.png in Resources */,
-				8679A3C621E1CE6F00E12539 /* melody43.png in Resources */,
 				869027E321F5939E00C3EF0C /* performanceScene.png in Resources */,
-				8679A3BE21E1CE6F00E12539 /* melody22.png in Resources */,
-				8679A3CD21E1CE6F00E12539 /* melody52.png in Resources */,
-				8679A3BC21E1CE6F00E12539 /* melody7.png in Resources */,
 				8698D89721BF417600ADED35 /* touchDown.wav in Resources */,
 				86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */,
 				86CC12E121FB818C00B9164B /* questionMark.png in Resources */,
-				8679A3D921E1CE6F00E12539 /* melody25.png in Resources */,
 				22C12BFA21F7B70D006D288F /* musicSymbol3.png in Resources */,
 				867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */,
 				866EA6E521F413CF00B28BA6 /* turnPiano6.mp3 in Resources */,
 				8654706021EE70D400D1F068 /* tonic.png in Resources */,
-				8679A3E821E1CE6F00E12539 /* melody36.png in Resources */,
-				8679A3ED21E1CE6F00E12539 /* melody45.png in Resources */,
-				8679A3CE21E1CE6F00E12539 /* melody39.png in Resources */,
 				86ED756E21F0FF550066E2D8 /* arrangingBackground.png in Resources */,
 				86E9F49A21BF82F500EE12DF /* ShowingCrowdSackOfMelodies.png in Resources */,
 				86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */,
 				866EA6F321F4384D00B28BA6 /* 8thThumb.png in Resources */,
 				863DADF421D408A000AFDD94 /* FishingPole.png in Resources */,
-				8679A3E621E1CE6F00E12539 /* melody17.png in Resources */,
-				8679A3DD21E1CE6F00E12539 /* melody42.png in Resources */,
 				86E9F4A121BF82F500EE12DF /* Town.png in Resources */,
 				22C12BFD21F7B70D006D288F /* musicSymbol6.png in Resources */,
-				8679A3BA21E1CE6F00E12539 /* melody40.png in Resources */,
 				86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */,
 				866EA6E221F413CF00B28BA6 /* turnPiano3.mp3 in Resources */,
 				8698D89821BF417600ADED35 /* touchUp.wav in Resources */,
 				86BBBF3621BB08FD00CB17F2 /* LaunchScreen.storyboard in Resources */,
-				8679A3E121E1CE6F00E12539 /* melody51.png in Resources */,
-				8679A3EE21E1CE6F00E12539 /* melody21.png in Resources */,
 				866EA6E021F413CF00B28BA6 /* turnPiano8.mp3 in Resources */,
 				22C12BF821F7B70D006D288F /* musicSymbol11.png in Resources */,
-				8679A3D721E1CE6F00E12539 /* melody54.png in Resources */,
-				8679A3C921E1CE6F00E12539 /* melody35.png in Resources */,
-				8679A3B821E1CE6F00E12539 /* melody18.png in Resources */,
-				8679A3C421E1CE6F00E12539 /* melody8.png in Resources */,
-				8679A3DE21E1CE6F00E12539 /* melody15.png in Resources */,
 				22C12BF921F7B70D006D288F /* musicSymbol5.png in Resources */,
-				8679A3C221E1CE6F00E12539 /* melody4.png in Resources */,
 				866EA6DF21F413CF00B28BA6 /* turnPiano4.mp3 in Resources */,
 				22C12C0221F7B70D006D288F /* musicSymbol1.png in Resources */,
-				8679A3D121E1CE6F00E12539 /* melody41.png in Resources */,
 				863DADF721D40D5400AFDD94 /* Note.png in Resources */,
-				8679A3D621E1CE6F00E12539 /* melody37.png in Resources */,
-				8679A3E221E1CE6F00E12539 /* melody34.png in Resources */,
-				8679A3C021E1CE6F00E12539 /* melody24.png in Resources */,
-				8679A3E521E1CE6F00E12539 /* melody46.png in Resources */,
 				22C12C0021F7B70D006D288F /* musicSymbol0.png in Resources */,
-				8679A3E021E1CE6F00E12539 /* melody23.png in Resources */,
-				8679A3CC21E1CE6F00E12539 /* melody44.png in Resources */,
-				8679A3EA21E1CE6F00E12539 /* melody0.png in Resources */,
-				8679A3DB21E1CE6F00E12539 /* melody3.png in Resources */,
-				8679A3DC21E1CE6F00E12539 /* melody11.png in Resources */,
 				866EA6F121F42C7E00B28BA6 /* arrow.png in Resources */,
-				8679A3EB21E1CE6F00E12539 /* melody12.png in Resources */,
 				22C12BFB21F7B70D006D288F /* musicSymbol2.png in Resources */,
-				8679A3CF21E1CE6F00E12539 /* melody9.png in Resources */,
 				86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */,
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
 				866EA6E721F413CF00B28BA6 /* turnPiano2.mp3 in Resources */,
@@ -1156,6 +931,7 @@
 				869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */,
 				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
+				86F1F6D121FC43BE001AD82D /* StructsAndEnums.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,
 				869EF00021DBE1E600A4BC06 /* CatchOrThrowbackImage.swift in Sources */,
 				8654702821ED208A00D1F068 /* AutoLayoutExtension.swift in Sources */,

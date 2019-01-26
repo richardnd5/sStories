@@ -30,7 +30,6 @@ class ArrangingBackground: UIImageView {
         isUserInteractionEnabled = false
         
         addBlurredBorder()
-        
     }
     
     func addBlurredBorder(){

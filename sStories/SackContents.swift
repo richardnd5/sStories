@@ -94,7 +94,6 @@ class SackContents: UIView {
         return typeItNeeds
     }
     
-    
     func sackFull() -> Bool {
         
         var bool = false

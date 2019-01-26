@@ -63,14 +63,12 @@ class CatchingMelodies: UIView {
         addSubview(pondImage)
         pondImage.layer.zPosition = -100
         
-        
         pondImage.contentMode = .scaleAspectFit
         pondImage.translatesAutoresizingMaskIntoConstraints = false
         pondImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
         pondImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         pondImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pondImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-        
         
         fadeTo(time: 1.5, opacity: 1.0, {})
         
@@ -275,7 +273,6 @@ class CatchingMelodies: UIView {
                     self.goBackToFishing()
                 }
             }
-                
                 // if the melody was dragged to be put back
             else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))!{
                 self.goBackToFishing()

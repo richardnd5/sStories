@@ -16,9 +16,8 @@ class PerformingScene: UIView {
         super.init(frame: frame)
         
         setupBackgroundImage()
-        //fade the view in
-        alpha = 0.0
         
+        alpha = 0.0
         fadeTo(time: 1.5, opacity: 1.0, {})
         createPlayButton()
     }
@@ -48,20 +47,10 @@ class PerformingScene: UIView {
         
     }
 
-    @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
-
-    }
-
-
-    
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
         Sound.sharedInstance.playSequencer()
         generateRandomMusicSymbols()
-        
         timeout()
-        
-        
-
     }
     
     func timeout(){
@@ -91,32 +80,7 @@ class PerformingScene: UIView {
             addSubview(note)
         }
     }
-//
-//    func fadeTo(view: UIView, time: Double,opacity: CGFloat, _ completion: @escaping () ->()){
-//        
-//        UIView.animate(
-//            withDuration: time,
-//            delay: 0,
-//            options: .curveEaseInOut,
-//            animations: {
-//                view.alpha = opacity
-//        },
-//            completion: {
-//                _ in
-//                
-//                completion()
-//        })
-//    }
-//    
-//    func fadeOutAndRemove(completion: @escaping ( ) -> ( ) ){
-//        
-//        fadeTo(view: self, time: 1.0, opacity: 0.0, {
-//            self.removeFromSuperview()
-//            completion()
-//            
-//        })
-//    }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

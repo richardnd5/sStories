@@ -42,9 +42,4 @@ extension UIView {
         }
         
     }
-    
-    /*
-     Usage:
-     for padding and size, use .init, then fill in the parameters.
-     */
 }

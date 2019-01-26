@@ -25,23 +25,15 @@ func resizedImage(name: String, frame: CGRect, scale: CGFloat = 1) -> UIImage{
     return image
 }
 
-//// Function to change the opacity of a view over a set time.
-//func changeOpacityOverTime(view: UIView, time: Double, opacity: CGFloat, _ completion: @escaping () ->()){
-//    
-//    UIView.animate(
-//        withDuration: time,
-//        delay: 0,
-//        options: .curveEaseInOut,
-//        animations: {
-//            view.alpha = opacity
-//    },
-//        completion: {
-//            _ in
-//            completion()
-//    })
-//}
-
-
+extension UIImage {
+    func setOpacity(alpha: CGFloat) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: .zero, blendMode: .normal, alpha: alpha)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}
 
 func determineWhatImageToShowForMelody(type: MelodyType) -> String{
     
@@ -91,14 +83,6 @@ func fillSackWithMelodies(){
     }
 }
 
-extension UIImage {
-    func setOpacity(alpha: CGFloat) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: .zero, blendMode: .normal, alpha: alpha)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage
-    }
-}
+
 
 

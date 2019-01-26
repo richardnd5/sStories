@@ -6,7 +6,6 @@ class PlayButton: UIImageView {
     var maskLayer = CAGradientLayer()
     var typeNumber = Int()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -26,17 +25,6 @@ class PlayButton: UIImageView {
         isUserInteractionEnabled = true
 
     }
-    
-//    func throbImage(_ view: UIView){
-//        let scale : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
-//        scale.fromValue = 1.0
-//        scale.toValue = 1.02
-//        scale.duration = 0.4;
-//        scale.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-//        scale.repeatCount = .infinity;
-//        scale.autoreverses = true
-//        view.layer.add(scale, forKey: "throb")
-//    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

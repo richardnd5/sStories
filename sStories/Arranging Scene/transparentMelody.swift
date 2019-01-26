@@ -9,8 +9,6 @@ class transparentMelody: UIImageView {
     
     init(frame: CGRect, typeNumber: Int) {
         super.init(frame: frame)
-        
-        
         self.typeNumber = typeNumber
         
         setupNote()

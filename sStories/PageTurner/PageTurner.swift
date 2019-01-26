@@ -8,9 +8,9 @@ class PageTurner: UIView {
     var arrow : Arrow!
     var ourFrame : CGRect!
     var noteLocationArray = [ClosedRange<CGFloat>]()
+    var previousPlayedNote : Int!
     
     weak var delegate : SceneDelegate?
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,9 +25,7 @@ class PageTurner: UIView {
         makeNoteDestinationSlot()
         fillNoteLocationArray()
         
-        //fade the view in
         alpha = 0.0
-        
         fadeTo(time: 1.0, opacity: 1.0, {})
 
     }
@@ -91,7 +89,6 @@ class PageTurner: UIView {
         
     }
     
-    var previousPlayedNote : Int!
     func checkWhichNoteToPlay(_ point: CGFloat){
         
         if noteLocationArray.count-1 == 32 {

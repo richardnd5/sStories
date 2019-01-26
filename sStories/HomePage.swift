@@ -1,15 +1,6 @@
-//
-//  PageCell.swift
-//  Stroud Story UIView
-//
-//  Created by Nate on 12/5/18.
-//  Copyright © 2018 Nathan Richard. All rights reserved.
-//
-
 import UIKit
 
 class HomePage: UIView {
-    
     
     private let imageView: UIImageView = {
         var imageView = UIImageView()

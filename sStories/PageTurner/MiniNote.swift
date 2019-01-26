@@ -13,11 +13,9 @@ class MiniNote: UIImageView {
     func setupImage(){
 
         image = resizedImage(name: "8thThumb", frame: frame, scale: 3)
-        
         contentMode = .scaleAspectFit
-        layer.opacity = 0.0
         isUserInteractionEnabled = true
-        
+        alpha = 0.0
         fadeTo(time: 2.0, opacity: 1.0, {})
         
     }
