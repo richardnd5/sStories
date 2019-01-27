@@ -19,7 +19,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     var currentState = AppState.home
-    var currentPage = 0
+    private var currentPage = 0
     private var tempStoryLine = 0
 
     var homePage : HomePage!
@@ -56,22 +56,7 @@ class ViewController: UIViewController, SceneDelegate {
         aboutPage.delegate = self
     }
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer){
-        if page?.superview != nil {
-            
-            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-                page?.nextStoryLine()
-                tempStoryLine += 1
-            } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-                if !pageTurnerVisible {
-                    pageTurnerVisible = true
-                    addPageTurner()
-                }
-            }
-        }
-    }
-    
-    func addPageTurner(){
+    func createPageTurner(){
         
         let width = view.frame.width/12
         let height = view.frame.height
@@ -133,7 +118,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func returnToStory(){
-        addPageTurner()
+        createPageTurner()
     }
     
     func backHome(){
@@ -170,6 +155,23 @@ class ViewController: UIViewController, SceneDelegate {
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
         }
         
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer){
+        // if the page does exist... dun dun dun!!!
+        if page?.superview != nil {
+            
+            
+            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                page?.nextStoryLine()
+                tempStoryLine += 1
+            } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                if !pageTurnerVisible {
+                    pageTurnerVisible = true
+                    createPageTurner()
+                }
+            }
+        }
     }
     
     override var prefersStatusBarHidden: Bool{
