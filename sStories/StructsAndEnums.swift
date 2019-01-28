@@ -2,7 +2,8 @@ import UIKit
 
 struct Page {
     let imageName: String
-    let storyText: [String]
+    let storyText: ArraySlice<String>
+    
 }
 
 struct ScreenSize {

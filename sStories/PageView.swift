@@ -23,7 +23,7 @@ class PageView: UIView {
     }()
     
     var imageName = String()
-    var storyText = [String]()
+    var storyText : ArraySlice<String>?
     var sceneStoryPosition = 0
     var canActivate = false
     
@@ -31,6 +31,7 @@ class PageView: UIView {
         super.init(frame: frame)
         imageName = page.imageName
         storyText = page.storyText
+        sceneStoryPosition = page.storyText.startIndex
         
         
         pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
@@ -51,7 +52,7 @@ class PageView: UIView {
             canActivate = false
             storyTextView.fadeTo(time: 1.0, opacity: 0.0) {
                 self.sceneStoryPosition += 1
-                self.storyTextView.text = self.storyText[self.sceneStoryPosition]
+                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
                 self.storyTextView.fadeTo(time: 1.0, opacity: 1.0, {
                     self.canActivate = true
                 })
