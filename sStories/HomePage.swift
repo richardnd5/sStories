@@ -1,5 +1,10 @@
 import UIKit
 
+enum ButtonType: Int {
+    case about = 0
+    case read
+}
+
 class HomePage: UIView {
     
     private let imageView: UIImageView = {
@@ -41,7 +46,8 @@ class HomePage: UIView {
     
     weak var delegate : SceneDelegate?
     
-    var testButton : UIButton?
+    var testButton : UIButton!
+    var testReadButton : UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,11 +59,9 @@ class HomePage: UIView {
         title.text = "Templeton's Fishing Journey"
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
         
-        
-
-
+        createButton()
         setupLayout()
-        setupGestures()
+//        setupGestures()
         backgroundColor = .black
         alpha = 0
         layer.zPosition = 100
@@ -65,25 +69,59 @@ class HomePage: UIView {
         
 
         //        testButton?.anchor(top: topAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: bottomAnchor)
-        createButton()
         
         
         
     }
     
     func createButton() {
-        testButton = UIButton(frame: CGRect(x: 0, y: 0, width: frame.width/2, height: frame.height/2))
-        testButton?.backgroundColor = .red
-        testButton?.imageView?.image = resizedImage(name: "questionMark", frame: frame)
+
+
+        testButton = UIButton()
+        
+        
         testButton?.setImage(resizedImage(name: "questionMark", frame: frame), for: .normal)
         addSubview(testButton!)
-        testButton!.addTarget(self, action: #selector(sayAction), for: .allTouchEvents)
+        testButton?.contentMode = .scaleAspectFit
+
+        testButton!.addTarget(self, action: #selector(touchDown), for: .touchDown)
+        testButton!.addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
+        testButton!.addTarget(self, action: #selector(touchUpOutside), for: .touchUpOutside)
+        testButton?.adjustsImageWhenHighlighted = false
+        testButton.tag = 0
+        
+        testReadButton = UIButton()
+        
+        
+        testReadButton?.setImage(resizedImage(name: "playButton", frame: frame), for: .normal)
+        addSubview(testReadButton!)
+        testReadButton?.contentMode = .scaleAspectFit
+        
+        testReadButton!.addTarget(self, action: #selector(touchDown), for: .touchDown)
+        testReadButton!.addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
+        testReadButton!.addTarget(self, action: #selector(touchUpOutside), for: .touchUpOutside)
+        testReadButton?.adjustsImageWhenHighlighted = false
+        testReadButton.tag = 1
     }
     
-    @objc private func sayAction(_ sender: UIButton?) {
-        print("so many things")
+    // about button functions
+    @objc private func touchDown(_ sender: UIButton?) {
+        if sender!.tag == 0 {
+            print("this is about button")
+        } else if sender!.tag == 1 {
+            print("this is read button")
+        }
+        testButton?.scaleTo(scaleTo: 0.8, time: 0.1)
         
-        
+    }
+    
+    @objc private func touchUpInside(_ sender: UIButton?) {
+        testButton?.scaleTo(scaleTo: 1.0, time: 0.1)
+        delegate?.goToAboutPage()
+    }
+    
+    @objc private func touchUpOutside(_ sender: UIButton?) {
+        testButton?.scaleTo(scaleTo: 1.0, time: 0.1)
     }
     
     func setupLayout(){
@@ -105,49 +143,61 @@ class HomePage: UIView {
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/4).isActive = true
         
-        addSubview(readButton)
-        readButton.translatesAutoresizingMaskIntoConstraints = false
-        readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        readButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
+//        addSubview(readButton)
+//        readButton.translatesAutoresizingMaskIntoConstraints = false
+//        readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+//        readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+//        readButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
         
-        addSubview(aboutButton)
-        aboutButton.translatesAutoresizingMaskIntoConstraints = false
-        aboutButton.topAnchor.constraint(equalTo: readButton.topAnchor).isActive = true
-        aboutButton.widthAnchor.constraint(equalToConstant: frame.height/9).isActive = true
-        aboutButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
-        aboutButton.bottomAnchor.constraint(equalTo: readButton.bottomAnchor).isActive = true
+        addSubview(testReadButton)
+        testReadButton.translatesAutoresizingMaskIntoConstraints = false
+        testReadButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+        testReadButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+        testReadButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        testReadButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
+        
+        addSubview(testButton)
+        testButton!.translatesAutoresizingMaskIntoConstraints = false
+        testButton!.topAnchor.constraint(equalTo: testReadButton.topAnchor).isActive = true
+        testButton!.widthAnchor.constraint(equalToConstant: frame.height/9).isActive = true
+        testButton!.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
+        testButton!.bottomAnchor.constraint(equalTo: testReadButton.bottomAnchor).isActive = true
+        
+//        addSubview(aboutButton)
+//        aboutButton.translatesAutoresizingMaskIntoConstraints = false
+//        aboutButton.topAnchor.constraint(equalTo: readButton.topAnchor).isActive = true
+//        aboutButton.widthAnchor.constraint(equalToConstant: frame.height/9).isActive = true
+//        aboutButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
+//        aboutButton.bottomAnchor.constraint(equalTo: readButton.bottomAnchor).isActive = true
     }
     
-    func setupGestures(){
+//    func setupGestures(){
 
-        let readPress = UILongPressGestureRecognizer(target: self, action: #selector(handleReadPress))
-        readPress.minimumPressDuration = 0.0
-        readButton.addGestureRecognizer(readPress)
+//        let readPress = UILongPressGestureRecognizer(target: self, action: #selector(handleReadPress))
+//        readPress.minimumPressDuration = 0.0
+//        readButton.addGestureRecognizer(readPress)
         
+//        let press = UILongPressGestureRecognizer(target: self, action: #selector(handleAboutPress))
+//        press.minimumPressDuration = 0.0
+//        aboutButton.addGestureRecognizer(press)
         
-        let press = UILongPressGestureRecognizer(target: self, action: #selector(handleAboutPress))
-        press.minimumPressDuration = 0.0
-        aboutButton.addGestureRecognizer(press)
-        
-
-    }
+//    }
     
-    @objc func handleReadPress(_ sender: UITapGestureRecognizer){
-        switch sender.state {
-        case .began:
-            readButton.scaleTo(scaleTo: 0.8, time: 0.1)
-        case .ended:
-            readButton.scaleTo(scaleTo: 1.0, time: 0.1)
-            delegate?.startStory()
-        case .cancelled:
-            readButton.scaleTo(scaleTo: 1.0, time: 0.1)
-        default:
-            break
-        }
-        
-    }
+//    @objc func handleReadPress(_ sender: UITapGestureRecognizer){
+//        switch sender.state {
+//        case .began:
+//            readButton.scaleTo(scaleTo: 0.8, time: 0.1)
+//        case .ended:
+//            readButton.scaleTo(scaleTo: 1.0, time: 0.1)
+//            delegate?.startStory()
+//        case .cancelled:
+//            readButton.scaleTo(scaleTo: 1.0, time: 0.1)
+//        default:
+//            break
+//        }
+//
+//    }
     
     
     @objc func handleAboutPress(_ sender: UITapGestureRecognizer){
