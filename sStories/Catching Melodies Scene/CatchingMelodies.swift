@@ -166,7 +166,7 @@ class CatchingMelodies: UIView {
                 self.sack!.scaleSize = 1.0
                 self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
-                self.instructionLabel?.changeText(to: "Let's put the line back in and wait for another bite!")
+                self.instructionLabel?.changeText(to: "Let's wait for another bite!")
                 // shake screen.
             })
         })
@@ -217,7 +217,7 @@ class CatchingMelodies: UIView {
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
             self.sceneState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
-            self.instructionLabel?.changeText(to: "Ooh! A Bite! Tap to reel it in!")
+            self.instructionLabel?.changeText(to: "Ooh! A bite! Tap to reel it in!")
         })
     }
 
