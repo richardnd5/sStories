@@ -5,7 +5,7 @@ protocol SceneDelegate : class {
     func nextPage()
     func goToAboutPage()
     func startStory()
-    func backHome()
+    func goToHomePage()
 }
 
 class ViewController: UIViewController, SceneDelegate {
@@ -121,7 +121,7 @@ class ViewController: UIViewController, SceneDelegate {
         createPageTurner()
     }
     
-    func backHome(){
+    func goToHomePage(){
         aboutPage.fadeAndRemove(time: 1.0) {
             self.createHomePage()
         }

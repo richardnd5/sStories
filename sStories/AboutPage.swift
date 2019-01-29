@@ -93,7 +93,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
-        delegate?.backHome()
+        delegate?.goToHomePage()
     }
     
     required init?(coder aDecoder: NSCoder) {

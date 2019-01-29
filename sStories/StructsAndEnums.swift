@@ -3,7 +3,6 @@ import UIKit
 struct Page {
     let imageName: String
     let storyText: ArraySlice<String>
-    
 }
 
 struct ScreenSize {
@@ -32,4 +31,8 @@ enum MelodyType : CaseIterable {
     case dominant
     case ending
     case final
+}
+
+enum ButtonTypee: Int {
+    case about = 0, read, normal
 }
