@@ -34,5 +34,5 @@ enum MelodyType : CaseIterable {
 }
 
 enum ButtonTypee: Int {
-    case about = 0, read, normal
+    case about = 0, read, back, normal
 }

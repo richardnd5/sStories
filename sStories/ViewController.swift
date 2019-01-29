@@ -21,7 +21,7 @@ class ViewController: UIViewController, SceneDelegate {
     var currentState = AppState.home
     private var currentPage = 0
     private var tempStoryLine = 0
-
+    
     var homePage : HomePage!
     var aboutPage : AboutPage!
     var page : PageView!
@@ -36,6 +36,7 @@ class ViewController: UIViewController, SceneDelegate {
         
         createHomePage()
         
+        
         // create main view tap gesture.
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
@@ -47,6 +48,7 @@ class ViewController: UIViewController, SceneDelegate {
         view.addSubview(homePage)
         homePage.fillSuperview()
         homePage.delegate = self
+        setupDelegates()
     }
     
     func createAboutPage(){
@@ -54,6 +56,7 @@ class ViewController: UIViewController, SceneDelegate {
         view.addSubview(aboutPage)
         aboutPage.fillSuperview()
         aboutPage.delegate = self
+        setupDelegates()
     }
     
     func createPageTurner(){
@@ -73,6 +76,17 @@ class ViewController: UIViewController, SceneDelegate {
         view.bringSubviewToFront(pageTurner!)
     }
     
+    func setupDelegates(){
+        view.subviews.forEach { view in
+            view.subviews.forEach{ v in
+                if v is Button {
+                    let button = v as! Button
+                    button.delegate = self
+                }
+            }
+        }
+    }
+    
     func nextPage() {
         
         // If the next page is a regular page
@@ -83,7 +97,7 @@ class ViewController: UIViewController, SceneDelegate {
                 self.addPage()
                 self.pageTurnerVisible = false
             }
-        // If the current page is the fishing page.
+            // If the current page is the fishing page.
         } else if currentState == .fishing {
             catchingMelody.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
@@ -105,13 +119,14 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func startStory() {
-        
+        print("start the story")
         homePage.fadeAndRemove(time: 1.0) {
             self.addPage()
         }
     }
     
     func goToAboutPage() {
+        print("going to about page")
         homePage.fadeAndRemove(time: 1.0) {
             self.createAboutPage()
         }

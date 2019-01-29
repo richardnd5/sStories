@@ -7,14 +7,15 @@ class AboutPage: UIView, UIScrollViewDelegate {
     
     var aboutTitle : UILabel!
     
-    private let backArrow: UIImageView = {
-        var imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = true
-        return imageView
-    }()
+//    private let backArrow: UIImageView = {
+//        var imageView = UIImageView()
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.isUserInteractionEnabled = true
+//        return imageView
+//    }()
     
+    var anotherButton : UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,17 +30,24 @@ class AboutPage: UIView, UIScrollViewDelegate {
         aboutTitle.textAlignment = .center
         scrollView.addSubview(aboutTitle)
         
-        backArrow.image = resizedImage(name: "backArrow", frame: frame)
-        addSubview(backArrow)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        backArrow.addGestureRecognizer(tap)
-
+//        backArrow.image = resizedImage(name: "backArrow", frame: frame)
+//        addSubview(backArrow)
+//
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+//        backArrow.addGestureRecognizer(tap)
+        createButtons()
         setupContraints()
 
         alpha = 0.0
         self.fadeTo(time: 1.5,opacity: 1.0)
 
+    }
+    
+    func createButtons() {
+
+        anotherButton = Button(frame: CGRect.zero, name: "back")
+        addSubview(anotherButton)
+        
     }
     
     func setupContraints(){
@@ -60,11 +68,11 @@ class AboutPage: UIView, UIScrollViewDelegate {
         aboutTitle.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         
         
-        backArrow.translatesAutoresizingMaskIntoConstraints = false
-        backArrow.heightAnchor.constraint(equalToConstant: frame.height/7).isActive = true
-        backArrow.widthAnchor.constraint(equalToConstant: frame.height/7).isActive = true
-        backArrow.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: bottomPadding).isActive = true
-        backArrow.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -bottomPadding).isActive = true
+        anotherButton.translatesAutoresizingMaskIntoConstraints = false
+        anotherButton.heightAnchor.constraint(equalToConstant: frame.height/7).isActive = true
+        anotherButton.widthAnchor.constraint(equalToConstant: frame.height/7).isActive = true
+        anotherButton.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: bottomPadding).isActive = true
+        anotherButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -bottomPadding).isActive = true
 
     }
     

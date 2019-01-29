@@ -1,12 +1,12 @@
 import UIKit
 
 
-protocol ButtonDelegate: class {
-    func startStory()
-    func goToAboutPage()
-}
+//protocol ButtonDelegate: class {
+//    func startStory()
+//    func goToAboutPage()
+//}
 
-class HomePage: UIView, ButtonDelegate {
+class HomePage: UIView {
     
     private let imageView: UIImageView = {
         var imageView = UIImageView()
@@ -53,23 +53,13 @@ class HomePage: UIView, ButtonDelegate {
     func createButtons() {
         
         anotherReadButton = Button(frame: CGRect.zero, name: "read")
-        anotherReadButton.delegate = self
         addSubview(anotherReadButton)
         
         anotherButton = Button(frame: CGRect.zero, name: "about")
-        anotherButton.delegate = self
         addSubview(anotherButton)
         
     }
-    
-    func startStory() {
-        delegate?.startStory()
-    }
-    
-    func goToAboutPage() {
-        delegate?.goToAboutPage()
-    }
-    
+
     func setupLayout(){
         
         let safe = safeAreaLayoutGuide

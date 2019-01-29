@@ -3,7 +3,8 @@ import UIKit
 class Button: UIButton {
     
     var name : String!
-    weak var delegate : ButtonDelegate?
+//    weak var delegate : ButtonDelegate?
+    weak var delegate : SceneDelegate?
     
     init(frame: CGRect, name: String) {
         super.init(frame: frame)
@@ -33,6 +34,8 @@ class Button: UIButton {
             return ButtonTypee.about
         case "read":
             return ButtonTypee.read
+        case "back":
+            return ButtonTypee.back
         default:
             return ButtonTypee.normal
         }
@@ -50,7 +53,10 @@ class Button: UIButton {
             delegate?.goToAboutPage()
         } else if sender!.tag == ButtonTypee.read.rawValue {
             delegate?.startStory()
+        }  else if sender!.tag == ButtonTypee.back.rawValue {
+            delegate?.goToHomePage()
         }
+        
     }
     
     @objc private func touchUpOutside(_ sender: UIButton?) {

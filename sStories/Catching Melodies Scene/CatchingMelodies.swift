@@ -77,9 +77,9 @@ class CatchingMelodies: UIView {
     func createInstructionLabel(){
         // add keep label
         
-        let width = frame.width
+//        let width = frame.width
         let height = frame.height/18
-        let x = CGFloat(0)
+//        let x = CGFloat(0)
         let y = frame.height/60
         
         
