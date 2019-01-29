@@ -5,6 +5,19 @@ struct Page {
     let storyText: ArraySlice<String>
 }
 
+enum MelodyType : CaseIterable {
+    case begin
+    case middle
+    case tonic
+    case dominant
+    case ending
+    case final
+}
+
+enum ButtonTypee: Int {
+    case about = 0, read, back, normal
+}
+
 struct ScreenSize {
     static let width = UIScreen.main.bounds.size.width
     static let height = UIScreen.main.bounds.size.height
@@ -22,17 +35,4 @@ struct DeviceType {
     static var hasNotch: Bool {
         return iPhoneX || iPhoneXRMax
     }
-}
-
-enum MelodyType : CaseIterable {
-    case begin
-    case middle
-    case tonic
-    case dominant
-    case ending
-    case final
-}
-
-enum ButtonTypee: Int {
-    case about = 0, read, back, normal
 }

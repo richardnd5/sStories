@@ -1,11 +1,5 @@
 import UIKit
 
-
-//protocol ButtonDelegate: class {
-//    func startStory()
-//    func goToAboutPage()
-//}
-
 class HomePage: UIView {
     
     private let imageView: UIImageView = {
@@ -31,8 +25,8 @@ class HomePage: UIView {
     
     weak var delegate : SceneDelegate?
     
-    var anotherButton : Button!
-    var anotherReadButton: Button!
+    var aboutButton : Button!
+    var readButton: Button!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,11 +46,11 @@ class HomePage: UIView {
     
     func createButtons() {
         
-        anotherReadButton = Button(frame: CGRect.zero, name: "read")
-        addSubview(anotherReadButton)
+        readButton = Button(frame: CGRect.zero, name: "read")
+        addSubview(readButton)
         
-        anotherButton = Button(frame: CGRect.zero, name: "about")
-        addSubview(anotherButton)
+        aboutButton = Button(frame: CGRect.zero, name: "about")
+        addSubview(aboutButton)
         
     }
 
@@ -66,6 +60,7 @@ class HomePage: UIView {
         let bottomPadding = -frame.height/40
         
         addSubview(title)
+        title.translatesAutoresizingMaskIntoConstraints = false
         title.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
         title.heightAnchor.constraint(equalToConstant: frame.height/1.4)
         title.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -79,19 +74,19 @@ class HomePage: UIView {
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/4).isActive = true
         
-        addSubview(anotherReadButton)
-        anotherReadButton.translatesAutoresizingMaskIntoConstraints = false
-        anotherReadButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        anotherReadButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        anotherReadButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        anotherReadButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
+        addSubview(readButton)
+        readButton.translatesAutoresizingMaskIntoConstraints = false
+        readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+        readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
+        readButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
 
-        addSubview(anotherButton)
-        anotherButton!.translatesAutoresizingMaskIntoConstraints = false
-        anotherButton!.topAnchor.constraint(equalTo: anotherReadButton.topAnchor).isActive = true
-        anotherButton!.widthAnchor.constraint(equalToConstant: frame.height/9).isActive = true
-        anotherButton!.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
-        anotherButton!.bottomAnchor.constraint(equalTo: anotherReadButton.bottomAnchor).isActive = true
+        addSubview(aboutButton)
+        aboutButton!.translatesAutoresizingMaskIntoConstraints = false
+        aboutButton!.topAnchor.constraint(equalTo: readButton.topAnchor).isActive = true
+        aboutButton!.widthAnchor.constraint(equalToConstant: frame.height/9).isActive = true
+        aboutButton!.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: bottomPadding).isActive = true
+        aboutButton!.bottomAnchor.constraint(equalTo: readButton.bottomAnchor).isActive = true
 
     }
 

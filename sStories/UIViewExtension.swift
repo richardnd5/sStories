@@ -72,7 +72,6 @@ extension UIView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
-                
                 self.frame.origin = point
         },
             completion: {
@@ -87,7 +86,6 @@ extension UIView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
-                
                 self.frame.size = to
         },
             completion: {
@@ -102,7 +100,6 @@ extension UIView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
-                
                 self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
         },
             completion: {

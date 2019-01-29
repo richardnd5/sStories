@@ -12,7 +12,7 @@ class Button: UIButton {
         
         setImage()
         setTouchEvents()
-        tag = setTag(name: name).rawValue
+        setTag()
     }
     
     private func setImage(){
@@ -28,16 +28,16 @@ class Button: UIButton {
         addTarget(self, action: #selector(touchUpOutside), for: .touchUpOutside)
     }
     
-    func setTag(name: String) -> ButtonTypee {
+    func setTag() {
         switch name {
         case "about":
-            return ButtonTypee.about
+            tag = ButtonTypee.about.rawValue
         case "read":
-            return ButtonTypee.read
+            tag = ButtonTypee.read.rawValue
         case "back":
-            return ButtonTypee.back
+            tag = ButtonTypee.back.rawValue
         default:
-            return ButtonTypee.normal
+            tag = ButtonTypee.normal.rawValue
         }
     }
     
@@ -56,7 +56,6 @@ class Button: UIButton {
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()
         }
-        
     }
     
     @objc private func touchUpOutside(_ sender: UIButton?) {

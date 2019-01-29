@@ -6,7 +6,6 @@ class SackContents: UIView {
     var melodySlotViews = [UIView]()
     var melodiesInSack = [Melody]()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         makeEmptySackSlots()

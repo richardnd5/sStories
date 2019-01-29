@@ -56,6 +56,7 @@ func determineWhatImageToShowForMelody(type: MelodyType) -> String{
     return string
 }
 
+// For testing, to avoid having to catch all melodies
 func fillSackWithMelodies(){
     for i in 0...5 {
         

@@ -20,7 +20,6 @@ class Sound {
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()
-        
     }
 
     func loadPageTurnSounds(){
@@ -33,6 +32,7 @@ class Sound {
 
 
     func loadCollectedMelodies(_ melodyArray: [Melody]){
+        
         for i in 0...collectedMelodies.count-1{
           let melAudio = collectedMelodies[i].audio
             patternArray.append(melAudio!)

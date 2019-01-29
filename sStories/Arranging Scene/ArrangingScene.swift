@@ -19,7 +19,6 @@ class ArrangingScene: UIView {
     
     weak var delegate : SceneDelegate?
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         

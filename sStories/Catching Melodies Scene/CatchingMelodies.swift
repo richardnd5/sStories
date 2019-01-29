@@ -76,12 +76,8 @@ class CatchingMelodies: UIView {
     
     func createInstructionLabel(){
         // add keep label
-        
-//        let width = frame.width
         let height = frame.height/18
-//        let x = CGFloat(0)
         let y = frame.height/60
-        
         
         instructionLabel = Label(frame: CGRect.zero, words: "Patiently, Templeton waiting for the first bite...", fontSize: height-height/10)
 
@@ -116,7 +112,6 @@ class CatchingMelodies: UIView {
         let height = frame.height/1.3
         let x = frame.width/2-width/2
         let y = frame.height-height/2.4
-
         
         fishingPole = FishingPole(frame: CGRect(x: x, y: y, width: width, height: height))
         addSubview(fishingPole!)

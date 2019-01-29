@@ -18,10 +18,12 @@ class ViewController: UIViewController, SceneDelegate {
         case performing
     }
     
-    var currentState = AppState.home
+    private var currentState = AppState.home
     private var currentPage = 0
     private var tempStoryLine = 0
-    
+    private var pageTurnerVisible = false
+
+    // All the views
     var homePage : HomePage!
     var aboutPage : AboutPage!
     var page : PageView!
@@ -29,14 +31,12 @@ class ViewController: UIViewController, SceneDelegate {
     var arrangingScene : ArrangingScene!
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
-    var pageTurnerVisible = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createHomePage()
-        
-        
         // create main view tap gesture.
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         view.addGestureRecognizer(tap)
@@ -60,7 +60,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func createPageTurner(){
-        
+        // Not using autolayout.... tsk tsk
         let width = view.frame.width/12
         let height = view.frame.height
         var x = view.frame.width-width
@@ -94,7 +94,7 @@ class ViewController: UIViewController, SceneDelegate {
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage+=1
                 self.tempStoryLine = 0
-                self.addPage()
+                self.createPage()
                 self.pageTurnerVisible = false
             }
             // If the current page is the fishing page.
@@ -103,7 +103,7 @@ class ViewController: UIViewController, SceneDelegate {
                 self.currentState = .story
                 self.currentPage+=1
                 self.tempStoryLine = 0
-                self.addPage()
+                self.createPage()
                 self.pageTurnerVisible = false
             }
             // If the current page is the arranging page.
@@ -112,21 +112,19 @@ class ViewController: UIViewController, SceneDelegate {
                 self.currentState = .story
                 self.currentPage+=1
                 self.tempStoryLine = 0
-                self.addPage()
+                self.createPage()
                 self.pageTurnerVisible = false
             }
         }
     }
     
     func startStory() {
-        print("start the story")
         homePage.fadeAndRemove(time: 1.0) {
-            self.addPage()
+            self.createPage()
         }
     }
     
     func goToAboutPage() {
-        print("going to about page")
         homePage.fadeAndRemove(time: 1.0) {
             self.createAboutPage()
         }
@@ -142,7 +140,7 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
-    func addPage(){
+    func createPage(){
         
         if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
@@ -175,8 +173,6 @@ class ViewController: UIViewController, SceneDelegate {
     @objc func handleTap(_ sender: UITapGestureRecognizer){
         // if the page does exist... dun dun dun!!!
         if page?.superview != nil {
-            
-            
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 page?.nextStoryLine()
                 tempStoryLine += 1
