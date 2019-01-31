@@ -5,6 +5,10 @@ struct Page {
     let storyText: ArraySlice<String>
 }
 
+enum ButtonTypee: Int {
+    case about = 0, read, back, normal
+}
+
 enum MelodyType : CaseIterable {
     case begin
     case middle
@@ -12,10 +16,6 @@ enum MelodyType : CaseIterable {
     case dominant
     case ending
     case final
-}
-
-enum ButtonTypee: Int {
-    case about = 0, read, back, normal
 }
 
 struct ScreenSize {

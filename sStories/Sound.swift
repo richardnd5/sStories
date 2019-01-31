@@ -20,10 +20,6 @@ class Sound {
         
         loadPageTurnSounds()
     }
-    
-    func playSoundClip(_ name: Sounds){
-        SoundClips.sharedInstance.playSound(name)
-    }
 
     func loadPageTurnSounds(){
         

@@ -550,6 +550,7 @@
 		860DE93121C2072F00A7370D /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				226A1A532202795100E47009 /* Test Audio Files */,
 				22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */,
 				86ED757B21F126770066E2D8 /* pianoMelodies */,
 				8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */,
@@ -680,7 +681,6 @@
 				8698D85721BF400000ADED35 /* Sound.swift */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
-				226A1A532202795100E47009 /* Test Audio Files */,
 				8665697021EFD0860086D432 /* Melody.swift */,
 				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				86ED757721F1263C0066E2D8 /* MelodyAudio.swift */,
@@ -691,10 +691,10 @@
 				866EA65821F2E8CB00B28BA6 /* PageTurner */,
 				860DE93221C2073E00A7370D /* Image Assets */,
 				860DE93121C2072F00A7370D /* Sounds */,
-				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
-				86603C5221FC477B00A7921E /* GlobalConstants.swift */,
 				226A1A12220274AB00E47009 /* Sound Clips */,
 				86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */,
+				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
+				86603C5221FC477B00A7921E /* GlobalConstants.swift */,
 				86603C5321FC477B00A7921E /* StructsAndEnums.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,

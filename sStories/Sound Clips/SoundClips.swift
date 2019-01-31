@@ -13,7 +13,8 @@ class SoundClips {
     func playSound(_ name: Sounds){
         clips[name]!.play()
     }
+    
+    func stopSound(_ name: Sounds){
+        clips[name]!.stop()
+    }
 }
-
-
-

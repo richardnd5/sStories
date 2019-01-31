@@ -6,7 +6,6 @@ class AudioFile {
     private var player : AKPlayer!
     var name : String!
     
-    
     init(fileName: String) {
         audioFile = loadAudioFile("\(fileName)")
         setupPlayer()

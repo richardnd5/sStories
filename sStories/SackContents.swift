@@ -56,11 +56,11 @@ class SackContents: UIView {
     
     func removeMelodyFromSack(_ view: MelodyImage){
         view.shrinkAndRemove(time: 0.4)
+        playSoundClip(.fishingMelodyThrowBack)
         
         for i in 0...melodiesInSack.count-1 {
             if view.data?.slotPosition == melodiesInSack[i].slotPosition {
                 melodiesInSack.remove(at: i)
-                
                 return // return so it doesn't continue the for loop
             }
         }
@@ -125,13 +125,16 @@ class SackContents: UIView {
         let translation = sender.translation(in: self)
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: self)
+        playSoundClip(.fishingMelodyDrag)
         
         if sender.state == .ended {
+            stopSoundClip(.fishingMelodyDrag)
             // Throw back melody
             if sender.location(in: self).y <= -view.frame.height*3 {
                 removeMelodyFromSack(view)
             } else {
                 view.moveViewTo(CGPoint.zero, time: 0.4, {})
+                playSoundClip(.fishingMelodyPutBackToSack)
             }
         }
     }

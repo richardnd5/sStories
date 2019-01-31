@@ -22,12 +22,10 @@ let pages = [
 
 enum Sounds : String, CaseIterable {
     // name of sound and file name
-    case test = "test"
-    case test2 = "test2"
-    case test3 = "test3"
-    case piano = "melody6"
     case touchDown = "test4"
+    case nextStoryLine = "test26"
     case touchUp = "test5"
+    case showPageTurner = "test27"
     case pageTurn = "test6"
     case aboutButtonDown = "test7"
     case aboutButtonUp = "test8"
@@ -35,16 +33,22 @@ enum Sounds : String, CaseIterable {
     case readButtonUp = "test10"
     case backButtonDown = "test11"
     case backButtonUp = "test12"
-    case fishingInitialPondDrone = "test13"
+    
+    case initialPondDrone = "test13"
     case fishingMelodyOnTheLine = "test14"
     case fishingPullMelodyOut = "test15"
     case fishingTransitionToMelodyChoice = "test16"
+    case fishingMelodyDrag = "test28"
+    case fishingMelodyThrowBack = "test29"
+    case fishingMelodyPutBackToSack = "test30"
     case fishingSackDrag = "test17"
     case fishingSackDrop = "test18"
     case fishingThrowbackDrag = "test19"
     case fishingThrowbackDrop = "test20"
     case fishingCastLine = "test21"
     case fishingSackFull = "test22"
+    case fishingWarning = "test31"
+    
     case arrangingDrag = "test23"
     case arrangingPlaceMelody = "test24"
     case arrangingAllMelodiesLocked = "test25"

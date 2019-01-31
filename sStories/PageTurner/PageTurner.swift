@@ -146,6 +146,7 @@ class PageTurner: UIView {
             self.playNoteIfNotLastNotePlayed(7)
                 view.moveViewTo(finalPlace!, time: 0.2, {
                     self.playNoteIfNotLastNotePlayed(8)
+                    playSoundClip(.pageTurn)
                 })
         })
     }

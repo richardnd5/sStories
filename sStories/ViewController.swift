@@ -11,7 +11,7 @@ protocol SceneDelegate : class {
 class ViewController: UIViewController, SceneDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        Sound.sharedInstance.playSoundClip(.test2)
+        playSoundClip(.aboutButtonDown)
     }
     
     enum AppState {
@@ -180,10 +180,12 @@ class ViewController: UIViewController, SceneDelegate {
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 page?.nextStoryLine()
                 tempStoryLine += 1
+                playSoundClip(.nextStoryLine)
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
                     createPageTurner()
+                    playSoundClip(.showPageTurner)
                 }
             }
         }

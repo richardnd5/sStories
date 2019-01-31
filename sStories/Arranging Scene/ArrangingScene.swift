@@ -18,7 +18,7 @@ class ArrangingScene: UIView {
     var background: ArrangingBackground?
     
     weak var delegate : SceneDelegate?
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -26,14 +26,14 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
-
+        
         //fade the view in
         alpha = 0.0
         
         fadeTo(time: 1.5, opacity: 1.0, {
             self.generateCollectedMelodies()
         })
-
+        
     }
     
     func setupBackgroundImage(){
@@ -43,7 +43,7 @@ class ArrangingScene: UIView {
     }
     
     func createInstructionLabel(){
-
+        
         let height = frame.height/20
         let y = frame.height/60
         instructionLabel = Label(frame: CGRect.zero, words: "Time to arrange the melodies! Drag the melodies to their correct spots.", fontSize: height)
@@ -110,7 +110,7 @@ class ArrangingScene: UIView {
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
             view.addGestureRecognizer(tap)
-
+            
         }
         
     }
@@ -133,36 +133,39 @@ class ArrangingScene: UIView {
         let view = sender.view as! MelodyImage
         
         if !view.inCorrectSlot {
-
-        let translation = sender.translation(in: self)
-        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
-        sender.setTranslation(CGPoint.zero, in: self)
-        
-        if sender.state == .ended {
             
-            // Look through each slot position
-            for i in 0...songSlots.slotPosition.count-1 {
-                // convert the frame to the superview's superview coordinate system
-                let frame = songSlots.convert(songSlots.slotPosition[i].frame, to: self)
-                // check if the melody is in the correct spot.
-                if frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
-                    // if it is, move it to the position and resize it.
-                    let time = 0.4
-                    view.moveViewTo(frame.origin, time: time, {})
-                    view.changeSize(to: songSlots.slotPosition[i].frame.size, time: time)
-                    view.inCorrectSlot = true
-                    
-                    if songFullyArranged() {
-                        Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
-                        Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
-                        createPlayButton()
-                        instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
-                        sceneState = .arrangementCompleted
-                        delegate?.returnToStory()
+            let translation = sender.translation(in: self)
+            sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+            sender.setTranslation(CGPoint.zero, in: self)
+            playSoundClip(.arrangingDrag)
+            
+            if sender.state == .ended {
+                stopSoundClip(.arrangingDrag)
+                // Look through each slot position
+                for i in 0...songSlots.slotPosition.count-1 {
+                    // convert the frame to the superview's superview coordinate system
+                    let frame = songSlots.convert(songSlots.slotPosition[i].frame, to: self)
+                    // check if the melody is in the correct spot.
+                    if frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
+                        // if it is, move it to the position and resize it.
+                        let time = 0.4
+                        view.moveViewTo(frame.origin, time: time, {})
+                        view.changeSize(to: songSlots.slotPosition[i].frame.size, time: time)
+                        view.inCorrectSlot = true
+                        playSoundClip(.arrangingPlaceMelody)
+                        
+                        if songFullyArranged() {
+                            Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
+                            Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
+                            playSoundClip(.arrangingAllMelodiesLocked)
+                            createPlayButton()
+                            instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
+                            sceneState = .arrangementCompleted
+                            delegate?.returnToStory()
+                        }
                     }
                 }
             }
-        }
         }
     }
     
@@ -174,7 +177,7 @@ class ArrangingScene: UIView {
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
         Sound.sharedInstance.playSequencer()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
