@@ -4,8 +4,8 @@ let switchToArrangingScene = 9
 let switchToPerformingScene = 11
 
 let blurbs = [
-    Blurb(textBlurb: "This is the first text blurb", imageName: "Templeton"),
-    Blurb(textBlurb: "next text", imageName: "Templeton"),
+    Blurb(textBlurb: "This is the first text blurb. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text.", imageName: "Templeton"),
+    Blurb(textBlurb: "next text. What of it. I am typing so much text. What could it be? Will it wrap? I hope it will wrap.", imageName: "8thThumb"),
 ]
 
 let pages = [
