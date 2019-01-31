@@ -93,7 +93,7 @@ extension UIView {
         })
     }
     
-    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () ->() = {} ){
+    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () -> () = {} ){
         
         UIView.animate(
             withDuration: time,

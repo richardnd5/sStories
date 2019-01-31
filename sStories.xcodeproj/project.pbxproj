@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		220B35F121FA69B600AA146D /* Pond.png in Resources */ = {isa = PBXBuildFile; fileRef = 220B35F021FA69B600AA146D /* Pond.png */; };
 		220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B35F221FA6F4D00AA146D /* HomePage.swift */; };
+		2251122C22024EAF0087747F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122B22024EAF0087747F /* test.mp3 */; };
+		2251122E22024F7E0087747F /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* AudioFile.swift */; };
+		2251123022025F360087747F /* test2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122F22025F360087747F /* test2.mp3 */; };
+		2251123222025F910087747F /* test3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251123122025F910087747F /* test3.mp3 */; };
+		226A1A112202713F00E47009 /* SoundClips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A1A102202713F00E47009 /* SoundClips.swift */; };
 		2298202D21F6F9D20070F49B /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 2298202B21F6F9D20070F49B /* Performance.png */; };
 		22A666C121FFD8270038220E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A666C021FFD8270038220E /* Button.swift */; };
 		22A666C321FFD98C0038220E /* read.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C221FFD98C0038220E /* read.png */; };
@@ -200,6 +205,11 @@
 /* Begin PBXFileReference section */
 		220B35F021FA69B600AA146D /* Pond.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pond.png; path = ../../../../../Desktop/Pond.png; sourceTree = "<group>"; };
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
+		2251122D22024F7E0087747F /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
+		2251122F22025F360087747F /* test2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test2.mp3; sourceTree = "<group>"; };
+		2251123122025F910087747F /* test3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test3.mp3; sourceTree = "<group>"; };
+		226A1A102202713F00E47009 /* SoundClips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundClips.swift; sourceTree = "<group>"; };
 		2298202B21F6F9D20070F49B /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Performance.png; sourceTree = "<group>"; };
 		22A666C021FFD8270038220E /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		22A666C221FFD98C0038220E /* read.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read.png; sourceTree = "<group>"; };
@@ -390,6 +400,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		226A1A12220274AB00E47009 /* Sound Clips */ = {
+			isa = PBXGroup;
+			children = (
+				226A1A102202713F00E47009 /* SoundClips.swift */,
+				2251122D22024F7E0087747F /* AudioFile.swift */,
+			);
+			path = "Sound Clips";
+			sourceTree = "<group>";
+		};
 		22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -558,6 +577,9 @@
 				8698D85721BF400000ADED35 /* Sound.swift */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
+				2251122B22024EAF0087747F /* test.mp3 */,
+				2251122F22025F360087747F /* test2.mp3 */,
+				2251123122025F910087747F /* test3.mp3 */,
 				8665697021EFD0860086D432 /* Melody.swift */,
 				86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */,
 				86ED757721F1263C0066E2D8 /* MelodyAudio.swift */,
@@ -570,6 +592,7 @@
 				860DE93121C2072F00A7370D /* Sounds */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				86603C5221FC477B00A7921E /* GlobalConstants.swift */,
+				226A1A12220274AB00E47009 /* Sound Clips */,
 				86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */,
 				86603C5321FC477B00A7921E /* StructsAndEnums.swift */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
@@ -856,6 +879,7 @@
 				2298202D21F6F9D20070F49B /* Performance.png in Resources */,
 				866EA6E421F413CF00B28BA6 /* turnPiano5.mp3 in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,
+				2251123022025F360087747F /* test2.mp3 in Resources */,
 				861C788F21DC257E009D9612 /* sack.png in Resources */,
 				8654705D21EE70D400D1F068 /* middle.png in Resources */,
 				8654705C21EE70D400D1F068 /* dominant.png in Resources */,
@@ -863,11 +887,13 @@
 				8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */,
 				8654705E21EE70D400D1F068 /* ending.png in Resources */,
 				8698D89421BF417600ADED35 /* marimbaC.wav in Resources */,
+				2251123222025F910087747F /* test3.mp3 in Resources */,
 				869EEFFE21DBE06B00A4BC06 /* throwbackWater.png in Resources */,
 				86CC12E721FB8DCB00B9164B /* Templeton.png in Resources */,
 				220B35F121FA69B600AA146D /* Pond.png in Resources */,
 				8698D89521BF417600ADED35 /* pageTurnTouchDown.wav in Resources */,
 				8698D89621BF417600ADED35 /* pageTurnTouchUp.wav in Resources */,
+				2251122C22024EAF0087747F /* test.mp3 in Resources */,
 				866EA6E321F413CF00B28BA6 /* turnPiano1.mp3 in Resources */,
 				869027E321F5939E00C3EF0C /* performanceScene.png in Resources */,
 				8698D89721BF417600ADED35 /* touchDown.wav in Resources */,
@@ -936,6 +962,7 @@
 				86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */,
 				220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */,
 				86F1F6CB21FC3A5D001AD82D /* UIViewExtension.swift in Sources */,
+				226A1A112202713F00E47009 /* SoundClips.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86ED757821F1263C0066E2D8 /* MelodyAudio.swift in Sources */,
 				8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */,
@@ -954,6 +981,7 @@
 				866EA6ED21F42AAB00B28BA6 /* Arrow.swift in Sources */,
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,
 				867C542621DF1E7B002E4255 /* SackContents.swift in Sources */,
+				2251122E22024F7E0087747F /* AudioFile.swift in Sources */,
 				866EA6F521F438DC00B28BA6 /* MiniNote.swift in Sources */,
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
 				866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */,

@@ -20,5 +20,10 @@ let pages = [
     Page(imageName: "Pond", storyText: storyline[20...22]),
 ]
 
-
-
+enum Sounds : String, CaseIterable {
+    // name of sound and file name
+    case test = "test"
+    case test2 = "test2"
+    case test3 = "test3"
+    case piano = "melody6"
+}
