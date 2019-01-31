@@ -4,50 +4,45 @@ class AboutPage: UIView, UIScrollViewDelegate {
     
     weak var delegate : SceneDelegate?
     var scrollView: UIScrollView!
-    
     var aboutTitle : UILabel!
-    
-//    private let backArrow: UIImageView = {
-//        var imageView = UIImageView()
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.isUserInteractionEnabled = true
-//        return imageView
-//    }()
-    
-    var anotherButton : UIButton!
+    var backButton : UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        createScrollView()
+        createTitle()
+        createButtons()
+        setupContraints()
+        
+        alpha = 0.0
+        self.fadeTo(time: 1.5,opacity: 1.0)
+        
+        for i in 0...10 {
+            let fr = CGRect(x: 0, y: CGFloat(i)*frame.height, width: frame.width, height: frame.height)
+            let blurb = AboutBlurb(frame: fr, text: "this is the blurb", imageName: "Templeton")
+            scrollView.addSubview(blurb)
+        }
+        resizeScrollViewToFitContent()
+    }
+    
+    func createScrollView(){
         scrollView = UIScrollView()
         addSubview(scrollView)
-        
+    }
+    
+    func createTitle(){
         aboutTitle = UILabel()
         aboutTitle.text = "About"
         aboutTitle.font = UIFont(name: "Papyrus", size: frame.width/15)
         aboutTitle.textColor = .white
         aboutTitle.textAlignment = .center
         scrollView.addSubview(aboutTitle)
-        
-//        backArrow.image = resizedImage(name: "backArrow", frame: frame)
-//        addSubview(backArrow)
-//
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-//        backArrow.addGestureRecognizer(tap)
-        createButtons()
-        setupContraints()
-
-        alpha = 0.0
-        self.fadeTo(time: 1.5,opacity: 1.0)
-
     }
     
     func createButtons() {
-
-        anotherButton = Button(frame: CGRect.zero, name: "back")
-        addSubview(anotherButton)
-        
+        backButton = Button(frame: CGRect.zero, name: "back")
+        addSubview(backButton)
     }
     
     func setupContraints(){
@@ -67,13 +62,12 @@ class AboutPage: UIView, UIScrollViewDelegate {
         aboutTitle.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         aboutTitle.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.heightAnchor.constraint(equalToConstant: frame.height/7).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: frame.height/7).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: bottomPadding).isActive = true
+        backButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -bottomPadding).isActive = true
         
-        anotherButton.translatesAutoresizingMaskIntoConstraints = false
-        anotherButton.heightAnchor.constraint(equalToConstant: frame.height/7).isActive = true
-        anotherButton.widthAnchor.constraint(equalToConstant: frame.height/7).isActive = true
-        anotherButton.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: bottomPadding).isActive = true
-        anotherButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -bottomPadding).isActive = true
-
     }
     
     func resizeScrollViewToFitContent(){

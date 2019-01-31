@@ -10,10 +10,6 @@ protocol SceneDelegate : class {
 
 class ViewController: UIViewController, SceneDelegate {
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        playSoundClip(.aboutButtonDown)
-    }
-    
     enum AppState {
         case home
         case story

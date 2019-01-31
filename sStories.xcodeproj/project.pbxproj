@@ -45,6 +45,8 @@
 		226A1A502202794900E47009 /* test8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 226A1A312202794800E47009 /* test8.mp3 */; };
 		226A1A512202794900E47009 /* test19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 226A1A322202794800E47009 /* test19.mp3 */; };
 		226A1A522202794900E47009 /* test15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 226A1A332202794800E47009 /* test15.mp3 */; };
+		228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */; };
+		228CF3B12202D5CA00C4ED08 /* dividingLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 228CF3B02202D5C900C4ED08 /* dividingLine.png */; };
 		2298202D21F6F9D20070F49B /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 2298202B21F6F9D20070F49B /* Performance.png */; };
 		22A666C121FFD8270038220E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A666C021FFD8270038220E /* Button.swift */; };
 		22A666C321FFD98C0038220E /* read.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C221FFD98C0038220E /* read.png */; };
@@ -272,6 +274,8 @@
 		226A1A312202794800E47009 /* test8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test8.mp3; sourceTree = "<group>"; };
 		226A1A322202794800E47009 /* test19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test19.mp3; sourceTree = "<group>"; };
 		226A1A332202794800E47009 /* test15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test15.mp3; sourceTree = "<group>"; };
+		228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBlurb.swift; sourceTree = "<group>"; };
+		228CF3B02202D5C900C4ED08 /* dividingLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dividingLine.png; sourceTree = "<group>"; };
 		2298202B21F6F9D20070F49B /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Performance.png; sourceTree = "<group>"; };
 		22A666C021FFD8270038220E /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		22A666C221FFD98C0038220E /* read.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read.png; sourceTree = "<group>"; };
@@ -577,6 +581,7 @@
 				86CC12E621FB8DCB00B9164B /* Templeton.png */,
 				866EA6F221F4384D00B28BA6 /* 8thThumb.png */,
 				866EA6F021F42C7E00B28BA6 /* arrow.png */,
+				228CF3B02202D5C900C4ED08 /* dividingLine.png */,
 				8654705621EE70D300D1F068 /* dominant.png */,
 				86ED756D21F0FF550066E2D8 /* arrangingBackground.png */,
 				866EA65221F2888F00B28BA6 /* wholeNote.png */,
@@ -676,6 +681,7 @@
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
 				86CC12DE21FB7FD600B9164B /* AboutPage.swift */,
+				228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
 				22A666C021FFD8270038220E /* Button.swift */,
 				8698D85721BF400000ADED35 /* Sound.swift */,
@@ -1037,6 +1043,7 @@
 				86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */,
 				866EA6F321F4384D00B28BA6 /* 8thThumb.png in Resources */,
 				863DADF421D408A000AFDD94 /* FishingPole.png in Resources */,
+				228CF3B12202D5CA00C4ED08 /* dividingLine.png in Resources */,
 				86E9F4A121BF82F500EE12DF /* Town.png in Resources */,
 				22C12BFD21F7B70D006D288F /* musicSymbol6.png in Resources */,
 				86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */,
@@ -1092,6 +1099,7 @@
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				22A666C121FFD8270038220E /* Button.swift in Sources */,
 				86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */,
+				228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */,
 				220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */,
 				86F1F6CB21FC3A5D001AD82D /* UIViewExtension.swift in Sources */,
 				226A1A112202713F00E47009 /* SoundClips.swift in Sources */,
