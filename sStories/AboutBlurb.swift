@@ -34,14 +34,15 @@ class AboutBlurb: UIView {
     init(frame: CGRect, text: String, imageName: String = "8thThumb") {
         super.init(frame: frame)
         
-        imageView.image = resizedImage(name: "\(imageName)", frame: frame)
-        dividingLine.image = resizedImage(name: "dividingLine", frame: frame)
+        imageView.image = resizedImage(name: "\(imageName)")
+        dividingLine.image = resizedImage(name: "dividingLine")
         
         textBlurb.text = text
         textBlurb.font = UIFont(name: "Papyrus", size: frame.width/44)
         
         setupLayout()
         isUserInteractionEnabled = false
+        translatesAutoresizingMaskIntoConstraints = false
         
     }
     

@@ -18,7 +18,7 @@ func downsample(imageAt imageURL: URL, to pointSize: CGSize, scale: CGFloat)-> U
     return UIImage(cgImage: downsampledImage)
 }
 
-func resizedImage(name: String, frame: CGRect, scale: CGFloat = 1) -> UIImage{
+func resizedImage(name: String, frame: CGRect = ScreenSize.frame, scale: CGFloat = 1) -> UIImage{
     var image : UIImage!
     let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("\(name).png")
     image = downsample(imageAt: bundleURL!, to: CGSize(width: frame.width*3, height: frame.height*3), scale: 1)

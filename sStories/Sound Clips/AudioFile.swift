@@ -31,7 +31,7 @@ class AudioFile {
     }
     
     private func finishedCallback(){
-        print("\(name) finishedPlaying")
+        
     }
     
     func play(){

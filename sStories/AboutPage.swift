@@ -6,6 +6,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
     var scrollView: UIScrollView!
     var aboutTitle : UILabel!
     var backButton : UIButton!
+    var blurbArray = [AboutBlurb]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,13 +18,25 @@ class AboutPage: UIView, UIScrollViewDelegate {
         
         alpha = 0.0
         self.fadeTo(time: 1.5,opacity: 1.0)
-        
-        for i in 0...10 {
-            let fr = CGRect(x: 0, y: CGFloat(i)*frame.height, width: frame.width, height: frame.height)
-            let blurb = AboutBlurb(frame: fr, text: "this is the blurb", imageName: "Templeton")
-            scrollView.addSubview(blurb)
-        }
+        addBlurbs()
         resizeScrollViewToFitContent()
+    }
+    
+    func addBlurbs(){
+        
+        blurbs.forEach { blurb in
+            let view = AboutBlurb(frame: CGRect.zero, text: blurb.textBlurb, imageName: blurb.imageName)
+            scrollView.addSubview(view)
+            // setup contraints
+            if blurbArray.count == 0 {
+                view.anchor(top: aboutTitle.bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: nil, padding: UIEdgeInsets.init(top: 20, left: 0, bottom: 0, right: 0), size: CGSize(width: frame.width, height: frame.height))
+            } else {
+                view.anchor(top: blurbArray[blurbArray.count-1].bottomAnchor, leading: leadingAnchor, trailing: trailingAnchor, bottom: nil, padding: UIEdgeInsets.init(top: 20, left: 0, bottom: 0, right: 0), size: CGSize(width: frame.width, height: frame.height))
+            }
+            blurbArray.append(view)
+            
+            
+        }
     }
     
     func createScrollView(){
@@ -73,7 +86,9 @@ class AboutPage: UIView, UIScrollViewDelegate {
     func resizeScrollViewToFitContent(){
         var contentRect = CGRect.zero
         for view in scrollView.subviews {
-            contentRect = contentRect.union(view.frame)
+            let viewSize = view.intrinsicContentSize
+            print(viewSize)
+            contentRect = contentRect.union(CGRect(x: 0, y: 0, width: viewSize.width, height: viewSize.height))
         }
         scrollView.contentSize = contentRect.size
         scrollView.isDirectionalLockEnabled = true

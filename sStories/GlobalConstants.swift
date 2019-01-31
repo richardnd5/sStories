@@ -3,6 +3,11 @@ let switchToCatchingMelodiesScene = 5
 let switchToArrangingScene = 9
 let switchToPerformingScene = 11
 
+let blurbs = [
+    Blurb(textBlurb: "This is the first text blurb", imageName: "Templeton"),
+    Blurb(textBlurb: "next text", imageName: "Templeton"),
+]
+
 let pages = [
     Page(imageName: "Town", storyText: storyline[0...0]),
     Page(imageName: "TalkingToCrowdAboutFishing", storyText: storyline[1...3]),

@@ -5,7 +5,6 @@
 //  Created by Nate on 12/7/18.
 //  Copyright © 2018 Nathan Richard. All rights reserved.
 //
-
 import UIKit
 
 @UIApplicationMain

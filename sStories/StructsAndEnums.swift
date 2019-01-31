@@ -1,8 +1,13 @@
 import UIKit
 
 struct Page {
-    let imageName: String
-    let storyText: ArraySlice<String>
+    let imageName : String
+    let storyText : ArraySlice<String>
+}
+
+struct Blurb {
+    let textBlurb : String
+    let imageName : String
 }
 
 enum ButtonTypee: Int {
