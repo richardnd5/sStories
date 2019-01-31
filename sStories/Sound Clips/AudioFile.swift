@@ -41,6 +41,18 @@ class AudioFile {
         }
         player.play()
     }
+    
+    func stop(){
+        if player.isPlaying {
+            player.stop()
+        }
+    }
+    
+    func enableLooping(){
+        // Need to enable buffering if going to loop without pause.
+        player.isLooping = true
+    }
+    
     func disconnect(){
         player.detach()
     }
