@@ -5,17 +5,19 @@ class Sound {
     static var sharedInstance = Sound()
     
     var mixer = AKMixer()
-    private var reverb = AKReverb()
+    var reverb = AKReverb()
     private var sequencer = AKSequencer()
     private var patternArray = [MelodyAudio]()
     var pageTurnSoundArray = [PageTurnPianoPling]()
 
     func setup(){
         
-        mixer = AKMixer()
+        
+        reverb = AKReverb(nil, dryWetMix: 0.5)
+        mixer = AKMixer(reverb)
         mixer.volume = 1.0
-        reverb = AKReverb(mixer, dryWetMix: 0.5)
-        AudioKit.output = reverb
+        
+        AudioKit.output = mixer
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()

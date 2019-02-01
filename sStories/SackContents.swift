@@ -56,7 +56,7 @@ class SackContents: UIView {
     
     func removeMelodyFromSack(_ view: MelodyImage){
         view.shrinkAndRemove(time: 0.4)
-        playSoundClip(.fishingMelodyThrowBack)
+        playSoundClip(.fishingThrowbackDrop)
         
         for i in 0...melodiesInSack.count-1 {
             if view.data?.slotPosition == melodiesInSack[i].slotPosition {
@@ -134,7 +134,7 @@ class SackContents: UIView {
                 removeMelodyFromSack(view)
             } else {
                 view.moveViewTo(CGPoint.zero, time: 0.4, {})
-                playSoundClip(.fishingMelodyPutBackToSack)
+                playSoundClip(.fishingSackDrop)
             }
         }
     }

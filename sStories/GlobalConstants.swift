@@ -18,7 +18,7 @@ let pages = [
     Page(imageName: "Town", storyText: storyline[0...0]),
     Page(imageName: "TalkingToCrowdAboutFishing", storyText: storyline[1...3]),
     Page(imageName: "Mountain", storyText: storyline[4...4]),
-    Page(imageName: "Pond", storyText: storyline[5...6]),
+    Page(imageName: "PondNew", storyText: storyline[5...6]),
     Page(imageName: "Fishing", storyText: storyline[7...7]),
     Page(imageName: "SackOfMelodies", storyText: storyline[8...8]), // this is a dummy slot to make space for the catching melodies scene
     Page(imageName: "SackOfMelodies", storyText: storyline[8...9]),
@@ -37,7 +37,7 @@ enum Sounds : String, CaseIterable {
     case nextStoryLine = "test26"
     case touchUp = "test5"
     case showPageTurner = "test27"
-    case pageTurn = "test6"
+    case pageTurn = "pageTurn" //
     case aboutButtonDown = "test7"
     case aboutButtonUp = "test8"
     case readButtonDown = "test9"
@@ -46,21 +46,19 @@ enum Sounds : String, CaseIterable {
     case backButtonUp = "test12"
     
     case initialPondDrone = "test13"
-    case fishingMelodyOnTheLine = "test14"
+    case fishingMelodyOnTheLine = "fishOnLine" //
     case fishingPullMelodyOut = "test15"
     case fishingTransitionToMelodyChoice = "test16"
     case fishingMelodyDrag = "test28"
-    case fishingMelodyThrowBack = "test29"
-    case fishingMelodyPutBackToSack = "test30"
-    case fishingSackDrag = "test17"
-    case fishingSackDrop = "test18"
+    case fishingSackDrag = "sackDrag" //
+    case fishingSackDrop = "sackDrop" //
     case fishingThrowbackDrag = "test19"
-    case fishingThrowbackDrop = "test20"
+    case fishingThrowbackDrop = "throwBackDrop"
     case fishingCastLine = "test21"
     case fishingSackFull = "test22"
     case fishingWarning = "test31"
     
-    case arrangingDrag = "test23"
+    case arrangingDrag = "arrangingDragSound" //
     case arrangingPlaceMelody = "test24"
     case arrangingAllMelodiesLocked = "test25"
 }

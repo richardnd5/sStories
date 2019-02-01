@@ -29,7 +29,8 @@ class MelodyAudio {
         sampler.enableMIDI()
         sampler.name = "\(number)"
         sampler.volume = 1.3
-        Sound.sharedInstance.mixer.connect(input: sampler)
+//        Sound.sharedInstance.mixer.connect(input: sampler)
+        sampler.connect(to: Sound.sharedInstance.reverb)
     }
     
     func playMelody(){
