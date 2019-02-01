@@ -59,7 +59,7 @@ class CatchingMelodies: UIView {
     
     func createPond(){
 
-        pondImage.image = resizedImage(name: "Pond", frame: frame)
+        pondImage.image = resizedImage(name: "PondNew", frame: frame)
         addSubview(pondImage)
         pondImage.layer.zPosition = -100
         
