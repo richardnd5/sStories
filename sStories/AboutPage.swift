@@ -26,16 +26,17 @@ class AboutPage: UIView, UIScrollViewDelegate {
         let safe = safeAreaLayoutGuide
         let padding : CGFloat = 60
         for (index, blurb) in blurbs.enumerated() {
-//        blurbs.forEach { blurb in
+            //        blurbs.forEach { blurb in
             let view = AboutBlurb(frame: CGRect.zero, text: blurb.textBlurb, imageName: blurb.imageName)
             scrollView.addSubview(view)
             
             if blurbArray.count == 0 {
                 view.anchor(
-                    top: aboutTitle.bottomAnchor,
+                    top: scrollView.topAnchor,
                     leading: safe.leadingAnchor,
                     trailing: safe.trailingAnchor,
                     bottom: nil,
+                    padding: UIEdgeInsets(top: padding, left: 0, bottom: 0, right: 0),
                     size: CGSize(width: frame.width, height: frame.height))
             } else if index < blurbs.count-1 {
                 view.anchor(
@@ -61,6 +62,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
     func createScrollView(){
         scrollView = UIScrollView()
         addSubview(scrollView)
+        scrollView.delegate = self
     }
     
     func createTitle(){
@@ -69,7 +71,8 @@ class AboutPage: UIView, UIScrollViewDelegate {
         aboutTitle.font = UIFont(name: "Papyrus", size: frame.width/15)
         aboutTitle.textColor = .white
         aboutTitle.textAlignment = .center
-        scrollView.addSubview(aboutTitle)
+        aboutTitle.isUserInteractionEnabled = false
+        addSubview(aboutTitle)
     }
     
     func createButtons() {
@@ -89,9 +92,9 @@ class AboutPage: UIView, UIScrollViewDelegate {
         scrollView.bottomAnchor.constraint(equalTo: safe.bottomAnchor).isActive = true
         
         aboutTitle.translatesAutoresizingMaskIntoConstraints = false
-        aboutTitle.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: frame.height/10).isActive = true
+        aboutTitle.topAnchor.constraint(equalTo: safe.topAnchor, constant: frame.height/10).isActive = true
         aboutTitle.centerXAnchor.constraint(equalTo: safe.centerXAnchor).isActive = true
-        aboutTitle.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
+        aboutTitle.widthAnchor.constraint(equalTo: safe.widthAnchor).isActive = true
         aboutTitle.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
@@ -102,34 +105,22 @@ class AboutPage: UIView, UIScrollViewDelegate {
         
     }
     
-    func resizeScrollViewToFitContent(){
-        var contentRect = CGRect.zero
-        for view in scrollView.subviews {
-            let viewSize = view.intrinsicContentSize
-            print(viewSize)
-            contentRect = contentRect.union(CGRect(x: 0, y: 0, width: viewSize.width, height: viewSize.height))
-        }
-        scrollView.contentSize = contentRect.size
-        scrollView.isDirectionalLockEnabled = true
-    }
-    
-    func makeManySquares(){
-        let rows = 3
-        let columns = 100
-        let width = 100
-        let height = CGFloat(100)
-        
-        for i in 0...rows{
-            for j in 0...columns{
-                let view = UIView(frame: CGRect(x: CGFloat(i*width), y: CGFloat(j)*height, width: CGFloat(width-10), height: height-10))
-                view.backgroundColor = UIColor.init(hue: CGFloat.random(in: 0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
-                scrollView.addSubview(view)
-            }
-        }
-    }
-    
     @objc func handleTap(_ sender: UITapGestureRecognizer){
         delegate?.goToHomePage()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        var opacity = 1-scrollView.contentOffset.y / 50
+        
+        if opacity > 1 {
+            opacity = 1
+            aboutTitle.alpha = opacity
+            backButton.alpha = opacity
+        } else {
+            aboutTitle.alpha = opacity
+            backButton.alpha = opacity
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
