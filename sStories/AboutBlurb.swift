@@ -22,26 +22,33 @@ class AboutBlurb: UIView {
         return imageView
     }()
     
-    private let dividingLine: UIImageView = {
-        var imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = false
-        return imageView
+    private let line: UIView = {
+        var view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isUserInteractionEnabled = false
+        return view
     }()
     
-    let fontSize : CGFloat = 30
+//    private let line: UIImageView = {
+//        var imageView = UIImageView()
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.isUserInteractionEnabled = false
+//        return imageView
+//    }()
+//    let line : UIView?
+
+    
+    let fontSize : CGFloat = 16
     
     init(frame: CGRect, text: String, imageName: String = "8thThumb") {
         super.init(frame: frame)
         
         imageView.image = resizedImage(name: "\(imageName)")
-        dividingLine.image = resizedImage(name: "dividingLine")
-        
         
         textBlurb.text = text
         textBlurb.font = UIFont(name: "Papyrus", size: fontSize)
-//        textBlurb.sizeToFit()
         
         setupLayout()
         isUserInteractionEnabled = false
@@ -52,42 +59,41 @@ class AboutBlurb: UIView {
     func setupLayout(){
         
         let safe = safeAreaLayoutGuide
-        let bottomPadding = -frame.height/40
+        let padding : CGFloat = 60
         
         let textHoldingView = UIView()
         addSubview(textHoldingView)
 
         textHoldingView.translatesAutoresizingMaskIntoConstraints = false
-        textHoldingView.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
-        //        textHoldingView.heightAnchor.constraint(equalToConstant: textHoldingView.frame.height).isActive = true
+        textHoldingView.topAnchor.constraint(equalTo: topAnchor, constant: padding).isActive = true
         textHoldingView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-        textHoldingView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         textHoldingView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 20).isActive = true
         textHoldingView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -20).isActive = true
         
         
         textHoldingView.addSubview(textBlurb)
-        textBlurb.translatesAutoresizingMaskIntoConstraints = false
-        textBlurb.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
-//        textBlurb.heightAnchor.constraint(equalToConstant: textBlurb.frame.height).isActive = true
-        textBlurb.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-        textBlurb.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        textBlurb.leadingAnchor.constraint(equalTo: safe.leadingAnchor).isActive = true
-        textBlurb.trailingAnchor.constraint(equalTo: safe.trailingAnchor).isActive = true
+        textBlurb.fillSuperview()
+//        textBlurb.translatesAutoresizingMaskIntoConstraints = false
+//        textBlurb.topAnchor.constraint(equalTo: topAnchor, constant: padding).isActive = true
+//        textBlurb.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
+//        textBlurb.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        textBlurb.leadingAnchor.constraint(equalTo: safe.leadingAnchor).isActive = true
+//        textBlurb.trailingAnchor.constraint(equalTo: safe.trailingAnchor).isActive = true
         
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.topAnchor.constraint(equalTo: textBlurb.bottomAnchor, constant: frame.height/230).isActive = true
+        imageView.topAnchor.constraint(equalTo: textBlurb.bottomAnchor, constant: padding).isActive = true
         imageView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         imageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        addSubview(dividingLine)
-        dividingLine.translatesAutoresizingMaskIntoConstraints = false
-        dividingLine.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        dividingLine.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
-        dividingLine.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        dividingLine.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: bottomPadding).isActive = true
+        addSubview(line)
+        line.translatesAutoresizingMaskIntoConstraints = false
+        line.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: padding).isActive = true
+        line.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        line.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+//        line.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding)
     }
     
     

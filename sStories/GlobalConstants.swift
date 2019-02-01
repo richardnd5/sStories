@@ -5,7 +5,13 @@ let switchToPerformingScene = 11
 
 let blurbs = [
     Blurb(textBlurb: "This is the first text blurb. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text.", imageName: "Templeton"),
-    Blurb(textBlurb: "next text. What of it. I am typing so much text. What could it be? Will it wrap? I hope it will wrap.", imageName: "8thThumb"),
+    Blurb(textBlurb: "next text. What of it. I am typing so much text. What could it be? Will it wrap? I hope it will wrap.", imageName: "Templeton"),
+    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
+    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
+    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
+    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
+    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
+    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
 ]
 
 let pages = [
@@ -58,5 +64,4 @@ enum Sounds : String, CaseIterable {
     case arrangingPlaceMelody = "test24"
     case arrangingAllMelodiesLocked = "test25"
 }
-
 

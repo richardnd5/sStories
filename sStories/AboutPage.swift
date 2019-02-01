@@ -24,18 +24,38 @@ class AboutPage: UIView, UIScrollViewDelegate {
     func addBlurbs(){
         
         let safe = safeAreaLayoutGuide
-        blurbs.forEach { blurb in
+        let padding : CGFloat = 60
+        for (index, blurb) in blurbs.enumerated() {
+//        blurbs.forEach { blurb in
             let view = AboutBlurb(frame: CGRect.zero, text: blurb.textBlurb, imageName: blurb.imageName)
             scrollView.addSubview(view)
-            // setup contraints
+            
             if blurbArray.count == 0 {
-                view.anchor(top: aboutTitle.bottomAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets.init(top: 20, left: 0, bottom: 0, right: 0), size: CGSize(width: frame.width, height: frame.height))
-            } else {
-                view.anchor(top: blurbArray[blurbArray.count-1].bottomAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets.init(top: 20, left: 0, bottom: 0, right: 0), size: CGSize(width: frame.width, height: frame.height))
+                view.anchor(
+                    top: aboutTitle.bottomAnchor,
+                    leading: safe.leadingAnchor,
+                    trailing: safe.trailingAnchor,
+                    bottom: nil,
+                    size: CGSize(width: frame.width, height: frame.height))
+            } else if index < blurbs.count-1 {
+                view.anchor(
+                    top: blurbArray[index-1].bottomAnchor,
+                    leading: safe.leadingAnchor,
+                    trailing: safe.trailingAnchor,
+                    bottom: nil,
+                    padding: UIEdgeInsets(top: padding, left: 0, bottom: 0, right: 0),
+                    size: CGSize(width: frame.width, height: frame.height))
+            } else if index == blurbs.count-1 {
+                view.anchor(
+                    top: blurbArray[blurbArray.count-1].bottomAnchor,
+                    leading: safe.leadingAnchor,
+                    trailing: safe.trailingAnchor,
+                    bottom: scrollView.bottomAnchor,
+                    padding: UIEdgeInsets(top: padding, left: 0, bottom: -padding, right: 0),
+                    size: CGSize(width: frame.width, height: frame.height))
             }
-            blurbArray.append(view)
+            blurbArray.append(view)   
         }
-        scrollView.contentSize.height = frame.height*CGFloat(blurbArray.count)
     }
     
     func createScrollView(){
@@ -67,7 +87,6 @@ class AboutPage: UIView, UIScrollViewDelegate {
         scrollView.topAnchor.constraint(equalTo: safe.topAnchor).isActive = true
         scrollView.rightAnchor.constraint(equalTo: safe.rightAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: safe.bottomAnchor).isActive = true
-        
         
         aboutTitle.translatesAutoresizingMaskIntoConstraints = false
         aboutTitle.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: frame.height/10).isActive = true
