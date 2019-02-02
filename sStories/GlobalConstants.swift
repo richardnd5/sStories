@@ -59,7 +59,7 @@ enum Sounds : String, CaseIterable {
     case fishingWarning = "test31"
     
     case arrangingDrag = "arrangingDragSound" //
-    case arrangingPlaceMelody = "test24"
+    case arrangingPlaceMelody = "placeMelodySound"
     case arrangingAllMelodiesLocked = "test25"
 }
 

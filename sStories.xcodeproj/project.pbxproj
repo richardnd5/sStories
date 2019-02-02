@@ -84,6 +84,7 @@
 		8665697121EFD0860086D432 /* Melody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697021EFD0860086D432 /* Melody.swift */; };
 		8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697221EFDBDF0086D432 /* transparentMelody.swift */; };
 		8665697B21F060900086D432 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697A21F060900086D432 /* PlayButton.swift */; };
+		8667BA20220559E700324598 /* placeMelodySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8667BA1F220559E700324598 /* placeMelodySound.mp3 */; };
 		86697DE321C1AF97009EC3BF /* windSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE221C1AF97009EC3BF /* windSound.wav */; };
 		86697DE521C1B181009EC3BF /* steadyBrownNoise.wav in Resources */ = {isa = PBXBuildFile; fileRef = 86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */; };
 		866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA64E21F282B900B28BA6 /* PageTurner.swift */; };
@@ -320,6 +321,7 @@
 		8665697021EFD0860086D432 /* Melody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Melody.swift; sourceTree = "<group>"; };
 		8665697221EFDBDF0086D432 /* transparentMelody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transparentMelody.swift; sourceTree = "<group>"; };
 		8665697A21F060900086D432 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		8667BA1F220559E700324598 /* placeMelodySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placeMelodySound.mp3; sourceTree = "<group>"; };
 		86697DE221C1AF97009EC3BF /* windSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = windSound.wav; sourceTree = "<group>"; };
 		86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = steadyBrownNoise.wav; sourceTree = "<group>"; };
 		866EA64E21F282B900B28BA6 /* PageTurner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurner.swift; sourceTree = "<group>"; };
@@ -582,6 +584,7 @@
 				86EE34652204F4E7003218B6 /* pageTurn.mp3 */,
 				86EE34692204F4E8003218B6 /* sackDrag.mp3 */,
 				22E5DBB3220555C200235899 /* pullMelodyOut.mp3 */,
+				8667BA1F220559E700324598 /* placeMelodySound.mp3 */,
 				86EE34682204F4E8003218B6 /* sackDrop.mp3 */,
 				86EE346A2204F4E8003218B6 /* throwBackDrop.mp3 */,
 				86697DE421C1B181009EC3BF /* steadyBrownNoise.wav */,
@@ -937,6 +940,7 @@
 				86EE346D2204F4E8003218B6 /* arrangingDragSound.mp3 in Resources */,
 				86ED75B421F126980066E2D8 /* melody1.mp3 in Resources */,
 				86ED75B521F126980066E2D8 /* melody10.mp3 in Resources */,
+				8667BA20220559E700324598 /* placeMelodySound.mp3 in Resources */,
 				226A1A412202794900E47009 /* test4.mp3 in Resources */,
 				86ED75B621F126980066E2D8 /* melody11.mp3 in Resources */,
 				86ED75B721F126980066E2D8 /* melody12.mp3 in Resources */,
