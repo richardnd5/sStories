@@ -5,6 +5,7 @@ class CatchOrThrowbackImage: UIImageView {
     var noteImage = UIImage()
     var scaleSize : CGFloat = 1.0
     var imageName = String()
+    var isSelected = false
 
     init(frame: CGRect, imageName: String) {
         super.init(frame: frame)
@@ -22,6 +23,17 @@ class CatchOrThrowbackImage: UIImageView {
         isUserInteractionEnabled = false
 
         fadeTo(time: 2.0, opacity: 1.0)
+    }
+    
+    func expand(){
+        scaleTo(scaleTo: 1.4, time: 0.3, {self.scaleSize = 1.4})
+        imageName == "sack" ? playSoundClip(.fishingSackDrag) : playSoundClip(.fishingThrowbackDrop)
+        isSelected = true
+    }
+    
+    func shrink(){
+        scaleTo(scaleTo: 1.0, time: 0.3, {self.scaleSize = 1.0})
+        isSelected = false
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -239,23 +239,23 @@ class CatchingMelodies: UIView {
         let translation = sender.translation(in: self)
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: self)
-        playSoundClip(.fishingMelodyDrag)
+//        playSoundClip(.fishingMelodyDrag)
         
-        if (sack?.bounds.contains(sender.location(in: sack)))! {
-            sack?.scaleTo(scaleTo: 1.4, time: 0.3, {self.sack!.scaleSize = 1.4})
-            playSoundClip(.fishingSackDrag)
-        } else if sack?.scaleSize != 1.0 {
-            sack?.scaleTo(scaleTo: 1.0, time: 0.3, {self.sack!.scaleSize = 1.0})
-        } else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))!{
-            throwbackWater?.scaleTo(scaleTo: 1.4, time: 0.3, {self.throwbackWater!.scaleSize = 1.4})
-            playSoundClip(.fishingThrowbackDrag)
-        } else if throwbackWater?.scaleSize != 1.0 {
-            throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.3, {self.throwbackWater!.scaleSize = 1.0})
+        if (sack?.bounds.contains(sender.location(in: sack)))! && !(sack?.isSelected)!{
+            sack?.expand()
+            
+        } else if !(sack?.bounds.contains(sender.location(in: sack)))! && (sack?.isSelected)! {
+            sack?.shrink()
+        } else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))! && !(throwbackWater?.isSelected)! {
+            throwbackWater?.expand()
+            
+        } else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))! && (throwbackWater?.isSelected)! {
+            throwbackWater?.shrink()
         }
         
         // When touches ended after panning.
         if sender.state == .ended {
-            stopSoundClip(.fishingMelodyDrag)
+//            stopSoundClip(.fishingMelodyDrag)
             // if the melody was dragged to be kept
             if (sack?.bounds.contains(sender.location(in: sack)))! {
                 let melodyImage = sender.view as! MelodyImage
