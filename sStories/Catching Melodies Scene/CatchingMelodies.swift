@@ -164,6 +164,7 @@ class CatchingMelodies: UIView {
 
     func goBackToFishing(){
 
+        Sound.sharedInstance.turnUpPond()
         melodyImage?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {self.throwbackWater!.scaleSize = 1.0})
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
@@ -234,6 +235,7 @@ class CatchingMelodies: UIView {
             
             // dim the background pond image
             self.pondImage.fadeTo(time: 1.5, opacity: 0.2)
+            Sound.sharedInstance.turnDownPond()
             
             // create catching scene images
             self.createRandomMelody()

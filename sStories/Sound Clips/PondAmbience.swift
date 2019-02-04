@@ -30,6 +30,14 @@ class PondAmbience : AKMIDISampler {
         volume = 0.75
     }
     
+    func turnDownSound(){
+        volume = 0.4
+    }
+    
+    func turnUpSound(){
+        volume = 0.75
+    }
+    
     func playLoop(){
         do { try play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
         

@@ -1,14 +1,16 @@
 import AudioKit
 
-class AudioFile {
+class SoundEffect {
     
     private var audioFile : AKAudioFile!
     var sampler = AKMIDISampler()
     var randomIntervalTimer = Timer()
 
     var name : String!
+    var volume : Double!
     
-    init(fileName: String) {
+    init(fileName: String, volume: Double = 1.0) {
+        self.volume = volume
         audioFile = loadAudioFile("\(fileName)")
         setupSampler()
         self.name = fileName
@@ -28,6 +30,7 @@ class AudioFile {
     func setupSampler(){
         do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
         sampler.enableMIDI()
+        sampler.volume = volume
         Sound.sharedInstance.soundEffectMixer.connect(input: sampler)
     }
     

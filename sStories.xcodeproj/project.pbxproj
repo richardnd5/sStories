@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B35F221FA6F4D00AA146D /* HomePage.swift */; };
 		2251122C22024EAF0087747F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122B22024EAF0087747F /* test.mp3 */; };
-		2251122E22024F7E0087747F /* AudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* AudioFile.swift */; };
+		2251122E22024F7E0087747F /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* SoundEffect.swift */; };
 		2251123022025F360087747F /* test2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122F22025F360087747F /* test2.mp3 */; };
 		2251123222025F910087747F /* test3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251123122025F910087747F /* test3.mp3 */; };
 		226A1A112202713F00E47009 /* SoundClips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226A1A102202713F00E47009 /* SoundClips.swift */; };
@@ -85,6 +85,7 @@
 		8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697221EFDBDF0086D432 /* transparentMelody.swift */; };
 		8665697B21F060900086D432 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697A21F060900086D432 /* PlayButton.swift */; };
 		8667BA20220559E700324598 /* placeMelodySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8667BA1F220559E700324598 /* placeMelodySound.mp3 */; };
+		866AA1022208C412000FED54 /* FishingPoleNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 866AA1012208C412000FED54 /* FishingPoleNew.png */; };
 		866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA64E21F282B900B28BA6 /* PageTurner.swift */; };
 		866EA65321F2889000B28BA6 /* wholeNote.png in Resources */ = {isa = PBXBuildFile; fileRef = 866EA65221F2888F00B28BA6 /* wholeNote.png */; };
 		866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA65421F288CC00B28BA6 /* WholeNote.swift */; };
@@ -253,7 +254,7 @@
 /* Begin PBXFileReference section */
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
-		2251122D22024F7E0087747F /* AudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFile.swift; sourceTree = "<group>"; };
+		2251122D22024F7E0087747F /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		2251122F22025F360087747F /* test2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test2.mp3; sourceTree = "<group>"; };
 		2251123122025F910087747F /* test3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test3.mp3; sourceTree = "<group>"; };
 		226A1A102202713F00E47009 /* SoundClips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundClips.swift; sourceTree = "<group>"; };
@@ -329,6 +330,7 @@
 		8665697221EFDBDF0086D432 /* transparentMelody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transparentMelody.swift; sourceTree = "<group>"; };
 		8665697A21F060900086D432 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		8667BA1F220559E700324598 /* placeMelodySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placeMelodySound.mp3; sourceTree = "<group>"; };
+		866AA1012208C412000FED54 /* FishingPoleNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPoleNew.png; sourceTree = "<group>"; };
 		866EA64E21F282B900B28BA6 /* PageTurner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurner.swift; sourceTree = "<group>"; };
 		866EA65221F2888F00B28BA6 /* wholeNote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wholeNote.png; sourceTree = "<group>"; };
 		866EA65421F288CC00B28BA6 /* WholeNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeNote.swift; sourceTree = "<group>"; };
@@ -500,7 +502,7 @@
 			isa = PBXGroup;
 			children = (
 				226A1A102202713F00E47009 /* SoundClips.swift */,
-				2251122D22024F7E0087747F /* AudioFile.swift */,
+				2251122D22024F7E0087747F /* SoundEffect.swift */,
 				868F9C252207FD3600BBBFE3 /* PondAmbience.swift */,
 			);
 			path = "Sound Clips";
@@ -648,6 +650,7 @@
 				861C788E21DC257E009D9612 /* sack.png */,
 				86621B2421CD776A0069157B /* waterDrop.png */,
 				863DADF321D408A000AFDD94 /* FishingPole.png */,
+				866AA1012208C412000FED54 /* FishingPoleNew.png */,
 				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
 				86E9F49221BF82F400EE12DF /* ShowingCrowdSackOfMelodies.png */,
 				86E9F49721BF82F500EE12DF /* TalkingToCrowdAboutFishing.png */,
@@ -975,6 +978,7 @@
 				868F9C1B2207D71000BBBFE3 /* buttonUp.mp3 in Resources */,
 				868F9C162207D1C400BBBFE3 /* nextStoryLine.mp3 in Resources */,
 				86ED75BB21F126980066E2D8 /* melody16.mp3 in Resources */,
+				866AA1022208C412000FED54 /* FishingPoleNew.png in Resources */,
 				226A1A502202794900E47009 /* test8.mp3 in Resources */,
 				86ED75BC21F126980066E2D8 /* melody17.mp3 in Resources */,
 				226A1A372202794900E47009 /* test23.mp3 in Resources */,
@@ -1181,7 +1185,7 @@
 				866EA6ED21F42AAB00B28BA6 /* Arrow.swift in Sources */,
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,
 				867C542621DF1E7B002E4255 /* SackContents.swift in Sources */,
-				2251122E22024F7E0087747F /* AudioFile.swift in Sources */,
+				2251122E22024F7E0087747F /* SoundEffect.swift in Sources */,
 				866EA6F521F438DC00B28BA6 /* MiniNote.swift in Sources */,
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
 				866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */,

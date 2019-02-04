@@ -85,6 +85,14 @@ class Sound {
         pondBackground.stopLoop()
     }
     
+    func turnDownPond(){
+        pondBackground.turnDownSound()
+    }
+    
+    func turnUpPond(){
+        pondBackground.turnUpSound()
+    }
+    
     func playSequencer(){
         sequencer.rewind()
         sequencer.play()

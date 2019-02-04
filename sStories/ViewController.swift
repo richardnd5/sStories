@@ -19,7 +19,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     private var currentState = AppState.home
-    private var currentPage = 0
+    private var currentPage = 5
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
 
@@ -93,7 +93,7 @@ class ViewController: UIViewController, SceneDelegate {
     func nextPage() {
         
         // If the next page is a regular page
-        if page != nil && currentPage < pages.count-1 && (page?.canActivate)! && currentState == .story {
+        if page != nil && currentPage < pages.count-1 && currentState == .story {
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage+=1
                 self.tempStoryLine = 0
@@ -180,7 +180,7 @@ class ViewController: UIViewController, SceneDelegate {
     
     @objc func handlePress(_ sender: UITapGestureRecognizer){
         
-        if sender.state == .began {
+        if sender.state == .began && page.canActivate {
             playSoundClip(.touchDown)
             page.shrinkText()
         }
@@ -197,6 +197,7 @@ class ViewController: UIViewController, SceneDelegate {
                     pageTurnerVisible = true
                     createPageTurner()
                     page.expandText()
+                    page.canActivate = false
                 }
             }
         }

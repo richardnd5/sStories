@@ -9,7 +9,7 @@ class FishingPole: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        image = resizedImage(name: "FishingPole", frame: frame, scale: 0.5)
+        image = resizedImage(name: "FishingPoleNew", frame: frame, scale: 0.5)
         
         contentMode = .scaleAspectFit
         isUserInteractionEnabled = false

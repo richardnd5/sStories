@@ -1,12 +1,21 @@
 class SoundClips {
         
     static var sharedInstance = SoundClips()
-    private var clips = [SoundEffects : AudioFile]()
+    private var clips = [SoundEffects : SoundEffect]()
     
     init() {
         // fill all the sounds into the sound dictionary
         SoundEffects.allCases.forEach { (sound) in
-            clips[sound] = AudioFile(fileName: sound.rawValue)
+            if sound == SoundEffects.nextStoryLine ||
+               sound == SoundEffects.touchDown ||
+               sound == SoundEffects.fishingSackDrag ||
+               sound == SoundEffects.fishingSackDrop
+            {
+                clips[sound] = SoundEffect(fileName: sound.rawValue, volume: 0.8)
+            } else {
+                clips[sound] = SoundEffect(fileName: sound.rawValue)
+            }
+            
         }
     }
     
