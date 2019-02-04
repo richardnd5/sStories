@@ -86,6 +86,8 @@
 		8665697B21F060900086D432 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8665697A21F060900086D432 /* PlayButton.swift */; };
 		8667BA20220559E700324598 /* placeMelodySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8667BA1F220559E700324598 /* placeMelodySound.mp3 */; };
 		866AA1022208C412000FED54 /* FishingPoleNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 866AA1012208C412000FED54 /* FishingPoleNew.png */; };
+		866AA1042208DC68000FED54 /* homePageBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 866AA1032208DC68000FED54 /* homePageBackground.png */; };
+		866AA1082208F849000FED54 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866AA1072208F849000FED54 /* BackgroundImage.swift */; };
 		866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA64E21F282B900B28BA6 /* PageTurner.swift */; };
 		866EA65321F2889000B28BA6 /* wholeNote.png in Resources */ = {isa = PBXBuildFile; fileRef = 866EA65221F2888F00B28BA6 /* wholeNote.png */; };
 		866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA65421F288CC00B28BA6 /* WholeNote.swift */; };
@@ -331,6 +333,8 @@
 		8665697A21F060900086D432 /* PlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		8667BA1F220559E700324598 /* placeMelodySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placeMelodySound.mp3; sourceTree = "<group>"; };
 		866AA1012208C412000FED54 /* FishingPoleNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPoleNew.png; sourceTree = "<group>"; };
+		866AA1032208DC68000FED54 /* homePageBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePageBackground.png; sourceTree = "<group>"; };
+		866AA1072208F849000FED54 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		866EA64E21F282B900B28BA6 /* PageTurner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurner.swift; sourceTree = "<group>"; };
 		866EA65221F2888F00B28BA6 /* wholeNote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wholeNote.png; sourceTree = "<group>"; };
 		866EA65421F288CC00B28BA6 /* WholeNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeNote.swift; sourceTree = "<group>"; };
@@ -634,6 +638,7 @@
 				866EA65221F2888F00B28BA6 /* wholeNote.png */,
 				86CC12E021FB818C00B9164B /* about.png */,
 				86EE34712204F4FA003218B6 /* PondNew.png */,
+				866AA1032208DC68000FED54 /* homePageBackground.png */,
 				86F1F6C021FC1150001AD82D /* back.png */,
 				8654705821EE70D400D1F068 /* ending.png */,
 				22A666C421FFDB870038220E /* questionMark.png */,
@@ -728,6 +733,7 @@
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
+				866AA1072208F849000FED54 /* BackgroundImage.swift */,
 				86CC12DE21FB7FD600B9164B /* AboutPage.swift */,
 				228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
@@ -1021,6 +1027,7 @@
 				86ED75D621F126980066E2D8 /* melody40.mp3 in Resources */,
 				226A1A4C2202794900E47009 /* test34.mp3 in Resources */,
 				868F9C182207D25D00BBBFE3 /* touchUp.mp3 in Resources */,
+				866AA1042208DC68000FED54 /* homePageBackground.png in Resources */,
 				226A1A342202794900E47009 /* test26.mp3 in Resources */,
 				86ED75D721F126980066E2D8 /* melody41.mp3 in Resources */,
 				86ED75D821F126980066E2D8 /* melody42.mp3 in Resources */,
@@ -1161,6 +1168,7 @@
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				22A666C121FFD8270038220E /* Button.swift in Sources */,
+				866AA1082208F849000FED54 /* BackgroundImage.swift in Sources */,
 				86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */,
 				228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */,
 				220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */,
