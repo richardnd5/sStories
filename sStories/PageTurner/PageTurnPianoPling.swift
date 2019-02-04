@@ -27,11 +27,11 @@ class PageTurnPianoPling {
     func setupSampler(){
         do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
         sampler.enableMIDI()
-        sampler.connect(to: Sound.sharedInstance.mixer)
+        Sound.sharedInstance.pianoMixer.connect(input: sampler)
     }
     
     func playNote(){
-        do { try sampler.play(noteNumber: 60, velocity: 60, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+        do { try sampler.play(noteNumber: 60, velocity: 70, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
         
     }
 }

@@ -137,10 +137,10 @@ class ArrangingScene: UIView {
             let translation = sender.translation(in: self)
             sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
             sender.setTranslation(CGPoint.zero, in: self)
-            playSoundClip(.arrangingDrag)
+//            playSoundClip(.arrangingDrag)
             
             if sender.state == .ended {
-                stopSoundClip(.arrangingDrag)
+                
                 // Look through each slot position
                 for i in 0...songSlots.slotPosition.count-1 {
                     // convert the frame to the superview's superview coordinate system

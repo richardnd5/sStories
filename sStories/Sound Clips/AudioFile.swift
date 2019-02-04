@@ -3,12 +3,14 @@ import AudioKit
 class AudioFile {
     
     private var audioFile : AKAudioFile!
-    private var player : AKPlayer!
+    var sampler = AKMIDISampler()
+    var randomIntervalTimer = Timer()
+
     var name : String!
     
     init(fileName: String) {
         audioFile = loadAudioFile("\(fileName)")
-        setupPlayer()
+        setupSampler()
         self.name = fileName
     }
     
@@ -23,38 +25,37 @@ class AudioFile {
         return file
     }
     
-    private func setupPlayer(){
-
-        player = AKPlayer(audioFile: audioFile)
-        player.connect(to: Sound.sharedInstance.mixer)
-        player.completionHandler = finishedCallback
-    }
-    
-    private func finishedCallback(){
-        
+    func setupSampler(){
+        do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
+        sampler.enableMIDI()
+        Sound.sharedInstance.soundEffectMixer.connect(input: sampler)
     }
     
     func play(){
-        if player.isPlaying {
-            player.stop()
+        do { try sampler.play(noteNumber: 60, velocity: 100, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+    }
+    
+    var firstTime = true
+    func playRandomIntervalAndPitch(){
+        if firstTime {
+            firstTime = false
+            do { try self.sampler.play(noteNumber: 67, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
         }
-        player.play()
+        let randTimeInterval = TimeInterval.random(in: 0.3...0.6)
+        randomIntervalTimer = Timer.scheduledTimer(withTimeInterval: randTimeInterval, repeats: false, block: { _ in
+            let randomPitch = MIDINoteNumber.random(in: 54...70)
+            let randVel = MIDIVelocity.random(in: 80...127)
+            do { try self.sampler.play(noteNumber: randomPitch, velocity: randVel, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+            self.playRandomIntervalAndPitch()
+        })
+        
     }
     
-    func stop(){
-        if player.isPlaying {
-            player.stop()
-        }
+    func stopReplaying(){
+        randomIntervalTimer.invalidate()
+        firstTime = true
     }
-    
-    func enableLooping(){
-        // Need to enable buffering if going to loop without pause.
-        player.isLooping = true
-    }
-    
-    func disconnect(){
-        player.detach()
-    }
+
 }
 
 

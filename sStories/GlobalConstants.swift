@@ -31,19 +31,15 @@ let pages = [
     Page(imageName: "Pond", storyText: storyline[20...22]),
 ]
 
-enum Sounds : String, CaseIterable {
+enum SoundEffects : String, CaseIterable {
     // name of sound and file name
-    case touchDown = "test4"
-    case nextStoryLine = "test26"
-    case touchUp = "test5"
-    case showPageTurner = "test27"
+    case touchDown = "touchDown"
+    case nextStoryLine = "nextStoryLine"
+    case touchUp = "touchUp"
+    case showPageTurner = "showPageTurner"
     case pageTurn = "pageTurn" //
-    case aboutButtonDown = "test7"
-    case aboutButtonUp = "test8"
-    case readButtonDown = "test9"
-    case readButtonUp = "test10"
-    case backButtonDown = "test11"
-    case backButtonUp = "test12"
+    case buttonDown = "buttonDown"
+    case buttonUp = "buttonUp"
     
     case initialPondDrone = "test13"
     case fishingMelodyOnTheLine = "fishOnLine" //
@@ -52,11 +48,11 @@ enum Sounds : String, CaseIterable {
     case fishingMelodyDrag = "test28"
     case fishingSackDrag = "sackDrag" //
     case fishingSackDrop = "sackDrop" //
-    case fishingThrowbackDrag = "test19"
+    case fishingThrowbackDrag = "throwbackDrag"
     case fishingThrowbackDrop = "throwBackDrop"
-    case fishingCastLine = "test21"
+    case fishingCastLine = "castLine"
     case fishingSackFull = "test22"
-    case fishingWarning = "test31"
+    case fishingWarning = "fishingWarning"
     
     case arrangingDrag = "arrangingDragSound" //
     case arrangingPlaceMelody = "placeMelodySound"

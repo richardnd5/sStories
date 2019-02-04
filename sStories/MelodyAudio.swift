@@ -29,11 +29,11 @@ class MelodyAudio {
         sampler.enableMIDI()
         sampler.name = "\(number)"
         sampler.volume = 1.3
-//        Sound.sharedInstance.mixer.connect(input: sampler)
-        sampler.connect(to: Sound.sharedInstance.reverb)
+        Sound.sharedInstance.pianoMixer.connect(input: sampler)
     }
     
     func playMelody(){
+        print("playing melody")
         do { try sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the melody. Why? Here: \(error)") }
     }
 }

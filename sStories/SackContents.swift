@@ -128,7 +128,6 @@ class SackContents: UIView {
         playSoundClip(.fishingMelodyDrag)
         
         if sender.state == .ended {
-            stopSoundClip(.fishingMelodyDrag)
             // Throw back melody
             if sender.location(in: self).y <= -view.frame.height*3 {
                 removeMelodyFromSack(view)

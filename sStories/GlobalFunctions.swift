@@ -83,11 +83,15 @@ func fillSackWithMelodies(){
     }
 }
 
-func playSoundClip(_ name: Sounds){
+func playSoundClip(_ name: SoundEffects){
     SoundClips.sharedInstance.playSound(name)
 }
 
-func stopSoundClip(_ name: Sounds){
+func playRandomTriggeredSoundClip(_ name: SoundEffects){
+    SoundClips.sharedInstance.playAtRandomIntervals(name)
+}
+
+func stopRandomTriggeredSoundClip(_ name: SoundEffects){
     SoundClips.sharedInstance.stopSound(name)
 }
 

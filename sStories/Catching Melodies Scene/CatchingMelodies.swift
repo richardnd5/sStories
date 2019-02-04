@@ -33,6 +33,8 @@ class CatchingMelodies: UIView {
         createInstructionLabel()
         createSackContainer()
         setAMelodyToBiteInTheFuture()
+        startPondBackground()
+        
         
         // Add a tap gesture to the view.
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
@@ -40,8 +42,15 @@ class CatchingMelodies: UIView {
         
         //fade the view in
         alpha = 0.0
-        
         fadeTo(time: 1.5, opacity: 1.0)
+    }
+    
+    func startPondBackground(){
+        Sound.sharedInstance.playPondBackground()
+    }
+    
+    func stopPondBackground(){
+        Sound.sharedInstance.stopPondBackground()
     }
 
     func createSackContainer(){
@@ -162,7 +171,6 @@ class CatchingMelodies: UIView {
                 self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
                 self.instructionLabel?.changeText(to: "Let's wait for another bite!")
-                // shake screen.
             })
         })
     }
@@ -196,7 +204,7 @@ class CatchingMelodies: UIView {
     }
 
     func putLineBackIn(){
-        
+            playSoundClip(.fishingCastLine)
             fishingPole?.putPoleIn({
                 // completion handler. after the pole is put in, set a timer for the next melody to "bite"
                 self.setAMelodyToBiteInTheFuture()
@@ -213,12 +221,14 @@ class CatchingMelodies: UIView {
             self.sceneState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
             self.instructionLabel?.changeText(to: "Ooh! A bite! Tap to reel it in!")
+            playRandomTriggeredSoundClip(.fishingMelodyOnTheLine)
         })
     }
 
     func decideWhatToDoWithTheMelody(){
         
         sceneState = .catchOrThrowBack
+        stopRandomTriggeredSoundClip(.fishingMelodyOnTheLine)
         
         fishingPole?.pullPoleOut({
             
@@ -243,13 +253,14 @@ class CatchingMelodies: UIView {
         
         if (sack?.bounds.contains(sender.location(in: sack)))! && !(sack?.isSelected)!{
             sack?.expand()
-            
-        } else if !(sack?.bounds.contains(sender.location(in: sack)))! && (sack?.isSelected)! {
+        }
+        if !(sack?.bounds.contains(sender.location(in: sack)))! && (sack?.isSelected)! {
             sack?.shrink()
-        } else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))! && !(throwbackWater?.isSelected)! {
+        }
+        if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))! && !(throwbackWater?.isSelected)! {
             throwbackWater?.expand()
-            
-        } else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))! && (throwbackWater?.isSelected)! {
+        }
+        if !(throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))! && (throwbackWater?.isSelected)! {
             throwbackWater?.shrink()
         }
         
@@ -283,7 +294,8 @@ class CatchingMelodies: UIView {
         
         if sceneState == .fishing {
             instructionLabel?.changeText(to: "Wait for a melody to bite!")
-            // Wiggle screen
+            warningWiggle()
+            instructionLabel?.warningScaleUp()
             playSoundClip(.fishingWarning)
         }
 

@@ -38,8 +38,10 @@ class ViewController: UIViewController, SceneDelegate {
         
         createHomePage()
         // create main view tap gesture.
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tap)
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+//        view.addGestureRecognizer(tap)
+        
+
         
     }
     
@@ -74,6 +76,7 @@ class ViewController: UIViewController, SceneDelegate {
         view.addSubview(pageTurner!)
         pageTurner?.delegate = self
         view.bringSubviewToFront(pageTurner!)
+        playSoundClip(.showPageTurner)
     }
     
     func setupDelegates(){
@@ -99,6 +102,7 @@ class ViewController: UIViewController, SceneDelegate {
             }
             // If the current page is the fishing page.
         } else if currentState == .fishing {
+            catchingMelody.stopPondBackground()
             catchingMelody.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
                 self.currentPage+=1
@@ -166,12 +170,21 @@ class ViewController: UIViewController, SceneDelegate {
             view.addSubview(page!)
             let safe = view.safeAreaLayoutGuide
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
+            
+            let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+            press.minimumPressDuration = 0.0
+            page .addGestureRecognizer(press)
         }
         
     }
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer){
+    @objc func handlePress(_ sender: UITapGestureRecognizer){
+        
+        if sender.state == .began {
+            playSoundClip(.touchDown)
+        }
         // if the page does exist... dun dun dun!!!
+        if sender.state == .ended {
         if page?.superview != nil {
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 page?.nextStoryLine()
@@ -181,9 +194,9 @@ class ViewController: UIViewController, SceneDelegate {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
                     createPageTurner()
-                    playSoundClip(.showPageTurner)
                 }
             }
+        }
         }
     }
     

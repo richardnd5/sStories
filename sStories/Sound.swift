@@ -4,20 +4,25 @@ class Sound {
     
     static var sharedInstance = Sound()
     
-    var mixer = AKMixer()
-    var reverb = AKReverb()
+    private var mainMixer = AKMixer()
+    var pianoMixer = AKMixer()
+    var soundEffectMixer = AKMixer()
+    private var reverb = AKReverb()
     private var sequencer = AKSequencer()
     private var patternArray = [MelodyAudio]()
     var pageTurnSoundArray = [PageTurnPianoPling]()
+    var pondBackground = PondAmbience()
 
     func setup(){
         
         
-        reverb = AKReverb(nil, dryWetMix: 0.5)
-        mixer = AKMixer(reverb)
-        mixer.volume = 1.0
         
-        AudioKit.output = mixer
+        soundEffectMixer.volume = 0.3
+        reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
+        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground)
+        mainMixer.volume = 1.0
+        
+        AudioKit.output = mainMixer
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()
@@ -70,6 +75,14 @@ class Sound {
                                     position: AKDuration(beats: i*8),
                                     duration: AKDuration(beats: 18))
         }
+    }
+    
+    func playPondBackground(){
+        pondBackground.playLoop()
+    }
+    
+    func stopPondBackground(){
+        pondBackground.stopLoop()
     }
     
     func playSequencer(){

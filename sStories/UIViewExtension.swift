@@ -80,6 +80,41 @@ extension UIView {
         })
     }
     
+    func warningWiggle(){
+
+        
+        // Wiggle pole fast like.
+        let wiggle : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
+        wiggle.toValue = 4
+        wiggle.duration = 0.1;
+        wiggle.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        wiggle.repeatCount = 4;
+        wiggle.autoreverses = true
+        
+        
+        let animGroup = CAAnimationGroup()
+        animGroup.animations = [wiggle]
+        animGroup.duration = 0.3
+        animGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animGroup.isRemovedOnCompletion = false
+        
+        animGroup.fillMode = .forwards
+        
+        layer.add(animGroup, forKey: "animGroup")
+
+    }
+    
+    func warningScaleUp(){
+        let scaleAnim : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnim.fromValue = 1
+        scaleAnim.toValue = 1.1
+        scaleAnim.duration = 0.4
+        scaleAnim.autoreverses = true
+        scaleAnim.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        
+        layer.add(scaleAnim, forKey: nil)
+    }
+    
     func changeSize(to: CGSize, time: Double){
         UIView.animate(
             withDuration: time,

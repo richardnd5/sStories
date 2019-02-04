@@ -46,11 +46,11 @@ class Button: UIButton {
         sender!.scaleTo(scaleTo: 0.8, time: 0.1)
         
         if sender!.tag == ButtonTypee.about.rawValue {
-            playSoundClip(.aboutButtonDown)
+            playSoundClip(.buttonDown)
         } else if sender!.tag == ButtonTypee.read.rawValue {
-            playSoundClip(.readButtonDown)
+            playSoundClip(.buttonDown)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
-            playSoundClip(.backButtonDown)
+            playSoundClip(.buttonDown)
         }
     }
     
@@ -59,13 +59,13 @@ class Button: UIButton {
         
         if sender!.tag == ButtonTypee.about.rawValue {
             delegate?.goToAboutPage()
-            playSoundClip(.aboutButtonUp)
+            playSoundClip(.buttonUp)
         } else if sender!.tag == ButtonTypee.read.rawValue {
             delegate?.startStory()
-            playSoundClip(.readButtonUp)
+            playSoundClip(.buttonUp)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()
-            playSoundClip(.backButtonUp)
+            playSoundClip(.buttonUp)
         }
     }
     

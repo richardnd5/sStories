@@ -36,7 +36,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
                     leading: safe.leadingAnchor,
                     trailing: safe.trailingAnchor,
                     bottom: nil,
-                    padding: UIEdgeInsets(top: padding, left: 0, bottom: 0, right: 0),
+                    padding: UIEdgeInsets(top: frame.height/6+padding, left: 0, bottom: 0, right: 0),
                     size: CGSize(width: frame.width, height: frame.height))
             } else if index < blurbs.count-1 {
                 view.anchor(
@@ -111,7 +111,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        var opacity = 1-scrollView.contentOffset.y / 50
+        var opacity = 1-scrollView.contentOffset.y / 80
         
         if opacity > 1 {
             opacity = 1

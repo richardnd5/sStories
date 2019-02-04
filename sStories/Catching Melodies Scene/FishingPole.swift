@@ -15,10 +15,10 @@ class FishingPole: UIImageView {
         isUserInteractionEnabled = false
         layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
         
-        wobblePole()
+        swayPole()
     }
     
-    func wobblePole() {
+    func swayPole() {
         
         let rotationAnimation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = NSNumber(value: Double.pi / -90)
@@ -95,7 +95,7 @@ class FishingPole: UIImageView {
         
         CATransaction.setCompletionBlock{ [weak self] in
             completion()
-            self!.wobblePole()
+            self!.swayPole()
         }
         layer.add(animGroup, forKey: "animGroup")
 
