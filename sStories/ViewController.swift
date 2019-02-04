@@ -19,7 +19,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     private var currentState = AppState.home
-    private var currentPage = 5
+    private var currentPage = 0
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
 
@@ -173,7 +173,7 @@ class ViewController: UIViewController, SceneDelegate {
             
             let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
             press.minimumPressDuration = 0.0
-            page .addGestureRecognizer(press)
+            page.addGestureRecognizer(press)
         }
         
     }
@@ -182,6 +182,7 @@ class ViewController: UIViewController, SceneDelegate {
         
         if sender.state == .began {
             playSoundClip(.touchDown)
+            page.shrinkText()
         }
         // if the page does exist... dun dun dun!!!
         if sender.state == .ended {
@@ -190,10 +191,12 @@ class ViewController: UIViewController, SceneDelegate {
                 page?.nextStoryLine()
                 tempStoryLine += 1
                 playSoundClip(.nextStoryLine)
+                page.expandText()
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
                     createPageTurner()
+                    page.expandText()
                 }
             }
         }
