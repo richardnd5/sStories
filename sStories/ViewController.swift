@@ -19,10 +19,10 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     private var currentState = AppState.home
-    private var currentPage = 0
+    private var currentPage = 9
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
-
+    
     // All the views
     var homePage : HomePage!
     var aboutPage : AboutPage!
@@ -38,10 +38,10 @@ class ViewController: UIViewController, SceneDelegate {
         
         createHomePage()
         // create main view tap gesture.
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-//        view.addGestureRecognizer(tap)
+        //        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        //        view.addGestureRecognizer(tap)
         
-
+        
         
     }
     
@@ -180,27 +180,28 @@ class ViewController: UIViewController, SceneDelegate {
     
     @objc func handlePress(_ sender: UITapGestureRecognizer){
         
+        
         if sender.state == .began && page.canActivate {
             playSoundClip(.touchDown)
             page.shrinkText()
         }
         // if the page does exist... dun dun dun!!!
         if sender.state == .ended {
-        if page?.superview != nil {
-            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-                page?.nextStoryLine()
-                tempStoryLine += 1
-                playSoundClip(.nextStoryLine)
-                page.expandText()
-            } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-                if !pageTurnerVisible {
-                    pageTurnerVisible = true
-                    createPageTurner()
+            if page?.superview != nil {
+                if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                    page?.nextStoryLine()
+                    tempStoryLine += 1
+                    playSoundClip(.nextStoryLine)
                     page.expandText()
-                    page.canActivate = false
+                } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                    if !pageTurnerVisible {
+                        pageTurnerVisible = true
+                        createPageTurner()
+                        page.expandText()
+                        page.canActivate = false
+                    }
                 }
             }
-        }
         }
     }
     

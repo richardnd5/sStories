@@ -4,7 +4,7 @@ let switchToArrangingScene = 9
 let switchToPerformingScene = 11
 
 let blurbs = [
-    Blurb(textBlurb: "Templeton’s Fishing Journey was written for and built for my nephew, Stroud.", imageName: "Templeton"),
+    Blurb(textBlurb: "Templeton’s Fishing Journey was written and built for my nephew, Stroud.", imageName: "Templeton"),
     Blurb(textBlurb: "It is my hope that this app will help spark in him an interest in music and all who experience the story.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my father, David, who hand carved Templeton from a piece of wood.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and painting images for the scenes.", imageName: "Templeton"),

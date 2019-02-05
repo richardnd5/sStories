@@ -13,7 +13,6 @@ class ArrangingScene: UIView {
     var melodyImageArray = [MelodyImage]()
     
     var sackContents = SackContents()
-    var playButton : PlayButton?
     var instructionLabel: Label?
     var background: ArrangingBackground?
     
@@ -26,6 +25,7 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
+        fillSackWithMelodies()
         
         //fade the view in
         alpha = 0.0
@@ -53,22 +53,6 @@ class ArrangingScene: UIView {
         instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: 0, bottom: 0, right: 0), size: .zero)
         instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18)
         
-        
-    }
-    
-    func createPlayButton(){
-        
-        // Gross. Next time. Learn about dynamically changing auto layout...
-        let width = frame.width/6
-        let height = frame.height/6
-        let x = frame.width/2-width/2
-        let y = frame.height/2-height
-        
-        playButton = PlayButton(frame: CGRect(x: x, y: y, width: width, height: height))
-        addSubview(playButton!)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handlePlayTap))
-        playButton?.addGestureRecognizer(tap)
         
     }
     
@@ -163,7 +147,6 @@ class ArrangingScene: UIView {
                             Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
                             Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
                             playSoundClip(.arrangingAllMelodiesLocked)
-                            createPlayButton()
                             instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
                             sceneState = .arrangementCompleted
                             delegate?.returnToStory()
