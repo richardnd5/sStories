@@ -26,7 +26,6 @@ class AboutPage: UIView, UIScrollViewDelegate {
         let safe = safeAreaLayoutGuide
         let padding : CGFloat = 60
         for (index, blurb) in blurbs.enumerated() {
-            //        blurbs.forEach { blurb in
             let view = AboutBlurb(frame: CGRect.zero, text: blurb.textBlurb, imageName: blurb.imageName)
             scrollView.addSubview(view)
             
@@ -37,7 +36,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
                     trailing: safe.trailingAnchor,
                     bottom: nil,
                     padding: UIEdgeInsets(top: frame.height/6+padding, left: 0, bottom: 0, right: 0),
-                    size: CGSize(width: frame.width, height: frame.height))
+                    size: CGSize(width: frame.width, height: frame.height+CGFloat(blurb.textBlurb.count)))
             } else if index < blurbs.count-1 {
                 view.anchor(
                     top: blurbArray[index-1].bottomAnchor,
@@ -45,7 +44,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
                     trailing: safe.trailingAnchor,
                     bottom: nil,
                     padding: UIEdgeInsets(top: padding, left: 0, bottom: 0, right: 0),
-                    size: CGSize(width: frame.width, height: frame.height))
+                    size: CGSize(width: frame.width, height: frame.height+CGFloat(blurb.textBlurb.count)))
             } else if index == blurbs.count-1 {
                 view.anchor(
                     top: blurbArray[blurbArray.count-1].bottomAnchor,
@@ -53,7 +52,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
                     trailing: safe.trailingAnchor,
                     bottom: scrollView.bottomAnchor,
                     padding: UIEdgeInsets(top: padding, left: 0, bottom: -padding, right: 0),
-                    size: CGSize(width: frame.width, height: frame.height))
+                    size: CGSize(width: frame.width, height: frame.height+CGFloat(blurb.textBlurb.count)))
             }
             blurbArray.append(view)   
         }

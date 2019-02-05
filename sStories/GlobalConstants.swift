@@ -4,14 +4,20 @@ let switchToArrangingScene = 9
 let switchToPerformingScene = 11
 
 let blurbs = [
-    Blurb(textBlurb: "This is the first text blurb. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text. So much text.", imageName: "Templeton"),
-    Blurb(textBlurb: "next text. What of it. I am typing so much text. What could it be? Will it wrap? I hope it will wrap.", imageName: "Templeton"),
-    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
-    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
-    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
-    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
-    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
-    Blurb(textBlurb: "more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more .", imageName: "Templeton"),
+    Blurb(textBlurb: "Templeton’s Fishing Journey was written for and built for my nephew, Stroud.", imageName: "Templeton"),
+    Blurb(textBlurb: "It is my hope that this app will help spark in him an interest in music and all who experience the story.", imageName: "Templeton"),
+    Blurb(textBlurb: "Thank you to my father, David, who hand carved Templeton from a piece of wood.", imageName: "Templeton"),
+    Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and painting images for the scenes.", imageName: "Templeton"),
+    Blurb(textBlurb: "Thank you to my dear friends, Peter and Tara for helping edit the story.", imageName: "Templeton"),
+    Blurb(textBlurb: "Thank you to my friends, Ivan, Jayson, Peter and Tara for providing feedback throughout the creation of the app.", imageName: "Templeton"),
+    Blurb(textBlurb: "Thank you to Aurelius Prochazka and the community of AudioKit for creating and maintaining the framework used for the audio portion of the app.", imageName: "Templeton"),
+    Blurb(textBlurb: "And lastly, thank you to my sister, brother in law and nephew, Stroud for providing the inspiration and drive for the creation.", imageName: "Templeton"),
+    Blurb(textBlurb: "With Utmost Sincerity and Love, Nathan", imageName: "Templeton"),
+    Blurb(textBlurb: """
+        About the creator.
+        
+        I am a professional musician who found an interest in software development after taking an electronic music course during my graduate work in music composition. I'm a self-taught developer who is obsessed with learning. Some of my lifelong goals are to make music accessible to as many people as I can, and create opportunities for people to be creative.
+        """, imageName: "Templeton"),
 ]
 
 let pages = [

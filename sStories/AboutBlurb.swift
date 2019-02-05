@@ -29,26 +29,21 @@ class AboutBlurb: UIView {
         view.isUserInteractionEnabled = false
         return view
     }()
-    
-//    private let line: UIImageView = {
-//        var imageView = UIImageView()
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.isUserInteractionEnabled = false
-//        return imageView
-//    }()
-//    let line : UIView?
 
     
-    let fontSize : CGFloat = 16
     
     init(frame: CGRect, text: String, imageName: String = "8thThumb") {
         super.init(frame: frame)
         
         imageView.image = resizedImage(name: "\(imageName)")
+    
         
+        let fontSize : CGFloat = 30
         textBlurb.text = text
         textBlurb.font = UIFont(name: "Papyrus", size: fontSize)
+        textBlurb.minimumScaleFactor = 0.5
+        textBlurb.adjustsFontSizeToFitWidth = true
+        textBlurb.numberOfLines = 0
         
         setupLayout()
         isUserInteractionEnabled = false
@@ -69,16 +64,9 @@ class AboutBlurb: UIView {
         textHoldingView.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
         textHoldingView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 20).isActive = true
         textHoldingView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -20).isActive = true
-        
-        
+
         textHoldingView.addSubview(textBlurb)
         textBlurb.fillSuperview()
-//        textBlurb.translatesAutoresizingMaskIntoConstraints = false
-//        textBlurb.topAnchor.constraint(equalTo: topAnchor, constant: padding).isActive = true
-//        textBlurb.heightAnchor.constraint(greaterThanOrEqualToConstant: 20).isActive = true
-//        textBlurb.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-//        textBlurb.leadingAnchor.constraint(equalTo: safe.leadingAnchor).isActive = true
-//        textBlurb.trailingAnchor.constraint(equalTo: safe.trailingAnchor).isActive = true
         
         addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -93,7 +81,6 @@ class AboutBlurb: UIView {
         line.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         line.widthAnchor.constraint(equalToConstant: 60).isActive = true
         line.heightAnchor.constraint(equalToConstant: 1).isActive = true
-//        line.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding)
     }
     
     
