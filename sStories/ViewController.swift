@@ -2,6 +2,7 @@ import UIKit
 
 protocol SceneDelegate : class {
     func returnToStory()
+    func returnToStoryFromArranging()
     func nextPage()
     func goToAboutPage()
     func startStory()
@@ -136,6 +137,10 @@ class ViewController: UIViewController, SceneDelegate {
     
     func returnToStory(){
         createPageTurner()
+    }
+    
+    func returnToStoryFromArranging(){
+        Timer.scheduledTimer(withTimeInterval: 5.7, repeats: false, block:{_ in self.createPageTurner()})
     }
     
     func goToHomePage(){

@@ -141,7 +141,10 @@ class ArrangingScene: UIView {
                         view.moveViewTo(frame.origin, time: time, {})
                         view.changeSize(to: songSlots.slotPosition[i].frame.size, time: time)
                         view.inCorrectSlot = true
-                        playSoundClip(.arrangingPlaceMelody)
+                        
+                        if !songFullyArranged() {
+                            playSoundClip(.arrangingPlaceMelody)
+                        }
                         
                         if songFullyArranged() {
                             Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
@@ -149,7 +152,7 @@ class ArrangingScene: UIView {
                             playSoundClip(.arrangingAllMelodiesLocked)
                             instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
                             sceneState = .arrangementCompleted
-                            delegate?.returnToStory()
+                            delegate?.returnToStoryFromArranging()
                         }
                     } else if !frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
                         // move view to original position
