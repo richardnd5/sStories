@@ -42,7 +42,7 @@ class CatchingMelodies: UIView {
         
         //fade the view in
         alpha = 0.0
-        fadeTo(time: 1.5, opacity: 1.0)
+        fadeTo(time: 2.5, opacity: 1.0)
     }
     
     func startPondBackground(){
@@ -215,7 +215,7 @@ class CatchingMelodies: UIView {
     func setAMelodyToBiteInTheFuture(){
         
         // choose a random time
-        let randomTime = TimeInterval.random(in: 4...7)
+        let randomTime = TimeInterval.random(in: 5...8)
         
         // schedule a timer to trigger a melody bite in the future
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in

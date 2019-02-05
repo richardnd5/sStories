@@ -51,7 +51,7 @@ enum SoundEffects : String, CaseIterable {
     case fishingThrowbackDrag = "throwbackDrag"
     case fishingThrowbackDrop = "throwBackDrop"
     case fishingCastLine = "castLine"
-    case fishingSackFull = "test22"
+    case fishingSackFull = "fishingSackFull"
     case fishingWarning = "fishingWarning"
     
     case arrangingDrag = "arrangingDragSound" //

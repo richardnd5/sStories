@@ -26,7 +26,6 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
-        fillSackWithMelodies()
         
         //fade the view in
         alpha = 0.0
