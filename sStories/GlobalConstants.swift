@@ -60,6 +60,7 @@ enum SoundEffects : String, CaseIterable {
     case fishingSackFull = "fishingSackFull"
     case fishingWarning = "fishingWarning"
     
+    case arrangingMelodiesAppear = "arrangingMelodiesAppear"
     case arrangingDrag = "arrangingDragSound" //
     case arrangingPlaceMelody = "placeMelodyPause"
     case arrangingCrossOut = "arrangingCrossOutPause"

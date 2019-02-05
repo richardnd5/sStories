@@ -5,17 +5,21 @@ class SoundClips {
     
     init() {
         // fill all the sounds into the sound dictionary
+        // These sound effects are to be turned down. That's what this is all about.
         SoundEffects.allCases.forEach { (sound) in
             if sound == SoundEffects.nextStoryLine ||
                sound == SoundEffects.touchDown ||
                sound == SoundEffects.fishingSackDrag ||
-               sound == SoundEffects.fishingSackDrop
+               sound == SoundEffects.fishingSackDrop ||
+               sound == SoundEffects.arrangingDrag ||
+               sound == SoundEffects.arrangingPlaceMelody ||
+               sound == SoundEffects.arrangingCrossOut ||
+               sound == SoundEffects.arrangingMelodiesAppear
             {
                 clips[sound] = SoundEffect(fileName: sound.rawValue, volume: 0.8)
             } else {
                 clips[sound] = SoundEffect(fileName: sound.rawValue)
             }
-            
         }
     }
     

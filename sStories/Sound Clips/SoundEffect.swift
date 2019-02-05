@@ -42,7 +42,7 @@ class SoundEffect {
     var setInterval = Timer()
     var firstLoop = true
     func loop(){
-        sampler.volume = 1.0
+        sampler.volume = volume
         if firstLoop {
             firstLoop = false
             do { try self.sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }

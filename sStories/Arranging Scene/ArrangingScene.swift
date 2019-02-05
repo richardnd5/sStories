@@ -76,6 +76,7 @@ class ArrangingScene: UIView {
     
     func generateCollectedMelodies(){
         
+        playSoundClip(.arrangingMelodiesAppear)
         for i in 0...sackContents.melodySlotViews.count-1{
             let x = sackContents.melodySlotViews[i].frame.minX+sackContents.frame.minX
             let y = sackContents.melodySlotViews[i].frame.minY+sackContents.frame.minY
