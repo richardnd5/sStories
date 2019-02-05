@@ -55,7 +55,8 @@ enum SoundEffects : String, CaseIterable {
     case fishingWarning = "fishingWarning"
     
     case arrangingDrag = "arrangingDragSound" //
-    case arrangingPlaceMelody = "placeMelodySound"
-    case arrangingAllMelodiesLocked = "test25"
+    case arrangingPlaceMelody = "placeMelodyPause"
+    case arrangingCrossOut = "arrangingCrossOutPause"
+    case arrangingAllMelodiesLocked = "arrangingAllMelodiesLocked"
 }
 

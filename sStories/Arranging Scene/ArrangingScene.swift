@@ -169,10 +169,12 @@ class ArrangingScene: UIView {
                             sceneState = .arrangementCompleted
                             delegate?.returnToStory()
                         }
-                    } else {
+                    } else if !frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
                         // move view to original position
                         view.moveViewTo(view.initialPosition, time: 0.5)
+                        playSoundClip(.arrangingCrossOut)
                         // play not correct slot sound.
+                        
                     }
                 }
             }
