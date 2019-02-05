@@ -115,7 +115,6 @@
 		868F9BE02207BE0700BBBFE3 /* throwbackDrag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9BDF2207BE0700BBBFE3 /* throwbackDrag.mp3 */; };
 		868F9BE42207C01500BBBFE3 /* showPageTurner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9BE32207C01500BBBFE3 /* showPageTurner.mp3 */; };
 		868F9BE82207C0BC00BBBFE3 /* fishingWarning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9BE72207C0BC00BBBFE3 /* fishingWarning.mp3 */; };
-		868F9C142207D0D800BBBFE3 /* touchDown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9C132207D0D800BBBFE3 /* touchDown.mp3 */; };
 		868F9C162207D1C400BBBFE3 /* nextStoryLine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9C152207D1C400BBBFE3 /* nextStoryLine.mp3 */; };
 		868F9C182207D25D00BBBFE3 /* touchUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9C172207D25C00BBBFE3 /* touchUp.mp3 */; };
 		868F9C1B2207D71000BBBFE3 /* buttonUp.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9C192207D70F00BBBFE3 /* buttonUp.mp3 */; };
@@ -367,7 +366,6 @@
 		868F9BDF2207BE0700BBBFE3 /* throwbackDrag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = throwbackDrag.mp3; sourceTree = "<group>"; };
 		868F9BE32207C01500BBBFE3 /* showPageTurner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = showPageTurner.mp3; sourceTree = "<group>"; };
 		868F9BE72207C0BC00BBBFE3 /* fishingWarning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fishingWarning.mp3; sourceTree = "<group>"; };
-		868F9C132207D0D800BBBFE3 /* touchDown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = touchDown.mp3; path = ../../../../../Desktop/touchDown.mp3; sourceTree = "<group>"; };
 		868F9C152207D1C400BBBFE3 /* nextStoryLine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nextStoryLine.mp3; sourceTree = "<group>"; };
 		868F9C172207D25C00BBBFE3 /* touchUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = touchUp.mp3; sourceTree = "<group>"; };
 		868F9C192207D70F00BBBFE3 /* buttonUp.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = buttonUp.mp3; sourceTree = "<group>"; };
@@ -608,7 +606,6 @@
 				8698D88E21BF416600ADED35 /* marimbaC.wav */,
 				8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */,
 				8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */,
-				868F9C132207D0D800BBBFE3 /* touchDown.mp3 */,
 				868F9C172207D25C00BBBFE3 /* touchUp.mp3 */,
 				868F9C152207D1C400BBBFE3 /* nextStoryLine.mp3 */,
 				868F9BDF2207BE0700BBBFE3 /* throwbackDrag.mp3 */,
@@ -1058,7 +1055,6 @@
 				86ED75DC21F126980066E2D8 /* melody46.mp3 in Resources */,
 				86ED75DD21F126980066E2D8 /* melody47.mp3 in Resources */,
 				226A1A4E2202794900E47009 /* test21.mp3 in Resources */,
-				868F9C142207D0D800BBBFE3 /* touchDown.mp3 in Resources */,
 				226A1A492202794900E47009 /* test13.mp3 in Resources */,
 				86ED75DE21F126980066E2D8 /* melody48.mp3 in Resources */,
 				226A1A452202794900E47009 /* test20.mp3 in Resources */,
