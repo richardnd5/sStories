@@ -95,3 +95,10 @@ func stopRandomTriggeredSoundClip(_ name: SoundEffects){
     SoundClips.sharedInstance.stopSound(name)
 }
 
+func loopSoundEffect(_ name: SoundEffects){
+    SoundClips.sharedInstance.loopSoundEffect(name)
+}
+
+func stopLoopedSoundEffect(_ name: SoundEffects){
+    SoundClips.sharedInstance.stopLoopedSoundEffect(name)
+}

@@ -11,6 +11,7 @@ class MelodyImage: UIImageView {
     var glowTimer = Timer()
     var isPlaying = false
     var glowingOverlay : UIView!
+    var initialPosition : CGPoint!
     
     init(frame: CGRect, melody: Melody) {
         super.init(frame: frame)

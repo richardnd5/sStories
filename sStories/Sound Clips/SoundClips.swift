@@ -30,4 +30,12 @@ class SoundClips {
     func stopSound(_ name: SoundEffects){
         clips[name]!.stopReplaying()
     }
+    
+    func loopSoundEffect(_ name: SoundEffects){
+        clips[name]!.loop()
+    }
+    
+    func stopLoopedSoundEffect(_ name: SoundEffects){
+        clips[name]!.stopLoop()
+    }
 }

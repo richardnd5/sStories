@@ -26,6 +26,7 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
+        fillSackWithMelodies()
         
         //fade the view in
         alpha = 0.0
@@ -100,6 +101,7 @@ class ArrangingScene: UIView {
             
             let view = MelodyImage(frame: CGRect(x: x, y: y, width: width, height: height), melody: collectedMelodies[i])
             addSubview(view)
+            view.initialPosition = CGPoint(x: x, y: y)
             melodyImageArray.append(view)
             
             view.alpha = 0.0
@@ -131,8 +133,12 @@ class ArrangingScene: UIView {
     @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
         
         let view = sender.view as! MelodyImage
-        
+
         if !view.inCorrectSlot {
+            
+            if sender.state == .began {
+                loopSoundEffect(.arrangingDrag)
+            }
             
             let translation = sender.translation(in: self)
             sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
@@ -140,7 +146,7 @@ class ArrangingScene: UIView {
 //            playSoundClip(.arrangingDrag)
             
             if sender.state == .ended {
-                
+                stopLoopedSoundEffect(.arrangingDrag)
                 // Look through each slot position
                 for i in 0...songSlots.slotPosition.count-1 {
                     // convert the frame to the superview's superview coordinate system
@@ -163,6 +169,10 @@ class ArrangingScene: UIView {
                             sceneState = .arrangementCompleted
                             delegate?.returnToStory()
                         }
+                    } else {
+                        // move view to original position
+                        view.moveViewTo(view.initialPosition, time: 0.5)
+                        // play not correct slot sound.
                     }
                 }
             }

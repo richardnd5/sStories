@@ -8,6 +8,7 @@ class SoundEffect {
 
     var name : String!
     var volume : Double!
+    var firstTime = true
     
     init(fileName: String, volume: Double = 1.0) {
         self.volume = volume
@@ -38,11 +39,32 @@ class SoundEffect {
         do { try sampler.play(noteNumber: 60, velocity: 100, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
     }
     
-    var firstTime = true
+    var setInterval = Timer()
+    var firstLoop = true
+    func loop(){
+        sampler.volume = 1.0
+        if firstLoop {
+            firstLoop = false
+            do { try self.sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+        }
+        let length = audioFile.duration
+        setInterval = Timer.scheduledTimer(withTimeInterval: length, repeats: false, block: { _ in
+            do { try self.sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+            self.loop()
+        })
+    }
+    
+    func stopLoop(){
+        setInterval.invalidate()
+        do { try sampler.stop(noteNumber: 60, channel: 1) } catch { print("couldn't stop the sampler. Why? \(error)")}
+        sampler.volume = 0.0
+        firstLoop = true
+    }
+    
     func playRandomIntervalAndPitch(){
         if firstTime {
             firstTime = false
-            do { try self.sampler.play(noteNumber: 67, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+            do { try self.sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
         }
         let randTimeInterval = TimeInterval.random(in: 0.3...0.6)
         randomIntervalTimer = Timer.scheduledTimer(withTimeInterval: randTimeInterval, repeats: false, block: { _ in
