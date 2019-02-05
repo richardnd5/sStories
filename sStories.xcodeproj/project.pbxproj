@@ -136,6 +136,7 @@
 		869EEFFE21DBE06B00A4BC06 /* throwbackWater.png in Resources */ = {isa = PBXBuildFile; fileRef = 869EEFFD21DBE06B00A4BC06 /* throwbackWater.png */; };
 		869EF00021DBE1E600A4BC06 /* CatchOrThrowbackImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 869EEFFF21DBE1E600A4BC06 /* CatchOrThrowbackImage.swift */; };
 		86B56D1A22095668000F6394 /* touchDown.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B56D1922095668000F6394 /* touchDown.mp3 */; };
+		86B56D1C220956CE000F6394 /* nextStoryLine.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86B56D1B220956CD000F6394 /* nextStoryLine.mp3 */; };
 		86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */; };
 		86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */; };
 		86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86BBBF3221BB08FD00CB17F2 /* Assets.xcassets */; };
@@ -387,6 +388,7 @@
 		869EEFFD21DBE06B00A4BC06 /* throwbackWater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = throwbackWater.png; sourceTree = "<group>"; };
 		869EEFFF21DBE1E600A4BC06 /* CatchOrThrowbackImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchOrThrowbackImage.swift; sourceTree = "<group>"; };
 		86B56D1922095668000F6394 /* touchDown.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = touchDown.mp3; sourceTree = "<group>"; };
+		86B56D1B220956CD000F6394 /* nextStoryLine.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nextStoryLine.mp3; sourceTree = "<group>"; };
 		86BBBF2521BB08FD00CB17F2 /* sStories.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sStories.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -616,6 +618,7 @@
 				86EE34662204F4E7003218B6 /* fishOnLine.mp3 */,
 				86EE34652204F4E7003218B6 /* pageTurn.mp3 */,
 				86EE34692204F4E8003218B6 /* sackDrag.mp3 */,
+				86B56D1B220956CD000F6394 /* nextStoryLine.mp3 */,
 				868F9BE32207C01500BBBFE3 /* showPageTurner.mp3 */,
 				22EA724A22091FE2008A2B23 /* fishingSackFull.mp3 */,
 				868F9C1A2207D70F00BBBFE3 /* buttonDown.mp3 */,
@@ -1056,6 +1059,7 @@
 				86ED75DD21F126980066E2D8 /* melody47.mp3 in Resources */,
 				226A1A4E2202794900E47009 /* test21.mp3 in Resources */,
 				226A1A492202794900E47009 /* test13.mp3 in Resources */,
+				86B56D1C220956CE000F6394 /* nextStoryLine.mp3 in Resources */,
 				86ED75DE21F126980066E2D8 /* melody48.mp3 in Resources */,
 				226A1A452202794900E47009 /* test20.mp3 in Resources */,
 				86ED75DF21F126980066E2D8 /* melody49.mp3 in Resources */,
