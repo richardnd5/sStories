@@ -5,7 +5,7 @@ let switchToPerformingScene = 11
 
 let blurbs = [
     Blurb(textBlurb: "Templeton’s Fishing Journey was written and built for my nephew, Stroud.", imageName: "Templeton"),
-    Blurb(textBlurb: "It is my hope that this app will help spark in him an interest in music and all who experience the story.", imageName: "Templeton"),
+    Blurb(textBlurb: "It is my hope that this app will help spark in him an interest in music.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my father, David, who hand carved Templeton from a piece of wood.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and painting images for the scenes.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my dear friends, Peter and Tara for helping edit the story.", imageName: "Templeton"),
@@ -34,7 +34,7 @@ let pages = [
     Page(imageName: "Performance", storyText: storyline[13...14]),
     Page(imageName: "Performance", storyText: storyline[15...15]), // this is another dummy slot
     Page(imageName: "Performance", storyText: storyline[15...19]),
-    Page(imageName: "Pond", storyText: storyline[20...22]),
+    Page(imageName: "PondNew", storyText: storyline[20...22]),
 ]
 
 enum SoundEffects : String, CaseIterable {

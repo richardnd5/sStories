@@ -10,7 +10,8 @@ class PerformingScene: UIView {
     
     var timer = Timer()
     var timeoutCounter : Int = 0
-    let timerRepetitions = 32
+    let timerRepetitions = 48
+    var isPlaying = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,9 +49,13 @@ class PerformingScene: UIView {
     }
 
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
-        Sound.sharedInstance.playSequencer()
-        generateRandomMusicSymbols()
-        timeout()
+        if !isPlaying {
+            isPlaying = true
+            Sound.sharedInstance.playSequencer()
+            generateRandomMusicSymbols()
+            timeout()
+            playButton?.fadeAndRemove(time: 2.0)
+        }
     }
     
     func timeout(){
@@ -62,6 +67,9 @@ class PerformingScene: UIView {
                 self.timeout()
             } else {
                 self.timeoutCounter = 0
+                Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+                    self.delegate!.returnToStory()
+                })
             }
             
         })

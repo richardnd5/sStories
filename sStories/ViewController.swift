@@ -20,7 +20,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     private var currentState = AppState.home
-    private var currentPage = 9
+    private var currentPage = 0
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
     
@@ -120,6 +120,22 @@ class ViewController: UIViewController, SceneDelegate {
                 self.createPage()
                 self.pageTurnerVisible = false
             }
+        } else if currentState == .performing {
+            performingScene.fadeAndRemove(time: 1.0) {
+                self.currentState = .story
+                self.currentPage+=1
+                self.tempStoryLine = 0
+                self.createPage()
+                self.pageTurnerVisible = false
+            }
+        } else if page != nil && currentPage == pages.count-1 && currentState == .story {
+            page.fadeAndRemove(time: 1.0) {
+                self.currentPage = 0
+                self.tempStoryLine = 0
+                self.createHomePage()
+                self.pageTurnerVisible = false
+            }
+            // If the current page is the fishing page.
         }
     }
     
