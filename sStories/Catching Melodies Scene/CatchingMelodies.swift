@@ -18,16 +18,19 @@ class CatchingMelodies: UIView {
     var melodyImage : MelodyImage?
     var sack : CatchOrThrowbackImage?
     var throwbackWater : CatchOrThrowbackImage?
-    var sackContents: SackContents?
+    var sackContents: SackContents!
     
     // Labels
     var keepLabel : Label?
     var throwbackLabel : Label?
     var instructionLabel: Label?
-
+    
+    var melodyImageArray = [MelodyImage]()
+    
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         createPond()
         createFishingPole()
         createInstructionLabel()
@@ -52,22 +55,22 @@ class CatchingMelodies: UIView {
     func stopPondBackground(){
         Sound.sharedInstance.stopPondBackground()
     }
-
+    
     func createSackContainer(){
         sackContents = SackContents(frame: CGRect(x: 0, y: 0, width: frame.width/4, height: frame.height/17))
         addSubview(sackContents!)
-
+        
         // set up constraints
         sackContents?.translatesAutoresizingMaskIntoConstraints = false
         sackContents?.heightAnchor.constraint(equalToConstant: frame.height/17).isActive = true
         sackContents?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20).isActive = true
         sackContents?.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/17).isActive = true
         sackContents?.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/1.4).isActive = true
-
+        
     }
     
     func createPond(){
-
+        
         pondImage.image = resizedImage(name: "PondNew", frame: frame)
         addSubview(pondImage)
         pondImage.layer.zPosition = -100
@@ -89,12 +92,12 @@ class CatchingMelodies: UIView {
         let y = frame.height/60
         
         instructionLabel = Label(frame: CGRect.zero, words: "Patiently, Templeton waiting for the first bite...", fontSize: height-height/10)
-
+        
         addSubview(instructionLabel!)
         let safe = safeAreaLayoutGuide
         instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: 0, bottom: 0, right: 0), size: .zero)
         instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18)
-
+        
     }
     
     func createLabels(){
@@ -105,7 +108,7 @@ class CatchingMelodies: UIView {
         // How do I do this in the line before instead of resetting the origin after it is instantiated. I am using sizeToFit() in it's class so I don't know what to do.
         keepLabel!.frame.origin = CGPoint(x: (sack?.frame.midX)!-keepLabel!.frame.width/2, y: (sack?.frame.minY)!-keepLabel!.frame.height)
         addSubview(keepLabel!)
-
+        
         // add throwback label
         throwbackLabel = Label(frame: CGRect(x: (throwbackWater?.frame.midX)!, y: (throwbackWater?.frame.minY)!, width: frame.width/3, height: frame.height/4), words: "Throw Back", fontSize: frame.height/26)
         
@@ -129,8 +132,8 @@ class CatchingMelodies: UIView {
     
     func createRandomMelody(){
         
-        let missingType = sackContents?.missingMelodyType()
-        let randomNeededMelody = Melody(type: missingType!)
+        let missingType = missingMelodyType(melodyArray: melodyImageArray)
+        let randomNeededMelody = Melody(type: missingType)
         
         // instantiate it
         melodyImage = MelodyImage(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.height/4, height: frame.height/4), melody: randomNeededMelody)
@@ -147,7 +150,34 @@ class CatchingMelodies: UIView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
         melodyImage?.addGestureRecognizer(tapGesture)
     }
-
+    
+    func missingMelodyType(melodyArray: [MelodyImage]) -> MelodyType {
+        
+        var typeItNeeds = MelodyType.begin
+        
+        let containsBegin = melodyArray.contains(where: { $0.type == .begin })
+        let containsMiddle = melodyArray.contains(where: { $0.type == .middle })
+        let containsTonic = melodyArray.contains(where: { $0.type == .tonic })
+        let containsDominant = melodyArray.contains(where: { $0.type == .dominant })
+        let containsEnding = melodyArray.contains(where: { $0.type == .ending })
+        let containsFinal = melodyArray.contains(where: { $0.type == .final })
+        
+        if !containsBegin {
+            typeItNeeds = .begin
+        } else if !containsMiddle {
+            typeItNeeds = .middle
+        } else if !containsTonic {
+            typeItNeeds = .tonic
+        } else if !containsDominant {
+            typeItNeeds = .dominant
+        } else if !containsEnding {
+            typeItNeeds = .ending
+        } else if !containsFinal {
+            typeItNeeds = .final
+        }
+        return typeItNeeds
+    }
+    
     func createCatchOrThrowBackImages(){
         
         let bottomPadding = frame.height/7
@@ -161,9 +191,9 @@ class CatchingMelodies: UIView {
         addSubview(throwbackWater!)
         throwbackWater!.frame.origin = CGPoint(x: frame.width-throwbackWater!.frame.width, y: frame.height-throwbackWater!.frame.height-bottomPadding)
     }
-
+    
     func goBackToFishing(){
-
+        
         Sound.sharedInstance.turnUpPond()
         melodyImage?.shrinkAndRemove(time: 0.6, {
             self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {self.throwbackWater!.scaleSize = 1.0})
@@ -192,7 +222,7 @@ class CatchingMelodies: UIView {
         })
     }
     
-
+    
     func removeImagesFromCaughtMelodyScene(){
         
         pondImage.fadeTo(time: 2.0, opacity: 1.0) {
@@ -203,13 +233,13 @@ class CatchingMelodies: UIView {
         self.keepLabel?.fadeAndRemove(time: 1.0)
         self.throwbackLabel?.fadeAndRemove(time: 1.0)
     }
-
+    
     func putLineBackIn(){
-            playSoundClip(.fishingCastLine)
-            fishingPole?.putPoleIn({
-                // completion handler. after the pole is put in, set a timer for the next melody to "bite"
-                self.setAMelodyToBiteInTheFuture()
-            })
+        playSoundClip(.fishingCastLine)
+        fishingPole?.putPoleIn({
+            // completion handler. after the pole is put in, set a timer for the next melody to "bite"
+            self.setAMelodyToBiteInTheFuture()
+        })
     }
     
     func setAMelodyToBiteInTheFuture(){
@@ -225,7 +255,7 @@ class CatchingMelodies: UIView {
             playRandomTriggeredSoundClip(.fishingMelodyOnTheLine)
         })
     }
-
+    
     func decideWhatToDoWithTheMelody(){
         
         sceneState = .catchOrThrowBack
@@ -245,13 +275,104 @@ class CatchingMelodies: UIView {
         })
     }
     
+    func addMelodyToSack(_ melody: Melody){
+        
+        var filledSlots = [Int]()
+
+        melodyImageArray.forEach { mel in
+            filledSlots.append((mel.data?.slotPosition)!)
+        }
+        
+        var openSlot : Int!
+        for i in 0...sackContents.melodySlotViews.count-1 {
+            if !filledSlots.contains(i){
+                openSlot = i
+                break
+            }
+        }
+
+        let x = sackContents.melodySlotViews[openSlot].frame.minX+sackContents.frame.minX
+        let y = sackContents.melodySlotViews[openSlot].frame.minY+sackContents.frame.minY
+        let width = sackContents.melodySlotViews[openSlot].frame.width
+        let height = sackContents.melodySlotViews[openSlot].frame.height
+        
+        let view = MelodyImage(frame: CGRect(x: x, y: y, width: width, height: height), melody: melody)
+        addSubview(view)
+        view.initialPosition = CGPoint(x: x, y: y)
+        view.data?.slotPosition = openSlot
+        melodyImageArray.append(view)
+        
+        view.alpha = 0.0
+        view.fadeTo(time: 1.5, opacity: 1.0)
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleSackMelodyPan))
+        view.addGestureRecognizer(panGesture)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func removeMelodyFromSack(_ view: MelodyImage){
+        view.shrinkAndRemove(time: 0.5)
+        playSoundClip(.fishingThrowbackDrop)
+        
+        for i in 0...melodyImageArray.count-1 {
+            if view.data?.slotPosition == melodyImageArray[i].data!.slotPosition {
+                melodyImageArray.remove(at: i)
+                return // return so it doesn't continue the for loop
+            }
+        }
+    }
+    
+    func sackFull(melodyArray: [MelodyImage]) -> Bool {
+        
+        var bool = false
+        
+        if melodyArray.count == 6 {
+            bool = true
+        }
+
+        return bool
+    }
+    
+    func addMelodiesToCollectedMelodyArray(melodyArray: [MelodyImage]){
+        melodyArray.forEach { mel in
+            collectedMelodies.append(mel.data!)
+        }
+    }
+    
+    @objc func handleSackMelodyPan(_ sender: UIPanGestureRecognizer){
+        
+        let view = sender.view as! MelodyImage
+        
+        let translation = sender.translation(in: self)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self)
+        
+        if sender.state == .ended {
+            if sender.view!.center.y <= view.initialPosition.y/1.4 ||
+                sender.view!.center.x >= view.initialPosition.x*4 {
+                print("yup. too far away")
+                removeMelodyFromSack(view)
+            } else {
+                view.moveViewTo(view.initialPosition, time: 0.5)
+            }
+        }
+    }
+    
+    @objc func handleSackMelodyTap(_ sender: UITapGestureRecognizer){
+        
+//        let view = sender.view as! MelodyImage
+//        view.playMelody()
+    }
+    
     // Touch Handlers
     @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
         
         let translation = sender.translation(in: self)
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: self)
-//        playSoundClip(.fishingMelodyDrag)
+        //        playSoundClip(.fishingMelodyDrag)
         
         if (sack?.bounds.contains(sender.location(in: sack)))! && !(sack?.isSelected)!{
             sack?.expand()
@@ -268,18 +389,22 @@ class CatchingMelodies: UIView {
         
         // When touches ended after panning.
         if sender.state == .ended {
-//            stopSoundClip(.fishingMelodyDrag)
+            //            stopSoundClip(.fishingMelodyDrag)
             // if the melody was dragged to be kept
             if (sack?.bounds.contains(sender.location(in: sack)))! {
                 let melodyImage = sender.view as! MelodyImage
                 let melody = melodyImage.data
-                sackContents?.addMelodyToOpenSlot(melody: melody!)
+                
+                //                sackContents?.addMelodyToOpenSlot(melody: melody!)
+                addMelodyToSack(melody!)
+                
                 playSoundClip(.fishingSackDrop)
-                if (sackContents?.sackFull())! {
+//                if (sackContents?.sackFull())! {
+                if sackFull(melodyArray: melodyImageArray) {
                     self.fishingDone()
                     playSoundClip(.fishingSackFull)
                     // If the sack is full, store the melodies globally
-                    sackContents!.addMelodiesToCollectedMelodyArray()
+                    addMelodiesToCollectedMelodyArray(melodyArray: melodyImageArray)
                 } else {
                     self.goBackToFishing()
                 }
@@ -300,7 +425,7 @@ class CatchingMelodies: UIView {
             instructionLabel?.warningScaleUp()
             playSoundClip(.fishingWarning)
         }
-
+        
         if sceneState == .fishOnTheLine {
             decideWhatToDoWithTheMelody()
             playSoundClip(.fishingPullMelodyOut)
@@ -311,9 +436,20 @@ class CatchingMelodies: UIView {
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
-        melodyImage?.playMelody()
+        
+        for view in subviews {
+            if view is MelodyImage {
+               let v = view as! MelodyImage
+                if v.isPlaying {
+                    v.stopMelody()
+                }
+            }
+        }
+        
+        let view = sender.view as! MelodyImage
+        view.playMelody()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

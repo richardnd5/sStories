@@ -25,7 +25,7 @@ class MiniPerformingNote: UIImageView {
     
     func makeNoteAppearFlyAwayAndFade(){
         
-        let range = (-frame.height*4...frame.height*4)
+        let range = (-frame.height*3...frame.height*3)
         let randX = CGFloat.random(in: range)
         let randY = CGFloat.random(in: range)
         let time = 1.0

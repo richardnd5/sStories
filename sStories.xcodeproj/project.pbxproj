@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220A1FF1220B8A21003180B8 /* scrollUpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF0220B8A21003180B8 /* scrollUpButton.png */; };
+		220A1FF3220B8B63003180B8 /* whiteDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF2220B8B63003180B8 /* whiteDot.png */; };
 		220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B35F221FA6F4D00AA146D /* HomePage.swift */; };
 		2251122C22024EAF0087747F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122B22024EAF0087747F /* test.mp3 */; };
 		2251122E22024F7E0087747F /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* SoundEffect.swift */; };
@@ -260,6 +262,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		220A1FF0220B8A21003180B8 /* scrollUpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollUpButton.png; sourceTree = "<group>"; };
+		220A1FF2220B8B63003180B8 /* whiteDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteDot.png; sourceTree = "<group>"; };
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
 		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		2251122D22024F7E0087747F /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -645,8 +649,10 @@
 				86E9F49621BF82F400EE12DF /* Mountain.png */,
 				86E9F4A621BF85AE00EE12DF /* Fishing.png */,
 				863DADF521D40D5400AFDD94 /* Note.png */,
+				220A1FF2220B8B63003180B8 /* whiteDot.png */,
 				8654705921EE70D400D1F068 /* begin.png */,
 				869027E221F5939E00C3EF0C /* performanceScene.png */,
+				220A1FF0220B8A21003180B8 /* scrollUpButton.png */,
 				86CC12E621FB8DCB00B9164B /* Templeton.png */,
 				866EA6F221F4384D00B28BA6 /* 8thThumb.png */,
 				866EA6F021F42C7E00B28BA6 /* arrow.png */,
@@ -1099,9 +1105,11 @@
 				861C788F21DC257E009D9612 /* sack.png in Resources */,
 				8654705D21EE70D400D1F068 /* middle.png in Resources */,
 				8654705C21EE70D400D1F068 /* dominant.png in Resources */,
+				220A1FF3220B8B63003180B8 /* whiteDot.png in Resources */,
 				86621B2521CD776A0069157B /* waterDrop.png in Resources */,
 				8698D89321BF417600ADED35 /* backgroundPlaceholder.wav in Resources */,
 				8654705E21EE70D400D1F068 /* ending.png in Resources */,
+				220A1FF1220B8A21003180B8 /* scrollUpButton.png in Resources */,
 				8698D89421BF417600ADED35 /* marimbaC.wav in Resources */,
 				2251123222025F910087747F /* test3.mp3 in Resources */,
 				226A1A352202794900E47009 /* test5.mp3 in Resources */,

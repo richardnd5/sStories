@@ -56,7 +56,7 @@ class MelodyImage: UIImageView {
         layer.mask = maskLayer;
     }
         
-    func startGlowingPulse(){
+    private func startGlowingPulse(){
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         glow.fromValue = 0.0
         glow.toValue = 0.4
@@ -67,8 +67,9 @@ class MelodyImage: UIImageView {
         glowingOverlay.layer.add(glow, forKey: "throb")
     }
     
-    func stopGlowingPulse(){
+    private func stopGlowingPulse(){
         
+        glowTimer.invalidate()
         CATransaction.begin()
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         glow.toValue = 0.0

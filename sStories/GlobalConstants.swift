@@ -7,7 +7,7 @@ let blurbs = [
     Blurb(textBlurb: "Templeton’s Fishing Journey was written and built for my nephew, Stroud.", imageName: "Templeton"),
     Blurb(textBlurb: "It is my hope that this app will help spark in him an interest in music.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my father, David, who hand carved Templeton from a piece of wood.", imageName: "Templeton"),
-    Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and painting images for the scenes.", imageName: "Templeton"),
+    Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and drawing the  images for the scenes.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my dear friends, Peter and Tara for helping edit the story.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my friends, Ivan, Jayson, Peter and Tara for providing feedback throughout the creation of the app.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to Aurelius Prochazka and the community of AudioKit for creating and maintaining the framework used for the audio portion of the app.", imageName: "Templeton"),
@@ -18,6 +18,16 @@ let blurbs = [
         
         I am a professional musician who found an interest in software development after taking an electronic music course during my graduate work in music composition. I'm a self-taught developer who is obsessed with learning. Some of my lifelong goals are to make music accessible to as many people as I can, and create opportunities for people to be creative.
         """, imageName: "Templeton"),
+    Blurb(textBlurb: """
+            With the exception of the sparrow, chickadee, and robin sounds downloaded from freesounds.com, the sound effects were recorded in my closet. I filled a waste basket with water and splashed around, taped a metal wire to a rollerblade wheel for the fishing pole, a pencil in a music manuscript book, and the rest with sounds from my mouth. All edited in Logic Pro.
+        """, imageName: "Templeton"),
+    Blurb(textBlurb: """
+            The piano melodies were improvised. The images were altered through the iOS app, "Imaengine" and cleaned up in the AutoDesk iOS app, "Sketchbook"
+        """, imageName: "Templeton"),
+    Blurb(textBlurb: """
+            I learned so much through this process (especially what not to do in software development for my later projects...)
+        """, imageName: "Templeton"),
+    Blurb(textBlurb: "Go be creative!", imageName: "whiteDot")
 ]
 
 let pages = [

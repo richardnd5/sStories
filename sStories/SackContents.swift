@@ -30,7 +30,7 @@ class SackContents: UIView {
     
     func addMelodyToOpenSlot(melody: Melody){
         
-        for i in 0...melodySlotViews.count-1{
+        for i in 0...melodySlotViews.count-1 {
             if melodySlotViews[i].subviews.count == 0 {
                 let width = melodySlotViews[0].frame.width
                 let height = melodySlotViews[0].frame.height

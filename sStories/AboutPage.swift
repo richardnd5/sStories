@@ -7,6 +7,7 @@ class AboutPage: UIView, UIScrollViewDelegate {
     var aboutTitle : UILabel!
     var backButton : UIButton!
     var blurbArray = [AboutBlurb]()
+    var scrollUpButton : UIButton!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,6 +78,19 @@ class AboutPage: UIView, UIScrollViewDelegate {
     func createButtons() {
         backButton = Button(frame: CGRect.zero, name: "back")
         addSubview(backButton)
+        
+        scrollUpButton = UIButton(frame: CGRect.zero)
+        let image = resizedImage(name: "scrollUpButton")
+        scrollUpButton.contentMode = .scaleAspectFit
+        scrollUpButton.setImage(image, for: .normal)
+        
+        scrollView.addSubview(scrollUpButton)
+        scrollUpButton.addTarget(self, action: #selector(handleScrollUp), for: .touchUpInside)
+    }
+    
+    @objc func handleScrollUp(_ sender: UIButton){
+        print("scroll view button tapped.")
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
     func setupContraints(){
@@ -102,6 +116,12 @@ class AboutPage: UIView, UIScrollViewDelegate {
         backButton.leadingAnchor.constraint(equalTo: scrollView.safeAreaLayoutGuide.leadingAnchor, constant: bottomPadding).isActive = true
         backButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -bottomPadding).isActive = true
         
+        scrollUpButton.translatesAutoresizingMaskIntoConstraints = false
+        scrollUpButton.heightAnchor.constraint(equalToConstant: frame.height/4).isActive = true
+        scrollUpButton.widthAnchor.constraint(equalToConstant: frame.height/4).isActive = true
+        scrollUpButton.centerXAnchor.constraint(equalTo: safe.centerXAnchor).isActive = true
+        scrollUpButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
+        
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
@@ -121,6 +141,8 @@ class AboutPage: UIView, UIScrollViewDelegate {
             backButton.alpha = opacity
         }
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
