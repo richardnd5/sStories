@@ -76,6 +76,7 @@ class ArrangingScene: UIView {
     func generateCollectedMelodies(){
         
         playSoundClip(.arrangingMelodiesAppear)
+        
         for i in 0...sackContents.melodySlotViews.count-1{
             let x = sackContents.melodySlotViews[i].frame.minX+sackContents.frame.minX
             let y = sackContents.melodySlotViews[i].frame.minY+sackContents.frame.minY
@@ -150,6 +151,7 @@ class ArrangingScene: UIView {
                             Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
                             Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
                             playSoundClip(.arrangingAllMelodiesLocked)
+                            stopAllMelodies()
                             instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
                             sceneState = .arrangementCompleted
                             delegate?.returnToStoryFromArranging()
@@ -166,13 +168,20 @@ class ArrangingScene: UIView {
         }
     }
     
-    @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
-        let view = sender.view as! MelodyImage
-        view.playMelody()
+    func stopAllMelodies(){
+        melodyImageArray.forEach { melody in
+            if melody.isPlaying {
+                melody.stopMelody()
+            }
+        }
     }
     
-    @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
-        Sound.sharedInstance.playSequencer()
+    @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
+        
+        stopAllMelodies()
+        
+        let view = sender.view as! MelodyImage
+        view.playMelody()
     }
     
     required init?(coder aDecoder: NSCoder) {

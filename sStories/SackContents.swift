@@ -139,6 +139,10 @@ class SackContents: UIView {
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
+        
+        melodySlotViews.forEach { mel in
+//            if mel.audio.
+        }
         let view = sender.view as! MelodyImage
         view.playMelody()
     }

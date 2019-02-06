@@ -6,6 +6,7 @@ class MelodyAudio {
     var sampler = AKMIDISampler()
     var number = Int()
     var trackNumber = Int()
+    var isPlaying = false
 
     init(number: Int) {
         self.number = number
@@ -28,12 +29,20 @@ class MelodyAudio {
         do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why: \(error)") }
         sampler.enableMIDI()
         sampler.name = "\(number)"
-        sampler.volume = 1.3
         Sound.sharedInstance.pianoMixer.connect(input: sampler)
     }
     
     func playMelody(){
-        print("playing melody")
+        isPlaying = true
         do { try sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the melody. Why? Here: \(error)") }
+    }
+    
+    func stopMelody(){
+        isPlaying = false
+        do { try sampler.stop(noteNumber: 60, channel: 1) } catch {}
+    }
+    
+    func getAudioDuration() -> Double {
+        return (audioFile?.duration)!
     }
 }

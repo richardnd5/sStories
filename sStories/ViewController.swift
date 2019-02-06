@@ -20,7 +20,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     private var currentState = AppState.home
-    private var currentPage = 0
+    private var currentPage = 5
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
     

@@ -92,15 +92,17 @@ class MelodyImage: UIImageView {
             glowTimer.invalidate()
             data?.audio?.playMelody()
             startGlowingPulse()
-
-            // Hardcoded timer value based on 80 bpm, 8 beats or 16 beats for final
-            var length : TimeInterval!
-            let bpmToSec = 60/tempo
             
-            type == .final ? (length = TimeInterval((bpmToSec)*16)-3) : (length = TimeInterval((bpmToSec)*8)-1)
+            var audioDuration = Double((data?.audio?.getAudioDuration())!)
+            type == MelodyType.final ? (audioDuration -= 5) : (audioDuration -= 1.6)
 
-            glowTimer = Timer.scheduledTimer(withTimeInterval: length, repeats: false, block:{_ in self.stopGlowingPulse()})
+            glowTimer = Timer.scheduledTimer(withTimeInterval: audioDuration, repeats: false, block:{_ in self.stopGlowingPulse()})
         }
+    }
+    
+    func stopMelody(){
+        stopGlowingPulse()
+        data?.audio?.stopMelody()
     }
 
     required init?(coder aDecoder: NSCoder) {
