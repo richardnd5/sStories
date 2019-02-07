@@ -10,6 +10,7 @@
 		220A1FF1220B8A21003180B8 /* scrollUpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF0220B8A21003180B8 /* scrollUpButton.png */; };
 		220A1FF3220B8B63003180B8 /* whiteDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF2220B8B63003180B8 /* whiteDot.png */; };
 		220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B35F221FA6F4D00AA146D /* HomePage.swift */; };
+		22304D44220CD61D002CA8FD /* PlayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22304D43220CD61D002CA8FD /* PlayPage.swift */; };
 		2251122C22024EAF0087747F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122B22024EAF0087747F /* test.mp3 */; };
 		2251122E22024F7E0087747F /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* SoundEffect.swift */; };
 		2251123022025F360087747F /* test2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122F22025F360087747F /* test2.mp3 */; };
@@ -265,6 +266,7 @@
 		220A1FF0220B8A21003180B8 /* scrollUpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollUpButton.png; sourceTree = "<group>"; };
 		220A1FF2220B8B63003180B8 /* whiteDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteDot.png; sourceTree = "<group>"; };
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		22304D43220CD61D002CA8FD /* PlayPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPage.swift; sourceTree = "<group>"; };
 		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		2251122D22024F7E0087747F /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
 		2251122F22025F360087747F /* test2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test2.mp3; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
 				866AA1072208F849000FED54 /* BackgroundImage.swift */,
+				22304D43220CD61D002CA8FD /* PlayPage.swift */,
 				86CC12DE21FB7FD600B9164B /* AboutPage.swift */,
 				228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
@@ -1220,6 +1223,7 @@
 				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
 				869027E721F593DD00C3EF0C /* PerformingBackground.swift in Sources */,
 				868F9C262207FD3600BBBFE3 /* PondAmbience.swift in Sources */,
+				22304D44220CD61D002CA8FD /* PlayPage.swift in Sources */,
 				860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */,
 				86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */,
 				866EA6ED21F42AAB00B28BA6 /* Arrow.swift in Sources */,

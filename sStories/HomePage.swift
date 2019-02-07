@@ -1,25 +1,13 @@
 import UIKit
 
 class HomePage: UIView {
-    
-//    private let imageView: UIImageView = {
-//
-//
-//        var imageView = UIImageView()
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.clipsToBounds = true
-//        return imageView
-//    }()
-    
+
     private let title: UILabel = {
         let textView = UILabel()
         textView.textColor = .white
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
-//        textView.isEditable = false
-//        textView.isScrollEnabled = false
-//        textView.isSelectable = false
+
         textView.isUserInteractionEnabled = false
         textView.backgroundColor = .clear
         textView.font = UIFont(name: "Papyrus", size: 30)
@@ -27,38 +15,39 @@ class HomePage: UIView {
     }()
     
     weak var delegate : SceneDelegate?
-//    private var maskLayer = CAGradientLayer()
     var background : BackgroundImage!
+    var playPage : PlayPage!
 
     
     var aboutButton : Button!
     var readButton: Button!
-//    var imageSize = CGRect(x: 0, y: 0, width: ScreenSize.width/1.6, height: ScreenSize.width/2.1)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        imageView.frame = CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height)
-//        imageView.image = resizedImage(name: "homePageBackground", frame: frame)
         addBackground()
         
         title.text = "Templeton's Fishing Journey"
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
-        
-        
-//        imageView.clipsToBounds = true
-        
         createButtons()
         setupLayout()
-//        imageView.layer.cornerRadius = imageView.frame.width/2
-        
-//        addBlurredBorder()
+        createPlayPage(frame: frame)
 
         backgroundColor = .black
         alpha = 0
         layer.zPosition = 100
         fadeTo(time: 1.5,opacity: 1.0)
         
+    }
+    
+    func createPlayPage(frame: CGRect){
+        
+        let width = frame.width/1.5
+        let height = frame.height/1.5
+        let x = frame.width/2-width/2
+        let y = frame.height/2-height/2
+        let frame = CGRect(x: x, y: y, width: width, height: height)
+        playPage = PlayPage(frame: frame)
+        addSubview(playPage)
     }
     
     func addBackground(){
@@ -78,20 +67,6 @@ class HomePage: UIView {
         addSubview(aboutButton)
         
     }
-//
-//    func addBlurredBorder(){
-//
-//
-//        maskLayer.frame = imageSize
-//        print(maskLayer.frame)
-//
-//        maskLayer.shadowPath = CGPath(roundedRect: maskLayer.bounds.insetBy(dx: maskLayer.frame.height/8, dy: maskLayer.frame.height/10), cornerWidth: maskLayer.frame.height/8, cornerHeight: maskLayer.frame.height/8, transform: nil)
-//        maskLayer.shadowOpacity = 1.0
-//        maskLayer.shadowRadius = imageSize.height/40
-//        maskLayer.shadowOffset = CGSize.zero
-//        maskLayer.shadowColor = UIColor.black.cgColor
-//        imageView.layer.mask = maskLayer;
-//    }
 
     func setupLayout(){
         
@@ -119,15 +94,10 @@ class HomePage: UIView {
         aboutButton.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: padding).isActive = true
         aboutButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding).isActive = true
         
-//
-//        addSubview(imageView)
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.topAnchor.constraint(equalTo: title.bottomAnchor, constant: padding).isActive = true
-//        imageView.widthAnchor.constraint(equalToConstant: imageSize.width).isActive = true
-//        imageView.heightAnchor.constraint(equalToConstant: imageSize.height).isActive = true
-//        imageView.bottomAnchor.constraint(equalTo: readButton.topAnchor).isActive = true
-//        imageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        playPage.toggleKeyboard()
     }
 
     required init?(coder aDecoder: NSCoder) {

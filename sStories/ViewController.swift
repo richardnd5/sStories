@@ -38,11 +38,6 @@ class ViewController: UIViewController, SceneDelegate {
         super.viewDidLoad()
         
         createHomePage()
-        // create main view tap gesture.
-        //        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        //        view.addGestureRecognizer(tap)
-        
-        
         
     }
     
