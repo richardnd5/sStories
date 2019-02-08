@@ -1,6 +1,5 @@
 import UIKit
 
-
 class PianoKeyboard: UIView {
     
     var isActive = false

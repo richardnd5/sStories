@@ -132,7 +132,9 @@ extension UIView {
         
         UIView.animate(
             withDuration: time,
-            delay: 0,
+            delay: 0.4,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 5,
             options: .curveEaseInOut,
             animations: {
                 self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
