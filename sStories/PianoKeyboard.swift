@@ -1,7 +1,7 @@
 import UIKit
 
 
-class PlayPage: UIView {
+class PianoKeyboard: UIView {
     
     var isActive = false
     
@@ -16,10 +16,10 @@ class PlayPage: UIView {
         
         if !isActive {
             isActive = true
-            scaleTo(scaleTo: 1.0, time: 1.5)
+            scaleTo(scaleTo: 1.0, time: 0.8)
         } else {
             isActive = false
-            scaleTo(scaleTo: 0.2, time: 1.5)
+            scaleTo(scaleTo: 0.2, time: 0.7)
         }
     }
     

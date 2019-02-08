@@ -136,6 +136,7 @@ extension UIView {
             options: .curveEaseInOut,
             animations: {
                 self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
+                self.layoutIfNeeded()
         },
             completion: {
                 _ in

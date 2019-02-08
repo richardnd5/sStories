@@ -16,7 +16,7 @@ class HomePage: UIView {
     
     weak var delegate : SceneDelegate?
     var background : BackgroundImage!
-    var playPage : PlayPage!
+    var pianoKeyboard : PianoKeyboard!
 
     
     var aboutButton : Button!
@@ -29,8 +29,8 @@ class HomePage: UIView {
         title.text = "Templeton's Fishing Journey"
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
         createButtons()
+        createPiano(frame: frame)
         setupLayout()
-        createPlayPage(frame: frame)
 
         backgroundColor = .black
         alpha = 0
@@ -39,15 +39,18 @@ class HomePage: UIView {
         
     }
     
-    func createPlayPage(frame: CGRect){
+    func createPiano(frame: CGRect){
         
         let width = frame.width/1.5
-        let height = frame.height/1.5
+        let height = frame.width/3
+        let padding = frame.height/40
         let x = frame.width/2-width/2
-        let y = frame.height/2-height/2
+        let y = (frame.height-height-padding)
         let frame = CGRect(x: x, y: y, width: width, height: height)
-        playPage = PlayPage(frame: frame)
-        addSubview(playPage)
+        pianoKeyboard = PianoKeyboard(frame: frame)
+        addSubview(pianoKeyboard)
+
+        
     }
     
     func addBackground(){
@@ -80,24 +83,29 @@ class HomePage: UIView {
         title.widthAnchor.constraint(equalToConstant: frame.width/1.3).isActive = true
         title.adjustsFontSizeToFitWidth = true
         
-        addSubview(readButton)
         readButton.translatesAutoresizingMaskIntoConstraints = false
         readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         readButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -padding).isActive = true
         readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding).isActive = true
 
-        addSubview(aboutButton)
         aboutButton!.translatesAutoresizingMaskIntoConstraints = false
         aboutButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         aboutButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         aboutButton.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: padding).isActive = true
         aboutButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding).isActive = true
         
+//        let shrinkPadding = 
+        pianoKeyboard.translatesAutoresizingMaskIntoConstraints = false
+        pianoKeyboard.widthAnchor.constraint(equalToConstant: frame.width/1.5).isActive = true
+        pianoKeyboard.heightAnchor.constraint(equalToConstant: frame.width/3).isActive = true
+        pianoKeyboard.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding).isActive = true
+        pianoKeyboard.centerXAnchor.constraint(equalTo: safe.centerXAnchor).isActive = true
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        playPage.toggleKeyboard()
+        pianoKeyboard.toggleKeyboard()
     }
 
     required init?(coder aDecoder: NSCoder) {
