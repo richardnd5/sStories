@@ -195,9 +195,9 @@ class CatchingMelodies: UIView {
     func goBackToFishing(){
         
         Sound.sharedInstance.turnUpPond()
-        melodyImage?.shrinkAndRemove(time: 0.6, {
-            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {self.throwbackWater!.scaleSize = 1.0})
-            self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
+        melodyImage?.shrinkAndRemove(time: 0.8, {
+            self.throwbackWater?.shrink()
+            self.sack?.scaleTo(scaleTo: 1.0, time: 0.8, {
                 self.sack!.scaleSize = 1.0
                 self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
@@ -208,9 +208,9 @@ class CatchingMelodies: UIView {
     
     func fishingDone(){
         sceneState = .fishingDone
-        melodyImage?.shrinkAndRemove(time: 0.6, {
-            self.throwbackWater?.scaleTo(scaleTo: 1.0, time: 0.5, {self.throwbackWater!.scaleSize = 1.0})
-            self.sack?.scaleTo(scaleTo: 1.0, time: 0.5, {
+        melodyImage?.shrinkAndRemove(time: 0.8, {
+            self.throwbackWater?.shrink()
+            self.sack?.scaleTo(scaleTo: 1.0, time: 0.8, {
                 self.sack!.scaleSize = 1.0
                 self.pondImage.fadeTo(time: 2.0, opacity: 1.0)
                 self.sack?.fadeAndRemove(time: 1.0)

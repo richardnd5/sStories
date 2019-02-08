@@ -26,7 +26,7 @@ class CatchOrThrowbackImage: UIImageView {
     }
     
     func expand(){
-        scaleTo(scaleTo: 1.4, time: 0.3, {self.scaleSize = 1.4})
+        scaleTo(scaleTo: 1.4, time: 0.8, {self.scaleSize = 1.4})
         if imageName == "sack" {
             playSoundClip(.fishingSackDrag)
         } else if imageName == "throwbackWater" {
@@ -36,7 +36,7 @@ class CatchOrThrowbackImage: UIImageView {
     }
     
     func shrink(){
-        scaleTo(scaleTo: 1.0, time: 0.3, {self.scaleSize = 1.0})
+        scaleTo(scaleTo: 1.0, time: 0.8, {self.scaleSize = 1.0})
         isSelected = false
     }
 

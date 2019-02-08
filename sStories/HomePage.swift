@@ -44,13 +44,13 @@ class HomePage: UIView {
         let width = frame.width/1.5
         let height = frame.width/3
         let padding = frame.height/40
+        let bottomPadding = height*0.2
         let x = frame.width/2-width/2
         let y = (frame.height-height-padding)
-        let frame = CGRect(x: x, y: y, width: width, height: height)
+        let frame = CGRect(x: x, y: y+bottomPadding, width: width, height: height)
         pianoKeyboard = PianoKeyboard(frame: frame)
         addSubview(pianoKeyboard)
 
-        
     }
     
     func addBackground(){
@@ -94,13 +94,6 @@ class HomePage: UIView {
         aboutButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         aboutButton.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: padding).isActive = true
         aboutButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding).isActive = true
-        
-//        let shrinkPadding = 
-        pianoKeyboard.translatesAutoresizingMaskIntoConstraints = false
-        pianoKeyboard.widthAnchor.constraint(equalToConstant: frame.width/1.5).isActive = true
-        pianoKeyboard.heightAnchor.constraint(equalToConstant: frame.width/3).isActive = true
-        pianoKeyboard.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding).isActive = true
-        pianoKeyboard.centerXAnchor.constraint(equalTo: safe.centerXAnchor).isActive = true
         
     }
     

@@ -70,6 +70,8 @@ extension UIView {
         UIView.animate(
             withDuration: time,
             delay: 0,
+            usingSpringWithDamping: 1,
+            initialSpringVelocity: 0.5,
             options: .curveEaseInOut,
             animations: {
                 self.frame.origin = point
@@ -132,13 +134,13 @@ extension UIView {
         
         UIView.animate(
             withDuration: time,
-            delay: 0.4,
-            usingSpringWithDamping: 0.5,
-            initialSpringVelocity: 5,
+            delay: 0,
+            usingSpringWithDamping: 0.55,
+            initialSpringVelocity: scaleTo,
             options: .curveEaseInOut,
             animations: {
                 self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
-                self.layoutIfNeeded()
+                
         },
             completion: {
                 _ in

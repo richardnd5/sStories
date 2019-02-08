@@ -3,10 +3,11 @@ import UIKit
 class PianoKeyboard: UIView {
     
     var isActive = false
+    var initialPosition : CGPoint!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        initialPosition = CGPoint(x: frame.midX, y: frame.midY)
         drawKeyboard()
         clipsToBounds = true
     }
@@ -15,10 +16,13 @@ class PianoKeyboard: UIView {
         
         if !isActive {
             isActive = true
-            scaleTo(scaleTo: 1.0, time: 0.8)
+            scaleTo(scaleTo: 1.0, time: 2)
+            let center = CGPoint(x: initialPosition.x, y: (superview?.frame.minY)!+frame.height/2)
+            moveViewTo(center, time: 2)
         } else {
             isActive = false
-            scaleTo(scaleTo: 0.2, time: 0.7)
+            scaleTo(scaleTo: 0.2, time: 2)
+            moveViewTo(initialPosition, time: 2)
         }
     }
     
