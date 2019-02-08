@@ -43,7 +43,7 @@ class Button: UIButton {
     
     // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
-        sender!.scaleTo(scaleTo: 0.8, time: 0.1)
+        sender!.scaleTo(scaleTo: 0.8, time: 0.4)
         
         if sender!.tag == ButtonTypee.about.rawValue {
             playSoundClip(.buttonDown)
@@ -55,7 +55,7 @@ class Button: UIButton {
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
-        sender!.scaleTo(scaleTo: 1, time: 0.1)
+        sender!.scaleTo(scaleTo: 1, time: 0.4)
         
         if sender!.tag == ButtonTypee.about.rawValue {
             delegate?.goToAboutPage()
@@ -70,7 +70,7 @@ class Button: UIButton {
     }
     
     @objc private func touchUpOutside(_ sender: UIButton?) {
-        sender!.scaleTo(scaleTo: 1, time: 0.1)
+        sender!.scaleTo(scaleTo: 1, time: 0.4)
     }
     
     required init?(coder aDecoder: NSCoder) {

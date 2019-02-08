@@ -136,18 +136,19 @@ class PageTurner: UIView {
     }
     
     func triggerFinishAnimation(view: WholeNote){
-        let time = 0.3
+        let time = 0.5
         let penultimatePlace = lineContainer[3].frame
         let finalPlace = noteDestinationSlot?.frame.origin
 
-        
+        playNoteIfNotLastNotePlayed(7)
         view.moveViewTo(CGPoint(x: (finalPlace?.x)!, y: penultimatePlace.minY), time: time, {
-
-            self.playNoteIfNotLastNotePlayed(7)
-                view.moveViewTo(finalPlace!, time: 0.2, {
-                    self.playNoteIfNotLastNotePlayed(8)
-                    playSoundClip(.pageTurn)
-                })
+            
+            self.playNoteIfNotLastNotePlayed(8)
+            view.moveViewTo(finalPlace!, time: 0.6, {
+                playSoundClip(.pageTurn)
+                self.fadeAndRemove(time: 1.5)
+                self.delegate!.nextPage()
+            })
         })
     }
     
@@ -169,8 +170,6 @@ class PageTurner: UIView {
         } else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
             sender.state = .ended
             triggerFinishAnimation(view: view)
-            fadeAndRemove(time: 1.5)
-            delegate!.nextPage()
         }
     }
 

@@ -84,6 +84,8 @@ class CatchingMelodies: UIView {
         
         fadeTo(time: 1.5, opacity: 1.0)
         
+
+        
     }
     
     func createInstructionLabel(){

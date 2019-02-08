@@ -25,6 +25,7 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
+        fillSackWithMelodies()
         
         //fade the view in
         alpha = 0.0
@@ -138,7 +139,7 @@ class ArrangingScene: UIView {
                     // check if the melody is in the correct spot.
                     if frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
                         // if it is, move it to the position and resize it.
-                        let time = 0.4
+                        let time = 1.0
                         view.moveViewTo(frame.origin, time: time, {})
                         view.changeSize(to: songSlots.slotPosition[i].frame.size, time: time)
                         view.inCorrectSlot = true
@@ -158,7 +159,7 @@ class ArrangingScene: UIView {
                         }
                     } else if !frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
                         // move view to original position
-                        view.moveViewTo(view.initialPosition, time: 0.5)
+                        view.moveViewTo(view.initialPosition, time: 1.0)
                         playSoundClip(.arrangingCrossOut)
                         // play not correct slot sound.
                         

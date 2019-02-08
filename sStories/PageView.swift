@@ -61,11 +61,11 @@ class PageView: UIView {
     }
     
     func shrinkText(){
-        storyTextView.scaleTo(scaleTo: 0.97, time: 0.2)
+        storyTextView.scaleTo(scaleTo: 0.97, time: 0.4)
     }
     
     func expandText(){
-        storyTextView.scaleTo(scaleTo: 1.0, time: 0.2)
+        storyTextView.scaleTo(scaleTo: 1.0, time: 0.4)
     }
     
     func setupLayout(){

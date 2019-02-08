@@ -29,7 +29,7 @@ class HomePage: UIView {
         title.text = "Templeton's Fishing Journey"
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
         createButtons()
-        createPiano(frame: frame)
+//        createPiano(frame: frame)
         setupLayout()
 
         backgroundColor = .black
@@ -98,7 +98,7 @@ class HomePage: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        pianoKeyboard.toggleKeyboard()
+//        pianoKeyboard.toggleKeyboard()
     }
 
     required init?(coder aDecoder: NSCoder) {
