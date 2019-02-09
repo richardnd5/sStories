@@ -7,22 +7,31 @@ class PianoKeyboard: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        initialPosition = CGPoint(x: frame.midX, y: frame.midY)
+        initialPosition = CGPoint(x: frame.minX, y: frame.minY)
         drawKeyboard()
+        backgroundColor = .orange
         clipsToBounds = true
+        
     }
     
     func toggleKeyboard(){
         
         if !isActive {
             isActive = true
-            scaleTo(scaleTo: 1.0, time: 2)
-            let center = CGPoint(x: initialPosition.x, y: (superview?.frame.minY)!+frame.height/2)
-            moveViewTo(center, time: 2)
+            scaleTo(scaleTo: 1.0, time: 1)
+            let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2)
+            moveViewTo(point, time: 1)
         } else {
             isActive = false
-            scaleTo(scaleTo: 0.2, time: 2)
-            moveViewTo(initialPosition, time: 2)
+            scaleTo(scaleTo: 0.05, time: 1)
+
+            let bottomPadding = superview!.frame.height/30
+            let selfPadding = frame.height
+            let x = (superview?.frame.midX)!-frame.width/2
+            let y = (superview?.frame.maxY)!-frame.height-selfPadding-bottomPadding
+            let point = CGPoint(x: x, y: y)
+            moveViewTo(point, time: 1)
+            
         }
     }
     
@@ -61,7 +70,7 @@ class PianoKeyboard: UIView {
                 }
             }
         }
-        scaleTo(scaleTo: 0.2, time: 0.0)
+        scaleTo(scaleTo: 0.05, time: 0.0)
     }
     
     required init?(coder aDecoder: NSCoder) {

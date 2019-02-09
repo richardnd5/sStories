@@ -29,7 +29,7 @@ class HomePage: UIView {
         title.text = "Templeton's Fishing Journey"
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
         createButtons()
-//        createPiano(frame: frame)
+        createPiano(frame: frame)
         setupLayout()
 
         backgroundColor = .black
@@ -43,11 +43,12 @@ class HomePage: UIView {
         
         let width = frame.width/1.5
         let height = frame.width/3
-        let padding = frame.height/40
-        let bottomPadding = height*0.2
+        let padding = frame.height/30
+        let selfPadding = height*0.05
         let x = frame.width/2-width/2
-        let y = (frame.height-height-padding)
-        let frame = CGRect(x: x, y: y+bottomPadding, width: width, height: height)
+        let y = (frame.height-height/2-padding-selfPadding)
+        let frame = CGRect(x: x, y: y, width: width, height: height)
+        
         pianoKeyboard = PianoKeyboard(frame: frame)
         addSubview(pianoKeyboard)
 
@@ -98,7 +99,7 @@ class HomePage: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        pianoKeyboard.toggleKeyboard()
+        pianoKeyboard.toggleKeyboard()
     }
 
     required init?(coder aDecoder: NSCoder) {
