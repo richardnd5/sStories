@@ -11,7 +11,7 @@ protocol ButtonDelegate : class {
 
 class PianoKeyboard: UIView, ButtonDelegate {
     
-    var isActive = false
+    var keyboardIsActive = false
     var initialPosition : CGPoint!
     
     var whiteKeyArray = [PianoKey]()
@@ -24,7 +24,8 @@ class PianoKeyboard: UIView, ButtonDelegate {
         initialPosition = CGPoint(x: frame.minX, y: frame.minY)
         drawKeyboard()
         createExitButton()
-        scaleTo(scaleTo: 0.05, time: 0.0)
+        scaleTo(scaleTo: 0.12, time: 0.0)
+        isExclusiveTouch = true
         
         tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
@@ -40,21 +41,90 @@ class PianoKeyboard: UIView, ButtonDelegate {
         tap.isEnabled = true
     }
     
-    var wasPlayed = false
+    var keyPressed : PianoKey!
+    var notePlaying = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isActive {
-            print("touch began")
+        
+        if keyboardIsActive && !notePlaying {
+            var activatedKey = false
+                for touch in touches {
+                    //            if let touch = touches.first {
+                    let location = touch.location(in: self)
+                    
+                    blackKeyArray.forEach { key in
+                        if key.frame.contains(location) {
+                            key.playKey()
+                            notePlaying = true
+                            keyPressed = key
+                            activatedKey = true
+                        }
+                    }
+                    if !activatedKey {
+                        whiteKeyArray.forEach { key in
+                            if key.frame.contains(location) {
+                                key.playKey()
+                                notePlaying = true
+                                keyPressed = key
+                                activatedKey = true
+                            }
+                        }
+                    }
+                }
         }
     }
     
+    var containsBlackNote = false
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isActive {
-            print("touch moved")
+        if keyboardIsActive {
+
+                for touch in touches {
+                    //            if let touch = touches.first {
+                    let location = touch.location(in: self)
+                    
+                    if keyPressed.keyIsActive && !keyPressed.frame.contains(location){
+                        keyPressed.stopKey()
+                        notePlaying = false
+                        containsBlackNote = false
+                    }
+                    
+                    blackKeyArray.forEach { key in
+                        if key.frame.contains(location) && !key.keyIsActive && !notePlaying{
+                            key.playKey()
+                            notePlaying = true
+                            keyPressed.stopKey()
+                            keyPressed = key
+                            containsBlackNote = true
+                        }
+                    }
+                    
+                    whiteKeyArray.forEach { key in
+                        if key.frame.contains(location) && !key.keyIsActive && !containsBlackNote && !notePlaying {
+                            key.playKey()
+                            notePlaying = true
+                            keyPressed.stopKey()
+                            keyPressed = key
+                        }
+                    }
+                }
         }
     }
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if isActive {
-            print("touch ended")
+        
+        if keyboardIsActive {
+            
+            blackKeyArray.forEach { key in
+                if key.keyIsActive {
+                    key.stopKey()
+                }
+            }
+            
+            whiteKeyArray.forEach { key in
+                if key.keyIsActive {
+                    key.stopKey()
+                }
+            }
+            notePlaying = false
         }
     }
     
@@ -73,9 +143,11 @@ class PianoKeyboard: UIView, ButtonDelegate {
     
     func toggleKeyboard(){
         
-        if !isActive {
-            isActive = true
-            scaleTo(scaleTo: 1.0, time: 1)
+        if !keyboardIsActive {
+            keyboardIsActive = true
+            scaleTo(scaleTo: 1.0, time: 1, {
+                self.exitButton.fadeIn()
+            })
             let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2)
             moveViewTo(point, time: 1)
             whiteKeyArray.forEach { key in
@@ -85,8 +157,9 @@ class PianoKeyboard: UIView, ButtonDelegate {
                 key.toggleActive()
             }
         } else {
-            isActive = false
-            scaleTo(scaleTo: 0.05, time: 1)
+            keyboardIsActive = false
+            scaleTo(scaleTo: 0.12, time: 1)
+            exitButton.fadeOut()
             
             let bottomPadding = superview!.frame.height/30
             let selfPadding = frame.height

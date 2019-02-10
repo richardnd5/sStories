@@ -43,7 +43,7 @@ class HomePage: UIView {
         let width = frame.width/1.5
         let height = frame.width/3
         let padding = frame.height/30
-        let selfPadding = height*0.05
+        let selfPadding = height*0.12
         let x = frame.width/2-width/2
         let y = (frame.height-height/2-padding-selfPadding)
         let frame = CGRect(x: x, y: y, width: width, height: height)

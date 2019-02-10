@@ -8,6 +8,7 @@ class ExitButton: UIButton {
         super.init(frame: frame)
         setImage()
         setTouchEvents()
+        alpha = 0.0
     }
     
     private func setImage(){
@@ -21,6 +22,13 @@ class ExitButton: UIButton {
         addTarget(self, action: #selector(touchDown), for: .touchDown)
         addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
         addTarget(self, action: #selector(touchUpOutside), for: .touchUpOutside)
+    }
+    
+    func fadeIn(){
+        fadeTo(time: 1.0, opacity: 1.0)
+    }
+    func fadeOut(){
+        fadeTo(time: 1.0, opacity: 0.0)
     }
     
     // button touch events
