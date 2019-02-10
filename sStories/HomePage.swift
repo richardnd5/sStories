@@ -1,13 +1,13 @@
 import UIKit
 
 class HomePage: UIView {
-
+    
     private let title: UILabel = {
         let textView = UILabel()
         textView.textColor = .white
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.textAlignment = .center
-
+        
         textView.isUserInteractionEnabled = false
         textView.backgroundColor = .clear
         textView.font = UIFont(name: "Papyrus", size: 30)
@@ -17,7 +17,6 @@ class HomePage: UIView {
     weak var delegate : SceneDelegate?
     var background : BackgroundImage!
     var pianoKeyboard : PianoKeyboard!
-
     
     var aboutButton : Button!
     var readButton: Button!
@@ -31,7 +30,7 @@ class HomePage: UIView {
         createButtons()
         createPiano(frame: frame)
         setupLayout()
-
+        
         backgroundColor = .black
         alpha = 0
         layer.zPosition = 100
@@ -40,7 +39,7 @@ class HomePage: UIView {
     }
     
     func createPiano(frame: CGRect){
-        
+        // Ewww. no auto layout. That is gross.
         let width = frame.width/1.5
         let height = frame.width/3
         let padding = frame.height/30
@@ -51,9 +50,9 @@ class HomePage: UIView {
         
         pianoKeyboard = PianoKeyboard(frame: frame)
         addSubview(pianoKeyboard)
-
+        
     }
-    
+
     func addBackground(){
         let width = frame.height/1.3
         let height = frame.height/2.1
@@ -71,7 +70,7 @@ class HomePage: UIView {
         addSubview(aboutButton)
         
     }
-
+    
     func setupLayout(){
         
         let safe = safeAreaLayoutGuide
@@ -89,7 +88,7 @@ class HomePage: UIView {
         readButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         readButton.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -padding).isActive = true
         readButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -padding).isActive = true
-
+        
         aboutButton!.translatesAutoresizingMaskIntoConstraints = false
         aboutButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         aboutButton.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
@@ -98,10 +97,6 @@ class HomePage: UIView {
         
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        pianoKeyboard.toggleKeyboard()
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

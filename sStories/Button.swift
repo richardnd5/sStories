@@ -36,6 +36,8 @@ class Button: UIButton {
             tag = ButtonTypee.read.rawValue
         case "back":
             tag = ButtonTypee.back.rawValue
+        case "exit":
+            tag = ButtonTypee.back.rawValue
         default:
             tag = ButtonTypee.normal.rawValue
         }
@@ -44,14 +46,8 @@ class Button: UIButton {
     // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
-        
-        if sender!.tag == ButtonTypee.about.rawValue {
-            playSoundClip(.buttonDown)
-        } else if sender!.tag == ButtonTypee.read.rawValue {
-            playSoundClip(.buttonDown)
-        }  else if sender!.tag == ButtonTypee.back.rawValue {
-            playSoundClip(.buttonDown)
-        }
+        playSoundClip(.buttonDown)
+
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {

@@ -11,7 +11,7 @@ struct Blurb {
 }
 
 enum ButtonTypee: Int {
-    case about = 0, read, back, normal
+    case about = 0, read, back, normal, exit
 }
 
 enum MelodyType : CaseIterable {
