@@ -9,7 +9,7 @@ let blurbs = [
     Blurb(textBlurb: "Thank you to my father, David, who hand carved Templeton from a piece of wood.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and drawing the  images for the scenes.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to my dear friends, Peter and Tara for helping edit the story.", imageName: "Templeton"),
-    Blurb(textBlurb: "Thank you to my friends, Ivan, Jayson, Peter and Tara for providing feedback throughout the creation of the app.", imageName: "Templeton"),
+    Blurb(textBlurb: "Thank you to my friends, Ivan, Jayson, Peter, Tara, and Anthony for providing feedback throughout the creation of the app.", imageName: "Templeton"),
     Blurb(textBlurb: "Thank you to Aurelius Prochazka and the community of AudioKit for creating and maintaining the framework used for the audio portion of the app.", imageName: "Templeton"),
     Blurb(textBlurb: "And lastly, thank you to my sister, brother in law and nephew, Stroud for providing the inspiration and drive for the creation.", imageName: "Templeton"),
     Blurb(textBlurb: "With Utmost Sincerity and Love, Nathan", imageName: "Templeton"),

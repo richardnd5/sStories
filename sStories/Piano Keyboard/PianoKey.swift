@@ -6,6 +6,7 @@ class PianoKey : UIView {
     var type : keyType!
     var overlay = UIView()
     var keyIsActive = false
+    var audio : PianoKeyAudioFile!
     
     init(frame: CGRect, type: keyType, keyNumber: Int){
         super.init(frame: frame)
@@ -25,6 +26,9 @@ class PianoKey : UIView {
             backgroundColor = .black
             overlay.backgroundColor = .white
         }
+        
+        audio = PianoKeyAudioFile()
+        
     }
     
     func setupOverlay(){
@@ -45,23 +49,7 @@ class PianoKey : UIView {
         press.minimumPressDuration = 0
         addGestureRecognizer(press)
     }
-    
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        playKey()
-//    }
 
-//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        if !keyIsActive {
-//            playKey()
-//        } else {
-//            
-//        }
-//    }
-    
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        stopKey()
-//    }
-//
     @objc func handlePress(_ sender: UILongPressGestureRecognizer){
         if keyIsActive {
             if sender.state == .began {
@@ -75,13 +63,13 @@ class PianoKey : UIView {
     
     func playKey(){
         overlay.alpha = 0.4
-//        print("key number: \(keyNumber) played..")
+        audio.play()
         keyIsActive = true
     }
     
     func stopKey(){
         overlay.alpha = 0
-//        print("key number: \(keyNumber) stopped..")
+        audio.stop()
         keyIsActive = false
     }
     

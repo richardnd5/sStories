@@ -1,15 +1,15 @@
 import AudioKit
 
-class PageTurnPianoPling {
+class PianoKeyAudioFile {
     
     private var audioFile : AKAudioFile?
     var sampler = AKMIDISampler()
     var number : Int!
-
-    init(number: Int) {
+    
+    init() {
         
-        self.number = number
-        audioFile = loadAudioFile("turnPiano\(number)")
+//        self.number = number
+        audioFile = loadAudioFile("turnPiano8")
         setupSampler()
     }
     
@@ -30,12 +30,17 @@ class PageTurnPianoPling {
         Sound.sharedInstance.pianoMixer.connect(input: sampler)
     }
     
-    func playNote(){
-        do { try sampler.play(noteNumber: 60, velocity: 50, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+    func play(){
+        do { try sampler.play(noteNumber: 60, velocity: 120, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
     }
     
-    func stopNote(){
+    func stop(){
         do { try sampler.stop(noteNumber: 60, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
     }
+    
+    deinit {
+        print("de initing")
+    }
 }
+
 

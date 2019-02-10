@@ -15,14 +15,11 @@ class Sound {
     
 
     func setup(){
-        
-        
-        
+
         soundEffectMixer.volume = 0.3
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
         mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground)
         mainMixer.volume = 1.0
-        
         
         AudioKit.output = mainMixer
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
