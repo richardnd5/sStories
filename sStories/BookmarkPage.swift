@@ -11,6 +11,17 @@ class BookmarkPage: UIView {
         createTab()
         createContainer()
         setupLayout()
+        layer.zPosition = 800
+        createGestures()
+        
+    }
+    
+    func createGestures(){
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
+        addGestureRecognizer(panGesture)
+    }
+    
+    @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
         
     }
     

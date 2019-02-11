@@ -33,14 +33,21 @@ class ViewController: UIViewController, SceneDelegate {
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
     
-    
+    var bookmarkPage: BookmarkPage!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createHomePage()
+        createBookmark()
         
+    }
+    
+    func createBookmark(){
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        bookmarkPage = BookmarkPage(frame: frame)
+        view.addSubview(bookmarkPage)
     }
     
     func createHomePage(){
