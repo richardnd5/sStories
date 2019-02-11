@@ -27,25 +27,29 @@ class PianoKeyboard: UIView, ButtonDelegate {
         scaleTo(scaleTo: 0.12, time: 0.0)
         isExclusiveTouch = true
         
-        tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        addGestureRecognizer(tap)
+//        tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+//        addGestureRecognizer(tap)
+        
     }
     
-    @objc func handleTap(_ sender: UITapGestureRecognizer){
-        tap.isEnabled = false
-        toggleKeyboard()
-    }
+//    @objc func handleTap(_ sender: UITapGestureRecognizer){
+//        tap.isEnabled = false
+//        toggleKeyboard()
+//    }
     
     func exitButtonTapped(){
         toggleKeyboard()
-        tap.isEnabled = true
+//        tap.isEnabled = true
     }
     
     var keyPressed : PianoKey!
     var notePlaying = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if keyboardIsActive && !notePlaying {
+        if !keyboardIsActive {
+            playSoundClip(.buttonDown)
+            scaleTo(scaleTo: 0.08, time: 0.5)
+        } else if keyboardIsActive && !notePlaying {
             var activatedKey = false
                 for touch in touches {
                     //            if let touch = touches.first {
@@ -111,7 +115,10 @@ class PianoKeyboard: UIView, ButtonDelegate {
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if keyboardIsActive {
+        if !keyboardIsActive {
+            toggleKeyboard()
+            playSoundClip(.buttonUp)
+        } else {
             
             blackKeyArray.forEach { key in
                 if key.keyIsActive {
@@ -134,7 +141,6 @@ class PianoKeyboard: UIView, ButtonDelegate {
         let translatedPoint = exitButton.convert(point, from: self)
         
         if (exitButton.bounds.contains(translatedPoint)) {
-            print("Your button was pressed")
             return exitButton.hitTest(translatedPoint, with: event)
         }
         return super.hitTest(point, with: event)

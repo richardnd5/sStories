@@ -89,7 +89,6 @@ class AboutPage: UIView, UIScrollViewDelegate {
     }
     
     @objc func handleScrollUp(_ sender: UIButton){
-        print("scroll view button tapped.")
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
     
