@@ -177,6 +177,7 @@
 		868251F922121D3B0082D703 /* melody53.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868251C222121D3A0082D703 /* melody53.mp3 */; };
 		868251FA22121D3B0082D703 /* melody10.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868251C322121D3A0082D703 /* melody10.mp3 */; };
 		868251FF22121F140082D703 /* throwbackWater.png in Resources */ = {isa = PBXBuildFile; fileRef = 868251FE22121F140082D703 /* throwbackWater.png */; };
+		8682520522122CE20082D703 /* FrontPageKeyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8682520422122CE20082D703 /* FrontPageKeyboard */; };
 		868F9BE02207BE0700BBBFE3 /* throwbackDrag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9BDF2207BE0700BBBFE3 /* throwbackDrag.mp3 */; };
 		868F9BE42207C01500BBBFE3 /* showPageTurner.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9BE32207C01500BBBFE3 /* showPageTurner.mp3 */; };
 		868F9BE82207C0BC00BBBFE3 /* fishingWarning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 868F9BE72207C0BC00BBBFE3 /* fishingWarning.mp3 */; };
@@ -438,6 +439,7 @@
 		868251C222121D3A0082D703 /* melody53.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = melody53.mp3; sourceTree = "<group>"; };
 		868251C322121D3A0082D703 /* melody10.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = melody10.mp3; sourceTree = "<group>"; };
 		868251FE22121F140082D703 /* throwbackWater.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = throwbackWater.png; sourceTree = "<group>"; };
+		8682520422122CE20082D703 /* FrontPageKeyboard */ = {isa = PBXFileReference; lastKnownFileType = folder; path = FrontPageKeyboard; sourceTree = "<group>"; };
 		868F9BDF2207BE0700BBBFE3 /* throwbackDrag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = throwbackDrag.mp3; sourceTree = "<group>"; };
 		868F9BE32207C01500BBBFE3 /* showPageTurner.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = showPageTurner.mp3; sourceTree = "<group>"; };
 		868F9BE72207C0BC00BBBFE3 /* fishingWarning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fishingWarning.mp3; sourceTree = "<group>"; };
@@ -868,6 +870,7 @@
 				86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */,
 				86603C5321FC477B00A7921E /* StructsAndEnums.swift */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
+				8682520422122CE20082D703 /* FrontPageKeyboard */,
 				8698D85521BF149700ADED35 /* StoryLine.swift */,
 				8654702721ED208A00D1F068 /* AutoLayoutExtension.swift */,
 				86F1F6CA21FC3A5D001AD82D /* UIViewExtension.swift */,
@@ -1188,6 +1191,7 @@
 				86BBBF3321BB08FD00CB17F2 /* Assets.xcassets in Resources */,
 				868251CD22121D3B0082D703 /* melody49.mp3 in Resources */,
 				868251F422121D3B0082D703 /* melody17.mp3 in Resources */,
+				8682520522122CE20082D703 /* FrontPageKeyboard in Resources */,
 				86EE346F2204F4E8003218B6 /* sackDrag.mp3 in Resources */,
 				866EA6E721F413CF00B28BA6 /* turnPiano2.mp3 in Resources */,
 				8654706721EE82CA00D1F068 /* doubleBar.png in Resources */,

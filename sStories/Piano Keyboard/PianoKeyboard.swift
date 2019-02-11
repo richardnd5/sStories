@@ -1,4 +1,5 @@
 import UIKit
+import AudioKit
 
 enum keyType {
     case white
@@ -25,7 +26,7 @@ class PianoKeyboard: UIView, ButtonDelegate {
         drawKeyboard()
         createExitButton()
         scaleTo(scaleTo: 0.12, time: 0.0)
-        isExclusiveTouch = true
+//        isExclusiveTouch = true
         
 //        tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
 //        addGestureRecognizer(tap)
@@ -42,6 +43,8 @@ class PianoKeyboard: UIView, ButtonDelegate {
 //        tap.isEnabled = true
     }
     
+
+    
     var keyPressed : PianoKey!
     var notePlaying = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,7 +52,8 @@ class PianoKeyboard: UIView, ButtonDelegate {
         if !keyboardIsActive {
             playSoundClip(.buttonDown)
             scaleTo(scaleTo: 0.08, time: 0.5)
-        } else if keyboardIsActive && !notePlaying {
+        }
+            if keyboardIsActive {
             var activatedKey = false
                 for touch in touches {
                     //            if let touch = touches.first {
@@ -82,8 +86,12 @@ class PianoKeyboard: UIView, ButtonDelegate {
         if keyboardIsActive {
 
                 for touch in touches {
+                    
+                  print(touch.tapCount)
+                    
                     //            if let touch = touches.first {
                     let location = touch.location(in: self)
+                    
                     
                     if keyPressed.keyIsActive && !keyPressed.frame.contains(location){
                         keyPressed.stopKey()
@@ -217,9 +225,11 @@ class PianoKeyboard: UIView, ButtonDelegate {
         // add white keys
         for i in 0...Int(numberOfWhiteKeys)-1 {
             let fr = CGRect(x: whiteKeyWidth*CGFloat(i), y: 0, width: whiteKeyWidth, height: frame.height)
-            let key = PianoKey(frame: fr, type: .white, keyNumber: whiteKeyNumbers[i])
+            let key = PianoKey(frame: fr, type: .white, keyNumber: MIDINoteNumber(whiteKeyNumbers[i]))
             addSubview(key)
             whiteKeyArray.append(key)
+            let pan = UIPanGestureRecognizer(target: self, action: #selector(handleNotePan))
+            key.addGestureRecognizer(pan)
         }
         
         // add black keys
@@ -229,13 +239,20 @@ class PianoKeyboard: UIView, ButtonDelegate {
                     continue
                 } else {
                     let frame = CGRect(x: whiteKeyArray[i].frame.midX+blackKeyWidth/4, y: 0, width: blackKeyWidth, height: blackKeyHeight)
-                    let key = PianoKey(frame: frame, type: .black, keyNumber: blackKeyNumbers[i])
+                    let key = PianoKey(frame: frame, type: .black, keyNumber: MIDINoteNumber(blackKeyNumbers[i]))
                     addSubview(key)
                     blackKeyArray.append(key)
                     
                 }
             }
         }
+    }
+    
+    @objc func handleNotePan(_ sender: UIPanGestureRecognizer){
+        let key = sender.view as! PianoKey
+        print("\(key.keyNumber)\(sender.location(in: self))")
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

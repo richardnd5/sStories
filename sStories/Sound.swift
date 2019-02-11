@@ -12,19 +12,29 @@ class Sound {
     private var patternArray = [MelodyAudio]()
     var pageTurnSoundArray = [PageTurnPianoPling]()
     var pondBackground = PondAmbience()
+    var pianoSampler = AKSampler()
+
     
 
     func setup(){
 
         soundEffectMixer.volume = 0.3
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
-        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground)
+        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler)
         mainMixer.volume = 1.0
         
         AudioKit.output = mainMixer
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()
+        loadPianoSamples()
+    }
+    
+    func loadPianoSamples() {
+        let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("FrontPageKeyboard")
+        pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "frontPagePianoKeyboard.sfz")
+        pianoSampler.releaseDuration = 0.1
+        
     }
 
     func loadPageTurnSounds(){
@@ -96,5 +106,14 @@ class Sound {
         sequencer.rewind()
         sequencer.play()
     }
+    
+    func playNote(_ note: MIDINoteNumber){
+        pianoSampler.play(noteNumber: note, velocity: 127)
+    }
+    
+    func stopNote(_ note: MIDINoteNumber){
+        pianoSampler.stop(noteNumber: note)
+    }
+    
 }
 

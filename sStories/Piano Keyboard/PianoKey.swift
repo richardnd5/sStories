@@ -1,14 +1,15 @@
 import UIKit
+import AudioKit
 
 class PianoKey : UIView {
     
-    var keyNumber : Int!
+    var keyNumber : MIDINoteNumber!
     var type : keyType!
     var overlay = UIView()
     var keyIsActive = false
     var audio : PianoKeyAudioFile!
     
-    init(frame: CGRect, type: keyType, keyNumber: Int){
+    init(frame: CGRect, type: keyType, keyNumber: MIDINoteNumber){
         super.init(frame: frame)
         self.keyNumber = keyNumber
         self.type = type
@@ -44,32 +45,34 @@ class PianoKey : UIView {
         isUserInteractionEnabled.toggle()
     }
     
-    func setupTouchDown(){
-        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-        press.minimumPressDuration = 0
-        addGestureRecognizer(press)
-    }
+//    func setupTouchDown(){
+//        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+//        press.minimumPressDuration = 0
+//        addGestureRecognizer(press)
+//    }
 
-    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
-        if keyIsActive {
-            if sender.state == .began {
-                playKey()
-                
-            } else if sender.state == .ended {
-                stopKey()
-            }
-        }
-    }
+//    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
+//        if keyIsActive {
+//            if sender.state == .began {
+//                playKey()
+//                
+//            } else if sender.state == .ended {
+//                stopKey()
+//            }
+//        }
+//    }
     
     func playKey(){
         overlay.alpha = 0.4
-        audio.play()
+//        audio.play()
+        Sound.sharedInstance.playNote(keyNumber)
         keyIsActive = true
     }
     
     func stopKey(){
         overlay.alpha = 0
-        audio.stop()
+//        audio.stop()
+        Sound.sharedInstance.stopNote(keyNumber)
         keyIsActive = false
     }
     

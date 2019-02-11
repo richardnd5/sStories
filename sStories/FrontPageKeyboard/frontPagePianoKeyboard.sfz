@@ -1,0 +1,46 @@
+
+    
+    <group> lokey=60 hikey=62 pitch_keycenter=60 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample60.wv
+    
+    
+    
+    <group> lokey=63 hikey=65 pitch_keycenter=63 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample63.wv
+    
+    
+    
+    <group> lokey=66 hikey=68 pitch_keycenter=66 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample66.wv
+    
+    
+    
+    <group> lokey=69 hikey=71 pitch_keycenter=69 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample69.wv
+    
+    
+    
+    <group> lokey=72 hikey=74 pitch_keycenter=72 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample72.wv
+    
+    
+    
+    <group> lokey=75 hikey=77 pitch_keycenter=75 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample75.wv
+    
+    
+    
+    <group> lokey=78 hikey=80 pitch_keycenter=78 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample78.wv
+
+    
+    <group> lokey=81 hikey=83 pitch_keycenter=81 pitch_keytrack=1
+
+    <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample81.wv
