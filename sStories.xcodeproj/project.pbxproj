@@ -227,6 +227,7 @@
 		86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F4A621BF85AE00EE12DF /* Fishing.png */; };
 		86EBE0BF22134E600010D1C2 /* MiniPerformingNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EBE0BE22134E600010D1C2 /* MiniPerformingNoteView.swift */; };
 		86EBE0C322135BFA0010D1C2 /* waterPlink.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86EBE0C222135BFA0010D1C2 /* waterPlink.mp3 */; };
+		86EBE0C722136E850010D1C2 /* openingMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86EBE0C622136E850010D1C2 /* openingMusic.mp3 */; };
 		86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */; };
 		86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */; };
 		86ED756E21F0FF550066E2D8 /* arrangingBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 86ED756D21F0FF550066E2D8 /* arrangingBackground.png */; };
@@ -502,6 +503,7 @@
 		86E9F4A621BF85AE00EE12DF /* Fishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishing.png; sourceTree = "<group>"; };
 		86EBE0BE22134E600010D1C2 /* MiniPerformingNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPerformingNoteView.swift; sourceTree = "<group>"; };
 		86EBE0C222135BFA0010D1C2 /* waterPlink.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterPlink.mp3; sourceTree = "<group>"; };
+		86EBE0C622136E850010D1C2 /* openingMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = openingMusic.mp3; sourceTree = "<group>"; };
 		86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyImage.swift; sourceTree = "<group>"; };
 		86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangingBackground.swift; sourceTree = "<group>"; };
 		86ED756D21F0FF550066E2D8 /* arrangingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrangingBackground.png; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 				86EE34662204F4E7003218B6 /* fishOnLine.mp3 */,
 				86EE34652204F4E7003218B6 /* pageTurn.mp3 */,
 				86EE34692204F4E8003218B6 /* sackDrag.mp3 */,
+				86EBE0C622136E850010D1C2 /* openingMusic.mp3 */,
 				86B56D1B220956CD000F6394 /* nextStoryLine.mp3 */,
 				868F9BE32207C01500BBBFE3 /* showPageTurner.mp3 */,
 				22EA724A22091FE2008A2B23 /* fishingSackFull.mp3 */,
@@ -1117,6 +1120,7 @@
 				226A1A402202794900E47009 /* test32.mp3 in Resources */,
 				2298202D21F6F9D20070F49B /* Performance.png in Resources */,
 				868251CB22121D3B0082D703 /* melody46.mp3 in Resources */,
+				86EBE0C722136E850010D1C2 /* openingMusic.mp3 in Resources */,
 				866EA6E421F413CF00B28BA6 /* turnPiano5.mp3 in Resources */,
 				868251EE22121D3B0082D703 /* melody24.mp3 in Resources */,
 				86E9F49F21BF82F500EE12DF /* TalkingToCrowdAboutFishing.png in Resources */,

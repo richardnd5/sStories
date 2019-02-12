@@ -27,8 +27,8 @@ class PerformingScene: UIView {
         createPlayButton()
         
         // shortcut to story functions
-        fillSackWithMelodies()
-        Sound.sharedInstance.loadMelodyIntoSampler()
+//        fillSackWithMelodies()
+//        Sound.sharedInstance.loadMelodyIntoSampler()
         
         animator = UIDynamicAnimator(referenceView: self)
         

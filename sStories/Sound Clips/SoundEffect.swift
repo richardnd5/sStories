@@ -46,6 +46,7 @@ class SoundEffect {
     
     var setInterval = Timer()
     var firstLoop = true
+    
     func loop(){
         sampler.volume = volume
         if firstLoop {
@@ -59,11 +60,25 @@ class SoundEffect {
         })
     }
     
+    var fadeOutTimer = Timer()
+    var fadeOutCounter = 100
     func stopLoop(){
         setInterval.invalidate()
-        do { try sampler.stop(noteNumber: 60, channel: 1) } catch { print("couldn't stop the sampler. Why? \(error)")}
-        sampler.volume = 0.0
-        firstLoop = true
+        
+        fadeOutTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+            self.fadeOutCounter -= 1
+            
+            self.sampler.volume = self.fadeOutCounter/100
+            
+            if self.fadeOutCounter <= 0 {
+                self.fadeOutTimer.invalidate()
+                do { try self.sampler.stop(noteNumber: 60, channel: 1) } catch { print("couldn't stop the sampler. Why? \(error)")}
+                self.firstLoop = true
+                self.fadeOutCounter = 100
+            }
+        })
+        
+
     }
     
     func playRandomIntervalAndPitch(){

@@ -33,10 +33,12 @@ class MiniPerformingNoteView: UIView {
         
         layer.opacity = 0.0
         isUserInteractionEnabled = true
-        layer.cornerRadius = frame.height/4
+        layer.cornerRadius = frame.height/2
         
         fadeTo(time: 1.0, opacity: 1.0)
-        backgroundColor = UIColor(red: 137/255, green: 220/255, blue: 237/255, alpha: 1.0)
+        let randomNumber = CGFloat.random(in: 0.0...1.0)
+        backgroundColor = UIColor(hue: randomNumber, saturation: randomNumber, brightness: 1.0, alpha: 1.0)
+//        backgroundColor = UIColor(red: 137/255, green: 220/255, blue: 237/255, alpha: 1.0)
     }
     
     func makeNoteAppearFlyAwayAndFade(){
@@ -77,14 +79,6 @@ class MiniPerformingNoteView: UIView {
         let fromPoint = CGPoint(x: frame.midX, y: frame.midY)
         let toPoint = CGPoint(x: frame.midX-randX, y: frame.midY-randY)
         
-//        let position = CABasicAnimation(keyPath: "position")
-//
-//        position.fromValue = NSValue(cgPoint: fromPoint)
-//        position.toValue = NSValue(cgPoint: toPoint)
-//        position.duration = time
-//        position.fillMode = .forwards
-//        layer.add(position, forKey: "position")
-        
         let randomRotation = NSNumber(value: Double.random(in: -Double.pi...Double.pi))
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotation.toValue = randomRotation
@@ -118,7 +112,7 @@ class MiniPerformingNoteView: UIView {
     
     func addBlurredBorder(){
         maskLayer.frame = bounds
-        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/4, cornerHeight: frame.height/4, transform: nil)
+        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/2, cornerHeight: frame.height/2, transform: nil)
         maskLayer.shadowOpacity = 1;
         maskLayer.shadowOffset = CGSize.zero;
         maskLayer.shadowColor = UIColor.black.cgColor

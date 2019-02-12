@@ -49,6 +49,7 @@ let pages = [
 
 enum SoundEffects : String, CaseIterable {
     // name of sound and file name
+    case openingMusic = "openingMusic"
     case touchDown = "touchDown"
     case nextStoryLine = "nextStoryLine"
     case touchUp = "touchUp"

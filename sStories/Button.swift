@@ -59,6 +59,8 @@ class Button: UIButton {
         } else if sender!.tag == ButtonTypee.read.rawValue {
             delegate?.startStory()
             playSoundClip(.buttonUp)
+            stopLoopedSoundEffect(.openingMusic)
+            playSoundClip(.pageTurn)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()
             playSoundClip(.buttonUp)
