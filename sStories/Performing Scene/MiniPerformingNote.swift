@@ -4,11 +4,13 @@ class MiniPerformingNote: UIImageView {
     
     var noteImage = UIImage()
     var number = Int()
+    var maskLayer = CAGradientLayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupImage()
         makeNoteAppearFlyAwayAndFade()
+        addBlurredBorder()
     }
     
     func setupImage(){
@@ -19,8 +21,10 @@ class MiniPerformingNote: UIImageView {
         contentMode = .scaleAspectFit
         layer.opacity = 0.0
         isUserInteractionEnabled = true
+        layer.cornerRadius = frame.height/10
         
         fadeTo(time: 2.0, opacity: 1.0)
+        backgroundColor = UIColor(red: 137/255, green: 220/255, blue: 237/255, alpha: 1.0)
     }
     
     func makeNoteAppearFlyAwayAndFade(){
@@ -50,6 +54,15 @@ class MiniPerformingNote: UIImageView {
         layer.add(rotation, forKey: "rotation")
 
         fadeAndRemove(time: time)
+    }
+    
+    func addBlurredBorder(){
+        maskLayer.frame = bounds
+        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/10, cornerHeight: frame.height/10, transform: nil)
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowOffset = CGSize.zero;
+        maskLayer.shadowColor = UIColor.black.cgColor
+        layer.mask = maskLayer;
     }
     
     required init?(coder aDecoder: NSCoder) {

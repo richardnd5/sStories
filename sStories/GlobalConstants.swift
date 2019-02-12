@@ -56,6 +56,7 @@ enum SoundEffects : String, CaseIterable {
     case pageTurn = "pageTurn" //
     case buttonDown = "buttonDown"
     case buttonUp = "buttonUp"
+    case waterPlink = "waterPlink"
     
     case initialPondDrone = "test13"
     case fishingMelodyOnTheLine = "fishOnLine" //

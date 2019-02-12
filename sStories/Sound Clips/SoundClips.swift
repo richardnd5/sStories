@@ -27,6 +27,10 @@ class SoundClips {
         clips[name]!.play()
     }
     
+    func playPitched(_ name: SoundEffects){
+        clips[name]!.playPitched()
+    }
+    
     func playAtRandomIntervals(_ name: SoundEffects){
         clips[name]!.playRandomIntervalAndPitch()
     }

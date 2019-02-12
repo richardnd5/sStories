@@ -13,6 +13,10 @@ class PerformingScene: UIView {
     let timerRepetitions = 48
     var isPlaying = false
     
+    var animator: UIDynamicAnimator!
+    let gravityBehavior = UIGravityBehavior()
+    let collisionBehavior = UICollisionBehavior()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -25,12 +29,27 @@ class PerformingScene: UIView {
         // shortcut to story functions
         fillSackWithMelodies()
         Sound.sharedInstance.loadMelodyIntoSampler()
+        
+        animator = UIDynamicAnimator(referenceView: self)
+        
+        gravityBehavior.gravityDirection = CGVector(dx: 0, dy: 0)
+        animator.addBehavior(gravityBehavior)
+        
+        
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        animator.addBehavior(collisionBehavior)
+        
+
+        
+        
+        
+        
     }
     
     func setupBackgroundImage(){
         
         
-        let ourFrame = CGRect(x: 0, y: 0, width: frame.width/2, height: frame.height/2)
+        let ourFrame = CGRect(x: 0, y: 0, width: frame.height, height: frame.height)
         background = PerformingBackground(frame: ourFrame)
         addSubview(background!)
         
@@ -92,10 +111,11 @@ class PerformingScene: UIView {
             
             self.timeoutCounter += 1
             if self.timeoutCounter < self.timerRepetitions {
-                self.generateRandomMusicSymbols()
-//                self.switchPictureOnTimer()
-                // recursively call function
                 
+                if self.timeoutCounter % 4 == 0 {
+                    self.generateRandomMusicSymbols()
+                }
+
                 if self.timeoutCounter % 8 == 0 {
                     self.switchPicture()
                 }
@@ -112,16 +132,48 @@ class PerformingScene: UIView {
     
     func generateRandomMusicSymbols(){
         
-        
-        let randNum = Int.random(in: 1...3)
+        let randNum = Int.random(in: 1...1)
         for _ in 0...randNum {
             let width = frame.width/20
             let height = frame.width/20
             let x = CGFloat.random(in: frame.width/4...frame.width-frame.width/4)
             let y = CGFloat.random(in: frame.height/40...frame.height/2-frame.height/40)
-            let note = MiniPerformingNote(frame: CGRect(x: x, y: y, width: width, height: height))
+            let note = MiniPerformingNoteView(frame: CGRect(x: x, y: y, width: width, height: height))
             addSubview(note)
+            gravityBehavior.addItem(note)
+            collisionBehavior.addItem(note)
+            
+            let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
+            
+            let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
+            let randomMagnitude = CGFloat.random(in: 0...1)
+            
+            pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
+            animator.addBehavior(pushBehavior)
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+            note.addGestureRecognizer(tap)
+
         }
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer){
+        let note = sender.view as! MiniPerformingNoteView
+        note.shrinkRotateAndRemove()
+        
+        let randomClip = Int.random(in: 0...2)
+        switch randomClip {
+        case 0:
+            playPitchedClip(.waterPlink)
+        case 1:
+            playPitchedClip(.fishingThrowbackDrop)
+        case 2:
+            playPitchedClip(.fishingThrowbackDrag)
+        default:
+            playPitchedClip(.waterPlink)
+        }
+
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

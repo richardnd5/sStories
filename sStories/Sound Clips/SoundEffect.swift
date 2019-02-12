@@ -39,6 +39,11 @@ class SoundEffect {
         do { try sampler.play(noteNumber: 60, velocity: 100, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
     }
     
+    func playPitched(){
+        let randomNote = MIDINoteNumber.random(in: 59...64)
+        do { try sampler.play(noteNumber: randomNote, velocity: 120, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+    }
+    
     var setInterval = Timer()
     var firstLoop = true
     func loop(){

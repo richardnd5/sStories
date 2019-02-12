@@ -225,6 +225,8 @@
 		86E9F4A021BF82F500EE12DF /* SackOfMelodies.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49821BF82F500EE12DF /* SackOfMelodies.png */; };
 		86E9F4A121BF82F500EE12DF /* Town.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F49921BF82F500EE12DF /* Town.png */; };
 		86E9F4A721BF85AE00EE12DF /* Fishing.png in Resources */ = {isa = PBXBuildFile; fileRef = 86E9F4A621BF85AE00EE12DF /* Fishing.png */; };
+		86EBE0BF22134E600010D1C2 /* MiniPerformingNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EBE0BE22134E600010D1C2 /* MiniPerformingNoteView.swift */; };
+		86EBE0C322135BFA0010D1C2 /* waterPlink.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86EBE0C222135BFA0010D1C2 /* waterPlink.mp3 */; };
 		86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */; };
 		86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */; };
 		86ED756E21F0FF550066E2D8 /* arrangingBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 86ED756D21F0FF550066E2D8 /* arrangingBackground.png */; };
@@ -498,6 +500,8 @@
 		86E9F49821BF82F500EE12DF /* SackOfMelodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SackOfMelodies.png; sourceTree = "<group>"; };
 		86E9F49921BF82F500EE12DF /* Town.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Town.png; sourceTree = "<group>"; };
 		86E9F4A621BF85AE00EE12DF /* Fishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishing.png; sourceTree = "<group>"; };
+		86EBE0BE22134E600010D1C2 /* MiniPerformingNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPerformingNoteView.swift; sourceTree = "<group>"; };
+		86EBE0C222135BFA0010D1C2 /* waterPlink.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = waterPlink.mp3; sourceTree = "<group>"; };
 		86EC5B0121DACBCF00E115E0 /* MelodyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MelodyImage.swift; sourceTree = "<group>"; };
 		86ED756921F0F7030066E2D8 /* ArrangingBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrangingBackground.swift; sourceTree = "<group>"; };
 		86ED756D21F0FF550066E2D8 /* arrangingBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrangingBackground.png; sourceTree = "<group>"; };
@@ -651,6 +655,7 @@
 				8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */,
 				868F9C172207D25C00BBBFE3 /* touchUp.mp3 */,
 				86B56D1922095668000F6394 /* touchDown.mp3 */,
+				86EBE0C222135BFA0010D1C2 /* waterPlink.mp3 */,
 				868F9BDF2207BE0700BBBFE3 /* throwbackDrag.mp3 */,
 				868F9C212207EDDE00BBBFE3 /* castLine.mp3 */,
 				86EE34672204F4E8003218B6 /* arrangingDragSound.mp3 */,
@@ -817,6 +822,7 @@
 				869027E421F593B300C3EF0C /* PerformingScene.swift */,
 				869027E621F593DD00C3EF0C /* PerformingBackground.swift */,
 				869027E921F59B9F00C3EF0C /* MiniPerformingNote.swift */,
+				86EBE0BE22134E600010D1C2 /* MiniPerformingNoteView.swift */,
 			);
 			path = "Performing Scene";
 			sourceTree = "<group>";
@@ -1149,6 +1155,7 @@
 				862490D22212B99E00619BBE /* performingImage1.png in Resources */,
 				868251F722121D3B0082D703 /* melody28.mp3 in Resources */,
 				2251122C22024EAF0087747F /* test.mp3 in Resources */,
+				86EBE0C322135BFA0010D1C2 /* waterPlink.mp3 in Resources */,
 				866EA6E321F413CF00B28BA6 /* turnPiano1.mp3 in Resources */,
 				869027E321F5939E00C3EF0C /* performanceScene.png in Resources */,
 				86E9F49E21BF82F500EE12DF /* Mountain.png in Resources */,
@@ -1272,6 +1279,7 @@
 				869EF00021DBE1E600A4BC06 /* CatchOrThrowbackImage.swift in Sources */,
 				8654702821ED208A00D1F068 /* AutoLayoutExtension.swift in Sources */,
 				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
+				86EBE0BF22134E600010D1C2 /* MiniPerformingNoteView.swift in Sources */,
 				869027E721F593DD00C3EF0C /* PerformingBackground.swift in Sources */,
 				868F9C262207FD3600BBBFE3 /* PondAmbience.swift in Sources */,
 				22304D44220CD61D002CA8FD /* PianoKeyboard.swift in Sources */,

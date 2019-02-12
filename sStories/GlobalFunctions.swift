@@ -87,6 +87,10 @@ func playSoundClip(_ name: SoundEffects){
     SoundClips.sharedInstance.playSound(name)
 }
 
+func playPitchedClip(_ name: SoundEffects){
+    SoundClips.sharedInstance.playPitched(name)
+}
+
 func playRandomTriggeredSoundClip(_ name: SoundEffects){
     SoundClips.sharedInstance.playAtRandomIntervals(name)
 }
