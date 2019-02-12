@@ -31,6 +31,8 @@ class PianoKeyboard: UIView, ButtonDelegate {
 //        tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
 //        addGestureRecognizer(tap)
         
+//        let longPress = UILongPressGestureRecognizer(target: self, action: #selector())
+        
     }
     
 //    @objc func handleTap(_ sender: UITapGestureRecognizer){
@@ -82,65 +84,65 @@ class PianoKeyboard: UIView, ButtonDelegate {
     }
     
     var containsBlackNote = false
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if keyboardIsActive {
-
-                for touch in touches {
-                    
-                  print(touch.tapCount)
-                    
-                    //            if let touch = touches.first {
-                    let location = touch.location(in: self)
-                    
-                    
-                    if keyPressed.keyIsActive && !keyPressed.frame.contains(location){
-                        keyPressed.stopKey()
-                        notePlaying = false
-                        containsBlackNote = false
-                    }
-                    
-                    blackKeyArray.forEach { key in
-                        if key.frame.contains(location) && !key.keyIsActive && !notePlaying{
-                            key.playKey()
-                            notePlaying = true
-                            keyPressed.stopKey()
-                            keyPressed = key
-                            containsBlackNote = true
-                        }
-                    }
-                    
-                    whiteKeyArray.forEach { key in
-                        if key.frame.contains(location) && !key.keyIsActive && !containsBlackNote && !notePlaying {
-                            key.playKey()
-                            notePlaying = true
-                            keyPressed.stopKey()
-                            keyPressed = key
-                        }
-                    }
-                }
-        }
-    }
+//    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        if keyboardIsActive {
+//
+//                for touch in touches {
+//
+//                  print(touch.tapCount)
+//
+//                    //            if let touch = touches.first {
+//                    let location = touch.location(in: self)
+//
+//
+//                    if keyPressed.keyIsActive && !keyPressed.frame.contains(location){
+//                        keyPressed.stopKey()
+//                        notePlaying = false
+//                        containsBlackNote = false
+//                    }
+//
+//                    blackKeyArray.forEach { key in
+//                        if key.frame.contains(location) && !key.keyIsActive && !notePlaying{
+//                            key.playKey()
+//                            notePlaying = true
+//                            keyPressed.stopKey()
+//                            keyPressed = key
+//                            containsBlackNote = true
+//                        }
+//                    }
+//
+//                    whiteKeyArray.forEach { key in
+//                        if key.frame.contains(location) && !key.keyIsActive && !containsBlackNote && !notePlaying {
+//                            key.playKey()
+//                            notePlaying = true
+//                            keyPressed.stopKey()
+//                            keyPressed = key
+//                        }
+//                    }
+//                }
+//        }
+//    }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        if !keyboardIsActive {
-            toggleKeyboard()
-            playSoundClip(.buttonUp)
-        } else {
-            
-            blackKeyArray.forEach { key in
-                if key.keyIsActive {
-                    key.stopKey()
-                }
-            }
-            
-            whiteKeyArray.forEach { key in
-                if key.keyIsActive {
-                    key.stopKey()
-                }
-            }
-            notePlaying = false
-        }
+//        if !keyboardIsActive {
+//            toggleKeyboard()
+//            playSoundClip(.buttonUp)
+//        } else {
+//
+//            blackKeyArray.forEach { key in
+//                if key.keyIsActive {
+//                    key.stopKey()
+//                }
+//            }
+//
+//            whiteKeyArray.forEach { key in
+//                if key.keyIsActive {
+//                    key.stopKey()
+//                }
+//            }
+//            notePlaying = false
+//        }
     }
     
     // This function is used to detect touch events on views outside the superview's bounds

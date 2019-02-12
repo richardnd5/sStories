@@ -86,6 +86,11 @@ class Sound {
         }
     }
     
+    func loadMelodyIntoSampler(){
+        loadCollectedMelodies(collectedMelodies)
+        putMelodiesIntoSequencerInOrder()
+    }
+    
     func playPondBackground(){
         pondBackground.playLoop()
     }

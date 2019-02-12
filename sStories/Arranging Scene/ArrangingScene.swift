@@ -25,7 +25,7 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
-        fillSackWithMelodies()
+//        fillSackWithMelodies()
         
         //fade the view in
         alpha = 0.0
@@ -149,8 +149,7 @@ class ArrangingScene: UIView {
                         }
                         
                         if songFullyArranged() {
-                            Sound.sharedInstance.loadCollectedMelodies(collectedMelodies)
-                            Sound.sharedInstance.putMelodiesIntoSequencerInOrder()
+                            Sound.sharedInstance.loadMelodyIntoSampler()
                             playSoundClip(.arrangingAllMelodiesLocked)
                             stopAllMelodies()
                             instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")

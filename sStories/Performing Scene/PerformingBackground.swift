@@ -21,15 +21,15 @@ class PerformingBackground: UIImageView {
     
     func setupImage(){
         
-        image = resizedImage(name: "Performance", frame: frame, scale: 3)
+        image = resizedImage(name: "Performance", frame: frame, scale: 1)
         contentMode = .scaleAspectFit
         layer.zPosition = -10
         layer.cornerRadius = frame.height/10
-        clipsToBounds = true
+//        clipsToBounds = true
         layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         isUserInteractionEnabled = false
         
-        addBlurredBorder()
+//        addBlurredBorder()
         
     }
 

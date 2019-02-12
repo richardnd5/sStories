@@ -21,12 +21,24 @@ class PerformingScene: UIView {
         alpha = 0.0
         fadeTo(time: 1.5, opacity: 1.0)
         createPlayButton()
+        fillSackWithMelodies()
+        Sound.sharedInstance.loadMelodyIntoSampler()
     }
     
     func setupBackgroundImage(){
-        let ourFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+        
+        
+        let ourFrame = CGRect(x: 0, y: 0, width: frame.width/2, height: frame.height/2)
         background = PerformingBackground(frame: ourFrame)
         addSubview(background!)
+        
+        
+        let safe = safeAreaLayoutGuide
+        background?.translatesAutoresizingMaskIntoConstraints = false
+        background?.topAnchor.constraint(equalTo: safe.topAnchor).isActive = true
+        background?.leadingAnchor.constraint(equalTo: safe.leadingAnchor).isActive = true
+        background?.trailingAnchor.constraint(equalTo: safe.trailingAnchor).isActive = true
+        background?.bottomAnchor.constraint(equalTo: safe.bottomAnchor).isActive = true
     }
     
     func createPlayButton(){
@@ -58,12 +70,28 @@ class PerformingScene: UIView {
         }
     }
     
+    var pictureArraySlot : Int = 0
+    
+    func switchPicture(){
+        background?.fadeTo(time: 2.0, opacity: 0.0, {
+            self.background?.image = resizedImage(name: "performingImage\(self.pictureArraySlot)")
+            self.background?.fadeTo(time: 2.0, opacity: 1.0)
+            self.pictureArraySlot += 1
+        })
+    }
+    
     func timeout(){
         timer = Timer.scheduledTimer(withTimeInterval: 60/tempo, repeats: false, block:{_ in
             
             self.timeoutCounter += 1
             if self.timeoutCounter < self.timerRepetitions {
                 self.generateRandomMusicSymbols()
+//                self.switchPictureOnTimer()
+                // recursively call function
+                
+                if self.timeoutCounter % 4 == 0 {
+                    self.switchPicture()
+                }
                 self.timeout()
             } else {
                 self.timeoutCounter = 0
@@ -76,6 +104,7 @@ class PerformingScene: UIView {
     }
     
     func generateRandomMusicSymbols(){
+        
         
         let randNum = Int.random(in: 1...3)
         for _ in 0...randNum {
@@ -92,4 +121,5 @@ class PerformingScene: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
