@@ -27,6 +27,8 @@ class PageView: UIView {
     var sceneStoryPosition = 0
     var canActivate = false
     
+    var frameAfterSubviewLayout : CGRect!
+    
     init(frame: CGRect, page: Page) {
         super.init(frame: frame)
         imageName = page.imageName
@@ -35,6 +37,7 @@ class PageView: UIView {
         
         
         pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
+        
 
         storyTextView.text = page.storyText[sceneStoryPosition]
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
@@ -87,7 +90,51 @@ class PageView: UIView {
         
     }
     
+
+
+    
+    var maskLayer = CAGradientLayer()
+    func addBlurredBorder(){
+        maskLayer.frame = bounds
+        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/8, dy: frame.height/6), cornerWidth: frame.height/8, cornerHeight: frame.height/8, transform: nil)
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowRadius = frame.height/10
+        maskLayer.shadowOffset = CGSize.zero;
+        maskLayer.shadowColor = UIColor.black.cgColor
+        layer.mask = maskLayer;
+    }
+    
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+
+class LayerContainerView: UIView {
+    
+    override public class var layerClass: Swift.AnyClass {
+        return CAGradientLayer.self
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        guard let gradientLayer = self.layer as? CAGradientLayer else { return }
+        gradientLayer.colors = [
+            UIColor.blue.cgColor,
+            UIColor.cyan.cgColor
+        ]
+    }
+}
+
+
+open class LayerView<Layer: CALayer>: UIView {
+    public final override class var layerClass: Swift.AnyClass {
+        return Layer.self
+    }
+    
+    public final var concreteLayer: Layer {
+        return layer as! Layer
     }
 }

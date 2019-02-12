@@ -200,6 +200,9 @@ class ViewController: UIViewController, SceneDelegate {
             press.minimumPressDuration = 0.0
             page.addGestureRecognizer(press)
         }
+        if page != nil && currentPage == pages.count-1 && currentState == .story {
+            Sound.sharedInstance.playSequencer()
+        }
         
     }
     

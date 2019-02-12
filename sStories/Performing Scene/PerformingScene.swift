@@ -21,6 +21,8 @@ class PerformingScene: UIView {
         alpha = 0.0
         fadeTo(time: 1.5, opacity: 1.0)
         createPlayButton()
+        
+        // shortcut to story functions
         fillSackWithMelodies()
         Sound.sharedInstance.loadMelodyIntoSampler()
     }
@@ -73,11 +75,16 @@ class PerformingScene: UIView {
     var pictureArraySlot : Int = 0
     
     func switchPicture(){
-        background?.fadeTo(time: 2.0, opacity: 0.0, {
+        if pictureArraySlot <= 3 {
+        background?.fadeTo(time: 1.6, opacity: 0.0, {
             self.background?.image = resizedImage(name: "performingImage\(self.pictureArraySlot)")
-            self.background?.fadeTo(time: 2.0, opacity: 1.0)
+            self.background?.fadeTo(time: 1.6, opacity: 1.0)
             self.pictureArraySlot += 1
         })
+        }
+        if pictureArraySlot == 3 {
+            pictureArraySlot = 0
+        }
     }
     
     func timeout(){
@@ -89,7 +96,7 @@ class PerformingScene: UIView {
 //                self.switchPictureOnTimer()
                 // recursively call function
                 
-                if self.timeoutCounter % 4 == 0 {
+                if self.timeoutCounter % 8 == 0 {
                     self.switchPicture()
                 }
                 self.timeout()
