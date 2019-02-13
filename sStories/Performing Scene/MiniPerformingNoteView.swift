@@ -13,6 +13,7 @@ class MiniPerformingNoteView: UIView {
 //        makeNoteAppearFlyAwayAndFade()
         addBlurredBorder()
 //        makeNoteAppearAndFloat()
+        layer.zPosition = 1000
     }
     
     func setupImage(){

@@ -7,6 +7,7 @@ protocol SceneDelegate : class {
     func goToAboutPage()
     func startStory()
     func goToHomePage()
+    func addToScore()
 }
 
 class ViewController: UIViewController, SceneDelegate {
@@ -34,13 +35,108 @@ class ViewController: UIViewController, SceneDelegate {
     var pageTurner : PageTurner!
     
     var bookmarkPage: BookmarkPage!
+    var bubbleScore: BubbleScoreView!
     
+    var animator: UIDynamicAnimator!
+    let gravityBehavior = UIGravityBehavior()
+    let collisionBehavior = UICollisionBehavior()
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         createHomePage()
-//        createBookmark()
+        createBubbleScore()
+        setupAnimator()
+        createRandomBubblesAtRandomTimeInterval()
+        
+    }
+    
+    func setupAnimator(){
+        animator = UIDynamicAnimator(referenceView: self.view)
+        
+        gravityBehavior.gravityDirection = CGVector(dx: 0, dy: 0)
+        animator.addBehavior(gravityBehavior)
+        
+        
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
+        animator.addBehavior(collisionBehavior)
+    }
+    
+    func generateRandomMusicSymbols(){
+        
+        let randNum = Int.random(in: 1...1)
+        for _ in 0...randNum {
+            let width = view.frame.width/20
+            let height = view.frame.width/20
+            let x = CGFloat.random(in: view.frame.width/4...view.frame.width-view.frame.width/4)
+            let y = CGFloat.random(in: view.frame.height/40...view.frame.height/2-view.frame.height/40)
+            let note = MiniPerformingNoteView(frame: CGRect(x: x, y: y, width: width, height: height))
+            view.addSubview(note)
+            gravityBehavior.addItem(note)
+            collisionBehavior.addItem(note)
+            
+            let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
+            
+            let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
+            let randomMagnitude = CGFloat.random(in: 0...1)
+            
+            pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
+            animator.addBehavior(pushBehavior)
+            
+            let tap = UITapGestureRecognizer(target: self, action: #selector(handleBubblePop))
+            note.addGestureRecognizer(tap)
+            
+        }
+    }
+    
+    @objc func handleBubblePop(_ sender: UITapGestureRecognizer){
+        
+        bubbleScore.addToScore()
+        
+        let note = sender.view as! MiniPerformingNoteView
+        note.shrinkRotateAndRemove()
+        
+        let randomClip = Int.random(in: 0...2)
+        switch randomClip {
+        case 0:
+            playPitchedClip(.waterPlink)
+        case 1:
+            playPitchedClip(.fishingThrowbackDrop)
+        case 2:
+            playPitchedClip(.fishingThrowbackDrag)
+        default:
+            playPitchedClip(.waterPlink)
+        }
+    }
+    
+    var bubbleTimer = Timer()
+    
+    func createRandomBubblesAtRandomTimeInterval(){
+        bubbleTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            let randomNumber = Int.random(in: 0...10)
+            if randomNumber == 2 {
+                self.generateRandomMusicSymbols()
+            }
+        })
+    }
+    
+    func addToScore(){
+        bubbleScore.addToScore()
+    }
+    
+    func createBubbleScore(){
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width/10, height: view.frame.height/10)
+        bubbleScore = BubbleScoreView(frame: frame)
+        view.addSubview(bubbleScore)
+        bubbleScore.layer.zPosition = 900
+        
+        let safe = view.safeAreaLayoutGuide
+        bubbleScore.translatesAutoresizingMaskIntoConstraints = false
+        bubbleScore.topAnchor.constraint(equalTo: safe.topAnchor).isActive = true
+        bubbleScore.leadingAnchor.constraint(equalTo: safe.leadingAnchor).isActive = true
+        bubbleScore.heightAnchor.constraint(equalToConstant: view.frame.height/12).isActive = true
+        bubbleScore.widthAnchor.constraint(equalToConstant: view.frame.width/12).isActive = true
         
     }
     

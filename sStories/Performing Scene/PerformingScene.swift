@@ -39,15 +39,9 @@ class PerformingScene: UIView {
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collisionBehavior)
         
-
-        
-        
-        
-        
     }
     
     func setupBackgroundImage(){
-        
         
         let ourFrame = CGRect(x: 0, y: 0, width: frame.height, height: frame.height)
         background = PerformingBackground(frame: ourFrame)
