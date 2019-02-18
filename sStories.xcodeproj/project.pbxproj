@@ -275,6 +275,21 @@
 		220A1FF0220B8A21003180B8 /* scrollUpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollUpButton.png; sourceTree = "<group>"; };
 		220A1FF2220B8B63003180B8 /* whiteDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteDot.png; sourceTree = "<group>"; };
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		22205C79221A5AE7005466DC /* performingImage10.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage10.PNG; sourceTree = "<group>"; };
+		22205C7A221A5AE7005466DC /* performingImage9.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage9.PNG; sourceTree = "<group>"; };
+		22205C7B221A5AE7005466DC /* performingImage8.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage8.PNG; sourceTree = "<group>"; };
+		22205C7C221A5AE7005466DC /* performingImage2.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage2.PNG; sourceTree = "<group>"; };
+		22205C7D221A5AE8005466DC /* performingImage1.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage1.PNG; sourceTree = "<group>"; };
+		22205C7E221A5AE8005466DC /* TalkingToCrowdAboutFishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TalkingToCrowdAboutFishing.png; sourceTree = "<group>"; };
+		22205C7F221A5AE8005466DC /* performingImage3.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage3.PNG; sourceTree = "<group>"; };
+		22205C80221A5AE8005466DC /* performingImage4.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage4.PNG; sourceTree = "<group>"; };
+		22205C81221A5AE8005466DC /* performingImage0.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage0.PNG; sourceTree = "<group>"; };
+		22205C82221A5AE8005466DC /* Fishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishing.png; sourceTree = "<group>"; };
+		22205C83221A5AE8005466DC /* Mountain.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Mountain.PNG; sourceTree = "<group>"; };
+		22205C84221A5AE9005466DC /* performingImage5.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage5.PNG; sourceTree = "<group>"; };
+		22205C85221A5AE9005466DC /* ShowingCrowdSackOfMelodies.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowingCrowdSackOfMelodies.PNG; sourceTree = "<group>"; };
+		22205C86221A5AE9005466DC /* performingImage6.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage6.PNG; sourceTree = "<group>"; };
+		22205C87221A5AE9005466DC /* performingImage7.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage7.PNG; sourceTree = "<group>"; };
 		22304D43220CD61D002CA8FD /* PianoKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboard.swift; sourceTree = "<group>"; };
 		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		2251122D22024F7E0087747F /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -681,6 +696,21 @@
 			children = (
 				22C12C0421F7B716006D288F /* Performance Images */,
 				22EAC3252213F232000FB428 /* bubbleScoreNoteImage.png */,
+				22205C82221A5AE8005466DC /* Fishing.png */,
+				22205C83221A5AE8005466DC /* Mountain.PNG */,
+				22205C81221A5AE8005466DC /* performingImage0.PNG */,
+				22205C7D221A5AE8005466DC /* performingImage1.PNG */,
+				22205C7C221A5AE7005466DC /* performingImage2.PNG */,
+				22205C7F221A5AE8005466DC /* performingImage3.PNG */,
+				22205C80221A5AE8005466DC /* performingImage4.PNG */,
+				22205C84221A5AE9005466DC /* performingImage5.PNG */,
+				22205C86221A5AE9005466DC /* performingImage6.PNG */,
+				22205C87221A5AE9005466DC /* performingImage7.PNG */,
+				22205C7B221A5AE7005466DC /* performingImage8.PNG */,
+				22205C7A221A5AE7005466DC /* performingImage9.PNG */,
+				22205C79221A5AE7005466DC /* performingImage10.PNG */,
+				22205C85221A5AE9005466DC /* ShowingCrowdSackOfMelodies.PNG */,
+				22205C7E221A5AE8005466DC /* TalkingToCrowdAboutFishing.png */,
 				220A1FF2220B8B63003180B8 /* whiteDot.png */,
 				8654705921EE70D400D1F068 /* begin.png */,
 				869027E221F5939E00C3EF0C /* performanceScene.png */,
