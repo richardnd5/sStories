@@ -12,7 +12,7 @@ let storyline = [
     "You’ll see," said Templeton with gentle confidence.  He held his head high and went on his way.
     """,
     
-    "Up the big mountain, he trekked, fishing pole and tackle box in hand.",
+    "Up the big mountain, he trekked, fishing pole in hand.",
     
     "At last, Templeton came upon the magical pond.",
     

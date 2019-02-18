@@ -22,7 +22,7 @@ class PerformingBackground: UIImageView {
     func setupImage(){
         
         image = resizedImage(name: "Performance", frame: frame, scale: 1)
-        contentMode = .scaleAspectFill
+        contentMode = .scaleAspectFit
         layer.zPosition = -10
         layer.cornerRadius = frame.height/10
 //        clipsToBounds = true
