@@ -15,6 +15,17 @@
 		22205CA3221A5C89005466DC /* Fishing.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205C94221A5C88005466DC /* Fishing.png */; };
 		22205CA5221A5C89005466DC /* ShowingCrowdSackOfMelodies.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205C96221A5C89005466DC /* ShowingCrowdSackOfMelodies.png */; };
 		22205CAB221A5E49005466DC /* Performance.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CAA221A5E49005466DC /* Performance.png */; };
+		22205CB7221A5FF6005466DC /* performingImage2.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CAC221A5FF4005466DC /* performingImage2.png */; };
+		22205CB8221A5FF6005466DC /* performingImage4.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CAD221A5FF4005466DC /* performingImage4.png */; };
+		22205CB9221A5FF6005466DC /* performingImage1.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CAE221A5FF4005466DC /* performingImage1.png */; };
+		22205CBA221A5FF6005466DC /* performingImage0.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CAF221A5FF5005466DC /* performingImage0.png */; };
+		22205CBB221A5FF6005466DC /* performingImage7.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB0221A5FF5005466DC /* performingImage7.png */; };
+		22205CBC221A5FF6005466DC /* performingImage10.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB1221A5FF5005466DC /* performingImage10.png */; };
+		22205CBD221A5FF6005466DC /* performingImage5.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB2221A5FF5005466DC /* performingImage5.png */; };
+		22205CBE221A5FF6005466DC /* performingImage3.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB3221A5FF5005466DC /* performingImage3.png */; };
+		22205CBF221A5FF6005466DC /* performingImage6.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB4221A5FF6005466DC /* performingImage6.png */; };
+		22205CC0221A5FF6005466DC /* performingImage8.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB5221A5FF6005466DC /* performingImage8.png */; };
+		22205CC1221A5FF6005466DC /* performingImage9.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB6221A5FF6005466DC /* performingImage9.png */; };
 		22304D44220CD61D002CA8FD /* PianoKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22304D43220CD61D002CA8FD /* PianoKeyboard.swift */; };
 		2251122C22024EAF0087747F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122B22024EAF0087747F /* test.mp3 */; };
 		2251122E22024F7E0087747F /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* SoundEffect.swift */; };
@@ -284,6 +295,17 @@
 		22205C94221A5C88005466DC /* Fishing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fishing.png; sourceTree = "<group>"; };
 		22205C96221A5C89005466DC /* ShowingCrowdSackOfMelodies.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ShowingCrowdSackOfMelodies.png; sourceTree = "<group>"; };
 		22205CAA221A5E49005466DC /* Performance.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Performance.png; sourceTree = "<group>"; };
+		22205CAC221A5FF4005466DC /* performingImage2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage2.png; sourceTree = "<group>"; };
+		22205CAD221A5FF4005466DC /* performingImage4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage4.png; sourceTree = "<group>"; };
+		22205CAE221A5FF4005466DC /* performingImage1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage1.png; sourceTree = "<group>"; };
+		22205CAF221A5FF5005466DC /* performingImage0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage0.png; sourceTree = "<group>"; };
+		22205CB0221A5FF5005466DC /* performingImage7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage7.png; sourceTree = "<group>"; };
+		22205CB1221A5FF5005466DC /* performingImage10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage10.png; sourceTree = "<group>"; };
+		22205CB2221A5FF5005466DC /* performingImage5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage5.png; sourceTree = "<group>"; };
+		22205CB3221A5FF5005466DC /* performingImage3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage3.png; sourceTree = "<group>"; };
+		22205CB4221A5FF6005466DC /* performingImage6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage6.png; sourceTree = "<group>"; };
+		22205CB5221A5FF6005466DC /* performingImage8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage8.png; sourceTree = "<group>"; };
+		22205CB6221A5FF6005466DC /* performingImage9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage9.png; sourceTree = "<group>"; };
 		22304D43220CD61D002CA8FD /* PianoKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboard.swift; sourceTree = "<group>"; };
 		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		2251122D22024F7E0087747F /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -696,6 +718,17 @@
 				22205C8D221A5C87005466DC /* TalkingToCrowdAboutFishing.png */,
 				8654705921EE70D400D1F068 /* begin.png */,
 				869027E221F5939E00C3EF0C /* performanceScene.png */,
+				22205CAF221A5FF5005466DC /* performingImage0.png */,
+				22205CAE221A5FF4005466DC /* performingImage1.png */,
+				22205CAC221A5FF4005466DC /* performingImage2.png */,
+				22205CB3221A5FF5005466DC /* performingImage3.png */,
+				22205CAD221A5FF4005466DC /* performingImage4.png */,
+				22205CB2221A5FF5005466DC /* performingImage5.png */,
+				22205CB4221A5FF6005466DC /* performingImage6.png */,
+				22205CB0221A5FF5005466DC /* performingImage7.png */,
+				22205CB5221A5FF6005466DC /* performingImage8.png */,
+				22205CB6221A5FF6005466DC /* performingImage9.png */,
+				22205CB1221A5FF5005466DC /* performingImage10.png */,
 				22D3E104220FB9A200668C53 /* exit.png */,
 				220A1FF0220B8A21003180B8 /* scrollUpButton.png */,
 				86CC12E621FB8DCB00B9164B /* Templeton.png */,
@@ -1062,6 +1095,8 @@
 				868F9C1B2207D71000BBBFE3 /* buttonUp.mp3 in Resources */,
 				866AA1022208C412000FED54 /* FishingPoleNew.png in Resources */,
 				868251D222121D3B0082D703 /* melody23.mp3 in Resources */,
+				22205CBE221A5FF6005466DC /* performingImage3.png in Resources */,
+				22205CBB221A5FF6005466DC /* performingImage7.png in Resources */,
 				226A1A502202794900E47009 /* test8.mp3 in Resources */,
 				868251D822121D3B0082D703 /* melody20.mp3 in Resources */,
 				226A1A372202794900E47009 /* test23.mp3 in Resources */,
@@ -1069,6 +1104,7 @@
 				226A1A4F2202794900E47009 /* test24.mp3 in Resources */,
 				226A1A462202794900E47009 /* test11.mp3 in Resources */,
 				868F9C1C2207D71000BBBFE3 /* buttonDown.mp3 in Resources */,
+				22205CBD221A5FF6005466DC /* performingImage5.png in Resources */,
 				226A1A3D2202794900E47009 /* test22.mp3 in Resources */,
 				868251E822121D3B0082D703 /* melody38.mp3 in Resources */,
 				22C12C0321F7B70D006D288F /* musicSymbol10.png in Resources */,
@@ -1084,6 +1120,7 @@
 				868251CA22121D3B0082D703 /* melody26.mp3 in Resources */,
 				866AA1042208DC68000FED54 /* homePageBackground.png in Resources */,
 				868251CF22121D3B0082D703 /* melody30.mp3 in Resources */,
+				22205CC0221A5FF6005466DC /* performingImage8.png in Resources */,
 				226A1A342202794900E47009 /* test26.mp3 in Resources */,
 				868251DF22121D3B0082D703 /* melody2.mp3 in Resources */,
 				22EA724B22091FE2008A2B23 /* fishingSackFull.mp3 in Resources */,
@@ -1118,11 +1155,13 @@
 				86CC12E921FB8E7500B9164B /* playButton.png in Resources */,
 				868251CE22121D3B0082D703 /* melody1.mp3 in Resources */,
 				226A1A402202794900E47009 /* test32.mp3 in Resources */,
+				22205CC1221A5FF6005466DC /* performingImage9.png in Resources */,
 				22205CA5221A5C89005466DC /* ShowingCrowdSackOfMelodies.png in Resources */,
 				868251CB22121D3B0082D703 /* melody46.mp3 in Resources */,
 				866EA6E421F413CF00B28BA6 /* turnPiano5.mp3 in Resources */,
 				868251EE22121D3B0082D703 /* melody24.mp3 in Resources */,
 				8606403C220A23B6009D080E /* arrangingMelodiesAppear.mp3 in Resources */,
+				22205CBF221A5FF6005466DC /* performingImage6.png in Resources */,
 				2251123022025F360087747F /* test2.mp3 in Resources */,
 				226A1A422202794900E47009 /* test12.mp3 in Resources */,
 				868251C722121D3B0082D703 /* melody44.mp3 in Resources */,
@@ -1145,6 +1184,7 @@
 				868251D322121D3B0082D703 /* melody14.mp3 in Resources */,
 				868251E722121D3B0082D703 /* melody16.mp3 in Resources */,
 				868251D022121D3B0082D703 /* melody13.mp3 in Resources */,
+				22205CB9221A5FF6005466DC /* performingImage1.png in Resources */,
 				226A1A522202794900E47009 /* test15.mp3 in Resources */,
 				86CC12E721FB8DCB00B9164B /* Templeton.png in Resources */,
 				226A1A4B2202794900E47009 /* test18.mp3 in Resources */,
@@ -1162,10 +1202,13 @@
 				869027E321F5939E00C3EF0C /* performanceScene.png in Resources */,
 				86CC12E121FB818C00B9164B /* about.png in Resources */,
 				22C12BFA21F7B70D006D288F /* musicSymbol3.png in Resources */,
+				22205CBA221A5FF6005466DC /* performingImage0.png in Resources */,
+				22205CB7221A5FF6005466DC /* performingImage2.png in Resources */,
 				868251EF22121D3B0082D703 /* melody39.mp3 in Resources */,
 				867C542A21DF2FE7002E4255 /* melodyThumbnail.png in Resources */,
 				866EA6E521F413CF00B28BA6 /* turnPiano6.mp3 in Resources */,
 				868251F122121D3B0082D703 /* melody33.mp3 in Resources */,
+				22205CB8221A5FF6005466DC /* performingImage4.png in Resources */,
 				226A1A512202794900E47009 /* test19.mp3 in Resources */,
 				8654706021EE70D400D1F068 /* tonic.png in Resources */,
 				226A1A3B2202794900E47009 /* test30.mp3 in Resources */,
@@ -1208,6 +1251,7 @@
 				22C12C0221F7B70D006D288F /* musicSymbol1.png in Resources */,
 				863DADF721D40D5400AFDD94 /* Note.png in Resources */,
 				86EE346C2204F4E8003218B6 /* fishOnLine.mp3 in Resources */,
+				22205CBC221A5FF6005466DC /* performingImage10.png in Resources */,
 				22205C9C221A5C89005466DC /* TalkingToCrowdAboutFishing.png in Resources */,
 				22C12C0021F7B70D006D288F /* musicSymbol0.png in Resources */,
 				866EA6F121F42C7E00B28BA6 /* arrow.png in Resources */,
