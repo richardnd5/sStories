@@ -36,7 +36,8 @@ class HomePage: UIView {
         layer.zPosition = 100
         fadeTo(time: 1.5,opacity: 1.0)
         
-        loopSoundEffect(.openingMusic)
+//        loopSoundEffect(.openingMusic)
+        Sound.sharedInstance.openingMusic.loopOpeningMusic()
         
     }
     

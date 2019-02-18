@@ -59,7 +59,7 @@ class Button: UIButton {
         } else if sender!.tag == ButtonTypee.read.rawValue {
             delegate?.startStory()
             playSoundClip(.buttonUp)
-            stopLoopedSoundEffect(.openingMusic)
+            Sound.sharedInstance.openingMusic.stopLoop()
             playSoundClip(.pageTurn)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()

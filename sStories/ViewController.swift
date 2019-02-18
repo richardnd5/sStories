@@ -8,6 +8,7 @@ protocol SceneDelegate : class {
     func startStory()
     func goToHomePage()
     func addToScore()
+    func createRandomBubblesAtRandomTimeInterval(_ time: TimeInterval)
 }
 
 class ViewController: UIViewController, SceneDelegate {
@@ -41,6 +42,8 @@ class ViewController: UIViewController, SceneDelegate {
     let gravityBehavior = UIGravityBehavior()
     let collisionBehavior = UICollisionBehavior()
     
+    var bubblesArePlaying = false
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,16 +51,16 @@ class ViewController: UIViewController, SceneDelegate {
         createHomePage()
         createBubbleScore()
         setupAnimator()
-        createRandomBubblesAtRandomTimeInterval()
+        createRandomBubblesAtRandomTimeInterval(0.4)
         
     }
     
     func setupAnimator(){
+        
         animator = UIDynamicAnimator(referenceView: self.view)
         
         gravityBehavior.gravityDirection = CGVector(dx: 0, dy: 0)
         animator.addBehavior(gravityBehavior)
-        
         
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collisionBehavior)
@@ -65,8 +68,6 @@ class ViewController: UIViewController, SceneDelegate {
     
     func generateRandomMusicSymbols(){
         
-        let randNum = Int.random(in: 1...1)
-        for _ in 0...randNum {
             let width = view.frame.width/20
             let height = view.frame.width/20
             let x = CGFloat.random(in: view.frame.width/4...view.frame.width-view.frame.width/4)
@@ -79,22 +80,38 @@ class ViewController: UIViewController, SceneDelegate {
             let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
             
             let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
-            let randomMagnitude = CGFloat.random(in: 0...1)
+            let randomMagnitude = CGFloat.random(in: 0...0.3)
             
             pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
             animator.addBehavior(pushBehavior)
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleBubblePop))
             note.addGestureRecognizer(tap)
-            
-        }
+        
+            view.bringSubviewToFront(note)
     }
     
     @objc func handleBubblePop(_ sender: UITapGestureRecognizer){
+        let note = sender.view as! MiniPerformingNoteView
+        popBubble(note)
+    }
+    
+    var bubbleTimer = Timer()
+    
+    func createRandomBubblesAtRandomTimeInterval(_ time: TimeInterval = 1.0){
+        bubblesArePlaying = true
         
+        bubbleTimer = Timer.scheduledTimer(withTimeInterval: time, repeats: true, block: { _ in
+            let randomNumber = Int.random(in: 0...5)
+            if randomNumber == 2 {
+                self.generateRandomMusicSymbols()
+            }
+        })
+    }
+    
+    func popBubble(_ note: MiniPerformingNoteView){
         bubbleScore.addToScore()
         
-        let note = sender.view as! MiniPerformingNoteView
         note.shrinkRotateAndRemove()
         
         let randomClip = Int.random(in: 0...2)
@@ -110,15 +127,16 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
-    var bubbleTimer = Timer()
-    
-    func createRandomBubblesAtRandomTimeInterval(){
-        bubbleTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
-            let randomNumber = Int.random(in: 0...10)
-            if randomNumber == 2 {
-                self.generateRandomMusicSymbols()
+    func stopRandomBubbles(){
+        bubbleTimer.invalidate()
+        bubblesArePlaying = false
+        
+        view.subviews.forEach { view in
+            if view is MiniPerformingNoteView {
+                let note = view as! MiniPerformingNoteView
+                popBubble(note)
             }
-        })
+        }
     }
     
     func addToScore(){
@@ -195,6 +213,7 @@ class ViewController: UIViewController, SceneDelegate {
         
         // If the next page is a regular page
         if page != nil && currentPage < pages.count-1 && currentState == .story {
+
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage+=1
                 self.tempStoryLine = 0
@@ -270,22 +289,29 @@ class ViewController: UIViewController, SceneDelegate {
         if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
+            view.sendSubviewToBack(catchingMelody)
             catchingMelody?.delegate = self
             currentState = .fishing
+            createRandomBubblesAtRandomTimeInterval()
             
         } else if currentPage == switchToArrangingScene {
             arrangingScene = ArrangingScene(frame: view.frame)
             view.addSubview(arrangingScene!)
+            view.sendSubviewToBack(arrangingScene)
             arrangingScene?.delegate = self
             currentState = .arranging
             
         } else if currentPage == switchToPerformingScene {
             performingScene = PerformingScene(frame: view.frame)
             view.addSubview(performingScene!)
+            view.sendSubviewToBack(performingScene)
             performingScene?.delegate = self
             currentState = .performing
             
         } else {
+            if bubblesArePlaying {
+                stopRandomBubbles()
+            }
             currentState = .story
             page = PageView(frame: view.frame, page: pages[currentPage])
             view.addSubview(page!)
@@ -295,10 +321,12 @@ class ViewController: UIViewController, SceneDelegate {
             let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
             press.minimumPressDuration = 0.0
             page.addGestureRecognizer(press)
+            
+            view.sendSubviewToBack(page)
         }
-        if page != nil && currentPage == pages.count-1 && currentState == .story {
-            Sound.sharedInstance.playSequencer()
-        }
+//        if page != nil && currentPage == pages.count-1 && currentState == .story {
+//            Sound.sharedInstance.playSequencer()
+//        }
         
     }
     

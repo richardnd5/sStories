@@ -1,20 +1,18 @@
 import AudioKit
 
-class SoundEffect {
+class OpeningMusic {
     
     private var audioFile : AKAudioFile!
     var sampler = AKMIDISampler()
     var randomIntervalTimer = Timer()
-
-    var name : String!
+    
     var volume : Double!
     var firstTime = true
     
-    init(fileName: String, volume: Double = 1.0) {
+    init(volume: Double = 1.0) {
         self.volume = volume
-        audioFile = loadAudioFile("\(fileName)")
+        audioFile = loadAudioFile("openingMusic")
         setupSampler()
-        self.name = fileName
     }
     
     private func loadAudioFile(_ name: String) -> AKAudioFile{
@@ -60,17 +58,38 @@ class SoundEffect {
         })
     }
     
-
+    func loopOpeningMusic(){
+        sampler.volume = volume
+        if firstLoop {
+            firstLoop = false
+            do { try self.sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+        }
+        let length = audioFile.duration-0.5
+        setInterval = Timer.scheduledTimer(withTimeInterval: length, repeats: false, block: { _ in
+            do { try self.sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+            self.loop()
+        })
+    }
     
-    
-    
+    var fadeOutTimer = Timer()
+    var fadeOutCounter = 100
     func stopLoop(){
-        
-        sampler.volume = 0.0
         setInterval.invalidate()
-        do { try self.sampler.stop(noteNumber: 60, channel: 1) } catch { print("couldn't stop the sampler. Why? \(error)")}
-        self.firstLoop = true
-
+        
+        fadeOutTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+            self.fadeOutCounter -= 1
+            
+            self.sampler.volume = self.fadeOutCounter/100
+            
+            if self.fadeOutCounter <= 0 {
+                self.fadeOutTimer.invalidate()
+                do { try self.sampler.stop(noteNumber: 60, channel: 1) } catch { print("couldn't stop the sampler. Why? \(error)")}
+                self.firstLoop = true
+                self.fadeOutCounter = 100
+            }
+        })
+        
+        
     }
     
     func playRandomIntervalAndPitch(){
@@ -92,7 +111,7 @@ class SoundEffect {
         randomIntervalTimer.invalidate()
         firstTime = true
     }
-
+    
 }
 
 

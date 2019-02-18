@@ -37,11 +37,16 @@ class CatchingMelodies: UIView {
         createSackContainer()
         setAMelodyToBiteInTheFuture()
         startPondBackground()
+        delegate?.createRandomBubblesAtRandomTimeInterval(1.0)
         
         
         // Add a tap gesture to the view.
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
-        addGestureRecognizer(tapGesture)
+//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
+//        addGestureRecognizer(tapGesture)
+        
+        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleDownSwipe))
+        downSwipe.direction = .down
+        addGestureRecognizer(downSwipe)
         
         //fade the view in
         alpha = 0.0
@@ -92,12 +97,13 @@ class CatchingMelodies: UIView {
         // add keep label
         let height = frame.height/18
         let y = frame.height/60
+        let sidePadding = frame.width/14
         
-        instructionLabel = Label(frame: CGRect.zero, words: "Patiently, Templeton waiting for the first bite...", fontSize: height-height/10)
+        instructionLabel = Label(frame: CGRect.zero, words: "Patiently, Templeton waited for the first bite...", fontSize: height-height/10)
         
         addSubview(instructionLabel!)
         let safe = safeAreaLayoutGuide
-        instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: 0, bottom: 0, right: 0), size: .zero)
+        instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: sidePadding, bottom: 0, right: -sidePadding), size: .zero)
         instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18)
         
     }
@@ -220,6 +226,7 @@ class CatchingMelodies: UIView {
                 self.keepLabel?.fadeAndRemove(time: 1.0)
                 self.throwbackLabel?.fadeAndRemove(time: 1.0)
                 self.instructionLabel?.changeText(to: "What a great collection of melodies! Time to head back down the mountain.")
+                self.delegate?.returnToStory()
             })
         })
     }
@@ -253,7 +260,7 @@ class CatchingMelodies: UIView {
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
             self.sceneState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
-            self.instructionLabel?.changeText(to: "Ooh! A bite! Tap to reel it in!")
+            self.instructionLabel?.changeText(to: "Ooh! A bite! Swipe down to reel it in!")
             playRandomTriggeredSoundClip(.fishingMelodyOnTheLine)
         })
     }
@@ -419,21 +426,25 @@ class CatchingMelodies: UIView {
         }
     }
     
+    @objc func handleDownSwipe(_ sender: UISwipeGestureRecognizer){
+        if sender.state == .ended{
+            if sceneState == .fishing {
+                instructionLabel?.changeText(to: "Wait for a melody to bite!")
+                warningWiggle()
+                instructionLabel?.warningScaleUp()
+                playSoundClip(.fishingWarning)
+            }
+            
+            if sceneState == .fishOnTheLine {
+                decideWhatToDoWithTheMelody()
+                playSoundClip(.fishingPullMelodyOut)
+            }
+        }
+    }
+    
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
         
-        if sceneState == .fishing {
-            instructionLabel?.changeText(to: "Wait for a melody to bite!")
-            warningWiggle()
-            instructionLabel?.warningScaleUp()
-            playSoundClip(.fishingWarning)
-        }
-        
-        if sceneState == .fishOnTheLine {
-            decideWhatToDoWithTheMelody()
-            playSoundClip(.fishingPullMelodyOut)
-        } else if sceneState == .fishingDone {
-            delegate?.returnToStory()
-        }
+
         
     }
     

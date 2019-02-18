@@ -141,7 +141,7 @@ class PageTurner: UIView {
         let finalPlace = noteDestinationSlot?.frame.origin
 
         playNoteIfNotLastNotePlayed(7)
-        view.moveViewTo(CGPoint(x: (finalPlace?.x)!, y: penultimatePlace.minY), time: time, {
+        view.moveViewTo(CGPoint(x: (finalPlace?.x)!, y: penultimatePlace.minY), time: time*2, {
             
             self.playNoteIfNotLastNotePlayed(8)
             view.moveViewTo(finalPlace!, time: 0.6, {

@@ -24,7 +24,7 @@ class BubbleScoreView: UIView {
     func createLabel(){
         
         label = UILabel()
-        label.font = UIFont(name: "Papyrus", size: frame.width/10)
+        label.font = UIFont(name: "Papyrus", size: frame.width/8)
         label.textAlignment = .center
         label.textColor = .white
         label.text = "\(BubbleScoreView.score)    x    "
@@ -43,6 +43,10 @@ class BubbleScoreView: UIView {
     func addToScore(){
         BubbleScoreView.score += 1
         label.text = "\(BubbleScoreView.score)    x    "
+        
+        noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
+            self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4)
+        })
     }
     
     func setupLayout(){
