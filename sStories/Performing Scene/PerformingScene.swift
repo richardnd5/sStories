@@ -25,20 +25,6 @@ class PerformingScene: UIView {
         alpha = 0.0
         fadeTo(time: 1.5, opacity: 1.0)
         createPlayButton()
-        
-        // shortcut to story functions
-//        fillSackWithMelodies()
-//        Sound.sharedInstance.loadMelodyIntoSampler()
-        
-//        animator = UIDynamicAnimator(referenceView: self)
-//
-//        gravityBehavior.gravityDirection = CGVector(dx: 0, dy: 0)
-//        animator.addBehavior(gravityBehavior)
-//
-//
-//        collisionBehavior.translatesReferenceBoundsIntoBoundary = true
-//        animator.addBehavior(collisionBehavior)
-        
     }
     
     func setupBackgroundImage(){
