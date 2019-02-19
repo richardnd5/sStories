@@ -16,7 +16,7 @@ class HomePage: UIView {
     
     weak var delegate : SceneDelegate?
     var background : BackgroundImage!
-    var pianoKeyboard : PianoKeyboard!
+    var pianoKeyboard : PianoKeyboardNew!
     
     var aboutButton : Button!
     var readButton: Button!
@@ -34,10 +34,12 @@ class HomePage: UIView {
         backgroundColor = .black
         alpha = 0
         layer.zPosition = 100
-        fadeTo(time: 1.5,opacity: 1.0)
-        
-//        loopSoundEffect(.openingMusic)
         Sound.sharedInstance.openingMusic.loopOpeningMusic()
+        
+        
+        fadeTo(time: 1.5,opacity: 1.0,{
+            self.delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
+        })
         
     }
     
@@ -51,7 +53,7 @@ class HomePage: UIView {
         let y = (frame.height-height/2-padding-selfPadding)
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
-        pianoKeyboard = PianoKeyboard(frame: frame)
+        pianoKeyboard = PianoKeyboardNew(frame: frame)
         addSubview(pianoKeyboard)
         
     }

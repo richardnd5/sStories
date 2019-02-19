@@ -16,12 +16,11 @@ class Sound {
     
     var openingMusic : OpeningMusic!
 
-    
-
     func setup(){
 
         openingMusic = OpeningMusic()
         soundEffectMixer.volume = 0.3
+        pianoMixer.volume = 0.8
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
         mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler)
         mainMixer.volume = 1.0

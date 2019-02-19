@@ -65,7 +65,7 @@ class PerformingScene: UIView {
         if !isPlaying {
             isPlaying = true
             Sound.sharedInstance.playSequencer()
-            delegate?.createRandomBubblesAtRandomTimeInterval(1.0)
+            delegate?.createRandomBubblesAtRandomTimeInterval(time: 1.0)
             timeout()
             playButton?.fadeAndRemove(time: 2.0)
         }

@@ -36,13 +36,7 @@ class CatchingMelodies: UIView {
         createInstructionLabel()
         createSackContainer()
         setAMelodyToBiteInTheFuture()
-        startPondBackground()
-        delegate?.createRandomBubblesAtRandomTimeInterval(1.0)
-        
-        
-        // Add a tap gesture to the view.
-//        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMainTap))
-//        addGestureRecognizer(tapGesture)
+        startBackgroundSound()
         
         let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleDownSwipe))
         downSwipe.direction = .down
@@ -50,14 +44,16 @@ class CatchingMelodies: UIView {
         
         //fade the view in
         alpha = 0.0
-        fadeTo(time: 2.5, opacity: 1.0)
+        fadeTo(time: 2.5, opacity: 1.0, {
+            self.delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
+        })
     }
     
-    func startPondBackground(){
+    func startBackgroundSound(){
         Sound.sharedInstance.playPondBackground()
     }
     
-    func stopPondBackground(){
+    func stopBackgroundSound(){
         Sound.sharedInstance.stopPondBackground()
     }
     
@@ -210,6 +206,7 @@ class CatchingMelodies: UIView {
                 self.sceneState = .fishing
                 self.removeImagesFromCaughtMelodyScene()
                 self.instructionLabel?.changeText(to: "Let's wait for another bite!")
+                self.delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
             })
         })
     }
@@ -270,6 +267,7 @@ class CatchingMelodies: UIView {
         sceneState = .catchOrThrowBack
         stopRandomTriggeredSoundClip(.fishingMelodyOnTheLine)
         
+        
         fishingPole?.pullPoleOut({
             
             // dim the background pond image
@@ -281,6 +279,9 @@ class CatchingMelodies: UIView {
             self.createCatchOrThrowBackImages()
             self.createLabels()
             self.instructionLabel?.changeText(to: "Tap on the melody to hear it, then drag it to keep or throw it back.")
+            
+            self.delegate?.stopRandomBubbles()
+            
         })
     }
     

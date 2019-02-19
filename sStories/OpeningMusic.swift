@@ -75,7 +75,7 @@ class OpeningMusic {
     var fadeOutCounter = 100
     func stopLoop(){
         setInterval.invalidate()
-        
+        print("opening music stopping")
         fadeOutTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
             self.fadeOutCounter -= 1
             
@@ -89,21 +89,6 @@ class OpeningMusic {
             }
         })
         
-        
-    }
-    
-    func playRandomIntervalAndPitch(){
-        if firstTime {
-            firstTime = false
-            do { try self.sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
-        }
-        let randTimeInterval = TimeInterval.random(in: 0.3...0.6)
-        randomIntervalTimer = Timer.scheduledTimer(withTimeInterval: randTimeInterval, repeats: false, block: { _ in
-            let randomPitch = MIDINoteNumber.random(in: 54...70)
-            let randVel = MIDIVelocity.random(in: 80...127)
-            do { try self.sampler.play(noteNumber: randomPitch, velocity: randVel, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
-            self.playRandomIntervalAndPitch()
-        })
         
     }
     

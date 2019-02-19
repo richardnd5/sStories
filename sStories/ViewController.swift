@@ -8,7 +8,8 @@ protocol SceneDelegate : class {
     func startStory()
     func goToHomePage()
     func addToScore()
-    func createRandomBubblesAtRandomTimeInterval(_ time: TimeInterval)
+    func createRandomBubblesAtRandomTimeInterval(time: TimeInterval)
+    func stopRandomBubbles()
 }
 
 class ViewController: UIViewController, SceneDelegate {
@@ -50,8 +51,7 @@ class ViewController: UIViewController, SceneDelegate {
         
         createHomePage()
         createBubbleScore()
-        setupAnimator()
-        createRandomBubblesAtRandomTimeInterval(0.4)
+        setupAnimator()        
         
     }
     
@@ -98,7 +98,8 @@ class ViewController: UIViewController, SceneDelegate {
     
     var bubbleTimer = Timer()
     
-    func createRandomBubblesAtRandomTimeInterval(_ time: TimeInterval = 1.0){
+    func createRandomBubblesAtRandomTimeInterval(time: TimeInterval = 1.0){
+        print("startingh bubbles")
         bubblesArePlaying = true
         
         bubbleTimer = Timer.scheduledTimer(withTimeInterval: time, repeats: true, block: { _ in
@@ -128,6 +129,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func stopRandomBubbles(){
+        print("stopping bubbles.")
         bubbleTimer.invalidate()
         bubblesArePlaying = false
         
@@ -210,7 +212,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func nextPage() {
-        
+        stopRandomBubbles()
         // If the next page is a regular page
         if page != nil && currentPage < pages.count-1 && currentState == .story {
 
@@ -222,7 +224,7 @@ class ViewController: UIViewController, SceneDelegate {
             }
             // If the current page is the fishing page.
         } else if currentState == .fishing {
-            catchingMelody.stopPondBackground()
+            catchingMelody.stopBackgroundSound()
             catchingMelody.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
                 self.currentPage+=1
@@ -259,13 +261,16 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func startStory() {
+        Sound.sharedInstance.openingMusic.stopLoop()
         homePage.fadeAndRemove(time: 1.0) {
+            self.stopRandomBubbles()
             self.createPage()
         }
     }
     
     func goToAboutPage() {
         homePage.fadeAndRemove(time: 1.0) {
+            self.stopRandomBubbles()
             self.createAboutPage()
         }
     }
@@ -275,11 +280,12 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func returnToStoryFromArranging(){
-        Timer.scheduledTimer(withTimeInterval: 5.7, repeats: false, block:{_ in self.createPageTurner()})
+        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block:{_ in self.createPageTurner()})
     }
     
     func goToHomePage(){
         aboutPage.fadeAndRemove(time: 1.0) {
+            self.stopRandomBubbles()
             self.createHomePage()
         }
     }
@@ -292,7 +298,6 @@ class ViewController: UIViewController, SceneDelegate {
             view.sendSubviewToBack(catchingMelody)
             catchingMelody?.delegate = self
             currentState = .fishing
-            createRandomBubblesAtRandomTimeInterval()
             
         } else if currentPage == switchToArrangingScene {
             arrangingScene = ArrangingScene(frame: view.frame)

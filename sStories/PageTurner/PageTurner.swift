@@ -136,12 +136,12 @@ class PageTurner: UIView {
     }
     
     func triggerFinishAnimation(view: WholeNote){
-        let time = 0.5
+        let time = 0.7
         let penultimatePlace = lineContainer[3].frame
         let finalPlace = noteDestinationSlot?.frame.origin
 
         playNoteIfNotLastNotePlayed(7)
-        view.moveViewTo(CGPoint(x: (finalPlace?.x)!, y: penultimatePlace.minY), time: time*2, {
+        view.moveViewTo(CGPoint(x: (finalPlace?.x)!, y: penultimatePlace.minY), time: time, {
             
             self.playNoteIfNotLastNotePlayed(8)
             view.moveViewTo(finalPlace!, time: 0.6, {

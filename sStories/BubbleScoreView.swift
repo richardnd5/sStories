@@ -18,6 +18,7 @@ class BubbleScoreView: UIView {
         setupLayout()
 
         layer.cornerRadius = frame.width/50
+        alpha = 0.0
         
     }
     
@@ -41,12 +42,18 @@ class BubbleScoreView: UIView {
     }
     
     func addToScore(){
-        BubbleScoreView.score += 1
-        label.text = "\(BubbleScoreView.score)    x    "
         
-        noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
-            self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4)
+        fadeTo(time: 0.3, opacity: 1.0, {
+            BubbleScoreView.score += 1
+            self.label.text = "\(BubbleScoreView.score)    x    "
+            
+            self.noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
+                self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4, {
+                    self.fadeTo(time: 2.0, opacity: 0.0)
+                })
+            })
         })
+
     }
     
     func setupLayout(){
