@@ -1,11 +1,6 @@
 import UIKit
 import AudioKit
 
-enum keyType {
-    case white
-    case black
-}
-
 protocol ButtonDelegate : class {
     func exitButtonTapped()
 }
@@ -27,21 +22,10 @@ class PianoKeyboard: UIView, ButtonDelegate {
         createExitButton()
         scaleTo(scaleTo: 0.12, time: 0.0)
         
-        //        isExclusiveTouch = true
-        
-        //        tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        //        addGestureRecognizer(tap)
-        
-        //        let longPress = UILongPressGestureRecognizer(target: self, action: #selector())
-        
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         pan.maximumNumberOfTouches = 1
         addGestureRecognizer(pan)
-        
-        //        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-        //        longPress.minimumPressDuration = 0.0
-        //        addGestureRecognizer(longPress)
-        
+
     }
     
     
@@ -96,14 +80,14 @@ class PianoKeyboard: UIView, ButtonDelegate {
                 checkIfKeyPlayingInLocation(location)
             }
             else if sender.state == .ended {
-//                if sender.view!.frame.contains(location){
-                    if sender.view is PianoKey {
-                        let key = sender.view as! PianoKey
-                        key.stopKey()
-                        activatedKey.stopKey()
-                        activatedKey = nil
-                        keyPlaying = false
-//                    }
+                //                if sender.view!.frame.contains(location){
+                if sender.view is PianoKey {
+                    let key = sender.view as! PianoKey
+                    key.stopKey()
+                    activatedKey.stopKey()
+                    activatedKey = nil
+                    keyPlaying = false
+                    //                    }
                 }
             }
         }
@@ -130,138 +114,10 @@ class PianoKeyboard: UIView, ButtonDelegate {
         }
     }
     
-    //    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
-    //
-    //        if !keyboardIsActive && sender.state == .ended {
-    //            toggleKeyboard()
-    //        }
-    //
-    //        if keyboardIsActive {
-    //            let location = sender.location(in: self)
-    //            if sender.state == .began {
-    //                for view in subviews {
-    //                    if view.frame.contains(location) {
-    //                        let key = view as! PianoKey
-    //                        key.playKey()
-    //                    }
-    //                }
-    //            }
-    //            else if sender.state == .ended {
-    //                for view in subviews {
-    //                    if view.frame.contains(location) {
-    //                        let key = view as! PianoKey
-    //                            key.stopKey()
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    
-    //    var containsBlackNote = false
-    //
-    //    @objc func handlePan(_ sender: UIPanGestureRecognizer){
-    //
-    //        if keyboardIsActive {
-    //
-    //            let location = sender.location(in: self)
-    //
-    //            if sender.state == .changed {
-    //
-    //
-    //                if keyPressed.keyIsActive && !keyPressed.frame.contains(location){
-    //                    keyPressed.stopKey()
-    //                    notePlaying = false
-    //                    containsBlackNote = false
-    //                }
-    //
-    //                blackKeyArray.forEach { key in
-    //                    if key.frame.contains(location) && !key.keyIsActive && !notePlaying{
-    //                        key.playKey()
-    //                        notePlaying = true
-    //                        keyPressed.stopKey()
-    //                        keyPressed = key
-    //                        containsBlackNote = true
-    //                    }
-    //                }
-    //
-    //                whiteKeyArray.forEach { key in
-    //                    if key.frame.contains(location) && !key.keyIsActive && !containsBlackNote && !notePlaying {
-    //                        key.playKey()
-    //                        notePlaying = true
-    //                        keyPressed.stopKey()
-    //                        keyPressed = key
-    //                    }
-    //                }
-    //            }
-    //            else if sender.state == .ended || sender.state == .failed {
-    //                if keyPressed != nil && keyPressed.keyIsActive && keyPressed.frame.contains(location) {
-    //                    keyPressed.stopKey()
-    //                }
-    //            }
-    //        }
-    //    }
-    //    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //        if keyboardIsActive {
-    //            for touch in touches {
-    //                let location = touch.location(in: self)
-    //
-    //                if keyPressed != nil && keyPressed.keyIsActive && !keyPressed.frame.contains(location){
-    //                    keyPressed.stopKey()
-    //                    notePlaying = false
-    //                    containsBlackNote = false
-    //                }
-    //
-    //            }
-    //        }
-    //    }
-    
-    //    @objc func handleTap(_ sender: UITapGestureRecognizer){
-    //        tap.isEnabled = false
-    //        toggleKeyboard()
-    //    }
-    
     func exitButtonTapped(){
         toggleKeyboard()
-        //        tap.isEnabled = true
     }
-    
-    //    var keyPressed : PianoKey!
-    //    var notePlaying = false
-    
-    //    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    //
-    //        if !keyboardIsActive {
-    //            playSoundClip(.buttonUp)
-    //            toggleKeyboard()
-    //            //            scaleTo(scaleTo: 0.08, time: 0.5)
-    //        }
-    //        if keyboardIsActive {
-    //            var activatedKey = false
-    //            for touch in touches {
-    //                //            if let touch = touches.first {
-    //                let location = touch.location(in: self)
-    //
-    //                blackKeyArray.forEach { key in
-    //                    if key.frame.contains(location) {
-    //                        key.playKey()
-    //                        notePlaying = true
-    //                        keyPressed = key
-    //                        activatedKey = true
-    //                    }
-    //                }
-    //                if !activatedKey {
-    //                    whiteKeyArray.forEach { key in
-    //                        if key.frame.contains(location) {
-    //                            key.playKey()
-    //                            notePlaying = true
-    //                            keyPressed = key
-    //                            activatedKey = true
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
+
     
     // This function is used to detect touch events on views outside the superview's bounds
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -372,4 +228,5 @@ class PianoKeyboard: UIView, ButtonDelegate {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 

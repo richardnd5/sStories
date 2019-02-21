@@ -3,7 +3,6 @@ import UIKit
 class Button: UIButton {
     
     var name : String!
-//    weak var delegate : ButtonDelegate?
     weak var delegate : SceneDelegate?
     
     init(frame: CGRect, name: String) {
@@ -59,7 +58,7 @@ class Button: UIButton {
         } else if sender!.tag == ButtonTypee.read.rawValue {
             delegate?.startStory()
             playSoundClip(.buttonUp)
-            Sound.sharedInstance.openingMusic.stopLoop()
+//            Sound.sharedInstance.openingMusic.stopLoop()
             playSoundClip(.pageTurn)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()

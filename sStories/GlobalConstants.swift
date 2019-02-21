@@ -44,7 +44,8 @@ let pages = [
     Page(imageName: "Performance", storyText: storyline[13...14]),
     Page(imageName: "Performance", storyText: storyline[15...15]), // this is another dummy slot
     Page(imageName: "Performance", storyText: storyline[15...19]),
-    Page(imageName: "PondNew", storyText: storyline[20...22]),
+    Page(imageName: "PondNew", storyText: storyline[20...20]),
+    Page(imageName: "stars", storyText: storyline[21...22]),
 ]
 
 enum SoundEffects : String, CaseIterable {

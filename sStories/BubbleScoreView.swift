@@ -3,49 +3,43 @@ import UIKit
 class BubbleScoreView: UIView {
     
     var label : UILabel!
-//    var score : Int!
     var noteImage : UIImageView!
-    static var score = 0
+    var score = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        BubbleScoreView.score = 0
-        
-        noteImage = UIImageView()
-        createLabel()
+        setupLabel()
         setupImage()
         setupLayout()
 
-        layer.cornerRadius = frame.width/50
         alpha = 0.0
         
     }
     
-    func createLabel(){
+    func setupLabel(){
         
         label = UILabel()
         label.font = UIFont(name: "Papyrus", size: frame.width/8)
         label.textAlignment = .center
         label.textColor = .white
-        label.text = "\(BubbleScoreView.score)    x    "
+        label.text = "\(score)    x    "
         addSubview(label)
         
     }
     
     func setupImage(){
+        noteImage = UIImageView()
         noteImage.image = resizedImage(name: "bubbleScoreNoteImage")
         noteImage.contentMode = .scaleAspectFit
         addSubview(noteImage)
-//        noteImage.backgroundColor = UIColor(white: 0.8, alpha: 1.0)
-//        noteImage.layer.cornerRadius = frame.height/10
     }
     
     func addToScore(){
         
         fadeTo(time: 0.3, opacity: 1.0, {
-            BubbleScoreView.score += 1
-            self.label.text = "\(BubbleScoreView.score)    x    "
+            self.score += 1
+            self.label.text = "\(self.score)    x    "
             
             self.noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
                 self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4, {

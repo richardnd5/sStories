@@ -261,7 +261,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func startStory() {
-        Sound.sharedInstance.openingMusic.stopLoop()
+//        Sound.sharedInstance.openingMusic.stopLoop()
         homePage.fadeAndRemove(time: 1.0) {
             self.stopRandomBubbles()
             self.createPage()

@@ -10,9 +10,7 @@ class MiniPerformingNoteView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupImage()
-//        makeNoteAppearFlyAwayAndFade()
-        addBlurredBorder()
-//        makeNoteAppearAndFloat()
+        addBlurBorder(dx: frame.height/20, dy: frame.height/20, cornerWidth: frame.height/2, cornerHeight: frame.height/2)
         layer.zPosition = 1000
     }
     
@@ -39,7 +37,6 @@ class MiniPerformingNoteView: UIView {
         fadeTo(time: 1.0, opacity: 1.0)
         let randomNumber = CGFloat.random(in: 0.0...1.0)
         backgroundColor = UIColor(hue: randomNumber, saturation: randomNumber, brightness: 1.0, alpha: 1.0)
-//        backgroundColor = UIColor(red: 137/255, green: 220/255, blue: 237/255, alpha: 1.0)
     }
     
     func makeNoteAppearFlyAwayAndFade(){
@@ -109,15 +106,6 @@ class MiniPerformingNoteView: UIView {
         
         fadeAndRemove(time: time)
         
-    }
-    
-    func addBlurredBorder(){
-        maskLayer.frame = bounds
-        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/2, cornerHeight: frame.height/2, transform: nil)
-        maskLayer.shadowOpacity = 1;
-        maskLayer.shadowOffset = CGSize.zero;
-        maskLayer.shadowColor = UIColor.black.cgColor
-        layer.mask = maskLayer;
     }
     
     required init?(coder aDecoder: NSCoder) {

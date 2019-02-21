@@ -1,3 +1,5 @@
+// This class needs cleaning.
+
 import UIKit
 
 class AboutPage: UIView, UIScrollViewDelegate {
@@ -76,10 +78,12 @@ class AboutPage: UIView, UIScrollViewDelegate {
     }
     
     func createButtons() {
+        
         backButton = Button(frame: CGRect.zero, name: "back")
         addSubview(backButton)
         
         scrollUpButton = UIButton(frame: CGRect.zero)
+        
         let image = resizedImage(name: "scrollUpButton")
         scrollUpButton.contentMode = .scaleAspectFit
         scrollUpButton.setImage(image, for: .normal)

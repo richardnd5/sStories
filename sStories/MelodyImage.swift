@@ -13,13 +13,17 @@ class MelodyImage: UIImageView {
     var glowingOverlay : UIView!
     var initialPosition : CGPoint!
     
-    init(frame: CGRect, melody: Melody) {
+    init(frame: CGRect, melody: Melody, isThumbnail: Bool = false) {
         super.init(frame: frame)
 
         self.number = melody.number
         self.type = melody.type
         self.data = melody
         setupNote()
+        
+        if !isThumbnail {
+            addBlurBorder(dx: frame.height/20, dy: frame.height/20, cornerWidth: frame.height/10, cornerHeight: frame.height/10)
+        }
     }
     
     func setupNote(){
@@ -46,16 +50,8 @@ class MelodyImage: UIImageView {
         addSubview(glowingOverlay)
         glowingOverlay.fillSuperview()
     }
-
-    func addBlurredBorder(){
-        maskLayer.frame = bounds
-        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/10, cornerHeight: frame.height/10, transform: nil)
-        maskLayer.shadowOpacity = 1;
-        maskLayer.shadowOffset = CGSize.zero;
-        maskLayer.shadowColor = UIColor.black.cgColor
-        layer.mask = maskLayer;
-    }
-        
+    
+    
     private func startGlowingPulse(){
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         glow.fromValue = 0.0

@@ -10,7 +10,7 @@ class MiniPerformingNote: UIImageView {
         super.init(frame: frame)
         setupImage()
         makeNoteAppearFlyAwayAndFade()
-        addBlurredBorder()
+        addBlurBorder(dx: frame.height/20, dy: frame.height/20, cornerWidth: frame.height/10, cornerHeight: frame.height/10)
     }
     
     func setupImage(){
@@ -54,15 +54,6 @@ class MiniPerformingNote: UIImageView {
         layer.add(rotation, forKey: "rotation")
 
         fadeAndRemove(time: time)
-    }
-    
-    func addBlurredBorder(){
-        maskLayer.frame = bounds
-        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: frame.height/20, dy: frame.height/20), cornerWidth: frame.height/10, cornerHeight: frame.height/10, transform: nil)
-        maskLayer.shadowOpacity = 1;
-        maskLayer.shadowOffset = CGSize.zero;
-        maskLayer.shadowColor = UIColor.black.cgColor
-        layer.mask = maskLayer;
     }
     
     required init?(coder aDecoder: NSCoder) {

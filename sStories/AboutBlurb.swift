@@ -3,15 +3,14 @@ import UIKit
 class AboutBlurb: UIView {
     
     private let textBlurb: UILabel = {
-//        let textView = UILabel(frame: CGRect(x: 0, y: 0, width: ScreenSize.width, height: ScreenSize.height))
-        let textView = UILabel()
-        textView.textColor = .white
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textAlignment = .center
-        textView.numberOfLines = 0
-        textView.isUserInteractionEnabled = false
-        textView.backgroundColor = .clear
-        return textView
+        let label = UILabel()
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isUserInteractionEnabled = false
+        label.backgroundColor = .clear
+        return label
     }()
     
     private let imageView: UIImageView = {
@@ -30,29 +29,27 @@ class AboutBlurb: UIView {
         return view
     }()
 
-    
-    
     init(frame: CGRect, text: String, imageName: String = "8thThumb") {
         super.init(frame: frame)
         
         imageView.image = resizedImage(name: "\(imageName)")
     
-        
-        let fontSize : CGFloat = 30
         textBlurb.text = text
-        textBlurb.font = UIFont(name: "Papyrus", size: fontSize)
+        textBlurb.font = UIFont(name: "Papyrus", size: 30)
         textBlurb.minimumScaleFactor = 0.5
         textBlurb.adjustsFontSizeToFitWidth = true
         textBlurb.numberOfLines = 0
         
         setupLayout()
+        
         isUserInteractionEnabled = false
-        translatesAutoresizingMaskIntoConstraints = false
         
     }
     
     func setupLayout(){
         
+        translatesAutoresizingMaskIntoConstraints = false
+
         let safe = safeAreaLayoutGuide
         let padding : CGFloat = 60
         
@@ -82,7 +79,6 @@ class AboutBlurb: UIView {
         line.widthAnchor.constraint(equalToConstant: 60).isActive = true
         line.heightAnchor.constraint(equalToConstant: 1).isActive = true
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

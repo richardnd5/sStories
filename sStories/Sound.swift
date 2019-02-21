@@ -14,17 +14,15 @@ class Sound {
     var pondBackground = PondAmbience()
     var pianoSampler = AKSampler()
     
-    var openingMusic : OpeningMusic!
+//    var openingMusic = OpeningMusic()
 
     func setup(){
 
-        openingMusic = OpeningMusic()
         soundEffectMixer.volume = 0.3
         pianoMixer.volume = 0.8
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
         mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler)
         mainMixer.volume = 1.0
-        
         
         AudioKit.output = mainMixer
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
@@ -37,7 +35,6 @@ class Sound {
         let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("FrontPageKeyboard")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "frontPagePianoKeyboard.sfz")
         pianoSampler.releaseDuration = 0.1
-        
     }
 
     func loadPageTurnSounds(){

@@ -1,15 +1,16 @@
 import UIKit
 import AudioKit
 
+
 class PianoKey : UIView {
     
     var keyNumber : MIDINoteNumber!
-    var type : keyType!
+    var type : KeyType!
     var overlay = UIView()
     var keyIsActive = false
     var audio : PianoKeyAudioFile!
     
-    init(frame: CGRect, type: keyType, keyNumber: MIDINoteNumber){
+    init(frame: CGRect, type: KeyType, keyNumber: MIDINoteNumber){
         super.init(frame: frame)
         self.keyNumber = keyNumber
         self.type = type

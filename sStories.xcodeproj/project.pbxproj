@@ -26,10 +26,10 @@
 		22205CBF221A5FF6005466DC /* performingImage6.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB4221A5FF6005466DC /* performingImage6.png */; };
 		22205CC0221A5FF6005466DC /* performingImage8.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB5221A5FF6005466DC /* performingImage8.png */; };
 		22205CC1221A5FF6005466DC /* performingImage9.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB6221A5FF6005466DC /* performingImage9.png */; };
-		22304D44220CD61D002CA8FD /* PianoKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22304D43220CD61D002CA8FD /* PianoKeyboard.swift */; };
+		222758C3221C5AC7001C0314 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = 222758C2221C5AC7001C0314 /* stars.png */; };
 		224D964C221B230900EBF0D3 /* Town.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964B221B230900EBF0D3 /* Town.png */; };
 		224D9650221B26E400EBF0D3 /* performingImage1.5.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964F221B26E400EBF0D3 /* performingImage1.5.png */; };
-		224D9652221B5F2A00EBF0D3 /* PianoKeyboardNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D9651221B5F2A00EBF0D3 /* PianoKeyboardNew.swift */; };
+		224D9652221B5F2A00EBF0D3 /* PianoKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */; };
 		224D9654221B6F1500EBF0D3 /* performingImage0.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D9653221B6F1500EBF0D3 /* performingImage0.png */; };
 		2251122C22024EAF0087747F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122B22024EAF0087747F /* test.mp3 */; };
 		2251122E22024F7E0087747F /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* SoundEffect.swift */; };
@@ -97,6 +97,7 @@
 		22EA724B22091FE2008A2B23 /* fishingSackFull.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22EA724A22091FE2008A2B23 /* fishingSackFull.mp3 */; };
 		22EAC3242213E4B7000FB428 /* BubbleScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */; };
 		22EAC3262213F232000FB428 /* bubbleScoreNoteImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EAC3252213F232000FB428 /* bubbleScoreNoteImage.png */; };
+		22FF24CC221F62DA00A28C54 /* nextArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FF24CB221F62DA00A28C54 /* nextArrow.png */; };
 		8606403A220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86064039220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 */; };
 		8606403C220A23B6009D080E /* arrangingMelodiesAppear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8606403B220A23B6009D080E /* arrangingMelodiesAppear.mp3 */; };
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
@@ -309,10 +310,10 @@
 		22205CB4221A5FF6005466DC /* performingImage6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage6.png; sourceTree = "<group>"; };
 		22205CB5221A5FF6005466DC /* performingImage8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage8.png; sourceTree = "<group>"; };
 		22205CB6221A5FF6005466DC /* performingImage9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage9.png; sourceTree = "<group>"; };
-		22304D43220CD61D002CA8FD /* PianoKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboard.swift; sourceTree = "<group>"; };
+		222758C2221C5AC7001C0314 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
 		224D964B221B230900EBF0D3 /* Town.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Town.png; sourceTree = "<group>"; };
 		224D964F221B26E400EBF0D3 /* performingImage1.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage1.5.png; sourceTree = "<group>"; };
-		224D9651221B5F2A00EBF0D3 /* PianoKeyboardNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboardNew.swift; sourceTree = "<group>"; };
+		224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboard.swift; sourceTree = "<group>"; };
 		224D9653221B6F1500EBF0D3 /* performingImage0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage0.png; sourceTree = "<group>"; };
 		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		2251122D22024F7E0087747F /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -380,6 +381,7 @@
 		22EA724A22091FE2008A2B23 /* fishingSackFull.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fishingSackFull.mp3; sourceTree = "<group>"; };
 		22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleScoreView.swift; sourceTree = "<group>"; };
 		22EAC3252213F232000FB428 /* bubbleScoreNoteImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleScoreNoteImage.png; sourceTree = "<group>"; };
+		22FF24CB221F62DA00A28C54 /* nextArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextArrow.png; sourceTree = "<group>"; };
 		86064039220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingAllMelodiesLocked.mp3; sourceTree = "<group>"; };
 		8606403B220A23B6009D080E /* arrangingMelodiesAppear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingMelodiesAppear.mp3; sourceTree = "<group>"; };
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
@@ -664,8 +666,7 @@
 		22D3E103220FB6DD00668C53 /* Piano Keyboard */ = {
 			isa = PBXGroup;
 			children = (
-				22304D43220CD61D002CA8FD /* PianoKeyboard.swift */,
-				224D9651221B5F2A00EBF0D3 /* PianoKeyboardNew.swift */,
+				224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */,
 				22D3E101220FB69000668C53 /* PianoKey.swift */,
 				22D3E106220FBA3700668C53 /* ExitButton.swift */,
 				8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */,
@@ -721,10 +722,12 @@
 				220A1FF2220B8B63003180B8 /* whiteDot.png */,
 				22205C94221A5C88005466DC /* Fishing.png */,
 				22205C91221A5C88005466DC /* Mountain.png */,
+				22FF24CB221F62DA00A28C54 /* nextArrow.png */,
 				22205C96221A5C89005466DC /* ShowingCrowdSackOfMelodies.png */,
 				22205C8D221A5C87005466DC /* TalkingToCrowdAboutFishing.png */,
 				8654705921EE70D400D1F068 /* begin.png */,
 				869027E221F5939E00C3EF0C /* performanceScene.png */,
+				222758C2221C5AC7001C0314 /* stars.png */,
 				22205CAF221A5FF5005466DC /* performingImage1.75.png */,
 				22205CAE221A5FF4005466DC /* performingImage1.png */,
 				22205CAC221A5FF4005466DC /* performingImage2.png */,
@@ -1119,6 +1122,7 @@
 				22C12C0321F7B70D006D288F /* musicSymbol10.png in Resources */,
 				868251E122121D3B0082D703 /* melody19.mp3 in Resources */,
 				226A1A3C2202794900E47009 /* test10.mp3 in Resources */,
+				222758C3221C5AC7001C0314 /* stars.png in Resources */,
 				22C12BFF21F7B70D006D288F /* musicSymbol8.png in Resources */,
 				22C12C0121F7B70D006D288F /* musicSymbol9.png in Resources */,
 				226A1A382202794900E47009 /* test29.mp3 in Resources */,
@@ -1260,6 +1264,7 @@
 				868251E922121D3B0082D703 /* melody36.mp3 in Resources */,
 				22C12C0221F7B70D006D288F /* musicSymbol1.png in Resources */,
 				863DADF721D40D5400AFDD94 /* Note.png in Resources */,
+				22FF24CC221F62DA00A28C54 /* nextArrow.png in Resources */,
 				86EE346C2204F4E8003218B6 /* fishOnLine.mp3 in Resources */,
 				224D964C221B230900EBF0D3 /* Town.png in Resources */,
 				22205CBC221A5FF6005466DC /* performingImage10.png in Resources */,
@@ -1336,7 +1341,6 @@
 				86EBE0BF22134E600010D1C2 /* MiniPerformingNoteView.swift in Sources */,
 				869027E721F593DD00C3EF0C /* PerformingBackground.swift in Sources */,
 				868F9C262207FD3600BBBFE3 /* PondAmbience.swift in Sources */,
-				22304D44220CD61D002CA8FD /* PianoKeyboard.swift in Sources */,
 				860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */,
 				86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */,
 				866EA6ED21F42AAB00B28BA6 /* Arrow.swift in Sources */,
@@ -1344,7 +1348,7 @@
 				867C542621DF1E7B002E4255 /* SackContents.swift in Sources */,
 				22D3E102220FB69000668C53 /* PianoKey.swift in Sources */,
 				2251122E22024F7E0087747F /* SoundEffect.swift in Sources */,
-				224D9652221B5F2A00EBF0D3 /* PianoKeyboardNew.swift in Sources */,
+				224D9652221B5F2A00EBF0D3 /* PianoKeyboard.swift in Sources */,
 				866EA6F521F438DC00B28BA6 /* MiniNote.swift in Sources */,
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
 				866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */,

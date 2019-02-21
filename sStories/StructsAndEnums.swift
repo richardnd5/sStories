@@ -14,6 +14,11 @@ enum ButtonTypee: Int {
     case about = 0, read, back, normal, exit
 }
 
+enum KeyType {
+    case white
+    case black
+}
+
 enum MelodyType : CaseIterable {
     case begin
     case middle

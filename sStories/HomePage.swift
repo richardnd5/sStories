@@ -3,20 +3,18 @@ import UIKit
 class HomePage: UIView {
     
     private let title: UILabel = {
-        let textView = UILabel()
-        textView.textColor = .white
-        textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.textAlignment = .center
-        
-        textView.isUserInteractionEnabled = false
-        textView.backgroundColor = .clear
-        textView.font = UIFont(name: "Papyrus", size: 30)
-        return textView
+        let label = UILabel()
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.font = UIFont(name: "Papyrus", size: 30)
+        label.text = "Templeton's Fishing Journey"
+        return label
     }()
     
     weak var delegate : SceneDelegate?
     var background : BackgroundImage!
-    var pianoKeyboard : PianoKeyboardNew!
+    var pianoKeyboard : PianoKeyboard!
     
     var aboutButton : Button!
     var readButton: Button!
@@ -24,23 +22,18 @@ class HomePage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addBackground()
-        
-        title.text = "Templeton's Fishing Journey"
-        title.font = UIFont(name: "Papyrus", size: frame.width/20)
         createButtons()
-//        createPiano(frame: frame)
+
+        title.font = UIFont(name: "Papyrus", size: frame.width/20)
         setupLayout()
-        
-        backgroundColor = .black
+        //        createPiano(frame: frame)
+
         alpha = 0
-        layer.zPosition = 100
-        Sound.sharedInstance.openingMusic.loopOpeningMusic()
-        
+//        Sound.sharedInstance.openingMusic.loopOpeningMusic()
         
         fadeTo(time: 1.5,opacity: 1.0,{
             self.delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
         })
-        
     }
     
     func createPiano(frame: CGRect){
@@ -53,9 +46,8 @@ class HomePage: UIView {
         let y = (frame.height-height/2-padding-selfPadding)
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
-        pianoKeyboard = PianoKeyboardNew(frame: frame)
+        pianoKeyboard = PianoKeyboard(frame: frame)
         addSubview(pianoKeyboard)
-        
     }
 
     func addBackground(){

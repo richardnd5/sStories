@@ -50,6 +50,17 @@ extension UIView {
         self.layer.addSublayer(shapeLayer)
     }
     
+    func addBlurBorder(dx: CGFloat, dy: CGFloat, cornerWidth: CGFloat, cornerHeight: CGFloat, shadowRadius: CGFloat = 3){
+        var maskLayer = CAGradientLayer()
+        maskLayer.frame = bounds
+        maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: dx, dy: dy), cornerWidth: cornerWidth, cornerHeight: cornerHeight, transform: nil)
+        maskLayer.shadowOpacity = 1;
+        maskLayer.shadowRadius = shadowRadius
+        maskLayer.shadowOffset = CGSize.zero;
+        maskLayer.shadowColor = UIColor.black.cgColor
+        layer.mask = maskLayer;
+    }
+    
     func shrinkAndRemove(time: Double, _ completion: @escaping () ->() = {} ){
         
         UIView.animate(

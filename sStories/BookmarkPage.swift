@@ -1,10 +1,11 @@
+// This is currently usused.
+
 import UIKit
 
 class BookmarkPage: UIView {
     
     var tab : UIImageView!
     var pageContainer : UIView!
-    
     
     override init(frame: CGRect) {
         super.init(frame: frame)

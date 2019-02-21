@@ -141,7 +141,7 @@ class CatchingMelodies: UIView {
         
         // instantiate it
         melodyImage = MelodyImage(frame: CGRect(x: frame.width/2, y: frame.height/3, width: frame.height/4, height: frame.height/4), melody: randomNeededMelody)
-        melodyImage?.addBlurredBorder()
+
         addSubview(melodyImage!)
         
         // set the origin. (there has to be a better way to do this. How do you know the width and height before it is instantiated?)
@@ -306,7 +306,7 @@ class CatchingMelodies: UIView {
         let width = sackContents.melodySlotViews[openSlot].frame.width
         let height = sackContents.melodySlotViews[openSlot].frame.height
         
-        let view = MelodyImage(frame: CGRect(x: x, y: y, width: width, height: height), melody: melody)
+        let view = MelodyImage(frame: CGRect(x: x, y: y, width: width, height: height), melody: melody, isThumbnail: true)
         addSubview(view)
         view.initialPosition = CGPoint(x: x, y: y)
         view.data?.slotPosition = openSlot
