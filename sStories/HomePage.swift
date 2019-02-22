@@ -1,5 +1,7 @@
 import UIKit
 
+
+
 class HomePage: UIView {
     
     private let title: UILabel = {

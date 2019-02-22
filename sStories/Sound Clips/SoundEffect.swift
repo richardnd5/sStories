@@ -60,10 +60,6 @@ class SoundEffect {
         })
     }
     
-
-    
-    
-    
     func stopLoop(){
         
         sampler.volume = 0.0

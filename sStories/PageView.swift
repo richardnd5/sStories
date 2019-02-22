@@ -1,8 +1,21 @@
 import UIKit
 
+protocol PageDelegate : class {
+    func nextStoryLine()
+    func shrinkText()
+    func expandText()
+}
+
 class PageView: UIView {
     
     private let pageImage: UIImageView = {
+        var imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
+    private let nextImage: UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -22,6 +35,8 @@ class PageView: UIView {
         return textView
     }()
     
+    var nextButton : Button!
+    
     var imageName = String()
     var storyText : ArraySlice<String>?
     var sceneStoryPosition = 0
@@ -36,6 +51,7 @@ class PageView: UIView {
         sceneStoryPosition = page.storyText.startIndex
         
         pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
+//        nextImage.image = resizedImage(name: "nextArrow")
         
         storyTextView.text = page.storyText[sceneStoryPosition]
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
@@ -45,6 +61,10 @@ class PageView: UIView {
         fadeTo(time: 1.5, opacity: 1.0, {
             self.canActivate = true
         })
+    }
+    
+    func setupNextButton(){
+        
     }
 
     func nextStoryLine(){
@@ -85,6 +105,18 @@ class PageView: UIView {
         storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/5).isActive = true
         storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/5).isActive = true
+        storyTextView.sizeToFit()
+        
+        nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.height/20), name: "nextArrow")
+        addSubview(nextButton)
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+//        nextButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        nextButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30).isActive = true
+        nextButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
+        nextButton.leadingAnchor.constraint(equalTo: storyTextView.trailingAnchor).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
+
         
     }
     

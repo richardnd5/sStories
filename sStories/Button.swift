@@ -4,10 +4,12 @@ class Button: UIButton {
     
     var name : String!
     weak var delegate : SceneDelegate?
+    weak var pageDelegate : PageDelegate?
     
     init(frame: CGRect, name: String) {
         super.init(frame: frame)
         self.name = name
+        
         
         setImage()
         setTouchEvents()
@@ -37,8 +39,10 @@ class Button: UIButton {
             tag = ButtonTypee.back.rawValue
         case "exit":
             tag = ButtonTypee.back.rawValue
+        case "nextArrow":
+            tag = ButtonTypee.next.rawValue
         default:
-            tag = ButtonTypee.normal.rawValue
+            tag = ButtonTypee.next.rawValue
         }
     }
     
@@ -62,6 +66,9 @@ class Button: UIButton {
             playSoundClip(.pageTurn)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()
+            playSoundClip(.buttonUp)
+        }  else if sender!.tag == ButtonTypee.next.rawValue {
+            delegate?.nextMoment()
             playSoundClip(.buttonUp)
         }
     }

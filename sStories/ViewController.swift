@@ -4,6 +4,7 @@ protocol SceneDelegate : class {
     func returnToStory()
     func returnToStoryFromArranging()
     func nextPage()
+    func nextMoment()
     func goToAboutPage()
     func startStory()
     func goToHomePage()
@@ -323,9 +324,10 @@ class ViewController: UIViewController, SceneDelegate {
             let safe = view.safeAreaLayoutGuide
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
             
-            let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-            press.minimumPressDuration = 0.0
-            page.addGestureRecognizer(press)
+//            let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+//            press.minimumPressDuration = 0.0
+//            page.addGestureRecognizer(press)
+            page.nextButton.delegate = self
             
             view.sendSubviewToBack(page)
         }
@@ -338,25 +340,44 @@ class ViewController: UIViewController, SceneDelegate {
     @objc func handlePress(_ sender: UITapGestureRecognizer){
         
         
-        if sender.state == .began && page.canActivate {
-            playSoundClip(.touchDown)
-            page.shrinkText()
-        }
-        // if the page does exist... dun dun dun!!!
-        if sender.state == .ended {
-            if page?.superview != nil {
-                if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-                    page?.nextStoryLine()
-                    tempStoryLine += 1
-                    playSoundClip(.nextStoryLine)
+//        if sender.state == .began && page.canActivate {
+//            playSoundClip(.touchDown)
+//            page.shrinkText()
+//        }
+//        // if the page does exist... dun dun dun!!!
+//        if sender.state == .ended {
+//            if page?.superview != nil {
+//                if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+//                    page?.nextStoryLine()
+//                    tempStoryLine += 1
+//                    playSoundClip(.nextStoryLine)
+//                    page.expandText()
+//                } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+//                    if !pageTurnerVisible {
+//                        pageTurnerVisible = true
+//                        createPageTurner()
+//                        page.expandText()
+//                        page.canActivate = false
+//                    }
+//                }
+//            }
+//        }
+    }
+    
+    func nextMoment(){
+        print("running next moment")
+        if page?.superview != nil {
+            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                page?.nextStoryLine()
+                tempStoryLine += 1
+                playSoundClip(.nextStoryLine)
+                page.expandText()
+            } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+                if !pageTurnerVisible {
+                    pageTurnerVisible = true
+                    createPageTurner()
                     page.expandText()
-                } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-                    if !pageTurnerVisible {
-                        pageTurnerVisible = true
-                        createPageTurner()
-                        page.expandText()
-                        page.canActivate = false
-                    }
+                    page.canActivate = false
                 }
             }
         }
