@@ -1,21 +1,22 @@
 import UIKit
 
-class BackgroundImage: UIImageView {
+class HomePageBackgroundImage: UIImageView {
     
     var noteImage = UIImage()
+    var imageName : String!
     
     
-    override init(frame: CGRect) {
+    
+    init(frame: CGRect, _ imageName: String = "homePageBackground") {
         super.init(frame: frame)
+        self.imageName = imageName
         setupImage()
-        
-        addBlurBorder(dx: frame.height/8, dy: frame.height/6, cornerWidth: frame.height/8, cornerHeight: frame.height/8, shadowRadius: frame.height/10)
         
     }
     
     func setupImage(){
         
-        image = resizedImage(name: "homePageBackground")
+        image = resizedImage(name: imageName)
         contentMode = .scaleAspectFill
         layer.cornerRadius = frame.width/10
         clipsToBounds = true

@@ -15,8 +15,8 @@ class HomePage: UIView {
     }()
     
     weak var delegate : SceneDelegate?
-    var background : BackgroundImage!
-    var pianoKeyboard : PianoKeyboard!
+    var background : HomePageBackgroundImage!
+    var bubblePlayZone : BubblePlayZone!
     
     var aboutButton : Button!
     var readButton: Button!
@@ -25,38 +25,42 @@ class HomePage: UIView {
         super.init(frame: frame)
         addBackground()
         createButtons()
-
+        createBubblePlayZone(frame: frame)
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
         setupLayout()
-        //        createPiano(frame: frame)
+        
 
         alpha = 0
 //        Sound.sharedInstance.openingMusic.loopOpeningMusic()
         
         fadeTo(time: 1.5,opacity: 1.0,{
-            self.delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
+            self.startBubbles()
         })
     }
     
-    func createPiano(frame: CGRect){
+    func startBubbles(){
+        delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
+    }
+    
+    func createBubblePlayZone(frame: CGRect){
         // Ewww. no auto layout. That is gross.
         let width = frame.width/1.5
-        let height = frame.width/3
+        let height = frame.height/1.5
         let padding = frame.height/30
         let selfPadding = height*0.12
         let x = frame.width/2-width/2
         let y = (frame.height-height/2-padding-selfPadding)
         let frame = CGRect(x: x, y: y, width: width, height: height)
         
-        pianoKeyboard = PianoKeyboard(frame: frame)
-        addSubview(pianoKeyboard)
+        bubblePlayZone = BubblePlayZone(frame: frame)
+        addSubview(bubblePlayZone)
     }
 
     func addBackground(){
         let width = frame.height/1.3
         let height = frame.height/2.1
         let backgroundFrame = CGRect(x: frame.width/2-width/2, y: frame.height/2-height/2, width: width, height: height)
-        background = BackgroundImage(frame: backgroundFrame)
+        background = HomePageBackgroundImage(frame: backgroundFrame)
         addSubview(background)
     }
     

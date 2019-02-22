@@ -4,7 +4,6 @@ class BubbleScoreView: UIView {
     
     var label : UILabel!
     var noteImage : UIImageView!
-    var score = 0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -23,7 +22,7 @@ class BubbleScoreView: UIView {
         label.font = UIFont(name: "Papyrus", size: frame.width/8)
         label.textAlignment = .center
         label.textColor = .white
-        label.text = "\(score)    x    "
+        label.text = "\(totalBubbleScore)    x    "
         addSubview(label)
         
     }
@@ -38,8 +37,8 @@ class BubbleScoreView: UIView {
     func addToScore(){
         
         fadeTo(time: 0.3, opacity: 1.0, {
-            self.score += 1
-            self.label.text = "\(self.score)    x    "
+            totalBubbleScore += 1
+            self.label.text = "\(totalBubbleScore)    x    "
             
             self.noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
                 self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4, {

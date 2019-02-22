@@ -39,7 +39,7 @@ class ViewController: UIViewController, SceneDelegate {
     
     var bookmarkPage: BookmarkPage!
     var bubbleScore: BubbleScoreView!
-    
+
     var animator: UIDynamicAnimator!
     let gravityBehavior = UIGravityBehavior()
     let collisionBehavior = UICollisionBehavior()
@@ -172,6 +172,7 @@ class ViewController: UIViewController, SceneDelegate {
         view.addSubview(homePage)
         homePage.fillSuperview()
         homePage.delegate = self
+        homePage.bubblePlayZone.delegate = self
         setupDelegates()
     }
     

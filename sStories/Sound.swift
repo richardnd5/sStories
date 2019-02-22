@@ -14,6 +14,9 @@ class Sound {
     var pondBackground = PondAmbience()
     var pianoSampler = AKSampler()
     
+    var playZoneSequencer = AKSequencer()
+    var playZoneSequenceLength = AKDuration(beats: 8.0)
+    
 //    var openingMusic = OpeningMusic()
 
     func setup(){
@@ -29,6 +32,11 @@ class Sound {
         
         loadPageTurnSounds()
         loadPianoSamples()
+    }
+    
+    func setupPlayZonSequencer(){
+        
+        
     }
     
     func loadPianoSamples() {

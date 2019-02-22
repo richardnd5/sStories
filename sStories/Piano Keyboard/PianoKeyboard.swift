@@ -1,9 +1,9 @@
 import UIKit
 import AudioKit
 
-protocol ButtonDelegate : class {
-    func exitButtonTapped()
-}
+//protocol ButtonDelegate : class {
+//    func exitButtonTapped()
+//}
 
 class PianoKeyboard: UIView, ButtonDelegate {
     

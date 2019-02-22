@@ -103,6 +103,9 @@
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
 		86109E01222086CB001B6545 /* AudioFileSoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E00222086CB001B6545 /* AudioFileSoundEffect.swift */; };
 		86109E03222087D3001B6545 /* BubblePlayZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E02222087D3001B6545 /* BubblePlayZone.swift */; };
+		86109E0922209486001B6545 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E0822209486001B6545 /* BackgroundImage.swift */; };
+		86109E0B22209607001B6545 /* bubbleZoneBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 86109E0A22209607001B6545 /* bubbleZoneBackground.png */; };
+		86109E0E22209BB2001B6545 /* PlayZoneBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E0D22209BB2001B6545 /* PlayZoneBubble.swift */; };
 		8613AE64220FF1650035DE13 /* PianoKeyAudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */; };
 		861C788F21DC257E009D9612 /* sack.png in Resources */ = {isa = PBXBuildFile; fileRef = 861C788E21DC257E009D9612 /* sack.png */; };
 		862490C22212B3C300619BBE /* Cabin.png in Resources */ = {isa = PBXBuildFile; fileRef = 862490C12212B3C300619BBE /* Cabin.png */; };
@@ -128,7 +131,7 @@
 		8667BA20220559E700324598 /* placeMelodySound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8667BA1F220559E700324598 /* placeMelodySound.mp3 */; };
 		866AA1022208C412000FED54 /* FishingPoleNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 866AA1012208C412000FED54 /* FishingPoleNew.png */; };
 		866AA1042208DC68000FED54 /* homePageBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 866AA1032208DC68000FED54 /* homePageBackground.png */; };
-		866AA1082208F849000FED54 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866AA1072208F849000FED54 /* BackgroundImage.swift */; };
+		866AA1082208F849000FED54 /* HomePageBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866AA1072208F849000FED54 /* HomePageBackgroundImage.swift */; };
 		866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA64E21F282B900B28BA6 /* PageTurner.swift */; };
 		866EA65321F2889000B28BA6 /* wholeNote.png in Resources */ = {isa = PBXBuildFile; fileRef = 866EA65221F2888F00B28BA6 /* wholeNote.png */; };
 		866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EA65421F288CC00B28BA6 /* WholeNote.swift */; };
@@ -389,6 +392,9 @@
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
 		86109E00222086CB001B6545 /* AudioFileSoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileSoundEffect.swift; sourceTree = "<group>"; };
 		86109E02222087D3001B6545 /* BubblePlayZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblePlayZone.swift; sourceTree = "<group>"; };
+		86109E0822209486001B6545 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		86109E0A22209607001B6545 /* bubbleZoneBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleZoneBackground.png; sourceTree = "<group>"; };
+		86109E0D22209BB2001B6545 /* PlayZoneBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayZoneBubble.swift; sourceTree = "<group>"; };
 		8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyAudioFile.swift; sourceTree = "<group>"; };
 		861C788E21DC257E009D9612 /* sack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sack.png; sourceTree = "<group>"; };
 		862490C12212B3C300619BBE /* Cabin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cabin.png; sourceTree = "<group>"; };
@@ -414,7 +420,7 @@
 		8667BA1F220559E700324598 /* placeMelodySound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = placeMelodySound.mp3; sourceTree = "<group>"; };
 		866AA1012208C412000FED54 /* FishingPoleNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FishingPoleNew.png; sourceTree = "<group>"; };
 		866AA1032208DC68000FED54 /* homePageBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = homePageBackground.png; sourceTree = "<group>"; };
-		866AA1072208F849000FED54 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
+		866AA1072208F849000FED54 /* HomePageBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageBackgroundImage.swift; sourceTree = "<group>"; };
 		866EA64E21F282B900B28BA6 /* PageTurner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurner.swift; sourceTree = "<group>"; };
 		866EA65221F2888F00B28BA6 /* wholeNote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wholeNote.png; sourceTree = "<group>"; };
 		866EA65421F288CC00B28BA6 /* WholeNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WholeNote.swift; sourceTree = "<group>"; };
@@ -727,6 +733,7 @@
 				220A1FF2220B8B63003180B8 /* whiteDot.png */,
 				22205C94221A5C88005466DC /* Fishing.png */,
 				22205C91221A5C88005466DC /* Mountain.png */,
+				86109E0A22209607001B6545 /* bubbleZoneBackground.png */,
 				22FF24CB221F62DA00A28C54 /* nextArrow.png */,
 				22205C96221A5C89005466DC /* ShowingCrowdSackOfMelodies.png */,
 				22205C8D221A5C87005466DC /* TalkingToCrowdAboutFishing.png */,
@@ -780,6 +787,16 @@
 				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
 			);
 			path = "Image Assets";
+			sourceTree = "<group>";
+		};
+		86109E0C22209699001B6545 /* BubbleZone */ = {
+			isa = PBXGroup;
+			children = (
+				86109E02222087D3001B6545 /* BubblePlayZone.swift */,
+				86109E0822209486001B6545 /* BackgroundImage.swift */,
+				86109E0D22209BB2001B6545 /* PlayZoneBubble.swift */,
+			);
+			path = BubbleZone;
 			sourceTree = "<group>";
 		};
 		8654702F21ED2D8000D1F068 /* Arranging Scene */ = {
@@ -914,9 +931,9 @@
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */,
-				86109E02222087D3001B6545 /* BubblePlayZone.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
-				866AA1072208F849000FED54 /* BackgroundImage.swift */,
+				86109E0C22209699001B6545 /* BubbleZone */,
+				866AA1072208F849000FED54 /* HomePageBackgroundImage.swift */,
 				86CC12DE21FB7FD600B9164B /* AboutPage.swift */,
 				2284C3D42211035500EFFC53 /* BookmarkPage.swift */,
 				228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */,
@@ -1134,6 +1151,7 @@
 				226A1A382202794900E47009 /* test29.mp3 in Resources */,
 				86EE346E2204F4E8003218B6 /* sackDrop.mp3 in Resources */,
 				868251D722121D3B0082D703 /* melody35.mp3 in Resources */,
+				86109E0B22209607001B6545 /* bubbleZoneBackground.png in Resources */,
 				226A1A4C2202794900E47009 /* test34.mp3 in Resources */,
 				868F9C182207D25D00BBBFE3 /* touchUp.mp3 in Resources */,
 				868251CA22121D3B0082D703 /* melody26.mp3 in Resources */,
@@ -1324,7 +1342,7 @@
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				22A666C121FFD8270038220E /* Button.swift in Sources */,
-				866AA1082208F849000FED54 /* BackgroundImage.swift in Sources */,
+				866AA1082208F849000FED54 /* HomePageBackgroundImage.swift in Sources */,
 				86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */,
 				228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */,
 				220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */,
@@ -1359,8 +1377,10 @@
 				224D9652221B5F2A00EBF0D3 /* PianoKeyboard.swift in Sources */,
 				866EA6F521F438DC00B28BA6 /* MiniNote.swift in Sources */,
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
+				86109E0E22209BB2001B6545 /* PlayZoneBubble.swift in Sources */,
 				866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */,
 				866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */,
+				86109E0922209486001B6545 /* BackgroundImage.swift in Sources */,
 				86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */,
 				86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */,
 				228A6F3B2214853E007617A0 /* OpeningMusic.swift in Sources */,
