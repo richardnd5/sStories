@@ -32,9 +32,10 @@ class Sound {
         
         loadPageTurnSounds()
         loadPianoSamples()
+        setupPlayZoneSequencer()
     }
     
-    func setupPlayZonSequencer(){
+    func setupPlayZoneSequencer(){
         
         
     }
