@@ -9,6 +9,7 @@ class SoundClips {
         SoundEffects.allCases.forEach { (sound) in
             if sound == SoundEffects.nextStoryLine ||
                sound == SoundEffects.touchDown ||
+                sound == SoundEffects.touchUp ||
                sound == SoundEffects.fishingSackDrag ||
                sound == SoundEffects.fishingSackDrop ||
                sound == SoundEffects.arrangingDrag ||

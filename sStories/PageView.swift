@@ -40,7 +40,11 @@ class PageView: UIView {
     var imageName = String()
     var storyText : ArraySlice<String>?
     var sceneStoryPosition = 0
-    var canActivate = false
+    var canActivate = false {
+        didSet {
+            isUserInteractionEnabled = canActivate
+        }
+    }
     
     var frameAfterSubviewLayout : CGRect!
     
@@ -63,9 +67,6 @@ class PageView: UIView {
         })
     }
     
-    func setupNextButton(){
-        
-    }
 
     func nextStoryLine(){
         
@@ -107,11 +108,10 @@ class PageView: UIView {
         storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/5).isActive = true
         storyTextView.sizeToFit()
         
-        nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.height/20), name: "nextArrow")
+        nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
         addSubview(nextButton)
+        nextButton.alpha = 0.8
         nextButton.translatesAutoresizingMaskIntoConstraints = false
-//        nextButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        nextButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30).isActive = true
         nextButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
         nextButton.leadingAnchor.constraint(equalTo: storyTextView.trailingAnchor).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true

@@ -101,6 +101,8 @@
 		8606403A220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86064039220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 */; };
 		8606403C220A23B6009D080E /* arrangingMelodiesAppear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8606403B220A23B6009D080E /* arrangingMelodiesAppear.mp3 */; };
 		860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860AD9E621C309FD0052577B /* CatchingMelodies.swift */; };
+		86109E01222086CB001B6545 /* AudioFileSoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E00222086CB001B6545 /* AudioFileSoundEffect.swift */; };
+		86109E03222087D3001B6545 /* BubblePlayZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E02222087D3001B6545 /* BubblePlayZone.swift */; };
 		8613AE64220FF1650035DE13 /* PianoKeyAudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */; };
 		861C788F21DC257E009D9612 /* sack.png in Resources */ = {isa = PBXBuildFile; fileRef = 861C788E21DC257E009D9612 /* sack.png */; };
 		862490C22212B3C300619BBE /* Cabin.png in Resources */ = {isa = PBXBuildFile; fileRef = 862490C12212B3C300619BBE /* Cabin.png */; };
@@ -385,6 +387,8 @@
 		86064039220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingAllMelodiesLocked.mp3; sourceTree = "<group>"; };
 		8606403B220A23B6009D080E /* arrangingMelodiesAppear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingMelodiesAppear.mp3; sourceTree = "<group>"; };
 		860AD9E621C309FD0052577B /* CatchingMelodies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchingMelodies.swift; sourceTree = "<group>"; };
+		86109E00222086CB001B6545 /* AudioFileSoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileSoundEffect.swift; sourceTree = "<group>"; };
+		86109E02222087D3001B6545 /* BubblePlayZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblePlayZone.swift; sourceTree = "<group>"; };
 		8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyAudioFile.swift; sourceTree = "<group>"; };
 		861C788E21DC257E009D9612 /* sack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sack.png; sourceTree = "<group>"; };
 		862490C12212B3C300619BBE /* Cabin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cabin.png; sourceTree = "<group>"; };
@@ -581,6 +585,7 @@
 			children = (
 				226A1A102202713F00E47009 /* SoundClips.swift */,
 				2251122D22024F7E0087747F /* SoundEffect.swift */,
+				86109E00222086CB001B6545 /* AudioFileSoundEffect.swift */,
 				868F9C252207FD3600BBBFE3 /* PondAmbience.swift */,
 			);
 			path = "Sound Clips";
@@ -909,6 +914,7 @@
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */,
+				86109E02222087D3001B6545 /* BubblePlayZone.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
 				866AA1072208F849000FED54 /* BackgroundImage.swift */,
 				86CC12DE21FB7FD600B9164B /* AboutPage.swift */,
@@ -1329,6 +1335,7 @@
 				8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */,
 				22EAC3242213E4B7000FB428 /* BubbleScoreView.swift in Sources */,
 				8665697B21F060900086D432 /* PlayButton.swift in Sources */,
+				86109E03222087D3001B6545 /* BubblePlayZone.swift in Sources */,
 				86603C5521FC477C00A7921E /* StructsAndEnums.swift in Sources */,
 				869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */,
 				2284C3D52211035500EFFC53 /* BookmarkPage.swift in Sources */,
@@ -1343,6 +1350,7 @@
 				868F9C262207FD3600BBBFE3 /* PondAmbience.swift in Sources */,
 				860AD9E721C309FD0052577B /* CatchingMelodies.swift in Sources */,
 				86ED756A21F0F7030066E2D8 /* ArrangingBackground.swift in Sources */,
+				86109E01222086CB001B6545 /* AudioFileSoundEffect.swift in Sources */,
 				866EA6ED21F42AAB00B28BA6 /* Arrow.swift in Sources */,
 				86BBBF2921BB08FD00CB17F2 /* AppDelegate.swift in Sources */,
 				867C542621DF1E7B002E4255 /* SackContents.swift in Sources */,

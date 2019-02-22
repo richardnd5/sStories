@@ -48,6 +48,7 @@ class SoundEffect {
     var firstLoop = true
     
     func loop(){
+        setInterval.invalidate()
         sampler.volume = volume
         if firstLoop {
             firstLoop = false

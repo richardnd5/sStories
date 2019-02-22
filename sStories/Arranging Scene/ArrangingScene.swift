@@ -26,7 +26,7 @@ class ArrangingScene: UIView {
         createArrangementSlots()
         createSack()
         
-//        fillSackWithMelodies()
+        fillSackWithMelodies()
         
         //fade the view in
         alpha = 0.0
@@ -85,7 +85,7 @@ class ArrangingScene: UIView {
             let width = sackContents.melodySlotViews[i].frame.width
             let height = sackContents.melodySlotViews[i].frame.height
             
-            let view = MelodyImage(frame: CGRect(x: x, y: y, width: width, height: height), melody: collectedMelodies[i])
+            let view = MelodyImage(frame: CGRect(x: x, y: y, width: width, height: height), melody: collectedMelodies[i], isThumbnail: true)
             addSubview(view)
             view.initialPosition = CGPoint(x: x, y: y)
             melodyImageArray.append(view)
@@ -146,10 +146,12 @@ class ArrangingScene: UIView {
                         view.inCorrectSlot = true
                         
                         if !songFullyArranged() {
+                            stopLoopedSoundEffect(.arrangingDrag)
                             playSoundClip(.arrangingPlaceMelody)
                         }
                         
                         if songFullyArranged() {
+                            stopLoopedSoundEffect(.arrangingDrag)
                             Sound.sharedInstance.loadMelodyIntoSampler()
                             playSoundClip(.arrangingAllMelodiesLocked)
                             stopAllMelodies()
@@ -160,6 +162,7 @@ class ArrangingScene: UIView {
                     } else if !frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
                         // move view to original position
                         view.moveViewTo(view.initialPosition, time: 1.0)
+                        stopLoopedSoundEffect(.arrangingDrag)
                         playSoundClip(.arrangingCrossOut)
                         // play not correct slot sound.
                         
