@@ -8,7 +8,7 @@ class PlayZoneBubble: UIView {
     var imageView = UIImageView()
     var maskLayer = CAGradientLayer()
     var pitches = [MIDINoteNumber]()
-    var rhythms = [Int]()
+    var rhythms = [AKDuration]()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,6 +17,18 @@ class PlayZoneBubble: UIView {
         layer.zPosition = 1000
         generateRandomPitches()
         generateRandomRhythms()
+        
+        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+        press.minimumPressDuration = 0.0
+        addGestureRecognizer(press)
+    }
+    
+    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
+        if sender.state == .began {
+            print("pressed a bubblew")
+            Sound.sharedInstance.generatePianoImprov(notes: pitches, beats: rhythms)
+
+        }
     }
     func generateRandomPitches(){
         for _ in 0..<4{
@@ -26,7 +38,8 @@ class PlayZoneBubble: UIView {
     }
     func generateRandomRhythms(){
         for _ in 0..<4{
-            let rand = MIDINoteNumber.random(in: )
+            print(rhythms)
+            let rand = AKDuration(beats: Double(Int.random(in: 1...2)))
             rhythms.append(rand)
         }
     }

@@ -16,15 +16,23 @@ class Sound {
     
     var playZoneSequencer = AKSequencer()
     var playZoneSequenceLength = AKDuration(beats: 8.0)
+    var trackAccomp : AKMusicTrack!
+    var trackImprov : AKMusicTrack!
+    var trackAccompCallback : AKCallbackInstrument!
+    var trackImprovCallback : AKCallbackInstrument!
+    
+    var pianoAccompanimentAudio : PianoAccompaniment!
     
 //    var openingMusic = OpeningMusic()
 
     func setup(){
 
+        pianoAccompanimentAudio = PianoAccompaniment(name: "playOstinato")
+        
         soundEffectMixer.volume = 0.3
         pianoMixer.volume = 0.8
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
-        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler)
+        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler, pianoAccompanimentAudio.sampler)
         mainMixer.volume = 1.0
         
         AudioKit.output = mainMixer
@@ -35,9 +43,86 @@ class Sound {
         setupPlayZoneSequencer()
     }
     
+    func playAccompaniment(){
+        pianoAccompanimentAudio.playMelody()
+    }
+    
     func setupPlayZoneSequencer(){
         
+        trackAccompCallback = AKCallbackInstrument()
+        trackAccompCallback.callback = sequencerCallback
         
+        trackImprovCallback = AKCallbackInstrument()
+        trackImprovCallback.callback = improvCallback
+        
+        trackAccomp = playZoneSequencer.newTrack("accomp")
+        trackImprov = playZoneSequencer.newTrack("improv")
+        
+        trackAccomp.setMIDIOutput(trackAccompCallback.midiIn)
+        trackImprov.setMIDIOutput(trackImprovCallback.midiIn)
+        
+        trackAccomp.add(midiNoteData: AKMIDINoteData(noteNumber: 60, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: 0)))
+        
+//        let length : Int = Int(playZoneSequenceLength.beats)
+//        for i in 0..<length {
+//            trackImprov.add(midiNoteData: AKMIDINoteData(noteNumber: 63, velocity: 70, channel: 1, duration: AKDuration(beats: 1), position: AKDuration(beats: Double(i))))
+//        }
+        
+        playZoneSequencer.setTempo(tempo)
+        playZoneSequencer.setLength(playZoneSequenceLength)
+        playZoneSequencer.enableLooping()
+
+    }
+    
+    func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>){
+        for (i, note) in notes.enumerated() {
+            
+//            let now = playZoneSequencer.currentPosition.beats
+//            let beat = AKDuration(beats: now+beats[i].beats)
+            
+            let midiData = AKMIDINoteData(noteNumber: note, velocity: 127, channel: 1, duration: AKDuration(beats: 8), position: beats[i])
+            
+            trackImprov.add(midiNoteData: midiData)
+        }
+    }
+    
+    func startPlaySequencer(){
+        playZoneSequencer.play()
+    }
+    
+    func stopPlaySequencer(){
+        playZoneSequencer.stop()
+        playZoneSequencer.rewind()
+    }
+    
+    func improvCallback(_ status: AKMIDIStatus,
+                           _ noteNumber: MIDINoteNumber,
+                           _ velocity: MIDIVelocity) {
+        
+        DispatchQueue.main.async {
+            if status == .noteOn {
+                self.pianoSampler.play(noteNumber: noteNumber, velocity: velocity)
+                
+            } else if status == .noteOff {
+                self.pianoSampler.stop(noteNumber: noteNumber)
+            }
+        }
+    }
+    
+    
+    func sequencerCallback(_ status: AKMIDIStatus,
+                           _ noteNumber: MIDINoteNumber,
+                           _ velocity: MIDIVelocity) {
+        
+        DispatchQueue.main.async {
+            if status == .noteOn {
+                self.playAccompaniment()
+                
+                
+            } else if status == .noteOff {
+ 
+            }
+        }
     }
     
     func loadPianoSamples() {

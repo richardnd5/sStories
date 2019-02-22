@@ -26,15 +26,12 @@ class BubblePlayZone: UIView, ButtonDelegate {
         setupGestures()
         setupAnimator()
         scaleTo(scaleTo: 0.12, time: 0.0)
-
-
     }
-
     
     var bubbleTimer = Timer()
-    func createNumberOfBubbles(_ numberOfBubbles: Int = 3){
+    func createNumberOfBubbles(_ numberOfBubbles: Int = 0){
         print("creating count")
-        for _ in 0...numberOfBubbles{
+        for _ in 0..<numberOfBubbles{
 
         let width = frame.width/20
         let height = frame.width/20
@@ -54,6 +51,7 @@ class BubblePlayZone: UIView, ButtonDelegate {
         animator.addBehavior(pushBehavior)
         
         bringSubviewToFront(note)
+        
             
         }
     }
@@ -128,7 +126,10 @@ class BubblePlayZone: UIView, ButtonDelegate {
             scaleTo(scaleTo: 1.0, time: 1, {
                 self.exitButton.fadeIn()
 //                self.setupAnimator()
+                Sound.sharedInstance.startPlaySequencer()
                 self.createNumberOfBubbles(totalBubbleScore)
+                
+                
 //                self.createRandomBubblesAtRandomTimeInterval(time: 0.1)
             })
             let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2)
@@ -139,6 +140,7 @@ class BubblePlayZone: UIView, ButtonDelegate {
             scaleTo(scaleTo: 0.12, time: 1)
             exitButton.fadeOut()
             delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
+            Sound.sharedInstance.stopPlaySequencer()
             popAllBubbles()
             
             let bottomPadding = superview!.frame.height/30

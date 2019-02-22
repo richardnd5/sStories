@@ -72,6 +72,8 @@
 		228A6F3B2214853E007617A0 /* OpeningMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228A6F3A2214853E007617A0 /* OpeningMusic.swift */; };
 		228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */; };
 		228CF3B12202D5CA00C4ED08 /* dividingLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 228CF3B02202D5C900C4ED08 /* dividingLine.png */; };
+		22A5D6712220B2410004E1D9 /* PianoAccompaniment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */; };
+		22A5D6732220B3750004E1D9 /* playOstinato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22A5D6722220B3750004E1D9 /* playOstinato.mp3 */; };
 		22A666C121FFD8270038220E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A666C021FFD8270038220E /* Button.swift */; };
 		22A666C321FFD98C0038220E /* read.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C221FFD98C0038220E /* read.png */; };
 		22A666C521FFDB870038220E /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C421FFDB870038220E /* questionMark.png */; };
@@ -361,6 +363,8 @@
 		228A6F3A2214853E007617A0 /* OpeningMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningMusic.swift; sourceTree = "<group>"; };
 		228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBlurb.swift; sourceTree = "<group>"; };
 		228CF3B02202D5C900C4ED08 /* dividingLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dividingLine.png; sourceTree = "<group>"; };
+		22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoAccompaniment.swift; sourceTree = "<group>"; };
+		22A5D6722220B3750004E1D9 /* playOstinato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playOstinato.mp3; sourceTree = "<group>"; };
 		22A666C021FFD8270038220E /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		22A666C221FFD98C0038220E /* read.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read.png; sourceTree = "<group>"; };
 		22A666C421FFDB870038220E /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
@@ -695,6 +699,7 @@
 				8698D89021BF416600ADED35 /* pageTurnTouchDown.wav */,
 				8698D88F21BF416600ADED35 /* pageTurnTouchUp.wav */,
 				868F9C172207D25C00BBBFE3 /* touchUp.mp3 */,
+				22A5D6722220B3750004E1D9 /* playOstinato.mp3 */,
 				86B56D1922095668000F6394 /* touchDown.mp3 */,
 				86EBE0C222135BFA0010D1C2 /* waterPlink.mp3 */,
 				868F9BDF2207BE0700BBBFE3 /* throwbackDrag.mp3 */,
@@ -940,6 +945,7 @@
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
 				22A666C021FFD8270038220E /* Button.swift */,
 				8698D85721BF400000ADED35 /* Sound.swift */,
+				22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
 				867C542521DF1E7B002E4255 /* SackContents.swift */,
 				8665697021EFD0860086D432 /* Melody.swift */,
@@ -1187,6 +1193,7 @@
 				8654706121EE70D400D1F068 /* final.png in Resources */,
 				226A1A362202794900E47009 /* test31.mp3 in Resources */,
 				22205CA0221A5C89005466DC /* Mountain.png in Resources */,
+				22A5D6732220B3750004E1D9 /* playOstinato.mp3 in Resources */,
 				8654705F21EE70D400D1F068 /* begin.png in Resources */,
 				8654706521EE824300D1F068 /* trebleClef.png in Resources */,
 				86CC12E921FB8E7500B9164B /* playButton.png in Resources */,
@@ -1342,6 +1349,7 @@
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				22A666C121FFD8270038220E /* Button.swift in Sources */,
+				22A5D6712220B2410004E1D9 /* PianoAccompaniment.swift in Sources */,
 				866AA1082208F849000FED54 /* HomePageBackgroundImage.swift in Sources */,
 				86F1F6C521FC1A36001AD82D /* GlobalVariables.swift in Sources */,
 				228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */,
