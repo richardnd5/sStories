@@ -126,8 +126,7 @@ class PlayZoneBubble: UIView {
     func pulseToRhythm(){
         
         for i in 0...pitches.count-1 {
-            
-//            let nextQuantizedTime = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5)
+            let nextQuantizedTime = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5)
             let time = (i * (60/tempo))/2
             
             Timer.scheduledTimer(withTimeInterval: time, repeats: false) { _ in
