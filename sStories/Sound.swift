@@ -33,6 +33,7 @@ class Sound {
     
     var chordVAudio : PianoAccompaniment!
     var chordVFadeCount = 0
+    weak var bubbleUIDelegate : BubbleUIDelegate?
     
     //    var openingMusic = OpeningMusic()
     
@@ -112,8 +113,11 @@ class Sound {
     }
     
     
-    func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>){
+    var currentBubble : UILongPressGestureRecognizer!
+    func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>, pressedNote: UILongPressGestureRecognizer){
         for (i, note) in notes.enumerated() {
+            
+            currentBubble = pressedNote
             
             let now = playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).beats
             let beatTimePlusNow = beats[i].beats+now
@@ -149,8 +153,10 @@ class Sound {
         DispatchQueue.main.async {
             if status == .noteOn {
                 self.pianoSampler.play(noteNumber: noteNumber, velocity: 60)
-                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
                 
+                self.bubbleUIDelegate?.scaleNoteUpAndDown()
+                let bubble = self.currentBubble.view as! PlayZoneBubble
+//                bubble.scaleNoteUpAndDown()
                 
             } else if status == .noteOff {
                 self.pianoSampler.stop(noteNumber: noteNumber)

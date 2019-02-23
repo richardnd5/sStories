@@ -7,12 +7,9 @@ protocol ButtonDelegate : class {
     
 }
 
-protocol BubbleDelegate: class {
-    func pushBubble(_ note: PlayZoneBubble, magnitudeLimit: CGFloat)
-}
 
-class BubblePlayZone: UIView, ButtonDelegate, BubbleDelegate {
-    
+class BubblePlayZone: UIView, ButtonDelegate {
+
     func chordButtonTapped(chord: ChordType) {
         switch chord {
             case .I:
@@ -68,15 +65,21 @@ class BubblePlayZone: UIView, ButtonDelegate, BubbleDelegate {
         print("creating count")
         for _ in 0..<numberOfBubbles{
 
-        let width = frame.width/20
-        let height = frame.width/20
+        let width = frame.width/14
+        let height = frame.width/14
         let x = CGFloat.random(in: frame.width/4...frame.width-frame.width/4)
         let y = CGFloat.random(in: frame.height/40...frame.height/2-frame.height/40)
         let note = PlayZoneBubble(frame: CGRect(x: x, y: y, width: width, height: height))
         addSubview(note)
         gravityBehavior.addItem(note)
         collisionBehavior.addItem(note)
-        note.bubbleDelegate = self
+//        note.bubbleDelegate = self
+//        Sound.sharedInstance.bubbleUIDelegate = self
+        
+        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+        press.minimumPressDuration = 0.0
+        note.addGestureRecognizer(press)
+
         
 //        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
 //
@@ -93,15 +96,7 @@ class BubblePlayZone: UIView, ButtonDelegate, BubbleDelegate {
         }
     }
     
-    func pushBubble(_ note: PlayZoneBubble, magnitudeLimit: CGFloat = 0.3){
-        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
-        
-        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
-        let randomMagnitude = CGFloat.random(in: 0.3...magnitudeLimit)
-        
-        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
-        animator.addBehavior(pushBehavior)
-    }
+
     
     func popAllBubbles(){
         
@@ -155,6 +150,27 @@ class BubblePlayZone: UIView, ButtonDelegate, BubbleDelegate {
         }
     }
     
+    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
+        if sender.state == .began {
+            let note = sender.view as! PlayZoneBubble
+            Sound.sharedInstance.generatePianoImprov(notes: note.pitches, beats: note.rhythms, pressedNote: sender)
+//            note.glowInandOut()
+            note.pulseToRhythm()
+            pushBubble(note, magnitudeLimit: 0.04)
+        }
+
+    }
+    
+    func pushBubble(_ note: PlayZoneBubble, magnitudeLimit: CGFloat = 0.1){
+        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
+        
+        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
+        let randomMagnitude = CGFloat.random(in: 0.0...magnitudeLimit)
+        
+        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
+        animator.addBehavior(pushBehavior)
+    }
+    
     // This function is used to detect touch events on views outside the superview's bounds
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         
@@ -200,6 +216,7 @@ class BubblePlayZone: UIView, ButtonDelegate, BubbleDelegate {
                 self.VChordButton.fadeIn()
 //                self.setupAnimator()
                 Sound.sharedInstance.startPlaySequencer()
+                Sound.sharedInstance.playPondBackground()
                 self.createNumberOfBubbles(totalBubbleScore)
                 
                 
@@ -217,6 +234,7 @@ class BubblePlayZone: UIView, ButtonDelegate, BubbleDelegate {
             self.VChordButton.fadeOut()
             delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
             Sound.sharedInstance.stopPlaySequencer()
+            Sound.sharedInstance.stopPondBackground()
             popAllBubbles()
             
             let bottomPadding = superview!.frame.height/30

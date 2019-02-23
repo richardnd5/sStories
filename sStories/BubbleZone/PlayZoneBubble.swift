@@ -1,6 +1,10 @@
 import UIKit
 import AudioKit
 
+protocol BubbleUIDelegate : class {
+    func scaleNoteUpAndDown()
+}
+
 class PlayZoneBubble: UIView {
     
     var noteImage = UIImage()
@@ -20,7 +24,7 @@ class PlayZoneBubble: UIView {
 //    let majScale = [61 as Int,63 as Int,65 as Int,66 as Int,68 as Int,70 as Int,72 as Int,73 as Int,75 as Int,77 as Int,78 as Int,80 as Int]
     var majScale : Array<Int>?
     var numberOfNotes : Int!
-    weak var bubbleDelegate : BubbleDelegate?
+//    weak var bubbleDelegate : BubbleDelegate?
 
     
     init(frame: CGRect, isThumbnail: Bool = false) {
@@ -38,11 +42,15 @@ class PlayZoneBubble: UIView {
         generateRandomPitches()
         generateRandomRhythms()
         
-        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-        press.minimumPressDuration = 0.0
-        addGestureRecognizer(press)
+//        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+//        press.minimumPressDuration = 0.0
+//        addGestureRecognizer(press)
+        
+        
 
     }
+    
+    
     
     func setupImage(){
         
@@ -73,16 +81,27 @@ class PlayZoneBubble: UIView {
     }
     
     
-    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
-        if sender.state == .began {
-            print("pressed a bubble!!!")
-            Sound.sharedInstance.generatePianoImprov(notes: pitches, beats: rhythms)
-            glowInandOut()
-            let note = sender.view as! PlayZoneBubble
-            bubbleDelegate?.pushBubble(note, magnitudeLimit: 0.8)
+//    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
+//        if sender.state == .began {
+//            print("pressed a bubble!!!")
+//            Sound.sharedInstance.generatePianoImprov(notes: pitches, beats: rhythms, pressedNote: sender)
+//            glowInandOut()
+//            let note = sender.view as! PlayZoneBubble
+//            bubbleDelegate?.pushBubble(note, magnitudeLimit: 0.1)
+//            scaleNoteUpAndDown()
+//
+//        }
+//
+//    }
+//
+
+    
+    func scaleNoteUpAndDown(){
+        imageView.scaleTo(scaleTo: 1.6, time: 0.3,{
+            self.imageView.scaleTo(scaleTo: 1.0, time: 0.3)
+        })
         }
-        
-    }
+    
     func generateRandomPitches(){
         for _ in 0..<numberOfNotes{
             let randomElement = majScale!.randomElement()?.value()
@@ -98,6 +117,21 @@ class PlayZoneBubble: UIView {
             } else {
                 //            let rand = AKDuration(beats: Double(Int.random(in: 1...4)))
                 rhythms.append(AKDuration(beats: Double(i)/2))
+            }
+        }
+    }
+    
+    
+    
+    func pulseToRhythm(){
+        
+        for i in 0...pitches.count-1 {
+            
+//            let nextQuantizedTime = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5)
+            let time = (i * (60/tempo))/2
+            
+            Timer.scheduledTimer(withTimeInterval: time, repeats: false) { _ in
+                self.scaleNoteUpAndDown()
             }
         }
     }
@@ -123,7 +157,7 @@ class PlayZoneBubble: UIView {
         glowingOverlay.layer.add(glow, forKey: "throb")
     }
     
-    private func glowInandOut(){
+    func glowInandOut(){
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         glow.fromValue = 0.0
         glow.toValue = 0.5
