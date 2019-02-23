@@ -115,9 +115,6 @@ class Sound {
     func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>){
         for (i, note) in notes.enumerated() {
             
-            //            let now = playZoneSequencer.currentPosition.beats
-            //            let beat = AKDuration(beats: now+beats[i].beats)
-            
             let now = playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).beats
             let beatTimePlusNow = beats[i].beats+now
             let newDuration = AKDuration(beats: beatTimePlusNow)

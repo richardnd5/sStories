@@ -4,9 +4,14 @@ import AudioKit
 protocol ButtonDelegate : class {
     func exitButtonTapped()
     func chordButtonTapped(chord: ChordType)
+    
 }
 
-class BubblePlayZone: UIView, ButtonDelegate {
+protocol BubbleDelegate: class {
+    func pushBubble(_ note: PlayZoneBubble, magnitudeLimit: CGFloat)
+}
+
+class BubblePlayZone: UIView, ButtonDelegate, BubbleDelegate {
     
     func chordButtonTapped(chord: ChordType) {
         switch chord {
@@ -71,19 +76,31 @@ class BubblePlayZone: UIView, ButtonDelegate {
         addSubview(note)
         gravityBehavior.addItem(note)
         collisionBehavior.addItem(note)
+        note.bubbleDelegate = self
         
-        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
-        
-        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
-        let randomMagnitude = CGFloat.random(in: 0...0.3)
-        
-        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
-        animator.addBehavior(pushBehavior)
+//        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
+//
+//        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
+//        let randomMagnitude = CGFloat.random(in: 0...0.3)
+//
+//        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
+//        animator.addBehavior(pushBehavior)
+        pushBubble(note)
         
         bringSubviewToFront(note)
         
             
         }
+    }
+    
+    func pushBubble(_ note: PlayZoneBubble, magnitudeLimit: CGFloat = 0.3){
+        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
+        
+        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
+        let randomMagnitude = CGFloat.random(in: 0.3...magnitudeLimit)
+        
+        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
+        animator.addBehavior(pushBehavior)
     }
     
     func popAllBubbles(){
