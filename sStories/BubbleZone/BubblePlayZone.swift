@@ -178,6 +178,9 @@ class BubblePlayZone: UIView, ButtonDelegate {
             isActive = true
             scaleTo(scaleTo: 1.0, time: 1, {
                 self.exitButton.fadeIn()
+                self.IChordButton.fadeIn()
+                self.IVChordButton.fadeIn()
+                self.VChordButton.fadeIn()
 //                self.setupAnimator()
                 Sound.sharedInstance.startPlaySequencer()
                 self.createNumberOfBubbles(totalBubbleScore)
@@ -192,6 +195,9 @@ class BubblePlayZone: UIView, ButtonDelegate {
             isActive = false
             scaleTo(scaleTo: 0.12, time: 1)
             exitButton.fadeOut()
+            self.IChordButton.fadeOut()
+            self.IVChordButton.fadeOut()
+            self.VChordButton.fadeOut()
             delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
             Sound.sharedInstance.stopPlaySequencer()
             popAllBubbles()

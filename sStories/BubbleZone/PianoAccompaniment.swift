@@ -43,37 +43,45 @@ class PianoAccompaniment {
         do { try sampler.stop(noteNumber: 60, channel: 1) } catch {}
     }
     
-    private var counter = 100
+    private var max = 500
+    private var counter = 500
+    
     private var fadeTimer = Timer()
-    private var fadeTime = 0.01
+    private var fadeTime = 0.001
     
     func fadeIn(){
         self.fadeTimer.invalidate()
         
+        if self.counter < max {
         fadeTimer = Timer.scheduledTimer(withTimeInterval: fadeTime, repeats: true, block: { _ in
-            self.counter += 10
             self.sampler.volume = Double(self.counter)/100
+            self.counter += 2
             
-            if self.counter >= 100 {
+            if self.counter >= self.max {
+                self.counter = self.max
                 self.fadeTimer.invalidate()
             }
         })
+    }
     }
     
     func fadeOut(){
         self.fadeTimer.invalidate()
         
+        if self.counter > 0 {
         fadeTimer = Timer.scheduledTimer(withTimeInterval: fadeTime, repeats: true, block: { _ in
             
-            self.counter -= 4
             self.sampler.volume = Double(self.counter)/100
-            
+            self.counter -= 1
+        
             if self.counter <= 0 {
+                self.counter = 0
                 self.fadeTimer.invalidate()
                 
             }
             
         })
+        }
     }
     
     

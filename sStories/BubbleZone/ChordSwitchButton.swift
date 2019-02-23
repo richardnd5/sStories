@@ -23,6 +23,8 @@ class ChordSwitchButton: UIButton {
         chordString = getChordString(chord: chordType)
         setImage(name: chordString)
         setTouchEvents()
+        alpha = 0.0
+
         
     }
     

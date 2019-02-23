@@ -17,7 +17,7 @@ class Sound {
     var playZoneSequencer = AKSequencer()
     var playZoneSequenceLength = AKDuration(beats: 8.0)
     
-    var trackAccomp : AKMusicTrack!
+    var accompTrack : AKMusicTrack!
     var trackIV : AKMusicTrack!
     var trackV : AKMusicTrack!
     
@@ -48,10 +48,11 @@ class Sound {
         chordIAudio.fadeOut()
         
         soundEffectMixer.volume = 0.3
-        pianoMixer.volume = 0.8
+        pianoMixer.volume = 1.0
+        pianoSampler.masterVolume = 0.3
+        
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
         mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler)
-        mainMixer.volume = 1.0
         
         AudioKit.output = mainMixer
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
@@ -93,26 +94,23 @@ class Sound {
         trackImprovCallback = AKCallbackInstrument()
         trackImprovCallback.callback = improvCallback
         
-        trackAccomp = playZoneSequencer.newTrack("accomp")
+        accompTrack = playZoneSequencer.newTrack("accomp")
         trackImprov = playZoneSequencer.newTrack("improv")
         
-        trackAccomp.setMIDIOutput(trackAccompCallback.midiIn)
+        accompTrack.setMIDIOutput(trackAccompCallback.midiIn)
         trackImprov.setMIDIOutput(trackImprovCallback.midiIn)
         
         let seqLength = 100
         for i in 0...seqLength {
-            trackAccomp.add(midiNoteData: AKMIDINoteData(noteNumber: 90, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: i*8)))
+            accompTrack.add(midiNoteData: AKMIDINoteData(noteNumber: 60, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: i*8)))
+
         }
-        //        let length : Int = Int(playZoneSequenceLength.beats)
-        //        for i in 0..<length {
-        //            trackImprov.add(midiNoteData: AKMIDINoteData(noteNumber: 63, velocity: 70, channel: 1, duration: AKDuration(beats: 1), position: AKDuration(beats: Double(i))))
-        //        }
-        
+
         playZoneSequencer.setTempo(tempo)
         playZoneSequencer.setLength(AKDuration(beats: 100*8))
-        //        playZoneSequencer.enableLooping()
         
     }
+    
     
     func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>){
         for (i, note) in notes.enumerated() {
@@ -153,7 +151,7 @@ class Sound {
         
         DispatchQueue.main.async {
             if status == .noteOn {
-                self.pianoSampler.play(noteNumber: noteNumber, velocity: velocity)
+                self.pianoSampler.play(noteNumber: noteNumber, velocity: 60)
                 print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
                 
                 
@@ -184,7 +182,6 @@ class Sound {
         let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("FrontPageKeyboard")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "frontPagePianoKeyboard.sfz")
         pianoSampler.releaseDuration = 7.0
-        pianoSampler.masterVolume = 0.3
     }
     
     func loadPageTurnSounds(){
