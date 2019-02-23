@@ -7,6 +7,11 @@ import AudioKit
 
 class PianoKeyboard: UIView, ButtonDelegate {
     
+    func chordButtonTapped(chord: ChordType) {
+        
+    }
+    
+    
     var keyboardIsActive = false
     var initialPosition : CGPoint!
     

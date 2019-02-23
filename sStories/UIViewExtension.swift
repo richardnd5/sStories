@@ -160,4 +160,15 @@ extension UIView {
                 completion()
         })
     }
+    
+    func throbWithWiggle(scaleTo: CGFloat, time: Double, _ completion: @escaping () -> () = {} ){
+        
+        let scaleAnimation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.duration = time
+        scaleAnimation.repeatCount = .infinity
+        scaleAnimation.autoreverses = true
+        scaleAnimation.fromValue = 1.0;
+        scaleAnimation.toValue = scaleTo;
+        layer.add(scaleAnimation, forKey: "throb")
+    }
 }

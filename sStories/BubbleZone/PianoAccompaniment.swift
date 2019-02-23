@@ -43,6 +43,41 @@ class PianoAccompaniment {
         do { try sampler.stop(noteNumber: 60, channel: 1) } catch {}
     }
     
+    private var counter = 100
+    private var fadeTimer = Timer()
+    private var fadeTime = 0.01
+    
+    func fadeIn(){
+        self.fadeTimer.invalidate()
+        
+        fadeTimer = Timer.scheduledTimer(withTimeInterval: fadeTime, repeats: true, block: { _ in
+            self.counter += 10
+            self.sampler.volume = Double(self.counter)/100
+            
+            if self.counter >= 100 {
+                self.fadeTimer.invalidate()
+            }
+        })
+    }
+    
+    func fadeOut(){
+        self.fadeTimer.invalidate()
+        
+        fadeTimer = Timer.scheduledTimer(withTimeInterval: fadeTime, repeats: true, block: { _ in
+            
+            self.counter -= 4
+            self.sampler.volume = Double(self.counter)/100
+            
+            if self.counter <= 0 {
+                self.fadeTimer.invalidate()
+                
+            }
+            
+        })
+    }
+    
+    
+    
     func getAudioDuration() -> Double {
         return (audioFile?.duration)!
     }

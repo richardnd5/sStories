@@ -16,23 +16,41 @@ class Sound {
     
     var playZoneSequencer = AKSequencer()
     var playZoneSequenceLength = AKDuration(beats: 8.0)
+    
     var trackAccomp : AKMusicTrack!
+    var trackIV : AKMusicTrack!
+    var trackV : AKMusicTrack!
+    
     var trackImprov : AKMusicTrack!
     var trackAccompCallback : AKCallbackInstrument!
     var trackImprovCallback : AKCallbackInstrument!
     
-    var pianoAccompanimentAudio : PianoAccompaniment!
+    var chordIAudio : PianoAccompaniment!
+    var chordIFadeCount = 0
     
-//    var openingMusic = OpeningMusic()
-
+    var chordIVAudio : PianoAccompaniment!
+    var chordIVFadeCount = 0
+    
+    var chordVAudio : PianoAccompaniment!
+    var chordVFadeCount = 0
+    
+    //    var openingMusic = OpeningMusic()
+    
     func setup(){
-
-        pianoAccompanimentAudio = PianoAccompaniment(name: "playOstinato")
+        
+        chordIAudio = PianoAccompaniment(name: "IChord")
+        chordIVAudio = PianoAccompaniment(name: "IVChord")
+        chordVAudio = PianoAccompaniment(name: "VChord")
+        
+        
+        
+        switchChord(chord: .I)
+        chordIAudio.fadeOut()
         
         soundEffectMixer.volume = 0.3
         pianoMixer.volume = 0.8
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
-        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler, pianoAccompanimentAudio.sampler)
+        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler)
         mainMixer.volume = 1.0
         
         AudioKit.output = mainMixer
@@ -42,9 +60,29 @@ class Sound {
         loadPianoSamples()
         setupPlayZoneSequencer()
     }
+
+    func switchChord(chord: ChordType){
+        switch chord {
+        case .I:
+            chordIAudio.fadeIn()
+            chordIVAudio.fadeOut()
+            chordVAudio.fadeOut()
+            
+        case .IV:
+            chordIAudio.fadeOut()
+            chordIVAudio.fadeIn()
+            chordVAudio.fadeOut()
+        case .V:
+            chordIAudio.fadeOut()
+            chordIVAudio.fadeOut()
+            chordVAudio.fadeIn()
+        }
+    }
     
     func playAccompaniment(){
-        pianoAccompanimentAudio.playMelody()
+        chordIAudio.playMelody()
+        chordIVAudio.playMelody()
+        chordVAudio.playMelody()
     }
     
     func setupPlayZoneSequencer(){
@@ -61,29 +99,38 @@ class Sound {
         trackAccomp.setMIDIOutput(trackAccompCallback.midiIn)
         trackImprov.setMIDIOutput(trackImprovCallback.midiIn)
         
-        trackAccomp.add(midiNoteData: AKMIDINoteData(noteNumber: 60, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: 0)))
-        
-//        let length : Int = Int(playZoneSequenceLength.beats)
-//        for i in 0..<length {
-//            trackImprov.add(midiNoteData: AKMIDINoteData(noteNumber: 63, velocity: 70, channel: 1, duration: AKDuration(beats: 1), position: AKDuration(beats: Double(i))))
-//        }
+        let seqLength = 100
+        for i in 0...seqLength {
+            trackAccomp.add(midiNoteData: AKMIDINoteData(noteNumber: 90, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: i*8)))
+        }
+        //        let length : Int = Int(playZoneSequenceLength.beats)
+        //        for i in 0..<length {
+        //            trackImprov.add(midiNoteData: AKMIDINoteData(noteNumber: 63, velocity: 70, channel: 1, duration: AKDuration(beats: 1), position: AKDuration(beats: Double(i))))
+        //        }
         
         playZoneSequencer.setTempo(tempo)
-        playZoneSequencer.setLength(playZoneSequenceLength)
-        playZoneSequencer.enableLooping()
-
+        playZoneSequencer.setLength(AKDuration(beats: 100*8))
+        //        playZoneSequencer.enableLooping()
+        
     }
     
     func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>){
         for (i, note) in notes.enumerated() {
             
-//            let now = playZoneSequencer.currentPosition.beats
-//            let beat = AKDuration(beats: now+beats[i].beats)
+            //            let now = playZoneSequencer.currentPosition.beats
+            //            let beat = AKDuration(beats: now+beats[i].beats)
             
-            let midiData = AKMIDINoteData(noteNumber: note, velocity: 127, channel: 1, duration: AKDuration(beats: 8), position: beats[i])
+            let now = playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).beats
+            let beatTimePlusNow = beats[i].beats+now
+            let newDuration = AKDuration(beats: beatTimePlusNow)
+            let midiData = AKMIDINoteData(noteNumber: note, velocity: 127, channel: 1, duration: AKDuration(beats: 1), position: newDuration)
             
             trackImprov.add(midiNoteData: midiData)
         }
+    }
+    
+    func removeMidiNotePattern(){
+        
     }
     
     func startPlaySequencer(){
@@ -93,15 +140,22 @@ class Sound {
     func stopPlaySequencer(){
         playZoneSequencer.stop()
         playZoneSequencer.rewind()
+        clearImprovTrack()
+    }
+    
+    func clearImprovTrack(){
+        trackImprov.clear()
     }
     
     func improvCallback(_ status: AKMIDIStatus,
-                           _ noteNumber: MIDINoteNumber,
-                           _ velocity: MIDIVelocity) {
+                        _ noteNumber: MIDINoteNumber,
+                        _ velocity: MIDIVelocity) {
         
         DispatchQueue.main.async {
             if status == .noteOn {
                 self.pianoSampler.play(noteNumber: noteNumber, velocity: velocity)
+                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
+                
                 
             } else if status == .noteOff {
                 self.pianoSampler.stop(noteNumber: noteNumber)
@@ -118,9 +172,10 @@ class Sound {
             if status == .noteOn {
                 self.playAccompaniment()
                 
+                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
                 
             } else if status == .noteOff {
- 
+                
             }
         }
     }
@@ -128,9 +183,10 @@ class Sound {
     func loadPianoSamples() {
         let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("FrontPageKeyboard")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "frontPagePianoKeyboard.sfz")
-        pianoSampler.releaseDuration = 0.1
+        pianoSampler.releaseDuration = 7.0
+        pianoSampler.masterVolume = 0.3
     }
-
+    
     func loadPageTurnSounds(){
         
         for i in 0...8{
@@ -138,11 +194,11 @@ class Sound {
             pageTurnSoundArray.append(note)
         }
     }
-
+    
     func loadCollectedMelodies(_ melodyArray: [Melody]){
         
         for i in 0...collectedMelodies.count-1{
-          let melAudio = collectedMelodies[i].audio
+            let melAudio = collectedMelodies[i].audio
             patternArray.append(melAudio!)
         }
     }
