@@ -25,10 +25,10 @@ class ExitButton: UIButton {
     }
     
     func fadeIn(){
-        fadeTo(time: 1.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 1.0)
     }
     func fadeOut(){
-        fadeTo(time: 1.0, opacity: 0.0)
+        fadeTo(opacity: 0.0, time: 1.0)
     }
     
     // button touch events

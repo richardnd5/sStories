@@ -22,7 +22,7 @@ class CatchOrThrowbackImage: UIImageView {
         layer.opacity = 0.0
         isUserInteractionEnabled = false
 
-        fadeTo(time: 2.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 2.0)
     }
     
     func expand(){

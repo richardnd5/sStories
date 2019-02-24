@@ -1,6 +1,10 @@
 import UIKit
 
-class CatchingMelodies: UIView {
+protocol CatchingMelodyProtocol : class {
+    func reelIn()
+}
+
+class CatchingMelodies: UIView, CatchingMelodyProtocol {
     
     enum State {
         case fishing
@@ -27,6 +31,8 @@ class CatchingMelodies: UIView {
     
     var melodyImageArray = [MelodyImage]()
     
+    var reelInButton : ReelInButton!
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,7 +50,7 @@ class CatchingMelodies: UIView {
         
         //fade the view in
         alpha = 0.0
-        fadeTo(time: 2.5, opacity: 1.0, {
+        fadeTo(opacity: 1.0, time: 2.5, {
             self.delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
         })
     }
@@ -83,7 +89,7 @@ class CatchingMelodies: UIView {
         pondImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pondImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
-        fadeTo(time: 1.5, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 1.5)
         
 
         
@@ -132,6 +138,22 @@ class CatchingMelodies: UIView {
         fishingPole = FishingPole(frame: CGRect(x: x, y: y, width: width, height: height))
         addSubview(fishingPole!)
         
+    }
+    
+    func createReelInButton(){
+        
+        let randX = CGFloat.random(in: frame.width/2.5...frame.width-frame.width/2.5)
+        let randY = CGFloat.random(in: frame.height/2...frame.height/2+frame.height/4)
+        
+        let width = frame.width/20
+        
+        let fr = CGRect(x: randX, y: randY, width: width, height: width)
+        reelInButton = ReelInButton(frame: fr)
+        addSubview(reelInButton)
+        reelInButton.catchingMelodyDelegate = self
+        
+        
+
     }
     
     func createRandomMelody(){
@@ -217,7 +239,7 @@ class CatchingMelodies: UIView {
             self.throwbackWater?.shrink()
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.8, {
                 self.sack!.scaleSize = 1.0
-                self.pondImage.fadeTo(time: 2.0, opacity: 1.0)
+                self.pondImage.fadeTo(opacity: 1.0, time: 2.0)
                 self.sack?.fadeAndRemove(time: 1.0)
                 self.throwbackWater?.fadeAndRemove(time: 1.0)
                 self.keepLabel?.fadeAndRemove(time: 1.0)
@@ -231,7 +253,7 @@ class CatchingMelodies: UIView {
     
     func removeImagesFromCaughtMelodyScene(){
         
-        pondImage.fadeTo(time: 2.0, opacity: 1.0) {
+        pondImage.fadeTo(opacity: 1.0, time: 2.0) {
             self.putLineBackIn()
         }
         self.sack?.fadeAndRemove(time: 1.0)
@@ -252,11 +274,13 @@ class CatchingMelodies: UIView {
         
         // choose a random time
         let randomTime = TimeInterval.random(in: 5...8)
+//        let randomTime = TimeInterval.random(in: 0...1)
         
         // schedule a timer to trigger a melody bite in the future
         Timer.scheduledTimer(withTimeInterval: randomTime, repeats: false, block:{_ in
             self.sceneState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
+            self.createReelInButton()
             self.instructionLabel?.changeText(to: "Ooh! A bite! Swipe down to reel it in!")
             playRandomTriggeredSoundClip(.fishingMelodyOnTheLine)
         })
@@ -271,7 +295,7 @@ class CatchingMelodies: UIView {
         fishingPole?.pullPoleOut({
             
             // dim the background pond image
-            self.pondImage.fadeTo(time: 1.5, opacity: 0.2)
+            self.pondImage.fadeTo(opacity: 0.2, time: 1.5)
             Sound.sharedInstance.turnDownPond()
             
             // create catching scene images
@@ -281,6 +305,7 @@ class CatchingMelodies: UIView {
             self.instructionLabel?.changeText(to: "Tap on the melody to hear it, then drag it to keep or throw it back.")
             
             self.delegate?.stopRandomBubbles()
+//            self.reelInButton.fadeOut(0.5)
             
         })
     }
@@ -313,7 +338,7 @@ class CatchingMelodies: UIView {
         melodyImageArray.append(view)
         
         view.alpha = 0.0
-        view.fadeTo(time: 1.5, opacity: 1.0)
+        view.fadeTo(opacity: 1.0, time: 1.5)
         
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleSackMelodyPan))
         view.addGestureRecognizer(panGesture)
@@ -349,6 +374,24 @@ class CatchingMelodies: UIView {
         melodyArray.forEach { mel in
             collectedMelodies.append(mel.data!)
         }
+    }
+    
+    func reelIn(){
+        
+        
+            if sceneState == .fishing {
+                instructionLabel?.changeText(to: "Wait for a melody to bite!")
+                warningWiggle()
+                instructionLabel?.warningScaleUp()
+                playSoundClip(.fishingWarning)
+            }
+            
+            if sceneState == .fishOnTheLine {
+                decideWhatToDoWithTheMelody()
+                playSoundClip(.fishingPullMelodyOut)
+            }
+        
+
     }
     
     @objc func handleSackMelodyPan(_ sender: UIPanGestureRecognizer){
@@ -437,8 +480,7 @@ class CatchingMelodies: UIView {
             }
             
             if sceneState == .fishOnTheLine {
-                decideWhatToDoWithTheMelody()
-                playSoundClip(.fishingPullMelodyOut)
+                reelIn()
             }
         }
     }

@@ -23,7 +23,7 @@ class MiniPerformingNote: UIImageView {
         isUserInteractionEnabled = true
         layer.cornerRadius = frame.height/10
         
-        fadeTo(time: 2.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 2.0)
         backgroundColor = UIColor(red: 137/255, green: 220/255, blue: 237/255, alpha: 1.0)
     }
     

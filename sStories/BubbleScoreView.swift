@@ -36,13 +36,13 @@ class BubbleScoreView: UIView {
     
     func addToScore(){
         
-        fadeTo(time: 0.3, opacity: 1.0, {
+        fadeTo(opacity: 1.0, time: 0.3, {
             totalBubbleScore += 1
             self.label.text = "\(totalBubbleScore)    x    "
             
             self.noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
                 self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4, {
-                    self.fadeTo(time: 2.0, opacity: 0.0)
+                    self.fadeTo(opacity: 0.0, time: 2.0)
                 })
             })
         })

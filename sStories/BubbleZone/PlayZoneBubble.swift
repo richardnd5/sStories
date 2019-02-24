@@ -72,7 +72,7 @@ class PlayZoneBubble: UIView {
         isUserInteractionEnabled = true
         layer.cornerRadius = frame.height/2
         
-        fadeTo(time: 1.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 1.0)
         let randomNumber = CGFloat.random(in: 0.0...1.0)
         backgroundColor = UIColor(hue: randomNumber, saturation: randomNumber, brightness: 1.0, alpha: 1.0)
         
@@ -126,7 +126,7 @@ class PlayZoneBubble: UIView {
     func pulseToRhythm(){
         
         for i in 0...pitches.count-1 {
-            let nextQuantizedTime = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5)
+            _ = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5)
             let time = (i * (60/tempo))/2
             
             Timer.scheduledTimer(withTimeInterval: time, repeats: false) { _ in

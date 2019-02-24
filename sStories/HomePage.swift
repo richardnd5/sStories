@@ -33,7 +33,7 @@ class HomePage: UIView {
         alpha = 0
 //        Sound.sharedInstance.openingMusic.loopOpeningMusic()
         
-        fadeTo(time: 1.5,opacity: 1.0,{
+        fadeTo(opacity: 1.0, time: 1.5,{
             self.startBubbles()
         })
     }

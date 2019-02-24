@@ -2,7 +2,7 @@ import UIKit
 
 extension UIView {
     
-    func fadeTo(time: Double, opacity: CGFloat, _ completion: @escaping () ->() = {} ){
+    func fadeTo(opacity: CGFloat, time: Double,  _ completion: @escaping () ->() = {} ){
         UIView.animate(
             withDuration: time,
             delay: 0,
@@ -117,6 +117,42 @@ extension UIView {
 
     }
     
+    func bigWiggle(){
+        
+        let randX = Double.random(in: 0.1...2.0)
+        let randY = Double.random(in: 0.1...2.0)
+        
+        let randXSpeed = Double.random(in: 0.07...0.12)
+        let randYSpeed = Double.random(in: 0.07...0.12)
+        
+        let wiggleLeftRight : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
+        wiggleLeftRight.toValue = randX
+        wiggleLeftRight.duration = randXSpeed
+        wiggleLeftRight.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        wiggleLeftRight.repeatCount = .infinity
+        wiggleLeftRight.autoreverses = true
+        
+        let wiggleUpDown : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.y")
+        wiggleUpDown.toValue = randY
+        wiggleUpDown.duration = randYSpeed
+        wiggleUpDown.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        wiggleUpDown.repeatCount = .infinity
+        wiggleUpDown.autoreverses = true
+        
+        
+        let animGroup = CAAnimationGroup()
+        animGroup.animations = [wiggleLeftRight, wiggleUpDown]
+        animGroup.duration = 0.2
+        animGroup.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animGroup.isRemovedOnCompletion = false
+        
+        animGroup.fillMode = .forwards
+        animGroup.repeatCount = .infinity
+        
+        layer.add(animGroup, forKey: "animGroup")
+        
+    }
+    
     func warningScaleUp(){
         let scaleAnim : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnim.fromValue = 1
@@ -143,8 +179,9 @@ extension UIView {
         })
     }
     
-    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () -> () = {} ){
+    func scaleTo(scaleTo: CGFloat, time: Double, _ completion: @escaping () -> () = {}, isSpringy: Bool = true ){
         
+        if isSpringy {
         UIView.animate(
             withDuration: time,
             delay: 0,
@@ -159,6 +196,20 @@ extension UIView {
                 _ in
                 completion()
         })
+        } else {
+            UIView.animate(
+                withDuration: time,
+                delay: 0,
+                options: .curveEaseInOut,
+                animations: {
+                    self.transform = CGAffineTransform(scaleX: scaleTo, y: scaleTo)
+                    
+            },
+                completion: {
+                    _ in
+                    completion()
+            })
+        }
     }
     
     func throbWithWiggle(scaleTo: CGFloat, time: Double, _ completion: @escaping () -> () = {} ){
@@ -170,5 +221,6 @@ extension UIView {
         scaleAnimation.fromValue = 1.0;
         scaleAnimation.toValue = scaleTo;
         layer.add(scaleAnimation, forKey: "throb")
+        
     }
 }

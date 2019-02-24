@@ -16,7 +16,7 @@ class MiniNote: UIImageView {
         contentMode = .scaleAspectFit
         isUserInteractionEnabled = true
         alpha = 0.0
-        fadeTo(time: 2.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 2.0)
         
     }
     

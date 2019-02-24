@@ -26,7 +26,7 @@ class PageTurner: UIView {
         fillNoteLocationArray()
         
         alpha = 0.0
-        fadeTo(time: 1.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 1.0)
 
     }
     

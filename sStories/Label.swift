@@ -9,7 +9,7 @@ class Label: UILabel {
         textAlignment = .center
         layer.zPosition = 10
         alpha = 0.0
-        fadeTo(time: 1.5, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 1.5)
         adjustsFontSizeToFitWidth = true
     }
 

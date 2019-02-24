@@ -22,7 +22,7 @@ class Arrow: UIImageView {
         layer.opacity = 0.0
         isUserInteractionEnabled = true
         
-        fadeTo(time: 3.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 3.0)
         
     }
 

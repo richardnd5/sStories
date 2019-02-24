@@ -34,7 +34,7 @@ class MiniPerformingNoteView: UIView {
         isUserInteractionEnabled = true
         layer.cornerRadius = frame.height/2
         
-        fadeTo(time: 1.0, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 1.0)
         let randomNumber = CGFloat.random(in: 0.0...1.0)
         backgroundColor = UIColor(hue: randomNumber, saturation: randomNumber, brightness: 1.0, alpha: 1.0)
     }
@@ -74,8 +74,8 @@ class MiniPerformingNoteView: UIView {
         let randY = CGFloat.random(in: range)
         let time = 1.0
         
-        let fromPoint = CGPoint(x: frame.midX, y: frame.midY)
-        let toPoint = CGPoint(x: frame.midX-randX, y: frame.midY-randY)
+        _ = CGPoint(x: frame.midX, y: frame.midY)
+        _ = CGPoint(x: frame.midX-randX, y: frame.midY-randY)
         
         let randomRotation = NSNumber(value: Double.random(in: -Double.pi...Double.pi))
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")

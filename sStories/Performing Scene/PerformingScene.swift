@@ -23,7 +23,7 @@ class PerformingScene: UIView {
         setupBackgroundImage()
         
         alpha = 0.0
-        fadeTo(time: 1.5, opacity: 1.0)
+        fadeTo(opacity: 1.0, time: 1.5)
         createPlayButton()
     }
     
@@ -75,9 +75,9 @@ class PerformingScene: UIView {
     
     func switchPicture(){
         if pictureArraySlot <= 3 {
-        background?.fadeTo(time: 1.6, opacity: 0.0, {
+            background?.fadeTo(opacity: 0.0, time: 1.6, {
             self.background?.image = resizedImage(name: "performingImage\(self.pictureArraySlot)")
-            self.background?.fadeTo(time: 1.6, opacity: 1.0)
+                self.background?.fadeTo(opacity: 1.0, time: 1.6)
             self.pictureArraySlot += 1
         })
         }

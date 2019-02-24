@@ -74,6 +74,8 @@
 		228CF3B12202D5CA00C4ED08 /* dividingLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 228CF3B02202D5C900C4ED08 /* dividingLine.png */; };
 		22A5D6712220B2410004E1D9 /* PianoAccompaniment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */; };
 		22A5D6732220B3750004E1D9 /* playOstinato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22A5D6722220B3750004E1D9 /* playOstinato.mp3 */; };
+		22A5D67B22222E0F0004E1D9 /* reelInButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A5D67A22222E0F0004E1D9 /* reelInButton.png */; };
+		22A5D67D222231BE0004E1D9 /* ReelInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5D67C222231BE0004E1D9 /* ReelInButton.swift */; };
 		22A666C121FFD8270038220E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A666C021FFD8270038220E /* Button.swift */; };
 		22A666C321FFD98C0038220E /* read.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C221FFD98C0038220E /* read.png */; };
 		22A666C521FFDB870038220E /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C421FFDB870038220E /* questionMark.png */; };
@@ -372,6 +374,8 @@
 		228CF3B02202D5C900C4ED08 /* dividingLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dividingLine.png; sourceTree = "<group>"; };
 		22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoAccompaniment.swift; sourceTree = "<group>"; };
 		22A5D6722220B3750004E1D9 /* playOstinato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playOstinato.mp3; sourceTree = "<group>"; };
+		22A5D67A22222E0F0004E1D9 /* reelInButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reelInButton.png; sourceTree = "<group>"; };
+		22A5D67C222231BE0004E1D9 /* ReelInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelInButton.swift; sourceTree = "<group>"; };
 		22A666C021FFD8270038220E /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		22A666C221FFD98C0038220E /* read.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read.png; sourceTree = "<group>"; };
 		22A666C421FFDB870038220E /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
@@ -751,6 +755,7 @@
 			children = (
 				22C12C0421F7B716006D288F /* Performance Images */,
 				22EAC3252213F232000FB428 /* bubbleScoreNoteImage.png */,
+				22A5D67A22222E0F0004E1D9 /* reelInButton.png */,
 				864930B6222101DD00AACF41 /* I.png */,
 				864930B7222101DD00AACF41 /* IV.png */,
 				864930B8222101DD00AACF41 /* V.png */,
@@ -1019,6 +1024,7 @@
 			isa = PBXGroup;
 			children = (
 				860AD9E621C309FD0052577B /* CatchingMelodies.swift */,
+				22A5D67C222231BE0004E1D9 /* ReelInButton.swift */,
 				86F8AB8121DD636300BED768 /* FishingPole.swift */,
 				869EEFFF21DBE1E600A4BC06 /* CatchOrThrowbackImage.swift */,
 			);
@@ -1325,6 +1331,7 @@
 				22FF24CC221F62DA00A28C54 /* nextArrow.png in Resources */,
 				86EE346C2204F4E8003218B6 /* fishOnLine.mp3 in Resources */,
 				224D964C221B230900EBF0D3 /* Town.png in Resources */,
+				22A5D67B22222E0F0004E1D9 /* reelInButton.png in Resources */,
 				22205CBC221A5FF6005466DC /* performingImage10.png in Resources */,
 				22205C9C221A5C89005466DC /* TalkingToCrowdAboutFishing.png in Resources */,
 				22C12C0021F7B70D006D288F /* musicSymbol0.png in Resources */,
@@ -1366,6 +1373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22A5D67D222231BE0004E1D9 /* ReelInButton.swift in Sources */,
 				86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */,
 				8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */,
 				86CC12DF21FB7FD600B9164B /* AboutPage.swift in Sources */,
