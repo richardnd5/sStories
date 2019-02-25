@@ -7,7 +7,7 @@ let blurbs = [
     Blurb(textBlurb: "Templeton’s Fishing Journey was written and built for my nephew, Stroud.", imageName: "Templeton"),
     Blurb(textBlurb: "It is my hope that this app will help spark in him an interest in music.", imageName: "performingImage0"),
     Blurb(textBlurb: "Thank you to my father, David, who hand carved Templeton from a piece of wood.", imageName: "performingImage1"),
-    Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and drawing the  images for the scenes.", imageName: "performingImage1.5"),
+    Blurb(textBlurb: "Thank you to my mother, Cassandra and my father for taking the photographs and drawing the images for the scenes.", imageName: "performingImage1.5"),
     Blurb(textBlurb: "Thank you to my dear friends, Peter and Tara for helping edit the story.", imageName: "performingImage2"),
     Blurb(textBlurb: "Thank you to my friends, Ivan, Jayson, Peter, Tara, and Anthony for providing feedback throughout the creation of the app.", imageName: "performingImage3"),
     Blurb(textBlurb: "Thank you to Aurelius Prochazka and the community of AudioKit for creating and maintaining the framework used for the audio portion of the app.", imageName: "performingImage4"),
@@ -78,5 +78,12 @@ enum SoundEffects : String, CaseIterable {
     case arrangingPlaceMelody = "placeMelodyPause"
     case arrangingCrossOut = "arrangingCrossOutPause"
     case arrangingAllMelodiesLocked = "arrangingAllMelodiesLocked"
+    
+    case arrangingPlaceSound1 = "arrangingPlaceSound1"
+    case arrangingPlaceSound2 = "arrangingPlaceSound2"
+    case arrangingPlaceSound3 = "arrangingPlaceSound3"
+    case arrangingPlaceSound4 = "arrangingPlaceSound4"
+    case arrangingPlaceSound5 = "arrangingPlaceSound5"
+    case arrangingPlaceSound6 = "arrangingPlaceSound6"
 }
 

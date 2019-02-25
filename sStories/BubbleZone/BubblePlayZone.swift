@@ -216,7 +216,7 @@ class BubblePlayZone: UIView, ButtonDelegate {
                 self.VChordButton.fadeIn()
 //                self.setupAnimator()
                 Sound.sharedInstance.startPlaySequencer()
-                Sound.sharedInstance.playPondBackground()
+                Sound.sharedInstance.turnDownPond()
                 self.createNumberOfBubbles(totalBubbleScore)
                 
                 
@@ -232,9 +232,10 @@ class BubblePlayZone: UIView, ButtonDelegate {
             self.IChordButton.fadeOut()
             self.IVChordButton.fadeOut()
             self.VChordButton.fadeOut()
-            delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.4)
+            delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
             Sound.sharedInstance.stopPlaySequencer()
-            Sound.sharedInstance.stopPondBackground()
+            Sound.sharedInstance.turnUpPond()
+//            Sound.sharedInstance.stopPondBackground()
             popAllBubbles()
             
             let bottomPadding = superview!.frame.height/30

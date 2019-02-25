@@ -32,6 +32,8 @@ class HomePage: UIView {
 
         alpha = 0
 //        Sound.sharedInstance.openingMusic.loopOpeningMusic()
+        Sound.sharedInstance.stopPondBackground()
+        Sound.sharedInstance.playPondBackground()
         
         fadeTo(opacity: 1.0, time: 1.5,{
             self.startBubbles()
@@ -39,7 +41,7 @@ class HomePage: UIView {
     }
     
     func startBubbles(){
-        delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.06)
+        delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
     }
     
     func createBubblePlayZone(frame: CGRect){

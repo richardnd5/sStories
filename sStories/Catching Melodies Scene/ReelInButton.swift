@@ -17,7 +17,7 @@ class ReelInButton: UIButton {
         setTouchEvents()
         setTag()
         layer.cornerRadius = frame.width/2
-        backgroundColor = UIColor(red: 2212/255, green: 216/255, blue: 51/255, alpha: 1.0)
+        backgroundColor = UIColor(red: 212/255, green: 216/255, blue: 51/255, alpha: 1.0)
         
         let reelInWidth = frame.width/30
         addBlurBorder(dx: reelInWidth, dy: reelInWidth, cornerWidth: frame.width/2, cornerHeight: frame.width/2)
@@ -41,7 +41,7 @@ class ReelInButton: UIButton {
         
         let fr = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         textLabel = UILabel(frame: fr)
-        
+        textLabel.backgroundColor = .clear
         textLabel.textAlignment = .center
         textLabel.text = "Catch!"
         textLabel.font = UIFont(name: "Papyrus", size: frame.width/5)

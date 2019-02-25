@@ -147,7 +147,23 @@ class ArrangingScene: UIView {
                         
                         if !songFullyArranged() {
                             stopLoopedSoundEffect(.arrangingDrag)
-                            playSoundClip(.arrangingPlaceMelody)
+                            
+                            switch i {
+                            case 0:
+                                playSoundClip(.arrangingPlaceSound1)
+                            case 1:
+                                playSoundClip(.arrangingPlaceSound2)
+                            case 2:
+                                playSoundClip(.arrangingPlaceSound3)
+                            case 3:
+                                playSoundClip(.arrangingPlaceSound4)
+                            case 4:
+                                playSoundClip(.arrangingPlaceSound5)
+                            case 5:
+                                playSoundClip(.arrangingPlaceSound6)
+                            default:
+                                playSoundClip(.arrangingPlaceSound1)
+                            }
                         }
                         
                         if songFullyArranged() {

@@ -44,9 +44,9 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         setAMelodyToBiteInTheFuture()
         startBackgroundSound()
         
-        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleDownSwipe))
-        downSwipe.direction = .down
-        addGestureRecognizer(downSwipe)
+//        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleDownSwipe))
+//        downSwipe.direction = .down
+//        addGestureRecognizer(downSwipe)
         
         //fade the view in
         alpha = 0.0
@@ -281,7 +281,7 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
             self.sceneState = .fishOnTheLine
             self.fishingPole?.fishOnTheLine({})
             self.createReelInButton()
-            self.instructionLabel?.changeText(to: "Ooh! A bite! Swipe down to reel it in!")
+            self.instructionLabel?.changeText(to: "Ooh! It's a bite!")
             playRandomTriggeredSoundClip(.fishingMelodyOnTheLine)
         })
     }
@@ -470,20 +470,20 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         }
     }
     
-    @objc func handleDownSwipe(_ sender: UISwipeGestureRecognizer){
-        if sender.state == .ended{
-            if sceneState == .fishing {
-                instructionLabel?.changeText(to: "Wait for a melody to bite!")
-                warningWiggle()
-                instructionLabel?.warningScaleUp()
-                playSoundClip(.fishingWarning)
-            }
-            
-            if sceneState == .fishOnTheLine {
-                reelIn()
-            }
-        }
-    }
+//    @objc func handleDownSwipe(_ sender: UISwipeGestureRecognizer){
+//        if sender.state == .ended{
+//            if sceneState == .fishing {
+//                instructionLabel?.changeText(to: "Wait for a melody to bite!")
+//                warningWiggle()
+//                instructionLabel?.warningScaleUp()
+//                playSoundClip(.fishingWarning)
+//            }
+//            
+//            if sceneState == .fishOnTheLine {
+//                reelIn()
+//            }
+//        }
+//    }
     
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
         
