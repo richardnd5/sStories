@@ -135,7 +135,7 @@ class PageView: UIView {
         backButton.alpha = 0.8
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: storyTextView.trailingAnchor).isActive = true
+        backButton.trailingAnchor.constraint(equalTo: storyTextView.leadingAnchor).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
 
