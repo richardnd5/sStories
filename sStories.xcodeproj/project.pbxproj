@@ -82,6 +82,7 @@
 		22A5D689222386BF0004E1D9 /* arrangingPlaceSound4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22A5D683222386BE0004E1D9 /* arrangingPlaceSound4.mp3 */; };
 		22A5D68A222386BF0004E1D9 /* arrangingPlaceSound6.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22A5D684222386BE0004E1D9 /* arrangingPlaceSound6.mp3 */; };
 		22A5D68B222386BF0004E1D9 /* arrangingPlaceSound5.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22A5D685222386BF0004E1D9 /* arrangingPlaceSound5.mp3 */; };
+		22A5D68F2223964E0004E1D9 /* PageTurnPianoClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5D68E2223964E0004E1D9 /* PageTurnPianoClass.swift */; };
 		22A666C121FFD8270038220E /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A666C021FFD8270038220E /* Button.swift */; };
 		22A666C321FFD98C0038220E /* read.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C221FFD98C0038220E /* read.png */; };
 		22A666C521FFDB870038220E /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A666C421FFDB870038220E /* questionMark.png */; };
@@ -388,6 +389,7 @@
 		22A5D683222386BE0004E1D9 /* arrangingPlaceSound4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingPlaceSound4.mp3; sourceTree = "<group>"; };
 		22A5D684222386BE0004E1D9 /* arrangingPlaceSound6.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingPlaceSound6.mp3; sourceTree = "<group>"; };
 		22A5D685222386BF0004E1D9 /* arrangingPlaceSound5.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingPlaceSound5.mp3; sourceTree = "<group>"; };
+		22A5D68E2223964E0004E1D9 /* PageTurnPianoClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTurnPianoClass.swift; sourceTree = "<group>"; };
 		22A666C021FFD8270038220E /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		22A666C221FFD98C0038220E /* read.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = read.png; sourceTree = "<group>"; };
 		22A666C421FFDB870038220E /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
@@ -865,6 +867,7 @@
 			isa = PBXGroup;
 			children = (
 				866EA64E21F282B900B28BA6 /* PageTurner.swift */,
+				22A5D68E2223964E0004E1D9 /* PageTurnPianoClass.swift */,
 				866EA65421F288CC00B28BA6 /* WholeNote.swift */,
 				866EA6F421F438DC00B28BA6 /* MiniNote.swift */,
 				866EA6EC21F42AAB00B28BA6 /* Arrow.swift */,
@@ -1417,6 +1420,7 @@
 				226A1A112202713F00E47009 /* SoundClips.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86ED757821F1263C0066E2D8 /* MelodyAudio.swift in Sources */,
+				22A5D68F2223964E0004E1D9 /* PageTurnPianoClass.swift in Sources */,
 				8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */,
 				22EAC3242213E4B7000FB428 /* BubbleScoreView.swift in Sources */,
 				8665697B21F060900086D432 /* PlayButton.swift in Sources */,

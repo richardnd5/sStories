@@ -25,6 +25,8 @@ class PlayZoneBubble: UIView {
     var majScale : Array<Int>?
     var numberOfNotes : Int!
 //    weak var bubbleDelegate : BubbleDelegate?
+    
+    var sawWave : AKOscillatorBank!
 
     
     init(frame: CGRect, isThumbnail: Bool = false) {
@@ -46,10 +48,32 @@ class PlayZoneBubble: UIView {
 //        press.minimumPressDuration = 0.0
 //        addGestureRecognizer(press)
         
+        setupOsc()
         
 
     }
     
+    func setupOsc(){
+        sawWave = AKOscillatorBank(waveform: AKTable(.triangle))
+        sawWave.attackDuration = 0.6
+        sawWave.sustainLevel = 1.0
+        sawWave.releaseDuration = 0.35
+        sawWave.vibratoRate = 3
+        sawWave.vibratoDepth = 0.3
+        sawWave.connect(to: Sound.sharedInstance.bubbleFilter)
+    }
+    
+    func playWave(_ note: MIDINoteNumber){
+        sawWave.play(noteNumber: note, velocity: 60)
+    }
+    
+    func pitchBend(amount: Double){
+        sawWave.pitchBend = amount
+    }
+    
+    func stopWave(_ note: MIDINoteNumber){
+        sawWave.stop(noteNumber: note)
+    }
     
     
     func setupImage(){

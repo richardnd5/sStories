@@ -413,12 +413,6 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         }
     }
     
-    @objc func handleSackMelodyTap(_ sender: UITapGestureRecognizer){
-        
-//        let view = sender.view as! MelodyImage
-//        view.playMelody()
-    }
-    
     // Touch Handlers
     @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
         

@@ -35,6 +35,8 @@ class Sound {
     var chordVFadeCount = 0
     weak var bubbleUIDelegate : BubbleUIDelegate?
     
+    var bubbleFilter : AKLowPassFilter!
+    
     //    var openingMusic = OpeningMusic()
     
     func setup(){
@@ -52,8 +54,15 @@ class Sound {
         pianoMixer.volume = 1.0
         pianoSampler.masterVolume = 0.3
         
+        bubbleFilter = AKLowPassFilter()
+        bubbleFilter.cutoffFrequency = 4800
+        
+        
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
-        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler)
+//        bubbleFilter.connect(to: reverb)
+        
+        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler,bubbleFilter)
+        
         
         AudioKit.output = mainMixer
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
@@ -114,6 +123,7 @@ class Sound {
     
     
     var currentBubble : UILongPressGestureRecognizer!
+    
     func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>, pressedNote: UILongPressGestureRecognizer){
         for (i, note) in notes.enumerated() {
             
@@ -181,11 +191,13 @@ class Sound {
         }
     }
     
+    // ********** Piano Sampler
     func loadPianoSamples() {
         let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("FrontPageKeyboard")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "frontPagePianoKeyboard.sfz")
         pianoSampler.releaseDuration = 7.0
     }
+    
     
     func loadPageTurnSounds(){
         
@@ -262,12 +274,31 @@ class Sound {
         sequencer.play()
     }
     
-    func playNote(_ note: MIDINoteNumber){
-        pianoSampler.play(noteNumber: note, velocity: 127)
+    func oldPlayNote(_ note: MIDINoteNumber?, _ note2: PageTurnPianoNote = .C4){
+        
+        if note != nil {
+            pianoSampler.play(noteNumber: note!, velocity: 127)
+        } else {
+            pianoSampler.play(noteNumber: note2.rawValue, velocity: 127)
+        }
     }
     
-    func stopNote(_ note: MIDINoteNumber){
-        pianoSampler.stop(noteNumber: note)
+    func playNote(_ note: PageTurnPianoNote){
+        pianoSampler.play(noteNumber: note.rawValue, velocity: 127)
+
+    }
+    
+    func oldStopNote(_ note: MIDINoteNumber?, _ note2: PageTurnPianoNote = .C4){
+        
+        if note != nil {
+            pianoSampler.stop(noteNumber: note!)
+        } else {
+            pianoSampler.stop(noteNumber: note2.rawValue)
+        }
+    }
+    
+    func stopNote(_ note: PageTurnPianoNote){
+        pianoSampler.stop(noteNumber: note.rawValue)
     }
     
 }

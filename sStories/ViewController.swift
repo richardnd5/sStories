@@ -1,5 +1,7 @@
 // Pop bubbles to advance the3 story instead of a button! (best if narrated)
 
+// JUST A BACK BUTTON! Then pop up a UIView with all the scenes, just change the dummy slot ones to be the images of the active scene and you have thumbnails ready to go. Each has a picture.
+
 import UIKit
 
 protocol SceneDelegate : class {
@@ -54,7 +56,7 @@ class ViewController: UIViewController, SceneDelegate {
         
         createHomePage()
         createBubbleScore()
-        setupAnimator()        
+        setupAnimator()
         
     }
     

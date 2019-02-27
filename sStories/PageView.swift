@@ -15,12 +15,22 @@ class PageView: UIView {
         return imageView
     }()
     
-    private let nextImage: UIImageView = {
-        var imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
+//    private let nextImage: UIImageView = {
+//        var imageView = UIImageView()
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.contentMode = .scaleAspectFit
+//        imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
+//        return imageView
+//    }()
+//    
+//    private let backImage: UIImageView = {
+//        var imageView = UIImageView()
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.contentMode = .scaleAspectFit
+//        return imageView
+//    }()
+//    
+    
     
     private let storyTextView: UITextView = {
         let textView = UITextView()
@@ -36,6 +46,7 @@ class PageView: UIView {
     }()
     
     var nextButton : Button!
+    var backButton : Button!
     
     var imageName = String()
     var storyText : ArraySlice<String>?
@@ -109,6 +120,7 @@ class PageView: UIView {
         storyTextView.sizeToFit()
         
         nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
+        
         addSubview(nextButton)
         nextButton.alpha = 0.8
         nextButton.translatesAutoresizingMaskIntoConstraints = false
@@ -116,6 +128,16 @@ class PageView: UIView {
         nextButton.leadingAnchor.constraint(equalTo: storyTextView.trailingAnchor).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
+        
+        backButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
+        
+        addSubview(backButton)
+        backButton.alpha = 0.8
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: storyTextView.trailingAnchor).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
 
         
     }

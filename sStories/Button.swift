@@ -11,7 +11,6 @@ class Button: UIButton {
         super.init(frame: frame)
         self.name = name
         
-        
         setImage()
         setTouchEvents()
         setTag()
@@ -78,6 +77,7 @@ class Button: UIButton {
             delegate?.startStory()
             playSoundClip(.buttonUp)
 //            Sound.sharedInstance.openingMusic.stopLoop()
+            Sound.sharedInstance.stopPondBackground()
             playSoundClip(.pageTurn)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()

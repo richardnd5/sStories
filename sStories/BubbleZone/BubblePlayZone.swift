@@ -4,11 +4,9 @@ import AudioKit
 protocol ButtonDelegate : class {
     func exitButtonTapped()
     func chordButtonTapped(chord: ChordType)
-    
 }
 
-
-class BubblePlayZone: UIView, ButtonDelegate {
+class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
 
     func chordButtonTapped(chord: ChordType) {
         switch chord {
@@ -61,8 +59,8 @@ class BubblePlayZone: UIView, ButtonDelegate {
     }
     
     var bubbleTimer = Timer()
+    
     func createNumberOfBubbles(_ numberOfBubbles: Int = 0){
-        print("creating count")
         for _ in 0..<numberOfBubbles{
 
         let width = frame.width/14
@@ -79,6 +77,10 @@ class BubblePlayZone: UIView, ButtonDelegate {
         let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
         press.minimumPressDuration = 0.0
         note.addGestureRecognizer(press)
+        press.delegate = self
+            
+        let pan = UIPanGestureRecognizer(target: self, action: (#selector(handlePan)))
+        note.addGestureRecognizer(pan)
 
         
 //        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
@@ -88,7 +90,7 @@ class BubblePlayZone: UIView, ButtonDelegate {
 //
 //        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
 //        animator.addBehavior(pushBehavior)
-        pushBubble(note)
+//        pushBubble(note)
         
         bringSubviewToFront(note)
         
@@ -103,7 +105,6 @@ class BubblePlayZone: UIView, ButtonDelegate {
             subviews.forEach { view in
                 if view is PlayZoneBubble {
                     let note = view as! PlayZoneBubble
-//                    note.shrinkRotateAndRemove()
                     note.fadeAndRemove(time: 1.4)
                 }
             }
@@ -156,9 +157,53 @@ class BubblePlayZone: UIView, ButtonDelegate {
             Sound.sharedInstance.generatePianoImprov(notes: note.pitches, beats: note.rhythms, pressedNote: sender)
 //            note.glowInandOut()
             note.pulseToRhythm()
-            pushBubble(note, magnitudeLimit: 0.04)
+//            pushBubble(note, magnitudeLimit: 0.04)
         }
 
+    }
+    
+    @objc func handlePan(_ sender: UIPanGestureRecognizer){
+        
+        let translation = sender.translation(in: self)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self)
+        
+        let note = sender.view as! PlayZoneBubble
+        
+        
+        
+        if sender.state == .began {
+            note.playWave(61)
+            
+        }else if sender.state == .changed {
+            let yPos = Double((sender.view?.center.y)!)
+            let rescaledY = Rescale(from: (120, 2), to: (0, 12)).rescale(yPos)
+            note.pitchBend(amount: rescaledY)
+            
+        } else if sender.state == .ended {
+            note.stopWave(61)
+        }
+    }
+//
+//    func fillNoteLocationArray(){
+//        let backwardsArray = lineContainer.reversed()
+//        backwardsArray.forEach { (view) in
+//            let range = (view.frame.midY-20)...(view.frame.midY+20)
+//            noteLocationArray.append(range)
+//        }
+//    }
+    
+    func takeInPointGiveBackNoteToPlay(_ point: CGPoint)-> MIDINoteNumber {
+        let numberOfNotes = 16
+        for i in 0...numberOfNotes {
+            let number = i
+        }
+        
+        return 42
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     func pushBubble(_ note: PlayZoneBubble, magnitudeLimit: CGFloat = 0.1){
@@ -197,7 +242,7 @@ class BubblePlayZone: UIView, ButtonDelegate {
                     translatedPoint = VChordButton.convert(point, from: self)
                     if (VChordButton.bounds.contains(translatedPoint)) {
                         return VChordButton.hitTest(translatedPoint, with: event)
-                    }
+                    } 
             }
         }
         }

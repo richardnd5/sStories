@@ -41,7 +41,7 @@ class HomePage: UIView {
     }
     
     func startBubbles(){
-        delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
+        delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.1)
     }
     
     func createBubblePlayZone(frame: CGRect){

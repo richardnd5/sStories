@@ -66,14 +66,14 @@ class PianoKey : UIView {
     func playKey(){
         overlay.alpha = 0.4
 //        audio.play()
-        Sound.sharedInstance.playNote(keyNumber)
+        Sound.sharedInstance.oldPlayNote(keyNumber)
         keyIsActive = true
     }
     
     func stopKey(){
         overlay.alpha = 0
 //        audio.stop()
-        Sound.sharedInstance.stopNote(keyNumber)
+        Sound.sharedInstance.oldStopNote(keyNumber)
         keyIsActive = false
     }
     
