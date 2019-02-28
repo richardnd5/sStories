@@ -51,7 +51,7 @@ extension UIView {
     }
     
     func addBlurBorder(dx: CGFloat, dy: CGFloat, cornerWidth: CGFloat, cornerHeight: CGFloat, shadowRadius: CGFloat = 3){
-        var maskLayer = CAGradientLayer()
+        let maskLayer = CAGradientLayer()
         maskLayer.frame = bounds
         maskLayer.shadowPath = CGPath(roundedRect: bounds.insetBy(dx: dx, dy: dy), cornerWidth: cornerWidth, cornerHeight: cornerHeight, transform: nil)
         maskLayer.shadowOpacity = 1;

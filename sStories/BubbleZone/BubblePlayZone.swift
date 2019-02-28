@@ -7,35 +7,6 @@ protocol ButtonDelegate : class {
 }
 
 class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
-
-    func chordButtonTapped(chord: ChordType) {
-        switch chord {
-            case .I:
-                print("I Chord Tapped!")
-                Sound.sharedInstance.switchChord(chord: .I)
-                IChordButton.isActive = true
-                IVChordButton.isActive = false
-                VChordButton.isActive = false
-            case .IV:
-                print("IV Chord Tapped!")
-                Sound.sharedInstance.switchChord(chord: .IV)
-                IChordButton.isActive = false
-                IVChordButton.isActive = true
-                VChordButton.isActive = false
-            case .V:
-                print("V Chord Tapped!")
-                Sound.sharedInstance.switchChord(chord: .V)
-                IChordButton.isActive = false
-                IVChordButton.isActive = false
-                VChordButton.isActive = true
-            case .off:
-                print("Off Button Tapped!")
-                Sound.sharedInstance.switchChord(chord: .off)
-                IChordButton.isActive = false
-                IVChordButton.isActive = false
-                VChordButton.isActive = false
-        }
-    }
     
     var isActive = false
     var initialPosition : CGPoint!
@@ -62,6 +33,8 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         setupGestures()
         setupAnimator()
         scaleTo(scaleTo: 0.12, time: 0.0)
+        
+        fillClosedRangeArray()
     }
     
     var bubbleTimer = Timer()
@@ -157,6 +130,37 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
 
     }
     
+    var arrayOfRanges = [ClosedRange<CGFloat>]()
+    
+    func fillClosedRangeArray(){
+        let numberOfNotes = 12
+        let height = frame.height
+        for i in 0...numberOfNotes {
+            
+            let range = CGFloat(i)*height...CGFloat(i+1)*height
+            arrayOfRanges.append(range)
+        }
+        arrayOfRanges = arrayOfRanges.reversed()
+    }
+    
+    var previousNote : Int!
+    let pitchBendArray = [-13,-12,-10,-8,-7,-5,-3,-1,0,2,4,5,7,9,11,12]
+    func checkWhichNoteToPlay(_ sender: UIPanGestureRecognizer){
+        let note = sender.view as! PlayZoneBubble
+        let yPos = sender.view!.center.y
+
+        for (index, range) in arrayOfRanges.enumerated() {
+            if range.contains(yPos) && previousNote != index {
+                previousNote = index
+                
+                note.pitchBend(amount: Double(pitchBendArray[index]))
+            }
+        }
+        let xPos = sender.view!.center.x
+        let xScaled = Rescale(from: (0, frame.width), to: (6000, 20000)).rescale(xPos)
+        Sound.sharedInstance.bubbleFilter.cutoffFrequency = Double(xPos)
+    }
+    
     @objc func handlePan(_ sender: UIPanGestureRecognizer){
         
         if background.frame.contains(sender.location(in: self)) {
@@ -173,9 +177,8 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             note.bigWiggle()
             
         }else if sender.state == .changed {
-            let yPos = Double((sender.view?.center.y)!)
-            let rescaledY = Rescale(from: (120, 2), to: (0, 12)).rescale(yPos)
-            note.pitchBend(amount: rescaledY)
+
+            checkWhichNoteToPlay(sender)
             
         } else if sender.state == .ended {
             note.stopWave(61)
@@ -183,7 +186,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             
             // To move bubble back into view if it is out of bounds.
             if !background.frame.contains(note.frame) {
-                print("doesn't contain")
                 var endPoint = note.frame.origin
                 
                 if note.frame.minX <= background.frame.minX {
@@ -200,29 +202,19 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
                 }
                 
                 note.moveViewTo(endPoint, time: 0.8)
-                
-                
             }
             
         }
     }
-//
-//    func fillNoteLocationArray(){
-//        let backwardsArray = lineContainer.reversed()
-//        backwardsArray.forEach { (view) in
-//            let range = (view.frame.midY-20)...(view.frame.midY+20)
-//            noteLocationArray.append(range)
+
+//    func takeInPointGiveBackNoteToPlay(_ point: CGPoint)-> MIDINoteNumber {
+//        let numberOfNotes = 16
+//        for i in 0...numberOfNotes {
+//            let number = i
 //        }
+//
+//        return 42
 //    }
-    
-    func takeInPointGiveBackNoteToPlay(_ point: CGPoint)-> MIDINoteNumber {
-        let numberOfNotes = 16
-        for i in 0...numberOfNotes {
-            let number = i
-        }
-        
-        return 42
-    }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
@@ -274,6 +266,32 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
         }
         return super.hitTest(point, with: event)
+    }
+    
+    func chordButtonTapped(chord: ChordType) {
+        switch chord {
+        case .I:
+            Sound.sharedInstance.switchChord(chord: .I)
+            IChordButton.isActive = true
+            IVChordButton.isActive = false
+            VChordButton.isActive = false
+        case .IV:
+            Sound.sharedInstance.switchChord(chord: .IV)
+            IChordButton.isActive = false
+            IVChordButton.isActive = true
+            VChordButton.isActive = false
+        case .V:
+            Sound.sharedInstance.switchChord(chord: .V)
+            IChordButton.isActive = false
+            IVChordButton.isActive = false
+            VChordButton.isActive = true
+        case .off:
+
+            Sound.sharedInstance.switchChord(chord: .off)
+            IChordButton.isActive = false
+            IVChordButton.isActive = false
+            VChordButton.isActive = false
+        }
     }
     
     
@@ -374,8 +392,8 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         offButton.translatesAutoresizingMaskIntoConstraints = false
         offButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
         offButton.leadingAnchor.constraint(equalTo: VChordButton.trailingAnchor, constant: frame.width/5).isActive = true
-        offButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        offButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+        offButton.widthAnchor.constraint(equalToConstant: size*0.8).isActive = true
+        offButton.heightAnchor.constraint(equalToConstant: size*0.8).isActive = true
         
     }
     

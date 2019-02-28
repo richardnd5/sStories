@@ -99,8 +99,6 @@ class PianoKeyboard: UIView, ButtonDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        print(touches.count)
         if keyboardIsActive {
             for touch in touches {
                 let location = touch.location(in: self)

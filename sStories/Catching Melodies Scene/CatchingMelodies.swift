@@ -405,7 +405,6 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         if sender.state == .ended {
             if sender.view!.center.y <= view.initialPosition.y/1.4 ||
                 sender.view!.center.x >= view.initialPosition.x*4 {
-                print("yup. too far away")
                 removeMelodyFromSack(view)
             } else {
                 view.moveViewTo(view.initialPosition, time: 0.5)

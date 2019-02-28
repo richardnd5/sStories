@@ -107,7 +107,6 @@ class ViewController: UIViewController, SceneDelegate {
     var bubbleTimer = Timer()
     
     func createRandomBubblesAtRandomTimeInterval(time: TimeInterval = 1.0){
-        print("startingh bubbles")
         bubblesArePlaying = true
         
         bubbleTimer = Timer.scheduledTimer(withTimeInterval: time, repeats: true, block: { _ in
@@ -137,7 +136,6 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func stopRandomBubbles(){
-        print("stopping bubbles.")
         bubbleTimer.invalidate()
         bubblesArePlaying = false
         
@@ -290,7 +288,6 @@ class ViewController: UIViewController, SceneDelegate {
         // 5 9 11
         if page != nil && currentPage == 6 {
             collectedMelodies.removeAll()
-            print("removing all melodies.")
         }
     }
     
@@ -422,7 +419,6 @@ class ViewController: UIViewController, SceneDelegate {
     
     func previousMoment(){
         if page?.superview != nil {
-            print("pressed the back button!")
             if tempStoryLine > 0 && page.canActivate && currentState == .story {
                 page.previousStoryLine()
                 tempStoryLine -= 1

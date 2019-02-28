@@ -47,7 +47,7 @@ class PlayZoneBubble: UIView {
     }
     
     func setupOsc(){
-        sawWave = AKOscillatorBank(waveform: AKTable(.triangle))
+        sawWave = AKOscillatorBank(waveform: AKTable(.square))
         sawWave.attackDuration = 0.6
         sawWave.sustainLevel = 1.0
         sawWave.releaseDuration = 0.35

@@ -148,7 +148,6 @@ class PageView: UIView {
         backButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "backArrow")
         
         addSubview(backButton)
-        print(backButton.name)
         backButton.alpha = 0.8
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
