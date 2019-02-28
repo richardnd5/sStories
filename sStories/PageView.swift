@@ -93,6 +93,20 @@ class PageView: UIView {
         }
     }
     
+    func previousStoryLine(){
+        
+        if canActivate{
+            canActivate = false
+            storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
+                self.sceneStoryPosition -= 1
+                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
+                self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
+                    self.canActivate = true
+                })
+            }
+        }
+    }
+    
     func shrinkText(){
         storyTextView.scaleTo(scaleTo: 0.97, time: 0.4)
     }
@@ -129,9 +143,12 @@ class PageView: UIView {
         nextButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
         
-        backButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
+        
+        
+        backButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "backArrow")
         
         addSubview(backButton)
+        print(backButton.name)
         backButton.alpha = 0.8
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true

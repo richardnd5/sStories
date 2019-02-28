@@ -87,6 +87,10 @@ class Sound {
             chordIAudio.fadeOut()
             chordIVAudio.fadeOut()
             chordVAudio.fadeIn()
+        case .off:
+            chordIAudio.fadeOut()
+            chordIVAudio.fadeOut()
+            chordVAudio.fadeOut()
         }
     }
     
@@ -95,6 +99,9 @@ class Sound {
         chordIVAudio.playMelody()
         chordVAudio.playMelody()
     }
+    
+    let latencyBuffer = 0.05
+
     
     func setupPlayZoneSequencer(){
         
@@ -112,7 +119,9 @@ class Sound {
         
         let seqLength = 100
         for i in 0...seqLength {
-            accompTrack.add(midiNoteData: AKMIDINoteData(noteNumber: 60, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: i*8)))
+            
+            
+            accompTrack.add(midiNoteData: AKMIDINoteData(noteNumber: 60, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: i*8+latencyBuffer)))
 
         }
 
@@ -127,14 +136,17 @@ class Sound {
     func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>, pressedNote: UILongPressGestureRecognizer){
         for (i, note) in notes.enumerated() {
             
-            currentBubble = pressedNote
-            
-            let now = playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).beats
-            let beatTimePlusNow = beats[i].beats+now
-            let newDuration = AKDuration(beats: beatTimePlusNow)
-            let midiData = AKMIDINoteData(noteNumber: note, velocity: 127, channel: 1, duration: AKDuration(beats: 1), position: newDuration)
-            
-            trackImprov.add(midiNoteData: midiData)
+            if i != 0 {
+                currentBubble = pressedNote
+                
+                let now = playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).beats
+                let beatTimePlusNow = beats[i].beats+now
+                let newDuration = AKDuration(beats: beatTimePlusNow)
+                let nextMoment = AKDuration(beats: newDuration.beats+latencyBuffer)
+                let midiData = AKMIDINoteData(noteNumber: note, velocity: 127, channel: 1, duration: AKDuration(beats: 1), position: nextMoment)
+                
+                trackImprov.add(midiNoteData: midiData)
+            }
         }
     }
     
@@ -164,7 +176,7 @@ class Sound {
             if status == .noteOn {
                 self.pianoSampler.play(noteNumber: noteNumber, velocity: 60)
                 
-                self.bubbleUIDelegate?.scaleNoteUpAndDown()
+//                self.bubbleUIDelegate?.scaleNoteUpAndDown()
                 let bubble = self.currentBubble.view as! PlayZoneBubble
 //                bubble.scaleNoteUpAndDown()
                 

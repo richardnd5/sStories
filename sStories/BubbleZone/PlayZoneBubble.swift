@@ -21,13 +21,11 @@ class PlayZoneBubble: UIView {
     
     var pitches = [MIDINoteNumber]()
     var rhythms = [AKDuration]()
-//    let majScale = [61 as Int,63 as Int,65 as Int,66 as Int,68 as Int,70 as Int,72 as Int,73 as Int,75 as Int,77 as Int,78 as Int,80 as Int]
     var majScale : Array<Int>?
     var numberOfNotes : Int!
-//    weak var bubbleDelegate : BubbleDelegate?
     
     var sawWave : AKOscillatorBank!
-
+    
     
     init(frame: CGRect, isThumbnail: Bool = false) {
         super.init(frame: frame)
@@ -44,13 +42,13 @@ class PlayZoneBubble: UIView {
         generateRandomPitches()
         generateRandomRhythms()
         
-//        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-//        press.minimumPressDuration = 0.0
-//        addGestureRecognizer(press)
+        //        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+        //        press.minimumPressDuration = 0.0
+        //        addGestureRecognizer(press)
         
         setupOsc()
         
-
+        
     }
     
     func setupOsc(){
@@ -101,30 +99,14 @@ class PlayZoneBubble: UIView {
         backgroundColor = UIColor(hue: randomNumber, saturation: randomNumber, brightness: 1.0, alpha: 1.0)
         
         setupGlowingOverlay()
-
+        
     }
-    
-    
-//    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
-//        if sender.state == .began {
-//            print("pressed a bubble!!!")
-//            Sound.sharedInstance.generatePianoImprov(notes: pitches, beats: rhythms, pressedNote: sender)
-//            glowInandOut()
-//            let note = sender.view as! PlayZoneBubble
-//            bubbleDelegate?.pushBubble(note, magnitudeLimit: 0.1)
-//            scaleNoteUpAndDown()
-//
-//        }
-//
-//    }
-//
-
     
     func scaleNoteUpAndDown(){
         imageView.scaleTo(scaleTo: 1.6, time: 0.3,{
             self.imageView.scaleTo(scaleTo: 1.0, time: 0.3)
         })
-        }
+    }
     
     func generateRandomPitches(){
         for _ in 0..<numberOfNotes{
@@ -150,11 +132,16 @@ class PlayZoneBubble: UIView {
     func pulseToRhythm(){
         
         for i in 0...pitches.count-1 {
-            _ = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5)
-            let time = (i * (60/tempo))/2
-            
-            Timer.scheduledTimer(withTimeInterval: time, repeats: false) { _ in
-                self.scaleNoteUpAndDown()
+            if i != 0 {
+                let current = Sound.sharedInstance.playZoneSequencer.currentPosition.minutes*60
+                let nextBeat = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).minutes*60
+                
+                let distance = nextBeat-current
+                let time = (i * (60/tempo))/2
+                
+                Timer.scheduledTimer(withTimeInterval: time+distance, repeats: false) { _ in
+                    self.scaleNoteUpAndDown()
+                }
             }
         }
     }
@@ -190,7 +177,7 @@ class PlayZoneBubble: UIView {
         glow.autoreverses = true
         glowingOverlay.layer.add(glow, forKey: "throb")
     }
-
+    
     private func stopGlowingPulse(){
         
         glowTimer.invalidate()

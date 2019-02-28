@@ -27,6 +27,8 @@
 		22205CC0221A5FF6005466DC /* performingImage8.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB5221A5FF6005466DC /* performingImage8.png */; };
 		22205CC1221A5FF6005466DC /* performingImage9.png in Resources */ = {isa = PBXBuildFile; fileRef = 22205CB6221A5FF6005466DC /* performingImage9.png */; };
 		222758C3221C5AC7001C0314 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = 222758C2221C5AC7001C0314 /* stars.png */; };
+		223FDC1A222737AC008F8864 /* backArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 223FDC19222737AC008F8864 /* backArrow.png */; };
+		223FDC1E222745CC008F8864 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 223FDC1D222745CC008F8864 /* off.png */; };
 		224D964C221B230900EBF0D3 /* Town.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964B221B230900EBF0D3 /* Town.png */; };
 		224D9650221B26E400EBF0D3 /* performingImage1.5.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964F221B26E400EBF0D3 /* performingImage1.5.png */; };
 		224D9652221B5F2A00EBF0D3 /* PianoKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */; };
@@ -334,6 +336,8 @@
 		22205CB5221A5FF6005466DC /* performingImage8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage8.png; sourceTree = "<group>"; };
 		22205CB6221A5FF6005466DC /* performingImage9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage9.png; sourceTree = "<group>"; };
 		222758C2221C5AC7001C0314 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
+		223FDC19222737AC008F8864 /* backArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backArrow.png; sourceTree = "<group>"; };
+		223FDC1D222745CC008F8864 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
 		224D964B221B230900EBF0D3 /* Town.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Town.png; sourceTree = "<group>"; };
 		224D964F221B26E400EBF0D3 /* performingImage1.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage1.5.png; sourceTree = "<group>"; };
 		224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboard.swift; sourceTree = "<group>"; };
@@ -779,11 +783,13 @@
 				864930B6222101DD00AACF41 /* I.png */,
 				864930B7222101DD00AACF41 /* IV.png */,
 				864930B8222101DD00AACF41 /* V.png */,
+				223FDC1D222745CC008F8864 /* off.png */,
 				220A1FF2220B8B63003180B8 /* whiteDot.png */,
 				22205C94221A5C88005466DC /* Fishing.png */,
 				22205C91221A5C88005466DC /* Mountain.png */,
 				86109E0A22209607001B6545 /* bubbleZoneBackground.png */,
 				22FF24CB221F62DA00A28C54 /* nextArrow.png */,
+				223FDC19222737AC008F8864 /* backArrow.png */,
 				22205C96221A5C89005466DC /* ShowingCrowdSackOfMelodies.png */,
 				22205C8D221A5C87005466DC /* TalkingToCrowdAboutFishing.png */,
 				8654705921EE70D400D1F068 /* begin.png */,
@@ -1222,8 +1228,10 @@
 				228A6F39221482CE007617A0 /* openingMusic.mp3 in Resources */,
 				868251C522121D3B0082D703 /* melody7.mp3 in Resources */,
 				22205CA3221A5C89005466DC /* Fishing.png in Resources */,
+				223FDC1A222737AC008F8864 /* backArrow.png in Resources */,
 				226A1A472202794900E47009 /* test33.mp3 in Resources */,
 				86B56D1A22095668000F6394 /* touchDown.mp3 in Resources */,
+				223FDC1E222745CC008F8864 /* off.png in Resources */,
 				226A1A482202794900E47009 /* test9.mp3 in Resources */,
 				868F9C222207EDDE00BBBFE3 /* castLine.mp3 in Resources */,
 				226A1A3F2202794900E47009 /* test25.mp3 in Resources */,

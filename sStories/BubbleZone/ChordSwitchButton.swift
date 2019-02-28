@@ -4,6 +4,7 @@ enum ChordType {
     case I
     case IV
     case V
+    case off
 }
 
 class ChordSwitchButton: UIButton {
@@ -37,6 +38,8 @@ class ChordSwitchButton: UIButton {
             str = "IV"
         case .V:
             str = "V"
+        case .off:
+            str = "off"
         }
         return str
     }

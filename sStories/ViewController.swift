@@ -9,12 +9,15 @@ protocol SceneDelegate : class {
     func returnToStoryFromArranging()
     func nextPage()
     func nextMoment()
+    func previousMoment()
     func goToAboutPage()
     func startStory()
     func goToHomePage()
     func addToScore()
     func createRandomBubblesAtRandomTimeInterval(time: TimeInterval)
     func stopRandomBubbles()
+    func fadeOutTitleAndButtons()
+    func fadeInTitleAndButtons()
 }
 
 class ViewController: UIViewController, SceneDelegate {
@@ -266,6 +269,31 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
+    func previousPage() {
+        stopRandomBubbles()
+        // If the next page is a regular page
+        if page != nil && currentPage == 0 && currentState == .story{
+            page.fadeAndRemove(time: 1.0) {
+                self.createHomePage()
+            }
+        }
+        
+        if page != nil && currentPage > 0 && currentState == .story {
+            
+            page.fadeAndRemove(time: 1.0) {
+                self.currentPage-=1
+                self.tempStoryLine = 0
+                self.createPage()
+                self.pageTurnerVisible = false
+            }
+        }
+        // 5 9 11
+        if page != nil && currentPage == 6 {
+            collectedMelodies.removeAll()
+            print("removing all melodies.")
+        }
+    }
+    
     func startStory() {
 //        Sound.sharedInstance.openingMusic.stopLoop()
         homePage.fadeAndRemove(time: 1.0) {
@@ -333,6 +361,7 @@ class ViewController: UIViewController, SceneDelegate {
 //            press.minimumPressDuration = 0.0
 //            page.addGestureRecognizer(press)
             page.nextButton.delegate = self
+            page.backButton.delegate = self
             
             view.sendSubviewToBack(page)
         }
@@ -369,8 +398,9 @@ class ViewController: UIViewController, SceneDelegate {
 //        }
     }
     
+    
+    
     func nextMoment(){
-        print("running next moment")
         if page?.superview != nil {
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 page?.nextStoryLine()
@@ -383,8 +413,55 @@ class ViewController: UIViewController, SceneDelegate {
                     createPageTurner()
                     page.expandText()
                     page.canActivate = false
+                    page.backButton.fadeOut(1.0)
+                    page.nextButton.fadeOut(1.0)
                 }
             }
+        }
+    }
+    
+    func previousMoment(){
+        if page?.superview != nil {
+            print("pressed the back button!")
+            if tempStoryLine > 0 && page.canActivate && currentState == .story {
+                page.previousStoryLine()
+                tempStoryLine -= 1
+                page.expandText()
+            } else if tempStoryLine == 0 && (page?.canActivate)! && currentState == .story {
+//                if !pageTurnerVisible {
+//                    pageTurnerVisible = true
+//                    createPageTurner()
+//                    page.expandText()
+                    previousPage()
+                    page.canActivate = false
+//                }
+            }
+        }
+//            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+//                page?.nextStoryLine()
+//                tempStoryLine += 1
+//                playSoundClip(.nextStoryLine)
+//                page.expandText()
+//            } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
+//                if !pageTurnerVisible {
+//                    pageTurnerVisible = true
+//                    createPageTurner()
+//                    page.expandText()
+//                    page.canActivate = false
+//                }
+//            }
+//        }
+    }
+    
+    func fadeInTitleAndButtons() {
+        if homePage != nil {
+            homePage.fadeInTitleAndLabels()
+        }
+    }
+
+    func fadeOutTitleAndButtons(){
+        if homePage != nil {
+            homePage.fadeOutTitleAndLabels()
         }
     }
     

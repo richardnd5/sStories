@@ -119,11 +119,11 @@ extension UIView {
     
     func bigWiggle(){
         
-        let randX = Double.random(in: 0.1...2.0)
-        let randY = Double.random(in: 0.1...2.0)
+        let randX = Double.random(in: 0.4...3.0)
+        let randY = Double.random(in: 0.4...3.0)
         
-        let randXSpeed = Double.random(in: 0.07...0.12)
-        let randYSpeed = Double.random(in: 0.07...0.12)
+        let randXSpeed = Double.random(in: 0.1...0.22)
+        let randYSpeed = Double.random(in: 0.1...0.22)
         
         let wiggleLeftRight : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
         wiggleLeftRight.toValue = randX
@@ -149,8 +149,12 @@ extension UIView {
         animGroup.fillMode = .forwards
         animGroup.repeatCount = .infinity
         
-        layer.add(animGroup, forKey: "animGroup")
+        layer.add(animGroup, forKey: "bigWiggle")
         
+    }
+    
+    func stopBigWiggle(){
+        layer.removeAnimation(forKey: "bigWiggle")
     }
     
     func warningScaleUp(){

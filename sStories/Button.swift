@@ -41,6 +41,8 @@ class Button: UIButton {
             tag = ButtonTypee.back.rawValue
         case "nextArrow":
             tag = ButtonTypee.next.rawValue
+        case "backArrow":
+            tag = ButtonTypee.backStory.rawValue
         case "reelInButton":
             tag = ButtonTypee.reelIn.rawValue
         default:
@@ -59,8 +61,8 @@ class Button: UIButton {
     // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
-        if sender!.tag != ButtonTypee.next.rawValue {
-        playSoundClip(.buttonDown)
+        if sender!.tag != ButtonTypee.next.rawValue || sender!.tag != ButtonTypee.backStory.rawValue {
+            playSoundClip(.buttonDown)
         } else {
             playSoundClip(.touchDown)
         }
@@ -85,7 +87,13 @@ class Button: UIButton {
         }  else if sender!.tag == ButtonTypee.next.rawValue {
             delegate?.nextMoment()
             playSoundClip(.touchUp)
-        } else if sender!.tag == ButtonTypee.reelIn.rawValue {
+        } else if sender!.tag == ButtonTypee.backStory.rawValue {
+            delegate?.previousMoment()
+            
+            playSoundClip(.touchUp)
+        }
+        
+        else if sender!.tag == ButtonTypee.reelIn.rawValue {
             catchingMelodyDelegate!.reelIn()
             
         }
