@@ -285,14 +285,13 @@ class ViewController: UIViewController, SceneDelegate {
                 self.pageTurnerVisible = false
             }
         }
-        // 5 9 11
+        // remove melodies from melody array.
         if page != nil && currentPage == 6 {
             collectedMelodies.removeAll()
         }
     }
     
     func startStory() {
-//        Sound.sharedInstance.openingMusic.stopLoop()
         homePage.fadeAndRemove(time: 1.0) {
             self.stopRandomBubbles()
             self.createPage()
@@ -353,49 +352,13 @@ class ViewController: UIViewController, SceneDelegate {
             view.addSubview(page!)
             let safe = view.safeAreaLayoutGuide
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
-            
-//            let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-//            press.minimumPressDuration = 0.0
-//            page.addGestureRecognizer(press)
+
             page.nextButton.delegate = self
             page.backButton.delegate = self
             
             view.sendSubviewToBack(page)
         }
-//        if page != nil && currentPage == pages.count-1 && currentState == .story {
-//            Sound.sharedInstance.playSequencer()
-//        }
-        
     }
-    
-    @objc func handlePress(_ sender: UITapGestureRecognizer){
-        
-        
-//        if sender.state == .began && page.canActivate {
-//            playSoundClip(.touchDown)
-//            page.shrinkText()
-//        }
-//        // if the page does exist... dun dun dun!!!
-//        if sender.state == .ended {
-//            if page?.superview != nil {
-//                if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-//                    page?.nextStoryLine()
-//                    tempStoryLine += 1
-//                    playSoundClip(.nextStoryLine)
-//                    page.expandText()
-//                } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-//                    if !pageTurnerVisible {
-//                        pageTurnerVisible = true
-//                        createPageTurner()
-//                        page.expandText()
-//                        page.canActivate = false
-//                    }
-//                }
-//            }
-//        }
-    }
-    
-    
     
     func nextMoment(){
         if page?.superview != nil {
@@ -424,29 +387,11 @@ class ViewController: UIViewController, SceneDelegate {
                 tempStoryLine -= 1
                 page.expandText()
             } else if tempStoryLine == 0 && (page?.canActivate)! && currentState == .story {
-//                if !pageTurnerVisible {
-//                    pageTurnerVisible = true
-//                    createPageTurner()
-//                    page.expandText()
                     previousPage()
                     page.canActivate = false
-//                }
             }
         }
-//            if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-//                page?.nextStoryLine()
-//                tempStoryLine += 1
-//                playSoundClip(.nextStoryLine)
-//                page.expandText()
-//            } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-//                if !pageTurnerVisible {
-//                    pageTurnerVisible = true
-//                    createPageTurner()
-//                    page.expandText()
-//                    page.canActivate = false
-//                }
-//            }
-//        }
+
     }
     
     func fadeInTitleAndButtons() {
