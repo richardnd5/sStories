@@ -8,21 +8,30 @@ protocol ButtonDelegate : class {
 
 class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     
-    var isActive = false
-    var initialPosition : CGPoint!
+    var background : BackgroundImage!
+
+    // Buttons
     var exitButton : ExitButton!
     var IChordButton : ChordSwitchButton!
     var IVChordButton : ChordSwitchButton!
     var VChordButton : ChordSwitchButton!
     var offButton : ChordSwitchButton!
     
-    var tap : UITapGestureRecognizer!
-    weak var delegate : SceneDelegate?
-    var background : BackgroundImage!
-    
+    // Note dragging variables
+    var arrayOfRanges = [ClosedRange<CGFloat>]()
+    var previousNote : Int!
+    let pitchBendArray = [-13,-12,-10,-8,-7,-5,-3,-1,0,2,4,5,7,9,11,12]
+
+    // Animator variables.
     var animator: UIDynamicAnimator!
     let gravityBehavior = UIGravityBehavior()
     let collisionBehavior = UICollisionBehavior()
+    
+    var tap : UITapGestureRecognizer!
+    // Functionality variables
+    var isActive = false
+    var initialPosition : CGPoint!
+    weak var delegate : SceneDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -36,8 +45,65 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         
         fillClosedRangeArray()
     }
+    // MARK - setup functions.
+    func createExitButton(){
+        exitButton = ExitButton()
+        addSubview(exitButton)
+        exitButton.delegate = self
+        
+        let size = frame.height/10
+        
+        exitButton.translatesAutoresizingMaskIntoConstraints = false
+        exitButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+        exitButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+        exitButton.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -frame.width/30).isActive = true
+        exitButton.topAnchor.constraint(equalTo: topAnchor, constant: -size-frame.width/30).isActive = true
+        
+    }
     
-    var bubbleTimer = Timer()
+    func createChordButtons(){
+        
+        let size = frame.height/10
+        
+        IVChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .IV)
+        addSubview(IVChordButton)
+        IVChordButton.delegate = self
+        IVChordButton.translatesAutoresizingMaskIntoConstraints = false
+        IVChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
+        IVChordButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        IVChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+        IVChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+        
+        
+        IChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .I)
+        addSubview(IChordButton)
+        IChordButton.delegate = self
+        IChordButton.translatesAutoresizingMaskIntoConstraints = false
+        IChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
+        IChordButton.trailingAnchor.constraint(equalTo: IVChordButton.leadingAnchor, constant: -frame.width/5).isActive = true
+        IChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+        IChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+        
+        
+        VChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .V)
+        addSubview(VChordButton)
+        VChordButton.delegate = self
+        VChordButton.translatesAutoresizingMaskIntoConstraints = false
+        VChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
+        VChordButton.leadingAnchor.constraint(equalTo: IVChordButton.trailingAnchor, constant: frame.width/5).isActive = true
+        VChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+        VChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+        
+        offButton = ChordSwitchButton(frame: CGRect.zero, chord: .off)
+        addSubview(offButton)
+        offButton.delegate = self
+        offButton.translatesAutoresizingMaskIntoConstraints = false
+        offButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
+        offButton.leadingAnchor.constraint(equalTo: VChordButton.trailingAnchor, constant: frame.width/5).isActive = true
+        offButton.widthAnchor.constraint(equalToConstant: size*0.8).isActive = true
+        offButton.heightAnchor.constraint(equalToConstant: size*0.8).isActive = true
+        
+    }
     
     func createNumberOfBubbles(_ numberOfBubbles: Int = 0){
         for _ in 0..<numberOfBubbles{
@@ -65,16 +131,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
     }
     
-    func popAllBubbles(){
-        
-            subviews.forEach { view in
-                if view is PlayZoneBubble {
-                    let note = view as! PlayZoneBubble
-                    note.fadeAndRemove(time: 1.4)
-                }
-            }
-    }
-
     func setupAnimator(){
         
         animator = UIDynamicAnimator(referenceView: self)
@@ -97,40 +153,10 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         addSubview(background)
     }
     
-    
-    func exitButtonTapped(){
-        togglePlayZone()
-    }
-    
     func setupGestures(){
         tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
     }
-    
-    
-    @objc func handleTap(_ sender: UITapGestureRecognizer){
-        if sender.state == .ended && !isActive{
-            togglePlayZone()
-            delegate?.stopRandomBubbles()
-            delegate!.fadeOutTitleAndButtons()
-        }
-    }
-    
-    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
-        if sender.state == .began {
-            let note = sender.view as! PlayZoneBubble
-            Sound.sharedInstance.generatePianoImprov(notes: note.pitches, beats: note.rhythms, pressedNote: sender)
-//            note.glowInandOut()
-            note.pulseToRhythm()
-//            pushBubble(note, magnitudeLimit: 0.04)
-            let firstNote = note.pitches[0]
-            Sound.sharedInstance.pianoSampler.play(noteNumber: firstNote, velocity: 127)
-            note.scaleNoteUpAndDown()
-        }
-
-    }
-    
-    var arrayOfRanges = [ClosedRange<CGFloat>]()
     
     func fillClosedRangeArray(){
         let numberOfNotes = 12
@@ -142,9 +168,90 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
         arrayOfRanges = arrayOfRanges.reversed()
     }
+    // MARK - Usage Functions
+    func popAllBubbles(){
+        
+            subviews.forEach { view in
+                if view is PlayZoneBubble {
+                    let note = view as! PlayZoneBubble
+                    note.fadeAndRemove(time: 1.4)
+                }
+            }
+    }
+
+    func exitButtonTapped(){
+        togglePlayZone()
+    }
     
-    var previousNote : Int!
-    let pitchBendArray = [-13,-12,-10,-8,-7,-5,-3,-1,0,2,4,5,7,9,11,12]
+    func chordButtonTapped(chord: ChordType) {
+        switch chord {
+        case .I:
+            Sound.sharedInstance.switchChord(chord: .I)
+            IChordButton.isActive = true
+            IVChordButton.isActive = false
+            VChordButton.isActive = false
+        case .IV:
+            Sound.sharedInstance.switchChord(chord: .IV)
+            IChordButton.isActive = false
+            IVChordButton.isActive = true
+            VChordButton.isActive = false
+        case .V:
+            Sound.sharedInstance.switchChord(chord: .V)
+            IChordButton.isActive = false
+            IVChordButton.isActive = false
+            VChordButton.isActive = true
+        case .off:
+            
+            Sound.sharedInstance.switchChord(chord: .off)
+            IChordButton.isActive = false
+            IVChordButton.isActive = false
+            VChordButton.isActive = false
+        }
+    }
+    
+    func togglePlayZone(){
+        
+        if !isActive {
+            isActive = true
+            scaleTo(scaleTo: 1.0, time: 1, {
+                self.exitButton.fadeIn()
+                self.IChordButton.fadeIn()
+                self.IVChordButton.fadeIn()
+                self.VChordButton.fadeIn()
+                self.offButton.fadeIn()
+                Sound.sharedInstance.startPlaySequencer()
+                Sound.sharedInstance.turnDownPond()
+                self.createNumberOfBubbles(totalBubbleScore)
+                
+                self.delegate?.fadeOutTitleAndButtons()
+            })
+            let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2)
+            moveViewTo(point, time: 1)
+            
+        } else {
+            isActive = false
+            scaleTo(scaleTo: 0.12, time: 1)
+            exitButton.fadeOut()
+            self.IChordButton.fadeOut()
+            self.IVChordButton.fadeOut()
+            self.VChordButton.fadeOut()
+            self.offButton.fadeOut()
+            
+            delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
+            Sound.sharedInstance.stopPlaySequencer()
+            Sound.sharedInstance.turnUpPond()
+            popAllBubbles()
+            self.delegate?.fadeInTitleAndButtons()
+            
+            let bottomPadding = superview!.frame.height/30
+            let selfPadding = frame.height
+            let x = (superview?.frame.midX)!-frame.width/2
+            let y = (superview?.frame.maxY)!-frame.height-selfPadding-bottomPadding
+            let point = CGPoint(x: x, y: y)
+            moveViewTo(point, time: 1)
+        }
+    }
+
     func checkWhichNoteToPlay(_ sender: UIPanGestureRecognizer){
         let note = sender.view as! PlayZoneBubble
         let yPos = sender.view!.center.y
@@ -159,6 +266,10 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         let xPos = sender.view!.center.x
         let xScaled = Rescale(from: (0, frame.width), to: (6000, 20000)).rescale(xPos)
         Sound.sharedInstance.bubbleFilter.cutoffFrequency = Double(xPos)
+    }
+    // MARK - Gesture Functions
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     @objc func handlePan(_ sender: UIPanGestureRecognizer){
@@ -206,32 +317,30 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             
         }
     }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer){
+        if sender.state == .ended && !isActive{
+            togglePlayZone()
+            delegate?.stopRandomBubbles()
+            delegate!.fadeOutTitleAndButtons()
+        }
+    }
+    
+    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
+        if sender.state == .began {
+            let note = sender.view as! PlayZoneBubble
+            Sound.sharedInstance.generatePianoImprov(notes: note.pitches, beats: note.rhythms, pressedNote: sender)
+            note.pulseToRhythm()
+            // Play first note of the sequence on touch down.
+            let firstNote = note.pitches[0]
+            Sound.sharedInstance.pianoSampler.play(noteNumber: firstNote, velocity: 127)
+            note.scaleNoteUpAndDown()
+        }
+        
+    }
 
-//    func takeInPointGiveBackNoteToPlay(_ point: CGPoint)-> MIDINoteNumber {
-//        let numberOfNotes = 16
-//        for i in 0...numberOfNotes {
-//            let number = i
-//        }
-//
-//        return 42
-//    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
-    
-    func pushBubble(_ note: PlayZoneBubble, magnitudeLimit: CGFloat = 0.1){
-        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
-        
-        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
-        let randomMagnitude = CGFloat.random(in: 0.0...magnitudeLimit)
-        
-        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
-        animator.addBehavior(pushBehavior)
-    }
-    
-    // This function is used to detect touch events on views outside the superview's bounds
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        // This function is used to detect touch events on views outside the superview's bounds
         
         var translatedPoint = exitButton.convert(point, from: self)
 
@@ -266,135 +375,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
         }
         return super.hitTest(point, with: event)
-    }
-    
-    func chordButtonTapped(chord: ChordType) {
-        switch chord {
-        case .I:
-            Sound.sharedInstance.switchChord(chord: .I)
-            IChordButton.isActive = true
-            IVChordButton.isActive = false
-            VChordButton.isActive = false
-        case .IV:
-            Sound.sharedInstance.switchChord(chord: .IV)
-            IChordButton.isActive = false
-            IVChordButton.isActive = true
-            VChordButton.isActive = false
-        case .V:
-            Sound.sharedInstance.switchChord(chord: .V)
-            IChordButton.isActive = false
-            IVChordButton.isActive = false
-            VChordButton.isActive = true
-        case .off:
-
-            Sound.sharedInstance.switchChord(chord: .off)
-            IChordButton.isActive = false
-            IVChordButton.isActive = false
-            VChordButton.isActive = false
-        }
-    }
-    
-    
-    func togglePlayZone(){
-        
-        if !isActive {
-            isActive = true
-            scaleTo(scaleTo: 1.0, time: 1, {
-                self.exitButton.fadeIn()
-                self.IChordButton.fadeIn()
-                self.IVChordButton.fadeIn()
-                self.VChordButton.fadeIn()
-                self.offButton.fadeIn()
-                Sound.sharedInstance.startPlaySequencer()
-                Sound.sharedInstance.turnDownPond()
-                self.createNumberOfBubbles(totalBubbleScore)
-                
-                self.delegate?.fadeOutTitleAndButtons()
-            })
-            let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2)
-            moveViewTo(point, time: 1)
-
-        } else {
-            isActive = false
-            scaleTo(scaleTo: 0.12, time: 1)
-            exitButton.fadeOut()
-            self.IChordButton.fadeOut()
-            self.IVChordButton.fadeOut()
-            self.VChordButton.fadeOut()
-            self.offButton.fadeOut()
-            
-            delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
-            Sound.sharedInstance.stopPlaySequencer()
-            Sound.sharedInstance.turnUpPond()
-            popAllBubbles()
-            self.delegate?.fadeInTitleAndButtons()
-            
-            let bottomPadding = superview!.frame.height/30
-            let selfPadding = frame.height
-            let x = (superview?.frame.midX)!-frame.width/2
-            let y = (superview?.frame.maxY)!-frame.height-selfPadding-bottomPadding
-            let point = CGPoint(x: x, y: y)
-            moveViewTo(point, time: 1)
-        }
-    }
-    
-    func createExitButton(){
-        exitButton = ExitButton()
-        addSubview(exitButton)
-        exitButton.delegate = self
-        
-        let size = frame.height/10
-        
-        exitButton.translatesAutoresizingMaskIntoConstraints = false
-        exitButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        exitButton.heightAnchor.constraint(equalToConstant: size).isActive = true
-        exitButton.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -frame.width/30).isActive = true
-        exitButton.topAnchor.constraint(equalTo: topAnchor, constant: -size-frame.width/30).isActive = true
-
-    }
-    
-    func createChordButtons(){
-        
-        let size = frame.height/10
-
-        IVChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .IV)
-        addSubview(IVChordButton)
-        IVChordButton.delegate = self
-        IVChordButton.translatesAutoresizingMaskIntoConstraints = false
-        IVChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        IVChordButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        IVChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        IVChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
-        
-        
-        IChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .I)
-        addSubview(IChordButton)
-        IChordButton.delegate = self
-        IChordButton.translatesAutoresizingMaskIntoConstraints = false
-        IChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        IChordButton.trailingAnchor.constraint(equalTo: IVChordButton.leadingAnchor, constant: -frame.width/5).isActive = true
-        IChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        IChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
-        
-        
-        VChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .V)
-        addSubview(VChordButton)
-        VChordButton.delegate = self
-        VChordButton.translatesAutoresizingMaskIntoConstraints = false
-        VChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        VChordButton.leadingAnchor.constraint(equalTo: IVChordButton.trailingAnchor, constant: frame.width/5).isActive = true
-        VChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        VChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
-        
-        offButton = ChordSwitchButton(frame: CGRect.zero, chord: .off)
-        addSubview(offButton)
-        offButton.delegate = self
-        offButton.translatesAutoresizingMaskIntoConstraints = false
-        offButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        offButton.leadingAnchor.constraint(equalTo: VChordButton.trailingAnchor, constant: frame.width/5).isActive = true
-        offButton.widthAnchor.constraint(equalToConstant: size*0.8).isActive = true
-        offButton.heightAnchor.constraint(equalToConstant: size*0.8).isActive = true
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
