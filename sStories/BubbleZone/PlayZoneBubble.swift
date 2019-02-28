@@ -41,11 +41,6 @@ class PlayZoneBubble: UIView {
         
         generateRandomPitches()
         generateRandomRhythms()
-        
-        //        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-        //        press.minimumPressDuration = 0.0
-        //        addGestureRecognizer(press)
-        
         setupOsc()
         
         

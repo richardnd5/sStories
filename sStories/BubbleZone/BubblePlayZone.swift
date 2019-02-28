@@ -37,7 +37,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
     }
     
-    
     var isActive = false
     var initialPosition : CGPoint!
     var exitButton : ExitButton!
@@ -78,8 +77,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         addSubview(note)
         gravityBehavior.addItem(note)
         collisionBehavior.addItem(note)
-//        note.bubbleDelegate = self
-//        Sound.sharedInstance.bubbleUIDelegate = self
         
         let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
         press.minimumPressDuration = 0.0
@@ -89,23 +86,11 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         let pan = UIPanGestureRecognizer(target: self, action: (#selector(handlePan)))
         note.addGestureRecognizer(pan)
 
-        
-//        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
-//
-//        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
-//        let randomMagnitude = CGFloat.random(in: 0...0.3)
-//
-//        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
-//        animator.addBehavior(pushBehavior)
-//        pushBubble(note)
-        
         bringSubviewToFront(note)
         
             
         }
     }
-    
-
     
     func popAllBubbles(){
         
@@ -117,7 +102,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             }
     }
 
-    
     func setupAnimator(){
         
         animator = UIDynamicAnimator(referenceView: self)
@@ -175,13 +159,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     
     @objc func handlePan(_ sender: UIPanGestureRecognizer){
         
-//        let x = background.frame.minX+background.frame.minX/10
-//        let y = background.frame.minY+background.frame.minY/10
-//        let width = background.frame.width-background.frame.width/10
-//        let height = background.frame.height-background.frame.height/10
-//
-//        let reducedBackground = CGRect(x: x, y: y, width: width, height: height)
-        
         if background.frame.contains(sender.location(in: self)) {
 
             let translation = sender.translation(in: self)
@@ -189,8 +166,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             sender.setTranslation(CGPoint.zero, in: self)
             
         }
-        
-        
         
         let note = sender.view as! PlayZoneBubble
         if sender.state == .began {
@@ -293,8 +268,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
                         translatedPoint = offButton.convert(point, from: self)
                         if (offButton.bounds.contains(translatedPoint)) {
                             return offButton.hitTest(translatedPoint, with: event)
-                        } else {
-                            
                         }
                     }
             }
@@ -314,15 +287,11 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
                 self.IVChordButton.fadeIn()
                 self.VChordButton.fadeIn()
                 self.offButton.fadeIn()
-//                self.setupAnimator()
                 Sound.sharedInstance.startPlaySequencer()
                 Sound.sharedInstance.turnDownPond()
                 self.createNumberOfBubbles(totalBubbleScore)
                 
                 self.delegate?.fadeOutTitleAndButtons()
-                
-                
-//                self.createRandomBubblesAtRandomTimeInterval(time: 0.1)
             })
             let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2)
             moveViewTo(point, time: 1)
@@ -334,10 +303,11 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             self.IChordButton.fadeOut()
             self.IVChordButton.fadeOut()
             self.VChordButton.fadeOut()
+            self.offButton.fadeOut()
+            
             delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
             Sound.sharedInstance.stopPlaySequencer()
             Sound.sharedInstance.turnUpPond()
-//            Sound.sharedInstance.stopPondBackground()
             popAllBubbles()
             self.delegate?.fadeInTitleAndButtons()
             
@@ -369,7 +339,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         
         let size = frame.height/10
 
-        
         IVChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .IV)
         addSubview(IVChordButton)
         IVChordButton.delegate = self

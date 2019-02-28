@@ -87,8 +87,3 @@ class ChordSwitchButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-/*
- Tap and hold and pan a note value.
- plays a sustained oscilator with filter. Section off screen for diatonicism
- */

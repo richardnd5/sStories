@@ -176,10 +176,6 @@ class Sound {
             if status == .noteOn {
                 self.pianoSampler.play(noteNumber: noteNumber, velocity: 60)
                 
-//                self.bubbleUIDelegate?.scaleNoteUpAndDown()
-                let bubble = self.currentBubble.view as! PlayZoneBubble
-//                bubble.scaleNoteUpAndDown()
-                
             } else if status == .noteOff {
                 self.pianoSampler.stop(noteNumber: noteNumber)
             }
@@ -203,7 +199,6 @@ class Sound {
         }
     }
     
-    // ********** Piano Sampler
     func loadPianoSamples() {
         let bundleURL = Bundle.main.resourceURL?.appendingPathComponent("FrontPageKeyboard")
         pianoSampler.loadSFZ(path: (bundleURL?.path)!, fileName: "frontPagePianoKeyboard.sfz")
