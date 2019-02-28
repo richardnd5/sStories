@@ -26,6 +26,10 @@ class PlayZoneBubble: UIView {
     
     var sawWave : AKOscillatorBank!
     
+    var filter : AKLowPassFilter!
+    
+    
+    
     
     init(frame: CGRect, isThumbnail: Bool = false) {
         super.init(frame: frame)
@@ -33,7 +37,6 @@ class PlayZoneBubble: UIView {
         majScale = [61,63,65,66,68,70,72,73,75,77,78,80]
         
         setupImage()
-        
         
         if !isThumbnail {
             addBlurBorder(dx: frame.height/40, dy: frame.height/40, cornerWidth: frame.height/2, cornerHeight: frame.height/2)
@@ -43,17 +46,18 @@ class PlayZoneBubble: UIView {
         generateRandomRhythms()
         setupOsc()
         
-        
     }
     
     func setupOsc(){
-        sawWave = AKOscillatorBank(waveform: AKTable(.square))
+        filter = AKLowPassFilter(sawWave, cutoffFrequency: 4800)
+        sawWave = AKOscillatorBank(waveform: AKTable(.triangle))
         sawWave.attackDuration = 0.6
         sawWave.sustainLevel = 1.0
         sawWave.releaseDuration = 0.35
-        sawWave.vibratoRate = 3
-        sawWave.vibratoDepth = 0.3
-        sawWave.connect(to: Sound.sharedInstance.bubbleFilter)
+        sawWave.vibratoRate = 4
+        sawWave.vibratoDepth = 0.2
+        sawWave.connect(to: filter)
+        filter.connect(to: Sound.sharedInstance.bubbleMixer)
     }
     
     func playWave(_ note: MIDINoteNumber){

@@ -20,7 +20,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     // Note dragging variables
     var arrayOfRanges = [ClosedRange<CGFloat>]()
     var previousNote : Int!
-    let pitchBendArray = [-13,-12,-10,-8,-7,-5,-3,-1,0,2,4,5,7,9,11,12]
+    let pitchBendArray = [-7,-5,-3,-1,0,2,4,5,7,9,11,12,14,16,17,19,21]
 
     // Animator variables.
     var animator: UIDynamicAnimator!
@@ -159,14 +159,13 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     }
     
     func fillClosedRangeArray(){
-        let numberOfNotes = 12
-        let height = frame.height
+        let numberOfNotes = 16
+        let height = frame.width
         for i in 0...numberOfNotes {
             
             let range = CGFloat(i)*height...CGFloat(i+1)*height
             arrayOfRanges.append(range)
         }
-        arrayOfRanges = arrayOfRanges.reversed()
     }
     // MARK - Usage Functions
     func popAllBubbles(){
@@ -254,18 +253,19 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
 
     func checkWhichNoteToPlay(_ sender: UIPanGestureRecognizer){
         let note = sender.view as! PlayZoneBubble
+        let xPos = sender.view!.center.x
         let yPos = sender.view!.center.y
-
+        
         for (index, range) in arrayOfRanges.enumerated() {
-            if range.contains(yPos) && previousNote != index {
+            if range.contains(xPos) && previousNote != index {
                 previousNote = index
-                
+                print(index)
                 note.pitchBend(amount: Double(pitchBendArray[index]))
             }
         }
-        let xPos = sender.view!.center.x
-        let xScaled = Rescale(from: (0, frame.width), to: (6000, 20000)).rescale(xPos)
-        Sound.sharedInstance.bubbleFilter.cutoffFrequency = Double(xPos)
+        
+        let yScaled = Rescale(from: (frame.height, 0), to: (500, 15000)).rescale(yPos)
+        note.filter.cutoffFrequency = Double(yScaled)
     }
     // MARK - Gesture Functions
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -283,8 +283,9 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
         
         let note = sender.view as! PlayZoneBubble
+        let pitch = MIDINoteNumber(61)
         if sender.state == .began {
-            note.playWave(61)
+            note.playWave(pitch)
             note.bigWiggle()
             
         }else if sender.state == .changed {
@@ -292,7 +293,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             checkWhichNoteToPlay(sender)
             
         } else if sender.state == .ended {
-            note.stopWave(61)
+            note.stopWave(pitch)
             note.stopBigWiggle()
             
             // To move bubble back into view if it is out of bounds.

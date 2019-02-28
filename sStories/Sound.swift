@@ -35,7 +35,9 @@ class Sound {
     var chordVFadeCount = 0
     weak var bubbleUIDelegate : BubbleUIDelegate?
     
-    var bubbleFilter : AKLowPassFilter!
+    var bubbleMixer = AKMixer()
+    
+//    var bubbleFilter : AKLowPassFilter!
     
     //    var openingMusic = OpeningMusic()
     
@@ -51,17 +53,19 @@ class Sound {
         chordIAudio.fadeOut()
         
         soundEffectMixer.volume = 0.3
-        pianoMixer.volume = 1.0
+        pianoMixer.volume = 0.8
         pianoSampler.masterVolume = 0.3
+        bubbleMixer.volume = 0.5
         
-        bubbleFilter = AKLowPassFilter()
-        bubbleFilter.cutoffFrequency = 4800
+        
+//        bubbleFilter = AKLowPassFilter()
+//        bubbleFilter.cutoffFrequency = 4800
         
         
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
 //        bubbleFilter.connect(to: reverb)
         
-        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler,bubbleFilter)
+        mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler, bubbleMixer)
         
         
         AudioKit.output = mainMixer
