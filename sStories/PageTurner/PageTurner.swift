@@ -4,6 +4,15 @@ import AudioKit
 
 // MOVE LATER!!!!!!!!
 enum PageTurnPianoNote : MIDINoteNumber, CaseIterable {
+//    case F1 = 29
+//    case Gb1 = 30
+//    case Ab1 = 32
+//    case Bb1 = 34
+//    case C1 = 36
+//    case Db2 = 37
+//    case Eb2 = 39
+//    case F2 = 41
+    
     case Gb2 = 42
     case Ab2 = 44
     case Bb2 = 46
@@ -72,14 +81,16 @@ class PageTurner: UIView {
             // This is just a bit of math to draw the correct lines.
             if i % 2 == 0 && i >= 3*2 && i != 8*2 && i < 14*2 {
                 line.backgroundColor = .black
+            } else {
+                line.backgroundColor = .red
             }
         }
     }
     
     func fillNoteLocationArray(){
         let backwardsArray = lineContainer.reversed()
-        backwardsArray.forEach { (view) in
-            let range = (view.frame.midY-20)...(view.frame.midY+20)
+        backwardsArray.forEach { view in
+            let range = (view.frame.midY-30)...(view.frame.midY+10)
             noteLocationArray.append(range)
         }
     }
@@ -127,7 +138,7 @@ class PageTurner: UIView {
         if prevNotePageTurn != noteToPlay {
             
             Sound.sharedInstance.playNote(noteToPlay)
-            
+            print(noteToPlay)
             prevNotePageTurn = noteToPlay
             note.makeNoteAppearFlyAwayAndFade()
         }
@@ -149,27 +160,38 @@ class PageTurner: UIView {
         arppeggioArray.append(PageTurnPianoNote.Ab4)
     }
     
+    func checkNoteToPlay(_ point: CGFloat){
+        for (index, range) in noteLocationArray.enumerated() {
+            if range.contains(point) && index >= 4 {
+                print(index)
+                let keyOffset = index-4
+                playNote(PageTurnPianoNote.allCases[keyOffset])
+                break
+            }
+        }
+    }
+    
     func checkWhichNoteToPlay(_ point: CGFloat){
         
         if noteLocationArray.count-1 == 32 {
         
-        switch point{
+        switch point {
 
         case noteLocationArray[6]:
-            playNoteIfNotLastNotePlayed(0)
-//            playNote(.Gb2)
+//            playNoteIfNotLastNotePlayed(0)
+            playNote(.Gb2)
 
         case noteLocationArray[10]:
-            playNoteIfNotLastNotePlayed(1)
-//            playNote(.Db3)
+//            playNoteIfNotLastNotePlayed(1)
+            playNote(.Db3)
 
         case noteLocationArray[14]:
-            playNoteIfNotLastNotePlayed(2)
-//            playNote(.Ab3)
+//            playNoteIfNotLastNotePlayed(2)
+            playNote(.Ab3)
             
         case noteLocationArray[15]:
-            playNoteIfNotLastNotePlayed(3)
-//            playNote(.Bb3)
+//            playNoteIfNotLastNotePlayed(3)
+            playNote(.Bb3)
 
         case noteLocationArray[17]:
             playNoteIfNotLastNotePlayed(4)
@@ -193,6 +215,8 @@ class PageTurner: UIView {
         }
         
     }
+    
+    
     
     func playNoteIfNotLastNotePlayed(_ noteNumber: Int){
         let noteSlot = noteNumber
@@ -233,8 +257,11 @@ class PageTurner: UIView {
             let translation = sender.translation(in: self)
             sender.view!.center = CGPoint(x: sender.view!.center.x, y: sender.view!.center.y + translation.y)
             sender.setTranslation(CGPoint.zero, in: self)
+            
             let yPos = view.frame.midY
-            checkWhichNoteToPlay(yPos)
+//            checkWhichNoteToPlay(yPos)
+            checkNoteToPlay(yPos)
+            
         } else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
             sender.state = .ended
             triggerFinishAnimation(view: view)
