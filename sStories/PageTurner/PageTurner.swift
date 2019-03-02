@@ -42,14 +42,17 @@ class PageTurner: UIView {
     var noteLocationArray = [ClosedRange<CGFloat>]()
     var previousNoteIndex : Int!
     
+    var currentPage : Int!
+    
     var chordArray : Array<PageTurnPianoNote> = [.Gb2, .Db3, .Ab3, .Bb3, .Db4, .Gb4, .Ab4, .Db5, .Ab5,]
 //    var chordArray : Array<PageTurnPianoNote> = [.Db3, .F3, .Ab3, .C4, .Db4, .Eb4, .Ab4]
     
     weak var delegate : SceneDelegate?
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, _ currentPage: Int = 0) {
         super.init(frame: frame)
         self.ourFrame = frame
+        self.currentPage = currentPage
         
         backgroundColor = .white
         layer.zPosition = 101
@@ -62,14 +65,22 @@ class PageTurner: UIView {
         fillNoteLocationArray()
 //        createRandomChordArpeggio()
         
+        fillChordArray(currentPage: currentPage)
+        
         alpha = 0.0
         fadeTo(opacity: 1.0, time: 1.0)
         
     }
     
+    func fillChordArray(currentPage: Int){
+        arpeggioArray[currentPage].forEach { note in
+            chordArray.append(note)
+        }
+    }
+    
     func createRandomChordArpeggio(){
         chordArray.removeAll()
-        for i in 0...6 {
+        for _ in 0...6 {
             let randomNote = PageTurnPianoNote.allCases.randomElement()
             chordArray.append(randomNote!)
         }
@@ -153,6 +164,7 @@ class PageTurner: UIView {
                 
                 if index != previousNoteIndex {
                     previousNoteIndex = index
+                    print(index)
                     
                     if index >= 6 {
                         let keyOffset = index-6

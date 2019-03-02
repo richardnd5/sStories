@@ -200,7 +200,7 @@ class ViewController: UIViewController, SceneDelegate {
             x -= 44
         }
         
-        pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height))
+        pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height), currentPage)
         view.addSubview(pageTurner!)
         pageTurner?.delegate = self
         view.bringSubviewToFront(pageTurner!)

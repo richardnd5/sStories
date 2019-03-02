@@ -1,5 +1,6 @@
 import UIKit
 import AudioKit
+import QuartzCore
 
 protocol ButtonDelegate : class {
     func exitButtonTapped()
