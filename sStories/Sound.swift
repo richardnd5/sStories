@@ -296,7 +296,6 @@ class Sound {
     }
     
     func playNote(_ note: PageTurnPianoNote, _ velocity: MIDIVelocity = 127){
-        print(velocity)
         pianoSampler.play(noteNumber: note.rawValue, velocity: velocity)
 
     }

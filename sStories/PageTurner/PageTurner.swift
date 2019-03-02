@@ -44,7 +44,7 @@ class PageTurner: UIView {
     
     var currentPage : Int!
     
-    var chordArray : Array<PageTurnPianoNote> = [.Gb2, .Db3, .Ab3, .Bb3, .Db4, .Gb4, .Ab4, .Db5, .Ab5,]
+    var chordArray : Array<PageTurnPianoNote>!
 //    var chordArray : Array<PageTurnPianoNote> = [.Db3, .F3, .Ab3, .C4, .Db4, .Eb4, .Ab4]
     
     weak var delegate : SceneDelegate?
@@ -73,6 +73,7 @@ class PageTurner: UIView {
     }
     
     func fillChordArray(currentPage: Int){
+        chordArray = [PageTurnPianoNote]()
         arpeggioArray[currentPage].forEach { note in
             chordArray.append(note)
         }
@@ -103,7 +104,9 @@ class PageTurner: UIView {
     func fillNoteLocationArray(){
         let backwardsArray = lineContainer.reversed()
         backwardsArray.forEach { view in
-            let range = (view.frame.midY-10)...(view.frame.midY+10)
+            let lineWidth = (lineContainer[1].frame.minY-lineContainer[0].frame.maxY)/2
+            print("line width: \(lineWidth)")
+            let range = (view.frame.midY-lineWidth)...(view.frame.midY+lineWidth)
             noteLocationArray.append(range)
         }
     }
@@ -244,7 +247,7 @@ class PageTurner: UIView {
                 animations: {sender.view!.center = finalPoint },
                 completion: {
                     _ in
-                    print("animation complete")
+                    
                     if (sender.view?.frame.origin.y)! >= self.frame.height-100 {
                         let point = CGPoint(x: sender.view!.frame.origin.x, y: self.frame.height-100)
                         sender.view?.moveViewTo(point, time: 0.4)
