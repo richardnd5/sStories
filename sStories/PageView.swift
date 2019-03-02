@@ -12,6 +12,7 @@ class PageView: UIView {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -40,7 +41,7 @@ class PageView: UIView {
         textView.isEditable = false
         textView.isScrollEnabled = false
         textView.isSelectable = false
-        textView.isUserInteractionEnabled = false
+        textView.isUserInteractionEnabled = true
         textView.backgroundColor = .clear
         return textView
     }()
@@ -59,6 +60,8 @@ class PageView: UIView {
     
     var frameAfterSubviewLayout : CGRect!
     
+    var imageViewInitialPosition : CGPoint!
+    
     init(frame: CGRect, page: Page) {
         super.init(frame: frame)
         imageName = page.imageName
@@ -76,6 +79,38 @@ class PageView: UIView {
         fadeTo(opacity: 1.0, time: 1.5, {
             self.canActivate = true
         })
+        
+        let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        pageImage.addGestureRecognizer(pan)
+        
+        
+        
+        
+        let panText = UIPanGestureRecognizer(target: self, action: #selector(handleTextPan))
+        storyTextView.addGestureRecognizer(panText)
+        
+        
+        
+        
+    }
+    
+    @objc func handleTextPan(_ sender: UIPanGestureRecognizer){
+        let translation = sender.translation(in: self)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self)
+        
+        if sender.state == .ended {
+        }
+    }
+    
+    
+    @objc func handlePan(_ sender: UIPanGestureRecognizer){
+        let translation = sender.translation(in: self)
+        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+        sender.setTranslation(CGPoint.zero, in: self)
+        
+        if sender.state == .ended {
+        }
     }
     
 

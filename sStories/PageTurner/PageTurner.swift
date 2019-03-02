@@ -42,8 +42,8 @@ class PageTurner: UIView {
     var noteLocationArray = [ClosedRange<CGFloat>]()
     var previousNoteIndex : Int!
     
-//    let chordArray : Array<PageTurnPianoNote> = [.Gb2, .Db3, .Ab3, .Bb3, .Db4, .Gb4, .Ab4, .Db5, .Ab5,]
-    var chordArray : Array<PageTurnPianoNote> = [.Db3, .F3, .Ab3, .C4, .Db4, .Eb4, .Ab4]
+    var chordArray : Array<PageTurnPianoNote> = [.Gb2, .Db3, .Ab3, .Bb3, .Db4, .Gb4, .Ab4, .Db5, .Ab5,]
+//    var chordArray : Array<PageTurnPianoNote> = [.Db3, .F3, .Ab3, .C4, .Db4, .Eb4, .Ab4]
     
     weak var delegate : SceneDelegate?
     
@@ -60,7 +60,7 @@ class PageTurner: UIView {
         makeArrow()
         makeNoteDestinationSlot()
         fillNoteLocationArray()
-        createRandomChordArpeggio()
+//        createRandomChordArpeggio()
         
         alpha = 0.0
         fadeTo(opacity: 1.0, time: 1.0)
@@ -150,7 +150,6 @@ class PageTurner: UIView {
     func checkNoteToPlay(_ point: CGFloat){
         for (index, range) in noteLocationArray.enumerated() {
             if range.contains(point){
-                print(index)
                 
                 if index != previousNoteIndex {
                     previousNoteIndex = index
@@ -191,8 +190,8 @@ class PageTurner: UIView {
         
         let view = sender.view as! WholeNote
         
-        if view.frame.origin.y > noteDestinationSlot.frame.maxY {
-            
+//        if view.frame.origin.y > noteDestinationSlot.frame.maxY {
+        
             if sender.state == .began && arrow.isVisible {
                 arrow.fadeAndRemove(time: 1.5)
             }
@@ -204,9 +203,51 @@ class PageTurner: UIView {
             let yPos = view.frame.midY
             checkNoteToPlay(yPos)
             
-        } else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
-            sender.state = .ended
-            triggerFinishAnimation(view: view)
+//        }
+//        else if view.frame.origin.y <= noteDestinationSlot.frame.maxY && sender.state != .ended {
+//            sender.state = .ended
+//        }
+        
+        if sender.state == .ended {
+
+            // 1
+            let velocity = sender.velocity(in: self)
+            let magnitude = sqrt(velocity.y * velocity.y)
+            let slideMultiplier = magnitude / 600
+            
+            // 2
+            let slideFactor = 0.01 * slideMultiplier     //Increase for more of a slide
+            // 3
+            var finalPoint = CGPoint(x:sender.view!.center.x,
+                                     y:sender.view!.center.y + (velocity.y * slideFactor))
+            // 4
+//            finalPoint.x = min(max(finalPoint.x, 0), self.bounds.size.width)
+            finalPoint.y = min(max(finalPoint.y, 0), self.bounds.size.height)
+            
+            // 5
+            UIView.animate(withDuration: Double(slideFactor * 4),
+                           delay: 0,
+                           // 6
+                options: UIView.AnimationOptions.curveEaseOut,
+                animations: {sender.view!.center = finalPoint },
+                completion: {
+                    _ in
+                    print("animation complete")
+                    if (sender.view?.frame.origin.y)! >= self.frame.height-100 {
+                        let point = CGPoint(x: sender.view!.frame.origin.x, y: self.frame.height-100)
+                        sender.view?.moveViewTo(point, time: 0.4)
+                    }
+                    if (sender.view?.frame.origin.y)! <= CGFloat(40) {
+                        let point = CGPoint(x: (sender.view!.frame.origin.x), y: CGFloat(40))
+                        sender.view?.moveViewTo(point, time: 0.4)
+                    }
+                    let destinationRange = self.noteDestinationSlot.frame.minY...self.noteDestinationSlot.frame.maxY
+                    if destinationRange.contains(view.frame.minY) || destinationRange.contains(view.frame.maxY) {
+                        //            if view.frame.origin.y <= noteDestinationSlot.frame.maxY && view.frame.origin.y >= noteDestinationSlot.frame.minY {
+                        self.triggerFinishAnimation(view: view)
+                    }
+            })
+            
         }
     }
     

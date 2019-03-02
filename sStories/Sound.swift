@@ -53,8 +53,9 @@ class Sound {
         chordIAudio.fadeOut()
         
         soundEffectMixer.volume = 0.3
-        pianoMixer.volume = 0.8
-        pianoSampler.masterVolume = 0.3
+        pianoMixer.volume = 0.5
+        pianoSampler.masterVolume = 0.1
+        pianoSampler.attackDuration = 0.02
         bubbleMixer.volume = 0.5
         
         
@@ -295,6 +296,7 @@ class Sound {
     }
     
     func playNote(_ note: PageTurnPianoNote, _ velocity: MIDIVelocity = 127){
+        print(velocity)
         pianoSampler.play(noteNumber: note.rawValue, velocity: velocity)
 
     }

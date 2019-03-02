@@ -227,4 +227,35 @@ extension UIView {
         layer.add(scaleAnimation, forKey: "throb")
         
     }
+    
+    func changeBackgroundColorGraduallyTo(_ color: UIColor, time: Double, isSpringy: Bool = true, _ completion: @escaping () -> () = {}  ){
+        
+        if isSpringy {
+            UIView.animate(
+                withDuration: time,
+                delay: 0,
+                usingSpringWithDamping: 0.55,
+                initialSpringVelocity: 0.5,
+                options: .curveEaseInOut,
+                animations: {
+                        self.backgroundColor = color
+            },
+                completion: {
+                    _ in
+                    completion()
+            })
+        } else {
+            UIView.animate(
+                withDuration: time,
+                delay: 0,
+                options: .curveEaseInOut,
+                animations: {
+                    self.backgroundColor = color
+            },
+                completion: {
+                    _ in
+                    completion()
+            })
+        }
+    }
 }

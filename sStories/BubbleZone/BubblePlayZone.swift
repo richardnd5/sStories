@@ -20,7 +20,9 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     // Note dragging variables
     var arrayOfRanges = [ClosedRange<CGFloat>]()
     var previousNote : Int!
-    let pitchBendArray = [-7,-5,-3,-1,0,2,4,5,7,9,11,12,14,16,17,19,21]
+    let pitchBendArray = [-8,-7,-5,-3,-1,0,2,4,5,7,9,11,12,14,16,17,19,21,23,24,26,28,29,31,33,35,36]
+    
+    let noteSliderColors : Array<UIColor> = []
 
     // Animator variables.
     var animator: UIDynamicAnimator!
@@ -41,9 +43,10 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         setupBackground()
         setupGestures()
         setupAnimator()
+        fillClosedRangeArray()
+
         scaleTo(scaleTo: 0.12, time: 0.0)
         
-        fillClosedRangeArray()
     }
     // MARK - setup functions.
     func createExitButton(){
@@ -160,13 +163,17 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     
     func fillClosedRangeArray(){
         let numberOfNotes = 16
-        let height = frame.width
+        let width = frame.width
+        let partition = width/CGFloat(numberOfNotes)
+        print(partition)
         for i in 0...numberOfNotes {
             
-            let range = CGFloat(i)*height...CGFloat(i+1)*height
+            let range = CGFloat(i)*partition...CGFloat(i+1)*partition
             arrayOfRanges.append(range)
         }
     }
+    
+    
     // MARK - Usage Functions
     func popAllBubbles(){
         
@@ -255,16 +262,22 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         let note = sender.view as! PlayZoneBubble
         let xPos = sender.view!.center.x
         let yPos = sender.view!.center.y
-        
+//        let yScaledAlpha = Rescale(from: (0, frame.height), to: (1.5, 0.0)).rescale(yPos)
+
         for (index, range) in arrayOfRanges.enumerated() {
             if range.contains(xPos) && previousNote != index {
                 previousNote = index
                 print(index)
                 note.pitchBend(amount: Double(pitchBendArray[index]))
+                
+                let xScaled = Rescale(from: (0, frame.width), to: (0.0, 1.0)).rescale(xPos)
+                let color = UIColor(hue: xScaled, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+                note.changeBackgroundColorGraduallyTo(color, time: 0.2)
+
             }
         }
         
-        let yScaled = Rescale(from: (frame.height, 0), to: (500, 15000)).rescale(yPos)
+        let yScaled = Rescale(from: (frame.height, 0), to: (0, 2200)).rescale(yPos)
         note.filter.cutoffFrequency = Double(yScaled)
     }
     // MARK - Gesture Functions
@@ -279,6 +292,31 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             let translation = sender.translation(in: self)
             sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
             sender.setTranslation(CGPoint.zero, in: self)
+            
+            if sender.state == .ended {
+            // 1
+            let velocity = sender.velocity(in: self)
+            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+            let slideMultiplier = magnitude / 500
+            print("magnitude: \(magnitude), slideMultiplier: \(slideMultiplier)")
+            
+            // 2
+            let slideFactor = 0.015 * slideMultiplier     //Increase for more of a slide
+            // 3
+            var finalPoint = CGPoint(x:sender.view!.center.x + (velocity.x * slideFactor),
+                                     y:sender.view!.center.y + (velocity.y * slideFactor))
+            // 4
+            finalPoint.x = min(max(finalPoint.x, 0), self.bounds.size.width)
+            finalPoint.y = min(max(finalPoint.y, 0), self.bounds.size.height)
+            
+            // 5
+            UIView.animate(withDuration: Double(slideFactor * 2),
+                           delay: 0,
+                           // 6
+                options: UIView.AnimationOptions.curveEaseOut,
+                animations: {sender.view!.center = finalPoint },
+                completion: nil)
+            }
             
         }
         

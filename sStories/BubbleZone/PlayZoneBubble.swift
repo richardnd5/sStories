@@ -49,13 +49,14 @@ class PlayZoneBubble: UIView {
     }
     
     func setupOsc(){
-        filter = AKLowPassFilter(sawWave, cutoffFrequency: 4800)
-        sawWave = AKOscillatorBank(waveform: AKTable(.triangle))
+        filter = AKLowPassFilter(sawWave, cutoffFrequency: 3000)
+        sawWave = AKOscillatorBank(waveform: AKTable(.positiveSawtooth))
         sawWave.attackDuration = 0.6
         sawWave.sustainLevel = 1.0
         sawWave.releaseDuration = 0.35
         sawWave.vibratoRate = 4
         sawWave.vibratoDepth = 0.2
+        sawWave.rampDuration = 0.00009
         sawWave.connect(to: filter)
         filter.connect(to: Sound.sharedInstance.bubbleMixer)
     }
@@ -102,6 +103,11 @@ class PlayZoneBubble: UIView {
     }
     
     func scaleNoteUpAndDown(){
+        
+        let randomColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+
+        changeBackgroundColorGraduallyTo(randomColor, time: 0.2)
+        
         imageView.scaleTo(scaleTo: 1.6, time: 0.3,{
             self.imageView.scaleTo(scaleTo: 1.0, time: 0.3)
         })
@@ -140,10 +146,15 @@ class PlayZoneBubble: UIView {
                 
                 Timer.scheduledTimer(withTimeInterval: time+distance, repeats: false) { _ in
                     self.scaleNoteUpAndDown()
+                    
+//                    self.changeBackgroundColorGraduallyTo(randomColor, time: 0.2)
+                    
                 }
             }
         }
     }
+    
+
     
     func setupGlowingOverlay(){
         glowingOverlay = UIView(frame: CGRect.zero)

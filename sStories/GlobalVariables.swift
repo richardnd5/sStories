@@ -3,8 +3,8 @@ var collectedMelodies = [Melody]()
 
 var totalBubbleScore = 0 {
     didSet {
-        if totalBubbleScore >= 20 {
-            totalBubbleScore = 20 
+        if totalBubbleScore >= 30 {
+            totalBubbleScore = 30
         }
     }
 }
