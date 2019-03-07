@@ -41,13 +41,13 @@ class HomePage: UIView {
     }
     
     func startBubbles(){
-        delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.1)
+        delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.8)
     }
     
     func createBubblePlayZone(frame: CGRect){
         // Ewww. no auto layout. That is gross.
-        let width = frame.width/1.5
-        let height = frame.height/1.5
+        let width = frame.width/1.1
+        let height = frame.height/1.2
         let padding = frame.height/30
         let selfPadding = height*0.12
         let x = frame.width/2-width/2

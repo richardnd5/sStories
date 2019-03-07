@@ -27,7 +27,9 @@ let blurbs = [
     Blurb(textBlurb: """
             I learned so much through this process (especially what not to do in software development for my later projects...)
         """, imageName: "performingImage10"),
+    Blurb(textBlurb: "Feel free to leave a review.", imageName: "whiteDot"),
     Blurb(textBlurb: "Go be creative!", imageName: "whiteDot")
+    
 ]
 
 let pages = [

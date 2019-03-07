@@ -1,5 +1,6 @@
 import UIKit
 
+
 class BubbleScoreView: UIView {
     
     var label : UILabel!
@@ -9,7 +10,7 @@ class BubbleScoreView: UIView {
         super.init(frame: frame)
         
         setupLabel()
-        setupImage()
+//        setupImage()
         setupLayout()
 
         alpha = 0.0
@@ -22,7 +23,7 @@ class BubbleScoreView: UIView {
         label.font = UIFont(name: "Papyrus", size: frame.width/8)
         label.textAlignment = .center
         label.textColor = .white
-        label.text = "\(totalBubbleScore)    x    "
+        label.text = "\(totalBubbleScore)    /    \(bubbleLimit)"
         addSubview(label)
         
     }
@@ -38,13 +39,14 @@ class BubbleScoreView: UIView {
         
         fadeTo(opacity: 1.0, time: 0.3, {
             totalBubbleScore += 1
-            self.label.text = "\(totalBubbleScore)    x    "
+            self.label.text = "\(totalBubbleScore)    /    \(bubbleLimit)"
             
-            self.noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
-                self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4, {
-                    self.fadeTo(opacity: 0.0, time: 2.0)
-                })
-            })
+            self.fadeTo(opacity: 0.0, time: 2.0)
+
+//            self.noteImage.scaleTo(scaleTo: 1.2, time: 0.4,{
+//                self.noteImage.scaleTo(scaleTo: 1.0, time: 0.4, {
+//                })
+//            })
         })
 
     }
@@ -56,11 +58,11 @@ class BubbleScoreView: UIView {
         label.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         label.widthAnchor.constraint(equalToConstant: frame.width/1.5).isActive = true
         
-        noteImage.translatesAutoresizingMaskIntoConstraints = false
-        noteImage.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/5).isActive = true
-        noteImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/5).isActive = true
-        noteImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        noteImage.widthAnchor.constraint(equalToConstant: frame.width/2).isActive = true
+//        noteImage.translatesAutoresizingMaskIntoConstraints = false
+//        noteImage.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/5).isActive = true
+//        noteImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/5).isActive = true
+//        noteImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+//        noteImage.widthAnchor.constraint(equalToConstant: frame.width/2).isActive = true
         
     }
     

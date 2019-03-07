@@ -28,6 +28,13 @@ enum MelodyType : CaseIterable {
     case final
 }
 
+enum ChordType {
+    case I
+    case IV
+    case V
+    case off
+}
+
 struct ScreenSize {
     static let width = UIScreen.main.bounds.size.width
     static let height = UIScreen.main.bounds.size.height

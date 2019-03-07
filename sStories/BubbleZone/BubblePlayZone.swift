@@ -13,10 +13,10 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
 
     // Buttons
     var exitButton : ExitButton!
-    var IChordButton : ChordSwitchButton!
-    var IVChordButton : ChordSwitchButton!
-    var VChordButton : ChordSwitchButton!
-    var offButton : ChordSwitchButton!
+    var IChordButton : NewChordSwitchButton!
+    var IVChordButton : NewChordSwitchButton!
+    var VChordButton : NewChordSwitchButton!
+    var offButton : NewChordSwitchButton!
     
     // Note dragging variables
     var arrayOfRanges = [ClosedRange<CGFloat>]()
@@ -40,13 +40,15 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         super.init(frame: frame)
         initialPosition = CGPoint(x: frame.minX, y: frame.minY)
         createExitButton()
-        createChordButtons()
         setupBackground()
+        createChordButtons()
         setupGestures()
         setupAnimator()
         fillClosedRangeArray()
 
         scaleTo(scaleTo: 0.12, time: 0.0)
+        self.delegate?.stopRandomBubbles()
+
         
     }
     // MARK - setup functions.
@@ -55,57 +57,105 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         addSubview(exitButton)
         exitButton.delegate = self
         
-        let size = frame.height/10
+        let size = frame.height/20
+        let padding = CGFloat(0)
         
         exitButton.translatesAutoresizingMaskIntoConstraints = false
         exitButton.widthAnchor.constraint(equalToConstant: size).isActive = true
         exitButton.heightAnchor.constraint(equalToConstant: size).isActive = true
-        exitButton.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -frame.width/30).isActive = true
-        exitButton.topAnchor.constraint(equalTo: topAnchor, constant: -size-frame.width/30).isActive = true
+        exitButton.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -padding-frame.width/60).isActive = true
+        exitButton.topAnchor.constraint(equalTo: topAnchor, constant: -size-padding).isActive = true
         
     }
     
+//    func createChordButtons(){
+//
+//        let size = frame.height/7
+//        //        let size = background.frame.width/4
+//
+//        IVChordButton = NewChordSwitchButton(frame: CGRect.zero, chord: .IV)
+//        addSubview(IVChordButton)
+//        IVChordButton.delegate = self
+//        IVChordButton.translatesAutoresizingMaskIntoConstraints = false
+//        IVChordButton.topAnchor.constraint(equalTo: bottomAnchor).isActive = true
+//        IVChordButton.centerXAnchor.constraint(equalTo: centerXAnchor,constant: -frame.width/9).isActive = true
+//        IVChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+//        IVChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+//
+//
+//        IChordButton = NewChordSwitchButton(frame: CGRect.zero, chord: .I)
+//        addSubview(IChordButton)
+//        IChordButton.delegate = self
+//        IChordButton.translatesAutoresizingMaskIntoConstraints = false
+//        IChordButton.topAnchor.constraint(equalTo: IVChordButton.topAnchor).isActive = true
+//        IChordButton.trailingAnchor.constraint(equalTo: IVChordButton.leadingAnchor, constant: -frame.width/5).isActive = true
+//        IChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+//        IChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+//
+//
+//        VChordButton = NewChordSwitchButton(frame: CGRect.zero, chord: .V)
+//        addSubview(VChordButton)
+//        VChordButton.delegate = self
+//        VChordButton.translatesAutoresizingMaskIntoConstraints = false
+//        VChordButton.topAnchor.constraint(equalTo: IVChordButton.topAnchor).isActive = true
+//        VChordButton.leadingAnchor.constraint(equalTo: IVChordButton.trailingAnchor, constant: frame.width/5).isActive = true
+//        VChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
+//        VChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+//
+//        offButton = NewChordSwitchButton(frame: CGRect.zero, chord: .off)
+//        addSubview(offButton)
+//        offButton.delegate = self
+//        offButton.translatesAutoresizingMaskIntoConstraints = false
+//        offButton.topAnchor.constraint(equalTo: IVChordButton.topAnchor).isActive = true
+//        offButton.leadingAnchor.constraint(equalTo: VChordButton.trailingAnchor, constant: frame.width/5).isActive = true
+//        offButton.widthAnchor.constraint(equalToConstant: size*0.8).isActive = true
+//        offButton.heightAnchor.constraint(equalToConstant: size*0.8).isActive = true
+//
+//    }
+    
     func createChordButtons(){
         
-        let size = frame.height/10
+//        let size = frame.height/7
+        let width = frame.width/4
+        let height = frame.height/7
         
-        IVChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .IV)
-        addSubview(IVChordButton)
-        IVChordButton.delegate = self
-        IVChordButton.translatesAutoresizingMaskIntoConstraints = false
-        IVChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        IVChordButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        IVChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        IVChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
-        
-        
-        IChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .I)
+        IChordButton = NewChordSwitchButton(frame: CGRect.zero, chord: .I)
         addSubview(IChordButton)
         IChordButton.delegate = self
         IChordButton.translatesAutoresizingMaskIntoConstraints = false
-        IChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        IChordButton.trailingAnchor.constraint(equalTo: IVChordButton.leadingAnchor, constant: -frame.width/5).isActive = true
-        IChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        IChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+        IChordButton.topAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        IChordButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        IChordButton.widthAnchor.constraint(equalToConstant: width).isActive = true
+        IChordButton.heightAnchor.constraint(equalToConstant: height).isActive = true
         
+        IVChordButton = NewChordSwitchButton(frame: CGRect.zero, chord: .IV)
+        addSubview(IVChordButton)
+        IVChordButton.delegate = self
+        IVChordButton.translatesAutoresizingMaskIntoConstraints = false
+        IVChordButton.topAnchor.constraint(equalTo: IChordButton.topAnchor).isActive = true
+//        IVChordButton.centerXAnchor.constraint(equalTo: centerXAnchor,constant: -frame.width/9).isActive = true
+        IVChordButton.leadingAnchor.constraint(equalTo: IChordButton.trailingAnchor).isActive = true
+        IVChordButton.widthAnchor.constraint(equalToConstant: width).isActive = true
+        IVChordButton.heightAnchor.constraint(equalToConstant: height).isActive = true
         
-        VChordButton = ChordSwitchButton(frame: CGRect.zero, chord: .V)
+    
+        VChordButton = NewChordSwitchButton(frame: CGRect.zero, chord: .V)
         addSubview(VChordButton)
         VChordButton.delegate = self
         VChordButton.translatesAutoresizingMaskIntoConstraints = false
-        VChordButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        VChordButton.leadingAnchor.constraint(equalTo: IVChordButton.trailingAnchor, constant: frame.width/5).isActive = true
-        VChordButton.widthAnchor.constraint(equalToConstant: size).isActive = true
-        VChordButton.heightAnchor.constraint(equalToConstant: size).isActive = true
+        VChordButton.topAnchor.constraint(equalTo: IVChordButton.topAnchor).isActive = true
+        VChordButton.leadingAnchor.constraint(equalTo: IVChordButton.trailingAnchor).isActive = true
+        VChordButton.widthAnchor.constraint(equalToConstant: width).isActive = true
+        VChordButton.heightAnchor.constraint(equalToConstant: height).isActive = true
         
-        offButton = ChordSwitchButton(frame: CGRect.zero, chord: .off)
+        offButton = NewChordSwitchButton(frame: CGRect.zero, chord: .off)
         addSubview(offButton)
         offButton.delegate = self
         offButton.translatesAutoresizingMaskIntoConstraints = false
-        offButton.topAnchor.constraint(equalTo: bottomAnchor, constant: frame.width/30).isActive = true
-        offButton.leadingAnchor.constraint(equalTo: VChordButton.trailingAnchor, constant: frame.width/5).isActive = true
-        offButton.widthAnchor.constraint(equalToConstant: size*0.8).isActive = true
-        offButton.heightAnchor.constraint(equalToConstant: size*0.8).isActive = true
+        offButton.topAnchor.constraint(equalTo: IVChordButton.topAnchor).isActive = true
+        offButton.leadingAnchor.constraint(equalTo: VChordButton.trailingAnchor).isActive = true
+        offButton.widthAnchor.constraint(equalToConstant: width).isActive = true
+        offButton.heightAnchor.constraint(equalToConstant: height).isActive = true
         
     }
     
@@ -231,8 +281,11 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
                 self.createNumberOfBubbles(totalBubbleScore)
                 
                 self.delegate?.fadeOutTitleAndButtons()
+                self.delegate?.stopRandomBubbles()
             })
-            let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2)
+            
+            let bottomPadding = superview!.frame.height/12
+            let point = CGPoint(x: initialPosition.x, y: (superview?.frame.midY)!-frame.height/2-bottomPadding)
             moveViewTo(point, time: 1)
             
         } else {

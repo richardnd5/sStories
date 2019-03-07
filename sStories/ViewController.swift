@@ -1,6 +1,10 @@
-// Pop bubbles to advance the3 story instead of a button! (best if narrated)
+/*
+ Changing it to a keyboard at the bottom to turn the page.
+ Making the play water bigger
+ Making the 145 buttons bigger tap radius
+ Snapping the text and image that you can drag back to the center.
 
-// JUST A BACK BUTTON! Then pop up a UIView with all the scenes, just change the dummy slot ones to be the images of the active scene and you have thumbnails ready to go. Each has a picture.
+ */
 
 import UIKit
 
@@ -61,7 +65,25 @@ class ViewController: UIViewController, SceneDelegate {
         createBubbleScore()
         setupAnimator()
         
+//        NotificationCenter.default.addObserver(self, selector: #selector(appEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+//        
+//        NotificationCenter.default.addObserver(self, selector: #selector(becameActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+        
     }
+    
+    
+//    @objc func becameActive() {
+//        print("app became active")
+//        if !bubblesArePlaying && currentState == .home || currentState == .fishing || currentState == .performing {
+//            createRandomBubblesAtRandomTimeInterval(time: 1.0)
+//        }
+//
+//    }
+//
+//    @objc func appEnterBackground() {
+//        stopRandomBubbles()
+//
+//    }
     
     func setupAnimator(){
         
@@ -136,6 +158,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func stopRandomBubbles(){
+        print("stopping bubbles yo!")
         bubbleTimer.invalidate()
         bubblesArePlaying = false
         

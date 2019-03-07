@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2201873B223175E1008B5D39 /* NewChordSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201873A223175E1008B5D39 /* NewChordSwitchButton.swift */; };
 		220A1FF1220B8A21003180B8 /* scrollUpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF0220B8A21003180B8 /* scrollUpButton.png */; };
 		220A1FF3220B8B63003180B8 /* whiteDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF2220B8B63003180B8 /* whiteDot.png */; };
 		220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B35F221FA6F4D00AA146D /* HomePage.swift */; };
@@ -316,6 +317,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2201873A223175E1008B5D39 /* NewChordSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChordSwitchButton.swift; sourceTree = "<group>"; };
 		220A1FF0220B8A21003180B8 /* scrollUpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollUpButton.png; sourceTree = "<group>"; };
 		220A1FF2220B8B63003180B8 /* whiteDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteDot.png; sourceTree = "<group>"; };
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -850,6 +852,7 @@
 				86109E02222087D3001B6545 /* BubblePlayZone.swift */,
 				22D3E106220FBA3700668C53 /* ExitButton.swift */,
 				864930B42220FE6D00AACF41 /* ChordSwitchButton.swift */,
+				2201873A223175E1008B5D39 /* NewChordSwitchButton.swift */,
 				86109E0822209486001B6545 /* BackgroundImage.swift */,
 				86109E0D22209BB2001B6545 /* PlayZoneBubble.swift */,
 				22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */,
@@ -1461,6 +1464,7 @@
 				866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */,
 				86109E0922209486001B6545 /* BackgroundImage.swift in Sources */,
 				86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */,
+				2201873B223175E1008B5D39 /* NewChordSwitchButton.swift in Sources */,
 				86EC5B0221DACBCF00E115E0 /* MelodyImage.swift in Sources */,
 				228A6F3B2214853E007617A0 /* OpeningMusic.swift in Sources */,
 				864930B52220FE6D00AACF41 /* ChordSwitchButton.swift in Sources */,
@@ -1642,7 +1646,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathandrichard.sStories;
+				PRODUCT_BUNDLE_IDENTIFIER = com.byeah.sStories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1664,7 +1668,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.nathandrichard.sStories;
+				PRODUCT_BUNDLE_IDENTIFIER = com.byeah.sStories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

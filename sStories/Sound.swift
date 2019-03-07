@@ -70,11 +70,26 @@ class Sound {
         
         
         AudioKit.output = mainMixer
+        startAudioKit()
+
+
+        
+
+    }
+    
+    func startAudioKit(){
+        print("audiokit starting.")
         do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
         
         loadPageTurnSounds()
         loadPianoSamples()
         setupPlayZoneSequencer()
+    }
+    
+    func stopAudioKit(){
+        
+//        do { try AudioKit.disconnectAllInputs()}
+        do { try AudioKit.stop() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
     }
 
     func switchChord(chord: ChordType){
