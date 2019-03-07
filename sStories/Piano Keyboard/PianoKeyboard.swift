@@ -20,6 +20,8 @@ class PianoKeyboard: UIView, ButtonDelegate {
     var exitButton : ExitButton!
     var tap : UITapGestureRecognizer!
     
+    weak var delegate : SceneDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialPosition = CGPoint(x: frame.minX, y: frame.minY)

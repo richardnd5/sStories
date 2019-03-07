@@ -46,6 +46,8 @@ class ViewController: UIViewController, SceneDelegate {
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
     
+    var keyboardTurner : KeyboardTurner!
+    
     var bookmarkPage: BookmarkPage!
     var bubbleScore: BubbleScoreView!
 
@@ -237,6 +239,29 @@ class ViewController: UIViewController, SceneDelegate {
         playSoundClip(.showPageTurner)
     }
     
+    func createKeyboardTurner(){
+        // Not using autolayout.... tsk tsk
+        let width = view.frame.width*0.9
+        let height = view.frame.height/6
+        let x : CGFloat = 0
+        var y = view.frame.height-height
+        
+        if DeviceType.hasNotch {
+            y -= 30
+        }
+        
+        let frame = CGRect(x: x, y: y, width: width, height: height)
+        
+//        keyboardTurner = PianoKeyboard(frame: CGRect(x: x, y: y, width: width, height: height), currentPage)
+        keyboardTurner = KeyboardTurner(frame: frame, currentPage)
+        keyboardTurner.frame.origin.x = view.frame.width/2-width/2
+        
+        view.addSubview(keyboardTurner!)
+        keyboardTurner?.delegate = self
+        view.bringSubviewToFront(keyboardTurner!)
+        playSoundClip(.showPageTurner)
+    }
+    
     func setupDelegates(){
         view.subviews.forEach { view in
             view.subviews.forEach{ v in
@@ -336,7 +361,8 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func returnToStory(){
-        createPageTurner()
+//        createPageTurner()
+        createKeyboardTurner()
     }
     
     func returnToStoryFromArranging(){
@@ -400,7 +426,8 @@ class ViewController: UIViewController, SceneDelegate {
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
-                    createPageTurner()
+//                    createPageTurner()
+                    createKeyboardTurner()
                     page.expandText()
                     page.canActivate = false
                     page.backButton.fadeOut(1.0)

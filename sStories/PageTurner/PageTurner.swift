@@ -4,30 +4,51 @@ import AudioKit
 
 // MOVE LATER!!!!!!!!
 enum PageTurnPianoNote : MIDINoteNumber, CaseIterable {
+    case Eb2 = 39
+    case E2 = 40
+    case F2 = 41
     case Gb2 = 42
+    case G2 = 43
     case Ab2 = 44
+    case A2 = 45
     case Bb2 = 46
+    case B2 = 47
     case C3 = 48
     case Db3 = 49
+    case D3 = 50
     case Eb3 = 51
+    case E3 = 52
     case F3 = 53
     case Gb3 = 54
+    case G3 = 55
     case Ab3 = 56
+    case A3 = 57
     case Bb3 = 58
+    case B3 = 59
     case C4 = 60
     case Db4 = 61
+    case D4 = 62
     case Eb4 = 63
+    case E4 = 64
     case F4 = 65
     case Gb4 = 66
+    case G4 = 67
     case Ab4 = 68
+    case A4 = 69
     case Bb4 = 70
+    case B4 = 71
     case C5 = 72
     case Db5 = 73
+    case D5 = 74
     case Eb5 = 75
+    case E5 = 76
     case F5 = 77
     case Gb5 = 78
+    case G5 = 79
     case Ab5 = 80
+    case A5 = 81
     case Bb5 = 82
+    case B5 = 83
     case C6 = 84
     case Db6 = 85
 }

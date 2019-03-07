@@ -1,7 +1,7 @@
 // Use a delegate and put this in the view controller.
 var collectedMelodies = [Melody]()
 
-var bubbleLimit = 5
+var bubbleLimit = 10
 
 var totalBubbleScore = 0 {
     didSet {

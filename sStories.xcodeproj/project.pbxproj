@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2201873B223175E1008B5D39 /* NewChordSwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2201873A223175E1008B5D39 /* NewChordSwitchButton.swift */; };
+		22018741223183A8008B5D39 /* KeyboardTurner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22018740223183A8008B5D39 /* KeyboardTurner.swift */; };
 		220A1FF1220B8A21003180B8 /* scrollUpButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF0220B8A21003180B8 /* scrollUpButton.png */; };
 		220A1FF3220B8B63003180B8 /* whiteDot.png in Resources */ = {isa = PBXBuildFile; fileRef = 220A1FF2220B8B63003180B8 /* whiteDot.png */; };
 		220B35F321FA6F4D00AA146D /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220B35F221FA6F4D00AA146D /* HomePage.swift */; };
@@ -318,6 +319,7 @@
 
 /* Begin PBXFileReference section */
 		2201873A223175E1008B5D39 /* NewChordSwitchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewChordSwitchButton.swift; sourceTree = "<group>"; };
+		22018740223183A8008B5D39 /* KeyboardTurner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTurner.swift; sourceTree = "<group>"; };
 		220A1FF0220B8A21003180B8 /* scrollUpButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollUpButton.png; sourceTree = "<group>"; };
 		220A1FF2220B8B63003180B8 /* whiteDot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteDot.png; sourceTree = "<group>"; };
 		220B35F221FA6F4D00AA146D /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
@@ -719,6 +721,7 @@
 		22D3E103220FB6DD00668C53 /* Piano Keyboard */ = {
 			isa = PBXGroup;
 			children = (
+				22018740223183A8008B5D39 /* KeyboardTurner.swift */,
 				224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */,
 				22D3E101220FB69000668C53 /* PianoKey.swift */,
 				8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */,
@@ -1415,6 +1418,7 @@
 				86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */,
 				8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */,
 				86CC12DF21FB7FD600B9164B /* AboutPage.swift in Sources */,
+				22018741223183A8008B5D39 /* KeyboardTurner.swift in Sources */,
 				869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */,
 				86603C5421FC477C00A7921E /* GlobalConstants.swift in Sources */,
 				22D3E107220FBA3700668C53 /* ExitButton.swift in Sources */,
