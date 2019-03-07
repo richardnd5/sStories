@@ -8,7 +8,7 @@ protocol PageDelegate : class {
 
 class PageView: UIView {
     
-    private let pageImage: UIImageView = {
+    let pageImage: UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
@@ -33,7 +33,7 @@ class PageView: UIView {
 //    
     
     
-    private let storyTextView: UITextView = {
+    let storyTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .white
         textView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,9 +58,11 @@ class PageView: UIView {
         }
     }
     
-    var frameAfterSubviewLayout : CGRect!
+//    var frameAfterSubviewLayout : CGRect!
+//    var imageViewInitialPosition : CGPoint!
     
-    var imageViewInitialPosition : CGPoint!
+    var pageViewInitialPosition : CGPoint!
+    var storyTextViewInitialPosition : CGPoint!
     
     init(frame: CGRect, page: Page) {
         super.init(frame: frame)
@@ -100,16 +102,24 @@ class PageView: UIView {
         sender.setTranslation(CGPoint.zero, in: self)
         
         if sender.state == .ended {
+//            sender.view?.moveViewTo(storyTextViewInitialPosition, time: 0.5)
+
         }
     }
     
     
     @objc func handlePan(_ sender: UIPanGestureRecognizer){
         let translation = sender.translation(in: self)
+        
+        if sender.state == .began {
+            
+        }
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: self)
         
         if sender.state == .ended {
+//            sender.view?.moveViewTo(pageViewInitialPosition, time: 0.5)
+
         }
     }
     
@@ -142,6 +152,9 @@ class PageView: UIView {
         }
     }
     
+    override func layoutSubviews() {
+    }
+    
     func shrinkText(){
         storyTextView.scaleTo(scaleTo: 0.97, time: 0.4)
     }
@@ -160,6 +173,8 @@ class PageView: UIView {
         pageImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pageImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/2.5).isActive = true
         
+        
+        
         addSubview(storyTextView)
         storyTextView.topAnchor.constraint(equalTo: pageImage.bottomAnchor, constant: 10).isActive = true
         storyTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30).isActive = true
@@ -167,6 +182,9 @@ class PageView: UIView {
         storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/5).isActive = true
         storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/5).isActive = true
         storyTextView.sizeToFit()
+        
+        
+        
         
         nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
         

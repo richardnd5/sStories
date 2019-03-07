@@ -1,7 +1,5 @@
 /*
  Changing it to a keyboard at the bottom to turn the page.
- Making the play water bigger
- Making the 145 buttons bigger tap radius
  Snapping the text and image that you can drag back to the center.
 
  */
@@ -69,6 +67,15 @@ class ViewController: UIViewController, SceneDelegate {
 //        
 //        NotificationCenter.default.addObserver(self, selector: #selector(becameActive), name: UIApplication.didBecomeActiveNotification, object: nil)
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+//        if page != nil {
+//            // Setting the initial position so the panning of the items can bounce back to where they should be.
+//            page.pageViewInitialPosition = page.pageImage.frame.origin
+//            page.storyTextViewInitialPosition = page.storyTextView.frame.origin
+//
+//        }
     }
     
     

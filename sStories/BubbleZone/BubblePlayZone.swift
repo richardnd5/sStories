@@ -64,7 +64,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         exitButton.widthAnchor.constraint(equalToConstant: size).isActive = true
         exitButton.heightAnchor.constraint(equalToConstant: size).isActive = true
         exitButton.trailingAnchor.constraint(equalTo: leadingAnchor, constant: -padding-frame.width/60).isActive = true
-        exitButton.topAnchor.constraint(equalTo: topAnchor, constant: -size-padding).isActive = true
+        exitButton.topAnchor.constraint(equalTo: topAnchor, constant: size+padding).isActive = true
         
     }
     
