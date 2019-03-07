@@ -228,6 +228,11 @@ extension UIView {
         
     }
     
+    func stopThrobWithWiggle(){
+        layer.removeAnimation(forKey: "throb")
+    }
+    
+    
     func changeBackgroundColorGraduallyTo(_ color: UIColor, time: Double, isSpringy: Bool = true, _ completion: @escaping () -> () = {}  ){
         
         if isSpringy {

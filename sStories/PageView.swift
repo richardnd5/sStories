@@ -152,9 +152,6 @@ class PageView: UIView {
         }
     }
     
-    override func layoutSubviews() {
-    }
-    
     func shrinkText(){
         storyTextView.scaleTo(scaleTo: 0.97, time: 0.4)
     }
@@ -190,11 +187,22 @@ class PageView: UIView {
         
         addSubview(nextButton)
         nextButton.alpha = 0.8
+//        nextButton.translatesAutoresizingMaskIntoConstraints = false
+//
+//        nextButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
+//        nextButton.leadingAnchor.constraint(equalTo: storyTextView.trailingAnchor).isActive = true
+//        nextButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
+//        nextButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
+        
+        let buttonWidth = frame.width/10
+        let buttonHeight = frame.height/5
+        
         nextButton.translatesAutoresizingMaskIntoConstraints = false
-        nextButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
-        nextButton.leadingAnchor.constraint(equalTo: storyTextView.trailingAnchor).isActive = true
-        nextButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
-        nextButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
+        
+        nextButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+        nextButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         
         
         
@@ -202,11 +210,17 @@ class PageView: UIView {
         
         addSubview(backButton)
         backButton.alpha = 0.8
+//        backButton.translatesAutoresizingMaskIntoConstraints = false
+//        backButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
+//        backButton.trailingAnchor.constraint(equalTo: storyTextView.leadingAnchor).isActive = true
+//        backButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
+//        backButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
+        
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.centerYAnchor.constraint(equalTo: storyTextView.centerYAnchor).isActive = true
-        backButton.trailingAnchor.constraint(equalTo: storyTextView.leadingAnchor).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: frame.width/30).isActive = true
-        backButton.heightAnchor.constraint(equalToConstant: frame.height/15).isActive = true
+        backButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
+        backButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
 
         
     }

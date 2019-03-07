@@ -242,7 +242,7 @@ class ViewController: UIViewController, SceneDelegate {
     func createKeyboardTurner(){
         // Not using autolayout.... tsk tsk
         let width = view.frame.width*0.9
-        let height = view.frame.height/6
+        let height = view.frame.height/4
         let x : CGFloat = 0
         var y = view.frame.height-height
         
@@ -432,6 +432,7 @@ class ViewController: UIViewController, SceneDelegate {
                     page.canActivate = false
                     page.backButton.fadeOut(1.0)
                     page.nextButton.fadeOut(1.0)
+                    page.storyTextView.fadeTo(opacity: 0.0, time: 1.0)
                 }
             }
         }

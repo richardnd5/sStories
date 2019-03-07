@@ -73,6 +73,8 @@ class PianoKey : UIView {
         addSubview(targetDot)
         
         targetDot.fadeTo(opacity: 1.0, time: 1.0)
+        targetDot.throbWithWiggle(scaleTo: 1.3, time: 0.5)
+        
     }
     
     func setupOverlay(){
@@ -106,6 +108,7 @@ class PianoKey : UIView {
 //    }
     
     func increaseDot(){
+        targetDot.stopThrobWithWiggle()
         targetDot.scaleTo(scaleTo: 20.0, time: 1.0)
         targetDot.changeBackgroundColorGraduallyTo(.blue, time: 1.0)
     }

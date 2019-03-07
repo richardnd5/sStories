@@ -196,10 +196,14 @@ class KeyboardTurner: UIView {
             // accelerando
 //            let time = i*(4.0*(1/(i+1)))
             
+            // 0.0, 0.1, 0.2-
             let time = i*0.1
+            let accelTime = time - (time/(14-i))
+            print("time: \(i) \(time)")
             
             
-            Timer.scheduledTimer(withTimeInterval: time, repeats: false) { _ in
+            
+            Timer.scheduledTimer(withTimeInterval: accelTime, repeats: false) { _ in
                 self.whiteKeyArray.forEach({ key in
                     if Int(key.keyNumber) == note.rawValue{
                         key.turnPageAnimationPlayNote()

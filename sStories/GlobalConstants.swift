@@ -52,28 +52,28 @@ let pages = [
 
 let arpeggioArray : Array<Array<PageTurnPianoNote>> = [
 [.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Db5],
+[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
 [.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
-[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Db3,.F3,.Gb3,.Ab3,.C4,.Db4,.Eb4,.F4,.Ab4,.Db5],
+[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Bb4,.Db5],
 
 [.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Ab2,.Eb3,.Ab3,.Bb3,.C3,.Db4,.Eb4,.Ab4,.Db5],
-[.Bb2,.F3,.Ab3,.Bb3,.C3,.Db4,.F4,.Ab4,.Db5],
-[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Db3,.F3,.Gb3,.Ab3,.C4,.Db4,.Eb4,.F4,.Ab4,.Db5],
+[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
+[.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
+[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Bb4,.Db5],
 
 [.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Ab2,.Eb3,.Ab3,.Bb3,.C3,.Db4,.Eb4,.Ab4,.Db5],
-[.Bb2,.F3,.Ab3,.Bb3,.C3,.Db4,.F4,.Ab4,.Db5],
-[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Db3,.F3,.Gb3,.Ab3,.C4,.Db4,.Eb4,.F4,.Ab4,.Db5],
+[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
+[.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
+[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Bb4,.Db5],
 
 [.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Ab2,.Eb3,.Ab3,.Bb3,.C3,.Db4,.Eb4,.Ab4,.Db5],
-[.Bb2,.F3,.Ab3,.Bb3,.C3,.Db4,.F4,.Ab4,.Db5],
-[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-[.Db3,.F3,.Gb3,.Ab3,.C4,.Db4,.Eb4,.F4,.Ab4,.Db5],
+[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
+[.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
+[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Bb4,.Db5],
 ]
 
 enum SoundEffects : String, CaseIterable {
