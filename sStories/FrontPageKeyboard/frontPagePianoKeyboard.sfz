@@ -1,7 +1,7 @@
 
 
 
-<group> lokey=42 hikey=44 pitch_keycenter=42 pitch_keytrack=1
+<group> lokey=39 hikey=44 pitch_keycenter=42 pitch_keytrack=1
 
 <region> lovel=1 hivel=127 amp_velcurve_127=0 sample=samples/pianoSample42.wv
 

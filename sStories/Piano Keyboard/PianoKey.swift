@@ -109,7 +109,7 @@ class PianoKey : UIView {
     
     func increaseDot(){
         targetDot.stopThrobWithWiggle()
-        targetDot.scaleTo(scaleTo: 20.0, time: 1.0)
+        targetDot.scaleTo(scaleTo: 50.0, time: 2.0)
         targetDot.changeBackgroundColorGraduallyTo(.blue, time: 1.0)
     }
     func decreaseDot(){
