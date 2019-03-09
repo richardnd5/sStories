@@ -18,6 +18,8 @@ class HomePage: UIView {
     var background : HomePageBackgroundImage!
     var bubblePlayZone : BubblePlayZone!
     
+    var titleImage : ImageViewClass!
+    
     var aboutButton : Button!
     var readButton: Button!
     
@@ -58,21 +60,41 @@ class HomePage: UIView {
         addSubview(bubblePlayZone)
     }
 
+    var backgroundInitialPosition : CGPoint!
     func addBackground(){
         let width = frame.height/1.3
         let height = frame.height/2.1
         let backgroundFrame = CGRect(x: frame.width/2-width/2, y: frame.height/2-height/2, width: width, height: height)
         background = HomePageBackgroundImage(frame: backgroundFrame)
         addSubview(background)
+        backgroundInitialPosition = background.frame.origin
+        
+
     }
+    
+//    @objc func handlePan(_ sender: UIPanGestureRecognizer){
+//        print("panning")
+//        let translation = sender.translation(in: self)
+//        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+//        sender.setTranslation(CGPoint.zero, in: self)
+//
+//        if sender.state == .ended || sender.state == .cancelled {
+//            if sender.location(in: self) != backgroundInitialPosition {
+//                sender.view?.moveViewTo(backgroundInitialPosition, time: 0.7)
+//            }
+//        }
+//    }
     
     func createButtons() {
         
         readButton = Button(frame: CGRect.zero, name: "read")
         addSubview(readButton)
+        readButton.throbWithWiggle(scaleTo: 1.1, time: 0.5)
         
         aboutButton = Button(frame: CGRect.zero, name: "about")
         addSubview(aboutButton)
+        aboutButton.throbWithWiggle(scaleTo: 1.1, time: 0.6)
+        
         
     }
     
@@ -81,12 +103,22 @@ class HomePage: UIView {
         let safe = safeAreaLayoutGuide
         let padding = frame.height/40
         
-        addSubview(title)
-        title.translatesAutoresizingMaskIntoConstraints = false
-        title.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
-        title.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        title.widthAnchor.constraint(equalToConstant: frame.width/1.3).isActive = true
-        title.adjustsFontSizeToFitWidth = true
+        let fr = CGRect()
+        titleImage = ImageViewClass(frame: fr, "homePageTitle")
+        
+        addSubview(titleImage)
+        
+//        addSubview(title)
+        titleImage.translatesAutoresizingMaskIntoConstraints = false
+        titleImage.topAnchor.constraint(equalTo: safe.topAnchor ).isActive = true
+        titleImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        titleImage.widthAnchor.constraint(equalToConstant: frame.width/1.5).isActive = true
+        titleImage.heightAnchor.constraint(equalToConstant: frame.height/5).isActive = true
+        
+        
+        
+        
+        
         
         readButton.translatesAutoresizingMaskIntoConstraints = false
         readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
@@ -105,13 +137,14 @@ class HomePage: UIView {
     func fadeInTitleAndLabels(){
         aboutButton.fadeIn(1.0)
         readButton.fadeIn(1.0)
-        title.fadeTo(opacity: 1.0, time: 1.0)
+        titleImage.fadeTo(opacity: 1.0, time: 1.0)
     }
     
     func fadeOutTitleAndLabels(){
         aboutButton.fadeOut(1.0)
         readButton.fadeOut(1.0)
-        title.fadeTo(opacity: 0.0, time: 1.0)
+        titleImage.fadeTo(opacity: 0.0, time: 1.0)
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

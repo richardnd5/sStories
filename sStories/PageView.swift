@@ -15,24 +15,7 @@ class PageView: UIView {
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
-    
-//    private let nextImage: UIImageView = {
-//        var imageView = UIImageView()
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.transform = CGAffineTransform(scaleX: -1, y: 1)
-//        return imageView
-//    }()
-//    
-//    private let backImage: UIImageView = {
-//        var imageView = UIImageView()
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-//        return imageView
-//    }()
-//    
-    
-    
+
     let storyTextView: UITextView = {
         let textView = UITextView()
         textView.textColor = .white
@@ -83,17 +66,11 @@ class PageView: UIView {
         })
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        pageImage.addGestureRecognizer(pan)
-        
-        
-        
-        
+//        pageImage.addGestureRecognizer(pan)
+
         let panText = UIPanGestureRecognizer(target: self, action: #selector(handleTextPan))
-        storyTextView.addGestureRecognizer(panText)
-        
-        
-        
-        
+//        storyTextView.addGestureRecognizer(panText)
+
     }
     
     @objc func handleTextPan(_ sender: UIPanGestureRecognizer){

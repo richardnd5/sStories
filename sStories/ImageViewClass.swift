@@ -1,11 +1,9 @@
 import UIKit
 
-class HomePageBackgroundImage: UIImageView {
+class ImageViewClass: UIImageView {
     
     var noteImage = UIImage()
     var imageName : String!
-    
-    
     
     init(frame: CGRect, _ imageName: String = "homePageBackground") {
         super.init(frame: frame)
@@ -17,12 +15,11 @@ class HomePageBackgroundImage: UIImageView {
     func setupImage(){
         
         image = resizedImage(name: imageName)
-        contentMode = .scaleAspectFill
-        layer.cornerRadius = frame.width/10
-        clipsToBounds = true
+        contentMode = .scaleAspectFit
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+

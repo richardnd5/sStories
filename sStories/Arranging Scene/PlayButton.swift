@@ -17,7 +17,7 @@ class PlayButton: UIImageView {
     
     func setupNote(){
         
-        image = resizedImage(name: "playButton", frame: frame, scale: 3)
+        image = resizedImage(name: "playButtonNew", frame: frame, scale: 3)
         contentMode = .scaleAspectFit
         layer.zPosition = 100
         clipsToBounds = true

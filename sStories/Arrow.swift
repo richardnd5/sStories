@@ -23,21 +23,22 @@ class Arrow: UIImageView {
         isUserInteractionEnabled = true
         
         fadeTo(opacity: 1.0, time: 3.0)
+        point()
         
     }
 
-    func point(){
-        let fromPoint = CGPoint(x: frame.midX, y: frame.midY)
-        let toPoint = CGPoint(x: frame.midX, y: frame.midY-frame.height/4)
-        
-        let anim = CABasicAnimation(keyPath: "position")
-        anim.autoreverses = true
-        anim.repeatCount = .infinity;
-        anim.fromValue = NSValue(cgPoint: fromPoint)
-        anim.toValue = NSValue(cgPoint: toPoint)
-        anim.duration = 0.6
-        layer.add(anim, forKey: "move")
-    }
+//    func point(){
+//        let fromPoint = CGPoint(x: frame.midX, y: frame.midY)
+//        let toPoint = CGPoint(x: frame.midX, y: frame.midY-frame.height/4)
+//
+//        let anim = CABasicAnimation(keyPath: "position")
+//        anim.autoreverses = true
+//        anim.repeatCount = .infinity;
+//        anim.fromValue = NSValue(cgPoint: fromPoint)
+//        anim.toValue = NSValue(cgPoint: toPoint)
+//        anim.duration = 0.6
+//        layer.add(anim, forKey: "move")
+//    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

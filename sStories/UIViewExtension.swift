@@ -216,13 +216,13 @@ extension UIView {
         }
     }
     
-    func throbWithWiggle(scaleTo: CGFloat, time: Double, _ completion: @escaping () -> () = {} ){
+    func throbWithWiggle(scaleTo: CGFloat, time: Double, fromValue: Double = 1.0, _ completion: @escaping () -> () = {} ){
         
         let scaleAnimation:CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnimation.duration = time
         scaleAnimation.repeatCount = .infinity
         scaleAnimation.autoreverses = true
-        scaleAnimation.fromValue = 1.0;
+        scaleAnimation.fromValue = fromValue
         scaleAnimation.toValue = scaleTo;
         layer.add(scaleAnimation, forKey: "throb")
         
@@ -262,5 +262,18 @@ extension UIView {
                     completion()
             })
         }
+    }
+    
+    func point(){
+        let fromPoint = CGPoint(x: frame.midX, y: frame.midY)
+        let toPoint = CGPoint(x: frame.midX, y: frame.midY-frame.height/4)
+        
+        let anim = CABasicAnimation(keyPath: "position")
+        anim.autoreverses = true
+        anim.repeatCount = .infinity;
+        anim.fromValue = NSValue(cgPoint: fromPoint)
+        anim.toValue = NSValue(cgPoint: toPoint)
+        anim.duration = 0.6
+        layer.add(anim, forKey: "move")
     }
 }

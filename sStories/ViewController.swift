@@ -48,7 +48,7 @@ class ViewController: UIViewController, SceneDelegate {
     
     var keyboardTurner : KeyboardTurner!
     
-    var bookmarkPage: BookmarkPage!
+//    var bookmarkPage: BookmarkPage!
     var bubbleScore: BubbleScoreView!
 
     var animator: UIDynamicAnimator!
@@ -198,11 +198,11 @@ class ViewController: UIViewController, SceneDelegate {
         
     }
     
-    func createBookmark(){
-        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        bookmarkPage = BookmarkPage(frame: frame)
-        view.addSubview(bookmarkPage)
-    }
+//    func createBookmark(){
+//        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+//        bookmarkPage = BookmarkPage(frame: frame)
+//        view.addSubview(bookmarkPage)
+//    }
     
     func createHomePage(){
         homePage = HomePage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
@@ -366,7 +366,7 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func returnToStoryFromArranging(){
-        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block:{_ in self.createPageTurner()})
+        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block:{_ in self.returnToStory()})
     }
     
     func goToHomePage(){

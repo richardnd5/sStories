@@ -11,17 +11,22 @@ class AboutPage: UIView, UIScrollViewDelegate {
     var blurbArray = [AboutBlurb]()
     var scrollUpButton : UIButton!
     
+    var arrow : ImageViewClass!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         createScrollView()
         createTitle()
         createButtons()
+        makeArrow()
+
         setupContraints()
         
         alpha = 0.0
         self.fadeTo(opacity: 1.0, time: 1.5)
         addBlurbs()
+
     }
     
     func addBlurbs(){
@@ -92,6 +97,18 @@ class AboutPage: UIView, UIScrollViewDelegate {
         scrollUpButton.addTarget(self, action: #selector(handleScrollUp), for: .touchUpInside)
     }
     
+    func makeArrow(){
+        let width : CGFloat = frame.width/6
+        let height : CGFloat = frame.height/6
+        let x = frame.width-width
+        let y = frame.height/2-height/2
+        
+        arrow = ImageViewClass(frame: CGRect(x: x, y: y, width: width, height: height), "scrollDownButton")
+        arrow.point()
+        addSubview(arrow!)
+        
+    }
+    
     @objc func handleScrollUp(_ sender: UIButton){
         scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
     }
@@ -139,9 +156,11 @@ class AboutPage: UIView, UIScrollViewDelegate {
             opacity = 1
             aboutTitle.alpha = opacity
             backButton.alpha = opacity
+            arrow.alpha = opacity
         } else {
             aboutTitle.alpha = opacity
             backButton.alpha = opacity
+            arrow.alpha = opacity
         }
     }
     

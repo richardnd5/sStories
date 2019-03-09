@@ -48,6 +48,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
 
         scaleTo(scaleTo: 0.12, time: 0.0)
         self.delegate?.stopRandomBubbles()
+        throbWithWiggle(scaleTo: 0.13, time: 0.5, fromValue: 0.12)
 
         
     }
@@ -270,6 +271,8 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         
         if !isActive {
             isActive = true
+            self.stopThrobWithWiggle()
+
             scaleTo(scaleTo: 1.0, time: 1, {
                 self.exitButton.fadeIn()
                 self.IChordButton.fadeIn()
@@ -290,7 +293,9 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             
         } else {
             isActive = false
-            scaleTo(scaleTo: 0.12, time: 1)
+            scaleTo(scaleTo: 0.12, time: 1, {
+                self.throbWithWiggle(scaleTo: 0.13, time: 0.5, fromValue: 0.12)
+            })
             exitButton.fadeOut()
             self.IChordButton.fadeOut()
             self.IVChordButton.fadeOut()
