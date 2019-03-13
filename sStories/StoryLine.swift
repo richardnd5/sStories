@@ -27,11 +27,11 @@ let storyline = [
     "As Templeton entered the village, the people saw him carrying a full sack, and they began to wonder.",
     
     """
-    "Is that the music you caught today?" one curious, young boy asked from the crowd.
+    "Is that the music you caught today?" one curious friend asked from the crowd.
     """,
     
     """
-    "Yes, I'm going to take the bits of music I caught and put them together into a beautiful piece to share with you," said Templeton, "Come over after dinner and you can hear it."
+    "Yes, I'm going to take the bits of music I caught and put them together into a beautiful piece to share with you," said Templeton. "Come over after dinner and you can hear it."
     """,
     
     "Away he went to his cabin to prepare the music for the evening.",
@@ -39,13 +39,13 @@ let storyline = [
     "After dinner, people came over to Templeton's home to hear what he had been working on. They all sat down and waited eagerly to hear.",
     
     """
-    "Thank you all for coming," Templeton said quietly.  "Here is the music I caught from the pond. Today was a rather calm day.  Hopefully you feel calm too after hearing the piece"
+    "Thank you all for coming," Templeton said quietly.  "Here is the music I caught from the pond. Today was a rather calm day.  Hopefully you feel calm too after hearing the piece."
     """,
     
     "The crowd sat silently in awe of how peaceful they felt after hearing the music.",
     
     """
-    The same curious child from earlier whispered, "This music came from the pond at the top of the mountain?"
+    The same curious friend from earlier whispered, "This music came from the pond at the top of the mountain?"
     """,
     
     "Templeton humbly nodded his head and smiled.",

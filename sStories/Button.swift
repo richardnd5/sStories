@@ -6,6 +6,7 @@ class Button: UIButton {
     weak var delegate : SceneDelegate?
     weak var pageDelegate : PageDelegate?
     weak var catchingMelodyDelegate : CatchingMelodyProtocol?
+    var buttonImage : UIImage!
     
     init(frame: CGRect, name: String) {
         super.init(frame: frame)
@@ -18,9 +19,17 @@ class Button: UIButton {
     
     private func setImage(){
         let imageSize = CGRect(x: 0, y: 0, width: 700, height: 700)
-        setImage(resizedImage(name: name, frame: imageSize), for: .normal)
+        buttonImage = resizedImage(name: name, frame: imageSize)
+        setImage(buttonImage, for: .normal)
         contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
+    }
+    
+    func resizeImage(to size: CGSize){
+        let imageSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        buttonImage = resizedImage(name: name, frame: imageSize)
+        setImage(buttonImage, for: .normal)
+        contentMode = .scaleAspectFit
     }
     
     private func setTouchEvents(){

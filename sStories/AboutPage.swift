@@ -100,8 +100,8 @@ class AboutPage: UIView, UIScrollViewDelegate {
     func makeArrow(){
         let width : CGFloat = frame.width/6
         let height : CGFloat = frame.height/6
-        let x = frame.width-width
-        let y = frame.height/2-height/2
+        let x : CGFloat = 20
+        let y : CGFloat = frame.height/20
         
         arrow = ImageViewClass(frame: CGRect(x: x, y: y, width: width, height: height), "scrollDownButton")
         arrow.point()

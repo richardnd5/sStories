@@ -20,6 +20,7 @@ protocol SceneDelegate : class {
     func stopRandomBubbles()
     func fadeOutTitleAndButtons()
     func fadeInTitleAndButtons()
+    func finishedReadingCallback()
 }
 
 class ViewController: UIViewController, SceneDelegate {
@@ -36,6 +37,7 @@ class ViewController: UIViewController, SceneDelegate {
     private var currentPage = 0
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
+    static var mainStoryLinePosition = 0
     
     // All the views
     var homePage : HomePage!
@@ -61,6 +63,8 @@ class ViewController: UIViewController, SceneDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        VoiceOverAudio.shared.delegate = self
+        
         createHomePage()
         createBubbleScore()
         setupAnimator()
@@ -71,28 +75,7 @@ class ViewController: UIViewController, SceneDelegate {
         
     }
     
-    override func viewDidLayoutSubviews() {
-//        if page != nil {
-//            // Setting the initial position so the panning of the items can bounce back to where they should be.
-//            page.pageViewInitialPosition = page.pageImage.frame.origin
-//            page.storyTextViewInitialPosition = page.storyTextView.frame.origin
-//
-//        }
-    }
-    
-    
-//    @objc func becameActive() {
-//        print("app became active")
-//        if !bubblesArePlaying && currentState == .home || currentState == .fishing || currentState == .performing {
-//            createRandomBubblesAtRandomTimeInterval(time: 1.0)
-//        }
-//
-//    }
-//
-//    @objc func appEnterBackground() {
-//        stopRandomBubbles()
-//
-//    }
+
     
     func setupAnimator(){
         
@@ -416,40 +399,55 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
+
     func nextMoment(){
         if page?.superview != nil {
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 page?.nextStoryLine()
+                ViewController.mainStoryLinePosition += 1
+//                VoiceOverAudio.shared.changeAudioFile(to: "readStory\(ViewController.mainStoryLinePosition)")
+                print("next moment clicked!")
+                
                 tempStoryLine += 1
                 playSoundClip(.nextStoryLine)
                 page.expandText()
+                page.showNavigationButtons()
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
-//                    createPageTurner()
+                    ViewController.mainStoryLinePosition += 1
+
+                    
                     createKeyboardTurner()
                     page.expandText()
                     page.canActivate = false
-                    page.backButton.fadeOut(1.0)
-                    page.nextButton.fadeOut(1.0)
+                    page.hideNavigationButtons()
                     page.storyTextView.fadeTo(opacity: 0.0, time: 1.0)
+                    page.playSoundButton.fadeOut(1.0)
                 }
             }
+            changeAudioOfStoryLineToMainStoryPosition()
         }
+        print(ViewController.mainStoryLinePosition)
     }
+    
+
     
     func previousMoment(){
         if page?.superview != nil {
             if tempStoryLine > 0 && page.canActivate && currentState == .story {
                 page.previousStoryLine()
+                ViewController.mainStoryLinePosition -= 1
                 tempStoryLine -= 1
                 page.expandText()
             } else if tempStoryLine == 0 && (page?.canActivate)! && currentState == .story {
                     previousPage()
+                    ViewController.mainStoryLinePosition -= 1
                     page.canActivate = false
             }
+            changeAudioOfStoryLineToMainStoryPosition()
         }
-
+        print(ViewController.mainStoryLinePosition)
     }
     
     func fadeInTitleAndButtons() {
@@ -462,6 +460,21 @@ class ViewController: UIViewController, SceneDelegate {
         if homePage != nil {
             homePage.fadeOutTitleAndLabels()
         }
+    }
+    
+    func finishedReadingCallback() {
+        if page != nil {
+            page.showNavigationButtons()
+        }
+    }
+    
+    func changeAudioOfStoryLineToMainStoryPosition(){
+        
+        if ViewController.mainStoryLinePosition >= storyline.count {
+            print("storyline number is greater than the storyline")
+            ViewController.mainStoryLinePosition = 0
+        }
+        VoiceOverAudio.shared.changeAudioFile(to: "readStory\(ViewController.mainStoryLinePosition)")
     }
     
     override var prefersStatusBarHidden: Bool{
