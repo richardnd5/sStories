@@ -306,6 +306,8 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
             
             self.delegate?.stopRandomBubbles()
 //            self.reelInButton.fadeOut(0.5)
+            self.melodyImage?.playMelody()
+
             
         })
     }

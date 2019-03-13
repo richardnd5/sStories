@@ -15,6 +15,9 @@ class KeyboardTurner: UIView {
     var exitButton : ExitButton!
     var tap : UITapGestureRecognizer!
     var chordArray : Array<PageTurnPianoNote>!
+    
+    var activatedKey : PianoKey!
+    var keyPlaying = false
 
     
     weak var delegate : SceneDelegate?
@@ -53,12 +56,10 @@ class KeyboardTurner: UIView {
                 }
             }
         }
+        
         whiteKeyArray.forEach { view in
             if view.frame.contains(location) && !keyPlaying {
 
-//                view.playKey()
-//                activatedKey = view
-//                keyPlaying = true
                 if partOfChord(noteToCheck: Int(view.keyNumber), chordArray: chordArray){
                     view.playKey()
                     activatedKey = view
@@ -106,10 +107,6 @@ class KeyboardTurner: UIView {
         chordArray.contains(PageTurnPianoNote(rawValue: MIDINoteNumber(noteToCheck))!) ? (bool = true) : (bool = false)
         return bool
     }
-    
-    var activatedKey : PianoKey!
-    var keyPlaying = false
-    
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -224,21 +221,6 @@ class KeyboardTurner: UIView {
             self.delegate!.nextPage()
             self.fadeAndRemove(time: 1.5)
         }
-
-
-        
-        
-//        whiteKeyArray.forEach { key in
-//            if key.isTarget {
-//
-//                key.turnPageAnimationPlayNote()
-//            }
-//        }
-//        blackKeyArray.forEach { key in
-//            if key.isTarget {
-//                key.turnPageAnimationPlayNote()
-//            }
-//        }
     }
     
     func makeNoteAppearFlyAwayAndFade(location: CGPoint){

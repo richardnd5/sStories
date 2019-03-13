@@ -70,6 +70,7 @@ class PianoKey : UIView {
         targetDot.backgroundColor = .red
         targetDot.layer.cornerRadius = width/2
         targetDot.alpha = 0.0
+        targetDot.isUserInteractionEnabled = false
         addSubview(targetDot)
         
         targetDot.fadeTo(opacity: 1.0, time: 1.0)
@@ -124,9 +125,7 @@ class PianoKey : UIView {
     
     func playKey(){
         
-//        audio.play()
         Sound.sharedInstance.pianoSampler.play(noteNumber: keyNumber, velocity: 127)
-//        Sound.sharedInstance.oldPlayNote(keyNumber)
         keyIsActive = true
         if keyIsActive {
             increaseDot()
@@ -136,11 +135,9 @@ class PianoKey : UIView {
     
     func stopKey(){
         
-//        audio.stop()
-//        Sound.sharedInstance.oldStopNote(keyNumber)
         Sound.sharedInstance.pianoSampler.stop(noteNumber: keyNumber)
         keyIsActive = false
-//        decreaseDot()
+
     }
     
     required init?(coder aDecoder: NSCoder) {

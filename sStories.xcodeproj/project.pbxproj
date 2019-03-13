@@ -46,7 +46,6 @@
 		223FDC1E222745CC008F8864 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 223FDC1D222745CC008F8864 /* off.png */; };
 		224D964C221B230900EBF0D3 /* Town.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964B221B230900EBF0D3 /* Town.png */; };
 		224D9650221B26E400EBF0D3 /* performingImage1.5.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964F221B26E400EBF0D3 /* performingImage1.5.png */; };
-		224D9652221B5F2A00EBF0D3 /* PianoKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */; };
 		224D9654221B6F1500EBF0D3 /* performingImage0.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D9653221B6F1500EBF0D3 /* performingImage0.png */; };
 		2251122C22024EAF0087747F /* test.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2251122B22024EAF0087747F /* test.mp3 */; };
 		2251122E22024F7E0087747F /* SoundEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2251122D22024F7E0087747F /* SoundEffect.swift */; };
@@ -356,7 +355,6 @@
 		223FDC1D222745CC008F8864 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
 		224D964B221B230900EBF0D3 /* Town.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Town.png; sourceTree = "<group>"; };
 		224D964F221B26E400EBF0D3 /* performingImage1.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage1.5.png; sourceTree = "<group>"; };
-		224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboard.swift; sourceTree = "<group>"; };
 		224D9653221B6F1500EBF0D3 /* performingImage0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage0.png; sourceTree = "<group>"; };
 		2251122B22024EAF0087747F /* test.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test.mp3; sourceTree = "<group>"; };
 		2251122D22024F7E0087747F /* SoundEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffect.swift; sourceTree = "<group>"; };
@@ -722,7 +720,6 @@
 			isa = PBXGroup;
 			children = (
 				22018740223183A8008B5D39 /* KeyboardTurner.swift */,
-				224D9651221B5F2A00EBF0D3 /* PianoKeyboard.swift */,
 				22D3E101220FB69000668C53 /* PianoKey.swift */,
 				8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */,
 			);
@@ -1461,7 +1458,6 @@
 				867C542621DF1E7B002E4255 /* SackContents.swift in Sources */,
 				22D3E102220FB69000668C53 /* PianoKey.swift in Sources */,
 				2251122E22024F7E0087747F /* SoundEffect.swift in Sources */,
-				224D9652221B5F2A00EBF0D3 /* PianoKeyboard.swift in Sources */,
 				866EA6F521F438DC00B28BA6 /* MiniNote.swift in Sources */,
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
 				86109E0E22209BB2001B6545 /* PlayZoneBubble.swift in Sources */,
@@ -1642,7 +1638,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C6AQ322Q62;
+				DEVELOPMENT_TEAM = 3NSLQNHB3C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1664,7 +1660,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C6AQ322Q62;
+				DEVELOPMENT_TEAM = 3NSLQNHB3C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
