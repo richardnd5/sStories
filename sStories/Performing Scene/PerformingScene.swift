@@ -12,11 +12,7 @@ class PerformingScene: UIView {
     var timeoutCounter : Int = 0
     let timerRepetitions = 48
     var isPlaying = false
-    
-//    var animator: UIDynamicAnimator!
-//    let gravityBehavior = UIGravityBehavior()
-//    let collisionBehavior = UICollisionBehavior()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -67,7 +63,6 @@ class PerformingScene: UIView {
         if !isPlaying {
             isPlaying = true
             Sound.sharedInstance.playSequencer()
-            delegate?.createRandomBubblesAtRandomTimeInterval(time: 1.0)
             timeout()
             playButton?.fadeAndRemove(time: 2.0)
         }
@@ -93,9 +88,6 @@ class PerformingScene: UIView {
             
             self.timeoutCounter += 1
             if self.timeoutCounter < self.timerRepetitions {
-//                if self.timeoutCounter % 4 == 0 {
-//                    self.generateRandomMusicSymbols()
-//                }
 
                 if self.timeoutCounter % 8 == 0 {
                     self.switchPicture()
@@ -110,33 +102,7 @@ class PerformingScene: UIView {
             
         })
     }
-    
-//    func generateRandomMusicSymbols(){
-//
-//        let randNum = Int.random(in: 1...1)
-//        for _ in 0...randNum {
-//            let width = frame.width/20
-//            let height = frame.width/20
-//            let x = CGFloat.random(in: frame.width/4...frame.width-frame.width/4)
-//            let y = CGFloat.random(in: frame.height/40...frame.height/2-frame.height/40)
-//            let note = MiniPerformingNoteView(frame: CGRect(x: x, y: y, width: width, height: height))
-//            addSubview(note)
-//            gravityBehavior.addItem(note)
-//            collisionBehavior.addItem(note)
-//
-//            let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
-//
-//            let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
-//            let randomMagnitude = CGFloat.random(in: 0...1)
-//
-//            pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
-//            animator.addBehavior(pushBehavior)
-//
-//            let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-//            note.addGestureRecognizer(tap)
-//
-//        }
-//    }
+ 
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
         let note = sender.view as! MiniPerformingNoteView
