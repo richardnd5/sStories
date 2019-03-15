@@ -465,6 +465,7 @@ class ViewController: UIViewController, SceneDelegate {
     func finishedReadingCallback() {
         if page != nil {
             page.showNavigationButtons()
+            page.playSoundButton.stopThrobWithAnimation()
         }
     }
     
