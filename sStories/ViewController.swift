@@ -21,25 +21,31 @@ protocol SceneDelegate : class {
     func fadeOutTitleAndButtons()
     func fadeInTitleAndButtons()
     func finishedReadingCallback()
+    func loadUpTempleton()
+    func goHome()
+    func loadUpStory(_ name: String)
+    func removeDonatePopUpView()
 }
 
 class ViewController: UIViewController, SceneDelegate {
     
     enum AppState {
-        case home
+        case bookshelfHome
+        case templetonFrontPage
         case story
         case fishing
         case arranging
         case performing
     }
     
-    private var currentState = AppState.home
+    private var currentState = AppState.bookshelfHome
     private var currentPage = 0
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
     static var mainStoryLinePosition = 0
     
     // All the views
+    var bookshelfPage : BookshelfPage!
     var homePage : HomePage!
     var aboutPage : AboutPage!
     var page : PageView!
@@ -47,6 +53,8 @@ class ViewController: UIViewController, SceneDelegate {
     var arrangingScene : ArrangingScene!
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
+    
+    
     
     var keyboardTurner : KeyboardTurner!
     
@@ -59,19 +67,69 @@ class ViewController: UIViewController, SceneDelegate {
     
     var bubblesArePlaying = false
     
+    var donatePopUpView : DonatePopUpView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VoiceOverAudio.shared.delegate = self
         
-        createHomePage()
-        createBubbleScore()
+//        loadUpTempleton()
+        createBookShelfPage()
+        
         setupAnimator()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(appEnterBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
-//        
-//        NotificationCenter.default.addObserver(self, selector: #selector(becameActive), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    
+    func createDonatePopUpView(){
+        
+        donatePopUpView = DonatePopUpView()
+        donatePopUpView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(donatePopUpView)
+        
+        [donatePopUpView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8),
+         donatePopUpView.heightAnchor.constraint(equalToConstant: view!.frame.height/1.5),
+         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/2),
+         donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            ].forEach { $0.isActive = true }
+        
+//        setupDonateButtonDelegates()
+        donatePopUpView.cancelButton.addTarget(self, action: #selector(handleDonateCancel), for: .touchUpInside)
+        
+    }
+    
+    func setupDonateButtonDelegates(){
+        for view in donatePopUpView.subviews {
+            let v = view as! Button
+            v.delegate = self
+        }
+    }
+
+    
+    func createBookShelfPage(){
+        print("running create bookshelf")
+        stopRandomBubbles()
+        currentState = .bookshelfHome
+        bookshelfPage = BookshelfPage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        view.addSubview(bookshelfPage)
+        bookshelfPage.fillSuperview()
+        bookshelfPage.delegate = self
+        
+        setupStoryIconDelegates()
+//        bookshelfPage.templeton.addTarget(self, action: #selector(handleTempletonTap), for: .touchUpInside)
+
+//        setupDelegates()
+    }
+    
+    func loadUpTempleton(){
+        
+        currentState = .templetonFrontPage
+        VoiceOverAudio.shared.delegate = self
+        
+        bookshelfPage.fadeAndRemove(time: 0.7)
+        createHomePage()
+        createBubbleScore()
         
     }
     
@@ -256,6 +314,13 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
+    func setupStoryIconDelegates(){
+        for view in bookshelfPage.stackView.subviews {
+            let v = view as! StoryIcon
+            v.delegate = self
+        }
+    }
+    
     func nextPage() {
         stopRandomBubbles()
         // If the next page is a regular page
@@ -428,7 +493,6 @@ class ViewController: UIViewController, SceneDelegate {
             }
             changeAudioOfStoryLineToMainStoryPosition()
         }
-        print(ViewController.mainStoryLinePosition)
     }
     
 
@@ -476,6 +540,44 @@ class ViewController: UIViewController, SceneDelegate {
             ViewController.mainStoryLinePosition = 0
         }
         VoiceOverAudio.shared.changeAudioFile(to: "readStory\(ViewController.mainStoryLinePosition)")
+    }
+    
+    @objc func handleTempletonTap(_ sender: UIButton){
+        
+        bookshelfPage.fadeAndRemove(time: 1.0)
+
+        loadUpTempleton()
+
+    }
+    
+    func goHome(){
+        print("going home!")
+        if currentState == .templetonFrontPage {
+            homePage.fadeAndRemove(time: 1.0)
+            bubbleScore.fadeAndRemove(time: 1.0)
+            createBookShelfPage()
+            Sound.sharedInstance.stopPondBackground()
+        }
+    }
+    
+    func removeDonatePopUpView(){
+        if donatePopUpView.superview != nil {
+            donatePopUpView.fadeAndRemove(time: 0.4)
+        }
+    }
+    
+    @objc func handleDonateCancel(_ sender: UIButton){
+        removeDonatePopUpView()
+    }
+    
+    func loadUpStory(_ name: String) {
+        switch name {
+        case "templtonThumbnail":
+            loadUpTempleton()
+        default:
+            print("It's not templeton!")
+            createDonatePopUpView()
+        }
     }
     
     override var prefersStatusBarHidden: Bool{

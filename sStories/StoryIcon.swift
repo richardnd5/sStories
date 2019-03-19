@@ -1,6 +1,6 @@
 import UIKit
 
-class Button: UIButton {
+class StoryIcon: UIButton {
     
     var name : String!
     weak var delegate : SceneDelegate?
@@ -12,11 +12,13 @@ class Button: UIButton {
         super.init(frame: frame)
         self.name = name
         
-        
         setImage()
-        
         setTouchEvents()
         setTag()
+        layer.cornerRadius = frame.width/10
+        
+        
+        
     }
     
     private func setImage(){
@@ -25,6 +27,7 @@ class Button: UIButton {
         setImage(buttonImage, for: .normal)
         contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
+        clipsToBounds = true
     }
     
     func resizeImage(to size: CGSize){
@@ -41,24 +44,7 @@ class Button: UIButton {
     }
     
     func setTag() {
-        switch name {
-        case "about":
-            tag = ButtonTypee.about.rawValue
-        case "read":
-            tag = ButtonTypee.read.rawValue
-        case "back":
-            tag = ButtonTypee.back.rawValue
-        case "exit":
-            tag = ButtonTypee.back.rawValue
-        case "nextArrow":
-            tag = ButtonTypee.next.rawValue
-        case "backArrow":
-            tag = ButtonTypee.backStory.rawValue
-        case "reelInButton":
-            tag = ButtonTypee.reelIn.rawValue
-        default:
-            tag = ButtonTypee.next.rawValue
-        }
+        tag = 100
     }
     
     func fadeIn(_ time: Double = 1){
@@ -71,44 +57,19 @@ class Button: UIButton {
     
     // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
-        sender!.scaleTo(scaleTo: 0.8, time: 0.4)
-        
-        if sender?.tag == ButtonTypee.next.rawValue || sender?.tag == ButtonTypee.backStory.rawValue {
-            playSoundClip(.touchDown)
-        } else {
-            playSoundClip(.buttonDown)
-        }
+        stopThrobWithAnimation({
+            sender!.scaleTo(scaleTo: 0.8, time: 0.4)
+        })
 
+            playSoundClip(.buttonDown)
+
+        
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 1, time: 0.4)
+        delegate?.loadUpStory(name)
         
-        if sender!.tag == ButtonTypee.about.rawValue {
-            delegate?.goToAboutPage()
-            playSoundClip(.buttonUp)
-        } else if sender!.tag == ButtonTypee.read.rawValue {
-            delegate?.startStory()
-            playSoundClip(.buttonUp)
-//            Sound.sharedInstance.openingMusic.stopLoop()
-            Sound.sharedInstance.stopPondBackground()
-            playSoundClip(.pageTurn)
-        }  else if sender!.tag == ButtonTypee.back.rawValue {
-            delegate?.goToHomePage()
-            playSoundClip(.buttonUp)
-        }  else if sender!.tag == ButtonTypee.next.rawValue {
-            delegate?.nextMoment()
-            playSoundClip(.touchUp)
-        } else if sender!.tag == ButtonTypee.backStory.rawValue {
-            delegate?.previousMoment()
-            
-            playSoundClip(.touchUp)
-        }
-        
-        else if sender!.tag == ButtonTypee.reelIn.rawValue {
-            catchingMelodyDelegate!.reelIn()
-            
-        }
     }
     
     @objc private func touchUpOutside(_ sender: UIButton?) {

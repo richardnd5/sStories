@@ -233,19 +233,19 @@ extension UIView {
         layer.removeAnimation(forKey: "throb")
     }
     
-    func stopThrobWithAnimation(){
+    func stopThrobWithAnimation( _ completion: @escaping () -> () = {}  ){
         
         CATransaction.begin()
         
         let scaleAnimation: CASpringAnimation = CASpringAnimation(keyPath: "transform.scale")
-        scaleAnimation.duration = 0.2
+        scaleAnimation.duration = 0.01
         scaleAnimation.toValue = 1.0
         scaleAnimation.initialVelocity = 0.3
         scaleAnimation.damping = 3
         
         CATransaction.setCompletionBlock{ [weak self] in
-            print("animation done!")
             self!.layer.removeAnimation(forKey: "throb")
+            completion()
         }
         
         layer.add(scaleAnimation, forKey: "scalee")

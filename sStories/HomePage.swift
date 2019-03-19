@@ -23,6 +23,8 @@ class HomePage: UIView {
     var aboutButton : Button!
     var readButton: Button!
     
+    var homeButton : Button!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addBackground()
@@ -30,6 +32,8 @@ class HomePage: UIView {
         createBubblePlayZone(frame: frame)
         title.font = UIFont(name: "Papyrus", size: frame.width/20)
         setupLayout()
+        
+        createHomeButton()
         
 
         alpha = 0
@@ -40,6 +44,21 @@ class HomePage: UIView {
         fadeTo(opacity: 1.0, time: 1.5,{
             self.startBubbles()
         })
+    }
+    
+    func createHomeButton(){
+        homeButton = Button(frame: CGRect(), name: "backArrow")
+        addSubview(homeButton)
+        homeButton.resizeImage(to: CGSize(width: 30, height: 30))
+        
+        homeButton.translatesAutoresizingMaskIntoConstraints = false
+        homeButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        homeButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        homeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        homeButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        
+        homeButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
     }
     
     func startBubbles(){
@@ -145,6 +164,10 @@ class HomePage: UIView {
         readButton.fadeOut(1.0)
         titleImage.fadeTo(opacity: 0.0, time: 1.0)
         
+    }
+    
+    @objc func backButtonPressed(_ sender: UIButton){
+        delegate?.goHome()
     }
     
     required init?(coder aDecoder: NSCoder) {

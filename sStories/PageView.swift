@@ -55,6 +55,7 @@ class PageView: UIView {
         imageName = page.imageName
         storyText = page.storyText
         sceneStoryPosition = page.storyText.startIndex
+        print(sceneStoryPosition)
         
         pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
 //        nextImage.image = resizedImage(name: "nextArrow")
@@ -86,17 +87,6 @@ class PageView: UIView {
     @objc func handleTap(_ sender: UITapGestureRecognizer){
         if !navigationButtonsVisable {
             showNavigationButtons()
-        }
-    }
-    
-    @objc func handleTextPan(_ sender: UIPanGestureRecognizer){
-        let translation = sender.translation(in: self)
-        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
-        sender.setTranslation(CGPoint.zero, in: self)
-        
-        if sender.state == .ended {
-//            sender.view?.moveViewTo(storyTextViewInitialPosition, time: 0.5)
-
         }
     }
     
@@ -183,8 +173,6 @@ class PageView: UIView {
         
         playSoundButton.addTarget(self, action: #selector(handlePlaySpeaking), for: .touchUpInside)
         
-        
-        
         playSoundButton.translatesAutoresizingMaskIntoConstraints = false
         playSoundButton.topAnchor.constraint(equalTo: pageImage.bottomAnchor).isActive = true
         playSoundButton.centerXAnchor.constraint(equalTo: pageImage.centerXAnchor).isActive = true
@@ -202,11 +190,7 @@ class PageView: UIView {
         storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/5).isActive = true
         storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/5).isActive = true
         
-        
-        
-        
-        
-        
+
         
         nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
         
@@ -224,7 +208,6 @@ class PageView: UIView {
         nextButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         
         
-        
         backButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "backArrow")
         
         addSubview(backButton)
@@ -235,9 +218,6 @@ class PageView: UIView {
         backButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
-        
-        
-        
         
     }
     

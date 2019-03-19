@@ -115,8 +115,12 @@
 		22C7F9A92232F116005A38DD /* middle.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F9A82232F116005A38DD /* middle.png */; };
 		22C7F9AB2232F207005A38DD /* trebleClef.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F9AA2232F207005A38DD /* trebleClef.png */; };
 		22C7F9AD2232F2E0005A38DD /* tonic.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F9AC2232F2DF005A38DD /* tonic.png */; };
+		22C9369122405C0F008511BF /* DonatePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9369022405C0F008511BF /* DonatePopUpView.swift */; };
 		22D3E102220FB69000668C53 /* PianoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3E101220FB69000668C53 /* PianoKey.swift */; };
 		22D3E107220FBA3700668C53 /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3E106220FBA3700668C53 /* ExitButton.swift */; };
+		22D6B4E3223DEADA005DD24F /* BookshelfPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6B4E2223DEADA005DD24F /* BookshelfPage.swift */; };
+		22D6B4E7223DEC55005DD24F /* StoryIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6B4E6223DEC55005DD24F /* StoryIcon.swift */; };
+		22D6B4E9223E03CE005DD24F /* templtonThumbnail.png in Resources */ = {isa = PBXBuildFile; fileRef = 22D6B4E8223E03CE005DD24F /* templtonThumbnail.png */; };
 		22E5DBB4220555C200235899 /* pullMelodyOut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22E5DBB3220555C200235899 /* pullMelodyOut.mp3 */; };
 		22EA723F22091849008A2B23 /* arrangingCrossOut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22EA723E22091849008A2B23 /* arrangingCrossOut.mp3 */; };
 		22EA724322091AD9008A2B23 /* arrangingCrossOutPause.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22EA724222091AD9008A2B23 /* arrangingCrossOutPause.mp3 */; };
@@ -452,8 +456,12 @@
 		22C7F9AA2232F207005A38DD /* trebleClef.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trebleClef.png; sourceTree = "<group>"; };
 		22C7F9AC2232F2DF005A38DD /* tonic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tonic.png; sourceTree = "<group>"; };
 		22C7F9AE2232F2F1005A38DD /* melodyThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melodyThumbnail.png; sourceTree = "<group>"; };
+		22C9369022405C0F008511BF /* DonatePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatePopUpView.swift; sourceTree = "<group>"; };
 		22D3E101220FB69000668C53 /* PianoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKey.swift; sourceTree = "<group>"; };
 		22D3E106220FBA3700668C53 /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
+		22D6B4E2223DEADA005DD24F /* BookshelfPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfPage.swift; sourceTree = "<group>"; };
+		22D6B4E6223DEC55005DD24F /* StoryIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryIcon.swift; sourceTree = "<group>"; };
+		22D6B4E8223E03CE005DD24F /* templtonThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = templtonThumbnail.png; sourceTree = "<group>"; };
 		22E5DBB3220555C200235899 /* pullMelodyOut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = pullMelodyOut.mp3; sourceTree = "<group>"; };
 		22EA723E22091849008A2B23 /* arrangingCrossOut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingCrossOut.mp3; sourceTree = "<group>"; };
 		22EA724222091AD9008A2B23 /* arrangingCrossOutPause.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingCrossOutPause.mp3; sourceTree = "<group>"; };
@@ -1073,6 +1081,9 @@
 			children = (
 				86BBBF2821BB08FD00CB17F2 /* AppDelegate.swift */,
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
+				22D6B4E2223DEADA005DD24F /* BookshelfPage.swift */,
+				22C9369022405C0F008511BF /* DonatePopUpView.swift */,
+				22D6B4E6223DEC55005DD24F /* StoryIcon.swift */,
 				22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
 				866AA1072208F849000FED54 /* HomePageBackgroundImage.swift */,
@@ -1104,6 +1115,7 @@
 				86F1F6C421FC1A36001AD82D /* GlobalVariables.swift */,
 				228A6F3A2214853E007617A0 /* OpeningMusic.swift */,
 				86603C5321FC477B00A7921E /* StructsAndEnums.swift */,
+				22D6B4E8223E03CE005DD24F /* templtonThumbnail.png */,
 				8613FA4C223985A30008994F /* playSoundButton.png */,
 				8613FA802239A4200008994F /* storyAudio */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
@@ -1333,6 +1345,7 @@
 				86B56D1A22095668000F6394 /* touchDown.mp3 in Resources */,
 				223FDC1E222745CC008F8864 /* off.png in Resources */,
 				226A1A482202794900E47009 /* test9.mp3 in Resources */,
+				22D6B4E9223E03CE005DD24F /* templtonThumbnail.png in Resources */,
 				868F9C222207EDDE00BBBFE3 /* castLine.mp3 in Resources */,
 				226A1A3F2202794900E47009 /* test25.mp3 in Resources */,
 				226A1A4E2202794900E47009 /* test21.mp3 in Resources */,
@@ -1520,6 +1533,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22D6B4E3223DEADA005DD24F /* BookshelfPage.swift in Sources */,
 				22A5D67D222231BE0004E1D9 /* ReelInButton.swift in Sources */,
 				86F8AB8221DD636300BED768 /* FishingPole.swift in Sources */,
 				8654706321EE7F1300D1F068 /* MelodySlots.swift in Sources */,
@@ -1570,6 +1584,8 @@
 				8665697121EFD0860086D432 /* Melody.swift in Sources */,
 				86109E0E22209BB2001B6545 /* PlayZoneBubble.swift in Sources */,
 				866EA65521F288CC00B28BA6 /* WholeNote.swift in Sources */,
+				22D6B4E7223DEC55005DD24F /* StoryIcon.swift in Sources */,
+				22C9369122405C0F008511BF /* DonatePopUpView.swift in Sources */,
 				866EA64F21F282B900B28BA6 /* PageTurner.swift in Sources */,
 				86109E0922209486001B6545 /* BackgroundImage.swift in Sources */,
 				86F8AB7E21DD5AD400BED768 /* Label.swift in Sources */,
