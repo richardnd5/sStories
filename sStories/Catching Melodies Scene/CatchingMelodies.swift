@@ -43,11 +43,7 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         createSackContainer()
         setAMelodyToBiteInTheFuture()
         startBackgroundSound()
-        
-//        let downSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleDownSwipe))
-//        downSwipe.direction = .down
-//        addGestureRecognizer(downSwipe)
-        
+
         //fade the view in
         alpha = 0.0
         fadeTo(opacity: 1.0, time: 2.5, {
@@ -464,21 +460,6 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
             }
         }
     }
-    
-//    @objc func handleDownSwipe(_ sender: UISwipeGestureRecognizer){
-//        if sender.state == .ended{
-//            if sceneState == .fishing {
-//                instructionLabel?.changeText(to: "Wait for a melody to bite!")
-//                warningWiggle()
-//                instructionLabel?.warningScaleUp()
-//                playSoundClip(.fishingWarning)
-//            }
-//            
-//            if sceneState == .fishOnTheLine {
-//                reelIn()
-//            }
-//        }
-//    }
     
     @objc func handleMainTap(_ sender: UITapGestureRecognizer){
         

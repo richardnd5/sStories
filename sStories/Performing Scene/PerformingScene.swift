@@ -50,6 +50,7 @@ class PerformingScene: UIView {
         
         playButton = PlayButton(frame: CGRect(x: x, y: y, width: width, height: height))
         addSubview(playButton!)
+        playButton?.throbWithWiggle(scaleTo: 1.3, time: 0.6)
         
         playButton?.anchor(top: nil, leading: nil, trailing: nil, bottom: safeAreaLayoutGuide.bottomAnchor, padding: UIEdgeInsets(top: 0, left: 0, bottom: -frame.height/3.6, right: 0), size: CGSize(width: width, height: height))
         playButton?.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor).isActive = true

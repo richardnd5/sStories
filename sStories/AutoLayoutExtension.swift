@@ -4,12 +4,27 @@ import UIKit
 extension UIView {
     
     func fillSuperview() {
+        translatesAutoresizingMaskIntoConstraints = false
+
         anchor(top: superview?.topAnchor, leading: superview?.leadingAnchor, trailing: superview?.trailingAnchor, bottom: superview?.bottomAnchor)
     }
     
     func anchorSize(to view: UIView){
+        translatesAutoresizingMaskIntoConstraints = false
+
         widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         heightAnchor.constraint(equalTo: view.heightAnchor).isActive = true
+    }
+    
+    func centerXAndSize(size: CGSize, top: NSLayoutYAxisAnchor, topPadding: CGFloat = 0){
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        centerXAnchor.constraint(equalTo: (superview?.centerXAnchor)!).isActive = true
+        widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        topAnchor.constraint(equalTo: top, constant: topPadding).isActive = true
+
+        
     }
     
     func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, trailing: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?,  padding: UIEdgeInsets = .zero, size: CGSize = .zero) {

@@ -11,7 +11,7 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     var blurbArray = [AboutBlurb]()
     var scrollUpButton : UIButton!
     
-    
+    var touchBlockingOverlay : UIView!
     
     var arrow : ImageViewClass!
     
@@ -23,22 +23,43 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     var icon3 : StoryIcon!
     var icon4 : StoryIcon!
     
+    var touchEnabled = true {
+        didSet {
+            toggleTouchEnabled()
+        }
+    }
+    
     
     
 
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         createTitle()
-        
         alpha = 0.0
         self.fadeTo(opacity: 1.0, time: 1.5)
         
         setupViews()
-        
+        createTouchBlockingOverlay()
         
     }
+    
+    func createTouchBlockingOverlay(){
+        touchBlockingOverlay = UIView()
+        addSubview(touchBlockingOverlay)
+        touchBlockingOverlay.fillSuperview()
+        touchBlockingOverlay.isUserInteractionEnabled = false
+    }
+    
+    func toggleTouchEnabled(){
+        if touchEnabled {
+            touchBlockingOverlay.isUserInteractionEnabled = false
+        } else {
+            touchBlockingOverlay.isUserInteractionEnabled = true
+        }
+    }
+    
+    
     
 
     

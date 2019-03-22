@@ -5,6 +5,7 @@
  */
 
 import UIKit
+import StoreKit
 
 protocol SceneDelegate : class {
     func returnToStory()
@@ -27,7 +28,7 @@ protocol SceneDelegate : class {
     func removeDonatePopUpView()
 }
 
-class ViewController: UIViewController, SceneDelegate {
+class ViewController: UIViewController, SceneDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
     enum AppState {
         case bookshelfHome
@@ -37,6 +38,9 @@ class ViewController: UIViewController, SceneDelegate {
         case arranging
         case performing
     }
+    
+    var list = [SKProduct]()
+    var currentProduct = SKProduct()
     
     private var currentState = AppState.bookshelfHome
     private var currentPage = 0
@@ -54,8 +58,6 @@ class ViewController: UIViewController, SceneDelegate {
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
     
-    
-    
     var keyboardTurner : KeyboardTurner!
     
 //    var bookmarkPage: BookmarkPage!
@@ -72,13 +74,45 @@ class ViewController: UIViewController, SceneDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-//        loadUpTempleton()
+
         createBookShelfPage()
         
         setupAnimator()
         
+        if(SKPaymentQueue.canMakePayments()) {
+            print("IAP is enabled, loading")
+            let productID : NSSet = NSSet(objects: IAPProduct.consumable.rawValue, IAPProduct.nonConsumable.rawValue)
+            let request : SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+            
+            request.delegate = self
+            request.start()
+            
+        } else {
+            print("please enable IAPS")
+        }
+        
+    }
+    
+    func makePurchase(productType: IAPProduct){
+        for product in list {
+            let prodID = product.productIdentifier
+            if (prodID == productType.rawValue){
+                currentProduct = product
+                buyProduct()
+            }
+        }
+    }
+    
+    func buyProduct(){
+        print("buy \(currentProduct.productIdentifier)")
+        let pay = SKPayment(product: currentProduct)
+        SKPaymentQueue().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
+    }
+    
+    func restorePurchases(){
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
     }
     
     
@@ -87,6 +121,7 @@ class ViewController: UIViewController, SceneDelegate {
         donatePopUpView = DonatePopUpView()
         donatePopUpView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(donatePopUpView)
+        bookshelfPage.touchEnabled = false
         
         [donatePopUpView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8),
          donatePopUpView.heightAnchor.constraint(equalToConstant: view!.frame.height/1.5),
@@ -94,7 +129,6 @@ class ViewController: UIViewController, SceneDelegate {
          donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ].forEach { $0.isActive = true }
         
-//        setupDonateButtonDelegates()
         donatePopUpView.cancelButton.addTarget(self, action: #selector(handleDonateCancel), for: .touchUpInside)
         
     }
@@ -128,6 +162,7 @@ class ViewController: UIViewController, SceneDelegate {
         VoiceOverAudio.shared.delegate = self
         
         bookshelfPage.fadeAndRemove(time: 0.7)
+        
         createHomePage()
         createBubbleScore()
         
@@ -262,24 +297,6 @@ class ViewController: UIViewController, SceneDelegate {
         setupDelegates()
     }
     
-    func createPageTurner(){
-        // Not using autolayout.... tsk tsk
-        let width = view.frame.width/12
-        let height = view.frame.height
-        var x = view.frame.width-width
-        let y = CGFloat(0)
-        
-        if DeviceType.hasNotch {
-            x -= 44
-        }
-        
-        pageTurner = PageTurner(frame: CGRect(x: x, y: y, width: width, height: height), currentPage)
-        view.addSubview(pageTurner!)
-        pageTurner?.delegate = self
-        view.bringSubviewToFront(pageTurner!)
-        playSoundClip(.showPageTurner)
-    }
-    
     func createKeyboardTurner(){
         // Not using autolayout.... tsk tsk
         let width = view.frame.width*0.9
@@ -292,8 +309,6 @@ class ViewController: UIViewController, SceneDelegate {
         }
         
         let frame = CGRect(x: x, y: y, width: width, height: height)
-        
-//        keyboardTurner = PianoKeyboard(frame: CGRect(x: x, y: y, width: width, height: height), currentPage)
         keyboardTurner = KeyboardTurner(frame: frame, currentPage)
         keyboardTurner.frame.origin.x = view.frame.width/2-width/2
         
@@ -383,8 +398,10 @@ class ViewController: UIViewController, SceneDelegate {
             
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage-=1
-                self.tempStoryLine = 0
+
                 self.createPage()
+                self.tempStoryLine = (self.page.storyText?.count)!-1
+
                 self.pageTurnerVisible = false
             }
         }
@@ -409,7 +426,6 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func returnToStory(){
-//        createPageTurner()
         createKeyboardTurner()
     }
     
@@ -469,14 +485,14 @@ class ViewController: UIViewController, SceneDelegate {
         if page?.superview != nil {
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 page?.nextStoryLine()
-                ViewController.mainStoryLinePosition += 1
-//                VoiceOverAudio.shared.changeAudioFile(to: "readStory\(ViewController.mainStoryLinePosition)")
-                print("next moment clicked!")
                 
                 tempStoryLine += 1
                 playSoundClip(.nextStoryLine)
                 page.expandText()
                 page.showNavigationButtons()
+                
+                ViewController.mainStoryLinePosition += 1
+                
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
@@ -496,7 +512,6 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
 
-    
     func previousMoment(){
         if page?.superview != nil {
             if tempStoryLine > 0 && page.canActivate && currentState == .story {
@@ -506,12 +521,17 @@ class ViewController: UIViewController, SceneDelegate {
                 page.expandText()
             } else if tempStoryLine == 0 && (page?.canActivate)! && currentState == .story {
                     previousPage()
+                
+                if ViewController.mainStoryLinePosition > 0 {
                     ViewController.mainStoryLinePosition -= 1
+                } else {
+                    ViewController.mainStoryLinePosition = 0
+                }
                     page.canActivate = false
             }
             changeAudioOfStoryLineToMainStoryPosition()
         }
-        print(ViewController.mainStoryLinePosition)
+        
     }
     
     func fadeInTitleAndButtons() {
@@ -551,18 +571,18 @@ class ViewController: UIViewController, SceneDelegate {
     }
     
     func goHome(){
-        print("going home!")
-        if currentState == .templetonFrontPage {
+        
+        
             homePage.fadeAndRemove(time: 1.0)
             bubbleScore.fadeAndRemove(time: 1.0)
             createBookShelfPage()
             Sound.sharedInstance.stopPondBackground()
-        }
     }
     
     func removeDonatePopUpView(){
+        bookshelfPage.touchEnabled = true
         if donatePopUpView.superview != nil {
-            donatePopUpView.fadeAndRemove(time: 0.4)
+            donatePopUpView.shrinkAndRemove(time: 0.3)
         }
     }
     
@@ -579,6 +599,70 @@ class ViewController: UIViewController, SceneDelegate {
             createDonatePopUpView()
         }
     }
+    
+    
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        print("product request")
+        let myProduct = response.products
+        for product in myProduct {
+            print("product added")
+            print(product.productIdentifier)
+            print(product.localizedTitle)
+            print(product.localizedDescription)
+            print(product.price)
+            
+            list.append(product)
+        }
+    }
+    
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        print("transactions restored")
+        for transaction in queue.transactions {
+            let t : SKPaymentTransaction = transaction
+            let prodID = t.payment.productIdentifier as String
+            
+            switch prodID {
+                case IAPProduct.nonConsumable.rawValue : print("IT:S THJE NON CONSUMABLE")
+                case IAPProduct.consumable.rawValue : print("IT:S THJE NON CONSUMABLE")
+            default:
+                print("what?")
+            }
+        }
+    }
+    
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+        print("add payment")
+        
+        for transaction : AnyObject in transactions {
+            let trans = transaction as! SKPaymentTransaction
+//            print(trans.error)
+            
+            switch trans.transactionState {
+            case .purchased:
+                print("PURSHAED")
+                print(currentProduct.productIdentifier)
+                
+                let prodID = currentProduct.productIdentifier
+                switch prodID {
+                    case IAPProduct.nonConsumable.rawValue : print("IT:S THJE NON CONSUMABLE")
+                    case IAPProduct.consumable.rawValue : print("IT:S THJE NON CONSUMABLE")
+                    default:
+                        print("what?")
+                }
+                queue.finishTransaction(trans)
+            case .failed:
+                print("buy error")
+                queue.finishTransaction(trans)
+                break
+            default:
+                print("Default")
+                break
+            }
+            
+            
+        }
+    }
+    
     
     override var prefersStatusBarHidden: Bool{
         return true

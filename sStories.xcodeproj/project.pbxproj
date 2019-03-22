@@ -83,6 +83,7 @@
 		226A1A502202794900E47009 /* test8.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 226A1A312202794800E47009 /* test8.mp3 */; };
 		226A1A512202794900E47009 /* test19.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 226A1A322202794800E47009 /* test19.mp3 */; };
 		226A1A522202794900E47009 /* test15.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 226A1A332202794800E47009 /* test15.mp3 */; };
+		228955922240A90A006A8E87 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 228955912240A90A006A8E87 /* StoreKit.framework */; };
 		228A6F39221482CE007617A0 /* openingMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 228A6F38221482CE007617A0 /* openingMusic.mp3 */; };
 		228A6F3B2214853E007617A0 /* OpeningMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228A6F3A2214853E007617A0 /* OpeningMusic.swift */; };
 		228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */; };
@@ -116,6 +117,8 @@
 		22C7F9AB2232F207005A38DD /* trebleClef.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F9AA2232F207005A38DD /* trebleClef.png */; };
 		22C7F9AD2232F2E0005A38DD /* tonic.png in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F9AC2232F2DF005A38DD /* tonic.png */; };
 		22C9369122405C0F008511BF /* DonatePopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9369022405C0F008511BF /* DonatePopUpView.swift */; };
+		22C93697224095E8008511BF /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C93696224095E8008511BF /* IAPProduct.swift */; };
+		22C9369922409664008511BF /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C9369822409664008511BF /* IAPService.swift */; };
 		22D3E102220FB69000668C53 /* PianoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3E101220FB69000668C53 /* PianoKey.swift */; };
 		22D3E107220FBA3700668C53 /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D3E106220FBA3700668C53 /* ExitButton.swift */; };
 		22D6B4E3223DEADA005DD24F /* BookshelfPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D6B4E2223DEADA005DD24F /* BookshelfPage.swift */; };
@@ -128,6 +131,7 @@
 		22EA724B22091FE2008A2B23 /* fishingSackFull.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22EA724A22091FE2008A2B23 /* fishingSackFull.mp3 */; };
 		22EAC3242213E4B7000FB428 /* BubbleScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */; };
 		22EAC3262213F232000FB428 /* bubbleScoreNoteImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 22EAC3252213F232000FB428 /* bubbleScoreNoteImage.png */; };
+		22EDFDF522429C3C006005F6 /* DonateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EDFDF422429C3C006005F6 /* DonateButton.swift */; };
 		8606403A220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86064039220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 */; };
 		8606403C220A23B6009D080E /* arrangingMelodiesAppear.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8606403B220A23B6009D080E /* arrangingMelodiesAppear.mp3 */; };
 		86086AC5222127AB00B5FB97 /* IChord.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 86086AC2222127AB00B5FB97 /* IChord.mp3 */; };
@@ -421,6 +425,7 @@
 		226A1A312202794800E47009 /* test8.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test8.mp3; sourceTree = "<group>"; };
 		226A1A322202794800E47009 /* test19.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test19.mp3; sourceTree = "<group>"; };
 		226A1A332202794800E47009 /* test15.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test15.mp3; sourceTree = "<group>"; };
+		228955912240A90A006A8E87 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		228A6F38221482CE007617A0 /* openingMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = openingMusic.mp3; sourceTree = "<group>"; };
 		228A6F3A2214853E007617A0 /* OpeningMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningMusic.swift; sourceTree = "<group>"; };
 		228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBlurb.swift; sourceTree = "<group>"; };
@@ -457,6 +462,8 @@
 		22C7F9AC2232F2DF005A38DD /* tonic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tonic.png; sourceTree = "<group>"; };
 		22C7F9AE2232F2F1005A38DD /* melodyThumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = melodyThumbnail.png; sourceTree = "<group>"; };
 		22C9369022405C0F008511BF /* DonatePopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonatePopUpView.swift; sourceTree = "<group>"; };
+		22C93696224095E8008511BF /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		22C9369822409664008511BF /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
 		22D3E101220FB69000668C53 /* PianoKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKey.swift; sourceTree = "<group>"; };
 		22D3E106220FBA3700668C53 /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
 		22D6B4E2223DEADA005DD24F /* BookshelfPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookshelfPage.swift; sourceTree = "<group>"; };
@@ -469,6 +476,7 @@
 		22EA724A22091FE2008A2B23 /* fishingSackFull.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fishingSackFull.mp3; sourceTree = "<group>"; };
 		22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleScoreView.swift; sourceTree = "<group>"; };
 		22EAC3252213F232000FB428 /* bubbleScoreNoteImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleScoreNoteImage.png; sourceTree = "<group>"; };
+		22EDFDF422429C3C006005F6 /* DonateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateButton.swift; sourceTree = "<group>"; };
 		86064039220A1ACD009D080E /* arrangingAllMelodiesLocked.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingAllMelodiesLocked.mp3; sourceTree = "<group>"; };
 		8606403B220A23B6009D080E /* arrangingMelodiesAppear.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = arrangingMelodiesAppear.mp3; sourceTree = "<group>"; };
 		86086AC2222127AB00B5FB97 /* IChord.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = IChord.mp3; sourceTree = "<group>"; };
@@ -666,6 +674,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228955922240A90A006A8E87 /* StoreKit.framework in Frameworks */,
 				8698D87621BF404C00ADED35 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1050,6 +1059,7 @@
 		8698D87421BF404C00ADED35 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				228955912240A90A006A8E87 /* StoreKit.framework */,
 				8698D87521BF404C00ADED35 /* libc++.tbd */,
 			);
 			name = Frameworks;
@@ -1083,7 +1093,10 @@
 				86BBBF2A21BB08FD00CB17F2 /* ViewController.swift */,
 				22D6B4E2223DEADA005DD24F /* BookshelfPage.swift */,
 				22C9369022405C0F008511BF /* DonatePopUpView.swift */,
+				22EDFDF422429C3C006005F6 /* DonateButton.swift */,
 				22D6B4E6223DEC55005DD24F /* StoryIcon.swift */,
+				22C93696224095E8008511BF /* IAPProduct.swift */,
+				22C9369822409664008511BF /* IAPService.swift */,
 				22EAC3232213E4B7000FB428 /* BubbleScoreView.swift */,
 				220B35F221FA6F4D00AA146D /* HomePage.swift */,
 				866AA1072208F849000FED54 /* HomePageBackgroundImage.swift */,
@@ -1230,6 +1243,9 @@
 						CreatedOnToolsVersion = 10.1;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InAppPurchase = {
 								enabled = 1;
 							};
 						};
@@ -1555,6 +1571,7 @@
 				226A1A112202713F00E47009 /* SoundClips.swift in Sources */,
 				86BBBF2B21BB08FD00CB17F2 /* ViewController.swift in Sources */,
 				86ED757821F1263C0066E2D8 /* MelodyAudio.swift in Sources */,
+				22C9369922409664008511BF /* IAPService.swift in Sources */,
 				22A5D68F2223964E0004E1D9 /* PageTurnPianoClass.swift in Sources */,
 				8665697321EFDBDF0086D432 /* transparentMelody.swift in Sources */,
 				22EAC3242213E4B7000FB428 /* BubbleScoreView.swift in Sources */,
@@ -1563,9 +1580,11 @@
 				86603C5521FC477C00A7921E /* StructsAndEnums.swift in Sources */,
 				8613FA49223982E60008994F /* VoiceOverAudio.swift in Sources */,
 				869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */,
+				22EDFDF522429C3C006005F6 /* DonateButton.swift in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */,
 				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,
+				22C93697224095E8008511BF /* IAPProduct.swift in Sources */,
 				869EF00021DBE1E600A4BC06 /* CatchOrThrowbackImage.swift in Sources */,
 				8654702821ED208A00D1F068 /* AutoLayoutExtension.swift in Sources */,
 				86BBBF5B21BB0A1000CB17F2 /* PageView.swift in Sources */,
@@ -1762,7 +1781,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3NSLQNHB3C;
+				DEVELOPMENT_TEAM = C6AQ322Q62;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1784,7 +1803,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3NSLQNHB3C;
+				DEVELOPMENT_TEAM = C6AQ322Q62;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

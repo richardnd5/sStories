@@ -168,6 +168,7 @@ class HomePage: UIView {
     
     @objc func backButtonPressed(_ sender: UIButton){
         delegate?.goHome()
+        print("BACK BUTTON PRESSED!!!")
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -23,10 +23,10 @@ class PageView: UIView {
         textView.textAlignment = .center
         textView.numberOfLines = 0
         textView.isUserInteractionEnabled = false
-        textView.backgroundColor = .red
         textView.sizeToFit()
         return textView
     }()
+    
     
     var nextButton : Button!
     var backButton : Button!
@@ -44,23 +44,18 @@ class PageView: UIView {
         }
     }
     
-//    var frameAfterSubviewLayout : CGRect!
-//    var imageViewInitialPosition : CGPoint!
-    
-    var pageViewInitialPosition : CGPoint!
-    var storyTextViewInitialPosition : CGPoint!
-    
     init(frame: CGRect, page: Page) {
         super.init(frame: frame)
         imageName = page.imageName
         storyText = page.storyText
         sceneStoryPosition = page.storyText.startIndex
-        print(sceneStoryPosition)
+        
+//        ViewController.mainStoryLinePosition = sceneStoryPosition
         
         pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
-//        nextImage.image = resizedImage(name: "nextArrow")
         
-        storyTextView.text = page.storyText[sceneStoryPosition]
+//        storyTextView.text = page.storyText[sceneStoryPosition]
+        storyTextView.text = storyline[ViewController.mainStoryLinePosition]
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
         
         setupLayout()
@@ -72,16 +67,8 @@ class PageView: UIView {
             self.canActivate = true
         })
 
-        
-//        storyTextView.addGestureRecognizer(panText)
-        
-//        loadVoices()
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tap)
-        
-
-
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
@@ -108,8 +95,10 @@ class PageView: UIView {
             canActivate = false
             playSoundButton.fadeOut(1.0)
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
-                self.sceneStoryPosition += 1
-                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
+//                self.sceneStoryPosition += 1
+//                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
+                
+                self.storyTextView.text = storyline[ViewController.mainStoryLinePosition]
                 self.layoutSubviews()
                 
                 self.playSoundButton.fadeIn(1.0)
@@ -127,8 +116,12 @@ class PageView: UIView {
         if canActivate{
             canActivate = false
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
-                self.sceneStoryPosition -= 1
-                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
+//                self.sceneStoryPosition -= 1
+//                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
+                
+                
+                self.storyTextView.text = storyline[ViewController.mainStoryLinePosition]
+                
                 self.layoutSubviews()
                 self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
                     self.canActivate = true
@@ -148,9 +141,7 @@ class PageView: UIView {
     }
     
     func setupLayout(){
-        
-        
-        
+
         addSubview(pageImage)
         
         pageImage.translatesAutoresizingMaskIntoConstraints = false
@@ -158,11 +149,7 @@ class PageView: UIView {
         pageImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         pageImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pageImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/2.5).isActive = true
-        
-        
-        
-        
-        
+
         let playSoundButtonWidth = frame.width/30
         let playSoundButtonHeight = frame.height/15
         
@@ -179,19 +166,8 @@ class PageView: UIView {
         playSoundButton.widthAnchor.constraint(equalToConstant: playSoundButtonWidth).isActive = true
         playSoundButton.heightAnchor.constraint(equalToConstant: playSoundButtonHeight).isActive = true
         
-        
-        
-        
-        
         addSubview(storyTextView)
-        storyTextView.topAnchor.constraint(equalTo: playSoundButton.bottomAnchor, constant: 10).isActive = true
-        storyTextView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 30).isActive = true
-        storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        storyTextView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: frame.width/5).isActive = true
-        storyTextView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -frame.width/5).isActive = true
-        
 
-        
         nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
         
         addSubview(nextButton)
@@ -224,18 +200,18 @@ class PageView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         storyTextView.adjustsFontSizeToFitWidth = true
+        
+        storyTextView.topAnchor.constraint(equalTo: playSoundButton.bottomAnchor, constant: 10).isActive = true
+        storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        storyTextView.widthAnchor.constraint(lessThanOrEqualToConstant: frame.width/1.5).isActive = true
+        storyTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
         storyTextView.sizeToFit()
-        storyTextView.backgroundColor = UIColor(hue: CGFloat.random(in: 0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
-        print("calling layoutSubviews")
+
     }
     
-//    var audioClip : VoiceOverAudio!
-//    func loadVoices(){
-//        audioClip = VoiceOverAudio(fileName: "readStory0")
-//    }
-    
+
     @objc func handlePlaySpeaking(_ sender: UIButton?){
-//        audioClip.playWithDelay()
         VoiceOverAudio.shared.playWithDelay()
         playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
     }

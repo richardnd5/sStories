@@ -61,6 +61,40 @@ extension UIView {
         layer.mask = maskLayer;
     }
     
+    func expandIn(time: Double, _ completion: @escaping () ->() = {}, isSpringy: Bool = true ){
+        self.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
+        alpha = 0.0
+        if isSpringy {
+        UIView.animate(
+            withDuration: time,
+            delay: 0,
+            usingSpringWithDamping: 0.55,
+            initialSpringVelocity: 0.0001,
+            options: .curveEaseInOut,
+            animations: {
+                self.alpha = 1.0
+                self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        },
+            completion: {
+                _ in
+                completion()
+        })
+        } else {
+            UIView.animate(
+                withDuration: time,
+                delay: 0,
+                options: .curveEaseInOut,
+                animations: {
+                    self.alpha = 1.0
+                    self.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            },
+                completion: {
+                    _ in
+                    completion()
+            })
+        }
+    }
+    
     func shrinkAndRemove(time: Double, _ completion: @escaping () ->() = {} ){
         
         UIView.animate(
@@ -68,6 +102,7 @@ extension UIView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
+                self.alpha = 0.0
                 self.transform = CGAffineTransform(scaleX: 0.00000001, y: 0.00000001)
         },
             completion: {
