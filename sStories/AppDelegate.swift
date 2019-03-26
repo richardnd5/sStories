@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
         Sound.sharedInstance.setup()
         playSoundClip(.fishingThrowbackDrop)
+        workingIAPProduct.shared.setupIAP()
         window = UIWindow()
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()

@@ -1,14 +1,8 @@
-//
-//  IAPProduct.swift
-//  sStories
-//
-//  Created by N Richard on 3/18/19.
-//  Copyright © 2019 Nathan Richard. All rights reserved.
-//
-
 import Foundation
 
 enum IAPProduct: String {
-    case consumable = "com.byeah.sStories.MyConsumable"
-    case nonConsumable = "com.byeah.sStories.Donation"
+    case oneDollarDonation = "com.byeah.sStories.1dollarDonation"
+    case twoDollarDonation = "com.byeah.sStories.2dollarDonation"
+    case fiveDollarDonation = "com.byeah.sStories.5dollarDonation"
+    case tenDollarDonation = "com.byeah.sStories.10dollarDonation"
 }

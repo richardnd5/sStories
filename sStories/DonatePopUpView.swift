@@ -2,7 +2,6 @@ import UIKit
 
 class DonatePopUpView: UIView {
     
-    
     var label : UILabel!
     var oneDollarButton : DonateButton!
     var twoDollarButton : DonateButton!
@@ -12,8 +11,7 @@ class DonatePopUpView: UIView {
 
     var stackView : UIStackView!
 
-    
-    
+ 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -21,11 +19,11 @@ class DonatePopUpView: UIView {
         backgroundColor = .white
         setupViews()
         
-//        fadeTo(opacity: 1.0, time: 1.0)
+//        IAPService.shared.getProducts()
         
-        IAPService.shared.getProducts()
+//        IAPService.shared.purchase(product: .nonConsumable)
         
-        IAPService.shared.purchase(product: .nonConsumable)
+        
         
     }
     
@@ -65,7 +63,7 @@ class DonatePopUpView: UIView {
         
         addSubview(stackView)
         let padding = frame.width/20
-        let iconSize = frame.height/4
+        let iconSize = frame.width/6
 
         [stackView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: frame.height/7),
         stackView.heightAnchor.constraint(equalToConstant: iconSize),
