@@ -27,6 +27,10 @@ class HomePage: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+
+        
+        
         addBackground()
         createButtons()
         createBubblePlayZone(frame: frame)
@@ -91,18 +95,7 @@ class HomePage: UIView {
 
     }
     
-//    @objc func handlePan(_ sender: UIPanGestureRecognizer){
-//        print("panning")
-//        let translation = sender.translation(in: self)
-//        sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
-//        sender.setTranslation(CGPoint.zero, in: self)
-//
-//        if sender.state == .ended || sender.state == .cancelled {
-//            if sender.location(in: self) != backgroundInitialPosition {
-//                sender.view?.moveViewTo(backgroundInitialPosition, time: 0.7)
-//            }
-//        }
-//    }
+
     
     func createButtons() {
         

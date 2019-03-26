@@ -1,7 +1,7 @@
 /*
  Changing it to a keyboard at the bottom to turn the page.
  Snapping the text and image that you can drag back to the center.
-
+ 
  */
 
 import UIKit
@@ -60,9 +60,9 @@ class ViewController: UIViewController, SceneDelegate {
     
     var keyboardTurner : KeyboardTurner!
     
-//    var bookmarkPage: BookmarkPage!
+    //    var bookmarkPage: BookmarkPage!
     var bubbleScore: BubbleScoreView!
-
+    
     var animator: UIDynamicAnimator!
     let gravityBehavior = UIGravityBehavior()
     let collisionBehavior = UICollisionBehavior()
@@ -71,25 +71,25 @@ class ViewController: UIViewController, SceneDelegate {
     
     var donatePopUpView : DonatePopUpView!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         createBookShelfPage()
         
         setupAnimator()
         
-//        if(SKPaymentQueue.canMakePayments()) {
-//            print("IAP is enabled, loading")
-//            let productID : NSSet = NSSet(objects: IAPProduct.consumable.rawValue, IAPProduct.nonConsumable.rawValue)
-//            let request : SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
-//
-//            request.delegate = self
-//            request.start()
-//
-//        } else {
-//            print("please enable IAPS")
-//        }
+        //        if(SKPaymentQueue.canMakePayments()) {
+        //            print("IAP is enabled, loading")
+        //            let productID : NSSet = NSSet(objects: IAPProduct.consumable.rawValue, IAPProduct.nonConsumable.rawValue)
+        //            let request : SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+        //
+        //            request.delegate = self
+        //            request.start()
+        //
+        //        } else {
+        //            print("please enable IAPS")
+        //        }
         
     }
     
@@ -122,7 +122,7 @@ class ViewController: UIViewController, SceneDelegate {
             v.delegate = self
         }
     }
-
+    
     
     func createBookShelfPage(){
         print("running create bookshelf")
@@ -134,20 +134,27 @@ class ViewController: UIViewController, SceneDelegate {
         bookshelfPage.delegate = self
         
         setupStoryIconDelegates()
-//        bookshelfPage.templeton.addTarget(self, action: #selector(handleTempletonTap), for: .touchUpInside)
-
-//        setupDelegates()
+        //        bookshelfPage.templeton.addTarget(self, action: #selector(handleTempletonTap), for: .touchUpInside)
+        
+        //        setupDelegates()
     }
     
     func loadUpTempleton(){
         
+        
+        
         currentState = .templetonFrontPage
         VoiceOverAudio.shared.delegate = self
         
-        bookshelfPage.fadeAndRemove(time: 0.7)
+        bookshelfPage.fadeAndRemove(time: 0.7, completion: {
+            
+            let value = UIInterfaceOrientation.landscapeRight.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+            self.createHomePage()
+            self.createBubbleScore()
+        })
         
-        createHomePage()
-        createBubbleScore()
+        
         
     }
     
@@ -164,27 +171,27 @@ class ViewController: UIViewController, SceneDelegate {
     
     func generateRandomMusicSymbols(){
         
-            let width = view.frame.width/20
-            let height = view.frame.width/20
-            let x = CGFloat.random(in: view.frame.width/4...view.frame.width-view.frame.width/4)
-            let y = CGFloat.random(in: view.frame.height/40...view.frame.height/2-view.frame.height/40)
-            let note = MiniPerformingNoteView(frame: CGRect(x: x, y: y, width: width, height: height))
-            view.addSubview(note)
-            gravityBehavior.addItem(note)
-            collisionBehavior.addItem(note)
-            
-            let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
-            
-            let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
-            let randomMagnitude = CGFloat.random(in: 0...0.3)
-            
-            pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
-            animator.addBehavior(pushBehavior)
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(handleBubblePop))
-            note.addGestureRecognizer(tap)
+        let width = view.frame.width/20
+        let height = view.frame.width/20
+        let x = CGFloat.random(in: view.frame.width/4...view.frame.width-view.frame.width/4)
+        let y = CGFloat.random(in: view.frame.height/40...view.frame.height/2-view.frame.height/40)
+        let note = MiniPerformingNoteView(frame: CGRect(x: x, y: y, width: width, height: height))
+        view.addSubview(note)
+        gravityBehavior.addItem(note)
+        collisionBehavior.addItem(note)
         
-            view.bringSubviewToFront(note)
+        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
+        
+        let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
+        let randomMagnitude = CGFloat.random(in: 0...0.3)
+        
+        pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
+        animator.addBehavior(pushBehavior)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleBubblePop))
+        note.addGestureRecognizer(tap)
+        
+        view.bringSubviewToFront(note)
     }
     
     @objc func handleBubblePop(_ sender: UITapGestureRecognizer){
@@ -255,11 +262,11 @@ class ViewController: UIViewController, SceneDelegate {
         
     }
     
-//    func createBookmark(){
-//        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-//        bookmarkPage = BookmarkPage(frame: frame)
-//        view.addSubview(bookmarkPage)
-//    }
+    //    func createBookmark(){
+    //        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+    //        bookmarkPage = BookmarkPage(frame: frame)
+    //        view.addSubview(bookmarkPage)
+    //    }
     
     func createHomePage(){
         homePage = HomePage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
@@ -321,7 +328,7 @@ class ViewController: UIViewController, SceneDelegate {
         stopRandomBubbles()
         // If the next page is a regular page
         if page != nil && currentPage < pages.count-1 && currentState == .story {
-
+            
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage+=1
                 self.tempStoryLine = 0
@@ -379,10 +386,10 @@ class ViewController: UIViewController, SceneDelegate {
             
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage-=1
-
+                
                 self.createPage()
                 self.tempStoryLine = (self.page.storyText?.count)!-1
-
+                
                 self.pageTurnerVisible = false
             }
         }
@@ -453,7 +460,7 @@ class ViewController: UIViewController, SceneDelegate {
             view.addSubview(page!)
             let safe = view.safeAreaLayoutGuide
             page?.anchor(top: safe.topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: safe.bottomAnchor)
-
+            
             page.nextButton.delegate = self
             page.backButton.delegate = self
             
@@ -461,7 +468,7 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
-
+    
     func nextMoment(){
         if page?.superview != nil {
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
@@ -478,7 +485,7 @@ class ViewController: UIViewController, SceneDelegate {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
                     ViewController.mainStoryLinePosition += 1
-
+                    
                     
                     createKeyboardTurner()
                     page.expandText()
@@ -492,7 +499,7 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
-
+    
     func previousMoment(){
         if page?.superview != nil {
             if tempStoryLine > 0 && page.canActivate && currentState == .story {
@@ -501,14 +508,14 @@ class ViewController: UIViewController, SceneDelegate {
                 tempStoryLine -= 1
                 page.expandText()
             } else if tempStoryLine == 0 && (page?.canActivate)! && currentState == .story {
-                    previousPage()
+                previousPage()
                 
                 if ViewController.mainStoryLinePosition > 0 {
                     ViewController.mainStoryLinePosition -= 1
                 } else {
                     ViewController.mainStoryLinePosition = 0
                 }
-                    page.canActivate = false
+                page.canActivate = false
             }
             changeAudioOfStoryLineToMainStoryPosition()
         }
@@ -520,7 +527,7 @@ class ViewController: UIViewController, SceneDelegate {
             homePage.fadeInTitleAndLabels()
         }
     }
-
+    
     func fadeOutTitleAndButtons(){
         if homePage != nil {
             homePage.fadeOutTitleAndLabels()
@@ -546,17 +553,24 @@ class ViewController: UIViewController, SceneDelegate {
     @objc func handleTempletonTap(_ sender: UIButton){
         
         bookshelfPage.fadeAndRemove(time: 1.0)
-
+        
+        
+        
         loadUpTempleton()
-
+        
     }
     
     func goHome(){
         
-            homePage.fadeAndRemove(time: 1.0)
-            bubbleScore.fadeAndRemove(time: 1.0)
-            createBookShelfPage()
+        bubbleScore.fadeAndRemove(time: 1.0)
+        homePage.fadeAndRemove(time: 1.0, completion: {
+            
+            let value = UIInterfaceOrientation.portrait.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+            self.createBookShelfPage()
             Sound.sharedInstance.stopPondBackground()
+        })
+        
     }
     
     func removeDonatePopUpView(){
@@ -579,8 +593,31 @@ class ViewController: UIViewController, SceneDelegate {
             createDonatePopUpView()
         }
     }
-
+    
     override var prefersStatusBarHidden: Bool{
         return true
     }
+    
+//    override var shouldAutorotate: Bool {
+//        return false
+//    }
+//
+//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//
+//        switch orientation {
+//        case .portrait:
+//            return .portrait
+//        case .landscape:
+//            return .landscape
+//        }
+//    }
+//
+//    enum deviceOrientation {
+//        case portrait
+//        case landscape
+//    }
+//    var orientation = deviceOrientation.landscape
+//    func switchToLandscape(){
+//
+//    }
 }

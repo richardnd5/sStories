@@ -8,13 +8,21 @@
 import UIKit
 import AudioKit
 
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     weak var delegate : SceneDelegate?
+    
+    var deviceOrientation = UIInterfaceOrientationMask.portrait
+
+
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        
     
         Sound.sharedInstance.setup()
         playSoundClip(.fishingThrowbackDrop)
@@ -26,5 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         return true
     }
+    
+    
 }
 
