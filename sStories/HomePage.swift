@@ -150,17 +150,19 @@ class HomePage: UIView {
         aboutButton.fadeIn(1.0)
         readButton.fadeIn(1.0)
         titleImage.fadeTo(opacity: 1.0, time: 1.0)
+        homeButton.fadeIn(1.0)
     }
     
     func fadeOutTitleAndLabels(){
         aboutButton.fadeOut(1.0)
         readButton.fadeOut(1.0)
         titleImage.fadeTo(opacity: 0.0, time: 1.0)
+        homeButton.fadeOut(1.0)
         
     }
     
     @objc func backButtonPressed(_ sender: UIButton){
-        delegate?.goHome()
+//        delegate?.goHome()
         print("BACK BUTTON PRESSED!!!")
     }
     

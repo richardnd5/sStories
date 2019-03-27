@@ -68,7 +68,7 @@ class StoryIcon: UIButton {
     
     @objc private func touchUpInside(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 1, time: 0.4)
-        delegate?.loadUpStory(name)
+//        delegate?.loadUpStory(name)
         
     }
     

@@ -7,7 +7,7 @@ class VoiceOverAudio {
     var name : String!
     weak var delegate : SceneDelegate?
     
-    static var shared = VoiceOverAudio(fileName: "readStory\(ViewController.mainStoryLinePosition)")
+    static var shared = VoiceOverAudio(fileName: "readStory\(TempletonViewController.mainStoryLinePosition)")
     
     init(fileName: String) {
         audioFile = loadAudioFile("\(fileName)")

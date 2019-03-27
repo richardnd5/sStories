@@ -23,12 +23,12 @@ protocol SceneDelegate : class {
     func fadeInTitleAndButtons()
     func finishedReadingCallback()
     func loadUpTempleton()
-    func goHome()
-    func loadUpStory(_ name: String)
-    func removeDonatePopUpView()
+//    func goHome()
+//    func loadUpStory(_ name: String)
+//    func removeDonatePopUpView()
 }
 
-class ViewController: UIViewController, SceneDelegate {
+class TempletonViewController: UIViewController, SceneDelegate {
     
     enum AppState {
         case bookshelfHome
@@ -49,7 +49,7 @@ class ViewController: UIViewController, SceneDelegate {
     static var mainStoryLinePosition = 0
     
     // All the views
-    var bookshelfPage : BookshelfPage!
+    
     var homePage : HomePage!
     var aboutPage : AboutPage!
     var page : PageView!
@@ -69,91 +69,28 @@ class ViewController: UIViewController, SceneDelegate {
     
     var bubblesArePlaying = false
     
-    var donatePopUpView : DonatePopUpView!
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createBookShelfPage()
+        // The timer is implemented so that the device has time to actually rotate programmatically.
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block:{_ in
+            self.loadUpTempleton()
+            self.setupAnimator()
+        })
         
-        setupAnimator()
-        
-        //        if(SKPaymentQueue.canMakePayments()) {
-        //            print("IAP is enabled, loading")
-        //            let productID : NSSet = NSSet(objects: IAPProduct.consumable.rawValue, IAPProduct.nonConsumable.rawValue)
-        //            let request : SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
-        //
-        //            request.delegate = self
-        //            request.start()
-        //
-        //        } else {
-        //            print("please enable IAPS")
-        //        }
-        
-    }
-    
-    func createDonatePopUpView(){
-        
-        donatePopUpView = DonatePopUpView()
-        donatePopUpView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(donatePopUpView)
-        bookshelfPage.touchEnabled = false
-        
-        [donatePopUpView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8),
-         donatePopUpView.heightAnchor.constraint(equalToConstant: view!.frame.height/1.5),
-         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/2),
-         donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ].forEach { $0.isActive = true }
-        
-        donatePopUpView.cancelButton.addTarget(self, action: #selector(handleDonateCancel), for: .touchUpInside)
-        
-        donatePopUpView.fiveDollarButton.addTarget(self, action: #selector(handleFiveDollarDonation), for: .touchUpInside)
-        
-    }
-    
-    @objc func handleFiveDollarDonation(_ sender: UIButton){
-        workingIAPProduct.shared.makePurchase(productType: .fiveDollarDonation)
-    }
-    
-    func setupDonateButtonDelegates(){
-        for view in donatePopUpView.subviews {
-            let v = view as! Button
-            v.delegate = self
-        }
-    }
-    
-    
-    func createBookShelfPage(){
-        print("running create bookshelf")
-        stopRandomBubbles()
-        currentState = .bookshelfHome
-        bookshelfPage = BookshelfPage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        view.addSubview(bookshelfPage)
-        bookshelfPage.fillSuperview()
-        bookshelfPage.delegate = self
-        
-        setupStoryIconDelegates()
-        //        bookshelfPage.templeton.addTarget(self, action: #selector(handleTempletonTap), for: .touchUpInside)
-        
-        //        setupDelegates()
     }
     
     func loadUpTempleton(){
-        
-        
+
+//            bookshelfPage.fadeAndRemove(time: 0.7)
+
         
         currentState = .templetonFrontPage
         VoiceOverAudio.shared.delegate = self
-        
-        bookshelfPage.fadeAndRemove(time: 0.7, completion: {
-            
-            let value = UIInterfaceOrientation.landscapeRight.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-            self.createHomePage()
-            self.createBubbleScore()
-        })
-        
+
+        self.createHomePage()
+        self.createBubbleScore()
         
         
     }
@@ -317,12 +254,7 @@ class ViewController: UIViewController, SceneDelegate {
         }
     }
     
-    func setupStoryIconDelegates(){
-        for view in bookshelfPage.stackView.subviews {
-            let v = view as! StoryIcon
-            v.delegate = self
-        }
-    }
+
     
     func nextPage() {
         stopRandomBubbles()
@@ -479,12 +411,12 @@ class ViewController: UIViewController, SceneDelegate {
                 page.expandText()
                 page.showNavigationButtons()
                 
-                ViewController.mainStoryLinePosition += 1
+                TempletonViewController.mainStoryLinePosition += 1
                 
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
                 if !pageTurnerVisible {
                     pageTurnerVisible = true
-                    ViewController.mainStoryLinePosition += 1
+                    TempletonViewController.mainStoryLinePosition += 1
                     
                     
                     createKeyboardTurner()
@@ -504,16 +436,16 @@ class ViewController: UIViewController, SceneDelegate {
         if page?.superview != nil {
             if tempStoryLine > 0 && page.canActivate && currentState == .story {
                 page.previousStoryLine()
-                ViewController.mainStoryLinePosition -= 1
+                TempletonViewController.mainStoryLinePosition -= 1
                 tempStoryLine -= 1
                 page.expandText()
             } else if tempStoryLine == 0 && (page?.canActivate)! && currentState == .story {
                 previousPage()
                 
-                if ViewController.mainStoryLinePosition > 0 {
-                    ViewController.mainStoryLinePosition -= 1
+                if TempletonViewController.mainStoryLinePosition > 0 {
+                    TempletonViewController.mainStoryLinePosition -= 1
                 } else {
-                    ViewController.mainStoryLinePosition = 0
+                    TempletonViewController.mainStoryLinePosition = 0
                 }
                 page.canActivate = false
             }
@@ -543,64 +475,26 @@ class ViewController: UIViewController, SceneDelegate {
     
     func changeAudioOfStoryLineToMainStoryPosition(){
         
-        if ViewController.mainStoryLinePosition >= storyline.count {
+        if TempletonViewController.mainStoryLinePosition >= storyline.count {
             print("storyline number is greater than the storyline")
-            ViewController.mainStoryLinePosition = 0
+            TempletonViewController.mainStoryLinePosition = 0
         }
-        VoiceOverAudio.shared.changeAudioFile(to: "readStory\(ViewController.mainStoryLinePosition)")
+        VoiceOverAudio.shared.changeAudioFile(to: "readStory\(TempletonViewController.mainStoryLinePosition)")
     }
     
-    @objc func handleTempletonTap(_ sender: UIButton){
-        
-        bookshelfPage.fadeAndRemove(time: 1.0)
-        
-        
-        
-        loadUpTempleton()
-        
-    }
+
     
-    func goHome(){
-        
-        bubbleScore.fadeAndRemove(time: 1.0)
-        homePage.fadeAndRemove(time: 1.0, completion: {
-            
-            let value = UIInterfaceOrientation.portrait.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-            self.createBookShelfPage()
-            Sound.sharedInstance.stopPondBackground()
-        })
-        
-    }
+
     
-    func removeDonatePopUpView(){
-        bookshelfPage.touchEnabled = true
-        if donatePopUpView.superview != nil {
-            donatePopUpView.shrinkAndRemove(time: 0.3)
-        }
-    }
-    
-    @objc func handleDonateCancel(_ sender: UIButton){
-        removeDonatePopUpView()
-    }
-    
-    func loadUpStory(_ name: String) {
-        switch name {
-        case "templtonThumbnail":
-            loadUpTempleton()
-        default:
-            print("It's not templeton!")
-            createDonatePopUpView()
-        }
-    }
+
     
     override var prefersStatusBarHidden: Bool{
         return true
     }
     
-//    override var shouldAutorotate: Bool {
-//        return false
-//    }
+    override var shouldAutorotate: Bool {
+        return false
+    }
 //
 //    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
 //

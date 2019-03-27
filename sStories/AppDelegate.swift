@@ -10,13 +10,16 @@ import AudioKit
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
+//var navController: UINavigationController?
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     weak var delegate : SceneDelegate?
     
-    var deviceOrientation = UIInterfaceOrientationMask.portrait
+    
 
 
 
@@ -28,7 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         playSoundClip(.fishingThrowbackDrop)
         workingIAPProduct.shared.setupIAP()
         window = UIWindow()
-        window?.rootViewController = ViewController()
+//        window?.rootViewController = TempletonViewController()
+        window?.rootViewController = BookshelfViewController()
         window?.makeKeyAndVisible()
     
 

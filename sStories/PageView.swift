@@ -55,7 +55,7 @@ class PageView: UIView {
         pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
         
 //        storyTextView.text = page.storyText[sceneStoryPosition]
-        storyTextView.text = storyline[ViewController.mainStoryLinePosition]
+        storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
         
         setupLayout()
@@ -98,7 +98,7 @@ class PageView: UIView {
 //                self.sceneStoryPosition += 1
 //                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
                 
-                self.storyTextView.text = storyline[ViewController.mainStoryLinePosition]
+                self.storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
                 self.layoutSubviews()
                 
                 self.playSoundButton.fadeIn(1.0)
@@ -120,7 +120,7 @@ class PageView: UIView {
 //                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
                 
                 
-                self.storyTextView.text = storyline[ViewController.mainStoryLinePosition]
+                self.storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
                 
                 self.layoutSubviews()
                 self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {

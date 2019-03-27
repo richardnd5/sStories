@@ -28,11 +28,7 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
             toggleTouchEnabled()
         }
     }
-    
-    
-    
 
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         createTitle()
@@ -59,10 +55,6 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         }
     }
     
-    
-    
-
-    
     func createStoryIcon(_ name: String) -> StoryIcon {
         let view = StoryIcon(frame: .zero, name: name)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -87,7 +79,7 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         
         
         icon1 = createStoryIcon("whiteDot")
-        icon2 = createStoryIcon("templtonThumbnail")
+        icon2 = createStoryIcon("templetonThumbnail")
         icon2.backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         
         icon3 = createStoryIcon("whiteDot")
