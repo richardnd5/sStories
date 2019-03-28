@@ -34,7 +34,7 @@ class NewChordSwitchButton: UIButton {
         case .V:
             str = "V"
         case .off:
-            str = "off"
+            str = "soundOff"
         }
         return str
     }
@@ -77,6 +77,8 @@ class NewChordSwitchButton: UIButton {
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
+        sender!.scaleTo(scaleTo: 1.0, time: 0.1)
+
         delegate?.chordButtonTapped(chord: chordType)
     }
     

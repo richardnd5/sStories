@@ -1,46 +1,63 @@
 import UIKit
 
-class ChordSwitchButton: UIButton {
+class OffButton: UIButton {
     
     weak var delegate : ButtonDelegate?
     var isActive = false {
         didSet {
-         togglePulse(active: isActive)
+            togglePulse(active: isActive)
         }
     }
     var chordString : String!
     var chordType : ChordType!
+    
+    var numeralImage : UIImageView!
+    
+    var isImageOn = false
     
     init(frame: CGRect, chord: ChordType) {
         super.init(frame: frame)
         self.chordType = chord
         chordString = getChordString(chord: chordType)
         setImage(name: chordString)
+        
         setTouchEvents()
         alpha = 0.0
-
+        
     }
     
     private func getChordString(chord: ChordType) -> String {
-        var str : String!
-        switch chord {
-        case .I:
-            str =  "I"
-        case .IV:
-            str = "IV"
-        case .V:
-            str = "V"
-        case .off:
-            str = "off"
-        }
-        return str
+        
+        return "soundOff"
     }
     
     private func setImage(name: String){
+        
+        numeralImage = UIImageView()
+        
         let imageSize = CGRect(x: 0, y: 0, width: 700, height: 700)
-        setImage(resizedImage(name: name, frame: imageSize), for: .normal)
-        contentMode = .scaleAspectFit
+        numeralImage.image = resizedImage(name: name, frame: imageSize)
+        numeralImage.contentMode = .scaleAspectFit
         adjustsImageWhenHighlighted = false
+        addSubview(numeralImage)
+        
+        numeralImage.fillSuperview()
+    }
+    
+    func switchImageToOn(){
+        if !isImageOn {
+            isImageOn = true
+            let imageSize = CGRect(x: 0, y: 0, width: 700, height: 700)
+            numeralImage.image = resizedImage(name: "soundOn", frame: imageSize)
+        }
+    }
+    
+    func switchImageToOff(){
+        if isImageOn {
+            isImageOn = false
+            let imageSize = CGRect(x: 0, y: 0, width: 700, height: 700)
+            numeralImage.image = resizedImage(name: "soundOff", frame: imageSize)
+        }
     }
     
     private func setTouchEvents(){
@@ -64,10 +81,12 @@ class ChordSwitchButton: UIButton {
     // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
-
+        
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
+        sender!.scaleTo(scaleTo: 1.0, time: 0.1)
+        
         delegate?.chordButtonTapped(chord: chordType)
     }
     
