@@ -75,57 +75,57 @@ let pages = [
     Page(imageName: "stars", storyText: storyline[21...22]),
 ]
 
-let arpeggioArray : Array<Array<PageTurnPianoNote>> = [
-    [.Gb2,.Db3],
-    [.Ab2,.Eb3],
-    [.Bb2,.F3],
-    [.Db3,.Ab3],
-    [.F2,.Db3],
-    
-    [.Gb2,.Db3],
-    [.Ab2,.Eb3],
-    [.Ab2,.C3],
-    [.Ab2,.Db3],
-    [.F2,.Db3],
-    
-    [.Gb2,.Db3],
-    [.Ab2,.Eb3],
-    [.Bb2,.F3],
-    [.C3,.Db3],
-    [.F2,.Db3],
-    
-    [.Gb2,.Db3],
-    [.Ab2,.Eb3],
-    [.Ab2,.C3],
-    [.Ab2,.Db3],
-    [.F2,.Db3]
-]
-
 //let arpeggioArray : Array<Array<PageTurnPianoNote>> = [
-//[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-//[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
-//[.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
-//[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
-//[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Db5,.Eb5],
+//    [.Gb2,.Db3],
+//    [.Ab2,.Eb3],
+//    [.Bb2,.F3],
+//    [.Db3,.Ab3],
+//    [.F2,.Db3],
 //
-//[.Gb2,.Db3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
-//[.Ab2,.Eb3,.Bb3,.C4,.Db4,.Eb4,.F4,.Ab4,.Bb4],
-//[.Ab2,.C3,.F3,.Gb3,.Ab3,.Eb4,.Ab4,.Gb4,.C5],
-//[.Ab2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Ab4,.C5,.Eb5],
-//[.F2,.Db3,.Ab3,.Db4,.Eb4,.F4,.Ab4,.Db5],
+//    [.Gb2,.Db3],
+//    [.Ab2,.Eb3],
+//    [.Ab2,.C3],
+//    [.Ab2,.Db3],
+//    [.F2,.Db3],
 //
-//[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
-//[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
-//[.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
-//[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
-//[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Db5,.Eb5],
+//    [.Gb2,.Db3],
+//    [.Ab2,.Eb3],
+//    [.Bb2,.F3],
+//    [.C3,.Db3],
+//    [.F2,.Db3],
 //
-//[.Gb2,.Db3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
-//[.Ab2,.Eb3,.Bb3,.C4,.Db4,.Eb4,.F4,.Ab4,.Bb4],
-//[.Ab2,.C3,.F3,.Gb3,.Ab3,.Eb4,.Ab4,.Gb4,.C5],
-//[.Ab2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Ab4,.C5,.Eb5],
-//[.F2,.Db3,.Ab3,.Db4,.Eb4,.F4,.Ab4,.Db5]
+//    [.Gb2,.Db3],
+//    [.Ab2,.Eb3],
+//    [.Ab2,.C3],
+//    [.Ab2,.Db3],
+//    [.F2,.Db3]
 //]
+
+let arpeggioArray : Array<Array<PageTurnPianoNote>> = [
+[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
+[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
+[.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
+[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Db5,.Eb5],
+
+[.Gb2,.Db3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
+[.Ab2,.Eb3,.Bb3,.C4,.Db4,.Eb4,.F4,.Ab4,.Bb4],
+[.Ab2,.C3,.F3,.Gb3,.Ab3,.Eb4,.Ab4,.Gb4,.C5],
+[.Ab2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.Db4,.Eb4,.F4,.Ab4,.Db5],
+
+[.Gb2,.Db3,.Gb3,.Ab3,.Bb3,.Db4,.Gb4,.Ab4,.Db5],
+[.Ab2,.Eb3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
+[.Bb2,.F3,.Ab3,.Bb3,.C4,.Db4,.F4,.Ab4,.Db5],
+[.C3,.Db3,.Ab3,.Bb3,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Gb4,.Ab4,.Db5,.Eb5],
+
+[.Gb2,.Db3,.Ab3,.Bb3,.C4,.Db4,.Eb4,.Ab4,.Eb5],
+[.Ab2,.Eb3,.Bb3,.C4,.Db4,.Eb4,.F4,.Ab4,.Bb4],
+[.Ab2,.C3,.F3,.Gb3,.Ab3,.Eb4,.Ab4,.Gb4,.C5],
+[.Ab2,.Db3,.Ab3,.C4,.Db4,.Eb4,.Ab4,.C5,.Eb5],
+[.F2,.Db3,.Ab3,.Db4,.Eb4,.F4,.Ab4,.Db5]
+]
 
 enum SoundEffects : String, CaseIterable {
     // name of sound and file name

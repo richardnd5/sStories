@@ -937,6 +937,10 @@
 				86621B2421CD776A0069157B /* waterDrop.png */,
 				863DADF321D408A000AFDD94 /* FishingPole.png */,
 				866AA1012208C412000FED54 /* FishingPoleNew.png */,
+				22FA4E4E224D81180031512D /* soundOff.png */,
+				22FA4E4F224D81180031512D /* soundOn.png */,
+				22D6B4E8223E03CE005DD24F /* templetonThumbnail.png */,
+				8613FA4C223985A30008994F /* playSoundButton.png */,
 				86E9F49821BF82F500EE12DF /* SackOfMelodies.png */,
 			);
 			path = "Image Assets";
@@ -1151,10 +1155,6 @@
 				86603C5221FC477B00A7921E /* GlobalConstants.swift */,
 				228A6F3A2214853E007617A0 /* OpeningMusic.swift */,
 				86603C5321FC477B00A7921E /* StructsAndEnums.swift */,
-				22FA4E4E224D81180031512D /* soundOff.png */,
-				22FA4E4F224D81180031512D /* soundOn.png */,
-				22D6B4E8223E03CE005DD24F /* templetonThumbnail.png */,
-				8613FA4C223985A30008994F /* playSoundButton.png */,
 				8613FA802239A4200008994F /* storyAudio */,
 				86BBBF5D21BB0A3A00CB17F2 /* GlobalFunctions.swift */,
 				8682520422122CE20082D703 /* FrontPageKeyboard */,
