@@ -8,15 +8,11 @@ class BookshelfViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        createBookShelfPage()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            let location = touch.location(in: self.view)
-            print(location)
-            showTempleton()
-        }
+        Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block:{_ in
+            self.createBookShelfPage()
+        })
+        
+        
     }
     
     func showTempleton(){
@@ -24,7 +20,7 @@ class BookshelfViewController: UIViewController {
         view.fadeTo(opacity: 0.0, time: 0.8, {
 
 //            UINavigationController.attemptRotationToDeviceOrientation()
-            let value = UIInterfaceOrientation.landscapeLeft.rawValue
+            let value = UIInterfaceOrientation.landscapeRight.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             
             let templetonController = TempletonViewController()
@@ -34,6 +30,8 @@ class BookshelfViewController: UIViewController {
         })
 
     }
+    
+    
     
     func setupStoryIconDelegates(){
         for view in bookshelfPage.stackView.subviews {
@@ -66,8 +64,8 @@ class BookshelfViewController: UIViewController {
         bookshelfPage.touchEnabled = false
         
         [donatePopUpView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8),
-         donatePopUpView.heightAnchor.constraint(equalToConstant: view!.frame.height/1.5),
-         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/2),
+         donatePopUpView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/2.5),
+         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/1.5),
          donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ].forEach { $0.isActive = true }
         
@@ -136,9 +134,19 @@ class BookshelfViewController: UIViewController {
         
     }
     
-    
     override var shouldAutorotate: Bool {
         return false
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .portrait
+            
+        }
     }
     
 }

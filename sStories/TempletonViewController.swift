@@ -23,9 +23,7 @@ protocol SceneDelegate : class {
     func fadeInTitleAndButtons()
     func finishedReadingCallback()
     func loadUpTempleton()
-//    func goHome()
-//    func loadUpStory(_ name: String)
-//    func removeDonatePopUpView()
+
 }
 
 class TempletonViewController: UIViewController, SceneDelegate {
@@ -199,12 +197,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
         
     }
     
-    //    func createBookmark(){
-    //        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-    //        bookmarkPage = BookmarkPage(frame: frame)
-    //        view.addSubview(bookmarkPage)
-    //    }
-    
     func createHomePage(){
         homePage = HomePage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         view.addSubview(homePage)
@@ -212,6 +204,8 @@ class TempletonViewController: UIViewController, SceneDelegate {
         homePage.delegate = self
         homePage.bubblePlayZone.delegate = self
         setupDelegates()
+        
+        homePage.homeButton.addTarget(self, action: #selector(showBookshelf), for: .touchUpInside)
     }
     
     func createAboutPage(){
@@ -253,8 +247,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
             }
         }
     }
-    
-
     
     func nextPage() {
         stopRandomBubbles()
@@ -350,7 +342,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     }
     
     func returnToStoryFromArranging(){
-        Timer.scheduledTimer(withTimeInterval: 5.0, repeats: false, block:{_ in self.returnToStory()})
+        Timer.scheduledTimer(withTimeInterval: 4.45, repeats: false, block:{_ in self.returnToStory()})
     }
     
     func goToHomePage(){
@@ -400,7 +392,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
         }
     }
     
-    
     func nextMoment(){
         if page?.superview != nil {
             if tempStoryLine < pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
@@ -430,7 +421,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
             changeAudioOfStoryLineToMainStoryPosition()
         }
     }
-    
     
     func previousMoment(){
         if page?.superview != nil {
@@ -482,36 +472,35 @@ class TempletonViewController: UIViewController, SceneDelegate {
         VoiceOverAudio.shared.changeAudioFile(to: "readStory\(TempletonViewController.mainStoryLinePosition)")
     }
     
-
-    
-
-    
-
+    @objc func showBookshelf(){
+        
+        print("touched the show bookshelf button")
+        view.fadeTo(opacity: 0.0, time: 0.8, {
+            
+            //            UINavigationController.attemptRotationToDeviceOrientation()
+            let value = UIInterfaceOrientation.portrait.rawValue
+            UIDevice.current.setValue(value, forKey: "orientation")
+            
+            let templetonController = BookshelfViewController()
+            self.present(templetonController, animated: false, completion: {
+                print("present bookshelf")
+            })
+        })
+        
+    }
     
     override var prefersStatusBarHidden: Bool{
         return true
     }
     
     override var shouldAutorotate: Bool {
-        return false
+        return true
     }
-//
-//    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-//
-//        switch orientation {
-//        case .portrait:
-//            return .portrait
-//        case .landscape:
-//            return .landscape
-//        }
-//    }
-//
-//    enum deviceOrientation {
-//        case portrait
-//        case landscape
-//    }
-//    var orientation = deviceOrientation.landscape
-//    func switchToLandscape(){
-//
-//    }
+    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        get {
+            return .landscape
+            
+        }
+    }
 }

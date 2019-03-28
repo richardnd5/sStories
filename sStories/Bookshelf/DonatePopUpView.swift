@@ -9,7 +9,9 @@ class DonatePopUpView: UIView {
     var tenDollarButton : DonateButton!
     var cancelButton : DonateButton!
 
-    var stackView : UIStackView!
+    var donateStackView : UIStackView!
+    let relativeFontConstant:CGFloat = 0.046
+
 
  
     override init(frame: CGRect) {
@@ -28,18 +30,18 @@ class DonatePopUpView: UIView {
     }
     
     func setupViews(){
+        
         label = UILabel()
-        label.font = UIFont(name: "Avenir Light", size: 24)
-        label.text = "Help us keep creating things for you by donating!"
+        label.font = UIFont(name: "Avenir Light", size: 12)
+        label.text = "We want to make apps like this for a living. Help us do that by donating!"
         label.numberOfLines = 0
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
         
         oneDollarButton = DonateButton(frame: .zero, name: "$1")
         twoDollarButton = DonateButton(frame: .zero, name: "$2")
         fiveDollarButton = DonateButton(frame: .zero, name: "$5")
         tenDollarButton = DonateButton(frame: .zero, name: "$10")
-        cancelButton = DonateButton(frame: .zero, name: "No, Thanks")
+        cancelButton = DonateButton(frame: .zero, name: "Nah")
         
         addSubview(label)
 
@@ -54,30 +56,35 @@ class DonatePopUpView: UIView {
         label.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10).isActive = true
         label.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
         label.heightAnchor.constraint(greaterThanOrEqualToConstant: frame.height/6).isActive = true
+        
+        let fontSize = frame.height * relativeFontConstant
+        label.font = UIFont(name: "Avenir Light", size: fontSize)
 
         
-        stackView = UIStackView(arrangedSubviews: [oneDollarButton, twoDollarButton, fiveDollarButton, tenDollarButton])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .equalCentering
+        donateStackView = UIStackView(arrangedSubviews: [oneDollarButton, twoDollarButton, fiveDollarButton, tenDollarButton])
+        donateStackView.translatesAutoresizingMaskIntoConstraints = false
+        donateStackView.axis = .horizontal
+        donateStackView.distribution = .equalCentering
         
-        addSubview(stackView)
+        addSubview(donateStackView)
         let padding = frame.width/20
         let iconSize = frame.width/6
 
-        [stackView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: frame.height/7),
-        stackView.heightAnchor.constraint(equalToConstant: iconSize),
-         stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding),
-         stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding)].forEach { $0.isActive = true }
+        [donateStackView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: frame.height/7),
+        donateStackView.heightAnchor.constraint(equalToConstant: iconSize),
+         donateStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding),
+         donateStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding)].forEach { $0.isActive = true }
         
-        stackView.arrangedSubviews.forEach { view in
+        donateStackView.arrangedSubviews.forEach { view in
             view.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
         }
         
         
         addSubview(cancelButton)
         let size = CGSize(width: frame.width/6, height: frame.height/8)
-        cancelButton.centerXAndSize(size: size, top: stackView.bottomAnchor, topPadding: frame.height/20)
+        cancelButton.centerXAndSize(size: size, top: donateStackView.bottomAnchor, topPadding: frame.height/20)
+        
+
     }
     
     
