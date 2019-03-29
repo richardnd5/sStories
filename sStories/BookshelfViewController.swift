@@ -69,22 +69,20 @@ class BookshelfViewController: UIViewController {
         
         donatePopUpView.cancelButton.addTarget(self, action: #selector(handleDonateCancel), for: .touchUpInside)
         
-        donatePopUpView.fiveDollarButton.addTarget(self, action: #selector(handleFiveDollarDonation), for: .touchUpInside)
-        
+        // Add a tap to dismiss the donation view.
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleBlockingOverlayTap))
         bookshelfPage.touchBlockingOverlay.addGestureRecognizer(tap)
+        
+        donatePopUpView.oneDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
+        donatePopUpView.twoDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
+        donatePopUpView.fiveDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
+        donatePopUpView.tenDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
+
 
     }
 
     @objc func handleBlockingOverlayTap(_ sender: UITapGestureRecognizer){
         removeDonatePopUpView()
-    }
-    
-    func setupDonateButtonDelegates(){
-        for view in donatePopUpView.subviews {
-            let v = view as! Button
-//            v.delegate = self
-        }
     }
     
     @objc func handleTempletonTap(_ sender: UIButton){
@@ -115,6 +113,23 @@ class BookshelfViewController: UIViewController {
     
     @objc func handleFiveDollarDonation(_ sender: UIButton){
         workingIAPProduct.shared.makePurchase(productType: .fiveDollarDonation)
+    }
+    
+    @objc func handleDonationTap(_ sender: UIButton){
+        let button = sender as! DonateButton
+        
+        switch button.name {
+        case "$1":
+            workingIAPProduct.shared.makePurchase(productType: .oneDollarDonation)
+        case "$2":
+            workingIAPProduct.shared.makePurchase(productType: .twoDollarDonation)
+        case "$5":
+            workingIAPProduct.shared.makePurchase(productType: .fiveDollarDonation)
+        case "$10":
+            workingIAPProduct.shared.makePurchase(productType: .tenDollarDonation)
+        default:
+            return
+        }
     }
     
     func createButtonPresses(){

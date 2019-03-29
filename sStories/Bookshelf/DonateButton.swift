@@ -11,19 +11,7 @@ class DonateButton: UIButton {
     
         print("button!   \(name)")
         setTouchEvents()
-        
-
-//        setTitleColor(.red, for: .normal)
-//        backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
-//        titleLabel?.font = UIFont(name: "Avenir Light", size: 20)
-//        setTitleColor(.black, for: .normal)
-        
-//        for state: UIControl.State in [.normal, .highlighted, .disabled, .selected, .focused, .application, .reserved] {
-//            setTitle(NSLocalizedString("Title", comment: ""), for: state)
-//        }
-        
     }
-
 
     private func setTouchEvents(){
         addTarget(self, action: #selector(touchDown), for: .touchDown)

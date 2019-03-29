@@ -22,6 +22,8 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     var icon3 : StoryIcon!
     var icon4 : StoryIcon!
     
+    let relativeFontConstant:CGFloat = 0.14
+    
     var touchEnabled = true {
         didSet {
             toggleTouchEnabled()
@@ -109,7 +111,7 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     func createTitle(){
         aboutTitle = UILabel()
         aboutTitle.text = "sStories"
-        aboutTitle.font = UIFont(name: "Avenir-Light", size: frame.width/14)
+        aboutTitle.font = UIFont(name: "Avenir-Light", size: frame.width * relativeFontConstant)
         aboutTitle.textColor = .white
         aboutTitle.textAlignment = .center
         aboutTitle.isUserInteractionEnabled = false
