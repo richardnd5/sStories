@@ -15,7 +15,6 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     
     var arrow : ImageViewClass!
     
-    
     var stackView : UIStackView!
     
     var icon1 : StoryIcon!
@@ -45,6 +44,12 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         addSubview(touchBlockingOverlay)
         touchBlockingOverlay.fillSuperview()
         touchBlockingOverlay.isUserInteractionEnabled = false
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleBlockingOverlayTap))
+//        touchBlockingOverlay.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleBlockingOverlayTap(_ sender: UITapGestureRecognizer){
+//        print("hey blocking overlay")
     }
     
     func toggleTouchEnabled(){

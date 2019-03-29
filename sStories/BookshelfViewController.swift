@@ -11,8 +11,6 @@ class BookshelfViewController: UIViewController {
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block:{_ in
             self.createBookShelfPage()
         })
-        
-        
     }
     
     func showTempleton(){
@@ -73,6 +71,13 @@ class BookshelfViewController: UIViewController {
         
         donatePopUpView.fiveDollarButton.addTarget(self, action: #selector(handleFiveDollarDonation), for: .touchUpInside)
         
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleBlockingOverlayTap))
+        bookshelfPage.touchBlockingOverlay.addGestureRecognizer(tap)
+
+    }
+
+    @objc func handleBlockingOverlayTap(_ sender: UITapGestureRecognizer){
+        removeDonatePopUpView()
     }
     
     func setupDonateButtonDelegates(){
