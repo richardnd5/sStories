@@ -12,21 +12,13 @@ class DonatePopUpView: UIView {
     var donateStackView : UIStackView!
     let relativeFontConstant:CGFloat = 0.046
 
-
- 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         expandIn(time: 0.9)
         backgroundColor = .white
         setupViews()
-        
-//        IAPService.shared.getProducts()
-        
-//        IAPService.shared.purchase(product: .nonConsumable)
-        
-        
-        
+
     }
     
     func setupViews(){
@@ -59,8 +51,15 @@ class DonatePopUpView: UIView {
         
         let fontSize = frame.height * relativeFontConstant
         label.font = UIFont(name: "Avenir Light", size: fontSize)
-
         
+        addSubview(cancelButton)
+        let size = CGSize(width: frame.width/6, height: frame.height/8)
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        cancelButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        cancelButton.widthAnchor.constraint(equalToConstant: size.width).isActive = true
+        cancelButton.heightAnchor.constraint(equalToConstant: size.height).isActive = true
+        cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/8).isActive = true
+
         donateStackView = UIStackView(arrangedSubviews: [oneDollarButton, twoDollarButton, fiveDollarButton, tenDollarButton])
         donateStackView.translatesAutoresizingMaskIntoConstraints = false
         donateStackView.axis = .horizontal
@@ -70,7 +69,7 @@ class DonatePopUpView: UIView {
         let padding = frame.width/20
         let iconSize = frame.width/6
 
-        [donateStackView.topAnchor.constraint(equalTo: label.bottomAnchor, constant: frame.height/7),
+        [donateStackView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -frame.height/7),
         donateStackView.heightAnchor.constraint(equalToConstant: iconSize),
          donateStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding),
          donateStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding)].forEach { $0.isActive = true }
@@ -79,15 +78,9 @@ class DonatePopUpView: UIView {
             view.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
         }
         
-        
-        addSubview(cancelButton)
-        let size = CGSize(width: frame.width/6, height: frame.height/8)
-        cancelButton.centerXAndSize(size: size, top: donateStackView.bottomAnchor, topPadding: frame.height/20)
-        
 
+        
     }
-    
-    
     
     override func layoutSubviews() {
         layer.cornerRadius = frame.width/10

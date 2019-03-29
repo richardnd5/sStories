@@ -15,14 +15,20 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     
     var arrow : ImageViewClass!
     
-    var stackView : UIStackView!
+    var stackViewTop : UIStackView!
+    var stackViewBottom : UIStackView!
     
-    var icon1 : StoryIcon!
-    var icon2 : StoryIcon!
-    var icon3 : StoryIcon!
-    var icon4 : StoryIcon!
+    var icon1 : StoryIconNew!
+    var icon2 : StoryIconNew!
+    var icon3 : StoryIconNew!
+    var icon4 : StoryIconNew!
+    
+    
+    var iconContainer : UIView!
     
     let relativeFontConstant:CGFloat = 0.14
+    var iconWidth : CGFloat!
+
     
     var touchEnabled = true {
         didSet {
@@ -35,6 +41,8 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         createTitle()
         alpha = 0.0
         self.fadeTo(opacity: 1.0, time: 1.5)
+        
+        iconWidth = frame.width/6
         
         setupViews()
         createTouchBlockingOverlay()
@@ -62,14 +70,9 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         }
     }
     
-    func createStoryIcon(_ name: String) -> StoryIcon {
-        let view = StoryIcon(frame: .zero, name: name)
+    func createStoryIcon(_ name: String) -> StoryIconNew {
+        let view = StoryIconNew(frame: .zero, name: name)
         view.translatesAutoresizingMaskIntoConstraints = false
-
-        // Get swifty.
-        [view.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-         view.widthAnchor.constraint(equalToConstant: frame.width/10),
-         view.heightAnchor.constraint(equalToConstant: frame.width/10)].forEach { $0.isActive = true }
         
         return view
     }
@@ -77,34 +80,53 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     func setupViews() {
         
         let safe = safeAreaLayoutGuide
+        let padding = frame.width/6
+        
+        iconContainer = UIView()
+        addSubview(iconContainer)
+        iconContainer.backgroundColor = .purple
         
         aboutTitle.translatesAutoresizingMaskIntoConstraints = false
-        aboutTitle.topAnchor.constraint(equalTo: safe.topAnchor, constant: frame.height/10).isActive = true
+        aboutTitle.topAnchor.constraint(equalTo: safe.topAnchor, constant: frame.height/20).isActive = true
         aboutTitle.centerXAnchor.constraint(equalTo: safe.centerXAnchor).isActive = true
         aboutTitle.widthAnchor.constraint(equalTo: safe.widthAnchor).isActive = true
         aboutTitle.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         
+        iconContainer.translatesAutoresizingMaskIntoConstraints = false
+        iconContainer.topAnchor.constraint(equalTo: aboutTitle.bottomAnchor).isActive = true
+        iconContainer.leadingAnchor.constraint(equalTo: leadingAnchor,constant: padding).isActive = true
+        iconContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding).isActive = true
+        iconContainer.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -frame.height/10).isActive = true
         
         icon1 = createStoryIcon("whiteDot")
         icon2 = createStoryIcon("templetonThumbnail")
-        icon2.backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
-        
         icon3 = createStoryIcon("whiteDot")
-        icon4 = createStoryIcon("whiteDot")
+        icon4 = createStoryIcon("whiteDot");
         
+        stackViewTop = UIStackView(arrangedSubviews: [icon1, icon2])
+        stackViewTop.translatesAutoresizingMaskIntoConstraints = false
+        stackViewTop.axis = .horizontal
+        stackViewTop.distribution = .fillEqually
+        iconContainer.addSubview(stackViewTop)
         
-        stackView = UIStackView(arrangedSubviews: [icon1, icon2, icon3, icon4])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .equalCentering
-        addSubview(stackView)
+        stackViewBottom = UIStackView(arrangedSubviews: [icon3, icon4])
+        stackViewBottom.translatesAutoresizingMaskIntoConstraints = false
+        stackViewBottom.axis = .horizontal
+        stackViewBottom.distribution = .fillEqually
+        iconContainer.addSubview(stackViewBottom)
         
-        let padding = frame.width/8
-        
-        [stackView.topAnchor.constraint(equalTo: aboutTitle.bottomAnchor, constant: frame.height/8),
-        stackView.heightAnchor.constraint(equalToConstant: frame.width/10),
-         stackView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding),
-         stackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding)].forEach { $0.isActive = true }
+
+        stackViewTop.topAnchor.constraint(equalTo: iconContainer.topAnchor).isActive = true
+        stackViewTop.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor).isActive = true
+        stackViewTop.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor).isActive = true
+        stackViewTop.bottomAnchor.constraint(equalTo: iconContainer.centerYAnchor).isActive = true
+
+
+        stackViewBottom.topAnchor.constraint(equalTo: stackViewTop.bottomAnchor).isActive = true
+        stackViewBottom.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor).isActive = true
+        stackViewBottom.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor).isActive = true
+        stackViewBottom.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor).isActive = true
+
 
     }
     
@@ -116,17 +138,6 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         aboutTitle.textAlignment = .center
         aboutTitle.isUserInteractionEnabled = false
         addSubview(aboutTitle)
-    }
-    
-    override func layoutSubviews() {
-        stackView.subviews.forEach { view in
-            let v = view as! StoryIcon
-            if v.name == "whiteDot" {
-                v.addDashedBorder()
-            } else {
-                v.layer.cornerRadius = v.frame.width/10
-            }
-        }
     }
     
     required init?(coder aDecoder: NSCoder) {

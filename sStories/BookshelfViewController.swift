@@ -32,8 +32,8 @@ class BookshelfViewController: UIViewController {
     
     
     func setupStoryIconDelegates(){
-        for view in bookshelfPage.stackView.subviews {
-            let v = view as! StoryIcon
+        for view in bookshelfPage.stackViewTop.subviews {
+//            let v = view as! StoryIcon
 //            v.delegate = self
         }
     }
@@ -62,8 +62,8 @@ class BookshelfViewController: UIViewController {
         bookshelfPage.touchEnabled = false
         
         [donatePopUpView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8),
-         donatePopUpView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/2.5),
-         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/1.5),
+         donatePopUpView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/2),
+         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/1.2),
          donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ].forEach { $0.isActive = true }
         
@@ -77,7 +77,6 @@ class BookshelfViewController: UIViewController {
         donatePopUpView.twoDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
         donatePopUpView.fiveDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
         donatePopUpView.tenDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
-
 
     }
 
@@ -133,18 +132,20 @@ class BookshelfViewController: UIViewController {
     }
     
     func createButtonPresses(){
-        for view in bookshelfPage.stackView.subviews {
-            let v = view as! StoryIcon
-            //            v.delegate = self
-            
-            v.addTarget(self, action: #selector(handleIconPress), for: .touchUpInside)
+        for view in bookshelfPage.stackViewTop!.subviews {
+            let v = view as! StoryIconNew
+            v.button.addTarget(self, action: #selector(handleIconPress), for: .touchUpInside)
+        }
+        for view in bookshelfPage.stackViewBottom!.subviews {
+            let v = view as! StoryIconNew
+            v.button.addTarget(self, action: #selector(handleIconPress), for: .touchUpInside)
         }
     }
     
     
     @objc func handleIconPress(_ sender: UIButton){
-        let v = sender as! StoryIcon
-        print(v.name)
+        let v = sender.superview as! StoryIconNew
+        
         switch v.name {
             case "templetonThumbnail":
                 showTempleton()
