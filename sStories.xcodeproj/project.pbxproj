@@ -89,6 +89,7 @@
 		228A6F3B2214853E007617A0 /* OpeningMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228A6F3A2214853E007617A0 /* OpeningMusic.swift */; };
 		228CF3AF2202D1E900C4ED08 /* AboutBlurb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */; };
 		228CF3B12202D5CA00C4ED08 /* dividingLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 228CF3B02202D5C900C4ED08 /* dividingLine.png */; };
+		22920D4D2250306900B6D8FF /* PageViewNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22920D4C2250306900B6D8FF /* PageViewNew.swift */; };
 		22A5D6712220B2410004E1D9 /* PianoAccompaniment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */; };
 		22A5D6732220B3750004E1D9 /* playOstinato.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22A5D6722220B3750004E1D9 /* playOstinato.mp3 */; };
 		22A5D67D222231BE0004E1D9 /* ReelInButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5D67C222231BE0004E1D9 /* ReelInButton.swift */; };
@@ -434,6 +435,7 @@
 		228A6F3A2214853E007617A0 /* OpeningMusic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningMusic.swift; sourceTree = "<group>"; };
 		228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutBlurb.swift; sourceTree = "<group>"; };
 		228CF3B02202D5C900C4ED08 /* dividingLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dividingLine.png; sourceTree = "<group>"; };
+		22920D4C2250306900B6D8FF /* PageViewNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewNew.swift; sourceTree = "<group>"; };
 		22A5D6702220B2410004E1D9 /* PianoAccompaniment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoAccompaniment.swift; sourceTree = "<group>"; };
 		22A5D6722220B3750004E1D9 /* playOstinato.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = playOstinato.mp3; sourceTree = "<group>"; };
 		22A5D67C222231BE0004E1D9 /* ReelInButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelInButton.swift; sourceTree = "<group>"; };
@@ -1140,6 +1142,7 @@
 				228CF3AE2202D1E900C4ED08 /* AboutBlurb.swift */,
 				866EA6EC21F42AAB00B28BA6 /* Arrow.swift */,
 				86BBBF5921BB0A1000CB17F2 /* PageView.swift */,
+				22920D4C2250306900B6D8FF /* PageViewNew.swift */,
 				22A666C021FFD8270038220E /* Button.swift */,
 				8698D85721BF400000ADED35 /* Sound.swift */,
 				8698D85821BF400000ADED35 /* Haptics.swift */,
@@ -1618,6 +1621,7 @@
 				227AB450224C1ED1005A00CE /* BookshelfViewController.swift in Sources */,
 				869027E521F593B300C3EF0C /* PerformingScene.swift in Sources */,
 				22EDFDF522429C3C006005F6 /* DonateButton.swift in Sources */,
+				22920D4D2250306900B6D8FF /* PageViewNew.swift in Sources */,
 				86BBBF5E21BB0A3A00CB17F2 /* GlobalFunctions.swift in Sources */,
 				8698D85A21BF400000ADED35 /* Haptics.swift in Sources */,
 				8698D85621BF149700ADED35 /* StoryLine.swift in Sources */,

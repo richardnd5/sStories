@@ -468,6 +468,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
         if page != nil {
             page.showNavigationButtons()
             page.playSoundButton.stopThrobWithAnimation()
+            page.nextButton.throbWithWiggle(scaleTo: 1.2, time: 0.6)
         }
     }
     

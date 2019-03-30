@@ -74,7 +74,7 @@ class PianoKey : UIView {
         addSubview(targetDot)
         
         targetDot.fadeTo(opacity: 1.0, time: 1.0)
-        targetDot.throbWithWiggle(scaleTo: 1.3, time: 0.5)
+        targetDot.throbWithWiggle(scaleTo: 1.5, time: 0.5)
         
     }
     
