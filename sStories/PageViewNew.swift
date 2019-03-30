@@ -57,7 +57,7 @@ class PageViewNew: UIView {
         storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
         
-        setupLayout()
+        setupViews()
         //        VoiceOverAudio.shared.playWithDelay()
         playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
         
@@ -101,19 +101,13 @@ class PageViewNew: UIView {
             playSoundButton.fadeOut(1.0)
             hideNavigationButtons()
             
-            
-            
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
-                //                self.sceneStoryPosition += 1
-                //                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
-                
                 self.storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
                 self.layoutSubviews()
                 
                 self.playSoundButton.fadeIn(1.0)
                 self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
                     self.canActivate = true
-                    //                        VoiceOverAudio.shared.playWithDelay()
                     self.playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
                 })
             }
@@ -126,19 +120,12 @@ class PageViewNew: UIView {
             canActivate = false
             hideNavigationButtons()
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
-                //                self.sceneStoryPosition -= 1
-                //                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
-                
-                
                 self.storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
                 
                 self.layoutSubviews()
                 self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
                     self.canActivate = true
-                    //                    VoiceOverAudio.shared.playWithDelay()
-                    //                    self.playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
                     self.playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
-                    
                 })
             }
         }
@@ -152,42 +139,29 @@ class PageViewNew: UIView {
         storyTextView.scaleTo(scaleTo: 1.0, time: 0.4)
     }
     
-    func setupLayout(){
+    func setupViews(){
         
         addSubview(pageImage)
-        
-
-        
-
-        
-        playSoundButton = Button(frame: .zero, name: "playSoundButton")
-        
-        addSubview(playSoundButton)
-        playSoundButton.alpha = 0.8
-        
-        playSoundButton.addTarget(self, action: #selector(handlePlaySpeaking), for: .touchUpInside)
-        
-
-        
         addSubview(storyTextView)
         
-        nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
-        
-        addSubview(nextButton)
-        nextButton.alpha = 0.0
-        
-
-        
-        
-        backButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "backArrow")
-        
-        addSubview(backButton)
-        backButton.alpha = 0.0
-        
-
-        
+        setupButtons()
         setupConstraints()
         
+    }
+    
+    func setupButtons(){
+        playSoundButton = Button(frame: .zero, name: "playSoundButton")
+        playSoundButton.addTarget(self, action: #selector(handlePlaySpeaking), for: .touchUpInside)
+        addSubview(playSoundButton)
+        
+        
+        nextButton = Button(frame: .zero, name: "nextArrow")
+        addSubview(nextButton)
+        
+        backButton = Button(frame: .zero, name: "backArrow")
+        addSubview(backButton)
+        
+        hideNavigationButtons()
     }
     
     func setupConstraints(){
