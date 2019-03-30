@@ -141,6 +141,17 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         addSubview(aboutTitle)
     }
     
+    override func layoutSubviews() {
+        for view in stackViewTop.arrangedSubviews {
+            let v = view as! StoryIconNew
+            v.button.backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        }
+        for view in stackViewBottom.arrangedSubviews {
+            let v = view as! StoryIconNew
+            v.button.backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        }
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

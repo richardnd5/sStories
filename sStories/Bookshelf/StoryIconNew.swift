@@ -86,6 +86,8 @@ class StoryIconNew: UIView {
     
     override func layoutSubviews() {
         setButtonConstraints()
+        
+        
     }
     
     func setButtonConstraints(){

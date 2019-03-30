@@ -92,8 +92,12 @@ class PageView: UIView {
     func nextStoryLine(){
         
         if canActivate{
+            print("ACTIVATE!")
             canActivate = false
             playSoundButton.fadeOut(1.0)
+            
+            
+            
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
 //                self.sceneStoryPosition += 1
 //                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
@@ -102,9 +106,9 @@ class PageView: UIView {
                 self.layoutSubviews()
                 
                 self.playSoundButton.fadeIn(1.0)
-                self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
-                    self.canActivate = true
-                    VoiceOverAudio.shared.playWithDelay()
+                    self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
+                        self.canActivate = true
+                        VoiceOverAudio.shared.playWithDelay()
                     self.playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
                 })
             }
@@ -115,6 +119,7 @@ class PageView: UIView {
         
         if canActivate{
             canActivate = false
+            hideNavigationButtons()
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
 //                self.sceneStoryPosition -= 1
 //                self.storyTextView.text = self.storyText![self.sceneStoryPosition]

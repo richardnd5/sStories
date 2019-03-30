@@ -220,8 +220,9 @@ class TempletonViewController: UIViewController, SceneDelegate {
         // Not using autolayout.... tsk tsk
         let width = view.frame.width*0.9
         let height = view.frame.height/4
+        let bottomPadding = view.frame.height/10
         let x : CGFloat = 0
-        var y = view.frame.height-height
+        var y = view.frame.height-height-bottomPadding
         
         if DeviceType.hasNotch {
             y -= 30
@@ -235,6 +236,13 @@ class TempletonViewController: UIViewController, SceneDelegate {
         keyboardTurner?.delegate = self
         view.bringSubviewToFront(keyboardTurner!)
         playSoundClip(.showPageTurner)
+        
+//        let safe = view.safeAreaLayoutGuide
+//        keyboardTurner.translatesAutoresizingMaskIntoConstraints = false
+//        keyboardTurner.bottomAnchor.constraint(equalTo: safe.bottomAnchor,constant: -view.frame.height/10).isActive = true
+//        keyboardTurner.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+//        keyboardTurner.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//        keyboardTurner.heightAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
     }
     
     func setupDelegates(){
