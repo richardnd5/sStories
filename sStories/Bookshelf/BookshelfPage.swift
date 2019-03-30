@@ -26,7 +26,7 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     
     var iconContainer : UIView!
     
-    let relativeFontConstant:CGFloat = 0.14
+    let relativeFontConstant:CGFloat = 0.09
     var iconWidth : CGFloat!
 
     
@@ -84,7 +84,6 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         
         iconContainer = UIView()
         addSubview(iconContainer)
-        iconContainer.backgroundColor = .purple
         
         aboutTitle.translatesAutoresizingMaskIntoConstraints = false
         aboutTitle.topAnchor.constraint(equalTo: safe.topAnchor, constant: frame.height/20).isActive = true
@@ -93,10 +92,10 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         aboutTitle.heightAnchor.constraint(equalToConstant: frame.height/6).isActive = true
         
         iconContainer.translatesAutoresizingMaskIntoConstraints = false
-        iconContainer.topAnchor.constraint(equalTo: aboutTitle.bottomAnchor).isActive = true
+        iconContainer.topAnchor.constraint(equalTo: aboutTitle.bottomAnchor, constant: frame.height/20).isActive = true
         iconContainer.leadingAnchor.constraint(equalTo: leadingAnchor,constant: padding).isActive = true
         iconContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding).isActive = true
-        iconContainer.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -frame.height/10).isActive = true
+        iconContainer.bottomAnchor.constraint(equalTo: centerYAnchor, constant: frame.height/10).isActive = true
         
         icon1 = createStoryIcon("whiteDot")
         icon2 = createStoryIcon("templetonThumbnail")
@@ -126,6 +125,8 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         stackViewBottom.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor).isActive = true
         stackViewBottom.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor).isActive = true
         stackViewBottom.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor).isActive = true
+        
+        
 
 
     }

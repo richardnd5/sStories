@@ -474,7 +474,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     
     @objc func showBookshelf(){
         
-        print("touched the show bookshelf button")
+        Sound.sharedInstance.stopPondBackground()
         view.fadeTo(opacity: 0.0, time: 0.8, {
             
             //            UINavigationController.attemptRotationToDeviceOrientation()

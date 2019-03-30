@@ -56,16 +56,33 @@ class BookshelfViewController: UIViewController {
     
     func createDonatePopUpView(){
         
+        let safe = view.safeAreaLayoutGuide
+        
         donatePopUpView = DonatePopUpView()
         donatePopUpView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(donatePopUpView)
         bookshelfPage.touchEnabled = false
         
-        [donatePopUpView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8),
-         donatePopUpView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/2),
-         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/1.2),
-         donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ].forEach { $0.isActive = true }
+//        [donatePopUpView.topAnchor.constraint(equalTo: view.topAnchor, constant: view.frame.height/8),
+//         donatePopUpView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -view.frame.height/2),
+//         donatePopUpView.widthAnchor.constraint(equalToConstant: view!.frame.width/1.2),
+//         donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//            ].forEach { $0.isActive = true }
+        
+        donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        donatePopUpView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        donatePopUpView.widthAnchor.constraint(equalToConstant: view.frame.width/2).isActive = true
+//        donatePopUpView.widthAnchor.constraint(equalTo: donatePopUpView.heightAnchor, multiplier: 1).isActive = true
+        
+        donatePopUpView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: view.frame.width/7).isActive = true
+        donatePopUpView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -view.frame.width/7).isActive = true
+        donatePopUpView.topAnchor.constraint(equalTo: safe.topAnchor, constant: view.frame.height/6).isActive = true
+        donatePopUpView.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -view.frame.height/6).isActive = true
+
+        
+        
+        
+        
         
         donatePopUpView.cancelButton.addTarget(self, action: #selector(handleDonateCancel), for: .touchUpInside)
         

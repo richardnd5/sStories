@@ -29,7 +29,7 @@ class StoryIconNew: UIView {
         
     }
     
-    private func setImage(){
+    func setImage(){
         let imageSize = CGRect(x: 0, y: 0, width: 700, height: 700)
         buttonImage = resizedImage(name: name, frame: imageSize)
         button.setImage(buttonImage, for: .normal)
@@ -90,14 +90,29 @@ class StoryIconNew: UIView {
     
     func setButtonConstraints(){
         
+        let padding = frame.height/20
         button.layer.cornerRadius = frame.width/20
         button.translatesAutoresizingMaskIntoConstraints = false
         
         button.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         button.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        button.widthAnchor.constraint(equalToConstant: frame.width/1.5).isActive = true
-        button.heightAnchor.constraint(equalToConstant: frame.width/1.5).isActive = true
+        
+        button.widthAnchor.constraint(equalToConstant: frame.height/1.5).isActive = true
+        button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 1).isActive = true
+
+//        button.heightAnchor.constraint(equalToConstant: frame.height/1.5).isActive = true
+//        button.widthAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor).isActive = true
+        
+//        button.topAnchor.constraint(equalTo: topAnchor, constant: padding).isActive = true
+//        button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding).isActive = true
+//        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding).isActive = true
+//        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding).isActive = true
+        
+        
+
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
