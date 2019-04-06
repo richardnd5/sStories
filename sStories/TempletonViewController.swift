@@ -483,7 +483,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     
     @objc func showBookshelf(){
         
-        Sound.sharedInstance.stopPondBackground()
+        Sound.shared.stopPondBackground()
         view.fadeTo(opacity: 0.0, time: 0.8, {
             
             //            UINavigationController.attemptRotationToDeviceOrientation()
@@ -509,7 +509,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         get {
             return .landscape
-            
         }
     }
 }

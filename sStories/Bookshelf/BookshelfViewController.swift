@@ -4,6 +4,7 @@ class BookshelfViewController: UIViewController {
     
     var bookshelfPage : BookshelfPage!
     var donatePopUpView : DonatePopUpView!
+    var aboutByeahPage : AboutByeahView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,14 +30,12 @@ class BookshelfViewController: UIViewController {
 
     }
     
-    
-    
-    func setupStoryIconDelegates(){
-        for view in bookshelfPage.stackViewTop.subviews {
-//            let v = view as! StoryIcon
-//            v.delegate = self
-        }
-    }
+//    func setupStoryIconDelegates(){
+//        for view in bookshelfPage.stackViewTop.subviews {
+//
+//
+//        }
+//    }
     
     func createBookShelfPage(){
 //        stopRandomBubbles()
@@ -48,10 +47,18 @@ class BookshelfViewController: UIViewController {
         
         createButtonPresses()
         
-        setupStoryIconDelegates()
+//        setupStoryIconDelegates()
         //        bookshelfPage.templeton.addTarget(self, action: #selector(handleTempletonTap), for: .touchUpInside)
         
         //        setupDelegates()
+    }
+    
+    func createAboutByeahPage(){
+        aboutByeahPage = AboutByeahView()
+        view.addSubview(aboutByeahPage)
+        aboutByeahPage.fillSuperview()
+        
+        aboutByeahPage.backButton.addTarget(self, action: #selector(handleAboutPageBackPressed), for: .touchUpInside)
     }
     
     func createDonatePopUpView(){
@@ -79,7 +86,7 @@ class BookshelfViewController: UIViewController {
         bookshelfPage.touchBlockingOverlay.addGestureRecognizer(tap)
         
         donatePopUpView.oneDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
-        donatePopUpView.twoDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
+        donatePopUpView.twentyDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
         donatePopUpView.fiveDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
         donatePopUpView.tenDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
 
@@ -125,15 +132,17 @@ class BookshelfViewController: UIViewController {
         switch button.name {
         case "$1":
             workingIAPProduct.shared.makePurchase(productType: .oneDollarDonation)
-        case "$2":
-            workingIAPProduct.shared.makePurchase(productType: .twoDollarDonation)
         case "$5":
             workingIAPProduct.shared.makePurchase(productType: .fiveDollarDonation)
         case "$10":
             workingIAPProduct.shared.makePurchase(productType: .tenDollarDonation)
+        case "$20":
+            workingIAPProduct.shared.makePurchase(productType: .twentyDollarDonation)
         default:
             return
         }
+        
+        donatePopUpView.showLoadingSpinner()
     }
     
     func createButtonPresses(){
@@ -145,6 +154,9 @@ class BookshelfViewController: UIViewController {
             let v = view as! StoryIconNew
             v.button.addTarget(self, action: #selector(handleIconPress), for: .touchUpInside)
         }
+        
+        bookshelfPage.byeahButton.addTarget(self, action: #selector(handleByeahButtonPressed), for: .touchUpInside)
+        
     }
     
     
@@ -160,6 +172,19 @@ class BookshelfViewController: UIViewController {
         
     }
     
+    @objc func handleByeahButtonPressed(_ sender: UIButton){
+        print("handing byeah button pressed")
+        bookshelfPage.fadeAndRemove(time: 1.0, completion: {
+            self.createAboutByeahPage()
+        })
+    }
+    
+    @objc func handleAboutPageBackPressed(_ sender: UIButton){
+        print("byeah about page button pressed")
+        aboutByeahPage.fadeAndRemove(time: 1.0, completion: {
+            self.createBookShelfPage()
+        })
+    }
     override var shouldAutorotate: Bool {
         return false
     }

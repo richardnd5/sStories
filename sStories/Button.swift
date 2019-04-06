@@ -91,7 +91,7 @@ class Button: UIButton {
             delegate?.startStory()
             playSoundClip(.buttonUp)
 //            Sound.sharedInstance.openingMusic.stopLoop()
-            Sound.sharedInstance.stopPondBackground()
+            Sound.shared.stopPondBackground()
             playSoundClip(.pageTurn)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
             delegate?.goToHomePage()

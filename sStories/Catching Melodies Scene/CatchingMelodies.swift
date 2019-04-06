@@ -52,11 +52,11 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
     }
     
     func startBackgroundSound(){
-        Sound.sharedInstance.playPondBackground()
+        Sound.shared.playPondBackground()
     }
     
     func stopBackgroundSound(){
-        Sound.sharedInstance.stopPondBackground()
+        Sound.shared.stopPondBackground()
     }
     
     func createSackContainer(){
@@ -216,7 +216,7 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
     
     func goBackToFishing(){
         
-        Sound.sharedInstance.turnUpPond()
+        Sound.shared.turnUpPond()
         melodyImage?.shrinkAndRemove(time: 0.8, {
             self.throwbackWater?.shrink()
             self.sack?.scaleTo(scaleTo: 1.0, time: 0.8, {
@@ -245,7 +245,6 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
             })
         })
     }
-    
     
     func removeImagesFromCaughtMelodyScene(){
         
@@ -292,7 +291,7 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
             
             // dim the background pond image
             self.pondImage.fadeTo(opacity: 0.2, time: 1.5)
-            Sound.sharedInstance.turnDownPond()
+            Sound.shared.turnDownPond()
             
             // create catching scene images
             self.createRandomMelody()

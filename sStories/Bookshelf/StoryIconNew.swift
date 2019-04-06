@@ -92,7 +92,7 @@ class StoryIconNew: UIView {
     
     func setButtonConstraints(){
         
-        let padding = frame.height/20
+//        let padding = frame.height/20
         button.layer.cornerRadius = frame.width/20
         button.translatesAutoresizingMaskIntoConstraints = false
         

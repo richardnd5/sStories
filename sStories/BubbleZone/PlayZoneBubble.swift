@@ -58,7 +58,7 @@ class PlayZoneBubble: UIView {
         sawWave.vibratoDepth = 0.2
         sawWave.rampDuration = 0.00009
         sawWave.connect(to: filter)
-        filter.connect(to: Sound.sharedInstance.bubbleMixer)
+        filter.connect(to: Sound.shared.bubbleMixer)
     }
     
     func playWave(_ note: MIDINoteNumber){
@@ -139,8 +139,8 @@ class PlayZoneBubble: UIView {
         
         for i in 0...pitches.count-1 {
             if i != 0 {
-                let current = Sound.sharedInstance.playZoneSequencer.currentPosition.minutes*60
-                let nextBeat = Sound.sharedInstance.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).minutes*60
+                let current = Sound.shared.playZoneSequencer.currentPosition.minutes*60
+                let nextBeat = Sound.shared.playZoneSequencer.nextQuantizedPosition(quantizationInBeats: 0.5).minutes*60
                 
                 let distance = nextBeat-current
                 let time = (i * (60/tempo))/2

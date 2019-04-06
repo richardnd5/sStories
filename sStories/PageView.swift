@@ -102,15 +102,12 @@ class PageView: UIView {
             playSoundButton.fadeOut(1.0)
             hideNavigationButtons()
             
-            
-            
+   
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
-//                self.sceneStoryPosition += 1
-//                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
-                
+
                 self.storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
                 self.layoutSubviews()
-                
+
                 self.playSoundButton.fadeIn(1.0)
                     self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
                         self.canActivate = true

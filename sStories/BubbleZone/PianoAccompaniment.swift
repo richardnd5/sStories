@@ -30,7 +30,7 @@ class PianoAccompaniment {
         do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why: \(error)") }
         sampler.enableMIDI()
         sampler.name = "\(number)"
-        Sound.sharedInstance.pianoMixer.connect(input: sampler)
+        Sound.shared.pianoMixer.connect(input: sampler)
     }
     
     func playMelody(){

@@ -63,7 +63,7 @@ class PerformingScene: UIView {
     @objc func handlePlayTap(_ sender: UITapGestureRecognizer){
         if !isPlaying {
             isPlaying = true
-            Sound.sharedInstance.playSequencer()
+            Sound.shared.playSequencer()
             timeout()
             playButton?.fadeAndRemove(time: 2.0)
         }

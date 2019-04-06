@@ -30,7 +30,7 @@ class OpeningMusic {
         do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
         sampler.enableMIDI()
         sampler.volume = volume
-        Sound.sharedInstance.soundEffectMixer.connect(input: sampler)
+        Sound.shared.soundEffectMixer.connect(input: sampler)
     }
     
     func play(){

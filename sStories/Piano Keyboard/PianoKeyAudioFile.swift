@@ -27,7 +27,7 @@ class PianoKeyAudioFile {
     func setupSampler(){
         do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
         sampler.enableMIDI()
-        Sound.sharedInstance.pianoMixer.connect(input: sampler)
+        Sound.shared.pianoMixer.connect(input: sampler)
     }
     
     func play(){

@@ -264,7 +264,6 @@ extension UIView {
     }
     
     func stopThrobWithWiggle(){
-        
         layer.removeAnimation(forKey: "throb")
     }
     
@@ -330,5 +329,10 @@ extension UIView {
         anim.toValue = NSValue(cgPoint: toPoint)
         anim.duration = 0.6
         layer.add(anim, forKey: "move")
+    }
+    
+    func fadeViewIn(time: Double){
+        alpha = 0.0
+        fadeTo(opacity: 1.0, time: time)
     }
 }

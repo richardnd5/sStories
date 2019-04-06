@@ -120,12 +120,12 @@ class PianoKey : UIView {
     func turnPageAnimationPlayNote(){
         let randomColor = UIColor(hue: CGFloat.random(in: 0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         targetDot.changeBackgroundColorGraduallyTo(randomColor, time: 1.0)
-        Sound.sharedInstance.oldPlayNote(keyNumber)
+        Sound.shared.oldPlayNote(keyNumber)
     }
     
     func playKey(){
         
-        Sound.sharedInstance.pianoSampler.play(noteNumber: keyNumber, velocity: 127)
+        Sound.shared.pianoSampler.play(noteNumber: keyNumber, velocity: 127)
         keyIsActive = true
         if keyIsActive {
             increaseDot()
@@ -135,7 +135,7 @@ class PianoKey : UIView {
     
     func stopKey(){
         
-        Sound.sharedInstance.pianoSampler.stop(noteNumber: keyNumber)
+        Sound.shared.pianoSampler.stop(noteNumber: keyNumber)
         keyIsActive = false
 
     }

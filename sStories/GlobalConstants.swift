@@ -4,14 +4,6 @@ let switchToArrangingScene = 9
 let switchToPerformingScene = 11
 
 let blurbs = [
-    
-    Blurb(textBlurb: """
-        About the company, Byeah LLC:
-
-        We are musicians and educators who realized we love software development in 2013. We started teaching ourselves programming in graphical programming languages and made the switch to Swift and Javascript in 2014. We are devoted to creativity, education and sound.
-        
-        """, imageName: "Templeton"),
-    
     Blurb(textBlurb: """
         About the creator:
         

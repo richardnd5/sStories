@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
     
-        Sound.sharedInstance.setup()
+        Sound.shared.setup()
         playSoundClip(.fishingThrowbackDrop)
         workingIAPProduct.shared.setupIAP()
         window = UIWindow()

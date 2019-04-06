@@ -177,7 +177,7 @@ class PageTurner: UIView {
     
     func playNote(_ noteToPlay: PageTurnPianoNote){
         
-        Sound.sharedInstance.playNote(noteToPlay, 50)
+        Sound.shared.playNote(noteToPlay, 50)
         note.makeNoteAppearFlyAwayAndFade()
         
     }

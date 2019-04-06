@@ -2,7 +2,7 @@ import AudioKit
 
 class Sound {
     
-    static var sharedInstance = Sound()
+    static var shared = Sound()
     
     private var mainMixer = AKMixer()
     var pianoMixer = AKMixer()

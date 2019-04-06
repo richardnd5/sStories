@@ -29,7 +29,7 @@ class VoiceOverAudio {
     private func setupPlayer(){
         
         player = AKPlayer(audioFile: audioFile)
-        player.connect(to: Sound.sharedInstance.soundEffectMixer)
+        player.connect(to: Sound.shared.soundEffectMixer)
         player.completionHandler = finishedCallback
     }
     
@@ -66,7 +66,7 @@ class VoiceOverAudio {
         disconnect()
         audioFile = loadAudioFile(file)
         player = AKPlayer(audioFile: audioFile)
-        player.connect(to: Sound.sharedInstance.soundEffectMixer)
+        player.connect(to: Sound.shared.soundEffectMixer)
         player.completionHandler = finishedCallback
         
     }

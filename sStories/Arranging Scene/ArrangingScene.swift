@@ -168,7 +168,7 @@ class ArrangingScene: UIView {
                         
                         if songFullyArranged() {
                             stopLoopedSoundEffect(.arrangingDrag)
-                            Sound.sharedInstance.loadMelodyIntoSampler()
+                            Sound.shared.loadMelodyIntoSampler()
                             playSoundClip(.arrangingAllMelodiesLocked)
                             stopAllMelodies()
                             instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")

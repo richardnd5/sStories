@@ -198,21 +198,21 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     func chordButtonTapped(chord: ChordType) {
         switch chord {
         case .I:
-            Sound.sharedInstance.switchChord(chord: .I)
+            Sound.shared.switchChord(chord: .I)
             IChordButton.isActive = true
             IVChordButton.isActive = false
             VChordButton.isActive = false
             offButton.switchImageToOn()
             
         case .IV:
-            Sound.sharedInstance.switchChord(chord: .IV)
+            Sound.shared.switchChord(chord: .IV)
             IChordButton.isActive = false
             IVChordButton.isActive = true
             VChordButton.isActive = false
             offButton.switchImageToOn()
             
         case .V:
-            Sound.sharedInstance.switchChord(chord: .V)
+            Sound.shared.switchChord(chord: .V)
             IChordButton.isActive = false
             IVChordButton.isActive = false
             VChordButton.isActive = true
@@ -220,7 +220,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             
         case .off:
             
-            Sound.sharedInstance.switchChord(chord: .off)
+            Sound.shared.switchChord(chord: .off)
             IChordButton.isActive = false
             IVChordButton.isActive = false
             VChordButton.isActive = false
@@ -240,8 +240,8 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
                 self.IVChordButton.fadeIn()
                 self.VChordButton.fadeIn()
                 self.offButton.fadeIn()
-                Sound.sharedInstance.startPlaySequencer()
-                Sound.sharedInstance.turnDownPond()
+                Sound.shared.startPlaySequencer()
+                Sound.shared.turnDownPond()
                 self.createNumberOfBubbles(totalBubbleScore)
                 
                 self.delegate?.fadeOutTitleAndButtons()
@@ -264,8 +264,8 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             self.offButton.fadeOut()
             
             delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
-            Sound.sharedInstance.stopPlaySequencer()
-            Sound.sharedInstance.turnUpPond()
+            Sound.shared.stopPlaySequencer()
+            Sound.shared.turnUpPond()
             popAllBubbles()
             self.delegate?.fadeInTitleAndButtons()
             
@@ -388,11 +388,11 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     @objc func handlePress(_ sender: UILongPressGestureRecognizer){
         if sender.state == .began {
             let note = sender.view as! PlayZoneBubble
-            Sound.sharedInstance.generatePianoImprov(notes: note.pitches, beats: note.rhythms, pressedNote: sender)
+            Sound.shared.generatePianoImprov(notes: note.pitches, beats: note.rhythms, pressedNote: sender)
             note.pulseToRhythm()
             // Play first note of the sequence on touch down.
             let firstNote = note.pitches[0]
-            Sound.sharedInstance.pianoSampler.play(noteNumber: firstNote, velocity: 127)
+            Sound.shared.pianoSampler.play(noteNumber: firstNote, velocity: 127)
             note.scaleNoteUpAndDown()
         }
         

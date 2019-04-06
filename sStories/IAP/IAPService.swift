@@ -74,7 +74,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
         
         if(SKPaymentQueue.canMakePayments()) {
             print("IAP is enabled, loading")
-            let productID : NSSet = NSSet(objects: IAPProduct.oneDollarDonation.rawValue, IAPProduct.twoDollarDonation.rawValue, IAPProduct.fiveDollarDonation.rawValue, IAPProduct.tenDollarDonation.rawValue)
+            let productID : NSSet = NSSet(objects: IAPProduct.oneDollarDonation.rawValue, IAPProduct.twentyDollarDonation.rawValue, IAPProduct.fiveDollarDonation.rawValue, IAPProduct.tenDollarDonation.rawValue)
             let request : SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
             
             request.delegate = self
@@ -98,7 +98,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
         }
     
         private func buyProduct(){
-            print("buy \(currentProduct.productIdentifier)")
+//            print("buy \(currentProduct.productIdentifier)")
             let pay = SKPayment(product: currentProduct)
             SKPaymentQueue().add(self)
             SKPaymentQueue.default().add(pay as SKPayment)
@@ -131,7 +131,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
             
             switch prodID {
             case IAPProduct.oneDollarDonation.rawValue : print("one dollar donation")
-            case IAPProduct.twoDollarDonation.rawValue : print("two dollar donation")
+            case IAPProduct.twentyDollarDonation.rawValue : print("twenty dollar donation")
             case IAPProduct.fiveDollarDonation.rawValue : print("five dollar donation")
             case IAPProduct.tenDollarDonation.rawValue : print("ten dollar donation")
             default:
@@ -155,7 +155,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
                 let prodID = currentProduct.productIdentifier
                 switch prodID {
                 case IAPProduct.oneDollarDonation.rawValue : print("one dollar donation")
-                case IAPProduct.twoDollarDonation.rawValue : print("two dollar donation")
+                case IAPProduct.twentyDollarDonation.rawValue : print("twenty dollar donation")
                 case IAPProduct.fiveDollarDonation.rawValue : print("five dollar donation")
                 case IAPProduct.tenDollarDonation.rawValue : print("ten dollar donation")
                 default:

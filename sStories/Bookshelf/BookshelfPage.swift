@@ -23,6 +23,8 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     var icon3 : StoryIconNew!
     var icon4 : StoryIconNew!
     
+    var byeahButton : Button!
+    
     
     var iconContainer : UIView!
     
@@ -46,7 +48,30 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         
         setupViews()
         createTouchBlockingOverlay()
+        createByeahButton()
         
+    }
+    
+    func createByeahButton(){
+        byeahButton = Button(frame: .zero, name: "byeahButton")
+        addSubview(byeahButton)
+        
+
+    }
+    
+    func setupByeahConstraints(){
+        
+        let safe = safeAreaLayoutGuide
+        let buttonSize : CGFloat!
+        ScreenSize.width > ScreenSize.height ? (buttonSize = ScreenSize.height/5) : (buttonSize = ScreenSize.width/4)
+
+        byeahButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        byeahButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -30).isActive = true
+        byeahButton.widthAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        byeahButton.widthAnchor.constraint(equalTo: byeahButton.heightAnchor, multiplier: 1.5).isActive = true
+        byeahButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
     func createTouchBlockingOverlay(){
@@ -128,7 +153,6 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         
         
 
-
     }
     
     func createTitle(){
@@ -150,6 +174,8 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
             let v = view as! StoryIconNew
             v.button.backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
+        
+        setupByeahConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {

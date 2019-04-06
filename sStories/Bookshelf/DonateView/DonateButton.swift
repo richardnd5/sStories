@@ -8,8 +8,6 @@ class DonateButton: UIButton {
     init(frame: CGRect, name: String) {
         super.init(frame: frame)
         self.name = name
-    
-        print("button!   \(name)")
         setTouchEvents()
     }
 
