@@ -129,18 +129,10 @@ class KeyboardTurner: UIView {
     }
 
     func drawKeyboard(){
-        
-        // 36, 38,40,41,43,45,47,48,50,52,53,55,57,59,60,62,64,65,67,69,71,72,74,76,77,79,81,83,84,86
-//        let whiteKeyNumbers = [36,38,40,41,43,45,47,48,50,52,53,55,57,59,60,62,64,65,67,69,71,72,74,76,77,79,81,83,84,86]
-        
         let whiteKeyNumbers = [41,43,45,47,48,50,52,53,55,57,59,60,62,64,65,67,69,71,72,74,76]
                                 // 37,39,0,42,44,46,0,49,51,0,54,56,58,0
         let blackKeyNumbers = [42,44,46,0,49,51,0,54,56,58,0,61,63,0,66,68,70,0,73,75,0,78]
 
-//        let whiteKeyNumbers = [60,62,64,65,67,69,71,72,74,76,77,79,81,83,84]
-//        let blackKeyNumbers = [61,63,0,66,68,70,0,73,75,0,78,80,82,0,85]
-        
-        
         layer.zPosition = 200
         let numberOfWhiteKeys = CGFloat(whiteKeyNumbers.count)
         
@@ -151,9 +143,7 @@ class KeyboardTurner: UIView {
         // add white keys
         for i in 0...Int(numberOfWhiteKeys)-1 {
             let fr = CGRect(x: whiteKeyWidth*CGFloat(i), y: 0, width: whiteKeyWidth, height: frame.height)
-            
 
-            
             let key = PianoKey(frame: fr, type: .white, keyNumber: MIDINoteNumber(whiteKeyNumbers[i]))
             addSubview(key)
             if partOfChord(noteToCheck: whiteKeyNumbers[i], chordArray: chordArray){
@@ -196,10 +186,7 @@ class KeyboardTurner: UIView {
             // 0.0, 0.1, 0.2-
             let time = i*0.1
             let accelTime = time - (time/(14-i))
-            print("time: \(i) \(time)")
-            
-            
-            
+        
             Timer.scheduledTimer(withTimeInterval: accelTime, repeats: false) { _ in
                 self.whiteKeyArray.forEach({ key in
                     if Int(key.keyNumber) == note.rawValue{

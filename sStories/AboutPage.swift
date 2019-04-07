@@ -10,8 +10,9 @@ class AboutPage: UIView, UIScrollViewDelegate {
     var backButton : UIButton!
     var blurbArray = [AboutBlurb]()
     var scrollUpButton : UIButton!
+    var scrollTimer = Timer()
     
-    var arrow : ImageViewClass!
+    var scrollDownArrow : ImageViewClass!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -98,14 +99,14 @@ class AboutPage: UIView, UIScrollViewDelegate {
     }
     
     func makeArrow(){
-        let width : CGFloat = frame.width/6
-        let height : CGFloat = frame.height/6
+        let width : CGFloat = frame.width/20
+        let height : CGFloat = frame.height/20
         let x : CGFloat = 20
         let y : CGFloat = frame.height/20
         
-        arrow = ImageViewClass(frame: CGRect(x: x, y: y, width: width, height: height), "scrollDownButton")
-        arrow.point()
-        addSubview(arrow!)
+        scrollDownArrow = ImageViewClass(frame: CGRect(x: x, y: y, width: width, height: height), "scrollDownButton")
+        scrollDownArrow.point()
+        addSubview(scrollDownArrow!)
         
     }
     
@@ -150,21 +151,21 @@ class AboutPage: UIView, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+
+        
         var opacity = 1-scrollView.contentOffset.y / 80
         
         if opacity > 1 {
             opacity = 1
             aboutTitle.alpha = opacity
             backButton.alpha = opacity
-            arrow.alpha = opacity
+            scrollDownArrow.alpha = opacity
         } else {
             aboutTitle.alpha = opacity
             backButton.alpha = opacity
-            arrow.alpha = opacity
+            scrollDownArrow.alpha = opacity
         }
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

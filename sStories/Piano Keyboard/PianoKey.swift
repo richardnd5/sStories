@@ -37,14 +37,7 @@ class PianoKey : UIView {
             backgroundColor = .black
             overlay.backgroundColor = .white
         }
-        
-//        audio = PianoKeyAudioFile()
         clipsToBounds = true
-        
-        
-        
-        
-        
     }
 
     
@@ -125,7 +118,7 @@ class PianoKey : UIView {
     
     func playKey(){
         
-        Sound.shared.pianoSampler.play(noteNumber: keyNumber, velocity: 127)
+        Sound.shared.pianoSampler.play(noteNumber: keyNumber, velocity: 30)
         keyIsActive = true
         if keyIsActive {
             increaseDot()

@@ -1,67 +1,5 @@
 import Foundation
 import StoreKit
-//
-//class IAPService : NSObject {
-//
-//    private override init() {}
-//    static let shared = IAPService()
-//
-//    var products = [SKProduct]()
-//    let paymentQueue = SKPaymentQueue.default()
-//
-//    func getProducts(){
-//        let products : Set = [IAPProduct.consumable.rawValue,IAPProduct.nonConsumable.rawValue]
-//        print("get products running")
-//        let request = SKProductsRequest(productIdentifiers: products)
-//        request.delegate = self
-//        request.start()
-//        paymentQueue.add(self)
-//    }
-//
-//    func purchase(product: IAPProduct) {
-//
-//        print("purchase is running")
-//        guard let productToPurchase = products.filter({$0.productIdentifier == product.rawValue }).first else { print("nope!"); return }
-//
-//        let payment = SKPayment(product: productToPurchase)
-//        paymentQueue.add(payment)
-//    }
-//
-//}
-//
-//extension IAPService : SKProductsRequestDelegate {
-//    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-//        self.products = response.products
-//
-//        for product in response.products {
-//            print(product.localizedTitle)
-//        }
-//    }
-//
-//
-//}
-//
-//extension IAPService : SKPaymentTransactionObserver {
-//    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-//        for transaction in transactions {
-//            print(transaction.transactionState.status(), transaction.payment.productIdentifier)
-//        }
-//    }
-//}
-//
-//extension SKPaymentTransactionState {
-//    func status() -> String {
-//        switch self {
-//        case .deferred: return "deferred"
-//        case .failed: return "failed"
-//        case .purchased: return "purchased"
-//        case .purchasing: return "purchasing"
-//        case .restored: return "restored"
-//    }
-//
-//}
-//}
-
 
 class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransactionObserver {
     
@@ -69,7 +7,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
     
     var list = [SKProduct]()
     var currentProduct = SKProduct()
-    
+
     func setupIAP(){
         
         if(SKPaymentQueue.canMakePayments()) {
@@ -83,31 +21,31 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
         } else {
             print("please enable IAPS")
         }
-
+        
     }
     
-    
-        func makePurchase(productType: IAPProduct){
-            for product in list {
-                let prodID = product.productIdentifier
-                if (prodID == productType.rawValue){
-                    currentProduct = product
-                    buyProduct()
-                }
+    func makePurchase(productType: IAPProduct){
+        for product in list {
+            let prodID = product.productIdentifier
+            if (prodID == productType.rawValue){
+                currentProduct = product
+                buyProduct()
             }
         }
+    }
     
-        private func buyProduct(){
-//            print("buy \(currentProduct.productIdentifier)")
-            let pay = SKPayment(product: currentProduct)
-            SKPaymentQueue().add(self)
-            SKPaymentQueue.default().add(pay as SKPayment)
-        }
+    private func buyProduct(){
+        print("buy \(currentProduct.productIdentifier)")
+        let pay = SKPayment(product: currentProduct)
+        SKPaymentQueue().add(self)
+        SKPaymentQueue.default().add(pay as SKPayment)
+        
+    }
     
-        func restorePurchases(){
-            SKPaymentQueue.default().add(self)
-            SKPaymentQueue.default().restoreCompletedTransactions()
-        }
+    func restorePurchases(){
+        SKPaymentQueue.default().add(self)
+        SKPaymentQueue.default().restoreCompletedTransactions()
+    }
     
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         print("product request")
@@ -139,7 +77,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
             }
         }
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         print("add payment")
         
@@ -152,6 +90,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
                 print("PURSHAED")
                 print(currentProduct.productIdentifier)
                 
+                
                 let prodID = currentProduct.productIdentifier
                 switch prodID {
                 case IAPProduct.oneDollarDonation.rawValue : print("one dollar donation")
@@ -161,7 +100,7 @@ class workingIAPProduct : NSObject, SKProductsRequestDelegate, SKPaymentTransact
                 default:
                     print("what?")
                 }
-                queue.finishTransaction(trans)
+            //                queue.finishTransaction(trans)
             case .failed:
                 print("buy error")
                 queue.finishTransaction(trans)

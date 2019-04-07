@@ -23,7 +23,7 @@ protocol SceneDelegate : class {
     func fadeInTitleAndButtons()
     func finishedReadingCallback()
     func loadUpTempleton()
-
+    
 }
 
 class TempletonViewController: UIViewController, SceneDelegate {
@@ -67,7 +67,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     
     var bubblesArePlaying = false
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,15 +80,18 @@ class TempletonViewController: UIViewController, SceneDelegate {
     }
     
     func loadUpTempleton(){
-
-//            bookshelfPage.fadeAndRemove(time: 0.7)
-
+        
+        //            bookshelfPage.fadeAndRemove(time: 0.7)
+        
         
         currentState = .templetonFrontPage
         VoiceOverAudio.shared.delegate = self
-
+        
         self.createHomePage()
         self.createBubbleScore()
+        
+        
+        
         
         
     }
@@ -206,6 +209,8 @@ class TempletonViewController: UIViewController, SceneDelegate {
         setupDelegates()
         
         homePage.homeButton.addTarget(self, action: #selector(showBookshelf), for: .touchUpInside)
+        UINavigationController.attemptRotationToDeviceOrientation()
+        
     }
     
     func createAboutPage(){
@@ -236,13 +241,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
         keyboardTurner?.delegate = self
         view.bringSubviewToFront(keyboardTurner!)
         playSoundClip(.showPageTurner)
-        
-//        let safe = view.safeAreaLayoutGuide
-//        keyboardTurner.translatesAutoresizingMaskIntoConstraints = false
-//        keyboardTurner.bottomAnchor.constraint(equalTo: safe.bottomAnchor,constant: -view.frame.height/10).isActive = true
-//        keyboardTurner.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-//        keyboardTurner.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-//        keyboardTurner.heightAnchor.constraint(equalToConstant: view.frame.height/4).isActive = true
     }
     
     func setupDelegates(){
@@ -262,6 +260,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
         if page != nil && currentPage < pages.count-1 && currentState == .story {
             
             page.fadeAndRemove(time: 1.0) {
+                print("running next page!")
                 self.currentPage+=1
                 self.tempStoryLine = 0
                 self.createPage()
@@ -301,7 +300,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
                 self.createHomePage()
                 self.pageTurnerVisible = false
             }
-            // If the current page is the fishing page.
         }
     }
     
@@ -408,23 +406,30 @@ class TempletonViewController: UIViewController, SceneDelegate {
                 tempStoryLine += 1
                 playSoundClip(.nextStoryLine)
                 page.expandText()
-                page.showNavigationButtons()
+                //                page.showNavigationButtons()
                 
                 TempletonViewController.mainStoryLinePosition += 1
                 
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
-                if !pageTurnerVisible {
-                    pageTurnerVisible = true
-                    TempletonViewController.mainStoryLinePosition += 1
-                    
-                    
-                    createKeyboardTurner()
-                    page.expandText()
-                    page.canActivate = false
-                    page.hideNavigationButtons()
-                    page.storyTextView.fadeTo(opacity: 0.0, time: 1.0)
-                    page.playSoundButton.fadeOut(1.0)
+                TempletonViewController.mainStoryLinePosition += 1
+                
+                if currentPage == 0 || currentPage == 8 {
+                    if !pageTurnerVisible {
+                        pageTurnerVisible = true
+                        
+                        
+                        createKeyboardTurner()
+                        page.expandText()
+                        page.canActivate = false
+                        page.hideNavigationButtons()
+                        page.storyTextView.fadeTo(opacity: 0.0, time: 1.0)
+                        page.playSoundButton.fadeOut(1.0)
+                    }
+                } else {
+                    nextPage()
                 }
+                
+                
             }
             changeAudioOfStoryLineToMainStoryPosition()
         }
@@ -486,7 +491,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
         Sound.shared.stopPondBackground()
         view.fadeTo(opacity: 0.0, time: 0.8, {
             
-            //            UINavigationController.attemptRotationToDeviceOrientation()
+            
             let value = UIInterfaceOrientation.portrait.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             

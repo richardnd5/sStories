@@ -456,6 +456,11 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
             else if (throwbackWater?.bounds.contains(sender.location(in: throwbackWater)))!{
                 self.goBackToFishing()
                 playSoundClip(.fishingThrowbackDrop)
+            } else {
+                
+                let melodySize = sender.view?.frame.size
+                let point = CGPoint(x: frame.width/2-(melodySize?.width)!/2, y: frame.height/3-(melodySize?.height)!/2)
+                sender.view?.moveViewTo(point, time: 0.8)
             }
         }
     }

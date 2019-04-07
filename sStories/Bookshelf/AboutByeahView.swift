@@ -5,24 +5,25 @@ class AboutByeahView: UIView, UIScrollViewDelegate {
     var aboutTitle : UILabel!
     var scrollView : UIScrollView!
     var backButton : Button!
-    
-    var titleFontSize : CGFloat = 32
-    let relativeFontConstant:CGFloat = 0.046
-    let aboutTitleFontSize = ScreenSize.height * 0.08
-    let blurbFontSize = ScreenSize.height * 0.03
+
+    var aboutTitleFontSize = ScreenSize.width * 0.125
+    var blurbFontSize = ScreenSize.width * 0.05
 
     
-    let blurb = Blurb(textBlurb: "We are musicians and educators who realized we love software development in 2013. We started teaching ourselves programming in graphical programming languages and made the switch to Swift and Javascript in 2014. We are devoted to creativity, education and sound.", imageName: "byeahButton")
+    let blurb = Blurb(textBlurb: "We are musicians and educators who discovered we love software development in 2013. We started teaching ourselves programming in graphical programming languages and made the switch to Swift and Javascript in 2014. We are devoted to creativity, education and sound.", imageName: "byeahButton")
     
     var blurbLabel : UILabel!
+    var byeahButton : Button!
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        adjustFontSizesBasedOnScreenSize()
 //        createScrollView()
         createTitle()
         createBackButton()
         createBlurbs()
+        createByeahButton()
         setupConstraints()
         
         fadeViewIn(time: 1.5)
@@ -30,6 +31,12 @@ class AboutByeahView: UIView, UIScrollViewDelegate {
         
     }
     
+    func adjustFontSizesBasedOnScreenSize(){
+        if ScreenSize.width > ScreenSize.height {
+            aboutTitleFontSize = ScreenSize.height * 0.09
+            blurbFontSize = ScreenSize.height * 0.03
+        }
+    }
     func createScrollView(){
         scrollView = UIScrollView()
         addSubview(scrollView)
@@ -38,7 +45,7 @@ class AboutByeahView: UIView, UIScrollViewDelegate {
     
     func createTitle(){
         aboutTitle = UILabel()
-        aboutTitle.text = "About Byeah"
+        aboutTitle.text = "About Byeah LLC"
         aboutTitle.font = UIFont(name: "Avenir Light", size: aboutTitleFontSize)
         aboutTitle.textColor = .white
         aboutTitle.textAlignment = .center
@@ -49,7 +56,6 @@ class AboutByeahView: UIView, UIScrollViewDelegate {
     func createBackButton(){
         backButton = Button(frame: .zero, name: "backArrow")
         addSubview(backButton)
-
     }
     
     func createBlurbs(){
@@ -64,6 +70,14 @@ class AboutByeahView: UIView, UIScrollViewDelegate {
         
         addSubview(blurbLabel)
 
+    }
+    
+    func createByeahButton(){
+        byeahButton = Button(frame: .zero, name: "byeahButton")
+        byeahButton.tag = 100
+        addSubview(byeahButton)
+        
+        byeahButton.addTarget(self, action: #selector(byeahButtonPressed), for: .touchUpInside)
     }
     
     func setupBackButtonConstraints(){
@@ -87,35 +101,72 @@ class AboutByeahView: UIView, UIScrollViewDelegate {
 //        aboutTitle.heightAnchor.constraint(equalToConstant: aboutTitleFontSize).isActive = true
         
         blurbLabel.translatesAutoresizingMaskIntoConstraints = false
-        blurbLabel.topAnchor.constraint(equalTo: aboutTitle.bottomAnchor, constant: 30).isActive = true
+        blurbLabel.topAnchor.constraint(equalTo: aboutTitle.bottomAnchor, constant: 50).isActive = true
         blurbLabel.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: 20).isActive = true
         blurbLabel.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -20).isActive = true
 //        blurbLabel.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -10).isActive = true
-        
 
     }
     
-
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func setupByeahConstraints(){
         
-        var opacity = 1-scrollView.contentOffset.y / 80
+//        let safe = safeAreaLayoutGuide
+        let buttonSize : CGFloat!
+        ScreenSize.width > ScreenSize.height ? (buttonSize = ScreenSize.height/5) : (buttonSize = ScreenSize.width/4)
         
-        if opacity > 1 {
-            opacity = 1
-            aboutTitle.alpha = opacity
-        } else {
-            aboutTitle.alpha = opacity
-        }
+        byeahButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        byeahButton.topAnchor.constraint(equalTo: blurbLabel.bottomAnchor, constant: 30).isActive = true
+        byeahButton.widthAnchor.constraint(equalToConstant: buttonSize).isActive = true
+        byeahButton.widthAnchor.constraint(equalTo: byeahButton.heightAnchor, multiplier: 1.5).isActive = true
+        byeahButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     }
     
+
     override func layoutSubviews() {
         setupBackButtonConstraints()
+        setupByeahConstraints()
+    }
+    
+    @objc func byeahButtonPressed(_ sender: UIButton){
+        playRandomByeahSound()
+    }
+    
+    func playRandomByeahSound(){
         
-//        scrollView.contentSize = frame.size
+        let randomNum = Int.random(in: 1...12)
         
-//        createBlurbs()
+        switch randomNum {
+        case 1:
+            playSoundClip(.byeahSound1)
+        case 2:
+            playSoundClip(.byeahSound2)
+        case 3:
+            playSoundClip(.byeahSound3)
+        case 4:
+            playSoundClip(.byeahSound4)
+        case 5:
+            playSoundClip(.byeahSound5)
+        case 6:
+            playSoundClip(.byeahSound6)
+        case 7:
+            playSoundClip(.byeahSound7)
+        case 8:
+            playSoundClip(.byeahSound8)
+        case 9:
+            playSoundClip(.byeahSound9)
+        case 10:
+            playSoundClip(.byeahSound10)
+        case 11:
+            playSoundClip(.byeahSound11)
+        case 12:
+            playSoundClip(.byeahSound12)
+        default:
+            playSoundClip(.byeahSound1)
 
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -69,6 +69,13 @@ class Sound {
         mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler, bubbleMixer)
         
         
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+        } catch let error {
+            print("Error in AVAudio Session\(error.localizedDescription)")
+        }
+        
+        AKSettings.playbackWhileMuted = true
         AudioKit.output = mainMixer
         startAudioKit()
 
@@ -304,9 +311,9 @@ class Sound {
     func oldPlayNote(_ note: MIDINoteNumber?, _ note2: PageTurnPianoNote = .C4){
         
         if note != nil {
-            pianoSampler.play(noteNumber: note!, velocity: 127)
+            pianoSampler.play(noteNumber: note!, velocity: 30)
         } else {
-            pianoSampler.play(noteNumber: note2.rawValue, velocity: 127)
+            pianoSampler.play(noteNumber: note2.rawValue, velocity: 30)
         }
     }
     

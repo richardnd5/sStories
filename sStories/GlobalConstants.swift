@@ -156,5 +156,18 @@ enum SoundEffects : String, CaseIterable {
     case arrangingPlaceSound4 = "arrangingPlaceSound4"
     case arrangingPlaceSound5 = "arrangingPlaceSound5"
     case arrangingPlaceSound6 = "arrangingPlaceSound6"
+    
+    case byeahSound1 = "byeahSound1"
+    case byeahSound2 = "byeahSound2"
+    case byeahSound3 = "byeahSound3"
+    case byeahSound4 = "byeahSound4"
+    case byeahSound5 = "byeahSound5"
+    case byeahSound6 = "byeahSound6"
+    case byeahSound7 = "byeahSound7"
+    case byeahSound8 = "byeahSound8"
+    case byeahSound9 = "byeahSound9"
+    case byeahSound10 = "byeahSound10"
+    case byeahSound11 = "byeahSound11"
+    case byeahSound12 = "byeahSound12"
 }
 

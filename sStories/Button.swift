@@ -75,7 +75,11 @@ class Button: UIButton {
         
         if sender?.tag == ButtonTypee.next.rawValue || sender?.tag == ButtonTypee.backStory.rawValue {
             playSoundClip(.touchDown)
-        } else {
+        } else if sender?.tag == 100 {
+            // band aid to stop sound on the byeah button for the about page
+            return
+        }
+        else {
             playSoundClip(.buttonDown)
         }
 
@@ -108,6 +112,8 @@ class Button: UIButton {
         else if sender!.tag == ButtonTypee.reelIn.rawValue {
             catchingMelodyDelegate!.reelIn()
             
+        } else if sender!.tag == 100 {
+            return
         }
     }
     

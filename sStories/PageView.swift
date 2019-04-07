@@ -78,9 +78,12 @@ class PageView: UIView {
             let tapPoint = sender.location(in:self)
             if rect.contains(tapPoint){
                 showNavigationButtons()
+                
             }
         }
     }
+    
+
     
     func showNavigationButtons(){
         navigationButtonsVisable = true
@@ -96,7 +99,6 @@ class PageView: UIView {
     }
 
     func nextStoryLine(){
-        
         if canActivate{
             canActivate = false
             playSoundButton.fadeOut(1.0)
@@ -160,8 +162,8 @@ class PageView: UIView {
         pageImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         pageImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/2.5).isActive = true
 
-        let playSoundButtonWidth = frame.width/30
-        let playSoundButtonHeight = frame.height/15
+        let playSoundButtonWidth = frame.width/24
+        let playSoundButtonHeight = frame.height/10
         
         playSoundButton = Button(frame: CGRect(x: 0, y: 0, width: playSoundButtonWidth, height: playSoundButtonHeight), name: "playSoundButton")
         
@@ -174,7 +176,8 @@ class PageView: UIView {
         playSoundButton.topAnchor.constraint(equalTo: pageImage.bottomAnchor).isActive = true
         playSoundButton.centerXAnchor.constraint(equalTo: pageImage.centerXAnchor).isActive = true
         playSoundButton.widthAnchor.constraint(equalToConstant: playSoundButtonWidth).isActive = true
-        playSoundButton.heightAnchor.constraint(equalToConstant: playSoundButtonHeight).isActive = true
+        playSoundButton.widthAnchor.constraint(equalTo: playSoundButton.heightAnchor, multiplier: 1).isActive = true
+//        playSoundButton.heightAnchor.constraint(equalToConstant: playSoundButtonHeight).isActive = true
         
         addSubview(storyTextView)
 
@@ -208,13 +211,15 @@ class PageView: UIView {
     }
     
     override func layoutSubviews() {
-        super.layoutSubviews()
+//        super.layoutSubviews()
+        print("layout subviews")
         storyTextView.adjustsFontSizeToFitWidth = true
         
         storyTextView.topAnchor.constraint(equalTo: playSoundButton.bottomAnchor, constant: 10).isActive = true
         storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         storyTextView.widthAnchor.constraint(lessThanOrEqualToConstant: frame.width/1.5).isActive = true
-        storyTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+//        storyTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
+        storyTextView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         storyTextView.sizeToFit()
 
