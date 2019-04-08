@@ -23,7 +23,6 @@ protocol SceneDelegate : class {
     func fadeInTitleAndButtons()
     func finishedReadingCallback()
     func loadUpTempleton()
-    
 }
 
 class TempletonViewController: UIViewController, SceneDelegate {
