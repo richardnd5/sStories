@@ -107,6 +107,7 @@ class PlayZoneBubble: UIView {
         let randomColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
 
         changeBackgroundColorGraduallyTo(randomColor, time: 0.2)
+        Haptics.shared.vibrate(.light)
         
         
         imageView.scaleTo(scaleTo: 1.6, time: 0.3,{
@@ -207,45 +208,6 @@ class PlayZoneBubble: UIView {
         
         CATransaction.commit()
     }
-    
-//    func createParticles() {
-//        let particleEmitter = CAEmitterLayer()
-//        
-//        particleEmitter.emitterPosition = CGPoint(x: center.x, y: -96)
-//        particleEmitter.emitterShape = .line
-//        particleEmitter.emitterSize = CGSize(width: frame.size.width, height: 1)
-//        
-//        let red = makeEmitterCell(color: UIColor.red)
-//        let green = makeEmitterCell(color: UIColor.green)
-//        let blue = makeEmitterCell(color: UIColor.blue)
-//        
-//        particleEmitter.emitterCells = [red, green, blue]
-//        
-//        layer.addSublayer(particleEmitter)
-//        print("running particle")
-//    }
-//    
-//    func makeEmitterCell(color: UIColor) -> CAEmitterCell {
-//        let cell = CAEmitterCell()
-//        cell.birthRate = 3
-//        cell.lifetime = 7.0
-//        cell.lifetimeRange = 0
-//        cell.color = color.cgColor
-//        cell.velocity = 200
-//        cell.velocityRange = 50
-//        cell.emissionLongitude = CGFloat.pi
-//        cell.emissionRange = CGFloat.pi / 4
-//        cell.spin = 2
-//        cell.spinRange = 3
-//        cell.scaleRange = 0.5
-//        cell.scaleSpeed = -0.05
-//        
-//        
-////        cell.contents = UIImage(named: "rellInButton")!.cgImage
-//        cell.contents = resizedImage(name: "whiteDot")
-//        
-//        return cell
-//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

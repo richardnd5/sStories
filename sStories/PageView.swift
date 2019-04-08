@@ -186,13 +186,13 @@ class PageView: UIView {
         addSubview(nextButton)
         nextButton.alpha = 0.0
 
-        let buttonWidth = frame.width/10
-        let buttonHeight = frame.height/5
+        let buttonWidth = frame.width/15
+        let buttonHeight = frame.height/10
         
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         
         nextButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        nextButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor).isActive = true
+        nextButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant:-buttonWidth/3).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: buttonWidth).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: buttonHeight).isActive = true
         
@@ -204,7 +204,7 @@ class PageView: UIView {
         
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor).isActive = true
-        backButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor).isActive = true
+        backButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: buttonWidth/6).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: buttonWidth/2).isActive = true
         backButton.heightAnchor.constraint(equalToConstant: buttonHeight/2).isActive = true
         

@@ -72,6 +72,8 @@ class Button: UIButton {
     // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
+        Haptics.shared.vibrate(.light)
+        
         
         if sender?.tag == ButtonTypee.next.rawValue || sender?.tag == ButtonTypee.backStory.rawValue {
             playSoundClip(.touchDown)
@@ -87,6 +89,7 @@ class Button: UIButton {
     
     @objc private func touchUpInside(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 1, time: 0.4)
+        Haptics.shared.vibrate(.medium)
         
         if sender!.tag == ButtonTypee.about.rawValue {
             delegate?.goToAboutPage()

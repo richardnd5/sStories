@@ -152,6 +152,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     
     func popBubble(_ note: MiniPerformingNoteView){
         bubbleScore.addToScore()
+        Haptics.shared.vibrate(.light)
         
         note.shrinkRotateAndRemove()
         

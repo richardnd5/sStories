@@ -287,7 +287,6 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         for (index, range) in arrayOfRanges.enumerated() {
             if range.contains(xPos) && previousNote != index {
                 previousNote = index
-                print(index)
                 note.pitchBend(amount: Double(pitchBendArray[index]))
                 
                 let xScaled = Rescale(from: (0, frame.width), to: (0.0, 1.0)).rescale(xPos)
@@ -388,6 +387,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     @objc func handlePress(_ sender: UILongPressGestureRecognizer){
         if sender.state == .began {
             let note = sender.view as! PlayZoneBubble
+            Haptics.shared.vibrate(.light)
             Sound.shared.generatePianoImprov(notes: note.pitches, beats: note.rhythms, pressedNote: sender)
             note.pulseToRhythm()
             // Play first note of the sequence on touch down.

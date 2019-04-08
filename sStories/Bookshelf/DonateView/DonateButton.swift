@@ -29,11 +29,13 @@ class DonateButton: UIButton {
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
         playSoundClip(.buttonDown)
+        Haptics.shared.vibrate(.light)
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 1, time: 0.4)
         playSoundClip(.buttonUp)
+        Haptics.shared.vibrate(.medium)
     }
     
     @objc private func touchUpOutside(_ sender: UIButton?) {

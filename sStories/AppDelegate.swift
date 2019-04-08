@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     
         Sound.shared.setup()
-        playSoundClip(.fishingThrowbackDrop)
+        playSoundClip(.openingNoodle)
         workingIAPProduct.shared.setupIAP()
         window = UIWindow()
 //        window?.rootViewController = TempletonViewController()

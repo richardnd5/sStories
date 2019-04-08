@@ -43,6 +43,7 @@
 		2222687B22330AA400775CC3 /* scrollDownButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 2222687A22330AA400775CC3 /* scrollDownButton.png */; };
 		2222687D2233260E00775CC3 /* playButtonNew.png in Resources */ = {isa = PBXBuildFile; fileRef = 2222687C2233260D00775CC3 /* playButtonNew.png */; };
 		222758C3221C5AC7001C0314 /* stars.png in Resources */ = {isa = PBXBuildFile; fileRef = 222758C2221C5AC7001C0314 /* stars.png */; };
+		22370F36225C06F4003815CA /* openingNoodle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22370F35225C06F4003815CA /* openingNoodle.mp3 */; };
 		223FDC1E222745CC008F8864 /* off.png in Resources */ = {isa = PBXBuildFile; fileRef = 223FDC1D222745CC008F8864 /* off.png */; };
 		224D964C221B230900EBF0D3 /* Town.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964B221B230900EBF0D3 /* Town.png */; };
 		224D9650221B26E400EBF0D3 /* performingImage1.5.png in Resources */ = {isa = PBXBuildFile; fileRef = 224D964F221B26E400EBF0D3 /* performingImage1.5.png */; };
@@ -403,6 +404,7 @@
 		2222687A22330AA400775CC3 /* scrollDownButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scrollDownButton.png; sourceTree = "<group>"; };
 		2222687C2233260D00775CC3 /* playButtonNew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playButtonNew.png; sourceTree = "<group>"; };
 		222758C2221C5AC7001C0314 /* stars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stars.png; sourceTree = "<group>"; };
+		22370F35225C06F4003815CA /* openingNoodle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = openingNoodle.mp3; sourceTree = "<group>"; };
 		223FDC1D222745CC008F8864 /* off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = off.png; sourceTree = "<group>"; };
 		224D964B221B230900EBF0D3 /* Town.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Town.png; sourceTree = "<group>"; };
 		224D964F221B26E400EBF0D3 /* performingImage1.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = performingImage1.5.png; sourceTree = "<group>"; };
@@ -867,6 +869,7 @@
 				22C12BEB21F7B6E7006D288F /* Page Turn Audio Files */,
 				8698D88D21BF416600ADED35 /* backgroundPlaceholder.wav */,
 				8698D88E21BF416600ADED35 /* marimbaC.wav */,
+				22370F35225C06F4003815CA /* openingNoodle.mp3 */,
 				86086AC2222127AB00B5FB97 /* IChord.mp3 */,
 				86086AC72221299900B5FB97 /* IVChord.mp3 */,
 				86086AC3222127AB00B5FB97 /* VChord.mp3 */,
@@ -1523,6 +1526,7 @@
 				8698D89621BF417600ADED35 /* pageTurnTouchUp.wav in Resources */,
 				868251F722121D3B0082D703 /* melody28.mp3 in Resources */,
 				2251122C22024EAF0087747F /* test.mp3 in Resources */,
+				22370F36225C06F4003815CA /* openingNoodle.mp3 in Resources */,
 				22EAC3262213F232000FB428 /* bubbleScoreNoteImage.png in Resources */,
 				86EBE0C322135BFA0010D1C2 /* waterPlink.mp3 in Resources */,
 				866EA6E321F413CF00B28BA6 /* turnPiano1.mp3 in Resources */,

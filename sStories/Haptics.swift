@@ -3,15 +3,16 @@ import UIKit
 
 class Haptics {
     
+    static var shared = Haptics()
     var generator = UIImpactFeedbackGenerator()
     
     init() {
-        generator = UIImpactFeedbackGenerator(style: .heavy)
+        generator = UIImpactFeedbackGenerator(style: .medium)
         generator.prepare()
     }
     
-    func vibrate(){
-        generator = UIImpactFeedbackGenerator(style: .heavy)
+    func vibrate(_ style: UIImpactFeedbackGenerator.FeedbackStyle = .medium){
+        generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
         generator.prepare()
     }
