@@ -56,6 +56,7 @@ class AboutByeahView: UIView, UIScrollViewDelegate {
     func createBackButton(){
         backButton = Button(frame: .zero, name: "backArrow")
         addSubview(backButton)
+        backButton.tag = 101
     }
     
     func createBlurbs(){

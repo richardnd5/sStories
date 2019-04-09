@@ -174,7 +174,11 @@ class ArrangingScene: UIView {
                             instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
                             sceneState = .arrangementCompleted
 //                            delegate?.returnToStoryFromArranging()
-                            delegate?.nextPage()
+                            
+                            Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { __ in
+                                self.delegate?.nextPage()
+                            }
+                            
                         }
                     } else if !frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
                         // move view to original position

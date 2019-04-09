@@ -217,7 +217,10 @@ class TempletonViewController: UIViewController, SceneDelegate {
         UINavigationController.attemptRotationToDeviceOrientation()
         
         if storyReadThrough {
-            createStoryFinishedPopUpView()
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
+                self.createStoryFinishedPopUpView()
+            }
+            
         }
         
     }
@@ -326,9 +329,10 @@ class TempletonViewController: UIViewController, SceneDelegate {
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage = 0
                 self.tempStoryLine = 0
+                self.storyReadThrough = true
                 self.createHomePage()
                 self.pageTurnerVisible = false
-                self.storyReadThrough = true
+                
             }
         }
     }

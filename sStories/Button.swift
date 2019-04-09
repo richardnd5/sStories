@@ -56,6 +56,8 @@ class Button: UIButton {
             tag = ButtonTypee.backStory.rawValue
         case "reelInButton":
             tag = ButtonTypee.reelIn.rawValue
+        case "byeahButton":
+            tag = ButtonTypee.byeahButton.rawValue
         default:
             tag = ButtonTypee.next.rawValue
         }
@@ -80,6 +82,8 @@ class Button: UIButton {
         } else if sender?.tag == 100 {
             // band aid to stop sound on the byeah button for the about page
             return
+        } else if sender!.tag == ButtonTypee.byeahButton.rawValue {
+            playSoundClip(.buttonDown)
         }
         else {
             playSoundClip(.buttonDown)
@@ -110,8 +114,9 @@ class Button: UIButton {
             delegate?.previousMoment()
             
             playSoundClip(.touchUp)
+        } else if sender!.tag == ButtonTypee.byeahButton.rawValue || sender!.tag == 101 {
+            playSoundClip(.buttonUp)
         }
-        
         else if sender!.tag == ButtonTypee.reelIn.rawValue {
             catchingMelodyDelegate!.reelIn()
             

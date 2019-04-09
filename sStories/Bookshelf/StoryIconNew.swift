@@ -77,6 +77,7 @@ class StoryIconNew: UIView {
     
     @objc private func touchUpInside(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 1, time: 0.4)
+        playSoundClip(.buttonUp)
         //        delegate?.loadUpStory(name)
         Haptics.shared.vibrate(.medium)
         

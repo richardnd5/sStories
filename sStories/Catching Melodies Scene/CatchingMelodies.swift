@@ -297,7 +297,7 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
             self.createRandomMelody()
             self.createCatchOrThrowBackImages()
             self.createLabels()
-            self.instructionLabel?.changeText(to: "Tap on the melody to hear it, then drag it to keep or throw it back.")
+            self.instructionLabel?.changeText(to: "Drag the melody to keep it or throw it back.")
             
             self.delegate?.stopRandomBubbles()
 //            self.reelInButton.fadeOut(0.5)

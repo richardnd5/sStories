@@ -11,7 +11,7 @@ struct Blurb {
 }
 
 enum ButtonTypee: Int {
-    case about = 0, read, back, normal, exit, next, reelIn, backStory
+    case about = 0, read, back, normal, exit, next, reelIn, backStory, byeahButton
 }
 
 enum KeyType {
