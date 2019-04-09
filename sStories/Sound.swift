@@ -201,7 +201,7 @@ class Sound {
         
         DispatchQueue.main.async {
             if status == .noteOn {
-                self.pianoSampler.play(noteNumber: noteNumber, velocity: 60)
+                self.pianoSampler.play(noteNumber: noteNumber, velocity: 80)
                 
             } else if status == .noteOff {
                 self.pianoSampler.stop(noteNumber: noteNumber)
@@ -311,9 +311,9 @@ class Sound {
     func oldPlayNote(_ note: MIDINoteNumber?, _ note2: PageTurnPianoNote = .C4){
         
         if note != nil {
-            pianoSampler.play(noteNumber: note!, velocity: 60)
+            pianoSampler.play(noteNumber: note!, velocity: 80)
         } else {
-            pianoSampler.play(noteNumber: note2.rawValue, velocity: 60)
+            pianoSampler.play(noteNumber: note2.rawValue, velocity: 80)
         }
     }
     

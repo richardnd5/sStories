@@ -35,7 +35,7 @@ class PianoAccompaniment {
     
     func playMelody(){
         isPlaying = true
-        do { try sampler.play(noteNumber: 60, velocity: 50, channel: 1) } catch { print("couldn't play the melody. Why? Here: \(error)") }
+        do { try sampler.play(noteNumber: 60, velocity: 70, channel: 1) } catch { print("couldn't play the melody. Why? Here: \(error)") }
     }
     
     func stopMelody(){

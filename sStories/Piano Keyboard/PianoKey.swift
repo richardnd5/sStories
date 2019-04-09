@@ -118,7 +118,7 @@ class PianoKey : UIView {
     
     func playKey(){
         
-        Sound.shared.pianoSampler.play(noteNumber: keyNumber, velocity: 60)
+        Sound.shared.pianoSampler.play(noteNumber: keyNumber, velocity: 80)
         keyIsActive = true
         if keyIsActive {
             increaseDot()

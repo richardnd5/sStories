@@ -1,7 +1,7 @@
 let tempo = 80.0
 let switchToCatchingMelodiesScene = 5
-let switchToArrangingScene = 9
-let switchToPerformingScene = 11
+let switchToArrangingScene = 10
+let switchToPerformingScene = 12
 
 let blurbs = [
     Blurb(textBlurb: """
@@ -53,17 +53,21 @@ let pages = [
     Page(imageName: "Town", storyText: storyline[0...0]),
     Page(imageName: "TalkingToCrowdAboutFishing", storyText: storyline[1...3]),
     Page(imageName: "Mountain", storyText: storyline[4...4]),
-    Page(imageName: "PondNew", storyText: storyline[5...6]),
+    Page(imageName: "templetonLookingOutOverPond", storyText: storyline[5...6]),
     Page(imageName: "Fishing", storyText: storyline[7...7]),
     Page(imageName: "SackOfMelodies", storyText: storyline[8...8]), // this is a dummy slot to make space for the catching melodies scene
-    Page(imageName: "SackOfMelodies", storyText: storyline[8...9]),
+    Page(imageName: "gatherMelodies", storyText: storyline[8...8]),
+    Page(imageName: "templetonEnterVillage", storyText: storyline[9...9]),
     Page(imageName: "ShowingCrowdSackOfMelodies", storyText: storyline[10...11]),
     Page(imageName: "Cabin", storyText: storyline[12...12]),
     Page(imageName: "Cabin", storyText: storyline[12...12]), // this is a dummy slot to make space for the arrangement scene
     Page(imageName: "Performance", storyText: storyline[13...14]),
     Page(imageName: "Performance", storyText: storyline[15...15]), // this is another dummy slot
-    Page(imageName: "Performance", storyText: storyline[15...19]),
-    Page(imageName: "PondNew", storyText: storyline[20...20]),
+    Page(imageName: "Performance", storyText: storyline[15...15]),
+    Page(imageName: "friendsCloseUp", storyText: storyline[16...17]),
+    Page(imageName: "stoodUpAndClapped", storyText: storyline[18...18]),
+    Page(imageName: "goingHome", storyText: storyline[19...19]),
+    Page(imageName: "duskPond", storyText: storyline[20...20]),
     Page(imageName: "stars", storyText: storyline[21...22]),
 ]
 
