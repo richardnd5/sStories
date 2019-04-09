@@ -25,6 +25,7 @@ class HomePage: UIView {
     
     var homeButton : Button!
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -82,7 +83,7 @@ class HomePage: UIView {
         bubblePlayZone = BubblePlayZone(frame: frame)
         addSubview(bubblePlayZone)
     }
-
+    
     var backgroundInitialPosition : CGPoint!
     func addBackground(){
         let width = frame.height/1.3

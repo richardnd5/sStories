@@ -45,6 +45,8 @@ class TempletonViewController: UIViewController, SceneDelegate {
     private var pageTurnerVisible = false
     static var mainStoryLinePosition = 0
     
+    var storyReadThrough = false
+    
     // All the views
     
     var homePage : HomePage!
@@ -54,6 +56,9 @@ class TempletonViewController: UIViewController, SceneDelegate {
     var arrangingScene : ArrangingScene!
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
+    
+    var storyFinishedPopUpView : StoryFinishedPopUpView!
+
     
     var keyboardTurner : KeyboardTurner!
     
@@ -211,6 +216,30 @@ class TempletonViewController: UIViewController, SceneDelegate {
         homePage.homeButton.addTarget(self, action: #selector(showBookshelf), for: .touchUpInside)
         UINavigationController.attemptRotationToDeviceOrientation()
         
+        if storyReadThrough {
+            createStoryFinishedPopUpView()
+        }
+        
+    }
+    
+    func createStoryFinishedPopUpView(){
+        
+            storyFinishedPopUpView = StoryFinishedPopUpView()
+            view.addSubview(storyFinishedPopUpView)
+            
+            storyFinishedPopUpView.translatesAutoresizingMaskIntoConstraints = false
+            storyFinishedPopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            storyFinishedPopUpView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            storyFinishedPopUpView.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+            storyFinishedPopUpView.widthAnchor.constraint(equalTo: storyFinishedPopUpView.heightAnchor, multiplier: 1.5).isActive = true
+
+            storyFinishedPopUpView.okayButton.addTarget(self, action: #selector(handlePopUpOkayButtonPressed), for: .touchUpInside)
+    }
+    
+    func removeStoryFinishedPopUpView(){
+        if storyFinishedPopUpView.superview != nil {
+            storyFinishedPopUpView.shrinkAndRemove(time: 0.5)
+        }
     }
     
     func createAboutPage(){
@@ -299,6 +328,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
                 self.tempStoryLine = 0
                 self.createHomePage()
                 self.pageTurnerVisible = false
+                self.storyReadThrough = true
             }
         }
     }
@@ -331,6 +361,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     
     func startStory() {
         homePage.fadeAndRemove(time: 1.0) {
+            self.storyReadThrough = false
             self.stopRandomBubbles()
             self.createPage()
         }
@@ -486,6 +517,8 @@ class TempletonViewController: UIViewController, SceneDelegate {
         VoiceOverAudio.shared.changeAudioFile(to: "readStory\(TempletonViewController.mainStoryLinePosition)")
     }
     
+    
+    
     @objc func showBookshelf(){
         
         Sound.shared.stopPondBackground()
@@ -501,6 +534,10 @@ class TempletonViewController: UIViewController, SceneDelegate {
             })
         })
         
+    }
+    
+    @objc func handlePopUpOkayButtonPressed(_ sender: UIButton){
+        removeStoryFinishedPopUpView()
     }
     
     override var prefersStatusBarHidden: Bool{

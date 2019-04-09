@@ -311,9 +311,9 @@ class Sound {
     func oldPlayNote(_ note: MIDINoteNumber?, _ note2: PageTurnPianoNote = .C4){
         
         if note != nil {
-            pianoSampler.play(noteNumber: note!, velocity: 30)
+            pianoSampler.play(noteNumber: note!, velocity: 60)
         } else {
-            pianoSampler.play(noteNumber: note2.rawValue, velocity: 30)
+            pianoSampler.play(noteNumber: note2.rawValue, velocity: 60)
         }
     }
     
