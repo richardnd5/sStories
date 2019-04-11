@@ -171,6 +171,24 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
         melodyImage?.addGestureRecognizer(tapGesture)
+        
+    }
+    
+    func moveMelodyToShowDragging(){
+        
+        isUserInteractionEnabled = false
+        let currentPoint = melodyImage?.frame.origin
+
+        let temporarySpot = CGPoint(x: (sack?.frame.origin.x)!+(melodyImage?.frame.width)!/2, y: (sack?.frame.origin.y)!+(melodyImage?.frame.height)!/2)
+        
+        Timer.scheduledTimer(withTimeInterval: 0.6, repeats: false, block:{_ in
+            self.melodyImage?.moveViewTo(temporarySpot, time: 2.0, {
+                self.melodyImage?.moveViewTo(currentPoint!, time: 1.5, {
+                    self.isUserInteractionEnabled = true
+                })
+            })
+        })
+
     }
     
     func missingMelodyType(melodyArray: [MelodyImage]) -> MelodyType {
@@ -212,6 +230,10 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         throwbackWater = CatchOrThrowbackImage(frame: CGRect(x: frame.width, y: frame.height/4, width: frame.width/3, height: frame.height/3),imageName: "throwbackWater")
         addSubview(throwbackWater!)
         throwbackWater!.frame.origin = CGPoint(x: frame.width-throwbackWater!.frame.width, y: frame.height-throwbackWater!.frame.height-bottomPadding)
+        
+        if melodyImageArray.count == 0 {
+            moveMelodyToShowDragging()
+        }
     }
     
     func goBackToFishing(){
