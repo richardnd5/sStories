@@ -40,7 +40,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     var currentProduct = SKProduct()
     
     private var currentState = AppState.bookshelfHome
-    private var currentPage = 5
+    private var currentPage = 0
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
     static var mainStoryLinePosition = 0
