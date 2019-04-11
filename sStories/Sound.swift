@@ -22,8 +22,8 @@ class Sound {
     var trackV : AKMusicTrack!
     
     var trackImprov : AKMusicTrack!
-    var trackAccompCallback : AKCallbackInstrument!
-    var trackImprovCallback : AKCallbackInstrument!
+    var trackAccompCallback : AKMIDICallbackInstrument!
+    var trackImprovCallback : AKMIDICallbackInstrument!
     
     var chordIAudio : PianoAccompaniment!
     var chordIFadeCount = 0
@@ -132,10 +132,14 @@ class Sound {
     
     func setupPlayZoneSequencer(){
         
-        trackAccompCallback = AKCallbackInstrument()
+        trackAccompCallback = AKMIDICallbackInstrument()
+        
+        
         trackAccompCallback.callback = sequencerCallback
         
-        trackImprovCallback = AKCallbackInstrument()
+        
+        
+        trackImprovCallback = AKMIDICallbackInstrument()
         trackImprovCallback.callback = improvCallback
         
         accompTrack = playZoneSequencer.newTrack("accomp")
@@ -195,34 +199,53 @@ class Sound {
         trackImprov.clear()
     }
     
-    func improvCallback(_ status: AKMIDIStatus,
+    func improvCallback(_ status: UInt8,
                         _ noteNumber: MIDINoteNumber,
                         _ velocity: MIDIVelocity) {
         
+        
         DispatchQueue.main.async {
-            if status == .noteOn {
+            
+            // 145 is note on message, 129 is note off.
+            if status == 145 {
                 self.pianoSampler.play(noteNumber: noteNumber, velocity: 80)
                 
-            } else if status == .noteOff {
+            } else if status == 129 {
                 self.pianoSampler.stop(noteNumber: noteNumber)
             }
         }
+//            if status.type == .noteOn {
+//                self.pianoSampler.play(noteNumber: noteNumber, velocity: 80)
+//
+//            } else if status.type == .noteOff {
+//                self.pianoSampler.stop(noteNumber: noteNumber)
+//            }
+//        }
     }
     
     
-    func sequencerCallback(_ status: AKMIDIStatus,
+    func sequencerCallback(_ status: UInt8,
                            _ noteNumber: MIDINoteNumber,
                            _ velocity: MIDIVelocity) {
         
+        // 145 is note on message, 129 is note off.
         DispatchQueue.main.async {
-            if status == .noteOn {
+            if status == 145 {
                 self.playAccompaniment()
                 
                 print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
                 
-            } else if status == .noteOff {
+            } else if status == 129 {
                 
             }
+//            if status.type == .noteOn {
+//                self.playAccompaniment()
+//
+//                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
+//
+//            } else if status.type == .noteOff {
+//
+//            }
         }
     }
     
