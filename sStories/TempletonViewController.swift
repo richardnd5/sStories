@@ -174,7 +174,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     }
     
     func stopRandomBubbles(){
-        print("stopping bubbles yo!")
+//        print("stopping bubbles yo!")
         bubbleTimer.invalidate()
         bubblesArePlaying = false
         

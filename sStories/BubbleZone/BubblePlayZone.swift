@@ -10,7 +10,7 @@ protocol ButtonDelegate : class {
 class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     
     var background : BackgroundImage!
-
+    
     // Buttons
     var exitButton : ExitButton!
     var IChordButton : NewChordSwitchButton!
@@ -24,7 +24,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     let pitchBendArray = [-8,-7,-5,-3,-1,0,2,4,5,7,9,11,12,14,16,17,19,21,23,24,26,28,29,31,33,35,36]
     
     let noteSliderColors : Array<UIColor> = []
-
+    
     // Animator variables.
     var animator: UIDynamicAnimator!
     let gravityBehavior = UIGravityBehavior()
@@ -36,6 +36,8 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     var initialPosition : CGPoint!
     weak var delegate : SceneDelegate?
     
+    var bubbleCount = 0
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initialPosition = CGPoint(x: frame.minX, y: frame.minY)
@@ -45,11 +47,11 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         setupGestures()
         setupAnimator()
         fillClosedRangeArray()
-
+        
         scaleTo(scaleTo: 0.12, time: 0.0)
         self.delegate?.stopRandomBubbles()
         throbWithWiggle(scaleTo: 0.13, time: 0.5, fromValue: 0.12)
-
+        
         
     }
     // MARK - setup functions.
@@ -58,7 +60,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         addSubview(exitButton)
         exitButton.delegate = self
         
-        let size = frame.height/20
+        let size = frame.height/15
         let padding = CGFloat(0)
         
         exitButton.translatesAutoresizingMaskIntoConstraints = false
@@ -88,12 +90,12 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         IVChordButton.delegate = self
         IVChordButton.translatesAutoresizingMaskIntoConstraints = false
         IVChordButton.topAnchor.constraint(equalTo: IChordButton.topAnchor).isActive = true
-//        IVChordButton.centerXAnchor.constraint(equalTo: centerXAnchor,constant: -frame.width/9).isActive = true
+        //        IVChordButton.centerXAnchor.constraint(equalTo: centerXAnchor,constant: -frame.width/9).isActive = true
         IVChordButton.leadingAnchor.constraint(equalTo: IChordButton.trailingAnchor).isActive = true
         IVChordButton.widthAnchor.constraint(equalToConstant: width).isActive = true
         IVChordButton.heightAnchor.constraint(equalToConstant: height).isActive = true
         
-    
+        
         VChordButton = NewChordSwitchButton(frame: CGRect.zero, chord: .V)
         addSubview(VChordButton)
         VChordButton.delegate = self
@@ -114,34 +116,40 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         
     }
     
-    func createNumberOfBubbles(_ numberOfBubbles: Int = 0){
-        for _ in 0..<numberOfBubbles{
-
-        let width = frame.width/14
-        let height = frame.width/14
-        let x = CGFloat.random(in: frame.width/4...frame.width-frame.width/4)
-        let y = CGFloat.random(in: frame.height/40...frame.height/2-frame.height/40)
-        let note = PlayZoneBubble(frame: CGRect(x: x, y: y, width: width, height: height))
-        addSubview(note)
-        gravityBehavior.addItem(note)
-        collisionBehavior.addItem(note)
+    func createMissingBubbles(_ numberOfBubbles: Int = 0){
         
-        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-        press.minimumPressDuration = 0.0
-        note.addGestureRecognizer(press)
-        press.delegate = self
-            
-        let pan = UIPanGestureRecognizer(target: self, action: (#selector(handlePan)))
-        note.addGestureRecognizer(pan)
-
-        bringSubviewToFront(note)
+        let numberOfBubblesNeeded = numberOfBubbles-bubbleCount
+        print(numberOfBubblesNeeded)
         
-            
+        if numberOfBubblesNeeded > 0 {
+            for _ in 0..<numberOfBubblesNeeded{
+                
+                let width = frame.width/14
+                let height = frame.width/14
+                let x = CGFloat.random(in: frame.width/4...frame.width-frame.width/4)
+                let y = CGFloat.random(in: frame.height/40...frame.height/2-frame.height/40)
+                let note = PlayZoneBubble(frame: CGRect(x: x, y: y, width: width, height: height))
+                addSubview(note)
+                gravityBehavior.addItem(note)
+                collisionBehavior.addItem(note)
+                
+                bubbleCount += 1
+                
+                let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
+                press.minimumPressDuration = 0.0
+                note.addGestureRecognizer(press)
+                press.delegate = self
+                
+                let pan = UIPanGestureRecognizer(target: self, action: (#selector(handlePan)))
+                note.addGestureRecognizer(pan)
+                
+                bringSubviewToFront(note)
+            }
         }
+        
     }
     
     func setupAnimator(){
-        
         animator = UIDynamicAnimator(referenceView: self)
         
         gravityBehavior.gravityDirection = CGVector(dx: 0, dy: 0)
@@ -179,18 +187,46 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
     }
     
+    func fadeInBubbles(){
+        subviews.forEach { view in
+            if view is PlayZoneBubble {
+                
+                let note = view as! PlayZoneBubble
+                
+                note.fadeTo(opacity: 1.0, time: 0.8)
+            }
+        }
+    }
+    
+    
+    func fadeOutBubbles(){
+        subviews.forEach { view in
+            if view is PlayZoneBubble {
+                
+                let note = view as! PlayZoneBubble
+                
+                note.fadeTo(opacity: 0, time: 0.8)
+            }
+        }
+    }
     
     // MARK - Usage Functions
     func popAllBubbles(){
         
-            subviews.forEach { view in
-                if view is PlayZoneBubble {
-                    let note = view as! PlayZoneBubble
-                    note.fadeAndRemove(time: 1.4)
-                }
+        subviews.forEach { view in
+            if view is PlayZoneBubble {
+                
+                let note = view as! PlayZoneBubble
+                gravityBehavior.removeItem(note)
+                collisionBehavior.removeItem(note)
+                note.fadeAndRemove(time: 1.4)
+                
             }
+        }
+        
+        
     }
-
+    
     func exitButtonTapped(){
         togglePlayZone()
     }
@@ -233,16 +269,17 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         if !isActive {
             isActive = true
             self.stopThrobWithWiggle()
-
+            
             scaleTo(scaleTo: 1.0, time: 1, {
                 self.exitButton.fadeIn()
                 self.IChordButton.fadeIn()
                 self.IVChordButton.fadeIn()
                 self.VChordButton.fadeIn()
                 self.offButton.fadeIn()
+                self.fadeInBubbles()
                 Sound.shared.startPlaySequencer()
                 Sound.shared.turnDownPond()
-                self.createNumberOfBubbles(totalBubbleScore)
+                self.createMissingBubbles(totalBubbleScore)
                 
                 self.delegate?.fadeOutTitleAndButtons()
                 self.delegate?.stopRandomBubbles()
@@ -262,11 +299,12 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             self.IVChordButton.fadeOut()
             self.VChordButton.fadeOut()
             self.offButton.fadeOut()
+            self.fadeOutBubbles()
             
             delegate?.createRandomBubblesAtRandomTimeInterval(time: 0.7)
             Sound.shared.stopPlaySequencer()
             Sound.shared.turnUpPond()
-            popAllBubbles()
+            //            popAllBubbles()
             self.delegate?.fadeInTitleAndButtons()
             
             let bottomPadding = superview!.frame.height/30
@@ -275,15 +313,17 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             let y = (superview?.frame.maxY)!-frame.height-selfPadding-bottomPadding
             let point = CGPoint(x: x, y: y)
             moveViewTo(point, time: 1)
+            
+            
         }
     }
-
+    
     func checkWhichNoteToPlay(_ sender: UIPanGestureRecognizer){
         let note = sender.view as! PlayZoneBubble
         let xPos = sender.view!.center.x
         let yPos = sender.view!.center.y
-//        let yScaledAlpha = Rescale(from: (0, frame.height), to: (1.5, 0.0)).rescale(yPos)
-
+        //        let yScaledAlpha = Rescale(from: (0, frame.height), to: (1.5, 0.0)).rescale(yPos)
+        
         for (index, range) in arrayOfRanges.enumerated() {
             if range.contains(xPos) && previousNote != index {
                 previousNote = index
@@ -292,7 +332,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
                 let xScaled = Rescale(from: (0, frame.width), to: (0.0, 1.0)).rescale(xPos)
                 let color = UIColor(hue: xScaled, saturation: 1.0, brightness: 1.0, alpha: 1.0)
                 note.changeBackgroundColorGraduallyTo(color, time: 0.2)
-
+                
             }
         }
         
@@ -307,34 +347,34 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
     @objc func handlePan(_ sender: UIPanGestureRecognizer){
         
         if background.frame.contains(sender.location(in: self)) {
-
+            
             let translation = sender.translation(in: self)
             sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
             sender.setTranslation(CGPoint.zero, in: self)
             
             if sender.state == .ended {
-            // 1
-            let velocity = sender.velocity(in: self)
-            let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
-            let slideMultiplier = magnitude / 500
-            print("magnitude: \(magnitude), slideMultiplier: \(slideMultiplier)")
-            
-            // 2
-            let slideFactor = 0.015 * slideMultiplier     //Increase for more of a slide
-            // 3
-            var finalPoint = CGPoint(x:sender.view!.center.x + (velocity.x * slideFactor),
-                                     y:sender.view!.center.y + (velocity.y * slideFactor))
-            // 4
-            finalPoint.x = min(max(finalPoint.x, 0), self.bounds.size.width)
-            finalPoint.y = min(max(finalPoint.y, 0), self.bounds.size.height)
-            
-            // 5
-            UIView.animate(withDuration: Double(slideFactor * 2),
-                           delay: 0,
-                           // 6
-                options: UIView.AnimationOptions.curveEaseOut,
-                animations: {sender.view!.center = finalPoint },
-                completion: nil)
+                // 1
+                let velocity = sender.velocity(in: self)
+                let magnitude = sqrt((velocity.x * velocity.x) + (velocity.y * velocity.y))
+                let slideMultiplier = magnitude / 500
+                print("magnitude: \(magnitude), slideMultiplier: \(slideMultiplier)")
+                
+                // 2
+                let slideFactor = 0.015 * slideMultiplier     //Increase for more of a slide
+                // 3
+                var finalPoint = CGPoint(x:sender.view!.center.x + (velocity.x * slideFactor),
+                                         y:sender.view!.center.y + (velocity.y * slideFactor))
+                // 4
+                finalPoint.x = min(max(finalPoint.x, 0), self.bounds.size.width)
+                finalPoint.y = min(max(finalPoint.y, 0), self.bounds.size.height)
+                
+                // 5
+                UIView.animate(withDuration: Double(slideFactor * 2),
+                               delay: 0,
+                               // 6
+                    options: UIView.AnimationOptions.curveEaseOut,
+                    animations: {sender.view!.center = finalPoint },
+                    completion: nil)
             }
             
         }
@@ -346,7 +386,7 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
             note.bigWiggle()
             
         }else if sender.state == .changed {
-
+            
             checkWhichNoteToPlay(sender)
             
         } else if sender.state == .ended {
@@ -397,29 +437,29 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
         }
         
     }
-
+    
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         // This function is used to detect touch events on views outside the superview's bounds
         
         var translatedPoint = exitButton.convert(point, from: self)
-
+        
         if (exitButton.bounds.contains(translatedPoint)) {
             return exitButton.hitTest(translatedPoint, with: event)
         }
-        
+            
         else {
             translatedPoint = IChordButton.convert(point, from: self)
             
             if (IChordButton.bounds.contains(translatedPoint)) {
                 return IChordButton.hitTest(translatedPoint, with: event)
             }
-            
+                
             else {
                 translatedPoint = IVChordButton.convert(point, from: self)
                 if (IVChordButton.bounds.contains(translatedPoint)) {
                     return IVChordButton.hitTest(translatedPoint, with: event)
                 }
-                
+                    
                 else {
                     translatedPoint = VChordButton.convert(point, from: self)
                     if (VChordButton.bounds.contains(translatedPoint)) {
@@ -430,11 +470,13 @@ class BubblePlayZone: UIView, ButtonDelegate, UIGestureRecognizerDelegate {
                             return offButton.hitTest(translatedPoint, with: event)
                         }
                     }
+                }
             }
-        }
         }
         return super.hitTest(point, with: event)
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

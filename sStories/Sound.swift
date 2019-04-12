@@ -233,7 +233,7 @@ class Sound {
             if status == 145 {
                 self.playAccompaniment()
                 
-                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
+//                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
                 
             } else if status == 129 {
                 

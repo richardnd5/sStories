@@ -11,8 +11,6 @@ class PlayZoneBubble: UIView {
     var imageView : UIImageView!
     var maskLayer = CAGradientLayer()
     var number = Int()
-    var type : MelodyType!
-    var data : Melody?
     var inCorrectSlot = false
     var glowTimer = Timer()
     var isPlaying = false
@@ -44,11 +42,11 @@ class PlayZoneBubble: UIView {
         
         generateRandomPitches()
         generateRandomRhythms()
-        setupOsc()
+        setupSawWave()
         
     }
     
-    func setupOsc(){
+    func setupSawWave(){
         filter = AKLowPassFilter(sawWave, cutoffFrequency: 3000)
         sawWave = AKOscillatorBank(waveform: AKTable(.positiveSawtooth))
         sawWave.attackDuration = 0.6
@@ -148,9 +146,6 @@ class PlayZoneBubble: UIView {
                 
                 Timer.scheduledTimer(withTimeInterval: time+distance, repeats: false) { _ in
                     self.scaleNoteUpAndDown()
-                    
-//                    self.changeBackgroundColorGraduallyTo(randomColor, time: 0.2)
-                    
                 }
             }
         }
@@ -207,6 +202,11 @@ class PlayZoneBubble: UIView {
         glowingOverlay.layer.add(glow, forKey: "stopGlow")
         
         CATransaction.commit()
+    }
+    
+    func disconnectOsc(){
+        sawWave.disconnectOutput()
+        filter.disconnectOutput()
     }
     
     required init?(coder aDecoder: NSCoder) {

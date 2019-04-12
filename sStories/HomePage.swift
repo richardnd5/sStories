@@ -29,8 +29,6 @@ class HomePage: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-
-        
         
         addBackground()
         createButtons()
@@ -72,7 +70,7 @@ class HomePage: UIView {
     
     func createBubblePlayZone(frame: CGRect){
         // Ewww. no auto layout. That is gross.
-        let width = frame.width/1.1
+        let width = frame.width/1.16
         let height = frame.height/1.2
         let padding = frame.height/30
         let selfPadding = height*0.12
@@ -83,6 +81,12 @@ class HomePage: UIView {
         bubblePlayZone = BubblePlayZone(frame: frame)
         addSubview(bubblePlayZone)
     }
+    
+//    func removeAndRecreate(){
+//        bubblePlayZone.fadeAndRemove(time: 1.0){
+//            self.createBubblePlayZone(frame: self.frame)
+//        }
+//    }
     
     var backgroundInitialPosition : CGPoint!
     func addBackground(){
@@ -127,11 +131,6 @@ class HomePage: UIView {
         titleImage.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         titleImage.widthAnchor.constraint(equalToConstant: frame.width/1.5).isActive = true
         titleImage.heightAnchor.constraint(equalToConstant: frame.height/5).isActive = true
-        
-        
-        
-        
-        
         
         readButton.translatesAutoresizingMaskIntoConstraints = false
         readButton.widthAnchor.constraint(equalToConstant: frame.height/6).isActive = true
