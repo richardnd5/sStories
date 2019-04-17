@@ -948,6 +948,7 @@
 		860DE93221C2073E00A7370D /* Image Assets */ = {
 			isa = PBXGroup;
 			children = (
+				22E96F80225C792800E33241 /* templetonLookingOutOverPond.png */,
 				22C12C0421F7B716006D288F /* Performance Images */,
 				22EAC3252213F232000FB428 /* bubbleScoreNoteImage.png */,
 				22C7F9862232E1DA005A38DD /* reelInButton.png */,
@@ -1241,7 +1242,6 @@
 				869027E821F5956C00C3EF0C /* Performing Scene */,
 				866EA65821F2E8CB00B28BA6 /* PageTurner */,
 				860DE93221C2073E00A7370D /* Image Assets */,
-				22E96F80225C792800E33241 /* templetonLookingOutOverPond.png */,
 				860DE93121C2072F00A7370D /* Sounds */,
 				226A1A12220274AB00E47009 /* Sound Clips */,
 				227AB452224C32EB005A00CE /* IAP */,
@@ -1935,7 +1935,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = sStories/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1958,7 +1958,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = sStories/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
