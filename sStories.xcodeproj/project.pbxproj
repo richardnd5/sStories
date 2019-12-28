@@ -907,7 +907,6 @@
 				0931786218D7B5674D609EB9 /* Pods-sStoriesTests.debug.xcconfig */,
 				96235AA6B44CC8885A4EBC38 /* Pods-sStoriesTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1396,6 +1395,7 @@
 				TargetAttributes = {
 					86BBBF2421BB08FD00CB17F2 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1407,10 +1407,12 @@
 					};
 					86BBBF3B21BB08FD00CB17F2 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 86BBBF2421BB08FD00CB17F2;
 					};
 					86BBBF4621BB08FE00CB17F2 = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 86BBBF2421BB08FD00CB17F2;
 					};
 				};
@@ -2048,7 +2050,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.byeah.sStories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -2072,7 +2074,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.byeah.sStories;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -2093,7 +2095,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathandrichard.sStoriesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sStories.app/sStories";
 			};
@@ -2115,7 +2117,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathandrichard.sStoriesTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/sStories.app/sStories";
 			};
@@ -2136,7 +2138,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathandrichard.sStoriesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = sStories;
 			};
@@ -2157,7 +2159,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nathandrichard.sStoriesUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = sStories;
 			};

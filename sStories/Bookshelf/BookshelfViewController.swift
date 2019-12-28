@@ -21,6 +21,7 @@ class BookshelfViewController: UIViewController {
             UIDevice.current.setValue(value, forKey: "orientation")
             
             let templetonController = TempletonViewController()
+            templetonController.modalPresentationStyle = .fullScreen
             self.present(templetonController, animated: false, completion: {
                 print("she was presented")
             })

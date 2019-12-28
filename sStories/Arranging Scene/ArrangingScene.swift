@@ -52,7 +52,7 @@ class ArrangingScene: UIView {
         
         let safe = safeAreaLayoutGuide
         instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: 0, bottom: 0, right: 0), size: .zero)
-        instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18)
+        instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18).isActive = true
         
         
     }

@@ -102,7 +102,7 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
         addSubview(instructionLabel!)
         let safe = safeAreaLayoutGuide
         instructionLabel?.anchor(top: topAnchor, leading: safe.leadingAnchor, trailing: safe.trailingAnchor, bottom: nil, padding: UIEdgeInsets(top: y, left: sidePadding, bottom: 0, right: -sidePadding), size: .zero)
-        instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18)
+        instructionLabel?.heightAnchor.constraint(equalToConstant: frame.height/18).isActive = true
         
     }
     
