@@ -56,7 +56,7 @@ class CatchingMelodies: UIView, CatchingMelodyProtocol {
     }
     
     func stopBackgroundSound(){
-        Sound.shared.stopPondBackground()
+        Sound.shared.stopPondBackgroundSound()
     }
     
     func createSackContainer(){

@@ -314,7 +314,7 @@ class Sound {
         pondBackground.playLoop()
     }
     
-    func stopPondBackground(){
+    func stopPondBackgroundSound(){
         pondBackground.stopLoop()
     }
     

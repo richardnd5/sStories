@@ -41,7 +41,7 @@ class HomePage: UIView {
 
         alpha = 0
 //        Sound.sharedInstance.openingMusic.loopOpeningMusic()
-        Sound.shared.stopPondBackground()
+        Sound.shared.stopPondBackgroundSound()
         Sound.shared.playPondBackground()
         
         fadeTo(opacity: 1.0, time: 1.5,{

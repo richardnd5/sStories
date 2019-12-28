@@ -40,7 +40,7 @@ class TempletonViewController: UIViewController, SceneDelegate {
     var currentProduct = SKProduct()
     
     private var currentState = AppState.bookshelfHome
-    private var currentPage = 5
+    private var currentPage = 0
     private var tempStoryLine = 0
     private var pageTurnerVisible = false
     static var mainStoryLinePosition = 0
@@ -48,7 +48,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
     var storyReadThrough = false
     
     // All the views
-    
     var homePage : HomePage!
     var aboutPage : AboutPage!
     var page : PageView!
@@ -56,59 +55,36 @@ class TempletonViewController: UIViewController, SceneDelegate {
     var arrangingScene : ArrangingScene!
     var performingScene: PerformingScene!
     var pageTurner : PageTurner!
-    
     var storyFinishedPopUpView : StoryFinishedPopUpView!
-
-    
     var keyboardTurner : KeyboardTurner!
-    
-    //    var bookmarkPage: BookmarkPage!
     var bubbleScore: BubbleScoreView!
     
     var animator: UIDynamicAnimator!
     let gravityBehavior = UIGravityBehavior()
     let collisionBehavior = UICollisionBehavior()
-    
     var bubblesArePlaying = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // The timer is implemented so that the device has time to actually rotate programmatically.
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block:{_ in
             self.loadUpTempleton()
             self.setupAnimator()
         })
-        
     }
     
     func loadUpTempleton(){
-        
-        //            bookshelfPage.fadeAndRemove(time: 0.7)
-        
-        
         currentState = .templetonFrontPage
         VoiceOverAudio.shared.delegate = self
-        
         self.createHomePage()
         self.createBubbleScore()
-        
-        
-        
-        
-        
     }
     
     func setupAnimator(){
-        
         animator = UIDynamicAnimator(referenceView: self.view)
-        
         gravityBehavior.gravityDirection = CGVector(dx: 0, dy: 0)
-        animator.addBehavior(gravityBehavior)
-        
         collisionBehavior.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collisionBehavior)
+        animator.addBehavior(gravityBehavior)
     }
     
     func generateRandomMusicSymbols(){
@@ -118,15 +94,14 @@ class TempletonViewController: UIViewController, SceneDelegate {
         let x = CGFloat.random(in: view.frame.width/4...view.frame.width-view.frame.width/4)
         let y = CGFloat.random(in: view.frame.height/40...view.frame.height/2-view.frame.height/40)
         let note = MiniPerformingNoteView(frame: CGRect(x: x, y: y, width: width, height: height))
+        
         view.addSubview(note)
         gravityBehavior.addItem(note)
         collisionBehavior.addItem(note)
         
-        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
-        
         let randomDirection = CGFloat.pi / CGFloat.random(in: -0.2...0.2)
         let randomMagnitude = CGFloat.random(in: 0...0.3)
-        
+        let pushBehavior = UIPushBehavior(items: [note], mode: UIPushBehavior.Mode.instantaneous)
         pushBehavior.setAngle(randomDirection, magnitude: randomMagnitude)
         animator.addBehavior(pushBehavior)
         
@@ -174,7 +149,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
     }
     
     func stopRandomBubbles(){
-//        print("stopping bubbles yo!")
         bubbleTimer.invalidate()
         bubblesArePlaying = false
         
@@ -193,8 +167,8 @@ class TempletonViewController: UIViewController, SceneDelegate {
     func createBubbleScore(){
         let frame = CGRect(x: 0, y: 0, width: view.frame.width/10, height: view.frame.height/10)
         bubbleScore = BubbleScoreView(frame: frame)
-        view.addSubview(bubbleScore)
         bubbleScore.layer.zPosition = 900
+        view.addSubview(bubbleScore)
         
         let safe = view.safeAreaLayoutGuide
         bubbleScore.translatesAutoresizingMaskIntoConstraints = false
@@ -202,7 +176,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
         bubbleScore.leadingAnchor.constraint(equalTo: safe.leadingAnchor).isActive = true
         bubbleScore.heightAnchor.constraint(equalToConstant: view.frame.height/12).isActive = true
         bubbleScore.widthAnchor.constraint(equalToConstant: view.frame.width/12).isActive = true
-        
     }
     
     func createHomePage(){
@@ -220,13 +193,10 @@ class TempletonViewController: UIViewController, SceneDelegate {
             Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false) { _ in
                 self.createStoryFinishedPopUpView()
             }
-            
         }
-        
     }
     
     func createStoryFinishedPopUpView(){
-        
             storyFinishedPopUpView = StoryFinishedPopUpView()
             view.addSubview(storyFinishedPopUpView)
             
@@ -254,7 +224,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
     }
     
     func createKeyboardTurner(){
-        // Not using autolayout.... tsk tsk
         let width = view.frame.width*0.9
         let height = view.frame.height/4
         let bottomPadding = view.frame.height/10
@@ -286,44 +255,37 @@ class TempletonViewController: UIViewController, SceneDelegate {
         }
     }
     
+    func incrementNextPage(){
+        self.currentPage+=1
+        self.tempStoryLine = 0
+        self.createPage()
+        self.pageTurnerVisible = false
+    }
+    
     func nextPage() {
         stopRandomBubbles()
         // If the next page is a regular page
         if page != nil && currentPage < pages.count-1 && currentState == .story {
-            
             page.fadeAndRemove(time: 1.0) {
-                print("running next page!")
-                self.currentPage+=1
-                self.tempStoryLine = 0
-                self.createPage()
-                self.pageTurnerVisible = false
+                self.incrementNextPage()
             }
             // If the current page is the fishing page.
         } else if currentState == .fishing {
             catchingMelody.stopBackgroundSound()
             catchingMelody.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
-                self.currentPage+=1
-                self.tempStoryLine = 0
-                self.createPage()
-                self.pageTurnerVisible = false
+                self.incrementNextPage()
             }
             // If the current page is the arranging page.
         } else if currentState == .arranging {
             arrangingScene.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
-                self.currentPage+=1
-                self.tempStoryLine = 0
-                self.createPage()
-                self.pageTurnerVisible = false
+                self.incrementNextPage()
             }
         } else if currentState == .performing {
             performingScene.fadeAndRemove(time: 1.0) {
                 self.currentState = .story
-                self.currentPage+=1
-                self.tempStoryLine = 0
-                self.createPage()
-                self.pageTurnerVisible = false
+                self.incrementNextPage()
             }
         } else if page != nil && currentPage == pages.count-1 && currentState == .story {
             page.fadeAndRemove(time: 1.0) {
@@ -332,7 +294,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
                 self.storyReadThrough = true
                 self.createHomePage()
                 self.pageTurnerVisible = false
-                
             }
         }
     }
@@ -347,13 +308,10 @@ class TempletonViewController: UIViewController, SceneDelegate {
         }
         
         if page != nil && currentPage > 0 && currentState == .story {
-            
             page.fadeAndRemove(time: 1.0) {
                 self.currentPage-=1
-                
                 self.createPage()
                 self.tempStoryLine = (self.page.storyText?.count)!-1
-                
                 self.pageTurnerVisible = false
             }
         }
@@ -394,7 +352,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
     }
     
     func createPage(){
-        
         if currentPage == switchToCatchingMelodiesScene {
             catchingMelody = CatchingMelodies(frame: view.frame)
             view.addSubview(catchingMelody!)
@@ -441,8 +398,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
                 tempStoryLine += 1
                 playSoundClip(.nextStoryLine)
                 page.expandText()
-                //                page.showNavigationButtons()
-                
                 TempletonViewController.mainStoryLinePosition += 1
                 
             } else if tempStoryLine == pages[currentPage].storyText.count-1 && (page?.canActivate)! && currentState == .story {
@@ -451,8 +406,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
                 if currentPage == 0 || currentPage == 8 {
                     if !pageTurnerVisible {
                         pageTurnerVisible = true
-                        
-                        
                         createKeyboardTurner()
                         page.expandText()
                         page.canActivate = false
@@ -463,8 +416,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
                 } else {
                     nextPage()
                 }
-                
-                
             }
             changeAudioOfStoryLineToMainStoryPosition()
         }
@@ -489,7 +440,6 @@ class TempletonViewController: UIViewController, SceneDelegate {
             }
             changeAudioOfStoryLineToMainStoryPosition()
         }
-        
     }
     
     func fadeInTitleAndButtons() {
@@ -513,32 +463,22 @@ class TempletonViewController: UIViewController, SceneDelegate {
     }
     
     func changeAudioOfStoryLineToMainStoryPosition(){
-        
         if TempletonViewController.mainStoryLinePosition >= storyline.count {
-            print("storyline number is greater than the storyline")
             TempletonViewController.mainStoryLinePosition = 0
         }
         VoiceOverAudio.shared.changeAudioFile(to: "readStory\(TempletonViewController.mainStoryLinePosition)")
     }
     
-    
-    
     @objc func showBookshelf(){
-        
-        Sound.shared.stopPondBackground()
+        Sound.shared.stopPondBackgroundSound()
         view.fadeTo(opacity: 0.0, time: 0.8, {
-            
-            
             let value = UIInterfaceOrientation.portrait.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             
             let templetonController = BookshelfViewController()
             templetonController.modalPresentationStyle = .fullScreen
-            self.present(templetonController, animated: false, completion: {
-                print("present bookshelf")
-            })
+            self.present(templetonController, animated: false)
         })
-        
     }
     
     @objc func handlePopUpOkayButtonPressed(_ sender: UIButton){
