@@ -17,8 +17,6 @@ class BookshelfViewController: UIViewController {
     func showTempleton(){
         
         view.fadeTo(opacity: 0.0, time: 0.8, {
-
-//            UINavigationController.attemptRotationToDeviceOrientation()
             let value = UIInterfaceOrientation.landscapeRight.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             
@@ -29,21 +27,11 @@ class BookshelfViewController: UIViewController {
         })
 
     }
-    
-//    func setupStoryIconDelegates(){
-//        for view in bookshelfPage.stackViewTop.subviews {
-//
-//
-//        }
-//    }
-    
+
     func createBookShelfPage(){
-//        stopRandomBubbles()
-//        currentState = .bookshelfHome
         bookshelfPage = BookshelfPage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         view.addSubview(bookshelfPage)
         bookshelfPage.fillSuperview()
-//        bookshelfPage.delegate = self
         
         createButtonPresses()
         

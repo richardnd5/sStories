@@ -10,35 +10,22 @@ import AudioKit
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
-//var navController: UINavigationController?
-
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     weak var delegate : SceneDelegate?
     
-    
-
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
-    
         Sound.shared.setup()
         playSoundClip(.openingNoodle)
         workingIAPProduct.shared.setupIAP()
         window = UIWindow()
-//        window?.rootViewController = TempletonViewController()
         window?.rootViewController = BookshelfViewController()
         window?.makeKeyAndVisible()
     
-
         return true
     }
-    
-    
 }
 

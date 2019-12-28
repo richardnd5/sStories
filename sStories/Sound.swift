@@ -8,13 +8,13 @@ class Sound {
     var pianoMixer = AKMixer()
     var soundEffectMixer = AKMixer()
     private var reverb = AKReverb()
-    private var sequencer = AKSequencer()
+    private var sequencer = AKAppleSequencer()
     private var patternArray = [MelodyAudio]()
     var pageTurnSoundArray = [PageTurnPianoPling]()
     var pondBackground = PondAmbience()
     var pianoSampler = AKSampler()
     
-    var playZoneSequencer = AKSequencer()
+    var playZoneSequencer = AKAppleSequencer()
     var playZoneSequenceLength = AKDuration(beats: 8.0)
     
     var accompTrack : AKMusicTrack!

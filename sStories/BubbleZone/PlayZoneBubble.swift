@@ -148,10 +148,7 @@ class PlayZoneBubble: UIView {
                     self.scaleNoteUpAndDown()
                 }
             }
-        }
-    }
-    
-
+        }    }
     
     func setupGlowingOverlay(){
         glowingOverlay = UIView(frame: CGRect.zero)
