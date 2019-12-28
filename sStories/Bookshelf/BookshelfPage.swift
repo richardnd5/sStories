@@ -95,7 +95,7 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         }
     }
     
-    func createStoryIcon(_ name: String) -> StoryIconNew {
+    func createStoryIcon(_ name: StoryName) -> StoryIconNew {
         let view = StoryIconNew(frame: .zero, name: name)
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -122,10 +122,10 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         iconContainer.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding).isActive = true
         iconContainer.bottomAnchor.constraint(equalTo: centerYAnchor, constant: frame.height/10).isActive = true
         
-        icon1 = createStoryIcon("whiteDot")
-        icon2 = createStoryIcon("templetonThumbnail")
-        icon3 = createStoryIcon("whiteDot")
-        icon4 = createStoryIcon("whiteDot");
+        icon1 = createStoryIcon(.whiteDot)
+        icon2 = createStoryIcon(.templeton)
+        icon3 = createStoryIcon(.whiteDot)
+        icon4 = createStoryIcon(.whiteDot)
         
         stackViewTop = UIStackView(arrangedSubviews: [icon1, icon2])
         stackViewTop.translatesAutoresizingMaskIntoConstraints = false
@@ -139,20 +139,15 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         stackViewBottom.distribution = .fillEqually
         iconContainer.addSubview(stackViewBottom)
         
-
         stackViewTop.topAnchor.constraint(equalTo: iconContainer.topAnchor).isActive = true
         stackViewTop.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor).isActive = true
         stackViewTop.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor).isActive = true
         stackViewTop.bottomAnchor.constraint(equalTo: iconContainer.centerYAnchor).isActive = true
 
-
         stackViewBottom.topAnchor.constraint(equalTo: stackViewTop.bottomAnchor).isActive = true
         stackViewBottom.leadingAnchor.constraint(equalTo: iconContainer.leadingAnchor).isActive = true
         stackViewBottom.trailingAnchor.constraint(equalTo: iconContainer.trailingAnchor).isActive = true
         stackViewBottom.bottomAnchor.constraint(equalTo: iconContainer.bottomAnchor).isActive = true
-        
-        
-
     }
     
     func createTitle(){
@@ -174,7 +169,6 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
             let v = view as! StoryIconNew
             v.button.backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         }
-        
         setupByeahConstraints()
     }
     

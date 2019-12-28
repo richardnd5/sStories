@@ -8,52 +8,38 @@ class BookshelfViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false, block:{_ in
             self.createBookShelfPage()
         })
     }
     
     func showTempleton(){
-        
         view.fadeTo(opacity: 0.0, time: 0.8, {
             let value = UIInterfaceOrientation.landscapeRight.rawValue
             UIDevice.current.setValue(value, forKey: "orientation")
             
             let templetonController = TempletonViewController()
             templetonController.modalPresentationStyle = .fullScreen
-            self.present(templetonController, animated: false, completion: {
-                print("she was presented")
-            })
+            self.present(templetonController, animated: false)
         })
-
     }
 
     func createBookShelfPage(){
         bookshelfPage = BookshelfPage(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         view.addSubview(bookshelfPage)
         bookshelfPage.fillSuperview()
-        
         createButtonPresses()
-        
-//        setupStoryIconDelegates()
-        //        bookshelfPage.templeton.addTarget(self, action: #selector(handleTempletonTap), for: .touchUpInside)
-        
-        //        setupDelegates()
     }
     
     func createAboutByeahPage(){
         aboutByeahPage = AboutByeahView()
         view.addSubview(aboutByeahPage)
         aboutByeahPage.fillSuperview()
-        
         aboutByeahPage.backButton.addTarget(self, action: #selector(handleAboutPageBackPressed), for: .touchUpInside)
     }
     
     func createDonatePopUpView(){
-        
         let safe = view.safeAreaLayoutGuide
-        
         donatePopUpView = DonatePopUpView()
         donatePopUpView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(donatePopUpView)
@@ -61,13 +47,11 @@ class BookshelfViewController: UIViewController {
         
         donatePopUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         donatePopUpView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-
         donatePopUpView.leadingAnchor.constraint(equalTo: safe.leadingAnchor, constant: view.frame.width/7).isActive = true
         donatePopUpView.trailingAnchor.constraint(equalTo: safe.trailingAnchor, constant: -view.frame.width/7).isActive = true
         donatePopUpView.topAnchor.constraint(equalTo: safe.topAnchor, constant: view.frame.height/6).isActive = true
         donatePopUpView.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -view.frame.height/6).isActive = true
 
-        
         donatePopUpView.cancelButton.addTarget(self, action: #selector(handleDonateCancel), for: .touchUpInside)
         
         // Add a tap to dismiss the donation view.
@@ -78,7 +62,6 @@ class BookshelfViewController: UIViewController {
         donatePopUpView.twentyDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
         donatePopUpView.fiveDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
         donatePopUpView.tenDollarButton.addTarget(self, action: #selector(handleDonationTap), for: .touchUpInside)
-
     }
 
     @objc func handleBlockingOverlayTap(_ sender: UITapGestureRecognizer){
@@ -100,37 +83,21 @@ class BookshelfViewController: UIViewController {
         removeDonatePopUpView()
     }
     
-    func loadUpStory(_ name: String) {
-        switch name {
-        case "templtonThumbnail":
-//            loadUpTempleton()
-            print("it's templeton")
-        default:
-            print("It's not templeton!")
-            createDonatePopUpView()
-        }
-    }
-    
-    @objc func handleFiveDollarDonation(_ sender: UIButton){
-        workingIAPProduct.shared.makePurchase(productType: .fiveDollarDonation)
-    }
-    
     @objc func handleDonationTap(_ sender: UIButton){
         let button = sender as! DonateButton
         
         switch button.name {
-        case "$1":
+        case .oneDollar:
             workingIAPProduct.shared.makePurchase(productType: .oneDollarDonation)
-        case "$5":
+        case .fiveDollar:
             workingIAPProduct.shared.makePurchase(productType: .fiveDollarDonation)
-        case "$10":
+        case .tenDollar:
             workingIAPProduct.shared.makePurchase(productType: .tenDollarDonation)
-        case "$20":
+        case .twentyDollar:
             workingIAPProduct.shared.makePurchase(productType: .twentyDollarDonation)
         default:
             return
         }
-        
         donatePopUpView.showLoadingSpinner()
     }
     
@@ -143,22 +110,17 @@ class BookshelfViewController: UIViewController {
             let v = view as! StoryIconNew
             v.button.addTarget(self, action: #selector(handleIconPress), for: .touchUpInside)
         }
-        
         bookshelfPage.byeahButton.addTarget(self, action: #selector(handleByeahButtonPressed), for: .touchUpInside)
-        
     }
-    
     
     @objc func handleIconPress(_ sender: UIButton){
         let v = sender.superview as! StoryIconNew
-        
         switch v.name {
-            case "templetonThumbnail":
+        case .templeton:
                 showTempleton()
             default:
                 createDonatePopUpView()
         }
-        
     }
     
     @objc func handleByeahButtonPressed(_ sender: UIButton){

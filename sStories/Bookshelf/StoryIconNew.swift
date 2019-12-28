@@ -2,7 +2,7 @@ import UIKit
 
 class StoryIconNew: UIView {
     
-    var name : String!
+    var name : StoryName!
     weak var delegate : SceneDelegate?
     weak var pageDelegate : PageDelegate?
     weak var catchingMelodyDelegate : CatchingMelodyProtocol?
@@ -10,7 +10,7 @@ class StoryIconNew: UIView {
     
     var button : UIButton!
     
-    init(frame: CGRect, name: String) {
+    init(frame: CGRect, name: StoryName) {
         super.init(frame: frame)
         self.name = name
         
@@ -21,7 +21,7 @@ class StoryIconNew: UIView {
         setTouchEvents()
         setTag()
         
-        if name == "templetonThumbnail" {
+        if name == .templeton {
             button.backgroundColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
         } else {
             button.backgroundColor = UIColor(white: 0.3, alpha: 1.0)
@@ -31,7 +31,8 @@ class StoryIconNew: UIView {
     
     func setImage(){
         let imageSize = CGRect(x: 0, y: 0, width: 700, height: 700)
-        buttonImage = resizedImage(name: name, frame: imageSize)
+        let storyName = name.rawValue
+        buttonImage = resizedImage(name: storyName, frame: imageSize)
         button.setImage(buttonImage, for: .normal)
         button.contentMode = .scaleAspectFit
         button.adjustsImageWhenHighlighted = false
@@ -40,7 +41,8 @@ class StoryIconNew: UIView {
     
     func resizeImage(to size: CGSize){
         let imageSize = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        buttonImage = resizedImage(name: name, frame: imageSize)
+        let storyName = name.rawValue
+        buttonImage = resizedImage(name: storyName, frame: imageSize)
         button.setImage(buttonImage, for: .normal)
         button.contentMode = .scaleAspectFit
     }

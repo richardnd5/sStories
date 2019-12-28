@@ -35,6 +35,19 @@ enum ChordType {
     case off
 }
 
+enum DonationAmount: String {
+    case oneDollar = "$1"
+    case fiveDollar = "$5"
+    case tenDollar = "$10"
+    case twentyDollar = "$20"
+    case cancel = "No Thanks"
+}
+
+enum StoryName: String {
+    case templeton = "templetonThumbnail"
+    case whiteDot = "whiteDot"
+}
+
 struct ScreenSize {
     static let width = UIScreen.main.bounds.size.width
     static let height = UIScreen.main.bounds.size.height

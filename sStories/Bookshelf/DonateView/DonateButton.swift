@@ -1,11 +1,10 @@
 import UIKit
 
 class DonateButton: UIButton {
-    
-    var name : String!
+    var name : DonationAmount!
     weak var delegate : SceneDelegate?
 
-    init(frame: CGRect, name: String) {
+    init(frame: CGRect, name: DonationAmount) {
         super.init(frame: frame)
         self.name = name
         setTouchEvents()
@@ -46,7 +45,7 @@ class DonateButton: UIButton {
         super.layoutSubviews()
         layer.cornerRadius = frame.width/10
         backgroundColor = .blue
-        setTitle(name, for: .normal)
+        setTitle(name.map { $0.rawValue }, for: .normal)
         titleLabel?.adjustsFontSizeToFitWidth = true
         titleLabel?.textAlignment = .center
 

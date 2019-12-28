@@ -31,14 +31,13 @@ class DonatePopUpView: UIView {
         label.numberOfLines = 0
         label.textAlignment = .center
         
-        oneDollarButton = DonateButton(frame: .zero, name: "$1")
-        fiveDollarButton = DonateButton(frame: .zero, name: "$5")
-        tenDollarButton = DonateButton(frame: .zero, name: "$10")
-        twentyDollarButton = DonateButton(frame: .zero, name: "$20")
-        cancelButton = DonateButton(frame: .zero, name: "Nah")
+        oneDollarButton = DonateButton(frame: .zero, name: .oneDollar)
+        fiveDollarButton = DonateButton(frame: .zero, name: .fiveDollar)
+        tenDollarButton = DonateButton(frame: .zero, name: .tenDollar)
+        twentyDollarButton = DonateButton(frame: .zero, name: .twentyDollar)
+        cancelButton = DonateButton(frame: .zero, name: .cancel)
         
         addSubview(label)
-
     }
     
     func setupLayout(){
