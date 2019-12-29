@@ -1,7 +1,6 @@
 import AudioKit
 
 class VoiceOverAudio {
-    
     private var audioFile : AKAudioFile!
     private var player : AKPlayer!
     var name : String!
@@ -27,7 +26,6 @@ class VoiceOverAudio {
     }
     
     private func setupPlayer(){
-        
         player = AKPlayer(audioFile: audioFile)
         player.connect(to: Sound.shared.soundEffectMixer)
         player.completionHandler = finishedCallback
@@ -57,18 +55,15 @@ class VoiceOverAudio {
     }
     
     func enableLooping(){
-        // Need to enable buffering if going to loop without pause.
         player.isLooping = true
     }
     
     func changeAudioFile(to file: String){
-        print("changed audio file")
         disconnect()
         audioFile = loadAudioFile(file)
         player = AKPlayer(audioFile: audioFile)
         player.connect(to: Sound.shared.soundEffectMixer)
         player.completionHandler = finishedCallback
-        
     }
     
     func disconnect(){

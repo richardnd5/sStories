@@ -12,7 +12,7 @@ class Label: UILabel {
         fadeTo(opacity: 1.0, time: 1.5)
         adjustsFontSizeToFitWidth = true
     }
-
+    
     func changeText(to: String){
         text = to
     }

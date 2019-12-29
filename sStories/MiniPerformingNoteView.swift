@@ -15,7 +15,6 @@ class MiniPerformingNoteView: UIView {
     }
     
     func setupImage(){
-        
         number = Int.random(in: 0...11)
         
         let width = frame.width/2
@@ -29,7 +28,6 @@ class MiniPerformingNoteView: UIView {
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
         
-        
         layer.opacity = 0.0
         isUserInteractionEnabled = true
         layer.cornerRadius = frame.height/2
@@ -40,7 +38,6 @@ class MiniPerformingNoteView: UIView {
     }
     
     func makeNoteAppearFlyAwayAndFade(){
-        
         let range = (-frame.height*3...frame.height*3)
         let randX = CGFloat.random(in: range)
         let randY = CGFloat.random(in: range)
@@ -87,7 +84,6 @@ class MiniPerformingNoteView: UIView {
     }
     
     func shrinkRotateAndRemove(){
-        
         let time = 0.5
         let randomRotation = NSNumber(value: Double.random(in: -Double.pi*3...Double.pi*3))
         let rotation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
@@ -105,7 +101,6 @@ class MiniPerformingNoteView: UIView {
         layer.add(scale, forKey: "rotate")
         
         fadeAndRemove(time: time)
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

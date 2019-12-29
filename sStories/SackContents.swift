@@ -12,7 +12,6 @@ class SackContents: UIView {
     }
     
     func makeEmptySackSlots() {
-        
         let rows = 6
         let width = frame.width/CGFloat(rows)
         let spacing : CGFloat = 10
@@ -29,7 +28,6 @@ class SackContents: UIView {
     }
     
     func addMelodyToOpenSlot(melody: Melody){
-        
         for i in 0...melodySlotViews.count-1 {
             if melodySlotViews[i].subviews.count == 0 {
                 let width = melodySlotViews[0].frame.width
@@ -41,15 +39,14 @@ class SackContents: UIView {
                 melodySlotViews[i].addSubview(view)
                 melody.slotPosition = i
                 melodiesInSack.append(melody)
-                
-                // Give it gesture recognizers
+
                 let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleMelodyPan))
                 view.addGestureRecognizer(panGesture)
                 
                 let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
                 view.addGestureRecognizer(tap)
                 
-                return // return and not finish the for-loop
+                return
             }
         }
     }
@@ -67,7 +64,6 @@ class SackContents: UIView {
     }
     
     func missingMelodyType() -> MelodyType {
-        
         var typeItNeeds = MelodyType.begin
         
         let containsBegin = melodiesInSack.contains(where: { $0.type == .begin })
@@ -94,7 +90,6 @@ class SackContents: UIView {
     }
     
     func sackFull() -> Bool {
-        
         var bool = false
         for i in 0...melodySlotViews.count-1 {
             if melodySlotViews[i].subviews.count == 0 {
@@ -104,11 +99,9 @@ class SackContents: UIView {
                 bool = true
             }
         }
-        
         return bool
     }
     
-    // after it all has been added
     func addMelodiesToCollectedMelodyArray(){
         for i in 0...melodySlotViews.count-1{
             for _ in melodySlotViews[i].subviews {
@@ -120,15 +113,12 @@ class SackContents: UIView {
     @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
         
         let view = sender.view as! MelodyImage
-        
-        // Move melody based on how much your finger moves from it's initial touch
         let translation = sender.translation(in: self)
         sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
         sender.setTranslation(CGPoint.zero, in: self)
         playSoundClip(.fishingMelodyDrag)
         
         if sender.state == .ended {
-            // Throw back melody
             if sender.location(in: self).y <= -view.frame.height*3 {
                 removeMelodyFromSack(view)
             } else {
@@ -139,10 +129,6 @@ class SackContents: UIView {
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
-        
-        melodySlotViews.forEach { mel in
-//            if mel.audio.
-        }
         let view = sender.view as! MelodyImage
         view.playMelody()
     }

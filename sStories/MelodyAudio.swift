@@ -7,7 +7,7 @@ class MelodyAudio {
     var number = Int()
     var trackNumber = Int()
     var isPlaying = false
-
+    
     init(number: Int) {
         self.number = number
         setupSampler()
@@ -26,7 +26,12 @@ class MelodyAudio {
     
     private func setupSampler(){
         audioFile = loadAudioFile("melody\(number)")
-        do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why: \(error)") }
+        do {
+            try sampler.loadAudioFile(audioFile!)
+        } catch {
+            print("Couldn't load the audio file. Here's why: \(error)")
+            
+        }
         sampler.enableMIDI()
         sampler.name = "\(number)"
         Sound.shared.pianoMixer.connect(input: sampler)
@@ -34,12 +39,19 @@ class MelodyAudio {
     
     func playMelody(){
         isPlaying = true
-        do { try sampler.play(noteNumber: 60, velocity: 127, channel: 1) } catch { print("couldn't play the melody. Why? Here: \(error)") }
+        do {
+            try sampler.play(noteNumber: 60, velocity: 127, channel: 1)
+        } catch {
+            print("couldn't play the melody. Why? Here: \(error)")
+        }
     }
     
     func stopMelody(){
         isPlaying = false
-        do { try sampler.stop(noteNumber: 60, channel: 1) } catch {}
+        do {
+            try! sampler.stop(noteNumber: 60, channel: 1)
+            
+        }
     }
     
     func getAudioDuration() -> Double {
