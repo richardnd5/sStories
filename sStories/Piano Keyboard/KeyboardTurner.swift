@@ -1,15 +1,10 @@
 import UIKit
 import AudioKit
 
-//protocol ButtonDelegate : class {
-//    func exitButtonTapped()
-//}
-
 class KeyboardTurner: UIView {
     
     var keyboardIsActive = false
     var initialPosition : CGPoint!
-    
     var whiteKeyArray = [PianoKey]()
     var blackKeyArray = [PianoKey]()
     var exitButton : ExitButton!
@@ -19,7 +14,6 @@ class KeyboardTurner: UIView {
     var activatedKey : PianoKey!
     var keyPlaying = false
 
-    
     weak var delegate : SceneDelegate?
     
     init(frame: CGRect, _ currentPage: Int = 0) {
@@ -35,7 +29,6 @@ class KeyboardTurner: UIView {
     var notesActive = [PageTurnPianoNote]()
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
             for touch in touches {
                 let location = touch.location(in: self)
                 checkIfKeyPlayingInLocation(location)
@@ -59,7 +52,6 @@ class KeyboardTurner: UIView {
         
         whiteKeyArray.forEach { view in
             if view.frame.contains(location) && !keyPlaying {
-
                 if partOfChord(noteToCheck: Int(view.keyNumber), chordArray: chordArray){
                     view.playKey()
                     activatedKey = view
@@ -73,10 +65,7 @@ class KeyboardTurner: UIView {
             }
         }
         
-        // check if you have all the notes
         if notesActive.count == chordArray.count {
-            print("counted them all!")
-            // make new arrays. fill them.
             var notesArray = [Int]()
             var chordArrayToCheck = [Int]()
             notesActive.forEach { note in
@@ -85,10 +74,8 @@ class KeyboardTurner: UIView {
             chordArray.forEach { note in
                 chordArrayToCheck.append(Int(note.rawValue))
             }
-            // sort the arrays
             notesArray = notesArray.sorted()
             chordArrayToCheck = chordArrayToCheck.sorted()
-            // check if the same
             if notesArray.elementsEqual(chordArrayToCheck){
                 triggerFinishAnimation()
             }
@@ -109,7 +96,6 @@ class KeyboardTurner: UIView {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
             for touch in touches {
                 let location = touch.location(in: self)
                 subviews.forEach { view in
@@ -124,13 +110,10 @@ class KeyboardTurner: UIView {
                     }
                 }
             }
-        
-        
     }
 
     func drawKeyboard(){
         let whiteKeyNumbers = [41,43,45,47,48,50,52,53,55,57,59,60,62,64,65,67,69,71,72,74,76]
-                                // 37,39,0,42,44,46,0,49,51,0,54,56,58,0
         let blackKeyNumbers = [42,44,46,0,49,51,0,54,56,58,0,61,63,0,66,68,70,0,73,75,0,78]
 
         layer.zPosition = 200
@@ -151,8 +134,6 @@ class KeyboardTurner: UIView {
                 key.setupTargetDot()
             }
             whiteKeyArray.append(key)
-            
-
         }
         
         // add black keys
@@ -169,21 +150,14 @@ class KeyboardTurner: UIView {
                         key.setupTargetDot()
                     }
                     blackKeyArray.append(key)
-                    
                 }
             }
         }
     }
     
     func triggerFinishAnimation(){
-        
         isUserInteractionEnabled = false
-        
         for (i, note) in chordArray.enumerated(){
-            // accelerando
-//            let time = i*(4.0*(1/(i+1)))
-            
-            // 0.0, 0.1, 0.2-
             let time = i*0.1
             let accelTime = time - (time/(14-i))
         
@@ -211,7 +185,6 @@ class KeyboardTurner: UIView {
     }
     
     func makeNoteAppearFlyAwayAndFade(location: CGPoint){
-        
         let width = frame.width/20
         let height = frame.width/20
         let x = location.x

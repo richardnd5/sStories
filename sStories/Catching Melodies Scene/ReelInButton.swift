@@ -10,9 +10,7 @@ class ReelInButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         name = "reelInButton"
-//        setImage()
         addTextLabel()
         setTouchEvents()
         setTag()
@@ -23,22 +21,15 @@ class ReelInButton: UIButton {
         addBlurBorder(dx: reelInWidth, dy: reelInWidth, cornerWidth: frame.width/2, cornerHeight: frame.width/2)
         throbWithWiggle(scaleTo: 1.07, time: 0.18)
         
-        
         alpha = 0.0
         fadeTo(opacity: 1.0, time: 0.4)
         scaleTo(scaleTo: 0.0, time: 0.0)
         scaleTo(scaleTo: 1.0, time: 0.4, {
             self.bigWiggle()
         })
-        
-        
-
-        
-        
     }
     
     func addTextLabel(){
-        
         let fr = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         textLabel = UILabel(frame: fr)
         textLabel.backgroundColor = .clear
@@ -46,7 +37,6 @@ class ReelInButton: UIButton {
         textLabel.text = "Catch!"
         textLabel.font = UIFont(name: "Papyrus", size: frame.width/5)
         addSubview(textLabel)
-        
     }
     
     private func setImage(){
@@ -82,8 +72,6 @@ class ReelInButton: UIButton {
     }
     
     func fadeIn(_ time: Double = 1){
-        
-        
         fadeTo(opacity: 1.0, time: time)
         textLabel.fadeTo(opacity: 1.0, time: time)
     }
@@ -94,7 +82,6 @@ class ReelInButton: UIButton {
         })
     }
     
-    // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         layer.removeAllAnimations()
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
@@ -103,7 +90,6 @@ class ReelInButton: UIButton {
         } else {
             playSoundClip(.touchDown)
         }
-        
     }
     
     func resetButton(){
@@ -112,9 +98,7 @@ class ReelInButton: UIButton {
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
-        
         catchingMelodyDelegate!.reelIn()
-
         fadeAndRemove(time: 0.8)
         scaleTo(scaleTo: 80, time: 1.0, isSpringy: false)
         textLabel.fadeTo(opacity: 0.0, time: 0.2)
@@ -124,7 +108,6 @@ class ReelInButton: UIButton {
         sender!.scaleTo(scaleTo: 1, time: 0.4)
         throbWithWiggle(scaleTo: 1.1, time: 0.18)
         bigWiggle()
-
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -25,16 +25,10 @@ class ArrangingScene: UIView {
         createInstructionLabel()
         createArrangementSlots()
         createSack()
-        
-//        fillSackWithMelodies()
-        
-        //fade the view in
         alpha = 0.0
-        
         fadeTo(opacity: 1.0, time: 1.5, {
             self.generateCollectedMelodies()
         })
-        
     }
     
     func setupBackgroundImage(){
@@ -44,7 +38,6 @@ class ArrangingScene: UIView {
     }
     
     func createInstructionLabel(){
-        
         let height = frame.height/20
         let y = frame.height/60
         instructionLabel = Label(frame: CGRect.zero, words: "Time to arrange the melodies! Drag the melodies to their correct spots.", fontSize: height)
@@ -58,7 +51,6 @@ class ArrangingScene: UIView {
     }
     
     func createArrangementSlots(){
-        
         let width = frame.width/1.3
         let height = frame.height/6
         
@@ -67,7 +59,6 @@ class ArrangingScene: UIView {
     }
     
     func createSack(){
-        
         let width = frame.width/2
         let height = frame.height/8
         
@@ -76,7 +67,6 @@ class ArrangingScene: UIView {
     }
     
     func generateCollectedMelodies(){
-        
         playSoundClip(.arrangingMelodiesAppear)
         
         for i in 0...sackContents.melodySlotViews.count-1{
@@ -98,12 +88,10 @@ class ArrangingScene: UIView {
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(handleMelodyTap))
             view.addGestureRecognizer(tap)
-            
         }
-        
     }
     
-    func songFullyArranged() -> Bool{
+    func songFullyArranged() -> Bool {
         var bool = false
         for i in 0...melodyImageArray.count-1 {
             if !melodyImageArray[i].inCorrectSlot {
@@ -117,30 +105,24 @@ class ArrangingScene: UIView {
     }
     
     @objc func handleMelodyPan(_ sender: UIPanGestureRecognizer){
-        
         let view = sender.view as! MelodyImage
-
         if !view.inCorrectSlot {
-            
             if sender.state == .began {
                 loopSoundEffect(.arrangingDrag)
             }
-            
             let translation = sender.translation(in: self)
             sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
             sender.setTranslation(CGPoint.zero, in: self)
-//            playSoundClip(.arrangingDrag)
-            
             if sender.state == .ended {
                 stopLoopedSoundEffect(.arrangingDrag)
-                // Look through each slot position
                 for i in 0...songSlots.slotPosition.count-1 {
-                    // convert the frame to the superview's superview coordinate system
+                    
                     let frame = songSlots.convert(songSlots.slotPosition[i].frame, to: self)
-                    // check if the melody is in the correct spot.
+                    
                     if frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
-                        // if it is, move it to the position and resize it.
+                        
                         let time = 1.0
+                        
                         view.moveViewTo(frame.origin, time: time, {})
                         view.changeSize(to: songSlots.slotPosition[i].frame.size, time: time)
                         view.inCorrectSlot = true
@@ -173,20 +155,15 @@ class ArrangingScene: UIView {
                             stopAllMelodies()
                             instructionLabel?.changeText(to: "Great job! Time to get ready for the performance.")
                             sceneState = .arrangementCompleted
-//                            delegate?.returnToStoryFromArranging()
-                            
                             Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { __ in
                                 self.delegate?.nextPage()
                             }
                             
                         }
                     } else if !frame.contains(sender.location(in: self)) && view.data?.slotPosition == i {
-                        // move view to original position
                         view.moveViewTo(view.initialPosition, time: 1.0)
                         stopLoopedSoundEffect(.arrangingDrag)
                         playSoundClip(.arrangingCrossOut)
-                        // play not correct slot sound.
-                        
                     }
                 }
             }
@@ -202,7 +179,6 @@ class ArrangingScene: UIView {
     }
     
     @objc func handleMelodyTap(_ sender: UITapGestureRecognizer){
-        
         stopAllMelodies()
         
         let view = sender.view as! MelodyImage

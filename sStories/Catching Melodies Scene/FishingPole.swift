@@ -8,9 +8,7 @@ class FishingPole: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         image = resizedImage(name: "FishingPoleNew", frame: frame, scale: 0.5)
-        
         contentMode = .scaleAspectFit
         isUserInteractionEnabled = false
         layer.anchorPoint = CGPoint(x: 0.5, y: 1.0)
@@ -19,7 +17,6 @@ class FishingPole: UIImageView {
     }
     
     func swayPole() {
-        
         let rotationAnimation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = NSNumber(value: Double.pi / -90)
         rotationAnimation.duration = 3.0;
@@ -27,14 +24,11 @@ class FishingPole: UIImageView {
         rotationAnimation.repeatCount = .infinity;
         rotationAnimation.autoreverses = true
         layer.add(rotationAnimation, forKey: "rotationAnimation")
-        
     }
     
     func pullPoleOut(_ completion: @escaping ()->()){
-        
         isReadyToCastOrReelIn = false
         layer.removeAllAnimations()
-        
         CATransaction.begin()
         
         let scaleAnim : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
@@ -49,7 +43,6 @@ class FishingPole: UIImageView {
         rotate.fromValue = 0.0
         rotate.toValue = 1.0
         
-        
         let animGroup = CAAnimationGroup()
         animGroup.animations = [scaleAnim,opacity, rotate]
         animGroup.duration = 0.45
@@ -63,7 +56,6 @@ class FishingPole: UIImageView {
         }
         
         layer.add(animGroup, forKey: "animGroup")
-        
         CATransaction.commit()
     }
     
@@ -92,7 +84,6 @@ class FishingPole: UIImageView {
         animGroup.isRemovedOnCompletion = false
         animGroup.fillMode = .forwards
         
-        
         CATransaction.setCompletionBlock{ [weak self] in
             completion()
             self!.swayPole()
@@ -100,17 +91,14 @@ class FishingPole: UIImageView {
         layer.add(animGroup, forKey: "animGroup")
 
         CATransaction.commit()
-
     }
     
     func fishOnTheLine(_ completion: @escaping ()->()){
-        
         CATransaction.begin()
         let scaleAnim : CABasicAnimation = CABasicAnimation(keyPath: "transform.scale")
         scaleAnim.fromValue = 1
         scaleAnim.toValue = 0.75
         
-        // Wiggle pole fast like.
         let rotationAnimation : CABasicAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.toValue = NSNumber(value: Double.pi / -400)
         rotationAnimation.duration = 0.1;

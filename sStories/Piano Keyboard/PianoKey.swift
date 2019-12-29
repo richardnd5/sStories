@@ -1,21 +1,15 @@
 import UIKit
 import AudioKit
 
-
 class PianoKey : UIView {
-    
     var keyNumber : MIDINoteNumber!
     var type : KeyType!
     var overlay = UIView()
     var keyIsActive = false
-//    var audio : PianoKeyAudioFile!
-    
     var targetDot : UIView!
     var isTarget = false
-    
     let blackKeyWidthMultiplier : CGFloat = 0.68
     let blackKeyHeightMultiplier : CGFloat = 0.64
-    
     var beenTouched = false
     
     init(frame: CGRect, type: KeyType, keyNumber: MIDINoteNumber, _ isTarget: Bool = false){
@@ -26,7 +20,6 @@ class PianoKey : UIView {
         layer.borderWidth = 1
         layer.borderColor = UIColor.black.cgColor
         isUserInteractionEnabled = false
-        //        setupTouchDown()
         setupOverlay()
         
         switch type {
@@ -40,16 +33,13 @@ class PianoKey : UIView {
         clipsToBounds = true
     }
 
-    
     func setupTargetDot(){
-        
         isTarget = true
 
         var width = frame.width/3
         var height = frame.width/3
         var y = frame.height/1.5
 
-        
         if type == .white {
             width = width*blackKeyWidthMultiplier
             height = height*blackKeyHeightMultiplier
@@ -68,11 +58,9 @@ class PianoKey : UIView {
         
         targetDot.fadeTo(opacity: 1.0, time: 1.0)
         targetDot.throbWithWiggle(scaleTo: 1.5, time: 0.5)
-        
     }
     
     func setupOverlay(){
-        
         let fr = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
         overlay = UIView(frame: fr)
         overlay.alpha = 0
@@ -84,28 +72,12 @@ class PianoKey : UIView {
         isUserInteractionEnabled.toggle()
     }
     
-//    func setupTouchDown(){
-//        let press = UILongPressGestureRecognizer(target: self, action: #selector(handlePress))
-//        press.minimumPressDuration = 0
-//        addGestureRecognizer(press)
-//    }
-
-//    @objc func handlePress(_ sender: UILongPressGestureRecognizer){
-//        if keyIsActive {
-//            if sender.state == .began {
-//                playKey()
-//                
-//            } else if sender.state == .ended {
-//                stopKey()
-//            }
-//        }
-//    }
-    
     func increaseDot(){
         targetDot.stopThrobWithWiggle()
         targetDot.scaleTo(scaleTo: 50.0, time: 2.0)
         targetDot.changeBackgroundColorGraduallyTo(.blue, time: 1.0)
     }
+    
     func decreaseDot(){
         targetDot.scaleTo(scaleTo: 1.0, time: 1.0)
     }
@@ -117,7 +89,6 @@ class PianoKey : UIView {
     }
     
     func playKey(){
-        
         Sound.shared.pianoSampler.play(noteNumber: keyNumber, velocity: 80)
         keyIsActive = true
         if keyIsActive {
@@ -127,10 +98,8 @@ class PianoKey : UIView {
     }
     
     func stopKey(){
-        
         Sound.shared.pianoSampler.stop(noteNumber: keyNumber)
         keyIsActive = false
-
     }
     
     required init?(coder aDecoder: NSCoder) {

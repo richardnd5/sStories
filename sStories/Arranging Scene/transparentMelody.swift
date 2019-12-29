@@ -6,16 +6,13 @@ class transparentMelody: UIImageView {
     var maskLayer = CAGradientLayer()
     var typeNumber = Int()
     
-    
     init(frame: CGRect, typeNumber: Int) {
         super.init(frame: frame)
         self.typeNumber = typeNumber
-        
         setupNote()
     }
     
     func setupNote(){
-        
         image = resizedImage(name: "\(getTypeNameBasedOnNumber(number: typeNumber))", frame: frame, scale: 3).setOpacity(alpha: 0.1)
         contentMode = .scaleAspectFit
         layer.zPosition = 100

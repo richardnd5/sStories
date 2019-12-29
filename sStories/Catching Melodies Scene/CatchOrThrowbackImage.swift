@@ -14,14 +14,11 @@ class CatchOrThrowbackImage: UIImageView {
     }
     
     func setupImage(){
-        
         image = resizedImage(name: "\(imageName)", frame: frame, scale: 3)
-
         contentMode = .scaleAspectFit
         layer.zPosition = 1
         layer.opacity = 0.0
         isUserInteractionEnabled = false
-
         fadeTo(opacity: 1.0, time: 2.0)
     }
     

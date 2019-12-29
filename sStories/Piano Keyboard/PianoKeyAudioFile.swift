@@ -7,8 +7,6 @@ class PianoKeyAudioFile {
     var number : Int!
     
     init() {
-        
-//        self.number = number
         audioFile = loadAudioFile("turnPiano8")
         setupSampler()
     }
@@ -25,21 +23,30 @@ class PianoKeyAudioFile {
     }
     
     func setupSampler(){
-        do { try sampler.loadAudioFile(audioFile!) } catch { print("Couldn't load the audio file. Here's why:     \(error)") }
+        do {
+            try sampler.loadAudioFile(audioFile!)
+            
+        } catch {
+            print("Couldn't load the audio file. Here's why:     \(error)")
+        }
         sampler.enableMIDI()
         Sound.shared.pianoMixer.connect(input: sampler)
     }
     
     func play(){
-        do { try sampler.play(noteNumber: 60, velocity: 120, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
+        do {
+            try sampler.play(noteNumber: 60, velocity: 120, channel: 1)
+        } catch {
+            print("couldn't play the note. Why? Here:  \(error)")
+        }
     }
     
     func stop(){
-        do { try sampler.stop(noteNumber: 60, channel: 1) } catch { print("couldn't play the note. Why? Here:  \(error)") }
-    }
-    
-    deinit {
-        print("de initing")
+        do {
+            try sampler.stop(noteNumber: 60, channel: 1)
+        } catch {
+            print("couldn't play the note. Why? Here:  \(error)")
+        }
     }
 }
 

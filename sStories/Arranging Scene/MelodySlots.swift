@@ -24,7 +24,7 @@ class MelodySlots: UIView {
             slotPosition.append(view)
             addSubview(view)
             view.addDashedBorder()
-
+            
             let thumbnail = transparentMelody(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), typeNumber: i)
             view.addSubview(thumbnail)
         }
