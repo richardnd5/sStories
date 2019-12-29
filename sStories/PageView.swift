@@ -30,11 +30,8 @@ class PageView: UIView {
     
     var nextButton : Button!
     var backButton : Button!
-    
     var playSoundButton : Button!
-    
-    var navigationButtonsVisable = false
-    
+    var navigationButtonsVisible = false
     var imageName = String()
     var storyText : ArraySlice<String>?
     var sceneStoryPosition = 0
@@ -49,17 +46,11 @@ class PageView: UIView {
         imageName = page.imageName
         storyText = page.storyText
         sceneStoryPosition = page.storyText.startIndex
-        
-//        ViewController.mainStoryLinePosition = sceneStoryPosition
-        
         pageImage.image = resizedImage(name: "\(imageName)", frame: frame)
-        
-//        storyTextView.text = page.storyText[sceneStoryPosition]
         storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
         storyTextView.font = UIFont(name: "Papyrus", size: frame.width/44)
         
         setupLayout()
-//        VoiceOverAudio.shared.playWithDelay()
         playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
 
         alpha = 0
@@ -72,27 +63,23 @@ class PageView: UIView {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer){
-        if !navigationButtonsVisable {
-            
+        if !navigationButtonsVisible {
             let rect = CGRect(x: frame.width/2, y: 0, width: frame.width/2, height: frame.height/4)
             let tapPoint = sender.location(in:self)
             if rect.contains(tapPoint){
                 showNavigationButtons()
-                
             }
         }
     }
     
-
-    
     func showNavigationButtons(){
-        navigationButtonsVisable = true
+        navigationButtonsVisible = true
         nextButton.fadeIn(1.0)
         backButton.fadeIn(1.0)
     }
     
     func hideNavigationButtons(){
-        navigationButtonsVisable = false
+        navigationButtonsVisible = false
         nextButton.stopThrobWithWiggle()
         nextButton.fadeOut(1.0)
         backButton.fadeOut(1.0)
@@ -103,17 +90,13 @@ class PageView: UIView {
             canActivate = false
             playSoundButton.fadeOut(1.0)
             hideNavigationButtons()
-            
-   
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
-
                 self.storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
                 self.layoutSubviews()
 
                 self.playSoundButton.fadeIn(1.0)
                     self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
                         self.canActivate = true
-//                        VoiceOverAudio.shared.playWithDelay()
                     self.playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
                 })
             }
@@ -121,24 +104,16 @@ class PageView: UIView {
     }
     
     func previousStoryLine(){
-        
         if canActivate{
             canActivate = false
             hideNavigationButtons()
             storyTextView.fadeTo(opacity: 0.0, time: 1.0) {
-//                self.sceneStoryPosition -= 1
-//                self.storyTextView.text = self.storyText![self.sceneStoryPosition]
-                
-                
                 self.storyTextView.text = storyline[TempletonViewController.mainStoryLinePosition]
                 
                 self.layoutSubviews()
                 self.storyTextView.fadeTo(opacity: 1.0, time: 1.0, {
                     self.canActivate = true
-//                    VoiceOverAudio.shared.playWithDelay()
-//                    self.playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
                     self.playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
-
                 })
             }
         }
@@ -153,9 +128,7 @@ class PageView: UIView {
     }
     
     func setupLayout(){
-
         addSubview(pageImage)
-        
         pageImage.translatesAutoresizingMaskIntoConstraints = false
         pageImage.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/14).isActive = true
         pageImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
@@ -177,8 +150,6 @@ class PageView: UIView {
         playSoundButton.centerXAnchor.constraint(equalTo: pageImage.centerXAnchor).isActive = true
         playSoundButton.widthAnchor.constraint(equalToConstant: playSoundButtonWidth).isActive = true
         playSoundButton.widthAnchor.constraint(equalTo: playSoundButton.heightAnchor, multiplier: 1).isActive = true
-//        playSoundButton.heightAnchor.constraint(equalToConstant: playSoundButtonHeight).isActive = true
-        
         addSubview(storyTextView)
 
         nextButton = Button(frame: CGRect(x: 0, y: 0, width: frame.width/20, height: frame.width/20), name: "nextArrow")
@@ -211,25 +182,19 @@ class PageView: UIView {
     }
     
     override func layoutSubviews() {
-//        super.layoutSubviews()
-        print("layout subviews")
         storyTextView.adjustsFontSizeToFitWidth = true
         
         storyTextView.topAnchor.constraint(equalTo: playSoundButton.bottomAnchor, constant: 10).isActive = true
         storyTextView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         storyTextView.widthAnchor.constraint(lessThanOrEqualToConstant: frame.width/1.5).isActive = true
-//        storyTextView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
         storyTextView.bottomAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.bottomAnchor).isActive = true
-        
         storyTextView.sizeToFit()
-
     }
     
     @objc func handlePlaySpeaking(_ sender: UIButton?){
         hideNavigationButtons()
         VoiceOverAudio.shared.playWithDelay()
         playSoundButton.stopThrobWithWiggle()
-//        playSoundButton.throbWithWiggle(scaleTo: 1.3, time: 0.5)
     }
     
     required init?(coder aDecoder: NSCoder) {

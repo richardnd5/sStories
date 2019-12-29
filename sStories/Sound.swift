@@ -37,17 +37,10 @@ class Sound {
     
     var bubbleMixer = AKMixer()
     
-//    var bubbleFilter : AKLowPassFilter!
-    
-    //    var openingMusic = OpeningMusic()
-    
     func setup(){
-        
         chordIAudio = PianoAccompaniment(name: "IChord")
         chordIVAudio = PianoAccompaniment(name: "IVChord")
         chordVAudio = PianoAccompaniment(name: "VChord")
-        
-        
         
         switchChord(chord: .I)
         chordIAudio.fadeOut()
@@ -58,16 +51,9 @@ class Sound {
         pianoSampler.attackDuration = 0.02
         bubbleMixer.volume = 0.5
         
-        
-//        bubbleFilter = AKLowPassFilter()
-//        bubbleFilter.cutoffFrequency = 4800
-        
-        
         reverb = AKReverb(pianoMixer, dryWetMix: 0.5)
-//        bubbleFilter.connect(to: reverb)
         
         mainMixer = AKMixer(reverb, soundEffectMixer, pondBackground, pianoSampler, bubbleMixer)
-        
         
         do {
             try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
@@ -78,15 +64,13 @@ class Sound {
         AKSettings.playbackWhileMuted = true
         AudioKit.output = mainMixer
         startAudioKit()
-
-
-        
-
     }
     
     func startAudioKit(){
-        print("audiokit starting.")
-        do { try AudioKit.start() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
+        do { try AudioKit.start() }
+        catch {
+            print("Couldn't start AudioKit. Here's Why: \(error)")
+        }
         
         loadPageTurnSounds()
         loadPianoSamples()
@@ -94,18 +78,20 @@ class Sound {
     }
     
     func stopAudioKit(){
-        
-//        do { try AudioKit.disconnectAllInputs()}
-        do { try AudioKit.stop() } catch { print("Couldn't start AudioKit. Here's Why: \(error)") }
+        do {
+            try AudioKit.stop()
+            
+        } catch {
+            print("Couldn't start AudioKit. Here's Why: \(error)")
+        }
     }
-
+    
     func switchChord(chord: ChordType){
         switch chord {
         case .I:
             chordIAudio.fadeIn()
             chordIVAudio.fadeOut()
             chordVAudio.fadeOut()
-            
         case .IV:
             chordIAudio.fadeOut()
             chordIVAudio.fadeIn()
@@ -128,16 +114,11 @@ class Sound {
     }
     
     let latencyBuffer = 0.05
-
     
     func setupPlayZoneSequencer(){
         
         trackAccompCallback = AKMIDICallbackInstrument()
-        
-        
         trackAccompCallback.callback = sequencerCallback
-        
-        
         
         trackImprovCallback = AKMIDICallbackInstrument()
         trackImprovCallback.callback = improvCallback
@@ -150,23 +131,17 @@ class Sound {
         
         let seqLength = 100
         for i in 0...seqLength {
-            
-            
             accompTrack.add(midiNoteData: AKMIDINoteData(noteNumber: 60, velocity: 127, channel: 1, duration: playZoneSequenceLength, position: AKDuration(beats: i*8+latencyBuffer)))
-
         }
-
+        
         playZoneSequencer.setTempo(tempo)
         playZoneSequencer.setLength(AKDuration(beats: 100*8))
-        
     }
-    
     
     var currentBubble : UILongPressGestureRecognizer!
     
     func generatePianoImprov(notes: Array<MIDINoteNumber>, beats: Array<AKDuration>, pressedNote: UILongPressGestureRecognizer){
         for (i, note) in notes.enumerated() {
-            
             if i != 0 {
                 currentBubble = pressedNote
                 
@@ -179,10 +154,6 @@ class Sound {
                 trackImprov.add(midiNoteData: midiData)
             }
         }
-    }
-    
-    func removeMidiNotePattern(){
-        
     }
     
     func startPlaySequencer(){
@@ -203,9 +174,7 @@ class Sound {
                         _ noteNumber: MIDINoteNumber,
                         _ velocity: MIDIVelocity) {
         
-        
         DispatchQueue.main.async {
-            
             // 145 is note on message, 129 is note off.
             if status == 145 {
                 self.pianoSampler.play(noteNumber: noteNumber, velocity: 80)
@@ -214,38 +183,16 @@ class Sound {
                 self.pianoSampler.stop(noteNumber: noteNumber)
             }
         }
-//            if status.type == .noteOn {
-//                self.pianoSampler.play(noteNumber: noteNumber, velocity: 80)
-//
-//            } else if status.type == .noteOff {
-//                self.pianoSampler.stop(noteNumber: noteNumber)
-//            }
-//        }
     }
-    
     
     func sequencerCallback(_ status: UInt8,
                            _ noteNumber: MIDINoteNumber,
                            _ velocity: MIDIVelocity) {
-        
         // 145 is note on message, 129 is note off.
         DispatchQueue.main.async {
             if status == 145 {
                 self.playAccompaniment()
-                
-//                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
-                
-            } else if status == 129 {
-                
             }
-//            if status.type == .noteOn {
-//                self.playAccompaniment()
-//
-//                print("sequencer position: \(self.playZoneSequencer.currentPosition.beats)")
-//
-//            } else if status.type == .noteOff {
-//
-//            }
         }
     }
     
@@ -255,9 +202,7 @@ class Sound {
         pianoSampler.releaseDuration = 7.0
     }
     
-    
     func loadPageTurnSounds(){
-        
         for i in 0...8{
             let note = PageTurnPianoPling(number: i)
             pageTurnSoundArray.append(note)
@@ -265,7 +210,6 @@ class Sound {
     }
     
     func loadCollectedMelodies(_ melodyArray: [Melody]){
-        
         for i in 0...collectedMelodies.count-1{
             let melAudio = collectedMelodies[i].audio
             patternArray.append(melAudio!)
@@ -278,9 +222,7 @@ class Sound {
     }
     
     private func setupSequencerTracks(){
-        
         sequencer.setTempo(tempo)
-        
         for i in 0...patternArray.count-1 {
             let melody = patternArray[i]
             let track = sequencer.newTrack("\(melody.number)")
@@ -332,7 +274,6 @@ class Sound {
     }
     
     func oldPlayNote(_ note: MIDINoteNumber?, _ note2: PageTurnPianoNote = .C4){
-        
         if note != nil {
             pianoSampler.play(noteNumber: note!, velocity: 80)
         } else {
@@ -342,11 +283,10 @@ class Sound {
     
     func playNote(_ note: PageTurnPianoNote, _ velocity: MIDIVelocity = 127){
         pianoSampler.play(noteNumber: note.rawValue, velocity: velocity)
-
+        
     }
     
     func oldStopNote(_ note: MIDINoteNumber?, _ note2: PageTurnPianoNote = .C4){
-        
         if note != nil {
             pianoSampler.stop(noteNumber: note!)
         } else {
@@ -357,6 +297,5 @@ class Sound {
     func stopNote(_ note: PageTurnPianoNote){
         pianoSampler.stop(noteNumber: note.rawValue)
     }
-    
 }
 

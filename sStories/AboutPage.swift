@@ -3,7 +3,6 @@
 import UIKit
 
 class AboutPage: UIView, UIScrollViewDelegate {
-    
     weak var delegate : SceneDelegate?
     var scrollView: UIScrollView!
     var aboutTitle : UILabel!
@@ -16,22 +15,18 @@ class AboutPage: UIView, UIScrollViewDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         createScrollView()
         createTitle()
         createButtons()
         makeArrow()
-
         setupContraints()
         
         alpha = 0.0
         self.fadeTo(opacity: 1.0, time: 1.5)
         addBlurbs()
-
     }
     
     func addBlurbs(){
-        
         let safe = safeAreaLayoutGuide
         let padding : CGFloat = 60
         for (index, blurb) in blurbs.enumerated() {
@@ -150,9 +145,6 @@ class AboutPage: UIView, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-
-        
         var opacity = 1-scrollView.contentOffset.y / 80
         
         if opacity > 1 {

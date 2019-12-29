@@ -39,17 +39,15 @@ class AboutBlurb: UIView {
         textBlurb.minimumScaleFactor = 0.5
         textBlurb.adjustsFontSizeToFitWidth = true
         textBlurb.numberOfLines = 0
-        
         setupLayout()
         
         isUserInteractionEnabled = false
-        
     }
     
     func setupLayout(){
         
         translatesAutoresizingMaskIntoConstraints = false
-
+        
         let safe = safeAreaLayoutGuide
         let padding : CGFloat = 60
         

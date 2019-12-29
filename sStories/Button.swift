@@ -11,10 +11,7 @@ class Button: UIButton {
     init(frame: CGRect, name: String) {
         super.init(frame: frame)
         self.name = name
-        
-        
         setImage()
-        
         setTouchEvents()
         setTag()
     }
@@ -88,7 +85,6 @@ class Button: UIButton {
         else {
             playSoundClip(.buttonDown)
         }
-
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
@@ -101,7 +97,6 @@ class Button: UIButton {
         } else if sender!.tag == ButtonTypee.read.rawValue {
             delegate?.startStory()
             playSoundClip(.buttonUp)
-//            Sound.sharedInstance.openingMusic.stopLoop()
             Sound.shared.stopPondBackgroundSound()
             playSoundClip(.pageTurn)
         }  else if sender!.tag == ButtonTypee.back.rawValue {
@@ -112,14 +107,12 @@ class Button: UIButton {
             playSoundClip(.touchUp)
         } else if sender!.tag == ButtonTypee.backStory.rawValue {
             delegate?.previousMoment()
-            
             playSoundClip(.touchUp)
         } else if sender!.tag == ButtonTypee.byeahButton.rawValue || sender!.tag == 101 {
             playSoundClip(.buttonUp)
         }
         else if sender!.tag == ButtonTypee.reelIn.rawValue {
             catchingMelodyDelegate!.reelIn()
-            
         } else if sender!.tag == 100 {
             return
         }
