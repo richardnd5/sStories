@@ -5,17 +5,13 @@ class HomePageBackgroundImage: UIImageView {
     var noteImage = UIImage()
     var imageName : String!
     
-    
-    
     init(frame: CGRect, _ imageName: String = "homePageBackground") {
         super.init(frame: frame)
         self.imageName = imageName
         setupImage()
-        
     }
     
     func setupImage(){
-        
         image = resizedImage(name: imageName)
         contentMode = .scaleAspectFill
         layer.cornerRadius = frame.width/10

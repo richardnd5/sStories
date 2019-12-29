@@ -11,12 +11,10 @@ class DonatePopUpView: UIView {
 
     var donateStackView : UIStackView!
     let relativeFontConstant:CGFloat = 0.046
-    
     var loadingSpinner : LoadingAnimationView!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         expandIn(time: 0.9)
         backgroundColor = .white
         setupViews()
@@ -24,7 +22,6 @@ class DonatePopUpView: UIView {
     }
     
     func setupViews(){
-        
         label = UILabel()
         label.font = UIFont(name: "Avenir Light", size: 12)
         label.text = "More stories to come! We want to make apps like this for a living. Help us do that by donating!"
@@ -36,13 +33,11 @@ class DonatePopUpView: UIView {
         tenDollarButton = DonateButton(frame: .zero, name: .tenDollar)
         twentyDollarButton = DonateButton(frame: .zero, name: .twentyDollar)
         cancelButton = DonateButton(frame: .zero, name: .cancel)
-        
         addSubview(label)
     }
     
     func setupLayout(){
         let safe = safeAreaLayoutGuide
-        
         label.translatesAutoresizingMaskIntoConstraints = false
         label.topAnchor.constraint(equalTo: topAnchor, constant: frame.height/10).isActive = true
         label.centerXAnchor.constraint(equalTo: safe.centerXAnchor).isActive = true
@@ -60,8 +55,11 @@ class DonatePopUpView: UIView {
         cancelButton.widthAnchor.constraint(equalToConstant: size.width).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: size.height).isActive = true
         cancelButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -frame.height/8).isActive = true
-
-        donateStackView = UIStackView(arrangedSubviews: [oneDollarButton, fiveDollarButton, tenDollarButton, twentyDollarButton])
+        
+        donateStackView = UIStackView(arrangedSubviews: [oneDollarButton,
+                                                         fiveDollarButton,
+                                                         tenDollarButton,
+                                                         twentyDollarButton])
         donateStackView.translatesAutoresizingMaskIntoConstraints = false
         donateStackView.axis = .horizontal
         donateStackView.distribution = .equalCentering
@@ -71,28 +69,28 @@ class DonatePopUpView: UIView {
         let iconSize = frame.width/6
 
         [donateStackView.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -frame.height/7),
-        donateStackView.heightAnchor.constraint(equalToConstant: iconSize),
+         donateStackView.heightAnchor.constraint(equalToConstant: iconSize),
          donateStackView.leftAnchor.constraint(equalTo: leftAnchor, constant: padding),
          donateStackView.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding)].forEach { $0.isActive = true }
         
         donateStackView.arrangedSubviews.forEach { view in
             view.widthAnchor.constraint(equalToConstant: iconSize).isActive = true
         }
-
     }
     
     override func layoutSubviews() {
         layer.cornerRadius = frame.width/10
         setupLayout()
-
     }
     
-    func showLoadingSpinner(){
-        
-        
+    func fadeOutDonateViews(){
         for view in donateStackView.arrangedSubviews {
             view.fadeTo(opacity: 0.0, time: 0.2)
         }
+    }
+    
+    func showLoadingSpinner(){
+        fadeOutDonateViews()
         loadingSpinner = LoadingAnimationView(frame: .zero)
         addSubview(loadingSpinner)
         loadingSpinner.alpha = 0.0

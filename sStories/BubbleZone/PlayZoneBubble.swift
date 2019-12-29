@@ -6,7 +6,6 @@ protocol BubbleUIDelegate : class {
 }
 
 class PlayZoneBubble: UIView {
-    
     var noteImage = UIImage()
     var imageView : UIImageView!
     var maskLayer = CAGradientLayer()
@@ -23,11 +22,7 @@ class PlayZoneBubble: UIView {
     var numberOfNotes : Int!
     
     var sawWave : AKOscillatorBank!
-    
     var filter : AKLowPassFilter!
-    
-    
-    
     
     init(frame: CGRect, isThumbnail: Bool = false) {
         super.init(frame: frame)
@@ -39,11 +34,9 @@ class PlayZoneBubble: UIView {
         if !isThumbnail {
             addBlurBorder(dx: frame.height/40, dy: frame.height/40, cornerWidth: frame.height/2, cornerHeight: frame.height/2)
         }
-        
         generateRandomPitches()
         generateRandomRhythms()
         setupSawWave()
-        
     }
     
     func setupSawWave(){
@@ -71,9 +64,7 @@ class PlayZoneBubble: UIView {
         sawWave.stop(noteNumber: note)
     }
     
-    
     func setupImage(){
-        
         number = Int.random(in: 0...11)
         
         let width = frame.width/2
@@ -87,7 +78,6 @@ class PlayZoneBubble: UIView {
         imageView.contentMode = .scaleAspectFit
         addSubview(imageView)
         
-        
         layer.opacity = 0.0
         isUserInteractionEnabled = true
         layer.cornerRadius = frame.height/2
@@ -97,16 +87,13 @@ class PlayZoneBubble: UIView {
         backgroundColor = UIColor(hue: randomNumber, saturation: randomNumber, brightness: 1.0, alpha: 1.0)
         
         setupGlowingOverlay()
-        
     }
     
     func scaleNoteUpAndDown(){
-        
         let randomColor = UIColor(hue: CGFloat.random(in: 0.0...1.0), saturation: 1.0, brightness: 1.0, alpha: 1.0)
 
         changeBackgroundColorGraduallyTo(randomColor, time: 0.2)
         Haptics.shared.vibrate(.light)
-        
         
         imageView.scaleTo(scaleTo: 1.6, time: 0.3,{
             self.imageView.scaleTo(scaleTo: 1.0, time: 0.3)
@@ -132,10 +119,7 @@ class PlayZoneBubble: UIView {
         }
     }
     
-    
-    
     func pulseToRhythm(){
-        
         for i in 0...pitches.count-1 {
             if i != 0 {
                 let current = Sound.shared.playZoneSequencer.currentPosition.minutes*60
@@ -148,7 +132,8 @@ class PlayZoneBubble: UIView {
                     self.scaleNoteUpAndDown()
                 }
             }
-        }    }
+        }
+    }
     
     func setupGlowingOverlay(){
         glowingOverlay = UIView(frame: CGRect.zero)
@@ -158,7 +143,6 @@ class PlayZoneBubble: UIView {
         addSubview(glowingOverlay)
         glowingOverlay.fillSuperview()
     }
-    
     
     private func startGlowingPulse(){
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
@@ -183,7 +167,6 @@ class PlayZoneBubble: UIView {
     }
     
     private func stopGlowingPulse(){
-        
         glowTimer.invalidate()
         CATransaction.begin()
         let glow : CABasicAnimation = CABasicAnimation(keyPath: "opacity")
@@ -197,7 +180,6 @@ class PlayZoneBubble: UIView {
             self.isPlaying = false
         }
         glowingOverlay.layer.add(glow, forKey: "stopGlow")
-        
         CATransaction.commit()
     }
     

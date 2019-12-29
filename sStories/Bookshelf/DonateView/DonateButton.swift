@@ -24,7 +24,6 @@ class DonateButton: UIButton {
         fadeTo(opacity: 0.0, time: time)
     }
     
-    // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
         playSoundClip(.buttonDown)

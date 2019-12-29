@@ -15,14 +15,9 @@ class LoadingAnimationView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-
-         
     }
     
-    
     override func draw(_ rect: CGRect) {
-        
         let rotation1 = CABasicAnimation(keyPath: "transform.rotation")
         rotation1.byValue = 2*CGFloat.pi
         rotation1.duration = 1
@@ -34,7 +29,6 @@ class LoadingAnimationView: UIView {
         rotation2.duration = 1
         rotation2.repeatCount = Float.infinity
         curvyLine2.add(rotation2, forKey: rotation1.keyPath)
-        
     }
     
     override func layoutSubviews() {
@@ -46,7 +40,6 @@ class LoadingAnimationView: UIView {
         curvyLine1.fillColor = UIColor.clear.cgColor
         curvyLine1.lineWidth = 2
         curvyLine1.position = CGPoint(x: frame.width/2, y: frame.height/2)
-        //        loadingAnimationView.centerXAnchor.
         
         curvyLine2.path = curvePath2.cgPath
         curvyLine2.strokeColor = UIColor.blue.cgColor

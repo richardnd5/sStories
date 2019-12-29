@@ -7,7 +7,6 @@ class StoryIconNew: UIView {
     weak var pageDelegate : PageDelegate?
     weak var catchingMelodyDelegate : CatchingMelodyProtocol?
     var buttonImage : UIImage!
-    
     var button : UIButton!
     
     init(frame: CGRect, name: StoryName) {
@@ -65,24 +64,18 @@ class StoryIconNew: UIView {
         fadeTo(opacity: 0.0, time: time)
     }
     
-    // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         stopThrobWithAnimation({
             sender!.scaleTo(scaleTo: 0.8, time: 0.4)
         })
-        
         playSoundClip(.buttonDown)
         Haptics.shared.vibrate(.light)
-        
-        
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 1, time: 0.4)
         playSoundClip(.buttonUp)
-        //        delegate?.loadUpStory(name)
         Haptics.shared.vibrate(.medium)
-        
     }
     
     @objc private func touchUpOutside(_ sender: UIButton?) {
@@ -91,35 +84,16 @@ class StoryIconNew: UIView {
     
     override func layoutSubviews() {
         setButtonConstraints()
-        
-        
     }
     
     func setButtonConstraints(){
-        
-//        let padding = frame.height/20
         button.layer.cornerRadius = frame.width/20
         button.translatesAutoresizingMaskIntoConstraints = false
-        
         button.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         button.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        
         button.widthAnchor.constraint(equalToConstant: frame.height/1.5).isActive = true
         button.widthAnchor.constraint(equalTo: button.heightAnchor, multiplier: 1).isActive = true
-
-//        button.heightAnchor.constraint(equalToConstant: frame.height/1.5).isActive = true
-//        button.widthAnchor.constraint(greaterThanOrEqualTo: button.heightAnchor).isActive = true
-        
-//        button.topAnchor.constraint(equalTo: topAnchor, constant: padding).isActive = true
-//        button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding).isActive = true
-//        button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding).isActive = true
-//        button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding).isActive = true
-        
-        
-
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

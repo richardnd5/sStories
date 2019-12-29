@@ -9,11 +9,9 @@ class ImageViewClass: UIImageView {
         super.init(frame: frame)
         self.imageName = imageName
         setupImage()
-        
     }
     
     func setupImage(){
-        
         image = resizedImage(name: imageName)
         contentMode = .scaleAspectFit
     }

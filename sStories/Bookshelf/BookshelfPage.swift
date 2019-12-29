@@ -5,18 +5,8 @@ import UIKit
 class BookshelfPage: UIView, UIScrollViewDelegate {
     
     weak var delegate : SceneDelegate?
-    var scrollView: UIScrollView!
-    var aboutTitle : UILabel!
-    var backButton : UIButton!
     var blurbArray = [AboutBlurb]()
-    var scrollUpButton : UIButton!
-    
-    var touchBlockingOverlay : UIView!
-    
     var arrow : ImageViewClass!
-    
-    var stackViewTop : UIStackView!
-    var stackViewBottom : UIStackView!
     
     var icon1 : StoryIconNew!
     var icon2 : StoryIconNew!
@@ -25,12 +15,20 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     
     var byeahButton : Button!
     
+    var scrollView: UIScrollView!
+    var aboutTitle : UILabel!
+    var backButton : UIButton!
+    
+    var scrollUpButton : UIButton!
+    var touchBlockingOverlay : UIView!
+    
+    var stackViewTop : UIStackView!
+    var stackViewBottom : UIStackView!
     
     var iconContainer : UIView!
     
     let relativeFontConstant:CGFloat = 0.09
     var iconWidth : CGFloat!
-
     
     var touchEnabled = true {
         didSet {
@@ -45,29 +43,21 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         self.fadeTo(opacity: 1.0, time: 1.5)
         
         iconWidth = frame.width/6
-        
         setupViews()
         createTouchBlockingOverlay()
         createByeahButton()
-        
     }
     
     func createByeahButton(){
         byeahButton = Button(frame: .zero, name: "byeahButton")
         addSubview(byeahButton)
-        
-
     }
     
     func setupByeahConstraints(){
-        
         let safe = safeAreaLayoutGuide
         let buttonSize : CGFloat!
         ScreenSize.width > ScreenSize.height ? (buttonSize = ScreenSize.height/5) : (buttonSize = ScreenSize.width/4)
-
         byeahButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        
         byeahButton.bottomAnchor.constraint(equalTo: safe.bottomAnchor, constant: -30).isActive = true
         byeahButton.widthAnchor.constraint(equalToConstant: buttonSize).isActive = true
         byeahButton.widthAnchor.constraint(equalTo: byeahButton.heightAnchor, multiplier: 1.5).isActive = true
@@ -79,14 +69,8 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
         addSubview(touchBlockingOverlay)
         touchBlockingOverlay.fillSuperview()
         touchBlockingOverlay.isUserInteractionEnabled = false
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(handleBlockingOverlayTap))
-//        touchBlockingOverlay.addGestureRecognizer(tap)
     }
-    
-    @objc func handleBlockingOverlayTap(_ sender: UITapGestureRecognizer){
-//        print("hey blocking overlay")
-    }
-    
+
     func toggleTouchEnabled(){
         if touchEnabled {
             touchBlockingOverlay.isUserInteractionEnabled = false
@@ -98,7 +82,6 @@ class BookshelfPage: UIView, UIScrollViewDelegate {
     func createStoryIcon(_ name: StoryName) -> StoryIconNew {
         let view = StoryIconNew(frame: .zero, name: name)
         view.translatesAutoresizingMaskIntoConstraints = false
-        
         return view
     }
     

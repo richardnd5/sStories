@@ -20,19 +20,16 @@ class OffButton: UIButton {
         self.chordType = chord
         chordString = getChordString(chord: chordType)
         setImage(name: chordString)
-        
         setTouchEvents()
         alpha = 0.0
         
     }
     
     private func getChordString(chord: ChordType) -> String {
-        
         return "soundOff"
     }
     
     private func setImage(name: String){
-        
         numeralImage = UIImageView()
         
         let imageSize = CGRect(x: 0, y: 0, width: 700, height: 700)
@@ -63,7 +60,6 @@ class OffButton: UIButton {
     private func setTouchEvents(){
         addTarget(self, action: #selector(touchDown), for: .touchDown)
         addTarget(self, action: #selector(touchUpInside), for: .touchUpInside)
-        addTarget(self, action: #selector(touchUpOutside), for: .touchUpOutside)
     }
     
     func fadeIn(){
@@ -73,7 +69,6 @@ class OffButton: UIButton {
         fadeTo(opacity: 0.0, time: 1.0)
     }
     
-    
     func togglePulse(active: Bool){
         active ? (throbWithWiggle(scaleTo: 1.2, time: 0.5)) : (layer.removeAllAnimations())
     }
@@ -81,17 +76,11 @@ class OffButton: UIButton {
     // button touch events
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
-        
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 1.0, time: 0.1)
-        
         delegate?.chordButtonTapped(chord: chordType)
-    }
-    
-    @objc private func touchUpOutside(_ sender: UIButton?) {
-        
     }
     
     required init?(coder aDecoder: NSCoder) {

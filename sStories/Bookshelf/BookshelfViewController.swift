@@ -54,7 +54,6 @@ class BookshelfViewController: UIViewController {
 
         donatePopUpView.cancelButton.addTarget(self, action: #selector(handleDonateCancel), for: .touchUpInside)
         
-        // Add a tap to dismiss the donation view.
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleBlockingOverlayTap))
         bookshelfPage.touchBlockingOverlay.addGestureRecognizer(tap)
         
@@ -124,14 +123,12 @@ class BookshelfViewController: UIViewController {
     }
     
     @objc func handleByeahButtonPressed(_ sender: UIButton){
-        print("handing byeah button pressed")
         bookshelfPage.fadeAndRemove(time: 1.0, completion: {
             self.createAboutByeahPage()
         })
     }
     
     @objc func handleAboutPageBackPressed(_ sender: UIButton){
-        print("byeah about page button pressed")
         aboutByeahPage.fadeAndRemove(time: 1.0, completion: {
             self.createBookShelfPage()
         })
@@ -145,13 +142,7 @@ class BookshelfViewController: UIViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        get {
-            return .portrait
-            
-        }
+        get { return .portrait }
     }
-    
- 
-    
 }
 

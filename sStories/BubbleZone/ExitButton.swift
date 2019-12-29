@@ -35,7 +35,6 @@ class ExitButton: UIButton {
     @objc private func touchDown(_ sender: UIButton?) {
         sender!.scaleTo(scaleTo: 0.8, time: 0.4)
         playSoundClip(.buttonDown)
-        
     }
     
     @objc private func touchUpInside(_ sender: UIButton?) {
