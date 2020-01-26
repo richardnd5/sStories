@@ -12,7 +12,11 @@ class PianoKey : UIView {
     let blackKeyHeightMultiplier : CGFloat = 0.64
     var beenTouched = false
     
-    init(frame: CGRect, type: KeyType, keyNumber: MIDINoteNumber, _ isTarget: Bool = false){
+    init(frame: CGRect,
+         type: KeyType,
+         keyNumber: MIDINoteNumber,
+         _ isTarget: Bool = false) {
+      
         super.init(frame: frame)
         self.keyNumber = keyNumber
         self.type = type

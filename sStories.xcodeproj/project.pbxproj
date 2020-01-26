@@ -171,7 +171,6 @@
 		86109E0922209486001B6545 /* BackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E0822209486001B6545 /* BackgroundImage.swift */; };
 		86109E0B22209607001B6545 /* bubbleZoneBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 86109E0A22209607001B6545 /* bubbleZoneBackground.png */; };
 		86109E0E22209BB2001B6545 /* PlayZoneBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86109E0D22209BB2001B6545 /* PlayZoneBubble.swift */; };
-		8613AE64220FF1650035DE13 /* PianoKeyAudioFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */; };
 		8613FA49223982E60008994F /* VoiceOverAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8613FA48223982E60008994F /* VoiceOverAudio.swift */; };
 		8613FA4D223985A30008994F /* playSoundButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 8613FA4C223985A30008994F /* playSoundButton.png */; };
 		8613FA692239A3F40008994F /* readStory22.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8613FA522239A3F00008994F /* readStory22.mp3 */; };
@@ -553,7 +552,6 @@
 		86109E0822209486001B6545 /* BackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundImage.swift; sourceTree = "<group>"; };
 		86109E0A22209607001B6545 /* bubbleZoneBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bubbleZoneBackground.png; sourceTree = "<group>"; };
 		86109E0D22209BB2001B6545 /* PlayZoneBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayZoneBubble.swift; sourceTree = "<group>"; };
-		8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyAudioFile.swift; sourceTree = "<group>"; };
 		8613FA48223982E60008994F /* VoiceOverAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceOverAudio.swift; sourceTree = "<group>"; };
 		8613FA4C223985A30008994F /* playSoundButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playSoundButton.png; sourceTree = "<group>"; };
 		8613FA522239A3F00008994F /* readStory22.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = readStory22.mp3; sourceTree = "<group>"; };
@@ -882,7 +880,6 @@
 			children = (
 				22018740223183A8008B5D39 /* KeyboardTurner.swift */,
 				22D3E101220FB69000668C53 /* PianoKey.swift */,
-				8613AE63220FF1650035DE13 /* PianoKeyAudioFile.swift */,
 			);
 			path = "Piano Keyboard";
 			sourceTree = "<group>";
@@ -1811,7 +1808,6 @@
 				869027EA21F59B9F00C3EF0C /* MiniPerformingNote.swift in Sources */,
 				86603C5421FC477C00A7921E /* GlobalConstants.swift in Sources */,
 				22D3E107220FBA3700668C53 /* ExitButton.swift in Sources */,
-				8613AE64220FF1650035DE13 /* PianoKeyAudioFile.swift in Sources */,
 				866EA6C321F406D100B28BA6 /* PageTurnPianoPling.swift in Sources */,
 				8698D85921BF400000ADED35 /* Sound.swift in Sources */,
 				22A666C121FFD8270038220E /* Button.swift in Sources */,

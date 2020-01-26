@@ -90,16 +90,14 @@ class KeyboardTurner: UIView {
     }
     
     func partOfChord(noteToCheck: Int, chordArray: [PageTurnPianoNote]) -> Bool {
-        var bool : Bool
-        chordArray.contains(PageTurnPianoNote(rawValue: MIDINoteNumber(noteToCheck))!) ? (bool = true) : (bool = false)
-        return bool
+        return chordArray.contains(PageTurnPianoNote(rawValue: MIDINoteNumber(noteToCheck))!)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             for touch in touches {
                 let location = touch.location(in: self)
-                subviews.forEach { view in
-                    if view.frame.contains(location) && view is PianoKey{
+              for view in subviews {
+                    if view.frame.contains(location) && view is PianoKey {
                         let key = view as! PianoKey
                         if activatedKey != nil {
                             key.stopKey()
@@ -130,7 +128,6 @@ class KeyboardTurner: UIView {
             let key = PianoKey(frame: fr, type: .white, keyNumber: MIDINoteNumber(whiteKeyNumbers[i]))
             addSubview(key)
             if partOfChord(noteToCheck: whiteKeyNumbers[i], chordArray: chordArray){
-                print("part of chord! \(whiteKeyNumbers[i])")
                 key.setupTargetDot()
             }
             whiteKeyArray.append(key)
@@ -146,7 +143,6 @@ class KeyboardTurner: UIView {
                     let key = PianoKey(frame: frame, type: .black, keyNumber: MIDINoteNumber(blackKeyNumbers[i]))
                     addSubview(key)
                     if partOfChord(noteToCheck: blackKeyNumbers[i], chordArray: chordArray){
-                        print("part of chord! \(whiteKeyNumbers[i])")
                         key.setupTargetDot()
                     }
                     blackKeyArray.append(key)
@@ -162,18 +158,18 @@ class KeyboardTurner: UIView {
             let accelTime = time - (time/(14-i))
         
             Timer.scheduledTimer(withTimeInterval: accelTime, repeats: false) { _ in
-                self.whiteKeyArray.forEach({ key in
+              for key in self.whiteKeyArray {
                     if Int(key.keyNumber) == note.rawValue{
                         key.turnPageAnimationPlayNote()
                         self.makeNoteAppearFlyAwayAndFade(location: key.frame.origin)
                     }
-                })
-                self.blackKeyArray.forEach({ key in
+                }
+              for key in self.blackKeyArray {
                     if Int(key.keyNumber) == note.rawValue{
                         key.turnPageAnimationPlayNote()
                         self.makeNoteAppearFlyAwayAndFade(location: key.frame.origin)
                     }
-                })
+                }
             }
         }
         

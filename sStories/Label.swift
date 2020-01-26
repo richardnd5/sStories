@@ -13,8 +13,8 @@ class Label: UILabel {
         adjustsFontSizeToFitWidth = true
     }
     
-    func changeText(to: String){
-        text = to
+    func changeText(to string: String){
+        text = string
     }
     
     required init?(coder aDecoder: NSCoder) {
